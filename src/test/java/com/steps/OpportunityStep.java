@@ -35,7 +35,7 @@ public class OpportunityStep {
      * @param owner contains name Owner object.
      */
     @When("^I change an opportunity's owner with \"([^\"]*)\"$")
-    public void ChangesAnOpportunitySOwnerWith(final String owner) {
+    public void changesAnOpportunitySOwnerWith(final String owner) {
         System.out.println("com.steps.Opportunity: When");
     }
 

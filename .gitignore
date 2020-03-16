@@ -19,6 +19,9 @@ gradlew.bat
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+# Report file
+target
+
 # Package Files #
 *.jar
 *.war

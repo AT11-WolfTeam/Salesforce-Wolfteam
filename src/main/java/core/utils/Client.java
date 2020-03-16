@@ -11,8 +11,12 @@ package core.utils;
 
 /**
  * Salesforce Client values.
+ *
+ * @author Juan Martinez.
+ * @version 1.0 15 March 2020.
  */
 public class Client {
+
     private String accessToken;
     private String instanceUrl;
     private String id;
@@ -75,6 +79,54 @@ public class Client {
      */
     public String getAuthUrl() {
         return authUrl;
+    }
+
+    /**
+     * Sets access token value.
+     * @param accessToken value.
+     */
+    public void setAccessToken(final String accessToken) {
+        this.accessToken = accessToken;
+    }
+
+    /**
+     * Sets instance url value.
+     * @param instanceUrl value.
+     */
+    public void setInstanceUrl(final String instanceUrl) {
+        this.instanceUrl = instanceUrl;
+    }
+
+    /**
+     * Sets is value.
+     * @param id value.
+     */
+    public void setId(final String id) {
+        this.id = id;
+    }
+
+    /**
+     * Sets token type value.
+     * @param tokenType value.
+     */
+    public void setTokenType(final String tokenType) {
+        this.tokenType = tokenType;
+    }
+
+    /**
+     * Sets issuedAt value.
+     * @param issuedAt value.
+     */
+    public void setIssuedAt(final String issuedAt) {
+        this.issuedAt = issuedAt;
+    }
+
+    /**
+     * Sets signature value.
+     * @param signature value.
+     */
+    public void setSignature(final String signature) {
+        this.signature = signature;
     }
 
     /**

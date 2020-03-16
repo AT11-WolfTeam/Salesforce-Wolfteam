@@ -9,6 +9,8 @@
 
 package core.utils;
 
+import core.salesforce.SalesforceUser;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,6 +23,15 @@ import java.util.Properties;
  * @version 1.0 14 March 2020.
  */
 public class GradleReader {
+    private static GradleReader reader;
+    private static SalesforceUser user;
+
+    /**
+     * Private constructor of GradleReader.
+     */
+    private GradleReader() {
+        initialize();
+    }
 
     /**
      * Reads a browser property
@@ -39,5 +50,45 @@ public class GradleReader {
             ex.printStackTrace();
         }
         return prop.getProperty("browser");
+    }
+
+    /**
+     * Initializes salesforce user values.
+     */
+    private void initialize() {
+        try {
+            InputStream inputStream = new FileInputStream(System.getProperty("user.dir") + "gradle.properties");
+            Properties properties = new Properties();
+            properties.load(inputStream);
+            user.setUsername(properties.getProperty("username"));
+            user.setUsername(properties.getProperty("password"));
+            user.setUsername(properties.getProperty("grantType"));
+            user.setUsername(properties.getProperty("clientId"));
+            user.setUsername(properties.getProperty("clientSecret"));
+            user.setUsername(properties.getProperty("token"));
+            user.setUsername(properties.getProperty("authUrl"));
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+    }
+
+    /**
+     * Gets instance of GradleReader.
+     * @return GradleReader instance.
+     */
+    public static GradleReader getInstance() {
+        if (reader == null) {
+            user = new SalesforceUser();
+            reader = new GradleReader();
+        }
+        return reader;
+    }
+
+    /**
+     * Gets user instance object.
+     * @return user instance object.
+     */
+    public SalesforceUser getUser() {
+        return user;
     }
 }

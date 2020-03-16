@@ -20,4 +20,7 @@ dependencies {
 
     // Browser drivers
     compile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '3.8.0'
+
+    // Rest assured
+    testCompile group: 'io.rest-assured', name: 'rest-assured', version: '4.3.0'
 }

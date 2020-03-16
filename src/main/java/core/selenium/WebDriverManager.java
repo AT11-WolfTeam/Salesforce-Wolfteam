@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
  * @author Enrique Carrizales.
  * @version 1.0 14 March 2020.
  */
-public class WebDriverManager {
+public final class WebDriverManager {
 
     // Selenium driver.
     private WebDriver webDriver;
@@ -56,11 +56,12 @@ public class WebDriverManager {
      * Manages selenium properties.
      */
     private void initialize() {
-        String browser = GradleReader.readBrowser();
+        String browser = GradleReader.getInstance().getDriver();
         this.webDriver = WebDriverFactory.getWebDriver(browser);
         this.webDriver.manage().window().maximize();
-        this.webDriver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
-        webDriverWait = new WebDriverWait(webDriver, 40);
+        this.webDriver.manage().timeouts().implicitlyWait(GradleReader.getInstance().getImplicitWait(),
+                TimeUnit.SECONDS);
+        webDriverWait = new WebDriverWait(webDriver, GradleReader.getInstance().getExplicitWait());
     }
 
     /**

@@ -7,9 +7,14 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package core.utils;
+package salesforce.utils;
 
 import io.restassured.response.Response;
+
+import salesforce.Client;
+
+import java.util.Map;
+
 import static io.restassured.RestAssured.given;
 
 /**
@@ -17,10 +22,10 @@ import static io.restassured.RestAssured.given;
  * @author Juan Martinez.
  * @version 1.0 16 March 2020.
  */
-public class AccessToken {
+public final class AccessToken {
     private static AccessToken accessToken;
     private static Response response;
-    private static Object jsonResponse;
+    private static Map<String, String> jsonResponse;
     private static Client client;
 
     /**
@@ -36,8 +41,8 @@ public class AccessToken {
      */
     public static AccessToken getInstance() {
         if (accessToken == null) {
-            accessToken = new AccessToken();
             client = new Client();
+            accessToken = new AccessToken();
         }
         return accessToken;
     }
@@ -46,30 +51,29 @@ public class AccessToken {
      * Initializes AccessToken.
      */
     private void initializeAccessToken()  {
-        String userToken = GradleReader.getInstance().getUser().getToken();
+        String userToken = PropertiesReader.getInstance().getUser().getToken();
         response = given()
-                .param("username", GradleReader.getInstance().getUser().getUsername())
-                .param("password", GradleReader.getInstance().getUser().getPassword()
-                        + userToken)
-                .param("grant_type", GradleReader.getInstance().getUser().getGrantType())
-                .param("client_id", GradleReader.getInstance().getUser().getClientId())
-                .param("client_secret", GradleReader.getInstance().getUser().getClientSecret())
-                .when().post(GradleReader.getInstance().getUser().getAuthUrl());
-        jsonResponse = response.getBody();
+            .param("username", PropertiesReader.getInstance().getUser().getUsername())
+            .param("password", PropertiesReader.getInstance().getUser().getPassword()
+            + userToken)
+            .param("grant_type", PropertiesReader.getInstance().getUser().getGrantType())
+            .param("client_id", PropertiesReader.getInstance().getUser().getClientId())
+            .param("client_secret", PropertiesReader.getInstance().getUser().getClientSecret())
+            .when().post(PropertiesReader.getInstance().getUser().getAuthUrl());
+        jsonResponse = response.jsonPath().getMap("$");
         setClient(jsonResponse);
     }
 
     /**
      * Sets client values.
      */
-    private void setClient(final Object jsonResponse) {
-        client.setAccessToken("");
-        client.setInstanceUrl("");
-        client.setId("");
-        client.setTokenType("");
-        client.setIssuedAt("");
-        client.setSignature("");
-        client.setAuthUrl("");
+    private void setClient(final Map<String, String> jsonResponse) {
+        client.setAccessToken(jsonResponse.get("access_token"));
+        client.setInstanceUrl(jsonResponse.get("instance_url"));
+        client.setId(jsonResponse.get("id"));
+        client.setTokenType(jsonResponse.get("token_type"));
+        client.setIssuedAt(jsonResponse.get("issued_at"));
+        client.setSignature(jsonResponse.get("signature"));
     }
 
     /**

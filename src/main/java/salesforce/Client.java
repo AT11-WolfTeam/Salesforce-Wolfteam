@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package core.utils;
+package salesforce;
 
 /**
  * Salesforce Client values.

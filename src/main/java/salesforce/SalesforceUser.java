@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package core.salesforce;
+package salesforce;
 
 /**
  * Content salesforce user values.

@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package core.salesforce.api;
+package core.api;
 
 /**
  * Manages account api requests.

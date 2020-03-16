@@ -7,11 +7,12 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package core.salesforce;
+package salesforce.restclient;
 
-import core.utils.AccessToken;
-import io.restassured.builder.RequestSpecBuilder;
+import salesforce.utils.AccessToken;
+
 import io.restassured.specification.RequestSpecification;
+import io.restassured.builder.RequestSpecBuilder;
 
 /**
  * Allows to authenticate on salesforce.
@@ -19,7 +20,7 @@ import io.restassured.specification.RequestSpecification;
  * @author Juan Martinez.
  * @version 1.0 16 March 2020.
  */
-public class Authentication {
+public final class Authentication {
 
     /**
      * Authentication constructor

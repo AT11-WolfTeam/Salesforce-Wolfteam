@@ -21,12 +21,18 @@ import org.testng.annotations.BeforeTest;
  * @author Enrique Carrizales.
  * @version 1.0 16 March 2020.
  */
-public class RunCukesTest extends AbstractTestNGCucumberTests {
+public class RunCukeTest extends AbstractTestNGCucumberTests {
 
+    /**
+     * Executes code block before tests execution.
+     */
     @BeforeTest
     public void beforeExecution() {
     }
 
+    /**
+     * Executes code block after tests execution.
+     */
     @AfterTest
     public void afterExecution() {
         Report.getInstance().generateReport();

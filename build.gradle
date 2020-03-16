@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'checkstyle'
 }
 
 group 'org.example'
@@ -11,9 +12,24 @@ repositories {
     mavenCentral()
 }
 
+checkstyle {
+    toolVersion = '8.1'
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testRuntime
+    }
+}
+
 dependencies {
     // Test engine
     testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    // Cucumber
+    testCompile group: 'info.cukes', name: 'cucumber-java', version: '1.2.5'
+    testCompile group: 'info.cukes', name: 'cucumber-picocontainer', version: '1.2.5'
+    testCompile group: 'info.cukes', name: 'cucumber-testng', version: '1.2.5'
 
     // Selenium
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'

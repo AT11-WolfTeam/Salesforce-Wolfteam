@@ -19,7 +19,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Manages report configurations.
  *
+ * @author Enrique Carrizales.
+ * @version 1.0 16 March 2020.
  */
 public class Report {
 

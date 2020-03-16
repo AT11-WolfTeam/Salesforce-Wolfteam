@@ -75,7 +75,7 @@ public final class GradleReader {
     }
 
     /**
-     * Return a browser property.
+     * Returns a browser property.
      *
      * @return String value.
      */
@@ -84,7 +84,7 @@ public final class GradleReader {
     }
 
     /**
-     * Return an implicit wait property.
+     * Returns an implicit wait property.
      *
      * @return String value.
      */
@@ -93,7 +93,7 @@ public final class GradleReader {
     }
 
     /**
-     * Return an explicit wait property.
+     * Returns an explicit wait property.
      *
      * @return String value.
      */

@@ -15,7 +15,12 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
-
+/**
+ * Manages execution hooks.
+ *
+ * @author Enrique Carrizales.
+ * @version 1.0 16 March 2020.
+ */
 public class RunCukesTest extends AbstractTestNGCucumberTests {
 
     @BeforeTest

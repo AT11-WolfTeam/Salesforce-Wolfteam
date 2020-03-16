@@ -28,6 +28,9 @@ public abstract class BasePage {
     // Contains a WebDriverWait instance.
     protected WebDriverWait webDriverWait;
 
+    /**
+     * Initializes instances required.
+     */
     public BasePage() {
         webDriver = WebDriverManager.getInstance().getWebDriver();
         webDriver.manage().window().maximize();
@@ -36,5 +39,8 @@ public abstract class BasePage {
         waitUntilPageObjectIsLoaded();
     }
 
+    /**
+     * Defines a signature method.
+     */
     protected abstract void waitUntilPageObjectIsLoaded();
 }

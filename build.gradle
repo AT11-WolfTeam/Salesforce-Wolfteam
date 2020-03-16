@@ -52,4 +52,7 @@ dependencies {
 
     // Browser drivers
     compile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '3.8.0'
+
+    // Reports
+    compile group: 'net.masterthought', name: 'cucumber-reporting', version: '4.6.0'
 }

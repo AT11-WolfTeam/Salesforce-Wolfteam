@@ -57,16 +57,17 @@ public class GradleReader {
      */
     private void initialize() {
         try {
-            InputStream inputStream = new FileInputStream(System.getProperty("user.dir") + "gradle.properties");
+//            InputStream inputStream = new FileInputStream(System.getProperty("user.dir") + "gradle.properties");
+            InputStream inputStream = new FileInputStream("gradle.properties");
             Properties properties = new Properties();
             properties.load(inputStream);
             user.setUsername(properties.getProperty("username"));
-            user.setUsername(properties.getProperty("password"));
-            user.setUsername(properties.getProperty("grantType"));
-            user.setUsername(properties.getProperty("clientId"));
-            user.setUsername(properties.getProperty("clientSecret"));
-            user.setUsername(properties.getProperty("token"));
-            user.setUsername(properties.getProperty("authUrl"));
+            user.setPassword(properties.getProperty("password"));
+            user.setGrantType(properties.getProperty("grant_type"));
+            user.setClientId(properties.getProperty("client_id"));
+            user.setClientSecret(properties.getProperty("client_secret"));
+            user.setToken(properties.getProperty("token"));
+            user.setAuthUrl(properties.getProperty("auth_url"));
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }

@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package core.ui.pages;
+package salesforce.ui.pages;
 
 import core.selenium.WebDriverManager;
 import org.openqa.selenium.WebDriver;

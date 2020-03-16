@@ -12,13 +12,28 @@ repositories {
     mavenCentral()
 }
 
+tasks.withType(Test) {
+    systemProperty "browser", browser
+}
+
 checkstyle {
     toolVersion = '8.1'
 }
 
 configurations {
     cucumberRuntime {
-        extendsFrom testRuntime
+        extendsFrom testImplementation
+    }
+}
+
+task executeFeatures(type: Test) {
+    useTestNG()
+    options {
+        useDefaultListeners = false
+
+        jvmArgs = ['-Dcucumber.options= --glue com --plugin pretty '
+                           + '--plugin json:build/cucumber/cucumber.json --plugin rerun:build/cucumber/rerun.txt '
+                           + 'classpath:']
     }
 }
 
@@ -27,9 +42,10 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 
     // Cucumber
-    testCompile group: 'info.cukes', name: 'cucumber-java', version: '1.2.5'
-    testCompile group: 'info.cukes', name: 'cucumber-picocontainer', version: '1.2.5'
-    testCompile group: 'info.cukes', name: 'cucumber-testng', version: '1.2.5'
+    testImplementation 'io.cucumber:cucumber-java:5.4.0'
+    testCompile 'io.cucumber:cucumber-java:5.4.0'
+    testCompile group: 'io.cucumber', name: 'cucumber-picocontainer', version: '5.4.0'
+    compile group: 'io.cucumber', name: 'cucumber-testng', version: '5.4.0'
 
     // Selenium
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'

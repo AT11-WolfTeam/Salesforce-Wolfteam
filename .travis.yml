@@ -1,9 +1,6 @@
 language: java
 jdk:
-  - oraclejdk9
   - openjdk8
-
-sudo: false
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -14,8 +11,11 @@ cache:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
 
-before_install:
-  - gradle assemble
-  - gradle check
+install:
+  - gradle clean build
+
+script:
+  - gradle executeFeatures
+
 notifications:
-  email: true
+  email: false

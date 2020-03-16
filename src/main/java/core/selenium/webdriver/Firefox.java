@@ -34,6 +34,8 @@ public class Firefox implements IDriver {
     public WebDriver initDriver() {
         FirefoxDriverManager.getInstance(FIREFOX).version("73.0").setup();
         FirefoxOptions firefoxOptions = new FirefoxOptions();
+        firefoxOptions.addArguments("--headless");
+        firefoxOptions.addArguments("--disable-gpu");
         return new FirefoxDriver(firefoxOptions);
     }
 }

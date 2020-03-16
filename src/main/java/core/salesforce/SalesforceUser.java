@@ -13,7 +13,7 @@ package core.salesforce;
  * Content salesforce user values.
  *
  * @author Juan Martinez.
- * @version 1.0 14 March 2020.
+ * @version 1.0 15 March 2020.
  */
 public class SalesforceUser {
     private String username;

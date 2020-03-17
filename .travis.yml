@@ -15,7 +15,7 @@ install:
   - gradle clean build
 
 script:
-  - gradle executeFeatures
+  - gradle clean executeFeatures
 
 notifications:
   email: false

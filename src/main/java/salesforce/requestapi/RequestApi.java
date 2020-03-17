@@ -10,7 +10,6 @@
 package salesforce.requestapi;
 
 import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
 
 import static io.restassured.RestAssured.given;
 
@@ -21,7 +20,7 @@ import static io.restassured.RestAssured.given;
  * @version 1.0 16 March 2020.
  */
 public class RequestApi {
-    private RequestSpecification request;
+    private Response request;
     private static RequestApi requestApi;
 
     /**
@@ -42,12 +41,16 @@ public class RequestApi {
         return requestApi;
     }
 
-    /**
-     * Gets request specification.
-     * @return request specification value.
-     */
-    public RequestSpecification getRequest() {
-        return request;
+//    /**
+//     * Gets request specification.
+//     * @return request specification value.
+//     */
+//    public RequestSpecification getRequest() {
+//        return request;
+//    }
+
+    public void setRequest(Response request) {
+        this.request = request;
     }
 
     /**
@@ -57,7 +60,7 @@ public class RequestApi {
      * @return response api.
      */
     public Response apiResponse(final String httpMethod, final String endpoint) {
-        return given().spec(request).when().request(httpMethod, endpoint);
+        return given().when().request(httpMethod, endpoint);
     }
 
     /**

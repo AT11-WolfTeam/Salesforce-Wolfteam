@@ -22,5 +22,7 @@ dependencies {
     compile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '3.8.0'
 
     // Rest assured
-    implementation 'io.rest-assured:rest-assured:4.1.1'
+    implementation 'io.rest-assured:rest-assured:4.3.0'
+
+    compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
 }

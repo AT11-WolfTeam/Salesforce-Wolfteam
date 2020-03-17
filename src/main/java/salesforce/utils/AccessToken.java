@@ -11,8 +11,6 @@ package salesforce.utils;
 
 import io.restassured.response.Response;
 
-import salesforce.Client;
-
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;

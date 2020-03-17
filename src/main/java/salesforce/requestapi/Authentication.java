@@ -11,8 +11,6 @@ package salesforce.requestapi;
 
 import salesforce.utils.AccessToken;
 
-import io.restassured.specification.RequestSpecification;
-import io.restassured.builder.RequestSpecBuilder;
 
 /**
  * Allows to authenticate on salesforce.
@@ -22,6 +20,8 @@ import io.restassured.builder.RequestSpecBuilder;
  */
 public final class Authentication {
 
+    private static final String SPACE = " ";
+
     /**
      * Authentication constructor
      */
@@ -30,12 +30,11 @@ public final class Authentication {
     }
 
     /**
-     * Allows to Builds, then Sends authentication request.
-     * @return request specification.
+     * Gets access token.
+     * @return access token value.
      */
-    public static RequestSpecification authenticationRequest() {
-        return new RequestSpecBuilder().setBaseUri(AccessToken.getInstance().getClient().getInstanceUrl())
-                .addHeader("Authorization", AccessToken.getInstance().getClient().getTokenType()
-                + " " + AccessToken.getInstance().getClient().getAccessToken()).build();
+    public static String getAccessToken() {
+        return AccessToken.getInstance().getClient().getTokenType() + SPACE
+                + AccessToken.getInstance().getClient().getAccessToken();
     }
 }

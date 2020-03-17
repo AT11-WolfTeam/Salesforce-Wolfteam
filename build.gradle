@@ -33,7 +33,7 @@ task executeFeatures(type: Test) {
 
         jvmArgs = ['-Dcucumber.options= --glue com --plugin pretty '
                            + '--plugin json:build/cucumber/cucumber.json --plugin rerun:build/cucumber/rerun.txt '
-                           + 'classpath:features']
+                           + 'classpath: ']
     }
 }
 

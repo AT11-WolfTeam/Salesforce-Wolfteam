@@ -11,7 +11,6 @@ package salesforce.requestapi;
 
 import salesforce.utils.AccessToken;
 
-
 /**
  * Allows to authenticate on salesforce.
  *
@@ -23,7 +22,7 @@ public final class Authentication {
     private static final String SPACE = " ";
 
     /**
-     * Authentication constructor
+     * Authentication constructor.
      */
     private Authentication() {
 

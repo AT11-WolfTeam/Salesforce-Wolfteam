@@ -14,7 +14,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import org.json.simple.JSONObject;
-import org.json.simple.parser.*;
+import org.json.simple.parser.JSONParser;
 
 /**
  * Manages account api requests.
@@ -31,10 +31,10 @@ public class JsonFileReader {
      * @param fileName of json file.
      * @return json file values.
      */
-    public static JSONObject JsonReader(final String fileName) {
+    public static String jsonReader(final String fileName) {
         JSONObject jsonObject = new JSONObject();
         try {
-            Object jsonValues = new JSONParser().parse(new FileReader(FILE_PATH +fileName));
+            Object jsonValues = new JSONParser().parse(new FileReader(FILE_PATH + fileName));
             jsonObject = (JSONObject) jsonValues;
 
         } catch (FileNotFoundException e) {
@@ -44,6 +44,6 @@ public class JsonFileReader {
         } catch (org.json.simple.parser.ParseException e) {
             e.printStackTrace();
         }
-        return jsonObject;
+        return jsonObject.toJSONString();
     }
 }

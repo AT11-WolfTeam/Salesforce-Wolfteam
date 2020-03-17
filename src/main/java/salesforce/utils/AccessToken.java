@@ -17,6 +17,7 @@ import static io.restassured.RestAssured.given;
 
 /**
  * Generates access token.
+ *
  * @author Juan Martinez.
  * @version 1.0 16 March 2020.
  */
@@ -51,32 +52,33 @@ public final class AccessToken {
     private void initializeAccessToken()  {
         String userToken = PropertiesReader.getInstance().getUser().getToken();
         response = given()
-            .param("username", PropertiesReader.getInstance().getUser().getUsername())
-            .param("password", PropertiesReader.getInstance().getUser().getPassword()
+            .param(TokenConstant.USER_NAME, PropertiesReader.getInstance().getUser().getUsername())
+            .param(TokenConstant.PASSWORD, PropertiesReader.getInstance().getUser().getPassword()
             + userToken)
-            .param("grant_type", PropertiesReader.getInstance().getUser().getGrantType())
-            .param("client_id", PropertiesReader.getInstance().getUser().getClientId())
-            .param("client_secret", PropertiesReader.getInstance().getUser().getClientSecret())
+            .param(TokenConstant.GRANT_TYPE, PropertiesReader.getInstance().getUser().getGrantType())
+            .param(TokenConstant.CLIENT_ID, PropertiesReader.getInstance().getUser().getClientId())
+            .param(TokenConstant.CLIENT_SECRET, PropertiesReader.getInstance().getUser().getClientSecret())
             .when().post(PropertiesReader.getInstance().getUser().getAuthUrl());
         jsonResponse = response.jsonPath().getMap("$");
         setClient(jsonResponse);
     }
 
     /**
-     * Sets client values.
+     * Sets json response values.
+     * @param jsonResponse value.
      */
     private void setClient(final Map<String, String> jsonResponse) {
-        client.setAccessToken(jsonResponse.get("access_token"));
-        client.setInstanceUrl(jsonResponse.get("instance_url"));
-        client.setId(jsonResponse.get("id"));
-        client.setTokenType(jsonResponse.get("token_type"));
-        client.setIssuedAt(jsonResponse.get("issued_at"));
-        client.setSignature(jsonResponse.get("signature"));
+        client.setAccessToken(jsonResponse.get(TokenConstant.ACCESS_TOKEN));
+        client.setInstanceUrl(jsonResponse.get(TokenConstant.INSTANCE_URL));
+        client.setId(jsonResponse.get(TokenConstant.ID));
+        client.setTokenType(jsonResponse.get(TokenConstant.TOKEN_TYPE));
+        client.setIssuedAt(jsonResponse.get(TokenConstant.ISSUED_AT));
+        client.setSignature(jsonResponse.get(TokenConstant.SIGNATURE));
     }
 
     /**
      * Gets client instance.
-     * @return
+     * @return client object.
      */
     public Client getClient() {
         return client;

@@ -12,7 +12,7 @@ import java.util.Properties;
  * @author Juan Martinez.
  * @version 1.0 16 March 2020.
  */
-public class PropertiesReader {
+public final class PropertiesReader {
     private static PropertiesReader reader;
     private static SalesforceUser user;
 

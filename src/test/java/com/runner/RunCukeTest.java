@@ -11,9 +11,12 @@
 package com.runner;
 
 import core.report.Report;
+import core.selenium.WebDriverManager;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import salesforce.ui.pages.LoginPage;
+import salesforce.ui.pages.PageTransporter;
 
 /**
  * Manages execution hooks.
@@ -28,6 +31,10 @@ public class RunCukeTest extends AbstractTestNGCucumberTests {
      */
     @BeforeTest
     public void beforeExecution() {
+        PageTransporter pageTransporter = new PageTransporter();
+        pageTransporter.navigateToPage("Login Page");
+        LoginPage loginPage = new LoginPage();
+        loginPage.loginSalesforce();
     }
 
     /**
@@ -36,5 +43,6 @@ public class RunCukeTest extends AbstractTestNGCucumberTests {
     @AfterTest
     public void afterExecution() {
         Report.getInstance().generateReport();
+        WebDriverManager.getInstance().quitDriver();
     }
 }

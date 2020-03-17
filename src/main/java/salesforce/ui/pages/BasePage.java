@@ -40,7 +40,7 @@ public abstract class BasePage {
     }
 
     /**
-     * Defines a signature method.
+     * Waits until the web element is loaded.
      */
     protected abstract void waitUntilPageObjectIsLoaded();
 }

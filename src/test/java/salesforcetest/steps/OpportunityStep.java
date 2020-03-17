@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package com.steps;
+package salesforcetest.steps;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

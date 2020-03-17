@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.utils;
+package utils;
 
 /**
  * Content salesforce endpoints URI.

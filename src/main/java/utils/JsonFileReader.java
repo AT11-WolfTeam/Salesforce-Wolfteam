@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.utils;
+package utils;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;

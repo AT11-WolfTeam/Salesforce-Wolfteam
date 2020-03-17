@@ -12,11 +12,11 @@ package core.api;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import salesforce.requestapi.Authentication;
-import salesforce.utils.AccessToken;
-import salesforce.utils.EndPoint;
-import salesforce.utils.JsonFileReader;
-import salesforce.utils.TokenConstant;
+import requestapi.Authentication;
+import utils.AccessToken;
+import utils.EndPoint;
+import utils.JsonFileReader;
+import utils.TokenConstant;
 
 /**
  * Manages account api requests.

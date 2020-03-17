@@ -9,9 +9,16 @@
 
 package com.steps;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import salesforce.entities.Opportunity;
+import salesforce.ui.pages.AppPageFactory;
+import salesforce.ui.pages.opportunities.OpportunitiesPageAbstract;
+import salesforce.ui.pages.opportunities.NewOpportunityPageAbstract;
+
+import java.util.Map;
 
 /**
  * Manages com.steps definition.
@@ -20,6 +27,13 @@ import io.cucumber.java.en.When;
  * @version 1.0 16 March 2020.
  */
 public class OpportunityStep {
+
+    // Pages
+    OpportunitiesPageAbstract opportunitiesPage;
+    NewOpportunityPageAbstract opportunityPage;
+
+    // Entities
+    Opportunity opportunity;
 
     /**
      * Creates Opportunity.
@@ -46,5 +60,19 @@ public class OpportunityStep {
     @Then("^the application should display an information message in Opportunity page with the format \"([^\"]*)\"$")
     public void displaysAnInformationMessageInOpportunityPageWithTheFormat(final String message) {
         System.out.println("com.steps.Opportunity: Then");
+    }
+
+    /**
+     *
+     * @param opportunityMap
+     */
+    @And("I create an Opportunity with")
+    public void iCreateAnOpportunityWith(final Map<String, String> opportunityMap) {  // List<Opportunity>
+        opportunity.setInformation(opportunityMap);
+
+        // Create Opportunity by UI
+        opportunitiesPage = AppPageFactory.getOpportunitiesPage();
+        opportunityPage = opportunitiesPage.clickNewOpportunityBtn();
+        opportunityPage.createOpportunity(opportunity);
     }
 }

@@ -42,6 +42,15 @@ public final class GradleReader {
     // String explicitWait value.
     private static final String EXPLICIT_WAIT = "explicitWait";
 
+    // String Login page value.
+    private static final String LOGIN_PAGE = "Login.Page";
+
+    // String Sales page value.
+    private static final String SALES_PAGE = "Sales.Page";
+
+    // String Opportunities value.
+    private static final String OPPORTUNITIES_PAGE = "Opportunities.Page";
+
     /**
      * Calls to initialize class method.
      */
@@ -99,5 +108,32 @@ public final class GradleReader {
      */
     public Long getExplicitWait() {
         return Long.parseLong(properties.getProperty(EXPLICIT_WAIT));
+    }
+
+    /**
+     * Returns the link of login Page.
+     *
+     * @return String value
+     */
+    public String getLoginPage() {
+        return properties.getProperty(LOGIN_PAGE);
+    }
+
+    /**
+     * Returns the link of sales Page.
+     *
+     * @return String value
+     */
+    public String getSalesPage() {
+        return properties.getProperty(SALES_PAGE);
+    }
+
+    /**
+     * Returns the link of Opportunities Page.
+     *
+     * @return String value
+     */
+    public String getOpportunitiesPage() {
+        return properties.getProperty(OPPORTUNITIES_PAGE);
     }
 }

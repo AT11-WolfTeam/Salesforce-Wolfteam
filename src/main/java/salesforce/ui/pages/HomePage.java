@@ -23,19 +23,20 @@ public class HomePage extends BasePage {
 
     // Contains a main button.
     @FindBy(css = "button[class = slds-button]")
-    private WebElement btn_apps;
+    private WebElement btnApps;
 
     /**
      * Defines a webDriver waiter.
      */
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-        webDriverWait.until(ExpectedConditions.visibilityOf(btn_apps));
+        webDriverWait.until(ExpectedConditions.visibilityOf(btnApps));
     }
 
+    /**
+     * Click a button in a page.
+     */
     public void clickOnAppsButton() {
-        btn_apps.click();
+        btnApps.click();
     }
-
-    
 }

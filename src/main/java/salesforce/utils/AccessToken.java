@@ -21,7 +21,7 @@ import static io.restassured.RestAssured.given;
  * @author Juan Martinez.
  * @version 1.0 16 March 2020.
  */
-public class AccessToken {
+public final class AccessToken {
     private static AccessToken accessToken;
     private static Response response;
     private static Map<String, String> jsonResponse;

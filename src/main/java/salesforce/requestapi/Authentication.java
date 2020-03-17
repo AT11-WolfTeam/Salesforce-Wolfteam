@@ -17,7 +17,7 @@ import salesforce.utils.AccessToken;
  * @author Juan Martinez.
  * @version 1.0 16 March 2020.
  */
-public class Authentication {
+public final class Authentication {
     private static final String SPACE = " ";
 
     /**

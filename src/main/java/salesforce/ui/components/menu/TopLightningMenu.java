@@ -7,36 +7,27 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages;
+package salesforce.ui.components.menu;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
- * Defines a page base.
+ * Manages a web page.
  *
  * @author Enrique Carrizales.
  * @version 1.0 17 March 2020.
  */
-public class HomePage extends BasePage {
+public class TopLightningMenu extends TopMenuAbstract {
 
-    // Contains a main button.
     @FindBy(css = "button[class = slds-button]")
     private WebElement btnApps;
 
     /**
-     * Defines a webDriver waiter.
+     * Click on apps button.
      */
     @Override
-    protected void waitUntilPageObjectIsLoaded() {
-        webDriverWait.until(ExpectedConditions.visibilityOf(btnApps));
-    }
-
-    /**
-     * Click a button in a page.
-     */
-    public void clickOnAppsButton() {
+    protected void clickOnAppsButton() {
         btnApps.click();
     }
 }

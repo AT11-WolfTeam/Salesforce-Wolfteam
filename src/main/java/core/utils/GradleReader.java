@@ -21,25 +21,13 @@ import java.util.Properties;
  */
 public final class GradleReader {
 
-    // Instance class.
     private static GradleReader instance;
-
-    // Instance properties.
     private static Properties properties;
-
-    // Gradle properties path.
     private static final String INPUT_PATH = "gradle.properties";
-
-    // Instance FileInputStream
     private FileInputStream fileInputStream;
-
-    // String browser value.
     private static final String BROWSER = "browser";
-
-    // String implicitWait value.
+    private static final String USER_EXPERIENCE = "userExperience";
     private static final String IMPLICIT_WAIT = "implicitWait";
-
-    // String explicitWait value.
     private static final String EXPLICIT_WAIT = "explicitWait";
 
     /**
@@ -99,5 +87,13 @@ public final class GradleReader {
      */
     public Long getExplicitWait() {
         return Long.parseLong(properties.getProperty(EXPLICIT_WAIT));
+    }
+
+    /**
+     * Returns an explicit user experience.
+     * @return String value.
+     */
+    public String getUserExperience() {
+        return properties.getProperty(USER_EXPERIENCE);
     }
 }

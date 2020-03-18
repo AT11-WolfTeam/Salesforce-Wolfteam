@@ -25,7 +25,7 @@ public class PageTransporter {
     private HashMap<String, String> urlMap;
 
     /**
-     * Constructor initialize HasMap.
+     * Constructor initialize HashMap.
      */
     public PageTransporter() {
         urlMap = new HashMap<>();

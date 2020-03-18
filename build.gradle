@@ -31,7 +31,7 @@ task executeFeatures(type: Test) {
     options {
         useDefaultListeners = false
 
-        jvmArgs = ['-Dcucumber.options= --glue com --plugin pretty '
+        jvmArgs = ['-Dcucumber.options= --glue salesforcetest --plugin pretty '
                            + '--plugin json:build/cucumber/cucumber.json --plugin rerun:build/cucumber/rerun.txt '
                            + 'classpath:']
     }
@@ -55,4 +55,10 @@ dependencies {
 
     // Reports
     compile group: 'net.masterthought', name: 'cucumber-reporting', version: '4.6.0'
+
+    // Rest assured
+    implementation 'io.rest-assured:rest-assured:4.3.0'
+
+    // Manages json object
+    compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
 }

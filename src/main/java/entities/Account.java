@@ -7,11 +7,14 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package com.hooks;
+package entities;
 
 /**
- * Manage hooks of the scenarios.
+ * Manages account information.
+ *
+ * @author Juan Martinez.
+ * @version 1.0 17 March 2020.
  */
-public class Hook {
+public class Account {
 
 }

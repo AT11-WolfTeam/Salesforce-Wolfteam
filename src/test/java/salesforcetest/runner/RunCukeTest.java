@@ -1,14 +1,13 @@
 /*
- *  Copyright (c) 2019 Jalasoft.
+ * Copyright (c) 2019 Jalasoft.
  *
- *  This software is the confidential and proprietary information of Jalasoft.
- *  ("Confidential Information"). You shall not disclose such Confidential
- *  Information and shall use it only in accordance with the terms of the
- *  license agreement you entered into with Jalasoft.
- *
+ * This software is the confidential and proprietary information of Jalasoft.
+ * ("Confidential Information"). You shall not disclose such Confidential
+ * Information and shall use it only in accordance with the terms of the
+ * license agreement you entered into with Jalasoft.
  */
 
-package com.runner;
+package salesforcetest.runner;
 
 import core.report.Report;
 import core.selenium.WebDriverManager;
@@ -18,8 +17,8 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
-import salesforce.ui.pages.LoginPage;
-import salesforce.ui.pages.PageTransporter;
+import ui.pages.LoginPage;
+import ui.pages.PageTransporter;
 
 /**
  * Manages execution hooks.

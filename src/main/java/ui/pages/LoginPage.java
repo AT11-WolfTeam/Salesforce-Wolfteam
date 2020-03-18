@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages;
+package ui.pages;
 
 import core.utils.GradleReader;
 

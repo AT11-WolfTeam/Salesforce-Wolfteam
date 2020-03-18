@@ -11,6 +11,8 @@ package salesforce.ui.components.menu;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import salesforce.ui.pages.aplications.AppsLightningOrderedMenu;
 
 /**
  * Manages a web page.
@@ -21,13 +23,20 @@ import org.openqa.selenium.support.FindBy;
 public class TopLightningMenu extends TopMenuAbstract {
 
     @FindBy(css = "button[class = slds-button]")
-    private WebElement btnApps;
+    private WebElement appsButton;
+
+    @Override
+    protected void waitUntilPageObjectIsLoaded() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(appsButton));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(appsButton));
+    }
 
     /**
      * Click on apps button.
      */
     @Override
-    protected void clickOnAppsButton() {
-        btnApps.click();
+    protected AppsLightningOrderedMenu clickOnAppsButton() {
+        appsButton.click();
+        return new AppsLightningOrderedMenu();
     }
 }

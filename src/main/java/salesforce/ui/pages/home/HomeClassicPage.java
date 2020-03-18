@@ -17,7 +17,7 @@ import salesforce.ui.pages.BasePage;
  * @author Enrique Carrizales.
  * @version 1.0 17 March 2020.
  */
-public class HomePage extends BasePage {
+public class HomeClassicPage extends HomePageAbstract {
 
     /**
      * Defines a webDriver waiter.

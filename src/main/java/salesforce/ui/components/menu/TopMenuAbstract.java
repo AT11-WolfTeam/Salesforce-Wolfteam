@@ -9,16 +9,18 @@
 
 package salesforce.ui.components.menu;
 
+import salesforce.ui.pages.BasePage;
+
 /**
  * Manages a web page.
  *
  * @author Enrique Carrizales.
  * @version 1.0 17 March 2020.
  */
-public abstract class TopMenuAbstract {
+public abstract class TopMenuAbstract extends BasePage {
 
     /**
      * Click on apps button.
      */
-    protected abstract void clickOnAppsButton();
+    protected abstract BasePage clickOnAppsButton();
 }

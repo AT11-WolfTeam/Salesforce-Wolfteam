@@ -10,6 +10,7 @@
 package salesforce.ui.pages.home;
 
 import salesforce.ui.components.menu.TopMenuAbstract;
+import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.BasePage;
 
 public abstract class HomePageAbstract extends BasePage {
@@ -18,7 +19,6 @@ public abstract class HomePageAbstract extends BasePage {
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-
     }
 
     public HomePageAbstract() {

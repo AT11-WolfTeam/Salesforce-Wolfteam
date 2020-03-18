@@ -14,12 +14,6 @@ pipeline {
                 bat './gradlew executeFeatures'
             }
         }
-         stage('Cucumber Reports') {
-           steps {
-                cucumber buildStatus: "UNSTABLE",
-                    fileIncludePattern: "**/cucumber.json",
-                    jsonReportDirectory: 'target'
-           }
-        }
+        
     }
 }

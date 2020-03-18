@@ -12,9 +12,8 @@ package core.utils;
 /**
  * This enum is used for specifying Audio formats.
  *
- * @version 1.0 17 March 2020.
- *
  * @author Enrique Carrizales.
+ * @version 1.0 17 March 2020.
  */
 public enum UserExperience {
     USER_EXPERIENCE_CLASSIC("Classic"),
@@ -24,17 +23,19 @@ public enum UserExperience {
 
     /**
      * Builds an Enum.
+     *
      * @param userExperience String value
      */
-    UserExperience(String userExperience) {
+    UserExperience(final String userExperience) {
         this.userExperience = userExperience;
     }
 
     /**
      * Gets User Experience value.
+     *
      * @return String value.
      */
-    public String get(){
+    public String get() {
         return userExperience;
     }
 }

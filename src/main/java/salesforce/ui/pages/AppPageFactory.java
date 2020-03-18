@@ -19,11 +19,18 @@ import salesforce.ui.components.menu.TopMenuAbstract;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Defines a page base.
+ *
+ * @author Enrique Carrizales.
+ * @version 1.0 17 March 2020.
+ */
 public class AppPageFactory {
     private static String userExperience = GradleReader.getInstance().getUserExperience();
 
     /**
      * Returns a page from a user experience.
+     *
      * @return page instance.
      */
     public static TopMenuAbstract getTopMenu() {

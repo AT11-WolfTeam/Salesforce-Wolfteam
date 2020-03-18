@@ -7,13 +7,13 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package core.api;
+package salesforce.api;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
-import requestapi.Authentication;
+import salesforce.api.requestapi.Authentication;
 
 import utils.AccessToken;
 import utils.EndPoint;

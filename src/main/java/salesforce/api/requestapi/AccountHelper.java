@@ -7,9 +7,9 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package requestapi;
+package salesforce.api.requestapi;
 
-import entities.Account;
+import salesforce.entities.Account;
 
 /**
  * Manages account information.

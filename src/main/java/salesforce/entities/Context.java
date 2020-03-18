@@ -7,22 +7,14 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages.home;
-
-import salesforce.ui.pages.BasePage;
+package salesforce.entities;
 
 /**
- * Defines a page base.
+ * Manages salesforce.entities instance.
  *
- * @author Enrique Carrizales.
+ * @author Juan Martinez.
  * @version 1.0 17 March 2020.
  */
-public class HomeClassicPage extends HomePageAbstract {
+public class Context {
 
-    /**
-     * Defines a webDriver waiter.
-     */
-    @Override
-    protected void waitUntilPageObjectIsLoaded() {
-    }
 }

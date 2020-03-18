@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package requestapi;
+package salesforce.api.requestapi;
 
 import utils.AccessToken;
 

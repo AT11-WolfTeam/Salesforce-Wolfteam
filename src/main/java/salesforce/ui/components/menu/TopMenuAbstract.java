@@ -21,6 +21,7 @@ public abstract class TopMenuAbstract extends BasePage {
 
     /**
      * Click on apps button.
+     * @return a instance page.
      */
     protected abstract BasePage clickOnAppsButton();
 }

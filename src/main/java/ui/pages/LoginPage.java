@@ -14,6 +14,7 @@ import core.utils.GradleReader;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import utils.PropertiesReader;
 
 /**
  * Manages Login Page instance.
@@ -44,8 +45,8 @@ public class LoginPage extends BasePage {
      * Does login to the page.
      */
     public void loginSalesforce() {
-        this.userNameField.sendKeys(GradleReader.getInstance().getUserName());
-        this.passwordField.sendKeys(GradleReader.getInstance().getPassword());
+        this.userNameField.sendKeys(PropertiesReader.getInstance().getUser().getUsername());
+        this.passwordField.sendKeys(PropertiesReader.getInstance().getUser().getPassword());
         this.loginButton.click();
     }
 }

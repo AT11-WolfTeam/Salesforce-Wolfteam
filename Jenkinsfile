@@ -6,12 +6,12 @@ pipeline {
   stages {
         stage('BUILD') {
             steps {
-                bat './gradlew clean build'
+                bash './gradlew clean build'
             }
         }
         stage('TEST') {
             steps {
-                bat './gradlew executeFeatures'
+                bash './gradlew executeFeatures'
             }
         }
     }

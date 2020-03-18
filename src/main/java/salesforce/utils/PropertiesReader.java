@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package utils;
+package salesforce.utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;

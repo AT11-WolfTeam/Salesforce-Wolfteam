@@ -7,11 +7,11 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package ui.pages;
+package salesforce.ui.pages;
 
 import core.selenium.WebDriverManager;
 
-import utils.PropertiesReader;
+import salesforce.utils.PropertiesReader;
 
 import java.util.HashMap;
 

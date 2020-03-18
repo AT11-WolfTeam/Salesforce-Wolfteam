@@ -7,14 +7,31 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package entities;
+package salesforce.restclient;
+
+import salesforce.entities.Account;
 
 /**
- * Manages entities instance.
+ * Manages account information.
  *
  * @author Juan Martinez.
  * @version 1.0 17 March 2020.
  */
-public class Context {
+public class AccountHelper {
 
+    /**
+     * Creates account.
+     * @param account value.
+     */
+    public void createAccount(final Account account) {
+
+    }
+
+    /**
+     * Deletes account.
+     * @param account value.
+     */
+    public void deleteAccount(final Account account) {
+
+    }
 }

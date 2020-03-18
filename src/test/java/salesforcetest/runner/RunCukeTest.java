@@ -18,8 +18,8 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
-import ui.pages.LoginPage;
-import ui.pages.PageTransporter;
+import salesforce.ui.pages.LoginPage;
+import salesforce.ui.pages.PageTransporter;
 
 /**
  * Manages execution hooks.

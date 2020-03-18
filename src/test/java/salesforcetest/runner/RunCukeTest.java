@@ -28,7 +28,6 @@ import salesforce.ui.pages.PageTransporter;
  * @version 1.0 16 March 2020.
  */
 public class RunCukeTest extends AbstractTestNGCucumberTests {
-
     private static final String LOGIN_PAGE = "Login Page";
 
     /**

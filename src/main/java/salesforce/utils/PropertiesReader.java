@@ -85,5 +85,4 @@ public final class PropertiesReader {
     public SalesforceUrl getSalesforceUrl() {
         return salesforceUrl;
     }
-
 }

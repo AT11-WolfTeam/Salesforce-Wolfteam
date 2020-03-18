@@ -10,7 +10,7 @@
 package salesforce.entities;
 
 /**
- * Manages salesforce.entities instance.
+ * Manages entities instance.
  *
  * @author Juan Martinez.
  * @version 1.0 17 March 2020.

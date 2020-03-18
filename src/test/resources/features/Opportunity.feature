@@ -5,6 +5,7 @@ Feature: Opportunity
     When I change an opportunity's owner with "CurrentOwner"
     Then the application should display an information message in Opportunity page with the format "[[Owner Name]] now owns the record for [[Opportunity Name]]"
 
+
   @wip
   Scenario: Close an opportunity with another owner
     Given I login as "Admin"
@@ -13,10 +14,11 @@ Feature: Opportunity
       | Opportunity Name | testing close stage |
       | Close Date       | 03/31/2020          |
       | Stage            | Qualification       |
-    And I select to "Juan Martinez" as a new owner
+    And I select to "AdminUser" as a new owner
     When I close the opportunity as Close Won
     Then the application should display an information message in Opportunity page with the format "Stage changed successfully."
     And On the opportunities page should display on the column stage as "Closed Won"
+
 
   @wip
   Scenario: Add additional information to created task.
@@ -29,6 +31,7 @@ Feature: Opportunity
       | Due date | 3/31/2020 |
     Then  the application should display an information message in Opportunity page with the format "Task [subject] was saved"
     And the section Upcoming & Overdue should display the "[subject]"
+
 
   @wip
   Scenario: Assign a campaign to an opportunity

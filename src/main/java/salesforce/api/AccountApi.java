@@ -7,18 +7,18 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package core.api;
+package salesforce.api;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
-import requestapi.Authentication;
+import salesforce.restclient.Authentication;
 
-import utils.AccessToken;
-import utils.EndPoint;
-import utils.JsonFileReader;
-import utils.TokenConstant;
+import salesforce.utils.AccessToken;
+import salesforce.utils.EndPoint;
+import salesforce.utils.JsonFileReader;
+import salesforce.utils.TokenConstant;
 
 /**
  * Manages account api requests.

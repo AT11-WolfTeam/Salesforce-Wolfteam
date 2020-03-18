@@ -10,9 +10,16 @@
 package salesforcetest.runner;
 
 import core.report.Report;
+
+import core.selenium.WebDriverManager;
+
 import io.cucumber.testng.AbstractTestNGCucumberTests;
+
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+
+import salesforce.ui.pages.LoginPage;
+import salesforce.ui.pages.PageTransporter;
 
 /**
  * Manages execution hooks.
@@ -21,12 +28,17 @@ import org.testng.annotations.BeforeTest;
  * @version 1.0 16 March 2020.
  */
 public class RunCukeTest extends AbstractTestNGCucumberTests {
+    private static final String LOGIN_PAGE = "Login Page";
 
     /**
      * Executes code block before tests execution.
      */
     @BeforeTest
     public void beforeExecution() {
+        PageTransporter pageTransporter = new PageTransporter();
+        pageTransporter.navigateToPage(LOGIN_PAGE);
+        LoginPage loginPage = new LoginPage();
+        loginPage.loginSalesforce();
     }
 
     /**
@@ -35,5 +47,6 @@ public class RunCukeTest extends AbstractTestNGCucumberTests {
     @AfterTest
     public void afterExecution() {
         Report.getInstance().generateReport();
+        WebDriverManager.getInstance().quitDriver();
     }
 }

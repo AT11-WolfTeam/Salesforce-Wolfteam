@@ -7,9 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package requestapi;
-
-import entities.Account;
+package salesforce.entities;
 
 /**
  * Manages account information.
@@ -17,21 +15,6 @@ import entities.Account;
  * @author Juan Martinez.
  * @version 1.0 17 March 2020.
  */
-public class AccountHelper {
+public class Account {
 
-    /**
-     * Creates account.
-     * @param account value.
-     */
-    public void createAccount(final Account account) {
-
-    }
-
-    /**
-     * Deletes account.
-     * @param account value.
-     */
-    public void deleteAccount(final Account account) {
-
-    }
 }

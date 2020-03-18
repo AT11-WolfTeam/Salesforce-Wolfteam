@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package utils;
+package salesforce.utils;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -23,7 +23,7 @@ import java.io.IOException;
  * @version 1.0 16 March 2020.
  */
 public class JsonFileReader {
-    private static final String FILE_PATH = "src/main/java/salesforce/jsonfiles/";
+    private static final String FILE_PATH = "src/main/java/salesforce/salesforce.jsonfiles/";
 
     /**
      * Reads json file values.

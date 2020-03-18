@@ -7,14 +7,14 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package entities;
+package salesforce.entities;
 
 /**
- * Manages account information.
+ * Manages entities instance.
  *
  * @author Juan Martinez.
  * @version 1.0 17 March 2020.
  */
-public class Account {
+public class Context {
 
 }

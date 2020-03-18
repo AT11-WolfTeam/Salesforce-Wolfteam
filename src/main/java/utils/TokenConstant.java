@@ -31,7 +31,6 @@ public final class TokenConstant {
     public static final String TOKEN = "token";
     public static final String AUTH_URL = "auth_url";
 
-
     public static final String AUTHORIZATION = "Authorization";
     public static final String CONTENT_TYPE = "Content-Type";
 

@@ -87,5 +87,4 @@ public final class GradleReader {
     public Long getExplicitWait() {
         return Long.parseLong(properties.getProperty(EXPLICIT_WAIT));
     }
-
 }

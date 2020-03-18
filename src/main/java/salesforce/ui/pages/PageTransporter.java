@@ -25,18 +25,17 @@ public class PageTransporter {
     private HashMap<String, String> urlMap;
 
     /**
-     * PageTransporter constructor.
+     * Manages navigation in browser.
      */
     public PageTransporter() {
         urlMap = new HashMap<>();
         urlMap.put("Login Page", GradleReader.getInstance().getLoginPage());
         urlMap.put("Sales Page", GradleReader.getInstance().getSalesPage());
         urlMap.put("Opportunities Page", GradleReader.getInstance().getOpportunitiesPage());
-
     }
 
     /**
-     * This Navigate to the page sent.
+     * Navigates to a web page.
      *
      * @param page contains the name of the page.
      */

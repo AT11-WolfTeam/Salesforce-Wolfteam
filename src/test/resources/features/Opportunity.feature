@@ -7,7 +7,7 @@ Feature: Opportunity
     Then the application should display an information message in Opportunity page with the format "[[Owner Name]] now owns the record for [[Opportunity Name]]"
 
   @wip
-  Scenario: Close an opportunity with an another owner
+  Scenario: Close an opportunity with another owner
     Given I login as "Admin"
     And I navigate to Opportunities Page
     And I create an Opportunity with
@@ -15,14 +15,13 @@ Feature: Opportunity
       | Close Date       | 03/31/2020          |
       | Stage            | Qualification       |
     And I select to "Juan Martinez" as a new owner
-    When I close the opportunity as close won
-    And I save it
+    When I close the opportunity as Close Won
     Then the application should display an information message in Opportunity page with the format "Stage changed successfully."
-    And On the opportunities page Should display On the column stage as "Closed Won"
+    And On the opportunities page should display on the column stage as "Closed Won"
 
   @wip
   Scenario: Add additional information to created task.
-    Given I have created an Opportunity
+    Given I create opportunity with task as OpportunityTest
     And I go to Opportunity Page
     And I go to the opportunity already created
     And I created a task with requirement fields
@@ -30,7 +29,7 @@ Feature: Opportunity
       | Subject  | Call      |
       | Due date | 3/31/2020 |
     Then  the application should display an information message in Opportunity page with the format "Task [subject] was saved"
-    And On the section Upcoming & Overdue should display the "[subject]"
+    And the section Upcoming & Overdue should display the "[subject]"
 
   @wip
   Scenario: Assign a campaign to an opportunity

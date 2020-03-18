@@ -22,10 +22,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 public abstract class BasePage {
 
-    // Contains a WebDriver instance.
     protected WebDriver webDriver;
-
-    // Contains a WebDriverWait instance.
     protected WebDriverWait webDriverWait;
 
     /**

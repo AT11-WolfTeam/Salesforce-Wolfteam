@@ -10,6 +10,7 @@
 package salesforce.ui.pages;
 
 import core.utils.GradleReader;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -29,7 +30,7 @@ public class LoginPage extends BasePage {
     private WebElement passwordField;
 
     @FindBy(id = "Login")
-    private WebElement loginBtn;
+    private WebElement loginButton;
 
     /**
      * Waits until the web element is loaded.
@@ -45,6 +46,6 @@ public class LoginPage extends BasePage {
     public void loginSalesforce() {
         this.userNameField.sendKeys(GradleReader.getInstance().getUserName());
         this.passwordField.sendKeys(GradleReader.getInstance().getPassword());
-        this.loginBtn.click();
+        this.loginButton.click();
     }
 }

@@ -10,7 +10,8 @@
 package ui.pages;
 
 import core.selenium.WebDriverManager;
-import core.utils.GradleReader;
+
+import utils.PropertiesReader;
 
 import java.util.HashMap;
 
@@ -21,7 +22,6 @@ import java.util.HashMap;
  * @version 1.0 17 March 2020.
  */
 public class PageTransporter {
-
     private HashMap<String, String> urlMap;
 
     /**
@@ -29,9 +29,9 @@ public class PageTransporter {
      */
     public PageTransporter() {
         urlMap = new HashMap<>();
-        urlMap.put("Login Page", GradleReader.getInstance().getLoginPage());
-        urlMap.put("Sales Page", GradleReader.getInstance().getSalesPage());
-        urlMap.put("Opportunities Page", GradleReader.getInstance().getOpportunitiesPage());
+        urlMap.put("Login Page", PropertiesReader.getInstance().getSalesforceUrl().getLoginPage());
+        urlMap.put("Sales Page", PropertiesReader.getInstance().getSalesforceUrl().getSalesPage());
+        urlMap.put("Opportunities Page", PropertiesReader.getInstance().getSalesforceUrl().getOpportunitiesPage());
     }
 
     /**

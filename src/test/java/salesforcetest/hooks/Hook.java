@@ -10,7 +10,10 @@
 package salesforcetest.hooks;
 
 /**
- * Manage hooks of the scenarios.
+ * Manages Hook instance.
+ *
+ * @author Alan Escalera.
+ * @version 1.0 17 March 2020.
  */
 public class Hook {
 

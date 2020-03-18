@@ -21,7 +21,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  * @version 1.0 16 March 2020.
  */
 public abstract class BasePage {
-
     protected WebDriver webDriver;
     protected WebDriverWait webDriverWait;
 

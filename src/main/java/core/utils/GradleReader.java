@@ -28,11 +28,6 @@ public final class GradleReader {
     private static final String BROWSER = "browser";
     private static final String IMPLICIT_WAIT = "implicitWait";
     private static final String EXPLICIT_WAIT = "explicitWait";
-    private static final String LOGIN_PAGE = "login.page";
-    private static final String SALES_PAGE = "sales.sage";
-    private static final String OPPORTUNITIES_PAGE = "opportunities.page";
-    private static final String USER_NAME = "user.name";
-    private static final String PASSWORD = "password";
 
     /**
      * Calls to initialize class method.
@@ -93,48 +88,4 @@ public final class GradleReader {
         return Long.parseLong(properties.getProperty(EXPLICIT_WAIT));
     }
 
-    /**
-     * Returns the link of login Page.
-     *
-     * @return String value
-     */
-    public String getLoginPage() {
-        return properties.getProperty(LOGIN_PAGE);
-    }
-
-    /**
-     * Returns the link of sales Page.
-     *
-     * @return String value
-     */
-    public String getSalesPage() {
-        return properties.getProperty(SALES_PAGE);
-    }
-
-    /**
-     * Returns the link of Opportunities Page.
-     *
-     * @return String value
-     */
-    public String getOpportunitiesPage() {
-        return properties.getProperty(OPPORTUNITIES_PAGE);
-    }
-
-    /**
-     * Returns the user name value.
-     *
-     * @return String value
-     */
-    public String getUserName() {
-        return properties.getProperty(USER_NAME);
-    }
-
-    /**
-     * Returns the password value.
-     *
-     * @return String value.
-     */
-    public String getPassword() {
-        return properties.getProperty(PASSWORD);
-    }
 }

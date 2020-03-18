@@ -21,7 +21,6 @@ import utils.PropertiesReader;
  * @version 1.0 17 March 2020.
  */
 public class LoginPage extends BasePage {
-
     @FindBy(id = "username")
     private WebElement userNameField;
 
@@ -31,16 +30,13 @@ public class LoginPage extends BasePage {
     @FindBy(id = "Login")
     private WebElement loginButton;
 
-    /**
-     * Waits until the web element is loaded.
-     */
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         webDriverWait.until(ExpectedConditions.visibilityOf(passwordField));
     }
 
     /**
-     * Does login to the page.
+     * Logins on salesforce page.
      */
     public void loginSalesforce() {
         this.userNameField.sendKeys(PropertiesReader.getInstance().getUser().getUsername());

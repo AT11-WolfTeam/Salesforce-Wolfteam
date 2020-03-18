@@ -26,6 +26,7 @@ public final class AccessToken {
     private static Response response;
     private static Map<String, String> jsonResponse;
     private static Client client;
+    private static final String SIGN = "$";
 
     /**
      * Constructor to initialize AccessToken.
@@ -52,14 +53,13 @@ public final class AccessToken {
     private void initializeAccessToken()  {
         String userToken = PropertiesReader.getInstance().getUser().getToken();
         response = given()
-                .param(TokenConstant.USER_NAME, PropertiesReader.getInstance().getUser().getUsername())
-                .param(TokenConstant.PASSWORD, PropertiesReader.getInstance().getUser().getPassword()
-                        + userToken)
-                .param(TokenConstant.GRANT_TYPE, PropertiesReader.getInstance().getUser().getGrantType())
-                .param(TokenConstant.CLIENT_ID, PropertiesReader.getInstance().getUser().getClientId())
-                .param(TokenConstant.CLIENT_SECRET, PropertiesReader.getInstance().getUser().getClientSecret())
-                .when().post(PropertiesReader.getInstance().getUser().getAuthUrl());
-        jsonResponse = response.jsonPath().getMap("$");
+            .param(TokenConstant.USER_NAME, PropertiesReader.getInstance().getUser().getUsername())
+            .param(TokenConstant.PASSWORD, PropertiesReader.getInstance().getUser().getPassword()
+            + userToken).param(TokenConstant.GRANT_TYPE, PropertiesReader.getInstance().getUser().getGrantType())
+            .param(TokenConstant.CLIENT_ID, PropertiesReader.getInstance().getUser().getClientId())
+            .param(TokenConstant.CLIENT_SECRET, PropertiesReader.getInstance().getUser().getClientSecret())
+            .when().post(PropertiesReader.getInstance().getUser().getAuthUrl());
+        jsonResponse = response.jsonPath().getMap(SIGN);
         setClient(jsonResponse);
     }
 

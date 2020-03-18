@@ -16,7 +16,7 @@ import salesforce.utils.PropertiesReader;
 import java.util.HashMap;
 
 /**
- * Defines a page transporter.
+ * "Manages navigation in browser.
  *
  * @author Alan Escalera.
  * @version 1.0 17 March 2020.
@@ -25,7 +25,7 @@ public class PageTransporter {
     private HashMap<String, String> urlMap;
 
     /**
-     * Manages navigation in browser.
+     * Constructor initialize HasMap.
      */
     public PageTransporter() {
         urlMap = new HashMap<>();

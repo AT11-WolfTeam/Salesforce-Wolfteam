@@ -26,9 +26,9 @@ public final class GradleReader {
     private static final String INPUT_PATH = "gradle.properties";
     private FileInputStream fileInputStream;
     private static final String BROWSER = "browser";
-    private static final String USER_EXPERIENCE = "userExperience";
     private static final String IMPLICIT_WAIT = "implicitWait";
     private static final String EXPLICIT_WAIT = "explicitWait";
+    private static final String USER_EXPERIENCE = "userExperience";
 
     /**
      * Calls to initialize class method.

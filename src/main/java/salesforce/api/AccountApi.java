@@ -15,10 +15,10 @@ import io.restassured.response.Response;
 
 import salesforce.api.requestapi.Authentication;
 
-import utils.AccessToken;
-import utils.EndPoint;
-import utils.JsonFileReader;
-import utils.TokenConstant;
+import salesforce.utils.AccessToken;
+import salesforce.utils.EndPoint;
+import salesforce.utils.JsonFileReader;
+import salesforce.utils.TokenConstant;
 
 /**
  * Manages account api requests.

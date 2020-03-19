@@ -11,7 +11,6 @@ package salesforce.utils;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import salesforce.entities.SalesforceUser;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -31,6 +30,7 @@ public class JsonFileReader {
 
     /**
      * Builds a JsonFileReader.
+     *
      * @param fileName contains the jsonfile name.
      */
     public JsonFileReader(final String fileName) {
@@ -60,6 +60,7 @@ public class JsonFileReader {
 
     /**
      * Returns a Salesforce user credential.
+     *
      * @param userType receives a String value.
      * @return SalesforceUser object.
      */

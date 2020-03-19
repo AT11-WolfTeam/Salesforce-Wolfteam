@@ -30,6 +30,7 @@ public class AccountApi {
 
     /**
      * Creates a new account.
+     *
      * @param fileName of json file.
      * @return response value.
      */

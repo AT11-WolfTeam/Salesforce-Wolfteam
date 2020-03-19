@@ -7,14 +7,21 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.entities;
+package salesforce.ui.components.menu;
+
+import salesforce.ui.pages.BasePage;
 
 /**
- * Manages salesforce.entities instance.
+ * Manages a web page.
  *
- * @author Juan Martinez.
+ * @author Enrique Carrizales.
  * @version 1.0 17 March 2020.
  */
-public class Context {
+public abstract class TopMenuAbstract extends BasePage {
 
+    /**
+     * Click on apps button.
+     * @return a instance page.
+     */
+    protected abstract BasePage clickOnAppsButton();
 }

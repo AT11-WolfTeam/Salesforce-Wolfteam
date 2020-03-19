@@ -28,6 +28,7 @@ public final class GradleReader {
     private static final String BROWSER = "browser";
     private static final String IMPLICIT_WAIT = "implicitWait";
     private static final String EXPLICIT_WAIT = "explicitWait";
+    private static final String USER_EXPERIENCE = "userExperience";
 
     /**
      * Calls to initialize class method.
@@ -86,5 +87,13 @@ public final class GradleReader {
      */
     public Long getExplicitWait() {
         return Long.parseLong(properties.getProperty(EXPLICIT_WAIT));
+    }
+
+    /**
+     * Returns an explicit user experience.
+     * @return String value.
+     */
+    public String getUserExperience() {
+        return properties.getProperty(USER_EXPERIENCE);
     }
 }

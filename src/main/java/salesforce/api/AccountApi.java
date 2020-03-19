@@ -13,7 +13,7 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
-import salesforce.restclient.Authentication;
+import salesforce.api.requestapi.Authentication;
 
 import salesforce.utils.AccessToken;
 import salesforce.utils.EndPoint;

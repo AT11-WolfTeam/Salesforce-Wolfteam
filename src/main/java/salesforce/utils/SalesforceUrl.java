@@ -19,12 +19,11 @@ public class SalesforceUrl {
     private String loginUrl;
     private String salesLightningUrl;
     private String opportunitiesLightningUrl;
-
     private String salesClassicUrl;
     private String opportunitiesClassicUrl;
 
     /**
-     * Returns loginPage value.
+     * Returns loginUrl value.
      *
      * @return String value.
      */
@@ -33,7 +32,7 @@ public class SalesforceUrl {
     }
 
     /**
-     * Returns salesPage value.
+     * Returns salesLightningUrl value.
      *
      * @return String value.
      */
@@ -42,7 +41,7 @@ public class SalesforceUrl {
     }
 
     /**
-     * Returns opportunitiesPage value.
+     * Returns opportunitiesLightningUrl value.
      *
      * @return String value.
      */
@@ -51,7 +50,7 @@ public class SalesforceUrl {
     }
 
     /**
-     * Sets loginPage value.
+     * Sets loginUrl value.
      *
      * @param loginUrl value.
      */
@@ -60,7 +59,7 @@ public class SalesforceUrl {
     }
 
     /**
-     * Sets salesPage value.
+     * Sets salesLightningUrl value.
      *
      * @param salesLightningUrl value.
      */
@@ -69,7 +68,7 @@ public class SalesforceUrl {
     }
 
     /**
-     * Sets opportunitiesPage value.
+     * Sets opportunitiesLightningUrl value.
      *
      * @param opportunitiesLightningUrl value.
      */
@@ -78,7 +77,7 @@ public class SalesforceUrl {
     }
 
     /**
-     * Returns salesCalssicPage value.
+     * Returns salesClassicUrl value.
      *
      * @return String value.
      */
@@ -87,7 +86,7 @@ public class SalesforceUrl {
     }
 
     /**
-     * Sets SalesClassicPage value.
+     * Sets salesClassicUrl value.
      *
      * @param salesClassicUrl value.
      */
@@ -96,7 +95,7 @@ public class SalesforceUrl {
     }
 
     /**
-     * Returns opportunitiesClassicPage value.
+     * Returns opportunitiesClassicUrl value.
      *
      * @return String value.
      */
@@ -105,7 +104,7 @@ public class SalesforceUrl {
     }
 
     /**
-     * Sets opportunitiesClassicPage value.
+     * Sets opportunitiesClassicUrl value.
      *
      * @param opportunitiesClassicUrl value.
      */

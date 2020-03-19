@@ -11,10 +11,10 @@ package salesforce.ui.pages;
 
 import core.utils.GradleReader;
 import core.utils.UserExperience;
-
 import salesforce.ui.components.menu.TopClassicMenu;
 import salesforce.ui.components.menu.TopLightningMenu;
 import salesforce.ui.components.menu.TopMenuAbstract;
+import salesforce.ui.pages.campaigns.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,6 +37,30 @@ public class AppPageFactory {
         Map<String, TopMenuAbstract> map = new HashMap<>();
         map.put(UserExperience.USER_EXPERIENCE_CLASSIC.get(), new TopClassicMenu());
         map.put(UserExperience.USER_EXPERIENCE_LIGHTNING.get(), new TopLightningMenu());
+        return map.get(userExperience);
+    }
+
+    /**
+     * Returns a campaigns page
+     *
+     * @return CampaignsPage instance
+     */
+    public static CampaignsPageAbstract getOpportunitiesPage() {
+        Map<String, CampaignsPageAbstract> map = new HashMap<>();
+        map.put(UserExperience.USER_EXPERIENCE_CLASSIC.get(), new CampaignsPageClassic());
+        map.put(UserExperience.USER_EXPERIENCE_LIGHTNING.get(), new CampaignsPageLightning());
+        return map.get(userExperience);
+    }
+
+    /**
+     * Returns a campaigns page
+     *
+     * @return CampaignsPage instance
+     */
+    public static NewCampaignPageAbstract getNewCampaignPage() {
+        Map<String, NewCampaignPageAbstract> map = new HashMap<>();
+        map.put(UserExperience.USER_EXPERIENCE_CLASSIC.get(), new NewCampaignPageClassic());
+        map.put(UserExperience.USER_EXPERIENCE_LIGHTNING.get(), new NewCampaignPopUpLightning());
         return map.get(userExperience);
     }
 }

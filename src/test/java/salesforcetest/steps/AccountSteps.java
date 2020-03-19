@@ -12,13 +12,13 @@ package salesforcetest.steps;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import io.cucumber.java.en.When;
 import org.testng.Assert;
+
+import salesforce.entities.Account;
 import salesforce.entities.Context;
 import salesforce.api.AccountHelper;
-import salesforce.utils.ExcelReader;
 import salesforce.utils.SheetManager;
-
-import org.apache.poi.ss.usermodel.Sheet;
 
 import io.cucumber.java.en.Given;
 
@@ -42,7 +42,7 @@ public class AccountSteps {
      */
     public AccountSteps(final Context context) {
         this.context = context;
-        accountHelper = new AccountHelper(context);
+        accountHelper = new AccountHelper();
     }
 
     /**
@@ -52,20 +52,22 @@ public class AccountSteps {
      */
     @Given("I create {int} {string} accounts")
     public void createAccount(final int quantity, final String accountType) {
-        Sheet dataSheet = ExcelReader.readExcel("Contacts");
-        accountMapList = SheetManager.manageSheet(dataSheet, quantity, accountType);
-        accountHelper.createEntity(accountMapList);
+        String sheetName = "Accounts";
+        accountMapList = SheetManager.manageSheet(sheetName, quantity, accountType);
+        ArrayList<Account> accounts = accountHelper.setAccounts(accountMapList);
+        context.setAccounts(accounts);
+        accountHelper.postAccounts(context.getAccounts());
     }
 
     /**
      * Deletes account.
      */
-    @Given("I delete created accounts")
+    @When("I delete created accounts")
     public void deleteAccounts() {
-        accountHelper.deleteAccount(context.getIdsMap());
-        final int expected = 204;
-        for (int statusCode: context.getDeleteEntity().values()) {
-            Assert.assertEquals(statusCode, expected);
+        accountHelper.deleteAccounts(context.getAccounts());
+        final String expected = "204";
+        for (Account account: context.getAccounts()) {
+            Assert.assertEquals(account.getStatusCode(), expected);
         }
     }
 }

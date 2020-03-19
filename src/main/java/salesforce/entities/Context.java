@@ -59,34 +59,10 @@ public class Context {
     }
 
     /**
-     * Gets created entities ids.
-     * @return map ids.
+     * Sets an account list.
+     * @param accountList object.
      */
-    public HashMap<String, String> getIdsMap() {
-        return idsMap;
-    }
-
-    /**
-     * Sets created entities ids.
-     * @param idsMap value.
-     */
-    public void setIdsMap(final HashMap<String, String> idsMap) {
-        this.idsMap = idsMap;
-    }
-
-    /**
-     * Gets deleted entities.
-     * @return deleted entities map.
-     */
-    public HashMap<String, Integer> getDeleteEntity() {
-        return deleteEntity;
-    }
-
-    /**
-     * Sets deleted entities.
-     * @param deleteEntity values.
-     */
-    public void setDeleteEntity(final HashMap<String, Integer> deleteEntity) {
-        this.deleteEntity = deleteEntity;
+    public void setAccounts(final ArrayList<Account> accountList) {
+        this.accounts.addAll(accountList);
     }
 }

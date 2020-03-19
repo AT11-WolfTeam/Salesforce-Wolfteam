@@ -28,10 +28,20 @@ import salesforce.entities.constants.AccountConstant;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(value = { "accountInformation" })
 public class Account {
+    private String id;
     private String name;
     private String description;
+    private String statusCode;
 
     private Set<String> modifiedAccountFields = new HashSet<>();
+
+    /**
+     * Gets Id of account.
+     * @return id value.
+     */
+    public String getId() {
+        return id;
+    }
 
     /**
      * Gets name value.
@@ -50,6 +60,22 @@ public class Account {
     }
 
     /**
+     * Gets status code.
+     * @return status code value.
+     */
+    public String getStatusCode() {
+        return statusCode;
+    }
+
+    /**
+     * Sets account Id.
+     * @param id value.
+     */
+    public void setId(final String id) {
+        this.id = id;
+    }
+
+    /**
      * Sets account name value.
      * @param name value.
      */
@@ -63,6 +89,14 @@ public class Account {
      */
     public void setDescription(final String description) {
         this.description = description;
+    }
+
+    /**
+     * Sets status code.
+     * @param statusCode value.
+     */
+    public void setStatusCode(final String statusCode) {
+        this.statusCode = statusCode;
     }
 
     /**

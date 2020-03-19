@@ -71,13 +71,14 @@ public final class SheetManager {
 
     /**
      * Manage sheet to convert in map entities.
-     * @param dataSheet object.
+     * @param sheetName object.
      * @param quantity number.
      * @param accountType value.
      * @return list of maps.
      */
-    public static ArrayList<HashMap<String, String>> manageSheet(final Sheet dataSheet, final int quantity,
+    public static ArrayList<HashMap<String, String>> manageSheet(final String sheetName, final int quantity,
                                                                  final String accountType) {
+        Sheet dataSheet = ExcelReader.readExcel(sheetName);
         entitiesList = new ArrayList<>();
         Row rowKey = dataSheet.getRow(ZERO);
         Row rowValue = findAccountType(dataSheet, accountType);

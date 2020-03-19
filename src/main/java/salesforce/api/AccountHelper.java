@@ -17,7 +17,6 @@ import io.restassured.response.Response;
 
 import salesforce.restclient.RestApi;
 import salesforce.entities.Account;
-import salesforce.entities.Context;
 import salesforce.utils.EndPoint;
 
 import java.util.ArrayList;
@@ -31,63 +30,54 @@ import java.util.List;
  * @version 1.0 17 March 2020.
  */
 public class AccountHelper {
-    private Context context;
     private Account account;
 
     /**
-     * Helps to manage account information to send request.
-     * @param context object.
+     * Sets entities.
+     * @param accountMapList values.
+     * @return account list.
      */
-    public AccountHelper(final Context context) {
-        this.context = context;
-    }
-
-    /**
-     * Creates entities.
-     * @param accountMapList value.
-     */
-    public void createEntity(final ArrayList<HashMap<String, String>> accountMapList) {
+    public ArrayList<Account> setAccounts(final ArrayList<HashMap<String, String>> accountMapList) {
+        ArrayList<Account> accountsList = new ArrayList<>();
         for (HashMap<String, String> accountItem: accountMapList) {
             account = new Account();
             account.setAccountInformation(accountItem);
-            context.setAccount(account);
+            accountsList.add(account);
         }
-        convertEntityToJson(context.getAccounts());
+        return accountsList;
     }
 
     /**
      * Creates account.
      * @param accounts list.
      */
-    public void convertEntityToJson(final List<Account> accounts) {
-        HashMap<String, String> entityIds = new HashMap<>();
+    public void postAccounts(final List<Account> accounts) {
         for (Account account: accounts) {
             try {
                 String json = new ObjectMapper().writeValueAsString(account);
+
                 Response response = RestApi.postEntity(json, EndPoint.ACCOUNT_ENDPOINT);
 
                 JsonPath jsonPath = response.jsonPath();
                 String id = jsonPath.get("id");
-                entityIds.put(id, account.getName());
+                account.setId(id);
             } catch (JsonProcessingException e) {
                 e.printStackTrace();
             }
         }
-        context.setIdsMap(entityIds);
     }
 
     /**
-     * Deletes account.
+     * Deletes accounts.
      * @param accountList value.
      */
-    public void deleteAccount(final HashMap<String, String> accountList) {
-        HashMap<String, Integer> entityResponse = new HashMap<>();
-        for (String accountId: accountList.keySet()) {
+    public void deleteAccounts(final List<Account> accountList) {
+        for (Account account: accountList) {
 
-            Response response = RestApi.deleteEntity(accountId, EndPoint.ACCOUNT_ENDPOINT);
+            Response response = RestApi.deleteEntity(account.getId(), EndPoint.ACCOUNT_ENDPOINT);
+
             int statusCode = response.getStatusCode();
-            entityResponse.put(accountId, statusCode);
+            account.setStatusCode(Integer.toString(statusCode));
         }
-        context.setDeleteEntity(entityResponse);
     }
 }

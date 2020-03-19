@@ -31,6 +31,7 @@ pipeline {
                      //              fileIncludePattern: '**/*cucumber.json',
                      //              sortingMethod: 'ALPHABETICAL',
                      //              trendsLimit: 100
+                     }
                }
          }
     }

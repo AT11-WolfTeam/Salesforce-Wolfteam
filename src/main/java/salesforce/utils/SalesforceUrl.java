@@ -16,58 +16,99 @@ package salesforce.utils;
  * @version 1.0 18 March 2020.
  */
 public class SalesforceUrl {
-    private String loginPage;
-    private String salesPage;
-    private String opportunitiesPage;
+    private String loginUrl;
+    private String salesLightningUrl;
+    private String opportunitiesLightningUrl;
+    private String salesClassicUrl;
+    private String opportunitiesClassicUrl;
 
     /**
-     * Returns loginPage value.
+     * Returns loginUrl value.
      *
      * @return String value.
      */
-    public String getLoginPage() {
-        return loginPage;
+    public String getLoginUrl() {
+        return loginUrl;
     }
 
     /**
-     * Returns salesPage value.
+     * Returns salesLightningUrl value.
      *
      * @return String value.
      */
-    public String getSalesPage() {
-        return salesPage;
+    public String getSalesLightningUrl() {
+        return salesLightningUrl;
     }
 
     /**
-     * Returns opportunitiesPage value.
+     * Returns opportunitiesLightningUrl value.
      *
      * @return String value.
      */
-    public String getOpportunitiesPage() {
-        return opportunitiesPage;
+    public String getOpportunitiesLightningUrl() {
+        return opportunitiesLightningUrl;
     }
 
     /**
-     * Sets loginPage value.
-     * @param loginPage value.
+     * Sets loginUrl value.
+     *
+     * @param loginUrl value.
      */
-    public void setLoginPage(final String loginPage) {
-        this.loginPage = loginPage;
+    public void setLoginUrl(final String loginUrl) {
+        this.loginUrl = loginUrl;
     }
 
     /**
-     * Sets salesPage value.
-     * @param salesPage value.
+     * Sets salesLightningUrl value.
+     *
+     * @param salesLightningUrl value.
      */
-    public void setSalesPage(final String salesPage) {
-        this.salesPage = salesPage;
+    public void setSalesLightningUrl(final String salesLightningUrl) {
+        this.salesLightningUrl = salesLightningUrl;
     }
 
     /**
-     * Sets opportunitiesPage value.
-     * @param opportunitiesPage value.
+     * Sets opportunitiesLightningUrl value.
+     *
+     * @param opportunitiesLightningUrl value.
      */
-    public void setOpportunitiesPage(final String opportunitiesPage) {
-        this.opportunitiesPage = opportunitiesPage;
+    public void setOpportunitiesLightningUrl(final String opportunitiesLightningUrl) {
+        this.opportunitiesLightningUrl = opportunitiesLightningUrl;
+    }
+
+    /**
+     * Returns salesClassicUrl value.
+     *
+     * @return String value.
+     */
+    public String getSalesClassicUrl() {
+        return salesClassicUrl;
+    }
+
+    /**
+     * Sets salesClassicUrl value.
+     *
+     * @param salesClassicUrl value.
+     */
+    public void setSalesClassicUrl(final String salesClassicUrl) {
+        this.salesClassicUrl = salesClassicUrl;
+    }
+
+    /**
+     * Returns opportunitiesClassicUrl value.
+     *
+     * @return String value.
+     */
+    public String getOpportunitiesClassicUrl() {
+        return opportunitiesClassicUrl;
+    }
+
+    /**
+     * Sets opportunitiesClassicUrl value.
+     *
+     * @param opportunitiesClassicUrl value.
+     */
+    public void setOpportunitiesClassicUrl(final String opportunitiesClassicUrl) {
+        this.opportunitiesClassicUrl = opportunitiesClassicUrl;
     }
 }

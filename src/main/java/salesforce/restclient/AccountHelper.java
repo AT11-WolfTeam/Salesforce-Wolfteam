@@ -9,15 +9,7 @@
 
 package salesforce.restclient;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import io.restassured.path.json.JsonPath;
-import io.restassured.response.Response;
-import salesforce.api.AccountApi;
 import salesforce.entities.Account;
-
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * Manages account information.
@@ -29,24 +21,10 @@ public class AccountHelper {
 
     /**
      * Creates account.
-     * @param accounts list.
+     * @param account value.
      */
-    public void convertToJson(final List<Account> accounts) {
-        HashMap<String, String> entities = new HashMap<>();
-        for (Account account: accounts) {
-            try {
-                String json = new ObjectMapper().writeValueAsString(account);
+    public void createAccount(final Account account) {
 
-                Response response = AccountApi.postEntity(json);
-
-                JsonPath jsonPath = response.jsonPath();
-                String id = jsonPath.get("id");
-                System.out.println(id + account.getName());
-                entities.put(id, account.getName());
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     /**

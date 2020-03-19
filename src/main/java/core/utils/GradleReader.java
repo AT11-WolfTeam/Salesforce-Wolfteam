@@ -21,25 +21,12 @@ import java.util.Properties;
  */
 public final class GradleReader {
 
-    // Instance class.
     private static GradleReader instance;
-
-    // Instance properties.
     private static Properties properties;
-
-    // Gradle properties path.
     private static final String INPUT_PATH = "gradle.properties";
-
-    // Instance FileInputStream
     private FileInputStream fileInputStream;
-
-    // String browser value.
     private static final String BROWSER = "browser";
-
-    // String implicitWait value.
     private static final String IMPLICIT_WAIT = "implicitWait";
-
-    // String explicitWait value.
     private static final String EXPLICIT_WAIT = "explicitWait";
 
     /**

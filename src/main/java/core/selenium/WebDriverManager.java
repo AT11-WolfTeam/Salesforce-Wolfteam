@@ -23,14 +23,8 @@ import java.util.concurrent.TimeUnit;
  * @version 1.0 14 March 2020.
  */
 public final class WebDriverManager {
-
-    // Selenium driver.
     private WebDriver webDriver;
-
-    // Selenium waiter.
     private WebDriverWait webDriverWait;
-
-    // Instance class.
     private static WebDriverManager instance;
 
     /**

@@ -7,14 +7,14 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.entities;
+package salesforcetest.hooks;
 
 /**
- * Manages entities instance.
+ * Manages Hook instance.
  *
- * @author Juan Martinez.
+ * @author Alan Escalera.
  * @version 1.0 17 March 2020.
  */
-public class Context {
+public class Hook {
 
 }

@@ -21,11 +21,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  * @version 1.0 16 March 2020.
  */
 public abstract class BasePage {
-
-    // Contains a WebDriver instance.
     protected WebDriver webDriver;
-
-    // Contains a WebDriverWait instance.
     protected WebDriverWait webDriverWait;
 
     /**
@@ -40,7 +36,7 @@ public abstract class BasePage {
     }
 
     /**
-     * Defines a signature method.
+     * Waits until the web element is loaded.
      */
     protected abstract void waitUntilPageObjectIsLoaded();
 }

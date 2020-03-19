@@ -40,7 +40,7 @@ public class AccountHelper {
                 Response response = AccountApi.postEntity(json);
 
                 JsonPath jsonPath = response.jsonPath();
-                String id = jsonPath.get("id")
+                String id = jsonPath.get("id");
                 entities.put(id, account.getName());
             } catch (JsonProcessingException e) {
                 e.printStackTrace();

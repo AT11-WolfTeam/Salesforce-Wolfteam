@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Manages entities instance.
+ * Manages salesforce.entities instance.
  *
  * @author Juan Martinez.
  * @version 1.0 17 March 2020.

@@ -53,7 +53,7 @@ public class Account {
      * Sets account name value.
      * @param name value.
      */
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -61,7 +61,7 @@ public class Account {
      * Sets account description value.
      * @param description value.
      */
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = description;
     }
 
@@ -80,7 +80,7 @@ public class Account {
      * @param accountInformation hasmap.
      * @return map of visited setter methods.
      */
-    private HashMap<String, Runnable> composeStrategyMap(HashMap<String, String> accountInformation) {
+    private HashMap<String, Runnable> composeStrategyMap(final HashMap<String, String> accountInformation) {
         HashMap<String, Runnable> strategyMap = new HashMap<>();
 
         strategyMap.put(AccountConstant.NAME, () -> setName(accountInformation.get(AccountConstant.NAME)));
@@ -94,12 +94,12 @@ public class Account {
      * @return task list values.
      */
     public HashMap<String, String> getAccountInformation() {
-        HashMap<String, String> AccountValues = new HashMap<>();
+        HashMap<String, String> accountValues = new HashMap<>();
         HashMap<String, Supplier> strategyMap = composeStrategyMapGet();
         for (String field : modifiedAccountFields) {
-            AccountValues.put(field, strategyMap.get(field).get().toString());
+            accountValues.put(field, strategyMap.get(field).get().toString());
         }
-        return AccountValues;
+        return accountValues;
     }
 
     /**

@@ -34,8 +34,9 @@ public final class RestApi {
 
     /**
      * Posts entity.
-     * @param jsonEntity of json entity.
-     * @return response value.
+     * @param jsonEntity value.
+     * @param endpoint value.
+     * @return response object.
      */
     public static Response postEntity(final String jsonEntity, final String endpoint) {
         return RestAssured.given().headers(TokenConstant.AUTHORIZATION, token, TokenConstant.CONTENT_TYPE,
@@ -46,8 +47,9 @@ public final class RestApi {
 
     /**
      * Deletes entity by Id.
-     * @param entityId of entity.
-     * @return response message.
+     * @param entityId value.
+     * @param endpoint value.
+     * @return response object.
      */
     public static Response deleteEntity(final String entityId, final String endpoint) {
         return RestAssured.given().headers(TokenConstant.AUTHORIZATION, token, TokenConstant.CONTENT_TYPE,

@@ -40,22 +40,30 @@ public class AccountSteps {
      * Account steps constructor.
      * @param context object.
      */
-    public AccountSteps(Context context) {
+    public AccountSteps(final Context context) {
         this.context = context;
         accountHelper = new AccountHelper(context);
     }
 
+    /**
+     * Allows to create account.
+     * @param quantity number of accounts.
+     * @param accountType value.
+     */
     @Given("I create {int} {string} accounts")
-    public void createAccount(int quantity, String accountType) {
+    public void createAccount(final int quantity, final String accountType) {
         Sheet dataSheet = ExcelReader.readExcel("Contacts");
         accountMapList = SheetManager.manageSheet(dataSheet, quantity, accountType);
         accountHelper.createEntity(accountMapList);
     }
 
+    /**
+     * Deletes account.
+     */
     @Given("I delete created accounts")
     public void deleteAccounts() {
         accountHelper.deleteAccount(context.getIdsMap());
-        int expected = 204;
+        final int expected = 204;
         for (int statusCode: context.getDeleteEntity().values()) {
             Assert.assertEquals(statusCode, expected);
         }

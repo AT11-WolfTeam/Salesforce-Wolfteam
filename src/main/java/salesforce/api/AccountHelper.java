@@ -31,14 +31,14 @@ import java.util.List;
  * @version 1.0 17 March 2020.
  */
 public class AccountHelper {
-    Context context;
-    Account account;
+    private Context context;
+    private Account account;
 
     /**
      * Helps to manage account information to send request.
      * @param context object.
      */
-    public AccountHelper(Context context) {
+    public AccountHelper(final Context context) {
         this.context = context;
     }
 

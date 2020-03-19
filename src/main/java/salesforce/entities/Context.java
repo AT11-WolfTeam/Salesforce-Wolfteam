@@ -36,17 +36,25 @@ public class Context {
 
     /**
      * Gets account instance.
-     * @return
+     * @return account instance.
      */
     public Account getAccount() {
         return account;
     }
 
+    /**
+     * Gets account list.
+     * @return list.
+     */
     public List<Account> getAccounts() {
         return accounts;
     }
 
-    public void setAccount(Account account) {
+    /**
+     * Sets an account to account list.
+     * @param account object.
+     */
+    public void setAccount(final Account account) {
         this.accounts.add(account);
     }
 
@@ -62,7 +70,7 @@ public class Context {
      * Sets created entities ids.
      * @param idsMap value.
      */
-    public void setIdsMap(HashMap<String, String> idsMap) {
+    public void setIdsMap(final HashMap<String, String> idsMap) {
         this.idsMap = idsMap;
     }
 
@@ -78,7 +86,7 @@ public class Context {
      * Sets deleted entities.
      * @param deleteEntity values.
      */
-    public void setDeleteEntity(HashMap<String, Integer> deleteEntity) {
+    public void setDeleteEntity(final HashMap<String, Integer> deleteEntity) {
         this.deleteEntity = deleteEntity;
     }
 }

@@ -11,10 +11,17 @@ package salesforce.ui.pages;
 
 import core.utils.GradleReader;
 import core.utils.UserExperience;
+
 import salesforce.ui.components.menu.TopClassicMenu;
 import salesforce.ui.components.menu.TopLightningMenu;
 import salesforce.ui.components.menu.TopMenuAbstract;
-import salesforce.ui.pages.campaigns.*;
+import salesforce.ui.pages.campaigns.CampaignsPageAbstract;
+import salesforce.ui.pages.campaigns.CampaignsPageClassic;
+import salesforce.ui.pages.campaigns.CampaignsPageLightning;
+import salesforce.ui.pages.campaigns.NewCampaignPageAbstract;
+import salesforce.ui.pages.campaigns.NewCampaignPageClassic;
+import salesforce.ui.pages.campaigns.NewCampaignPopUpLightning;
+
 
 import java.util.HashMap;
 import java.util.Map;
@@ -41,9 +48,9 @@ public class AppPageFactory {
     }
 
     /**
-     * Returns a campaigns page
+     * Returns a campaigns page.
      *
-     * @return CampaignsPage instance
+     * @return CampaignsPage instance.
      */
     public static CampaignsPageAbstract getOpportunitiesPage() {
         Map<String, CampaignsPageAbstract> map = new HashMap<>();
@@ -53,9 +60,9 @@ public class AppPageFactory {
     }
 
     /**
-     * Returns a campaigns page
+     * Returns a campaigns page.
      *
-     * @return CampaignsPage instance
+     * @return CampaignsPage instance.
      */
     public static NewCampaignPageAbstract getNewCampaignPage() {
         Map<String, NewCampaignPageAbstract> map = new HashMap<>();

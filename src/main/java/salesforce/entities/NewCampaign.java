@@ -36,16 +36,16 @@ public class NewCampaign {
      *
      * @param campaignName value.
      */
-    public void setCampaignName(String campaignName) {
+    public void setCampaignName(final String campaignName) {
         this.campaignName = campaignName;
     }
 
     /**
-     * Strategy process information
+     * Strategy process information.
      *
      * @param mapNewCampaign map.
      */
-    public void processInformation(Map<String, String> mapNewCampaign) {
+    public void processInformation(final Map<String, String> mapNewCampaign) {
         HashMap<String, Runnable> strategyMap = composeStrategy(mapNewCampaign);
         mapNewCampaign.keySet().forEach(key -> strategyMap.get(key).run());
     }
@@ -56,7 +56,7 @@ public class NewCampaign {
      * @param mapNewCampaign map.
      * @return HashMap values.
      */
-    private HashMap<String, Runnable> composeStrategy(Map<String, String> mapNewCampaign) {
+    private HashMap<String, Runnable> composeStrategy(final Map<String, String> mapNewCampaign) {
         HashMap<String, Runnable> strategyMap = new HashMap<>();
         strategyMap.put(CAMPAIGN_NAME, () -> setCampaignName(mapNewCampaign.get(CAMPAIGN_NAME)));
         return strategyMap;

@@ -49,12 +49,12 @@ public final class PropertiesReader {
             user.setToken(properties.getProperty(TokenConstant.TOKEN));
             user.setAuthUrl(properties.getProperty(TokenConstant.AUTH_URL));
 
-            salesforceUrl.setLoginPage(properties.getProperty(UrlConstant.LOGIN_PAGE));
-            salesforceUrl.setSalesLightningPage(properties.getProperty(UrlConstant.SALES_LIGHTNING_PAGE));
-            salesforceUrl.setOpportunitiesLightningPage(properties.getProperty(UrlConstant
+            salesforceUrl.setLoginUrl(properties.getProperty(UrlConstant.LOGIN_PAGE));
+            salesforceUrl.setSalesLightningUrl(properties.getProperty(UrlConstant.SALES_LIGHTNING_PAGE));
+            salesforceUrl.setOpportunitiesLightningUrl(properties.getProperty(UrlConstant
                     .OPPORTUNITIES_LIGHTNING_PAGE));
-            salesforceUrl.setSalesClassicPage(properties.getProperty(UrlConstant.SALES_CLASSIC_PAGE));
-            salesforceUrl.setOpportunitiesClassicPage(properties.getProperty(UrlConstant.OPPORTUNITIES_CLASSIC_PAGE));
+            salesforceUrl.setSalesClassicUrl(properties.getProperty(UrlConstant.SALES_CLASSIC_PAGE));
+            salesforceUrl.setOpportunitiesClassicUrl(properties.getProperty(UrlConstant.OPPORTUNITIES_CLASSIC_PAGE));
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }

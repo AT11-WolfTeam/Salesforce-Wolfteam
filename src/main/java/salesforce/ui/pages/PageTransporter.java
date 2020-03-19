@@ -12,6 +12,7 @@ package salesforce.ui.pages;
 import core.selenium.WebDriverManager;
 
 import core.utils.GradleReader;
+
 import salesforce.utils.PropertiesReader;
 
 import java.util.HashMap;
@@ -33,15 +34,15 @@ public class PageTransporter {
      */
     public PageTransporter() {
         urlLightningMap = new HashMap<>();
-        urlLightningMap.put("Login Page", PropertiesReader.getInstance().getSalesforceUrl().getLoginPage());
-        urlLightningMap.put("Sales Page", PropertiesReader.getInstance().getSalesforceUrl().getSalesLightningPage());
+        urlLightningMap.put("Login Page", PropertiesReader.getInstance().getSalesforceUrl().getLoginUrl());
+        urlLightningMap.put("Sales Page", PropertiesReader.getInstance().getSalesforceUrl().getSalesLightningUrl());
         urlLightningMap.put("Opportunities Page", PropertiesReader.getInstance().getSalesforceUrl()
-                .getOpportunitiesLightningPage());
+                .getOpportunitiesLightningUrl());
         urlClassicMap = new HashMap<>();
-        urlClassicMap.put("Login Page", PropertiesReader.getInstance().getSalesforceUrl().getLoginPage());
-        urlClassicMap.put("Sales Page", PropertiesReader.getInstance().getSalesforceUrl().getSalesClassicPage());
+        urlClassicMap.put("Login Page", PropertiesReader.getInstance().getSalesforceUrl().getLoginUrl());
+        urlClassicMap.put("Sales Page", PropertiesReader.getInstance().getSalesforceUrl().getSalesClassicUrl());
         urlClassicMap.put("Opportunities Page", PropertiesReader.getInstance().getSalesforceUrl()
-                .getOpportunitiesClassicPage());
+                .getOpportunitiesClassicUrl());
     }
 
     /**
@@ -55,6 +56,5 @@ public class PageTransporter {
         } else {
             WebDriverManager.getInstance().getWebDriver().get(urlClassicMap.get(page));
         }
-
     }
 }

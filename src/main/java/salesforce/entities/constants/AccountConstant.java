@@ -7,14 +7,9 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package entities;
+package salesforce.entities.constants;
 
-/**
- * Manages account information.
- *
- * @author Juan Martinez.
- * @version 1.0 17 March 2020.
- */
-public class Account {
-
+public class AccountConstant {
+    public static final String NAME = "Name";
+    public static final String DESCRIPTION = "Description";
 }

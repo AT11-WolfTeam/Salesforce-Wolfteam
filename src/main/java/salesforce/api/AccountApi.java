@@ -7,18 +7,16 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package core.api;
+package salesforce.api;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
-import requestapi.Authentication;
-
-import utils.AccessToken;
-import utils.EndPoint;
-import utils.JsonFileReader;
-import utils.TokenConstant;
+import salesforce.restclient.Authentication;
+import salesforce.utils.AccessToken;
+import salesforce.utils.EndPoint;
+import salesforce.utils.TokenConstant;
 
 /**
  * Manages account api requests.
@@ -30,16 +28,14 @@ public class AccountApi {
     private static String token = Authentication.getAccessToken();
 
     /**
-     * Creates a new account.
-     * @param fileName of json file.
+     * Posts entity.
+     * @param jsonEntity of json entity.
      * @return response value.
      */
-    public static Response postAccount(final String fileName) {
-        String json = JsonFileReader.jsonReader(fileName);
-
+    public static Response postEntity(final String jsonEntity) {
         return RestAssured.given().headers(TokenConstant.AUTHORIZATION, token, TokenConstant.CONTENT_TYPE,
-                ContentType.JSON).request().accept(ContentType.JSON).body(json)
-                .when().post(AccessToken.getInstance().getClient().getInstanceUrl() + EndPoint.ACCOUNT_ENDPOINT)
-                .then().extract().response();
+            ContentType.JSON).request().accept(ContentType.JSON).body(jsonEntity)
+            .when().post(AccessToken.getInstance().getClient().getInstanceUrl() + EndPoint.ACCOUNT_ENDPOINT)
+            .then().extract().response();
     }
 }

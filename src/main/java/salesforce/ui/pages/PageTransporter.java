@@ -11,6 +11,7 @@ package salesforce.ui.pages;
 
 import core.selenium.WebDriverManager;
 
+import core.utils.GradleReader;
 import salesforce.utils.PropertiesReader;
 
 import java.util.HashMap;
@@ -22,16 +23,25 @@ import java.util.HashMap;
  * @version 1.0 17 March 2020.
  */
 public class PageTransporter {
-    private HashMap<String, String> urlMap;
+    private HashMap<String, String> urlLightningMap;
+    private HashMap<String, String> urlClassicMap;
+    private String userExperience = GradleReader.getInstance().getUserExperience();
+    private static final String LIGHTNING = "Lightning";
 
     /**
      * Constructor initialize HashMap.
      */
     public PageTransporter() {
-        urlMap = new HashMap<>();
-        urlMap.put("Login Page", PropertiesReader.getInstance().getSalesforceUrl().getLoginPage());
-        urlMap.put("Sales Page", PropertiesReader.getInstance().getSalesforceUrl().getSalesPage());
-        urlMap.put("Opportunities Page", PropertiesReader.getInstance().getSalesforceUrl().getOpportunitiesPage());
+        urlLightningMap = new HashMap<>();
+        urlLightningMap.put("Login Page", PropertiesReader.getInstance().getSalesforceUrl().getLoginPage());
+        urlLightningMap.put("Sales Page", PropertiesReader.getInstance().getSalesforceUrl().getSalesLightningPage());
+        urlLightningMap.put("Opportunities Page", PropertiesReader.getInstance().getSalesforceUrl()
+                .getOpportunitiesLightningPage());
+        urlClassicMap = new HashMap<>();
+        urlClassicMap.put("Login Page", PropertiesReader.getInstance().getSalesforceUrl().getLoginPage());
+        urlClassicMap.put("Sales Page", PropertiesReader.getInstance().getSalesforceUrl().getSalesClassicPage());
+        urlClassicMap.put("Opportunities Page", PropertiesReader.getInstance().getSalesforceUrl()
+                .getOpportunitiesClassicPage());
     }
 
     /**
@@ -40,6 +50,11 @@ public class PageTransporter {
      * @param page contains the name of the page.
      */
     public void navigateToPage(final String page) {
-        WebDriverManager.getInstance().getWebDriver().get(urlMap.get(page));
+        if (userExperience.equals(LIGHTNING)) {
+            WebDriverManager.getInstance().getWebDriver().get(urlLightningMap.get(page));
+        } else {
+            WebDriverManager.getInstance().getWebDriver().get(urlClassicMap.get(page));
+        }
+
     }
 }

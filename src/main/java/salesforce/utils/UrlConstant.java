@@ -17,8 +17,10 @@ package salesforce.utils;
  */
 public final class UrlConstant {
     public static final String LOGIN_PAGE = "login.page";
-    public static final String SALES_PAGE = "sales.page";
-    public static final String OPPORTUNITIES_PAGE = "opportunities.page";
+    public static final String SALES_LIGHTNING_PAGE = "sales.lightning.page";
+    public static final String OPPORTUNITIES_LIGHTNING_PAGE = "opportunities.lightning.page";
+    public static final String SALES_CLASSIC_PAGE = "sales.classic.page";
+    public static final String OPPORTUNITIES_CLASSIC_PAGE = "opportunities.classic.page";
 
     /**
      * UrlConstant constructor.

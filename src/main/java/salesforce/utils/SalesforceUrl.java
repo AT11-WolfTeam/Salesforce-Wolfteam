@@ -17,8 +17,12 @@ package salesforce.utils;
  */
 public class SalesforceUrl {
     private String loginPage;
-    private String salesPage;
-    private String opportunitiesPage;
+    private String salesLightningPage;
+    private String opportunitiesLightningPage;
+
+    private String salesClassicPage;
+    private String opportunitiesClassicPage;
+
 
     /**
      * Returns loginPage value.
@@ -34,8 +38,8 @@ public class SalesforceUrl {
      *
      * @return String value.
      */
-    public String getSalesPage() {
-        return salesPage;
+    public String getSalesLightningPage() {
+        return salesLightningPage;
     }
 
     /**
@@ -43,12 +47,13 @@ public class SalesforceUrl {
      *
      * @return String value.
      */
-    public String getOpportunitiesPage() {
-        return opportunitiesPage;
+    public String getOpportunitiesLightningPage() {
+        return opportunitiesLightningPage;
     }
 
     /**
      * Sets loginPage value.
+     *
      * @param loginPage value.
      */
     public void setLoginPage(final String loginPage) {
@@ -57,17 +62,55 @@ public class SalesforceUrl {
 
     /**
      * Sets salesPage value.
-     * @param salesPage value.
+     *
+     * @param salesLightningPage value.
      */
-    public void setSalesPage(final String salesPage) {
-        this.salesPage = salesPage;
+    public void setSalesLightningPage(final String salesLightningPage) {
+        this.salesLightningPage = salesLightningPage;
     }
 
     /**
      * Sets opportunitiesPage value.
-     * @param opportunitiesPage value.
+     *
+     * @param opportunitiesLightningPage value.
      */
-    public void setOpportunitiesPage(final String opportunitiesPage) {
-        this.opportunitiesPage = opportunitiesPage;
+    public void setOpportunitiesLightningPage(final String opportunitiesLightningPage) {
+        this.opportunitiesLightningPage = opportunitiesLightningPage;
+    }
+
+    /**
+     * Returns salesCalssicPage value.
+     *
+     * @return String value.
+     */
+    public String getSalesClassicPage() {
+        return salesClassicPage;
+    }
+
+    /**
+     * Sets SalesClassicPage value.
+     *
+     * @param salesClassicPage value.
+     */
+    public void setSalesClassicPage(final String salesClassicPage) {
+        this.salesClassicPage = salesClassicPage;
+    }
+
+    /**
+     * Returns opportunitiesClassicPage value.
+     *
+     * @return String value.
+     */
+    public String getOpportunitiesClassicPage() {
+        return opportunitiesClassicPage;
+    }
+
+    /**
+     * Sets opportunitiesClassicPage value.
+     *
+     * @param opportunitiesClassicPage value.
+     */
+    public void setOpportunitiesClassicPage(final String opportunitiesClassicPage) {
+        this.opportunitiesClassicPage = opportunitiesClassicPage;
     }
 }

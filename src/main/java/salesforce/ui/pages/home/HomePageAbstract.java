@@ -20,7 +20,6 @@ import salesforce.ui.pages.BasePage;
  * @version 1.0 17 March 2020.
  */
 public abstract class HomePageAbstract extends BasePage {
-
     private TopMenuAbstract topMenu;
 
     @Override

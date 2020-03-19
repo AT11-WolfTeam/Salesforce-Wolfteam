@@ -21,7 +21,6 @@ import salesforce.ui.pages.BasePage;
  * @version 1.0 18 March 2020.
  */
 public class AppsLightningOrderedMenu extends BasePage {
-
     @FindBy(css = "a[id='07p3h0000004JoeAAE']")
     private WebElement marketingButton;
 

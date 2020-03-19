@@ -21,7 +21,6 @@ import salesforce.ui.pages.BasePage;
  * @version 1.0 18 March 2020.
  */
 public class AllTabsClassicPage extends BasePage {
-
     @FindBy(css = "td[class='dataCol opportunityBlock col02']")
     private WebElement opportunityButton;
 

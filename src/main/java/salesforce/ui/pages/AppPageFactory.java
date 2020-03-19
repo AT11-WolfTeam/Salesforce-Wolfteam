@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Defines a page base.
+ * Builds a page specific.
  *
  * @author Enrique Carrizales.
  * @version 1.0 17 March 2020.

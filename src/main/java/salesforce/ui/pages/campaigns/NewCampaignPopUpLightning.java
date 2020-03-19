@@ -29,7 +29,10 @@ public class NewCampaignPopUpLightning extends NewCampaignPageAbstract {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(campaignNameField));
     }
 
-    protected void setCampaignNameField(String campaignName) {
+    @Override
+    protected void setCampaignNameField(final String campaignName) {
         campaignNameField.sendKeys(campaignName);
     }
+
+
 }

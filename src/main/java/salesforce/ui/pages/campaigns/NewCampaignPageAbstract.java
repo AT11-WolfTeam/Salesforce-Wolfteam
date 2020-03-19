@@ -34,12 +34,17 @@ public abstract class NewCampaignPageAbstract extends BasePage {
      * @param newCampaign entity.
      * @param fields      map.
      */
-    protected void setNewCampaign(NewCampaign newCampaign, final Set<String> fields) {
+    protected void setNewCampaign(final NewCampaign newCampaign, final Set<String> fields) {
         HashMap<String, Runnable> strategtyMap = composeStrategyMap(newCampaign);
         fields.forEach(field -> strategtyMap.get(field).run());
     }
 
-    protected HashMap<String, Runnable> composeStrategyMap(NewCampaign newCampaign) {
+    /**
+     * Sets the information of new campaign.
+     * @param newCampaign entity.
+     * @return HashMap value.
+     */
+    protected HashMap<String, Runnable> composeStrategyMap(final NewCampaign newCampaign) {
         HashMap<String, Runnable> strategyMap = new HashMap<>();
         strategyMap.put(CAMPAIGN_NAME, () -> setCampaignNameField(newCampaign.getCampaignName()));
         return strategyMap;

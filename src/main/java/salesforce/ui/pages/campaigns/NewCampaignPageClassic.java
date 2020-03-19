@@ -29,7 +29,7 @@ public class NewCampaignPageClassic extends NewCampaignPageAbstract {
     }
 
     @Override
-    protected void setCampaignNameField(String campaignName) {
+    protected void setCampaignNameField(final String campaignName) {
         campaignNameField.sendKeys(campaignName);
     }
 }

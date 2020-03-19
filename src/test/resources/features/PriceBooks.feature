@@ -7,5 +7,5 @@ Feature: PriceBooks
     And I create product as ProductTest02
     And I create PriceBook as "PriceBookTest"
     And I search "PriceBookTest"
-    When
-    Then 
+    When To do
+    Then To do

@@ -17,7 +17,6 @@ import salesforce.api.requestapi.Authentication;
 
 import salesforce.utils.AccessToken;
 import salesforce.utils.EndPoint;
-import salesforce.utils.JsonFileReader;
 import salesforce.utils.TokenConstant;
 
 /**
@@ -35,7 +34,8 @@ public class AccountApi {
      * @return response value.
      */
     public static Response postAccount(final String fileName) {
-        String json = JsonFileReader.jsonReader(fileName);
+//        String json = JsonFileReader.jsonReader(fileName);
+        String json = null;
 
         return RestAssured.given().headers(TokenConstant.AUTHORIZATION, token, TokenConstant.CONTENT_TYPE,
                 ContentType.JSON).request().accept(ContentType.JSON).body(json)

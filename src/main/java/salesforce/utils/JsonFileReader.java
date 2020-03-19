@@ -11,6 +11,7 @@ package salesforce.utils;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import salesforce.entities.SalesforceUser;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -23,14 +24,25 @@ import java.io.IOException;
  * @version 1.0 16 March 2020.
  */
 public class JsonFileReader {
-    private static final String FILE_PATH = "src/main/java/salesforce/salesforce.jsonfiles/";
+    private String fileName;
+    private static final String USERNAME_KEY = "Username";
+    private static final String PASSWORD_KEY = "Password";
+    private static final String FILE_PATH = "src/main/java/salesforce/jsonfiles/";
+
+    /**
+     * Builds a JsonFileReader.
+     * @param fileName contains the jsonfile name.
+     */
+    public JsonFileReader(final String fileName) {
+        this.fileName = fileName;
+    }
 
     /**
      * Reads json file values.
-     * @param fileName of json file.
+     *
      * @return json file values.
      */
-    public static String jsonReader(final String fileName) {
+    private JSONObject jsonReader() {
         JSONObject jsonObject = new JSONObject();
         try {
             Object jsonValues = new JSONParser().parse(new FileReader(FILE_PATH + fileName));
@@ -43,6 +55,20 @@ public class JsonFileReader {
         } catch (org.json.simple.parser.ParseException e) {
             e.printStackTrace();
         }
-        return jsonObject.toJSONString();
+        return jsonObject;
+    }
+
+    /**
+     * Returns a Salesforce user credential.
+     * @param userType receives a String value.
+     * @return SalesforceUser object.
+     */
+    public SalesforceUser getUser(final String userType) {
+        JSONObject jsonObject = jsonReader();
+        jsonObject = (JSONObject) jsonObject.get(userType);
+        SalesforceUser salesforceUser = new SalesforceUser();
+        salesforceUser.setUsername((String) jsonObject.get(USERNAME_KEY));
+        salesforceUser.setPassword((String) jsonObject.get(PASSWORD_KEY));
+        return salesforceUser;
     }
 }

@@ -1,5 +1,6 @@
 Feature: Opportunity
 
+  @wip
   Scenario: Change opportunity owner to another user
     Given I create opportunity as OpportunityTest
     And I navigate to Opportunities Page

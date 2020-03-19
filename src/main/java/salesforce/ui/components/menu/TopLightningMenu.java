@@ -12,7 +12,6 @@ package salesforce.ui.components.menu;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.ui.pages.aplications.AppsLightningOrderedMenu;
 
 /**
  * Manages a web page.
@@ -35,8 +34,7 @@ public class TopLightningMenu extends TopMenuAbstract {
      * Click on apps button.
      */
     @Override
-    protected AppsLightningOrderedMenu clickOnAppsButton() {
+    protected void clickOnAppsButton() {
         appsButton.click();
-        return new AppsLightningOrderedMenu();
     }
 }

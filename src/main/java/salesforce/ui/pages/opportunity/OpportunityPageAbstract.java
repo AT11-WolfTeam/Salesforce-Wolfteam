@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.components.menu;
+package salesforce.ui.pages.opportunity;
 
 import salesforce.ui.pages.BasePage;
 
@@ -15,12 +15,12 @@ import salesforce.ui.pages.BasePage;
  * Manages a web page.
  *
  * @author Enrique Carrizales.
- * @version 1.0 17 March 2020.
+ * @version 1.0 19 March 2020.
  */
-public abstract class TopMenuAbstract extends BasePage {
+public abstract class OpportunityPageAbstract extends BasePage {
 
     /**
-     * Click on apps button.
+     * Display all opportunities.
      */
-    protected abstract void clickOnAppsButton();
+    protected abstract void displayAllOpportunities();
 }

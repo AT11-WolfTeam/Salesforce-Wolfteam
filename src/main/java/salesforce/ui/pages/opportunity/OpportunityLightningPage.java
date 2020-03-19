@@ -7,20 +7,23 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.components.menu;
-
-import salesforce.ui.pages.BasePage;
+package salesforce.ui.pages.opportunity;
 
 /**
  * Manages a web page.
  *
  * @author Enrique Carrizales.
- * @version 1.0 17 March 2020.
+ * @version 1.0 19 March 2020.
  */
-public abstract class TopMenuAbstract extends BasePage {
+public class OpportunityLightningPage extends OpportunityPageAbstract {
 
-    /**
-     * Click on apps button.
-     */
-    protected abstract void clickOnAppsButton();
+    @Override
+    protected void displayAllOpportunities() {
+
+    }
+
+    @Override
+    protected void waitUntilPageObjectIsLoaded() {
+
+    }
 }

@@ -26,6 +26,7 @@ public class OpportunityStep {
 
     /**
      * Creates Opportunity.
+     *
      * @param opportunity contains name Opportunity object.
      */
     @Given("^I create opportunity as (.*)")
@@ -35,6 +36,7 @@ public class OpportunityStep {
 
     /**
      * Changes an opportunity's Owner.
+     *
      * @param owner contains name Owner object.
      */
     @When("^I change an opportunity's owner with \"([^\"]*)\"$")
@@ -44,6 +46,7 @@ public class OpportunityStep {
 
     /**
      * Validates a message.
+     *
      * @param message contains a String message.
      */
     @Then("^the application should display an information message in Opportunity page with the format \"([^\"]*)\"$")
@@ -62,10 +65,11 @@ public class OpportunityStep {
 
     /**
      * Search an opportunity.
+     *
      * @param arg0 contains opportunity name.
      */
     @And("I search an opportunity {string}")
-    public void searchs(final String arg0) {
+    public void searchsOportunity(final String arg0) {
         //To do
     }
 }

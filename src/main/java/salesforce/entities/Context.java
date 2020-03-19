@@ -9,6 +9,9 @@
 
 package salesforce.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Manages entities instance.
  *
@@ -16,5 +19,30 @@ package salesforce.entities;
  * @version 1.0 17 March 2020.
  */
 public class Context {
+    private Account account;
+    private List<Account> accounts;
 
+    /**
+     * Context constructor.
+     */
+    public Context() {
+        this.account = new Account();
+        this.accounts = new ArrayList<>();
+    }
+
+    /**
+     * Gets account instance.
+     * @return
+     */
+    public Account getAccount() {
+        return account;
+    }
+
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccount(Account account) {
+        this.accounts.add(account);
+    }
 }

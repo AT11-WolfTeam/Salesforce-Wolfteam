@@ -12,9 +12,9 @@ package salesforcetest.steps;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import salesforce.entities.Account;
+import org.testng.Assert;
 import salesforce.entities.Context;
-import salesforce.restclient.AccountHelper;
+import salesforce.api.AccountHelper;
 import salesforce.utils.ExcelReader;
 import salesforce.utils.SheetManager;
 
@@ -31,27 +31,33 @@ import io.cucumber.java.en.Given;
 public class AccountSteps {
 
     // Entities
-    private Account account;
     private Context context;
-    private SheetManager sheetManager;
-    private AccountHelper accountHelper;
 
+    private AccountHelper accountHelper;
+    private ArrayList<HashMap<String, String>> accountMapList;
+
+    /**
+     * Account steps constructor.
+     * @param context object.
+     */
     public AccountSteps(Context context) {
         this.context = context;
-        this.accountHelper = new AccountHelper();
-        this.sheetManager = new SheetManager();
+        accountHelper = new AccountHelper(context);
     }
 
-    @Given("created {int} {string} accounts")
-    public void createdAccounts(int quantity, String accountType) {
-        Sheet dataSheet = ExcelReader.readExcel("Accounts.xlsx");
-        ArrayList<HashMap<String, String>> accountMapList = sheetManager.manageSheet(dataSheet, quantity, accountType);
-        for (HashMap<String, String> accountItem: accountMapList) {
-            account = new Account();
-            account.setAccountInformation(accountItem);
-            context.setAccount(account);
+    @Given("I create {int} {string} accounts")
+    public void createAccount(int quantity, String accountType) {
+        Sheet dataSheet = ExcelReader.readExcel("Contacts");
+        accountMapList = SheetManager.manageSheet(dataSheet, quantity, accountType);
+        accountHelper.createEntity(accountMapList);
+    }
+
+    @Given("I delete created accounts")
+    public void deleteAccounts() {
+        accountHelper.deleteAccount(context.getIdsMap());
+        int expected = 204;
+        for (int statusCode: context.getDeleteEntity().values()) {
+            Assert.assertEquals(statusCode, expected);
         }
-        accountHelper.convertToJson(context.getAccounts());
     }
-
 }

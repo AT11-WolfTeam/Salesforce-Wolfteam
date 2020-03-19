@@ -7,15 +7,13 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.api;
+package salesforce.restclient;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
-import salesforce.restclient.Authentication;
 import salesforce.utils.AccessToken;
-import salesforce.utils.EndPoint;
 import salesforce.utils.TokenConstant;
 
 /**
@@ -24,18 +22,37 @@ import salesforce.utils.TokenConstant;
  * @author Juan Martinez.
  * @version 1.0 16 March 2020.
  */
-public class AccountApi {
+public final class RestApi {
     private static String token = Authentication.getAccessToken();
+
+    /**
+     * Private AccountApi constructor.
+     */
+    private RestApi() {
+
+    }
 
     /**
      * Posts entity.
      * @param jsonEntity of json entity.
      * @return response value.
      */
-    public static Response postEntity(final String jsonEntity) {
+    public static Response postEntity(final String jsonEntity, final String endpoint) {
         return RestAssured.given().headers(TokenConstant.AUTHORIZATION, token, TokenConstant.CONTENT_TYPE,
             ContentType.JSON).request().accept(ContentType.JSON).body(jsonEntity)
-            .when().post(AccessToken.getInstance().getClient().getInstanceUrl() + EndPoint.ACCOUNT_ENDPOINT)
+            .when().post(AccessToken.getInstance().getClient().getInstanceUrl() + endpoint)
             .then().extract().response();
+    }
+
+    /**
+     * Deletes entity by Id.
+     * @param entityId of entity.
+     * @return response message.
+     */
+    public static Response deleteEntity(final String entityId, final String endpoint) {
+        return RestAssured.given().headers(TokenConstant.AUTHORIZATION, token, TokenConstant.CONTENT_TYPE,
+            ContentType.JSON).request().accept(ContentType.JSON)
+            .when().delete(AccessToken.getInstance().getClient().getInstanceUrl() + endpoint
+            + entityId).then().extract().response();
     }
 }

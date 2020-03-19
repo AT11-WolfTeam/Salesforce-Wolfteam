@@ -25,20 +25,27 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * @version 1.0 18 March 2020.
  */
 public final class ExcelReader {
-    private static final String FILE_PATH = "src/test/resources/sheetfiles/";
+    private static final String FILE_PATH = "src/test/resources/sheetfiles/SalesforceData.xlsx";
     private static final int ZERO = 0;
 
     /**
+     * Private ExcelReader constructor.
+     */
+    private ExcelReader() {
+
+    }
+
+    /**
      * Reads sheet and return list.
-     * @param fileName of sheet file.
+     * @param sheetName of sheet file.
      * @return list.
      */
-    public static Sheet readExcel(final String fileName) {
+    public static Sheet readExcel(final String sheetName) {
         Sheet datatypeSheet = null;
         try {
-            FileInputStream excelFile = new FileInputStream(new File(FILE_PATH + fileName));
+            FileInputStream excelFile = new FileInputStream(new File(FILE_PATH));
             Workbook workbook = new XSSFWorkbook(excelFile);
-            datatypeSheet = workbook.getSheetAt(ZERO);
+            datatypeSheet = workbook.getSheet(sheetName);
             excelFile.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();

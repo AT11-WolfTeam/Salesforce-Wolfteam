@@ -10,6 +10,7 @@
 package salesforce.entities;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -21,6 +22,9 @@ import java.util.List;
 public class Context {
     private Account account;
     private List<Account> accounts;
+
+    private HashMap<String, String> idsMap;
+    private HashMap<String, Integer> deleteEntity;
 
     /**
      * Context constructor.
@@ -44,5 +48,37 @@ public class Context {
 
     public void setAccount(Account account) {
         this.accounts.add(account);
+    }
+
+    /**
+     * Gets created entities ids.
+     * @return map ids.
+     */
+    public HashMap<String, String> getIdsMap() {
+        return idsMap;
+    }
+
+    /**
+     * Sets created entities ids.
+     * @param idsMap value.
+     */
+    public void setIdsMap(HashMap<String, String> idsMap) {
+        this.idsMap = idsMap;
+    }
+
+    /**
+     * Gets deleted entities.
+     * @return deleted entities map.
+     */
+    public HashMap<String, Integer> getDeleteEntity() {
+        return deleteEntity;
+    }
+
+    /**
+     * Sets deleted entities.
+     * @param deleteEntity values.
+     */
+    public void setDeleteEntity(HashMap<String, Integer> deleteEntity) {
+        this.deleteEntity = deleteEntity;
     }
 }

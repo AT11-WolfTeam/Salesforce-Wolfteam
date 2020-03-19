@@ -16,11 +16,24 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 
-public class SheetManager {
+/**
+ * Manages sheet.
+ *
+ * @author Juan Martinez.
+ * @version 1.0 19 March 2020.
+ */
+public final class SheetManager {
     private static final int ZERO = 0;
     private static final int ONE = 1;
     private static ArrayList<HashMap<String, String>> entitiesList;
     private static int U_ID = 0;
+
+    /**
+     * Private SheetManager account.
+     */
+    private SheetManager() {
+
+    }
 
     /**
      * Create hash map.
@@ -42,12 +55,12 @@ public class SheetManager {
     }
 
     /**
-     * Generates salesforce.entities.
+     * Generates salesforce entities map.
      * @param rowKey values.
      * @param rowValue values.
      * @param quantity number value.
      */
-    private static void createQuantityOfEntities(final Row rowKey, final Row rowValue, final int quantity) {
+    private static void createQuantityOfMap(final Row rowKey, final Row rowValue, final int quantity) {
         int entityQuantity = quantity;
         while (entityQuantity > ZERO) {
             HashMap<String, String> entityMap = createHasMap(rowKey, rowValue);
@@ -56,12 +69,19 @@ public class SheetManager {
         }
     }
 
-    public ArrayList<HashMap<String, String>> manageSheet(final Sheet dataSheet, int quantity, String accountType) {
+    /**
+     * Manage sheet to convert in map entities.
+     * @param dataSheet object.
+     * @param quantity number.
+     * @param accountType value.
+     * @return list of maps.
+     */
+    public static ArrayList<HashMap<String, String>> manageSheet(final Sheet dataSheet, int quantity, String accountType) {
         entitiesList = new ArrayList<>();
         Row rowKey = dataSheet.getRow(ZERO);
         Row rowValue = findAccountType(dataSheet, accountType);
 
-        createQuantityOfEntities(rowKey, rowValue, quantity);
+        createQuantityOfMap(rowKey, rowValue, quantity);
         return entitiesList;
     }
 

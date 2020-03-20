@@ -13,7 +13,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
 import salesforce.ui.pages.AppPageFactory;
 import org.testng.Assert;
 import salesforce.api.requestapi.OpportunityApiHelper;
@@ -81,7 +80,7 @@ public class OpportunityStep {
     /**
      * Allows to create many opportunities.
      *
-     * @param quantity        number of opportunities.
+     * @param quantity number of opportunities.
      * @param opportunityType value.
      */
     @Given("I create {int} {string} opportunities")
@@ -118,7 +117,7 @@ public class OpportunityStep {
      * Search an opportunity.
      *
      * @param opportunityName contains a String value.
-     * @param listName        contains a String value.
+     * @param listName contains a String value.
      */
     @And("I search an opportunity {string} in list {string}")
     public void searchOpportunity(final String opportunityName, final String listName) {

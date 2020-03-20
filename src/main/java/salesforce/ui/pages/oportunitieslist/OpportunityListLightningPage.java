@@ -28,7 +28,6 @@ public class OpportunityListLightningPage extends OpportunityListPageAbstract {
     private static final String OPPORTUNITY_PARTIAL_LOCATOR = "a[title='%s']";
     private static final String CELL_ATTRIBUTE = "href";
 
-
     @Override
     public void clickOnOpportunity(final String opportunityName) {
 

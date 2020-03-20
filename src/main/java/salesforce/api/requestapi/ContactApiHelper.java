@@ -16,7 +16,6 @@ import io.restassured.response.Response;
 import salesforce.entities.Contact;
 import salesforce.restclient.RestApi;
 import salesforce.utils.EndPoint;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

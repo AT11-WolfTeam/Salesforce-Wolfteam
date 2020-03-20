@@ -33,6 +33,4 @@ public class NewCampaignPopUpLightning extends NewCampaignPageAbstract {
     protected void setCampaignNameField(final String campaignName) {
         campaignNameField.sendKeys(campaignName);
     }
-
-
 }

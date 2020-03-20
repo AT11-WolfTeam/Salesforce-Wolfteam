@@ -32,7 +32,7 @@ public abstract class NewCampaignPageAbstract extends BasePage {
      * Sets the form of new Campaign.
      *
      * @param newCampaign entity.
-     * @param fields      map.
+     * @param fields map.
      */
     protected void setNewCampaign(final NewCampaign newCampaign, final Set<String> fields) {
         HashMap<String, Runnable> strategtyMap = composeStrategyMap(newCampaign);
@@ -41,6 +41,7 @@ public abstract class NewCampaignPageAbstract extends BasePage {
 
     /**
      * Sets the information of new campaign.
+     *
      * @param newCampaign entity.
      * @return HashMap value.
      */
@@ -56,5 +57,4 @@ public abstract class NewCampaignPageAbstract extends BasePage {
      * @param campaignName value.
      */
     protected abstract void setCampaignNameField(String campaignName);
-
 }

@@ -18,7 +18,7 @@ import salesforce.ui.pages.BasePage;
  * @version 1.0 19 March 2020.
  */
 public abstract class OpportunitiesPageAbstract extends BasePage {
-    
+
     @Override
     protected void waitUntilPageObjectIsLoaded() {
 

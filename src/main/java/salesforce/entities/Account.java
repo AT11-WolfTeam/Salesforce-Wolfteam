@@ -116,9 +116,9 @@ public class Account {
     }
 
     /**
-     * Visits all setter methods of task list.
+     * Visits all setter methods of account.
      *
-     * @param accountInformation hasmap.
+     * @param accountInformation hashMap.
      * @return map of visited setter methods.
      */
     private HashMap<String, Runnable> composeStrategyMap(final HashMap<String, String> accountInformation) {
@@ -133,7 +133,7 @@ public class Account {
     /**
      * Gets account information.
      *
-     * @return task list values.
+     * @return account values.
      */
     public HashMap<String, String> getAccountInformation() {
         HashMap<String, String> accountValues = new HashMap<>();
@@ -145,7 +145,7 @@ public class Account {
     }
 
     /**
-     * Visits all getter methods of task list.
+     * Visits all getter methods of account.
      *
      * @return map of visited get methods.
      */

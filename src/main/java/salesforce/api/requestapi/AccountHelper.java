@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.api;
+package salesforce.api.requestapi;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -30,7 +30,7 @@ public class AccountHelper {
     private Account account;
 
     /**
-     * Sets entities.
+     * Sets accounts.
      *
      * @param accountMapList values.
      * @return account list.

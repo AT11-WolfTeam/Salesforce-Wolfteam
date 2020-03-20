@@ -18,5 +18,15 @@ import salesforce.ui.pages.BasePage;
  * @version 1.0 19 March 2020.
  */
 public abstract class OpportunityPageAbstract extends BasePage {
+    protected static final String CAMPAIGN_NAME = "div[title='%s']";
+    @Override
+    protected void waitUntilPageObjectIsLoaded() {
 
+    }
+
+    /**
+     * Assigns a campaign.
+     * @param campaignName value.
+     */
+    protected abstract void assignCampaign(String campaignName);
 }

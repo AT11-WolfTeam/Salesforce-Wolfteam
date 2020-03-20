@@ -9,9 +9,20 @@
 
 package salesforce.ui.pages.opportunities;
 
+/**
+ * Defines OpportunityPageClassic.
+ *
+ * @author Alan Escalera.
+ * @version 1.0 19 March 2020.
+ */
 public class OpportunityPageClassic extends OpportunityPageAbstract {
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-        
+
+    }
+
+    @Override
+    protected void assignCampaign(final String campaignName) {
+
     }
 }

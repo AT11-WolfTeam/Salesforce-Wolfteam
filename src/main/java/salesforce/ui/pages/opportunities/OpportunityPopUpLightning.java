@@ -9,15 +9,28 @@
 
 package salesforce.ui.pages.opportunities;
 
+import core.selenium.WebDriverManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
+/**
+ * Defines OpportunityPopUpLightning.
+ *
+ * @author Alan Escalera.
+ * @version 1.0 19 March 2020.
+ */
 public class OpportunityPopUpLightning extends OpportunityPageAbstract {
-    @FindBy(css = "a[class='slds-grid slds-grid--vertical-align-center slds-grid--align-center sldsButtonHeightFix']")
-    private WebElement verticalAlignButton;
-    
+    private WebElement campaignNameSelect;
+
     @Override
     protected void waitUntilPageObjectIsLoaded() {
 
+    }
+
+    @Override
+    protected void assignCampaign(final String campaignName) {
+        String campaignNameCss = String.format(CAMPAIGN_NAME, campaignName);
+        campaignNameSelect = WebDriverManager.getInstance().getWebDriver().findElement(By.cssSelector(campaignNameCss));
+        campaignNameSelect.click();
     }
 }

@@ -39,7 +39,7 @@ public class AppPageFactory {
     /**
      * Returns a page from a user experience.
      *
-     * @return page instance.
+     * @return TopMenu instance.
      */
     public static TopMenuAbstract getTopMenu() {
         Map<String, TopMenuAbstract> map = new HashMap<>();
@@ -72,6 +72,11 @@ public class AppPageFactory {
         return map.get(userExperience);
     }
 
+    /**
+     * Returns a Opportunity page.
+     *
+     * @return OpportunityPage instance.
+     */
     public static OpportunityPageAbstract getOpportinityPage() {
         Map<String, OpportunityPageAbstract> map = new HashMap<>();
         map.put(UserExperience.USER_EXPERIENCE_CLASSIC.get(), new OpportunityPageClassic());

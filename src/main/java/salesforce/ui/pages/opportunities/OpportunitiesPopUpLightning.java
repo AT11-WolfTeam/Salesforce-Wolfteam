@@ -36,7 +36,7 @@ public class OpportunitiesPopUpLightning extends OpportunitiesPageAbstract {
 
     @Override
     public OpportunityPageAbstract selectOpportunityName(final String opportunityName) {
-        String opportunityNameXpath = String.format(NAME_OPPORTUNITY,opportunityName);
+        String opportunityNameXpath = String.format(NAME_OPPORTUNITY, opportunityName);
         nameOpportunityTable = WebDriverManager.getInstance().getWebDriver().findElement(By
                 .cssSelector(opportunityNameXpath));
         nameOpportunityTable.click();

@@ -20,6 +20,7 @@ import salesforce.ui.pages.campaigns.NewCampaignPopUpLightning;
 import salesforce.ui.pages.opportunities.OpportunitiesPageAbstract;
 import salesforce.ui.pages.opportunities.OpportunitiesPageClassic;
 import salesforce.ui.pages.opportunities.OpportunitiesPopUpLightning;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,7 +36,7 @@ public class AppPageFactory {
     /**
      * Returns a page from a user experience.
      *
-     * @return page instance.
+     * @return TopMenu instance.
      */
     public static TopMenuAbstract getTopMenu() {
         Map<String, TopMenuAbstract> map = new HashMap<>();

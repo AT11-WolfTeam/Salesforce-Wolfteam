@@ -7,23 +7,27 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages.opportunity;
+package salesforce.ui.pages.opportunities;
+
+import salesforce.ui.pages.BasePage;
 
 /**
- * Manages a web page.
+ * Defines OpportunitiesPageAbstract.
  *
- * @author Enrique Carrizales.
+ * @author Alan Escalera.
  * @version 1.0 19 March 2020.
  */
-public class OpportunitiesClassicPage extends OpportunitiesPageAbstract {
-
-    @Override
-    public void displayAllOpportunities() {
-
-    }
+public abstract class OpportunitiesPageAbstract extends BasePage {
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
 
     }
+
+    /**
+     * Selects a opportunity.
+     * @param opportunityName value.
+     * @return OpportunityPage instance.
+     */
+    public abstract OpportunityPageAbstract selectOpportunityName(String opportunityName);
 }

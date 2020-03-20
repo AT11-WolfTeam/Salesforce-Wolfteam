@@ -7,20 +7,26 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages.opportunity;
+package salesforce.ui.pages.campaigns;
 
 import salesforce.ui.pages.BasePage;
 
 /**
- * Manages an OpportunitiesPageAbstract page.
+ * Defines CampaignsPageAbstract.
  *
- * @author Enrique Carrizales.
+ * @author Alan Escalera.
  * @version 1.0 19 March 2020.
  */
-public abstract class OpportunitiesPageAbstract extends BasePage {
+public abstract class CampaignsPageAbstract extends BasePage {
+
+    @Override
+    protected void waitUntilPageObjectIsLoaded() {
+    }
 
     /**
-     * Display all opportunities.
+     * Clicks on the new button.
+     *
+     * @return NewCampaignPageAbstract instance.
      */
-    public abstract void displayAllOpportunities();
+    public abstract NewCampaignPageAbstract clickOnNewButton();
 }

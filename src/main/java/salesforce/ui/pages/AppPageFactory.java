@@ -11,13 +11,15 @@ package salesforce.ui.pages;
 
 import core.utils.GradleReader;
 import core.utils.UserExperience;
-
 import salesforce.ui.components.menu.TopClassicMenu;
 import salesforce.ui.components.menu.TopLightningMenu;
 import salesforce.ui.components.menu.TopMenuAbstract;
-import salesforce.ui.pages.opportunity.OpportunitiesClassicPage;
-import salesforce.ui.pages.opportunity.OpportunitiesLightningPage;
-import salesforce.ui.pages.opportunity.OpportunitiesPageAbstract;
+import salesforce.ui.pages.campaigns.NewCampaignPageAbstract;
+import salesforce.ui.pages.campaigns.NewCampaignPageClassic;
+import salesforce.ui.pages.campaigns.NewCampaignPopUpLightning;
+import salesforce.ui.pages.opportunities.OpportunitiesPageAbstract;
+import salesforce.ui.pages.opportunities.OpportunitiesPageClassic;
+import salesforce.ui.pages.opportunities.OpportunitiesPopUpLightning;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -44,13 +46,26 @@ public class AppPageFactory {
     }
 
     /**
-     * Returns a page from a user experience.
+     * Returns a campaigns page.
+     *
+     * @return CampaignsPage instance.
+     */
+    public static NewCampaignPageAbstract getNewCampaignPage() {
+        Map<String, NewCampaignPageAbstract> map = new HashMap<>();
+        map.put(UserExperience.USER_EXPERIENCE_CLASSIC.get(), new NewCampaignPageClassic());
+        map.put(UserExperience.USER_EXPERIENCE_LIGHTNING.get(), new NewCampaignPopUpLightning());
+        return map.get(userExperience);
+    }
+
+    /**
+     * Returns a Opportunities page.
+     *
      * @return OpportunitiesPage instance.
      */
     public static OpportunitiesPageAbstract getOpportunitiesPage() {
         Map<String, OpportunitiesPageAbstract> map = new HashMap<>();
-        map.put(UserExperience.USER_EXPERIENCE_CLASSIC.get(), new OpportunitiesClassicPage());
-        map.put(UserExperience.USER_EXPERIENCE_LIGHTNING.get(), new OpportunitiesLightningPage());
+        map.put(UserExperience.USER_EXPERIENCE_CLASSIC.get(), new OpportunitiesPageClassic());
+        map.put(UserExperience.USER_EXPERIENCE_LIGHTNING.get(), new OpportunitiesPopUpLightning());
         return map.get(userExperience);
     }
 }

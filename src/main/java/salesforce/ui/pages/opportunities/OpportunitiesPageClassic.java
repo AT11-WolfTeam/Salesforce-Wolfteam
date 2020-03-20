@@ -16,4 +16,8 @@ package salesforce.ui.pages.opportunities;
  * @version 1.0 19 March 2020.
  */
 public class OpportunitiesPageClassic extends OpportunitiesPageAbstract {
+    @Override
+    public OpportunityPageAbstract selectOpportunityName(final String opportunityName) {
+        return null;
+    }
 }

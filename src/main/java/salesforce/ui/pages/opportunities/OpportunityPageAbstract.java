@@ -12,21 +12,10 @@ package salesforce.ui.pages.opportunities;
 import salesforce.ui.pages.BasePage;
 
 /**
- * Defines OpportunitiesPageAbstract.
+ * Defines OpportunitiesPageClassic.
  *
  * @author Alan Escalera.
  * @version 1.0 19 March 2020.
  */
-public abstract class OpportunitiesPageAbstract extends BasePage {
-    @Override
-    protected void waitUntilPageObjectIsLoaded() {
-
-    }
-
-    /**
-     * Selects a opportunity.
-     * @param opportunityName value.
-     * @return OpportunityPage instance.
-     */
-    public abstract OpportunityPageAbstract selectOpportunityName(String opportunityName);
+public abstract class OpportunityPageAbstract extends BasePage {
 }

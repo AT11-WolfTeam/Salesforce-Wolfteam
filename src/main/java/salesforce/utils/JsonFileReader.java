@@ -59,7 +59,7 @@ public class JsonFileReader {
     }
 
     /**
-     * Returns a Salesforce user credential.
+     * Returns a Salesforce user credentials.
      *
      * @param userType receives a String value.
      * @return SalesforceUser object.

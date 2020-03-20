@@ -20,6 +20,9 @@ import java.util.Map;
  */
 public class NewCampaign {
     private static final String CAMPAIGN_NAME = "Campaign Name";
+    private static final String ACTIVE = "Active";
+
+    public String Active;
     private String campaignName;
 
     /**
@@ -41,10 +44,30 @@ public class NewCampaign {
     }
 
     /**
+     * Returns Active value.
+     *
+     * @return string value
+     */
+    public String getActive() {
+        return Active;
+    }
+
+    /**
+     * Sets Active value.
+     *
+     * @param active value.
+     */
+    private void setActive(String active) {
+        Active = active;
+    }
+
+    /**
      * Strategy process information.
      *
      * @param mapNewCampaign map.
      */
+
+
     public void processInformation(final Map<String, String> mapNewCampaign) {
         HashMap<String, Runnable> strategyMap = composeStrategy(mapNewCampaign);
         mapNewCampaign.keySet().forEach(key -> strategyMap.get(key).run());
@@ -59,6 +82,7 @@ public class NewCampaign {
     private HashMap<String, Runnable> composeStrategy(final Map<String, String> mapNewCampaign) {
         HashMap<String, Runnable> strategyMap = new HashMap<>();
         strategyMap.put(CAMPAIGN_NAME, () -> setCampaignName(mapNewCampaign.get(CAMPAIGN_NAME)));
+        strategyMap.put(ACTIVE,()-> setActive(mapNewCampaign.get(ACTIVE)));
         return strategyMap;
     }
 }

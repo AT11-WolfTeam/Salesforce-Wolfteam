@@ -26,6 +26,7 @@ public class CampaignsPageClassic extends CampaignsPageAbstract {
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(newButton));
         webDriverWait.until(ExpectedConditions.elementToBeClickable(newButton));
     }
 

@@ -9,6 +9,7 @@
 
 package salesforce.ui.pages.opportunities;
 
+import org.openqa.selenium.WebElement;
 import salesforce.ui.pages.BasePage;
 
 /**
@@ -18,6 +19,7 @@ import salesforce.ui.pages.BasePage;
  * @version 1.0 19 March 2020.
  */
 public abstract class OpportunitiesPageAbstract extends BasePage {
+    protected WebElement nameOpportunitySelected;
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {

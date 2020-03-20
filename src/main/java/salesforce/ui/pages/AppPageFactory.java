@@ -14,6 +14,9 @@ import core.utils.UserExperience;
 import salesforce.ui.components.menu.TopClassicMenu;
 import salesforce.ui.components.menu.TopLightningMenu;
 import salesforce.ui.components.menu.TopMenuAbstract;
+import salesforce.ui.pages.campaigns.CampaignsPageAbstract;
+import salesforce.ui.pages.campaigns.CampaignsPageClassic;
+import salesforce.ui.pages.campaigns.CampaignsPageLightning;
 import salesforce.ui.pages.campaigns.NewCampaignPageAbstract;
 import salesforce.ui.pages.campaigns.NewCampaignPageClassic;
 import salesforce.ui.pages.campaigns.NewCampaignPopUpLightning;
@@ -53,12 +56,19 @@ public class AppPageFactory {
      *
      * @return CampaignsPage instance.
      */
-    public static NewCampaignPageAbstract getNewCampaignPage() {
-        Map<String, NewCampaignPageAbstract> map = new HashMap<>();
-        map.put(UserExperience.USER_EXPERIENCE_CLASSIC.get(), new NewCampaignPageClassic());
-        map.put(UserExperience.USER_EXPERIENCE_LIGHTNING.get(), new NewCampaignPopUpLightning());
-        return map.get(userExperience);
-    }
+    public static CampaignsPageAbstract getCampaignsPage() {
+//        Map<String, CampaignsPageAbstract> map = new HashMap<>();
+//        map.put(UserExperience.USER_EXPERIENCE_CLASSIC.get(), new CampaignsPageClassic());
+//        map.put(UserExperience.USER_EXPERIENCE_LIGHTNING.get(), new CampaignsPageLightning());
+//        return map.get(userExperience);
+            if (userExperience.equals("Classic")) {
+                return new CampaignsPageClassic();
+            }
+            return new CampaignsPageLightning();
+
+
+
+     }
 
     /**
      * Returns a Opportunities page.
@@ -82,5 +92,22 @@ public class AppPageFactory {
         map.put(UserExperience.USER_EXPERIENCE_CLASSIC.get(), new OpportunityPageClassic());
         map.put(UserExperience.USER_EXPERIENCE_LIGHTNING.get(), new OpportunityPopUpLightning());
         return map.get(userExperience);
+    }
+
+    /**
+     * Returns a New campaigns page.
+     *
+     * @return NewCampaignsPage instance.
+     */
+    public static NewCampaignPageAbstract getNewCampaignPage() {
+//        Map<String, NewCampaignPageAbstract> map = new HashMap<>();
+//        map.put(UserExperience.USER_EXPERIENCE_CLASSIC.get(), new NewCampaignPageClassic());
+//        map.put(UserExperience.USER_EXPERIENCE_LIGHTNING.get(), new NewCampaignPopUpLightning());
+//        return map.get(userExperience);
+        if (userExperience.equals("Classic")) {
+            return new NewCampaignPageClassic();
+        }
+        return new NewCampaignPopUpLightning();
+
     }
 }

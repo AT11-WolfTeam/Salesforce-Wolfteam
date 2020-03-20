@@ -25,9 +25,7 @@ import salesforce.ui.pages.AppPageFactory;
 public class OpportunitiesPopUpLightning extends OpportunitiesPageAbstract {
     @FindBy(css = "div[title='New']")
     private WebElement newButton;
-
-    private WebElement nameOpportunityTable;
-    private static final String NAME_OPPORTUNITY = "a[title='%s']";
+    protected static final String NAME_OPPORTUNITY = "a[title='%s']";
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -37,9 +35,9 @@ public class OpportunitiesPopUpLightning extends OpportunitiesPageAbstract {
     @Override
     public OpportunityPageAbstract selectOpportunityName(final String opportunityName) {
         String opportunityNameXpath = String.format(NAME_OPPORTUNITY, opportunityName);
-        nameOpportunityTable = WebDriverManager.getInstance().getWebDriver().findElement(By
+        nameOpportunitySelected = WebDriverManager.getInstance().getWebDriver().findElement(By
                 .cssSelector(opportunityNameXpath));
-        nameOpportunityTable.click();
+        nameOpportunitySelected.click();
         return AppPageFactory.getOpportinityPage();
     }
 }

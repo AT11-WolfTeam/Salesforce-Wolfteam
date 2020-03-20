@@ -23,8 +23,15 @@ public class NewCampaignPageClassic extends NewCampaignPageAbstract {
     @FindBy(css = "input[id='cpn1']")
     private WebElement campaignNameField;
 
+    @FindBy(css = "input[id='cpn16']")
+    private WebElement activeCheckBox;
+
+    @FindBy(css = "input[name='save']")
+    private WebElement saveButton;
+
     @Override
     protected void waitUntilPageObjectIsLoaded() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(campaignNameField));
         webDriverWait.until(ExpectedConditions.elementToBeClickable(campaignNameField));
     }
 
@@ -32,4 +39,17 @@ public class NewCampaignPageClassic extends NewCampaignPageAbstract {
     protected void setCampaignNameField(final String campaignName) {
         campaignNameField.sendKeys(campaignName);
     }
+
+    @Override
+    protected void setCampaignActiveCheckBox(String campaignActive) {
+        if (campaignActive.equals(IS_ACTIVE)){
+            activeCheckBox.click();
+        }
+    }
+
+    @Override
+    public void clickSaveButton() {
+        saveButton.click();
+    }
+
 }

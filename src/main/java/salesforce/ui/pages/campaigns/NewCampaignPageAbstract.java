@@ -9,8 +9,10 @@
 
 package salesforce.ui.pages.campaigns;
 
+import org.checkerframework.checker.units.qual.A;
 import salesforce.entities.NewCampaign;
 import salesforce.ui.pages.BasePage;
+
 import java.util.HashMap;
 import java.util.Set;
 
@@ -22,6 +24,8 @@ import java.util.Set;
  */
 public abstract class NewCampaignPageAbstract extends BasePage {
     private static final String CAMPAIGN_NAME = "Campaign Name";
+    protected static final String IS_ACTIVE = "true";
+    private static final String ACTIVE = "Active";
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -31,9 +35,9 @@ public abstract class NewCampaignPageAbstract extends BasePage {
      * Sets the form of new Campaign.
      *
      * @param newCampaign entity.
-     * @param fields map.
+     * @param fields      map.
      */
-    protected void setNewCampaign(final NewCampaign newCampaign, final Set<String> fields) {
+    public void setNewCampaign(final NewCampaign newCampaign, final Set<String> fields) {
         HashMap<String, Runnable> strategtyMap = composeStrategyMap(newCampaign);
         fields.forEach(field -> strategtyMap.get(field).run());
     }
@@ -47,6 +51,7 @@ public abstract class NewCampaignPageAbstract extends BasePage {
     protected HashMap<String, Runnable> composeStrategyMap(final NewCampaign newCampaign) {
         HashMap<String, Runnable> strategyMap = new HashMap<>();
         strategyMap.put(CAMPAIGN_NAME, () -> setCampaignNameField(newCampaign.getCampaignName()));
+        strategyMap.put(ACTIVE, () -> setCampaignActiveCheckBox(newCampaign.getActive()));
         return strategyMap;
     }
 
@@ -56,4 +61,8 @@ public abstract class NewCampaignPageAbstract extends BasePage {
      * @param campaignName value.
      */
     protected abstract void setCampaignNameField(String campaignName);
+
+    protected abstract void setCampaignActiveCheckBox(String campaignActive);
+
+    public abstract void clickSaveButton();
 }

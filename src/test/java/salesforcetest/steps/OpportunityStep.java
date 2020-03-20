@@ -16,11 +16,18 @@ import io.cucumber.java.en.When;
 import org.testng.Assert;
 import salesforce.api.requestapi.OpportunityApiHelper;
 import salesforce.entities.Context;
+import salesforce.entities.NewCampaign;
 import salesforce.entities.Opportunity;
+import salesforce.ui.pages.AppPageFactory;
+import salesforce.ui.pages.campaigns.CampaignsPageAbstract;
+import salesforce.ui.pages.campaigns.NewCampaignPageAbstract;
+import salesforce.ui.pages.opportunities.OpportunitiesPageAbstract;
+import salesforce.ui.pages.opportunities.OpportunityPageAbstract;
 import salesforce.utils.SheetManager;
 import salesforce.ui.pages.PageTransporter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -34,6 +41,12 @@ public class OpportunityStep {
     private Context context;
     private OpportunityApiHelper opportunityApiHelper;
     private ArrayList<HashMap<String, String>> opportunityMapList;
+    private PageTransporter pageTransporter;
+    private CampaignsPageAbstract campaignsPage;
+    private NewCampaignPageAbstract newCampaignPage;
+    private NewCampaign newCampaign;
+    private OpportunitiesPageAbstract opportunitiesPage;
+    private OpportunityPageAbstract opportunityPage;
 
     /**
      * OpportunityStep constructor.
@@ -42,6 +55,7 @@ public class OpportunityStep {
     public OpportunityStep(final Context context) {
         this.context = context;
         opportunityApiHelper = new OpportunityApiHelper();
+        pageTransporter = new PageTransporter();
     }
 
     /**
@@ -117,5 +131,28 @@ public class OpportunityStep {
      */
     @And("I search an opportunity {string}")
     public void searchsOportunity(final String arg0) {
+    }
+
+    @Given("I go to {string}")
+    public void iGoTo(String page) {
+        pageTransporter.navigateToPage(page);
+    }
+
+    @And("I create a new Campaign with")
+    public void iCreateANewCampaignWith(final Map<String, String> mapNewCampaign) {
+        campaignsPage = AppPageFactory.getCampaignsPage();
+        newCampaignPage = campaignsPage.clickOnNewButton();
+        newCampaign = context.getNewCampaign();
+        newCampaign.processInformation(mapNewCampaign);
+        newCampaignPage.setNewCampaign(newCampaign, mapNewCampaign.keySet());
+        newCampaignPage.clickSaveButton();
+
+    }
+
+    @When("I assign the Campaign to the opportunity")
+    public void iAssignTheCampaignToTheOpportunity(final Map<String, String> mapNewCampaign) {
+        opportunitiesPage = AppPageFactory.getOpportunitiesPage();
+        opportunityPage = opportunitiesPage.selectOpportunityName("Test Opportunity");
+        opportunityPage.editOpportunity(newCampaign,mapNewCampaign.keySet());
     }
 }

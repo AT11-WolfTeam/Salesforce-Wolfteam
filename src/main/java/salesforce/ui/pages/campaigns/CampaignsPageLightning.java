@@ -21,11 +21,12 @@ import salesforce.ui.pages.AppPageFactory;
  * @version 1.0 19 March 2020.
  */
 public class CampaignsPageLightning extends CampaignsPageAbstract {
-    @FindBy(xpath = "//li[@data-aura-rendered-by='4294:0']//a[@title='New']")
+    @FindBy(xpath = "//a[@title='New']")
     private WebElement newButton;
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(newButton));
         webDriverWait.until(ExpectedConditions.elementToBeClickable(newButton));
     }
 

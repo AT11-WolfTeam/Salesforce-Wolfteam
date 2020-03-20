@@ -39,7 +39,7 @@ public final class SheetManager {
     /**
      * Create hash map.
      *
-     * @param rowKey value.
+     * @param rowKey   value.
      * @param rowValue value.
      * @return hash map.
      */
@@ -50,16 +50,17 @@ public final class SheetManager {
         for (int cellItem = rowKey.getFirstCellNum() + ONE; cellItem < rowKey.getLastCellNum(); cellItem++) {
             counter++;
             Cell cellValue = rowValue.getCell(cellItem);
-            if (cellValue == null)
+            if (cellValue == null) {
                 continue;
+            }
             Cell cellKey = rowKey.getCell(cellItem);
             if (counter == ONE) {
                 entityMap.put(cellKey.getStringCellValue(), cellValue.getStringCellValue() + uniqueId);
-            }
-            else if(cellValue.getCellType()== CellType.STRING)
+            } else if (cellValue.getCellType() == CellType.STRING) {
                 entityMap.put(cellKey.getStringCellValue(), cellValue.getStringCellValue());
-            else if(cellValue.getCellType()==CellType.NUMERIC)
+            } else if (cellValue.getCellType() == CellType.NUMERIC) {
                 entityMap.put(cellKey.getStringCellValue(), String.valueOf(cellValue.getNumericCellValue()));
+            }
         }
         return entityMap;
     }
@@ -67,7 +68,7 @@ public final class SheetManager {
     /**
      * Generates salesforce entities map.
      *
-     * @param rowKey values.
+     * @param rowKey   values.
      * @param rowValue values.
      * @param quantity number value.
      */
@@ -83,8 +84,8 @@ public final class SheetManager {
     /**
      * Manage sheet to convert in map entities.
      *
-     * @param sheetName object.
-     * @param quantity number.
+     * @param sheetName  object.
+     * @param quantity   number.
      * @param entityType value.
      * @return list of maps.
      */
@@ -103,7 +104,7 @@ public final class SheetManager {
      * Finds type of entity.
      *
      * @param datatypeSheet object.
-     * @param entityType name.
+     * @param entityType    name.
      * @return row found or null if it is not there.
      */
     private static Row findEntityType(final Sheet datatypeSheet, final String entityType) {

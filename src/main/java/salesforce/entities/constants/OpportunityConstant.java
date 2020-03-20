@@ -15,7 +15,7 @@ package salesforce.entities.constants;
  * @author Juan Martinez.
  * @version 1.0 20 March 2020.
  */
-public class OpportunityConstant {
+public final class OpportunityConstant {
     public static final String NAME = "Name";
     public static final String TYPE = "Type";
     public static final String LEAD_SOURCE = "LeadSource";

@@ -14,7 +14,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
 import salesforce.api.requestapi.OpportunityApiHelper;
-import salesforce.entities.Account;
 import salesforce.entities.Context;
 import salesforce.entities.Opportunity;
 import salesforce.utils.SheetManager;
@@ -36,7 +35,11 @@ public class OpportunityStep {
     private OpportunityApiHelper opportunityApiHelper;
     private ArrayList<HashMap<String, String>> opportunityMapList;
 
-    public OpportunityStep(Context context) {
+    /**
+     * OpportunityStep constructor.
+     * @param context value.
+     */
+    public OpportunityStep(final Context context) {
         this.context = context;
         opportunityApiHelper = new OpportunityApiHelper();
     }

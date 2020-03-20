@@ -12,6 +12,7 @@ package salesforce.entities;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import salesforce.entities.constants.OpportunityConstant;
+import salesforce.utils.DateFormatter;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -25,7 +26,7 @@ import java.util.function.Supplier;
  * @version 1.0 19 March 2020.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonIgnoreProperties(value = {"opportunityInformation"})
+@JsonIgnoreProperties(value = {"opportunityInformation", "currentOpportunityInformation"})
 public class Opportunity {
     private String id;
     private String name;
@@ -123,7 +124,7 @@ public class Opportunity {
 
     /**
      * Gets status code value.
-     * @return
+     * @return status code.
      */
     public String getStatusCode() {
         return statusCode;
@@ -223,9 +224,14 @@ public class Opportunity {
      * @param opportunityInformation map.
      */
     public void setOpportunityInformation(final HashMap<String, String> opportunityInformation) {
-        HashMap<String, Runnable> strategyMap = composeStrategyMap(opportunityInformation);
-        opportunityInformation.keySet().forEach(key -> strategyMap.get(key).run());
-        modifiedOpportunityFields.addAll(opportunityInformation.keySet());
+        HashMap<String, String> currentOpportunityInformation = new HashMap<>(opportunityInformation);
+        if (opportunityInformation.get(OpportunityConstant.CLOSE_DATE) != null) {
+            currentOpportunityInformation.put(OpportunityConstant.CLOSE_DATE,
+                DateFormatter.formatDate(opportunityInformation.get(OpportunityConstant.CLOSE_DATE)));
+        }
+        HashMap<String, Runnable> strategyMap = composeStrategyMap(currentOpportunityInformation);
+        currentOpportunityInformation.keySet().forEach(key -> strategyMap.get(key).run());
+        modifiedOpportunityFields.addAll(currentOpportunityInformation.keySet());
     }
 
     /**

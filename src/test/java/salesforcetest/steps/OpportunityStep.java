@@ -31,10 +31,7 @@ import java.util.HashMap;
  */
 public class OpportunityStep {
     private static final String OPPORTUNITY_PAGE = "Opportunities Page";
-
-    // Entities
     private Context context;
-
     private OpportunityApiHelper opportunityApiHelper;
     private ArrayList<HashMap<String, String>> opportunityMapList;
 

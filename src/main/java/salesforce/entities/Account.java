@@ -118,7 +118,7 @@ public class Account {
     /**
      * Visits all setter methods of account.
      *
-     * @param accountInformation hasmap.
+     * @param accountInformation hashMap.
      * @return map of visited setter methods.
      */
     private HashMap<String, Runnable> composeStrategyMap(final HashMap<String, String> accountInformation) {

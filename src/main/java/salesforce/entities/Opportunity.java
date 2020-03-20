@@ -141,7 +141,7 @@ public class Opportunity {
     }
 
     /**
-     * Sets is value.
+     * Sets id value.
      *
      * @param id value.
      */

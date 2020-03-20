@@ -82,7 +82,7 @@ public final class SheetManager {
     }
 
     /**
-     * Manage sheet to convert in map entities.
+     * Manages sheet to convert in map entities.
      *
      * @param sheetName  object.
      * @param quantity   number.

@@ -20,14 +20,6 @@ import java.util.Date;
  * @version 1.0 20 March 2020.
  */
 public final class DateFormatter {
-
-    /**
-     * DateFormatter constructor.
-     */
-    private DateFormatter() {
-
-    }
-
     private static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
     private static Calendar calendar = Calendar.getInstance();
     private static final int DAYS = 0;
@@ -43,7 +35,14 @@ public final class DateFormatter {
     private static Date today = new Date(System.currentTimeMillis());
 
     /**
-     * Allow to format today.
+     * DateFormatter constructor.
+     */
+    private DateFormatter() {
+
+    }
+
+    /**
+     * Allows to format today.
      *
      * @return date value.
      */
@@ -63,7 +62,7 @@ public final class DateFormatter {
     }
 
     /**
-     * Replace after date list.
+     * Replaces after date list.
      *
      * @param date list value.
      * @return a list.
@@ -77,7 +76,7 @@ public final class DateFormatter {
     }
 
     /**
-     * Replace before string value.
+     * Replaces before string value.
      *
      * @param date list values.
      * @return a list.

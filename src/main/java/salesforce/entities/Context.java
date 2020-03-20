@@ -8,8 +8,8 @@
  */
 
 package salesforce.entities;
+
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -20,26 +20,18 @@ import java.util.List;
  */
 public class Context {
     private Account account;
+    private Opportunity opportunity;
     private List<Account> accounts;
-
-    private HashMap<String, String> idsMap;
-    private HashMap<String, Integer> deleteEntity;
+    private List<Opportunity> opportunities;
 
     /**
      * Context constructor.
      */
     public Context() {
         this.account = new Account();
+        this.opportunity = new Opportunity();
         this.accounts = new ArrayList<>();
-    }
-
-    /**
-     * Gets account instance.
-     *
-     * @return account instance.
-     */
-    public Account getAccount() {
-        return account;
+        this.opportunities = new ArrayList<>();
     }
 
     /**
@@ -52,20 +44,27 @@ public class Context {
     }
 
     /**
-     * Sets an account to account list.
-     *
-     * @param account object.
-     */
-    public void setAccount(final Account account) {
-        this.accounts.add(account);
-    }
-
-    /**
      * Sets an account list.
      *
      * @param accountList object.
      */
     public void setAccounts(final ArrayList<Account> accountList) {
         this.accounts.addAll(accountList);
+    }
+
+    /**
+     * gets list of opportunities.
+     * @return list of opportunities.
+     */
+    public List<Opportunity> getOpportunities() {
+        return opportunities;
+    }
+
+    /**
+     * Sets a list of opportunities.
+     * @param opportunities list value..
+     */
+    public void setOpportunities(final List<Opportunity> opportunities) {
+        this.opportunities = opportunities;
     }
 }

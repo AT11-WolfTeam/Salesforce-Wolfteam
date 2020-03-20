@@ -258,7 +258,7 @@ public class Opportunity {
     /**
      * Visits all setter methods of opportunity.
      *
-     * @param opportunityInformation hasmap.
+     * @param opportunityInformation hashmap.
      * @return map of visited setter methods.
      */
     private HashMap<String, Runnable> composeStrategyMap(final HashMap<String, String> opportunityInformation) {

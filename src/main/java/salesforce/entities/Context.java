@@ -23,6 +23,7 @@ public class Context {
     private Opportunity opportunity;
     private List<Account> accounts;
     private List<Opportunity> opportunities;
+    private List<Contact> contacts;
 
     /**
      * Context constructor.
@@ -32,6 +33,7 @@ public class Context {
         this.opportunity = new Opportunity();
         this.accounts = new ArrayList<>();
         this.opportunities = new ArrayList<>();
+        this.contacts = new ArrayList<>();
     }
 
     /**
@@ -64,9 +66,25 @@ public class Context {
     /**
      * Sets a list of opportunities.
      *
-     * @param opportunities list value..
+     * @param opportunities list value.
      */
     public void setOpportunities(final List<Opportunity> opportunities) {
         this.opportunities = opportunities;
+    }
+
+    /**
+     * Gets contacts.
+     * @return a list of contacts.
+     */
+    public List<Contact> getContacts() {
+        return contacts;
+    }
+
+    /**
+     * Sets a list of contacts.
+     * @param contacts list value.
+     */
+    public void setContacts(final List<Contact> contacts) {
+        this.contacts = contacts;
     }
 }

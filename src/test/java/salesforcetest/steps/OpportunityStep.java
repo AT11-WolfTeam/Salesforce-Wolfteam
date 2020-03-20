@@ -13,6 +13,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.PageTransporter;
 
 /**
@@ -65,10 +66,12 @@ public class OpportunityStep {
 
     /**
      * Search an opportunity.
-     *
-     * @param arg0 contains opportunity name.
+     * @param opportunityName contains a String value.
+     * @param listName contains a String value.
      */
-    @And("I search an opportunity {string}")
-    public void searchsOportunity(final String arg0) {
+    @And("I search an opportunity {string} in list {string}")
+    public void searchOpportunity(final String opportunityName, final String listName) {
+        AppPageFactory.getOpportunitiesPage().displayOpportunityList(listName);
+        AppPageFactory.getOpportunityList().clickOnOpportunity(opportunityName);
     }
 }

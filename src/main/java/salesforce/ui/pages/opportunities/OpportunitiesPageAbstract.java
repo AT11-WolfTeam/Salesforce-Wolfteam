@@ -25,6 +25,11 @@ public abstract class OpportunitiesPageAbstract extends BasePage {
     }
 
     /**
+     * Display a opportunity list.
+     */
+    public abstract void displayOpportunityList(final String listName);
+
+    /**
      * Selects a opportunity.
      * @param opportunityName value.
      * @return OpportunityPage instance.

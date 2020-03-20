@@ -9,14 +9,9 @@
 
 package salesforce.ui.pages.opportunities;
 
-import salesforce.ui.pages.BasePage;
-
-/**
- * Defines OpportunitiesPageClassic.
- *
- * @author Alan Escalera.
- * @version 1.0 19 March 2020.
- */
-public abstract class OpportunityPageAbstract extends BasePage {
-
+public class OpportunityPageClassic extends OpportunityPageAbstract {
+    @Override
+    protected void waitUntilPageObjectIsLoaded() {
+        
+    }
 }

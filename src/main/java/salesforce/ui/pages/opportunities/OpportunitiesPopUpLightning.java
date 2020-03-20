@@ -9,9 +9,12 @@
 
 package salesforce.ui.pages.opportunities;
 
+import core.selenium.WebDriverManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import salesforce.ui.pages.AppPageFactory;
 
 /**
  * Defines OpportunitiesPopUpLightning.
@@ -24,7 +27,6 @@ public class OpportunitiesPopUpLightning extends OpportunitiesPageAbstract {
     private WebElement newButton;
 
     private WebElement nameOpportunityTable;
-
     private static final String NAME_OPPORTUNITY = "a[title='%s']";
 
     @Override
@@ -34,7 +36,10 @@ public class OpportunitiesPopUpLightning extends OpportunitiesPageAbstract {
 
     @Override
     public OpportunityPageAbstract selectOpportunityName(final String opportunityName) {
-        // TO DO
-        return null;
+        String opportunityNameXpath = String.format(NAME_OPPORTUNITY,opportunityName);
+        nameOpportunityTable = WebDriverManager.getInstance().getWebDriver().findElement(By
+                .cssSelector(opportunityNameXpath));
+        nameOpportunityTable.click();
+        return AppPageFactory.getOpportinityPage();
     }
 }

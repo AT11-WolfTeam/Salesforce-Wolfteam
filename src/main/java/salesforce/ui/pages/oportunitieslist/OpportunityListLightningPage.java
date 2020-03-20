@@ -23,14 +23,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class OpportunityListLightningPage extends OpportunityListPageAbstract {
 
     @FindBy(css = "table[role='grid']")
-    private WebElement OpportunityTable;
+    private WebElement opportunityTable;
 
     private static final String OPPORTUNITY_PARTIAL_LOCATOR = "a[title='%s']";
     private static final String CELL_ATTRIBUTE = "href";
 
 
     @Override
-    public void clickOnOpportunity(String opportunityName) {
+    public void clickOnOpportunity(final String opportunityName) {
 
         String opportunityLocator = String.format(OPPORTUNITY_PARTIAL_LOCATOR, opportunityName);
         webDriverWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector(opportunityLocator)));
@@ -40,6 +40,6 @@ public class OpportunityListLightningPage extends OpportunityListPageAbstract {
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-        webDriverWait.until(ExpectedConditions.visibilityOfAllElements(OpportunityTable));
+        webDriverWait.until(ExpectedConditions.visibilityOfAllElements(opportunityTable));
     }
 }

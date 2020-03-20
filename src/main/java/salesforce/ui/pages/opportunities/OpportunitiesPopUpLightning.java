@@ -12,7 +12,6 @@ package salesforce.ui.pages.opportunities;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
@@ -45,8 +44,8 @@ public class OpportunitiesPopUpLightning extends OpportunitiesPageAbstract {
 
         opportunityListButton.click();
         opportunityOrderedListLocator = String.format(OPPORTUNITY_ORDERED_LIST_PARTIAL_LOCATOR, listName);
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(webDriver.findElement(By.xpath
-                (opportunityOrderedListLocator))));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(webDriver.findElement(
+                By.xpath(opportunityOrderedListLocator))));
         webDriver.findElement(By.xpath(opportunityOrderedListLocator)).click();
     }
 

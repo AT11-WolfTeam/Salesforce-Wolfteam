@@ -20,9 +20,9 @@ import salesforce.ui.pages.BasePage;
 public abstract class OpportunityListPageAbstract extends BasePage {
 
     /**
-     * Clicks on a specific opportunity
+     * Clicks on a specific opportunity.
      *
      * @param opportunityName contains an String value.
      */
-    public abstract void clickOnOpportunity(final String opportunityName);
+    public abstract void clickOnOpportunity(String opportunityName);
 }

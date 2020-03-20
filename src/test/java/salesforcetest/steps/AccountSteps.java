@@ -11,7 +11,7 @@ package salesforcetest.steps;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
-import salesforce.api.AccountHelper;
+import salesforce.api.requestapi.AccountHelper;
 import salesforce.entities.Account;
 import salesforce.entities.Context;
 import salesforce.utils.SheetManager;
@@ -45,7 +45,7 @@ public class AccountSteps {
     /**
      * Allows to create account.
      *
-     * @param quantity    number of accounts.
+     * @param quantity number of accounts.
      * @param accountType value.
      */
     @Given("I create {int} {string} accounts")

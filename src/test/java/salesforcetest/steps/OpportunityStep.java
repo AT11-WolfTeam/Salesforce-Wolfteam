@@ -13,8 +13,18 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+
 import salesforce.ui.pages.AppPageFactory;
+import org.testng.Assert;
+import salesforce.api.requestapi.OpportunityApiHelper;
+import salesforce.entities.Context;
+import salesforce.entities.Opportunity;
+import salesforce.utils.SheetManager;
 import salesforce.ui.pages.PageTransporter;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
 
 /**
  * Manages a Opportunity steps definition.
@@ -24,6 +34,19 @@ import salesforce.ui.pages.PageTransporter;
  */
 public class OpportunityStep {
     private static final String OPPORTUNITY_PAGE = "Opportunities Page";
+    private Context context;
+    private OpportunityApiHelper opportunityApiHelper;
+    private ArrayList<HashMap<String, String>> opportunityMapList;
+
+    /**
+     * OpportunityStep constructor.
+     *
+     * @param context value.
+     */
+    public OpportunityStep(final Context context) {
+        this.context = context;
+        opportunityApiHelper = new OpportunityApiHelper();
+    }
 
     /**
      * Creates Opportunity.
@@ -56,6 +79,33 @@ public class OpportunityStep {
     }
 
     /**
+     * Allows to create many opportunities.
+     *
+     * @param quantity        number of opportunities.
+     * @param opportunityType value.
+     */
+    @Given("I create {int} {string} opportunities")
+    public void createsOpportunities(final int quantity, final String opportunityType) {
+        String sheetName = "Opportunities";
+        opportunityMapList = SheetManager.manageSheet(sheetName, quantity, opportunityType);
+        ArrayList<Opportunity> opportunities = opportunityApiHelper.setOpportunities(opportunityMapList);
+        context.setOpportunities(opportunities);
+        opportunityApiHelper.postOpportunities(context.getOpportunities());
+    }
+
+    /**
+     * Deletes created opportunities.
+     */
+    @When("I delete created opportunities")
+    public void deleteOpportunities() {
+        opportunityApiHelper.deleteOpportunities(context.getOpportunities());
+        final String expected = "204";
+        for (Opportunity opportunity : context.getOpportunities()) {
+            Assert.assertEquals(opportunity.getStatusCode(), expected);
+        }
+    }
+
+    /**
      * Navigates to an opportunity.
      */
     @And("I navigate to Opportunities Page")
@@ -66,8 +116,9 @@ public class OpportunityStep {
 
     /**
      * Search an opportunity.
+     *
      * @param opportunityName contains a String value.
-     * @param listName contains a String value.
+     * @param listName        contains a String value.
      */
     @And("I search an opportunity {string} in list {string}")
     public void searchOpportunity(final String opportunityName, final String listName) {

@@ -18,7 +18,7 @@ package salesforce.ui.pages.oportunitieslist;
 public class OpportunityListClassicPage extends OpportunityListPageAbstract {
 
     @Override
-    public void clickOnOpportunity(String opportunityName) {
+    public void clickOnOpportunity(final String opportunityName) {
 
     }
 

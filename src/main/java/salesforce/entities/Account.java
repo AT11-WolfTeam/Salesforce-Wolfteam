@@ -8,16 +8,13 @@
  */
 
 package salesforce.entities;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import salesforce.entities.constants.AccountConstant;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Supplier;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-
-import salesforce.entities.constants.AccountConstant;
 
 /**
  * Manages account information.
@@ -26,7 +23,7 @@ import salesforce.entities.constants.AccountConstant;
  * @version 1.0 17 March 2020.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonIgnoreProperties(value = { "accountInformation" })
+@JsonIgnoreProperties(value = {"accountInformation"})
 public class Account {
     private String id;
     private String name;
@@ -37,6 +34,7 @@ public class Account {
 
     /**
      * Gets Id of account.
+     *
      * @return id value.
      */
     public String getId() {
@@ -45,6 +43,7 @@ public class Account {
 
     /**
      * Gets name value.
+     *
      * @return name value.
      */
     public String getName() {
@@ -53,6 +52,7 @@ public class Account {
 
     /**
      * Gets account description value.
+     *
      * @return account description value.
      */
     public String getDescription() {
@@ -61,6 +61,7 @@ public class Account {
 
     /**
      * Gets status code.
+     *
      * @return status code value.
      */
     public String getStatusCode() {
@@ -69,6 +70,7 @@ public class Account {
 
     /**
      * Sets account Id.
+     *
      * @param id value.
      */
     public void setId(final String id) {
@@ -77,6 +79,7 @@ public class Account {
 
     /**
      * Sets account name value.
+     *
      * @param name value.
      */
     public void setName(final String name) {
@@ -85,6 +88,7 @@ public class Account {
 
     /**
      * Sets account description value.
+     *
      * @param description value.
      */
     public void setDescription(final String description) {
@@ -93,6 +97,7 @@ public class Account {
 
     /**
      * Sets status code.
+     *
      * @param statusCode value.
      */
     public void setStatusCode(final String statusCode) {
@@ -101,6 +106,7 @@ public class Account {
 
     /**
      * Sets account information.
+     *
      * @param accountInformation map.
      */
     public void setAccountInformation(final HashMap<String, String> accountInformation) {
@@ -111,6 +117,7 @@ public class Account {
 
     /**
      * Visits all setter methods of task list.
+     *
      * @param accountInformation hasmap.
      * @return map of visited setter methods.
      */
@@ -119,12 +126,13 @@ public class Account {
 
         strategyMap.put(AccountConstant.NAME, () -> setName(accountInformation.get(AccountConstant.NAME)));
         strategyMap.put(AccountConstant.DESCRIPTION, () ->
-                setDescription(accountInformation.get(AccountConstant.DESCRIPTION)));
+            setDescription(accountInformation.get(AccountConstant.DESCRIPTION)));
         return strategyMap;
     }
 
     /**
      * Gets account information.
+     *
      * @return task list values.
      */
     public HashMap<String, String> getAccountInformation() {
@@ -138,6 +146,7 @@ public class Account {
 
     /**
      * Visits all getter methods of task list.
+     *
      * @return map of visited get methods.
      */
     private HashMap<String, Supplier> composeStrategyMapGet() {

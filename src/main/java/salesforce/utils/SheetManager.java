@@ -9,12 +9,11 @@
 
 package salesforce.utils;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Manages sheet.
@@ -37,7 +36,8 @@ public final class SheetManager {
 
     /**
      * Create hash map.
-     * @param rowKey value.
+     *
+     * @param rowKey   value.
      * @param rowValue value.
      * @return hash map.
      */
@@ -56,7 +56,8 @@ public final class SheetManager {
 
     /**
      * Generates salesforce entities map.
-     * @param rowKey values.
+     *
+     * @param rowKey   values.
      * @param rowValue values.
      * @param quantity number value.
      */
@@ -71,8 +72,9 @@ public final class SheetManager {
 
     /**
      * Manage sheet to convert in map entities.
-     * @param sheetName object.
-     * @param quantity number.
+     *
+     * @param sheetName   object.
+     * @param quantity    number.
      * @param accountType value.
      * @return list of maps.
      */
@@ -89,8 +91,9 @@ public final class SheetManager {
 
     /**
      * Finds type account.
+     *
      * @param datatypeSheet object.
-     * @param accountType name.
+     * @param accountType   name.
      * @return row found or null if it is not there.
      */
     private static Row findAccountType(final Sheet datatypeSheet, final String accountType) {

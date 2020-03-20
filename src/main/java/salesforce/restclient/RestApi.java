@@ -8,11 +8,9 @@
  */
 
 package salesforce.restclient;
-
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-
 import salesforce.utils.AccessToken;
 import salesforce.utils.TokenConstant;
 
@@ -34,27 +32,29 @@ public final class RestApi {
 
     /**
      * Posts entity.
+     *
      * @param jsonEntity value.
-     * @param endpoint value.
+     * @param endpoint   value.
      * @return response object.
      */
     public static Response postEntity(final String jsonEntity, final String endpoint) {
         return RestAssured.given().headers(TokenConstant.AUTHORIZATION, token, TokenConstant.CONTENT_TYPE,
-            ContentType.JSON).request().accept(ContentType.JSON).body(jsonEntity)
-            .when().post(AccessToken.getInstance().getClient().getInstanceUrl() + endpoint)
-            .then().extract().response();
+                ContentType.JSON).request().accept(ContentType.JSON).body(jsonEntity)
+                .when().post(AccessToken.getInstance().getClient().getInstanceUrl() + endpoint)
+                .then().extract().response();
     }
 
     /**
      * Deletes entity by Id.
+     *
      * @param entityId value.
      * @param endpoint value.
      * @return response object.
      */
     public static Response deleteEntity(final String entityId, final String endpoint) {
         return RestAssured.given().headers(TokenConstant.AUTHORIZATION, token, TokenConstant.CONTENT_TYPE,
-            ContentType.JSON).request().accept(ContentType.JSON)
-            .when().delete(AccessToken.getInstance().getClient().getInstanceUrl() + endpoint
-            + entityId).then().extract().response();
+                ContentType.JSON).request().accept(ContentType.JSON)
+                .when().delete(AccessToken.getInstance().getClient().getInstanceUrl() + endpoint
+                        + entityId).then().extract().response();
     }
 }

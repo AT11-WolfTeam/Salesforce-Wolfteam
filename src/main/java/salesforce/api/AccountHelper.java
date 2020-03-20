@@ -11,14 +11,11 @@ package salesforce.api;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-
-import salesforce.restclient.RestApi;
 import salesforce.entities.Account;
+import salesforce.restclient.RestApi;
 import salesforce.utils.EndPoint;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -34,12 +31,13 @@ public class AccountHelper {
 
     /**
      * Sets entities.
+     *
      * @param accountMapList values.
      * @return account list.
      */
     public ArrayList<Account> setAccounts(final ArrayList<HashMap<String, String>> accountMapList) {
         ArrayList<Account> accountsList = new ArrayList<>();
-        for (HashMap<String, String> accountItem: accountMapList) {
+        for (HashMap<String, String> accountItem : accountMapList) {
             account = new Account();
             account.setAccountInformation(accountItem);
             accountsList.add(account);
@@ -49,15 +47,14 @@ public class AccountHelper {
 
     /**
      * Creates account.
+     *
      * @param accounts list.
      */
     public void postAccounts(final List<Account> accounts) {
-        for (Account account: accounts) {
+        for (Account account : accounts) {
             try {
                 String json = new ObjectMapper().writeValueAsString(account);
-
                 Response response = RestApi.postEntity(json, EndPoint.ACCOUNT_ENDPOINT);
-
                 JsonPath jsonPath = response.jsonPath();
                 String id = jsonPath.get("id");
                 account.setId(id);
@@ -69,13 +66,12 @@ public class AccountHelper {
 
     /**
      * Deletes accounts.
+     *
      * @param accountList value.
      */
     public void deleteAccounts(final List<Account> accountList) {
-        for (Account account: accountList) {
-
+        for (Account account : accountList) {
             Response response = RestApi.deleteEntity(account.getId(), EndPoint.ACCOUNT_ENDPOINT);
-
             int statusCode = response.getStatusCode();
             account.setStatusCode(Integer.toString(statusCode));
         }

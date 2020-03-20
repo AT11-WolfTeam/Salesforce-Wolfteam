@@ -8,7 +8,6 @@
  */
 
 package salesforce.entities;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -36,6 +35,7 @@ public class Context {
 
     /**
      * Gets account instance.
+     *
      * @return account instance.
      */
     public Account getAccount() {
@@ -44,6 +44,7 @@ public class Context {
 
     /**
      * Gets account list.
+     *
      * @return list.
      */
     public List<Account> getAccounts() {
@@ -52,6 +53,7 @@ public class Context {
 
     /**
      * Sets an account to account list.
+     *
      * @param account object.
      */
     public void setAccount(final Account account) {
@@ -60,6 +62,7 @@ public class Context {
 
     /**
      * Sets an account list.
+     *
      * @param accountList object.
      */
     public void setAccounts(final ArrayList<Account> accountList) {

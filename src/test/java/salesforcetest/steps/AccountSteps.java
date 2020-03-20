@@ -8,19 +8,15 @@
  */
 
 package salesforcetest.steps;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
-
+import salesforce.api.AccountHelper;
 import salesforce.entities.Account;
 import salesforce.entities.Context;
-import salesforce.api.AccountHelper;
 import salesforce.utils.SheetManager;
-
-import io.cucumber.java.en.Given;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Manages account steps.
@@ -38,6 +34,7 @@ public class AccountSteps {
 
     /**
      * Account steps constructor.
+     *
      * @param context object.
      */
     public AccountSteps(final Context context) {
@@ -47,7 +44,8 @@ public class AccountSteps {
 
     /**
      * Allows to create account.
-     * @param quantity number of accounts.
+     *
+     * @param quantity    number of accounts.
      * @param accountType value.
      */
     @Given("I create {int} {string} accounts")
@@ -66,7 +64,7 @@ public class AccountSteps {
     public void deleteAccounts() {
         accountHelper.deleteAccounts(context.getAccounts());
         final String expected = "204";
-        for (Account account: context.getAccounts()) {
+        for (Account account : context.getAccounts()) {
             Assert.assertEquals(account.getStatusCode(), expected);
         }
     }

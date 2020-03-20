@@ -25,7 +25,8 @@ public class OpportunitiesLightningPage extends OpportunitiesPageAbstract {
     @FindBy(css = "div[class='triggerLinkTextAndIconWrapper slds-p-right--x-large']")
     private WebElement opportunityListButton;
 
-    private static final String OPPORTUNITY_ORDERED_LIST_LOCATOR = "a[id = 'virtualAutoCompleteMenuOption_de3a36cf3ac78']";
+    private static final String OPPORTUNITY_ORDERED_LIST_LOCATOR =
+            "a[id = 'virtualAutoCompleteMenuOption_de3a36cf3ac78']";
 
     @Override
     public void displayAllOpportunities() {
@@ -39,7 +40,11 @@ public class OpportunitiesLightningPage extends OpportunitiesPageAbstract {
         waitElementToBeClickable(opportunityListButton);
     }
 
-    private void waitElementToBeClickable(WebElement webElement) {
+    /**
+     * Waits for a clickable web element.
+     * @param webElement contains a web element.
+     */
+    private void waitElementToBeClickable(final WebElement webElement) {
         webDriverWait.until(ExpectedConditions.visibilityOf(webElement));
         webDriverWait.until(ExpectedConditions.elementToBeClickable(webElement));
     }

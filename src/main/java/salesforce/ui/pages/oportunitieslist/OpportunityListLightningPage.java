@@ -30,7 +30,6 @@ public class OpportunityListLightningPage extends OpportunityListPageAbstract {
 
     @Override
     public void clickOnOpportunity(final String opportunityName) {
-
         String opportunityLocator = String.format(OPPORTUNITY_PARTIAL_LOCATOR, opportunityName);
         webDriverWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector(opportunityLocator)));
         String opportunityLink = webDriver.findElement(By.cssSelector(opportunityLocator)).getAttribute(CELL_ATTRIBUTE);

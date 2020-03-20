@@ -14,7 +14,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
- * Manages a web page.
+ * Manages a TopClassicMenu menu.
  *
  * @author Enrique Carrizales.
  * @version 1.0 17 March 2020.
@@ -34,7 +34,7 @@ public class TopClassicMenu extends TopMenuAbstract {
      * Click on apps button.
      */
     @Override
-    protected void clickOnAppsButton() {
+    public void clickOnAppsButton() {
         appsButton.click();
     }
 }

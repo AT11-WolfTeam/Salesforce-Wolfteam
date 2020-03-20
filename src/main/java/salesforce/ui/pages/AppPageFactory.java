@@ -15,6 +15,9 @@ import core.utils.UserExperience;
 import salesforce.ui.components.menu.TopClassicMenu;
 import salesforce.ui.components.menu.TopLightningMenu;
 import salesforce.ui.components.menu.TopMenuAbstract;
+import salesforce.ui.pages.opportunity.OpportunitiesClassicPage;
+import salesforce.ui.pages.opportunity.OpportunitiesLightningPage;
+import salesforce.ui.pages.opportunity.OpportunitiesPageAbstract;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,6 +40,13 @@ public class AppPageFactory {
         Map<String, TopMenuAbstract> map = new HashMap<>();
         map.put(UserExperience.USER_EXPERIENCE_CLASSIC.get(), new TopClassicMenu());
         map.put(UserExperience.USER_EXPERIENCE_LIGHTNING.get(), new TopLightningMenu());
+        return map.get(userExperience);
+    }
+
+    public static OpportunitiesPageAbstract getOpportunitiesPage() {
+        Map<String, OpportunitiesPageAbstract> map = new HashMap<>();
+        map.put(UserExperience.USER_EXPERIENCE_CLASSIC.get(), new OpportunitiesClassicPage());
+        map.put(UserExperience.USER_EXPERIENCE_LIGHTNING.get(), new OpportunitiesLightningPage());
         return map.get(userExperience);
     }
 }

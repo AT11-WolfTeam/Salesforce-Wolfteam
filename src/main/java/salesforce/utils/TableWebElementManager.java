@@ -7,20 +7,13 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages.opportunity;
-
-import salesforce.ui.pages.BasePage;
+package salesforce.utils;
 
 /**
- * Manages a web page.
+ * Manages a helper of table web elements.
  *
  * @author Enrique Carrizales.
  * @version 1.0 19 March 2020.
  */
-public abstract class OpportunityPageAbstract extends BasePage {
-
-    /**
-     * Display all opportunities.
-     */
-    protected abstract void displayAllOpportunities();
+public class TableWebElementManager {
 }

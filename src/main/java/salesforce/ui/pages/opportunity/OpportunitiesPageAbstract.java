@@ -9,21 +9,18 @@
 
 package salesforce.ui.pages.opportunity;
 
+import salesforce.ui.pages.BasePage;
+
 /**
- * Manages a web page.
+ * Manages an OpportunitiesPageAbstract page.
  *
  * @author Enrique Carrizales.
  * @version 1.0 19 March 2020.
  */
-public class OpportunityClassicPage extends OpportunityPageAbstract {
+public abstract class OpportunitiesPageAbstract extends BasePage {
 
-    @Override
-    protected void displayAllOpportunities() {
-
-    }
-
-    @Override
-    protected void waitUntilPageObjectIsLoaded() {
-
-    }
+    /**
+     * Display all opportunities.
+     */
+    public abstract void displayAllOpportunities();
 }

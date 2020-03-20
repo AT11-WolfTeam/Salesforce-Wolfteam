@@ -13,10 +13,12 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.PageTransporter;
+import salesforce.ui.pages.opportunity.OpportunitiesPageAbstract;
 
 /**
- * Manages com.steps definition.
+ * Manages a Opportunity steps definition.
  *
  * @author Enrique Carrizales.
  * @version 1.0 16 March 2020.
@@ -70,6 +72,8 @@ public class OpportunityStep {
      */
     @And("I search an opportunity {string}")
     public void searchsOportunity(final String arg0) {
-        //To do
+        OpportunitiesPageAbstract opportunitiesPageAbstract = AppPageFactory.getOpportunitiesPage();
+        opportunitiesPageAbstract.displayAllOpportunities();
+        String algo = arg0;
     }
 }

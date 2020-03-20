@@ -15,10 +15,10 @@ package salesforce.ui.pages.opportunity;
  * @author Enrique Carrizales.
  * @version 1.0 19 March 2020.
  */
-public class OpportunityLightningPage extends OpportunityPageAbstract {
+public class OpportunitiesClassicPage extends OpportunitiesPageAbstract {
 
     @Override
-    protected void displayAllOpportunities() {
+    public void displayAllOpportunities() {
 
     }
 

@@ -22,5 +22,5 @@ public abstract class TopMenuAbstract extends BasePage {
     /**
      * Click on apps button.
      */
-    protected abstract void clickOnAppsButton();
+    public abstract void clickOnAppsButton();
 }

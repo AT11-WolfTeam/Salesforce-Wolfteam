@@ -40,13 +40,14 @@ Feature: Opportunity
   @wip
   Scenario: Assign a campaign to an opportunity
     Given I go to Campaign Page
-    And I create a new Campaign with the name "Promotion"
+    And I create a new Campaign with
+      | Campaign Name | Promotion |
     And I go to Opportunity Page
     And I go to the opportunity already created
     And I go to Edit opportunity
     When I assign the Campaign
     Then the application should display an information message in Opportunity page with the format "Opportunity [Name Opportunity] was saved."
-    And On the edit section should display the Campaign name "[campaign name]"
+    And On the details section should display the Campaign name "[campaign name]"
 
 
   @wip

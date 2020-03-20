@@ -23,7 +23,6 @@ public class NewCampaignPopUpLightning extends NewCampaignPageAbstract {
     @FindBy(css = "input[id='8363:0']")
     private WebElement campaignNameField;
 
-
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(campaignNameField));

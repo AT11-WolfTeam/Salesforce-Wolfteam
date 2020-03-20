@@ -7,20 +7,13 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.components.menu;
-
-import salesforce.ui.pages.BasePage;
+package salesforce.utils;
 
 /**
- * Manages a web page.
+ * Manages a helper of table web elements.
  *
  * @author Enrique Carrizales.
- * @version 1.0 17 March 2020.
+ * @version 1.0 19 March 2020.
  */
-public abstract class TopMenuAbstract extends BasePage {
-
-    /**
-     * Click on apps button.
-     */
-    public abstract void clickOnAppsButton();
+public class TableWebElementManager {
 }

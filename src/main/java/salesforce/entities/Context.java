@@ -54,6 +54,7 @@ public class Context {
 
     /**
      * gets list of opportunities.
+     *
      * @return list of opportunities.
      */
     public List<Opportunity> getOpportunities() {
@@ -62,6 +63,7 @@ public class Context {
 
     /**
      * Sets a list of opportunities.
+     *
      * @param opportunities list value..
      */
     public void setOpportunities(final List<Opportunity> opportunities) {

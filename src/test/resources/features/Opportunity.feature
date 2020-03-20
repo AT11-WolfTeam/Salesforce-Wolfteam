@@ -2,10 +2,9 @@ Feature: Opportunity
 
   @wip
   Scenario: Change opportunity owner to another user
-    Given I login as "Admin"
-    And I create opportunity as OpportunityTest
+    Given I create opportunity as OpportunityTest
     And I navigate to Opportunities Page
-    And I search "OpportunityTest"
+    And I search an opportunity "OpportunityTest"
     When I change an opportunity's owner with "CurrentOwner"
     Then the application should display an information message in Opportunity page with the format "[[Owner Name]] now owns the record for [[Opportunity Name]]"
 
@@ -40,13 +39,14 @@ Feature: Opportunity
   @wip
   Scenario: Assign a campaign to an opportunity
     Given I go to Campaign Page
-    And I create a new Campaign with the name "Promotion"
+    And I create a new Campaign with
+      | Campaign Name | Promotion |
     And I go to Opportunity Page
     And I go to the opportunity already created
     And I go to Edit opportunity
     When I assign the Campaign
     Then the application should display an information message in Opportunity page with the format "Opportunity [Name Opportunity] was saved."
-    And On the edit section should display the Campaign name "[campaign name]"
+    And On the details section should display the Campaign name "[campaign name]"
 
 
   @wip

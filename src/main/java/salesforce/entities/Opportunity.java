@@ -13,7 +13,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import salesforce.entities.constants.OpportunityConstant;
 import salesforce.utils.DateFormatter;
-
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
@@ -44,6 +43,7 @@ public class Opportunity {
 
     /**
      * Gets id value.
+     *
      * @return id value.
      */
     public String getId() {
@@ -52,6 +52,7 @@ public class Opportunity {
 
     /**
      * Gets name value.
+     *
      * @return name value.
      */
     public String getName() {
@@ -60,6 +61,7 @@ public class Opportunity {
 
     /**
      * Gets type value.
+     *
      * @return type value.
      */
     public String getType() {
@@ -68,6 +70,7 @@ public class Opportunity {
 
     /**
      * Gets lead source value.
+     *
      * @return lead source value.
      */
     public String getLeadSource() {
@@ -76,6 +79,7 @@ public class Opportunity {
 
     /**
      * Gets amount value.
+     *
      * @return amount value.
      */
     public String getAmount() {
@@ -84,6 +88,7 @@ public class Opportunity {
 
     /**
      * Gets close date value.
+     *
      * @return close date value.
      */
     public String getCloseDate() {
@@ -92,6 +97,7 @@ public class Opportunity {
 
     /**
      * Gets stage name value.
+     *
      * @return stage name value.
      */
     public String getStageName() {
@@ -100,6 +106,7 @@ public class Opportunity {
 
     /**
      * Gets probability value.
+     *
      * @return probability value.
      */
     public String getProbability() {
@@ -108,6 +115,7 @@ public class Opportunity {
 
     /**
      * Gets description value.
+     *
      * @return description value.
      */
     public String getDescription() {
@@ -116,6 +124,7 @@ public class Opportunity {
 
     /**
      * Gets next step value.
+     *
      * @return next step value.
      */
     public String getNextStep() {
@@ -124,6 +133,7 @@ public class Opportunity {
 
     /**
      * Gets status code value.
+     *
      * @return status code.
      */
     public String getStatusCode() {
@@ -132,6 +142,7 @@ public class Opportunity {
 
     /**
      * Sets is value.
+     *
      * @param id value.
      */
     public void setId(final String id) {
@@ -140,6 +151,7 @@ public class Opportunity {
 
     /**
      * Sets name value.
+     *
      * @param name value.
      */
     public void setName(final String name) {
@@ -148,6 +160,7 @@ public class Opportunity {
 
     /**
      * Sets type value.
+     *
      * @param type value.
      */
     public void setType(final String type) {
@@ -156,6 +169,7 @@ public class Opportunity {
 
     /**
      * Sets lead source value.
+     *
      * @param leadSource value.
      */
     public void setLeadSource(final String leadSource) {
@@ -164,6 +178,7 @@ public class Opportunity {
 
     /**
      * Sets amount value.
+     *
      * @param amount value.
      */
     public void setAmount(final String amount) {
@@ -172,6 +187,7 @@ public class Opportunity {
 
     /**
      * Sets close date value.
+     *
      * @param closeDate value.
      */
     public void setCloseDate(final String closeDate) {
@@ -180,6 +196,7 @@ public class Opportunity {
 
     /**
      * Sets stage name value.
+     *
      * @param stageName value.
      */
     public void setStageName(final String stageName) {
@@ -188,6 +205,7 @@ public class Opportunity {
 
     /**
      * Sets probability value.
+     *
      * @param probability value.
      */
     public void setProbability(final String probability) {
@@ -196,6 +214,7 @@ public class Opportunity {
 
     /**
      * Sets description value.
+     *
      * @param description value.
      */
     public void setDescription(final String description) {
@@ -204,6 +223,7 @@ public class Opportunity {
 
     /**
      * Sets next step value.
+     *
      * @param nextStep value.
      */
     public void setNextStep(final String nextStep) {
@@ -212,6 +232,7 @@ public class Opportunity {
 
     /**
      * Sets status code value.
+     *
      * @param statusCode value.
      */
     public void setStatusCode(final String statusCode) {
@@ -227,7 +248,7 @@ public class Opportunity {
         HashMap<String, String> currentOpportunityInformation = new HashMap<>(opportunityInformation);
         if (opportunityInformation.get(OpportunityConstant.CLOSE_DATE) != null) {
             currentOpportunityInformation.put(OpportunityConstant.CLOSE_DATE,
-                DateFormatter.formatDate(opportunityInformation.get(OpportunityConstant.CLOSE_DATE)));
+                    DateFormatter.formatDate(opportunityInformation.get(OpportunityConstant.CLOSE_DATE)));
         }
         HashMap<String, Runnable> strategyMap = composeStrategyMap(currentOpportunityInformation);
         currentOpportunityInformation.keySet().forEach(key -> strategyMap.get(key).run());

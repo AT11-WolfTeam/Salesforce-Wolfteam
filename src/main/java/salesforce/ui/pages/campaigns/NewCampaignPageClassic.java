@@ -7,34 +7,29 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.components.menu;
+package salesforce.ui.pages.campaigns;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
- * Manages a TopClassicMenu menu.
+ * Defines NewCampaignPageClassic.
  *
- * @author Enrique Carrizales.
- * @version 1.0 17 March 2020.
+ * @author Alan Escalera.
+ * @version 1.0 19 March 2020.
  */
-public class TopClassicMenu extends TopMenuAbstract {
-
-    @FindBy(css = "li[id='AllTab_Tab']")
-    private WebElement appsButton;
+public class NewCampaignPageClassic extends NewCampaignPageAbstract {
+    @FindBy(css = "input[id='cpn1']")
+    private WebElement campaignNameField;
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-        webDriverWait.until(ExpectedConditions.visibilityOf(appsButton));
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(appsButton));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(campaignNameField));
     }
 
-    /**
-     * Click on apps button.
-     */
     @Override
-    public void clickOnAppsButton() {
-        appsButton.click();
+    protected void setCampaignNameField(final String campaignName) {
+        campaignNameField.sendKeys(campaignName);
     }
 }

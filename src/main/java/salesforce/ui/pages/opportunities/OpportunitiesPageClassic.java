@@ -18,6 +18,11 @@ package salesforce.ui.pages.opportunities;
 public class OpportunitiesPageClassic extends OpportunitiesPageAbstract {
 
     @Override
+    public void displayOpportunityList(final String listName) {
+
+    }
+
+    @Override
     public OpportunityPageAbstract selectOpportunityName(final String opportunityName) {
         //to Do
         return null;

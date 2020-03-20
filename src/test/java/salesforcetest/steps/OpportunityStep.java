@@ -20,7 +20,6 @@ import salesforce.entities.Context;
 import salesforce.entities.Opportunity;
 import salesforce.utils.SheetManager;
 import salesforce.ui.pages.PageTransporter;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -47,14 +46,20 @@ public class OpportunityStep {
         opportunityApiHelper = new OpportunityApiHelper();
     }
 
+
     /**
      * Creates Opportunity.
      *
-     * @param opportunity contains name Opportunity object.
+     * @param opportunityQuantity contains opportunity quantity.
+     * @param opportunity contains opportunity type.
      */
-    @Given("^I create opportunity as (.*)")
-    public void createsOpportunity(final String opportunity) {
-        System.out.println(opportunity);
+    @Given("I create {int} opportunity as {string}")
+    public void createsOpportunity(final int opportunityQuantity, final String opportunity) {
+        String sheetName = "Accounts";
+        opportunityMapList = SheetManager.manageSheet(sheetName, opportunityQuantity, opportunity);
+        ArrayList<Opportunity> opportunities = opportunityApiHelper.setOpportunities(opportunityMapList);
+        context.setOpportunities(opportunities);
+        opportunityApiHelper.postOpportunities(context.getOpportunities());
     }
 
     /**

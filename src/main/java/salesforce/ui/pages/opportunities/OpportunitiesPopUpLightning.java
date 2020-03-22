@@ -13,6 +13,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import salesforce.ui.pages.opportunity.OpportunityPageAbstract;
 
 /**
  * Defines OpportunitiesPopUpLightning.
@@ -28,9 +29,6 @@ public class OpportunitiesPopUpLightning extends OpportunitiesPageAbstract {
     private WebElement opportunityListButton;
 
     private static final String OPPORTUNITY_ORDERED_LIST_PARTIAL_LOCATOR = "//li[contains(.,'%s')]";
-
-    private WebElement nameOpportunityTable;
-
     private static final String NAME_OPPORTUNITY = "a[title='%s']";
 
     @Override

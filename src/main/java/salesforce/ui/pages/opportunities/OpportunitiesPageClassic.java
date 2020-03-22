@@ -9,6 +9,8 @@
 
 package salesforce.ui.pages.opportunities;
 
+import salesforce.ui.pages.opportunity.OpportunityPageAbstract;
+
 /**
  * Defines OpportunitiesPageClassic.
  *

@@ -37,7 +37,7 @@ public class ChangeOpportunityOwnerLightningPopup extends BasePage {
     }
 
     /**
-     * Clicks on a TextBox.
+     * Clicks a TextBox.
      */
     public void clickOnOwnerNameTextBox() {
         ownerNameTextBox.click();

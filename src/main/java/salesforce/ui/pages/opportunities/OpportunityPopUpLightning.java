@@ -60,9 +60,6 @@ public class OpportunityPopUpLightning extends OpportunityPageAbstract {
 
     @Override
     protected String getCampaignName() {
-        System.out.println(campaignSaved.getText());
-        System.out.println(campaignSaved.getText());
-        System.out.println(campaignSaved.getText());
         return campaignSaved.getText();
     }
 

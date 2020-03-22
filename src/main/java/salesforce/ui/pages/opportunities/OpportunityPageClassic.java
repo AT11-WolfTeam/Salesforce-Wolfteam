@@ -11,8 +11,14 @@ package salesforce.ui.pages.opportunities;
 
 import core.selenium.WebDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.Set;
 
 /**
  * Defines OpportunityPageClassic.
@@ -21,7 +27,7 @@ import org.openqa.selenium.support.FindBy;
  * @version 1.0 19 March 2020.
  */
 public class OpportunityPageClassic extends OpportunityPageAbstract {
-    @FindBy(css = "div[id='opp17_ileinner']")
+    @FindBy(css = "td[id='opp17_ilecell']")
     private WebElement campaignField;
 
     @FindBy(xpath = "//img[@alt='Primary Campaign Source Lookup (New Window)']")
@@ -30,7 +36,11 @@ public class OpportunityPageClassic extends OpportunityPageAbstract {
     @FindBy(css = "input[name='inlineEditSave']")
     private WebElement saveButton;
 
-    protected static final String CAMPAIGN_NAME = "//a[contains(text(),'%s')]";
+    @FindBy(xpath = "//div[@id='opp17_ileinner']")
+    private WebElement campaignSaved;
+
+    private String parent_handle;
+    protected static final String CAMPAIGN_NAME = "//th[@scope='row']//a[contains(text(),'%s')]";
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -39,8 +49,11 @@ public class OpportunityPageClassic extends OpportunityPageAbstract {
 
     @Override
     protected void assignCampaign(final String campaignName) {
+        JavascriptExecutor js = (JavascriptExecutor) webDriver;
+        js.executeScript("window.scrollBy(0,400)");
         clickCampaignField();
         // Perform the click operation that opens new window
+        parent_handle = webDriver.getWindowHandle();
         clickLookupButton();
         selectCampaign(campaignName);
         clickSaveButton();
@@ -48,7 +61,8 @@ public class OpportunityPageClassic extends OpportunityPageAbstract {
 
     @Override
     protected String getCampaignName() {
-        return null;
+        System.out.println(campaignSaved.getText());
+        return campaignSaved.getText();
     }
 
     /**
@@ -58,15 +72,21 @@ public class OpportunityPageClassic extends OpportunityPageAbstract {
      */
     private void selectCampaign(final String campaignName) {
         // Switch to new window opened
-        for (String winHandle : WebDriverManager.getInstance().getWebDriver().getWindowHandles()) {
-            WebDriverManager.getInstance().getWebDriver().switchTo().window(winHandle);
+        webDriverWait.until(ExpectedConditions.numberOfWindowsToBe(2));
+        Set<String> handles = webDriver.getWindowHandles();
+        for (String winHandle : handles) {
+            if (!parent_handle.equals(winHandle)) {
+                webDriver.switchTo().window(winHandle);
+                break;
+            }
         }
         // Perform the actions on new window
-        String campaignNameCss = String.format(CAMPAIGN_NAME, campaignName);
-        campaignNameSelect = WebDriverManager.getInstance().getWebDriver().findElement(By.cssSelector(campaignNameCss));
+        String campaignNameXpath = String.format(CAMPAIGN_NAME, campaignName);
+        webDriver.switchTo().frame("resultsFrame");
+        campaignNameSelect = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(campaignNameXpath)));
+
         campaignNameSelect.click();
-        // Close the new window, if that window no more required
-        WebDriverManager.getInstance().getWebDriver().switchTo().defaultContent();
+        webDriver.switchTo().window(parent_handle);
     }
 
     @Override
@@ -79,7 +99,7 @@ public class OpportunityPageClassic extends OpportunityPageAbstract {
      */
     private void clickCampaignField() {
         campaignField.click();
-        campaignField.click();
+        campaignField.sendKeys(Keys.ENTER);
     }
 
     /**

@@ -155,6 +155,7 @@ public class OpportunityStep {
     public void iAssignTheCampaignToTheOpportunity(final Map<String, String> mapOpportunityEdit) {
         opportunitiesPage = AppPageFactory.getOpportunitiesPage();
         opportunityPage = opportunitiesPage.selectOpportunityName("Test Opportunity");
+        
         opportunityUi = context.getOpportunityUi();
         opportunityUi.processInformation(mapOpportunityEdit);
         opportunityPage.editOpportunity(opportunityUi,mapOpportunityEdit.keySet());

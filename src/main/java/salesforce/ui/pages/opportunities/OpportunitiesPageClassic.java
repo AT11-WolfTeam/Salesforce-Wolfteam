@@ -23,7 +23,7 @@ import salesforce.ui.pages.AppPageFactory;
  * @version 1.0 19 March 2020.
  */
 public class OpportunitiesPageClassic extends OpportunitiesPageAbstract {
-    @FindBy(css = "//input[@class='btn' and @name='new']")
+    @FindBy(xpath = "//input[@class='btn' and @name='new']")
     private WebElement newButton;
     protected static final String NAME_OPPORTUNITY = "//th//a[contains(text(),'%s')]";
     @Override
@@ -36,7 +36,7 @@ public class OpportunitiesPageClassic extends OpportunitiesPageAbstract {
     public OpportunityPageAbstract selectOpportunityName(final String opportunityName) {
         String opportunityNameXpath = String.format(NAME_OPPORTUNITY, opportunityName);
         nameOpportunitySelected = WebDriverManager.getInstance().getWebDriver().findElement(By
-                .cssSelector(opportunityNameXpath));
+                .xpath(opportunityNameXpath));
         nameOpportunitySelected.click();
         return AppPageFactory.getOpportunityPage();
     }

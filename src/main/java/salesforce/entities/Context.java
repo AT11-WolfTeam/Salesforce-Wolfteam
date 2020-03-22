@@ -24,6 +24,7 @@ public class Context {
     private List<Account> accounts;
     private List<Opportunity> opportunities;
     private NewCampaign newCampaign;
+    private OpportunityUi opportunityUi;
 
     /**
      * Context constructor.
@@ -34,6 +35,7 @@ public class Context {
         this.accounts = new ArrayList<>();
         this.opportunities = new ArrayList<>();
         this.newCampaign = new NewCampaign();
+        this.opportunityUi = new OpportunityUi();
     }
 
     /**
@@ -80,5 +82,14 @@ public class Context {
      */
     public NewCampaign getNewCampaign() {
         return newCampaign;
+    }
+
+    /**
+     * Returns opportunity ui instance.
+     *
+     * @return opportunityUi object.
+     */
+    public OpportunityUi getOpportunityUi() {
+        return opportunityUi;
     }
 }

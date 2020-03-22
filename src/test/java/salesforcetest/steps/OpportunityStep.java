@@ -18,6 +18,7 @@ import salesforce.api.requestapi.OpportunityApiHelper;
 import salesforce.entities.Context;
 import salesforce.entities.NewCampaign;
 import salesforce.entities.Opportunity;
+import salesforce.entities.OpportunityUi;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.campaigns.CampaignsPageAbstract;
 import salesforce.ui.pages.campaigns.NewCampaignPageAbstract;
@@ -47,6 +48,7 @@ public class OpportunityStep {
     private NewCampaign newCampaign;
     private OpportunitiesPageAbstract opportunitiesPage;
     private OpportunityPageAbstract opportunityPage;
+    private OpportunityUi opportunityUi;
 
     /**
      * OpportunityStep constructor.
@@ -150,9 +152,18 @@ public class OpportunityStep {
     }
 
     @When("I assign the Campaign to the opportunity")
-    public void iAssignTheCampaignToTheOpportunity(final Map<String, String> mapNewCampaign) {
+    public void iAssignTheCampaignToTheOpportunity(final Map<String, String> mapOpportunityEdit) {
         opportunitiesPage = AppPageFactory.getOpportunitiesPage();
         opportunityPage = opportunitiesPage.selectOpportunityName("Test Opportunity");
-        opportunityPage.editOpportunity(newCampaign,mapNewCampaign.keySet());
+        opportunityUi = context.getOpportunityUi();
+        opportunityUi.processInformation(mapOpportunityEdit);
+        opportunityPage.editOpportunity(newCampaign,mapOpportunityEdit.keySet());
+        opportunityPage.clickSaveButton();
+    }
+
+    @Then("On the details section should display the Campaign name")
+    public void onTheDetailsSectionShouldDisplayTheCampaignName() {
+       HashMap<String,String> mapOpportunityValidate = opportunityPage.getOpportunityDetails();
+       Assert.assertEquals(mapOpportunityValidate,context.getOpportunityUi().getOpportunityEdit());
     }
 }

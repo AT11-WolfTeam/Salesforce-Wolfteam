@@ -15,6 +15,7 @@ import salesforce.ui.pages.BasePage;
 
 import java.util.HashMap;
 import java.util.Set;
+import java.util.function.Supplier;
 
 /**
  * Defines OpportunitiesPageClassic.
@@ -55,8 +56,25 @@ public abstract class OpportunityPageAbstract extends BasePage {
         return strategyMap;
     }
 
+    public HashMap<String, String> getOpportunityDetails() {
+        HashMap<String, String> values = new HashMap<>();
+        HashMap<String, Supplier> strategyMapEducation = composeOpportunityDetailsToGet();
+        for (String key : strategyMapEducation.keySet()) {
+            values.put(key, strategyMapEducation.get(key).get().toString());
+        }
+        return values;
+    }
+
+    private HashMap<String, Supplier> composeOpportunityDetailsToGet() {
+        HashMap<String, Supplier> strategyMap = new HashMap<>();
+        strategyMap.put(CAMPAIGN_NAME, () -> getCampaignName());
+        return strategyMap;
+    }
+
+    protected abstract String getCampaignName();
+
     /**
      * clicks on Save Button.
      */
-    protected abstract void clickSaveButton();
+    public abstract void clickSaveButton();
 }

@@ -22,7 +22,7 @@ public class NewCampaign {
     private static final String CAMPAIGN_NAME = "Campaign Name";
     private static final String ACTIVE = "Active";
 
-    public String Active;
+    private String Active;
     private String campaignName;
 
     /**
@@ -85,4 +85,5 @@ public class NewCampaign {
         strategyMap.put(ACTIVE,()-> setActive(mapNewCampaign.get(ACTIVE)));
         return strategyMap;
     }
+
 }

@@ -46,6 +46,11 @@ public class OpportunityPageClassic extends OpportunityPageAbstract {
         clickSaveButton();
     }
 
+    @Override
+    protected String getCampaignName() {
+        return null;
+    }
+
     /**
      * Selects the campaign.
      * @param campaignName value.
@@ -64,7 +69,7 @@ public class OpportunityPageClassic extends OpportunityPageAbstract {
     }
 
     @Override
-    protected void clickSaveButton() {
+    public void clickSaveButton() {
         saveButton.click();
     }
 

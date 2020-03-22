@@ -76,10 +76,14 @@ public class AppPageFactory {
      * @return OpportunitiesPage instance.
      */
     public static OpportunitiesPageAbstract getOpportunitiesPage() {
-        Map<String, OpportunitiesPageAbstract> map = new HashMap<>();
-        map.put(UserExperience.USER_EXPERIENCE_CLASSIC.get(), new OpportunitiesPageClassic());
-        map.put(UserExperience.USER_EXPERIENCE_LIGHTNING.get(), new OpportunitiesPopUpLightning());
-        return map.get(userExperience);
+//        Map<String, OpportunitiesPageAbstract> map = new HashMap<>();
+//        map.put("Classic", new OpportunitiesPageClassic());
+//        map.put("Lightning", new OpportunitiesPopUpLightning());
+//        return map.get(userExperience);
+        if (userExperience.equals("Classic")) {
+            return new OpportunitiesPageClassic();
+        }
+        return new OpportunitiesPopUpLightning();
     }
 
     /**
@@ -87,7 +91,7 @@ public class AppPageFactory {
      *
      * @return OpportunityPage instance.
      */
-    public static OpportunityPageAbstract getOpportinityPage() {
+    public static OpportunityPageAbstract getOpportunityPage() {
         Map<String, OpportunityPageAbstract> map = new HashMap<>();
         map.put(UserExperience.USER_EXPERIENCE_CLASSIC.get(), new OpportunityPageClassic());
         map.put(UserExperience.USER_EXPERIENCE_LIGHTNING.get(), new OpportunityPopUpLightning());

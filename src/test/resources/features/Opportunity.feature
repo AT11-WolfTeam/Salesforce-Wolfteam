@@ -45,8 +45,7 @@ Feature: Opportunity
     And I go to "Opportunities Page"
     When I assign the Campaign to the opportunity
       | Campaign Name | Promotion |
-    Then the application should display an information message in Opportunity page with the format "Opportunity [Name Opportunity] was saved."
-    And On the details section should display the Campaign name "[campaign name]"
+    Then On the details section should display the Campaign name
 
 #
 #  @wip

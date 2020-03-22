@@ -38,6 +38,6 @@ public class OpportunitiesPageClassic extends OpportunitiesPageAbstract {
         nameOpportunitySelected = WebDriverManager.getInstance().getWebDriver().findElement(By
                 .cssSelector(opportunityNameXpath));
         nameOpportunitySelected.click();
-        return AppPageFactory.getOpportinityPage();
+        return AppPageFactory.getOpportunityPage();
     }
 }

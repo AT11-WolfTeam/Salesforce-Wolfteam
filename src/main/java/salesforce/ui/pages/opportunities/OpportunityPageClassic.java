@@ -9,11 +9,9 @@
 
 package salesforce.ui.pages.opportunities;
 
-import core.selenium.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -39,7 +37,7 @@ public class OpportunityPageClassic extends OpportunityPageAbstract {
     @FindBy(xpath = "//div[@id='opp17_ileinner']")
     private WebElement campaignSaved;
 
-    private String parent_handle;
+    private String parentHandle;
     protected static final String CAMPAIGN_NAME = "//th[@scope='row']//a[contains(text(),'%s')]";
 
     @Override
@@ -53,7 +51,7 @@ public class OpportunityPageClassic extends OpportunityPageAbstract {
         js.executeScript("window.scrollBy(0,400)");
         clickCampaignField();
         // Perform the click operation that opens new window
-        parent_handle = webDriver.getWindowHandle();
+        parentHandle = webDriver.getWindowHandle();
         clickLookupButton();
         selectCampaign(campaignName);
         clickSaveButton();
@@ -75,7 +73,7 @@ public class OpportunityPageClassic extends OpportunityPageAbstract {
         webDriverWait.until(ExpectedConditions.numberOfWindowsToBe(2));
         Set<String> handles = webDriver.getWindowHandles();
         for (String winHandle : handles) {
-            if (!parent_handle.equals(winHandle)) {
+            if (!parentHandle.equals(winHandle)) {
                 webDriver.switchTo().window(winHandle);
                 break;
             }
@@ -83,10 +81,10 @@ public class OpportunityPageClassic extends OpportunityPageAbstract {
         // Perform the actions on new window
         String campaignNameXpath = String.format(CAMPAIGN_NAME, campaignName);
         webDriver.switchTo().frame("resultsFrame");
-        campaignNameSelect = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(campaignNameXpath)));
+        campaignNameSelect = webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(campaignNameXpath)));
 
         campaignNameSelect.click();
-        webDriver.switchTo().window(parent_handle);
+        webDriver.switchTo().window(parentHandle);
     }
 
     @Override

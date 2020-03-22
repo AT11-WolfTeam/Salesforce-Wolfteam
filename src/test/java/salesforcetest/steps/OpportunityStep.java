@@ -13,7 +13,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import salesforce.ui.pages.AppPageFactory;
 import org.testng.Assert;
 import salesforce.api.requestapi.OpportunityApiHelper;
 import salesforce.entities.Context;
@@ -21,12 +20,13 @@ import salesforce.entities.NewCampaign;
 import salesforce.entities.Opportunity;
 import salesforce.entities.OpportunityUi;
 import salesforce.ui.pages.AppPageFactory;
+import salesforce.ui.pages.PageTransporter;
 import salesforce.ui.pages.campaigns.CampaignsPageAbstract;
 import salesforce.ui.pages.campaigns.NewCampaignPageAbstract;
 import salesforce.ui.pages.opportunities.OpportunitiesPageAbstract;
 import salesforce.ui.pages.opportunities.OpportunityPageAbstract;
 import salesforce.utils.SheetManager;
-import salesforce.ui.pages.PageTransporter;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -67,7 +67,7 @@ public class OpportunityStep {
      * Creates Opportunity.
      *
      * @param opportunityQuantity contains opportunity quantity.
-     * @param opportunity contains opportunity type.
+     * @param opportunity         contains opportunity type.
      */
     @Given("I create {int} opportunity as {string}")
     public void createsOpportunity(final int opportunityQuantity, final String opportunity) {
@@ -101,7 +101,7 @@ public class OpportunityStep {
     /**
      * Allows to create many opportunities.
      *
-     * @param quantity number of opportunities.
+     * @param quantity        number of opportunities.
      * @param opportunityType value.
      */
     @Given("I create {int} {string} opportunities")
@@ -138,7 +138,7 @@ public class OpportunityStep {
      * Search an opportunity.
      *
      * @param opportunityName contains a String value.
-     * @param listName contains a String value.
+     * @param listName        contains a String value.
      */
     @And("I search an opportunity {string} in list {string}")
     public void searchOpportunity(final String opportunityName, final String listName) {
@@ -146,11 +146,21 @@ public class OpportunityStep {
         AppPageFactory.getOpportunityList().clickOnOpportunity(opportunityName);
     }
 
+    /**
+     * Navigates to a page.
+     *
+     * @param page string value.
+     */
     @Given("I go to {string}")
-    public void iGoTo(String page) {
+    public void iGoTo(final String page) {
         pageTransporter.navigateToPage(page);
     }
 
+    /**
+     * Creates a new campaign.
+     *
+     * @param mapNewCampaign map values.
+     */
     @And("I create a new Campaign with")
     public void iCreateANewCampaignWith(final Map<String, String> mapNewCampaign) {
         campaignsPage = AppPageFactory.getCampaignsPage();
@@ -162,20 +172,27 @@ public class OpportunityStep {
 
     }
 
+    /**
+     * Assigns campaign to an opportunity already created.
+     *
+     * @param mapOpportunityEdit map values.
+     */
     @When("I assign the Campaign to the opportunity")
     public void iAssignTheCampaignToTheOpportunity(final Map<String, String> mapOpportunityEdit) {
         opportunitiesPage = AppPageFactory.getOpportunitiesPage();
         opportunityPage = opportunitiesPage.selectOpportunityName("Test Opportunity");
-        
         opportunityUi = context.getOpportunityUi();
         opportunityUi.processInformation(mapOpportunityEdit);
-        opportunityPage.editOpportunity(opportunityUi,mapOpportunityEdit.keySet());
+        opportunityPage.editOpportunity(opportunityUi, mapOpportunityEdit.keySet());
         opportunityPage.clickSaveButton();
     }
 
+    /**
+     * Validates the assignment of the campaign.
+     */
     @Then("On the details section should display the Campaign name")
     public void onTheDetailsSectionShouldDisplayTheCampaignName() {
-       HashMap<String,String> mapOpportunityValidate = opportunityPage.getOpportunityDetails();
-       Assert.assertEquals(mapOpportunityValidate,context.getOpportunityUi().getOpportunityEdit());
+        HashMap<String, String> mapOpportunityValidate = opportunityPage.getOpportunityDetails();
+        Assert.assertEquals(mapOpportunityValidate, context.getOpportunityUi().getOpportunityEdit());
     }
 }

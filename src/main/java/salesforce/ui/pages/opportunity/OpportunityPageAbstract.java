@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages.opportunities;
+package salesforce.ui.pages.opportunity;
 
 import salesforce.ui.pages.BasePage;
 
@@ -18,4 +18,10 @@ import salesforce.ui.pages.BasePage;
  * @version 1.0 19 March 2020.
  */
 public abstract class OpportunityPageAbstract extends BasePage {
+
+    /**
+     * Changes an Opportunity owner.
+     * @param ownerType contains a String value.
+     */
+    public abstract void changeOwner(final String ownerType);
 }

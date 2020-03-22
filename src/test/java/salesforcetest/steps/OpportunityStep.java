@@ -157,7 +157,7 @@ public class OpportunityStep {
         opportunityPage = opportunitiesPage.selectOpportunityName("Test Opportunity");
         opportunityUi = context.getOpportunityUi();
         opportunityUi.processInformation(mapOpportunityEdit);
-        opportunityPage.editOpportunity(newCampaign,mapOpportunityEdit.keySet());
+        opportunityPage.editOpportunity(opportunityUi,mapOpportunityEdit.keySet());
         opportunityPage.clickSaveButton();
     }
 

@@ -13,9 +13,7 @@ import core.selenium.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
@@ -34,10 +32,9 @@ public class OpportunityPopUpLightning extends OpportunityPageAbstract {
     @FindBy(css = "div button[title='Save']")
     private WebElement saveButton;
 
-    @FindBy(xpath = "//div[@class='slds-form-element slds-form-element_readonly slds-form-element_edit slds-grow "+
-            "slds-hint-parent override--slds-form-element']//a[contains(@data-refid,'recordId')]")
+    @FindBy(xpath = "//div[@class='slds-form-element slds-form-element_readonly slds-form-element_edit slds-grow "
+            + "slds-hint-parent override--slds-form-element']//a[contains(@data-refid,'recordId')]")
     private WebElement campaignSaved;
-
 
 
     protected static final String CAMPAIGN_NAME = "a div div[title='%s']";
@@ -72,19 +69,19 @@ public class OpportunityPopUpLightning extends OpportunityPageAbstract {
     /**
      * Clicks on Details Tab.
      */
-    private void clickDetailsTab(){
+    private void clickDetailsTab() {
         detailsTab.click();
     }
 
     /**
      * Clicks on Edit Campaign.
      */
-    private void clickEditCampaign(){
+    private void clickEditCampaign() {
         editCampaign.click();
     }
 
     @Override
-    public void clickSaveButton(){
+    public void clickSaveButton() {
         saveButton.click();
     }
 }

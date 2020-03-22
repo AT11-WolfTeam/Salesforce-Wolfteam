@@ -53,11 +53,12 @@ public class OpportunityPageClassic extends OpportunityPageAbstract {
 
     /**
      * Selects the campaign.
+     *
      * @param campaignName value.
      */
     private void selectCampaign(final String campaignName) {
         // Switch to new window opened
-        for(String winHandle : WebDriverManager.getInstance().getWebDriver().getWindowHandles()){
+        for (String winHandle : WebDriverManager.getInstance().getWebDriver().getWindowHandles()) {
             WebDriverManager.getInstance().getWebDriver().switchTo().window(winHandle);
         }
         // Perform the actions on new window
@@ -76,7 +77,7 @@ public class OpportunityPageClassic extends OpportunityPageAbstract {
     /**
      * Clicks on campaign field.
      */
-    private void clickCampaignField(){
+    private void clickCampaignField() {
         campaignField.click();
         campaignField.click();
     }
@@ -84,7 +85,7 @@ public class OpportunityPageClassic extends OpportunityPageAbstract {
     /**
      * Clicks on lookup button.
      */
-    private void clickLookupButton(){
+    private void clickLookupButton() {
         lookupButton.click();
     }
 }

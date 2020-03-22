@@ -41,8 +41,8 @@ public class NewCampaignPageClassic extends NewCampaignPageAbstract {
     }
 
     @Override
-    protected void setCampaignActiveCheckBox(String campaignActive) {
-        if (campaignActive.equals(IS_ACTIVE)){
+    protected void setCampaignActiveCheckBox(final String campaignActive) {
+        if (campaignActive.equals(IS_ACTIVE)) {
             activeCheckBox.click();
         }
     }

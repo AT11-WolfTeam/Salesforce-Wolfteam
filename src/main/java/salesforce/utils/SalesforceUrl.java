@@ -128,7 +128,7 @@ public class SalesforceUrl {
      *
      * @param campaignsLightningUrl value.
      */
-    public void setCampaignsLightningUrl(String campaignsLightningUrl) {
+    public void setCampaignsLightningUrl(final String campaignsLightningUrl) {
         this.campaignsLightningUrl = campaignsLightningUrl;
     }
 
@@ -146,7 +146,7 @@ public class SalesforceUrl {
      *
      * @param campaignsClassicUrl value.
      */
-    public void setCampaignsClassicUrl(String campaignsClassicUrl) {
+    public void setCampaignsClassicUrl(final String campaignsClassicUrl) {
         this.campaignsClassicUrl = campaignsClassicUrl;
     }
 }

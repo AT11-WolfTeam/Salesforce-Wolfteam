@@ -10,7 +10,7 @@
 package salesforce.ui.pages.opportunities;
 
 import org.openqa.selenium.WebElement;
-import salesforce.entities.NewCampaign;
+import salesforce.entities.OpportunityUi;
 import salesforce.ui.pages.BasePage;
 
 import java.util.HashMap;
@@ -34,28 +34,39 @@ public abstract class OpportunityPageAbstract extends BasePage {
 
     /**
      * Assigns a campaign.
+     *
      * @param campaignName value.
      */
     protected abstract void assignCampaign(String campaignName);
 
-
-    public void editOpportunity(final NewCampaign newCampaign, final Set<String> fields) {
-        HashMap<String, Runnable> strategtyMap = composeStrategyMap(newCampaign);
+    /**
+     * Sets the form of new Campaign.
+     *
+     * @param opportunityUi entity.
+     * @param fields      map.
+     */
+    public void editOpportunity(final OpportunityUi opportunityUi, final Set<String> fields) {
+        HashMap<String, Runnable> strategtyMap = composeStrategyMap(opportunityUi);
         fields.forEach(field -> strategtyMap.get(field).run());
     }
 
     /**
      * Sets the information of new campaign.
      *
-     * @param newCampaign entity.
+     * @param opportunityUi entity.
      * @return HashMap value.
      */
-    protected HashMap<String, Runnable> composeStrategyMap(final NewCampaign newCampaign) {
+    protected HashMap<String, Runnable> composeStrategyMap(final OpportunityUi opportunityUi) {
         HashMap<String, Runnable> strategyMap = new HashMap<>();
-        strategyMap.put(CAMPAIGN_NAME, () -> assignCampaign(newCampaign.getCampaignName()));
+        strategyMap.put(CAMPAIGN_NAME, () -> assignCampaign(opportunityUi.getCampaignName()));
         return strategyMap;
     }
 
+    /**
+     * Gets map of the information set.
+     *
+     * @return HashMap values.
+     */
     public HashMap<String, String> getOpportunityDetails() {
         HashMap<String, String> values = new HashMap<>();
         HashMap<String, Supplier> strategyMapEducation = composeOpportunityDetailsToGet();
@@ -65,12 +76,23 @@ public abstract class OpportunityPageAbstract extends BasePage {
         return values;
     }
 
+    /**
+     * composeOpportunityDetailsToGet to get attributes.
+     *
+     * @return HashMap values.
+     */
     private HashMap<String, Supplier> composeOpportunityDetailsToGet() {
         HashMap<String, Supplier> strategyMap = new HashMap<>();
         strategyMap.put(CAMPAIGN_NAME, () -> getCampaignName());
         return strategyMap;
     }
 
+
+    /**
+     * Returns Campaign Name.
+     *
+     * @return String value.
+     */
     protected abstract String getCampaignName();
 
     /**

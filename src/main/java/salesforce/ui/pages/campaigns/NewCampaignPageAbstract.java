@@ -9,7 +9,6 @@
 
 package salesforce.ui.pages.campaigns;
 
-import org.checkerframework.checker.units.qual.A;
 import salesforce.entities.NewCampaign;
 import salesforce.ui.pages.BasePage;
 
@@ -62,7 +61,14 @@ public abstract class NewCampaignPageAbstract extends BasePage {
      */
     protected abstract void setCampaignNameField(String campaignName);
 
+    /**
+     * Sets CampaignActiveCheckBox.
+     * @param campaignActive value.
+     */
     protected abstract void setCampaignActiveCheckBox(String campaignActive);
 
+    /**
+     * clicks on Save Button.
+     */
     public abstract void clickSaveButton();
 }

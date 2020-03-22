@@ -23,9 +23,7 @@ import salesforce.utils.JsonFileReader;
  * @version 1.0 22 March 2020.
  */
 public class ChangeOpportunityOwnerLightningPopup extends BasePage {
-
     @FindBy(css = "div[class = 'autocompleteWrapper slds-grow'] input")
-    //  div[class='inputWrapper slds-grid slds-grid_vertical-align-center slds-p-right_x-small']
     private WebElement ownerNameTextBox;
 
     @FindBy(xpath = "//button[span[@class=' label bBody']] [@title='Change Owner']")

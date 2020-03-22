@@ -29,7 +29,6 @@ public class OpportunitiesPopUpLightning extends OpportunitiesPageAbstract {
     private WebElement opportunityListButton;
 
     private static final String OPPORTUNITY_ORDERED_LIST_PARTIAL_LOCATOR = "//li[contains(.,'%s')]";
-
     private static final String NAME_OPPORTUNITY = "a[title='%s']";
 
     @Override

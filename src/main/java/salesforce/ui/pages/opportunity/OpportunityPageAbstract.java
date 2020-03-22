@@ -23,5 +23,5 @@ public abstract class OpportunityPageAbstract extends BasePage {
      * Changes an Opportunity owner.
      * @param ownerType contains a String value.
      */
-    public abstract void changeOwner(final String ownerType);
+    public abstract void changeOwner(String ownerType);
 }

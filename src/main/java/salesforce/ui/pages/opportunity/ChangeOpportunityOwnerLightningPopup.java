@@ -16,6 +16,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.BasePage;
 import salesforce.utils.JsonFileReader;
 
+/**
+ * Defines an OpportunityListLightningPage.
+ *
+ * @author Enrique Carrizales.
+ * @version 1.0 22 March 2020.
+ */
 public class ChangeOpportunityOwnerLightningPopup extends BasePage {
 
     @FindBy(css = "div[class = 'autocompleteWrapper slds-grow'] input")
@@ -32,10 +38,17 @@ public class ChangeOpportunityOwnerLightningPopup extends BasePage {
         webDriverWait.until(ExpectedConditions.visibilityOfAllElements(ownerNameTextBox));
     }
 
+    /**
+     * Clicks on a TextBox.
+     */
     public void clickOnOwnerNameTextBox() {
         ownerNameTextBox.click();
     }
 
+    /**
+     * Change an owner of an opportunity.
+     * @param ownerType contains String value.
+     */
     public void selectOwner(final String ownerType) {
         String ownerItemListLocator;
         String userName;
@@ -50,6 +63,9 @@ public class ChangeOpportunityOwnerLightningPopup extends BasePage {
         webDriver.findElement(By.xpath(ownerItemListLocator)).click();
     }
 
+    /**
+     * Clicks on a button.
+     */
     public void clickOnChangeOwnerButton() {
         changeOwnerButton.click();
     }

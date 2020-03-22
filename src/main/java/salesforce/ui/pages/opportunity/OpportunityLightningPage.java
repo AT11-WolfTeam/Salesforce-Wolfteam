@@ -13,6 +13,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+/**
+ * Defines an OpportunityLightningPage.
+ *
+ * @author Enrique Carrizales.
+ * @version 1.0 21 March 2020.
+ */
 public class OpportunityLightningPage extends OpportunityPageAbstract {
 
     @FindBy(css = "div[data-aura-class='forceOutputOwnerIdLookupWithChangeLink'] button")
@@ -28,7 +34,7 @@ public class OpportunityLightningPage extends OpportunityPageAbstract {
     }
 
     @Override
-    public void changeOwner(String ownerType) {
+    public void changeOwner(final String ownerType) {
         changeOwnerButton.click();
         ChangeOpportunityOwnerLightningPopup changeOpportunityOwnerPopup = new ChangeOpportunityOwnerLightningPopup();
         changeOpportunityOwnerPopup.clickOnOwnerNameTextBox();

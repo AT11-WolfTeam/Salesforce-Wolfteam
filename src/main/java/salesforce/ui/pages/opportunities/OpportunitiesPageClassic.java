@@ -33,6 +33,11 @@ public class OpportunitiesPageClassic extends OpportunitiesPageAbstract {
     }
 
     @Override
+    public void displayOpportunityList(final String listName) {
+
+    }
+
+    @Override
     public OpportunityPageAbstract selectOpportunityName(final String opportunityName) {
         String opportunityNameXpath = String.format(NAME_OPPORTUNITY, opportunityName);
         nameOpportunitySelected = WebDriverManager.getInstance().getWebDriver().findElement(By

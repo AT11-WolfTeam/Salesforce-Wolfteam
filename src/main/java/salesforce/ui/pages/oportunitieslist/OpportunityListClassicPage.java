@@ -7,20 +7,23 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.components.menu;
-
-import salesforce.ui.pages.BasePage;
+package salesforce.ui.pages.oportunitieslist;
 
 /**
- * Manages a TopMenuAbstract menu.
+ * Defines an OpportunityListClassicPage.
  *
  * @author Enrique Carrizales.
- * @version 1.0 17 March 2020.
+ * @version 1.0 20 March 2020.
  */
-public abstract class TopMenuAbstract extends BasePage {
+public class OpportunityListClassicPage extends OpportunityListPageAbstract {
 
-    /**
-     * Click on apps button.
-     */
-    public abstract void clickOnAppsButton();
+    @Override
+    public void clickOnOpportunity(final String opportunityName) {
+
+    }
+
+    @Override
+    protected void waitUntilPageObjectIsLoaded() {
+
+    }
 }

@@ -2,9 +2,9 @@ Feature: Opportunity
 
 #  @wip
 #  Scenario: Change opportunity owner to another user
-#    Given I create opportunity as OpportunityTest
+#    Given I create 1 opportunity as "Basic"
 #    And I navigate to Opportunities Page
-#    And I search an opportunity "OpportunityTest"
+#    And I search an opportunity "OpportunityTest" in list "All Opportunities"
 #    When I change an opportunity's owner with "CurrentOwner"
 #    Then the application should display an information message in Opportunity page with the format "[[Owner Name]] now owns the record for [[Opportunity Name]]"
 #

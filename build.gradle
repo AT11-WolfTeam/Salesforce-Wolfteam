@@ -31,7 +31,7 @@ task executeFeatures(type: Test) {
     options {
         useDefaultListeners = false
 
-        jvmArgs = ['-Dcucumber.options= --glue salesforcetest --plugin pretty '
+        jvmArgs = ['-Dcucumber.options=--glue salesforcetest --plugin pretty '
                            + '--plugin json:build/cucumber/cucumber.json --plugin rerun:build/cucumber/rerun.txt '
                            + 'classpath:']
     }

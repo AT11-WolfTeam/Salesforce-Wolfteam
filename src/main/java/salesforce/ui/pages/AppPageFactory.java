@@ -20,6 +20,9 @@ import salesforce.ui.pages.campaigns.CampaignsPageLightning;
 import salesforce.ui.pages.campaigns.NewCampaignPageAbstract;
 import salesforce.ui.pages.campaigns.NewCampaignPageClassic;
 import salesforce.ui.pages.campaigns.NewCampaignPopUpLightning;
+import salesforce.ui.pages.oportunitieslist.OpportunityListClassicPage;
+import salesforce.ui.pages.oportunitieslist.OpportunityListLightningPage;
+import salesforce.ui.pages.oportunitieslist.OpportunityListPageAbstract;
 import salesforce.ui.pages.opportunities.OpportunitiesPageAbstract;
 import salesforce.ui.pages.opportunities.OpportunitiesPageClassic;
 import salesforce.ui.pages.opportunities.OpportunitiesPopUpLightning;
@@ -117,5 +120,16 @@ public class AppPageFactory {
         }
         return new NewCampaignPopUpLightning();
 
+    }
+
+    /**
+     * Returns a OpportunityList page.
+     * @return OpportunityListPage instance;
+     */
+    public static OpportunityListPageAbstract getOpportunityList() {
+        Map<String, OpportunityListPageAbstract> map = new HashMap<>();
+        map.put(UserExperience.USER_EXPERIENCE_CLASSIC.get(), new OpportunityListClassicPage());
+        map.put(UserExperience.USER_EXPERIENCE_LIGHTNING.get(), new OpportunityListLightningPage());
+        return map.get(userExperience);
     }
 }

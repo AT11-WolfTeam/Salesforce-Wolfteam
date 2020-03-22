@@ -13,6 +13,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import salesforce.ui.pages.AppPageFactory;
 import org.testng.Assert;
 import salesforce.api.requestapi.OpportunityApiHelper;
 import salesforce.entities.Context;
@@ -52,6 +53,7 @@ public class OpportunityStep {
 
     /**
      * OpportunityStep constructor.
+     *
      * @param context value.
      */
     public OpportunityStep(final Context context) {
@@ -60,14 +62,20 @@ public class OpportunityStep {
         pageTransporter = new PageTransporter();
     }
 
+
     /**
      * Creates Opportunity.
      *
-     * @param opportunity contains name Opportunity object.
+     * @param opportunityQuantity contains opportunity quantity.
+     * @param opportunity contains opportunity type.
      */
-    @Given("^I create opportunity as (.*)")
-    public void createsOpportunity(final String opportunity) {
-        System.out.println(opportunity);
+    @Given("I create {int} opportunity as {string}")
+    public void createsOpportunity(final int opportunityQuantity, final String opportunity) {
+        String sheetName = "Accounts";
+        opportunityMapList = SheetManager.manageSheet(sheetName, opportunityQuantity, opportunity);
+        ArrayList<Opportunity> opportunities = opportunityApiHelper.setOpportunities(opportunityMapList);
+        context.setOpportunities(opportunities);
+        opportunityApiHelper.postOpportunities(context.getOpportunities());
     }
 
     /**
@@ -129,10 +137,13 @@ public class OpportunityStep {
     /**
      * Search an opportunity.
      *
-     * @param arg0 contains opportunity name.
+     * @param opportunityName contains a String value.
+     * @param listName contains a String value.
      */
-    @And("I search an opportunity {string}")
-    public void searchsOportunity(final String arg0) {
+    @And("I search an opportunity {string} in list {string}")
+    public void searchOpportunity(final String opportunityName, final String listName) {
+        AppPageFactory.getOpportunitiesPage().displayOpportunityList(listName);
+        AppPageFactory.getOpportunityList().clickOnOpportunity(opportunityName);
     }
 
     @Given("I go to {string}")

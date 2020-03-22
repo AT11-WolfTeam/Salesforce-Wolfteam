@@ -27,9 +27,26 @@ public class OpportunitiesPopUpLightning extends OpportunitiesPageAbstract {
     private WebElement newButton;
     protected static final String NAME_OPPORTUNITY = "a[title='%s']";
 
+    @FindBy(css = "div[class='triggerLinkTextAndIconWrapper slds-p-right--x-large']")
+    private WebElement opportunityListButton;
+
+    private static final String OPPORTUNITY_ORDERED_LIST_PARTIAL_LOCATOR = "//li[contains(.,'%s')]";
+    private WebElement nameOpportunityTable;
+
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(newButton));
+    }
+
+    @Override
+    public void displayOpportunityList(final String listName) {
+        String opportunityOrderedListLocator;
+
+        opportunityListButton.click();
+        opportunityOrderedListLocator = String.format(OPPORTUNITY_ORDERED_LIST_PARTIAL_LOCATOR, listName);
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(webDriver.findElement(
+                By.xpath(opportunityOrderedListLocator))));
+        webDriver.findElement(By.xpath(opportunityOrderedListLocator)).click();
     }
 
     @Override

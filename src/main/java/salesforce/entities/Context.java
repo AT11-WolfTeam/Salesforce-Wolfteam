@@ -25,6 +25,7 @@ public class Context {
     private List<Opportunity> opportunities;
     private NewCampaign newCampaign;
     private OpportunityUi opportunityUi;
+    private List<Contact> contacts;
 
     /**
      * Context constructor.
@@ -36,6 +37,7 @@ public class Context {
         this.opportunities = new ArrayList<>();
         this.newCampaign = new NewCampaign();
         this.opportunityUi = new OpportunityUi();
+        this.contacts = new ArrayList<>();
     }
 
     /**
@@ -68,7 +70,7 @@ public class Context {
     /**
      * Sets a list of opportunities.
      *
-     * @param opportunities list value..
+     * @param opportunities list value.
      */
     public void setOpportunities(final List<Opportunity> opportunities) {
         this.opportunities = opportunities;
@@ -91,5 +93,21 @@ public class Context {
      */
     public OpportunityUi getOpportunityUi() {
         return opportunityUi;
+    }
+
+    /**
+     * Gets contacts.
+     * @return a list of contacts.
+     */
+    public List<Contact> getContacts() {
+        return contacts;
+    }
+
+    /**
+     * Sets a list of contacts.
+     * @param contacts list value.
+     */
+    public void setContacts(final List<Contact> contacts) {
+        this.contacts = contacts;
     }
 }

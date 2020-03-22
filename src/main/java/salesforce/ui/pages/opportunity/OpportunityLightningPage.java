@@ -25,12 +25,12 @@ public class OpportunityLightningPage extends OpportunityPageAbstract {
     //svg[data-key='change_owner']
     private WebElement changeOwnerButton;
 
-    @FindBy(css = "span[class='view-all-label']")
-    private WebElement viewAllLinkText;
+    @FindBy(css = "button[class*='slds-button slds-button--brand slds']")
+    private WebElement changeStageButton;
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(viewAllLinkText));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(changeStageButton));
     }
 
     @Override

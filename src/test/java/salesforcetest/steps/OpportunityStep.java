@@ -31,7 +31,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-
 /**
  * Manages a Opportunity steps definition.
  *
@@ -101,7 +100,7 @@ public class OpportunityStep {
     /**
      * Allows to create many opportunities.
      *
-     * @param quantity        number of opportunities.
+     * @param quantity number of opportunities.
      * @param opportunityType value.
      */
     @Given("I create {int} {string} opportunities")
@@ -136,8 +135,7 @@ public class OpportunityStep {
     /**
      * Search an opportunity.
      *
-     * @param listName        contains a String value.
-
+     * @param listName contains a String value.
      */
     @And("I search the opportunity in list {string}")
     public void searchOpportunity(final String listName) {
@@ -169,7 +167,6 @@ public class OpportunityStep {
         newCampaign.processInformation(mapNewCampaign);
         newCampaignPage.setNewCampaign(newCampaign, mapNewCampaign.keySet());
         newCampaignPage.clickSaveButton();
-
     }
 
     /**

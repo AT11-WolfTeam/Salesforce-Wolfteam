@@ -63,8 +63,6 @@ public class AppPageFactory {
             return new CampaignListPageClassic();
         }
         return new CampaignListPageLightning();
-
-
     }
 
     /**
@@ -101,7 +99,6 @@ public class AppPageFactory {
             return new NewCampaignPageClassic();
         }
         return new NewCampaignPopUpLightning();
-
     }
 
     /**

@@ -16,7 +16,7 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 /**
- * Manages NewCampaign instance.
+ * Manages OpportunityUi instance.
  *
  * @author Alan Escalera.
  * @version 1.0 21 March 2020.

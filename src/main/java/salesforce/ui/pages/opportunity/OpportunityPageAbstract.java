@@ -87,7 +87,6 @@ public abstract class OpportunityPageAbstract extends BasePage {
         return strategyMap;
     }
 
-
     /**
      * Returns Campaign Name.
      *
@@ -99,7 +98,6 @@ public abstract class OpportunityPageAbstract extends BasePage {
      * clicks on Save Button.
      */
     public abstract void clickSaveButton();
-
 
     /**
      * Changes an Opportunity owner.

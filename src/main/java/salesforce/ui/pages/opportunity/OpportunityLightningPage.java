@@ -98,5 +98,4 @@ public class OpportunityLightningPage extends OpportunityPageAbstract {
     public void clickSaveButton() {
         saveButton.click();
     }
-
 }

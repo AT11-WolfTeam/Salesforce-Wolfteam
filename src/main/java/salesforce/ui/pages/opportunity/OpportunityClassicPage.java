@@ -109,6 +109,7 @@ public class OpportunityClassicPage extends OpportunityPageAbstract {
     private void clickLookupButton() {
         lookupButton.click();
     }
+
     @Override
     public void changeOwner(final String ownerType) {
 

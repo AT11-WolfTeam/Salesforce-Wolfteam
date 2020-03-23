@@ -83,5 +83,4 @@ public class NewCampaign {
         strategyMap.put(ACTIVE, () -> setActive(mapNewCampaign.get(ACTIVE)));
         return strategyMap;
     }
-
 }

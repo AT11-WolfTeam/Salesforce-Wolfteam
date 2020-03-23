@@ -19,12 +19,14 @@ import salesforce.entities.Context;
 import salesforce.entities.NewCampaign;
 import salesforce.entities.Opportunity;
 import salesforce.entities.OpportunityUi;
+import salesforce.ui.components.span.ToastMessageSpan;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.PageTransporter;
 import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
 import salesforce.ui.pages.newcampaign.AbstractNewCampaignPage;
 import salesforce.ui.pages.opportunities.AbstractOpportunitiesPage;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
+import salesforce.utils.ReplacerMessages;
 import salesforce.utils.SheetManager;
 
 import java.util.ArrayList;
@@ -49,6 +51,7 @@ public class OpportunityStep {
     private AbstractOpportunitiesPage opportunitiesPage;
     private AbstractOpportunityPage opportunityPage;
     private OpportunityUi opportunityUi;
+    private static final int FIRST_OPPORTUNITY = 0;
 
     /**
      * OpportunityStep constructor.
@@ -69,7 +72,6 @@ public class OpportunityStep {
     @When("^I change an opportunity's owner with \"([^\"]*)\"$")
     public void changesAnOpportunitySOwnerWith(final String ownerType) {
         AppPageFactory.getOpportunityPage().changeOwner(ownerType);
-
     }
 
     /**
@@ -77,9 +79,13 @@ public class OpportunityStep {
      *
      * @param message contains a String message.
      */
-    @Then("^the application should display an information message in Opportunity page with the format \"([^\"]*)\"$")
+    @Then("the application should display an information message in Opportunity page with the format {string}")
     public void displaysAnInformationMessageInOpportunityPageWithTheFormat(final String message) {
-        System.out.println("com.steps.Opportunity: Then");
+        ToastMessageSpan toastMessageSpan = new ToastMessageSpan();
+        String actualResult = toastMessageSpan.getToastMessage();
+        String expectedResult = ReplacerMessages.replaceChangeOwnerMessage(message, context.getOpportunities()
+                .get(FIRST_OPPORTUNITY).getName());
+        Assert.assertEquals(actualResult, expectedResult);
     }
 
     /**
@@ -124,7 +130,7 @@ public class OpportunityStep {
      */
     @And("I search the opportunity in list {string}")
     public void searchOpportunity(final String listName) {
-        String opportunityName = context.getOpportunities().get(0).getName();
+        String opportunityName = context.getOpportunities().get(FIRST_OPPORTUNITY).getName();
         AppPageFactory.getOpportunitiesPage().displayOpportunityList(listName);
         AppPageFactory.getOpportunityList().clickOnOpportunity(opportunityName);
     }

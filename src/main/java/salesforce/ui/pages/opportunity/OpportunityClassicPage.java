@@ -43,6 +43,9 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     private String parentHandle;
     protected static final String CAMPAIGN_NAME = "//th[@scope='row']//a[contains(text(),'%s')]";
 
+    /**
+     * Waits until the page is loaded.
+     */
     protected void waitUntilPageObjectIsLoaded() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(campaignField));
     }

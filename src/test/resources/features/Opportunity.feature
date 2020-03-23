@@ -67,7 +67,7 @@ Feature: Opportunity
     Given I create 2 "Basic" opportunities
     When I delete created opportunities
 
-# Run on the local computer.
+#
 #  Scenario: Upload a file to opportunity
 #    Given I create 1 "Basic" opportunities
 #    When I navigate to Opportunities Page

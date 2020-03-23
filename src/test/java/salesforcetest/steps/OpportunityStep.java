@@ -142,7 +142,6 @@ public class OpportunityStep {
         String filePath = "src/test/resources/filestoupload/cucumber.png";
         AppPageFactory.getOpportunityPage().clickOnNotesAndAttachmentsButton();
         AppPageFactory.getNotesAndAttachments().clickOnUploadFiles(filePath);
-
     }
 
     /**

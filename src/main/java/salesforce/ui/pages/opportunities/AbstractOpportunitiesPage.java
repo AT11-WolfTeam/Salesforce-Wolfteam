@@ -37,5 +37,10 @@ public abstract class AbstractOpportunitiesPage extends AbstractBasePage {
      */
     public abstract AbstractOpportunityPage clickOnOpportunityName(String opportunityName);
 
+    /**
+     * Selects opportunity by name.
+     * @param opportunityName value.
+     * @return opportunity page.
+     */
     public abstract AbstractOpportunityPage selectOpportunityName(String opportunityName);
 }

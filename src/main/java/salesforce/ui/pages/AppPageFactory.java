@@ -137,6 +137,10 @@ public class AppPageFactory {
         return null;
     }
 
+    /**
+     * Gets an instance campaign page.
+     * @return campaign page.
+     */
     public static AbstractCampaignPage getCampaignPage() {
         if (userExperience.equals("Classic")) {
             return new CampaignClassicPage();

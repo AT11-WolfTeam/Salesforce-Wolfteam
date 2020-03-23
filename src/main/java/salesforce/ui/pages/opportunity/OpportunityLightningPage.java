@@ -55,6 +55,8 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         webDriverWait.until(ExpectedConditions.visibilityOf(entityNameTitle));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(changeStageButton));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(detailsTab));
     }
 
     /**
@@ -68,8 +70,6 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     @Override
     public void clickOnNotesAndAttachmentsButton() {
         clickOnNotesAndAttachment();
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(changeStageButton));
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(detailsTab));
     }
 
     @Override

@@ -21,7 +21,7 @@ public class ReplacerMessages {
     private static final String CURRENT_USER = "Current User";
 
     /**
-     * replace words in a message.
+     * Replaces words in a message.
      * @param message contains a message String.
      * @param opportunityName contains an opportunity name.
      * @return a new message.

@@ -160,6 +160,7 @@ public class OpportunityStep {
     @And("I select the created opportunity")
     public void selectOpportunity() {
         String opportunityName = context.getOpportunities().get(0).getName();
+        System.out.println(opportunityName);
         AppPageFactory.getOpportunitiesPage().clickOnOpportunityName(opportunityName);
     }
 

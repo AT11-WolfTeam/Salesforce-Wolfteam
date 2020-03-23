@@ -56,7 +56,6 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     protected void waitUntilPageObjectIsLoaded() {
         webDriverWait.until(ExpectedConditions.visibilityOf(entityNameTitle));
         webDriverWait.until(ExpectedConditions.elementToBeClickable(changeStageButton));
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(detailsTab));
     }
 
     /**

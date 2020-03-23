@@ -116,7 +116,7 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     }
 
     @Override
-    public String getOwner(String ownerType) {
+    public String getOwner(final String ownerType) {
         return null;
     }
 }

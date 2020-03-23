@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages.opportunities;
+package salesforce.ui.pages.opportunity;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -19,12 +19,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.Set;
 
 /**
- * Defines OpportunityPageClassic.
+ * Defines an OpportunityClassicPage.
  *
- * @author Alan Escalera.
- * @version 1.0 19 March 2020.
+ * @author Enrique Carrizales.
+ * @version 1.0 21 March 2020.
  */
-public class OpportunityPageClassic extends OpportunityPageAbstract {
+public class OpportunityClassicPage extends OpportunityPageAbstract {
     @FindBy(css = "td[id='opp17_ilecell']")
     private WebElement campaignField;
 
@@ -105,5 +105,9 @@ public class OpportunityPageClassic extends OpportunityPageAbstract {
      */
     private void clickLookupButton() {
         lookupButton.click();
+    }
+    @Override
+    public void changeOwner(final String ownerType) {
+
     }
 }

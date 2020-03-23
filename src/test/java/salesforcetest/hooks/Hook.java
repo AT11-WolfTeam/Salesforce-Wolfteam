@@ -17,4 +17,5 @@ package salesforcetest.hooks;
  */
 public class Hook {
 
+
 }

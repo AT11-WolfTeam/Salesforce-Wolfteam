@@ -24,6 +24,7 @@ configurations {
     cucumberRuntime {
         extendsFrom testImplementation
     }
+
 }
 
 task executeFeatures(type: Test) {
@@ -33,7 +34,7 @@ task executeFeatures(type: Test) {
 
         jvmArgs = ['-Dcucumber.options= --glue salesforcetest --plugin pretty '
                            + '--plugin json:build/cucumber/cucumber.json --plugin rerun:build/cucumber/rerun.txt '
-                           + 'classpath:']
+                           + 'classpath: ']
     }
 }
 

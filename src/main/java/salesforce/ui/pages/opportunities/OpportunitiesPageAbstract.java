@@ -11,6 +11,7 @@ package salesforce.ui.pages.opportunities;
 
 import org.openqa.selenium.WebElement;
 import salesforce.ui.pages.BasePage;
+import salesforce.ui.pages.opportunity.OpportunityPageAbstract;
 
 /**
  * Defines OpportunitiesPageAbstract.

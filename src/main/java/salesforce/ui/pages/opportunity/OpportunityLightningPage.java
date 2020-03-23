@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages.opportunities;
+package salesforce.ui.pages.opportunity;
 
 import core.selenium.WebDriverManager;
 import org.openqa.selenium.By;
@@ -17,12 +17,20 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
- * Defines OpportunityPopUpLightning.
+ * Defines an OpportunityLightningPage.
  *
- * @author Alan Escalera.
- * @version 1.0 19 March 2020.
+ * @author Enrique Carrizales.
+ * @version 1.0 21 March 2020.
  */
-public class OpportunityPopUpLightning extends OpportunityPageAbstract {
+public class OpportunityLightningPage extends OpportunityPageAbstract {
+
+    @FindBy(css = "div[data-aura-class='forceOutputOwnerIdLookupWithChangeLink'] button")
+    //svg[data-key='change_owner']
+    private WebElement changeOwnerButton;
+
+    @FindBy(css = "button[class*='slds-button slds-button--brand slds']")
+    private WebElement changeStageButton;
+
     @FindBy(css = "a[title='Details']")
     private WebElement detailsTab;
 
@@ -32,17 +40,25 @@ public class OpportunityPopUpLightning extends OpportunityPageAbstract {
     @FindBy(css = "div button[title='Save']")
     private WebElement saveButton;
 
+    protected static final String CAMPAIGN_NAME = "a div div[title='%s']";
+
     @FindBy(xpath = "//div[@class='slds-form-element slds-form-element_readonly slds-form-element_edit slds-grow "
             + "slds-hint-parent override--slds-form-element']//a[contains(@data-refid,'recordId')]")
     private WebElement campaignSaved;
 
-
-    protected static final String CAMPAIGN_NAME = "a div div[title='%s']";
-
-
     @Override
     protected void waitUntilPageObjectIsLoaded() {
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(changeStageButton));
         webDriverWait.until(ExpectedConditions.elementToBeClickable(detailsTab));
+    }
+
+    @Override
+    public void changeOwner(final String ownerType) {
+        changeOwnerButton.click();
+        ChangeOpportunityOwnerLightningPopup changeOpportunityOwnerPopup = new ChangeOpportunityOwnerLightningPopup();
+        changeOpportunityOwnerPopup.clickOnOwnerNameTextBox();
+        changeOpportunityOwnerPopup.selectOwner(ownerType);
+        changeOpportunityOwnerPopup.clickOnChangeOwnerButton();
     }
 
     @Override
@@ -81,4 +97,5 @@ public class OpportunityPopUpLightning extends OpportunityPageAbstract {
     public void clickSaveButton() {
         saveButton.click();
     }
+
 }

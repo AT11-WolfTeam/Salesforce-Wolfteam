@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages.opportunities;
+package salesforce.ui.pages.opportunity;
 
 import org.openqa.selenium.WebElement;
 import salesforce.entities.OpportunityUi;
@@ -99,4 +99,11 @@ public abstract class OpportunityPageAbstract extends BasePage {
      * clicks on Save Button.
      */
     public abstract void clickSaveButton();
+
+
+    /**
+     * Changes an Opportunity owner.
+     * @param ownerType contains a String value.
+     */
+    public abstract void changeOwner(String ownerType);
 }

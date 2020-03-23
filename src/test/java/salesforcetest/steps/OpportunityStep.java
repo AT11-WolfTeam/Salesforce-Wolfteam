@@ -24,7 +24,7 @@ import salesforce.ui.pages.PageTransporter;
 import salesforce.ui.pages.campaigns.CampaignsPageAbstract;
 import salesforce.ui.pages.campaigns.NewCampaignPageAbstract;
 import salesforce.ui.pages.opportunities.OpportunitiesPageAbstract;
-import salesforce.ui.pages.opportunities.OpportunityPageAbstract;
+import salesforce.ui.pages.opportunity.OpportunityPageAbstract;
 import salesforce.utils.SheetManager;
 
 import java.util.ArrayList;
@@ -62,7 +62,6 @@ public class OpportunityStep {
         pageTransporter = new PageTransporter();
     }
 
-
     /**
      * Creates Opportunity.
      *
@@ -81,11 +80,12 @@ public class OpportunityStep {
     /**
      * Changes an opportunity's Owner.
      *
-     * @param owner contains name Owner object.
+     * @param ownerType contains name Owner object.
      */
     @When("^I change an opportunity's owner with \"([^\"]*)\"$")
-    public void changesAnOpportunitySOwnerWith(final String owner) {
-        System.out.println(owner);
+    public void changesAnOpportunitySOwnerWith(final String ownerType) {
+        AppPageFactory.getOpportunityPage().changeOwner(ownerType);
+
     }
 
     /**
@@ -130,18 +130,18 @@ public class OpportunityStep {
      */
     @And("I navigate to Opportunities Page")
     public void navigatesToOpportunitiesPage() {
-        PageTransporter pageTransporter = new PageTransporter();
         pageTransporter.navigateToPage(OPPORTUNITY_PAGE);
     }
 
     /**
      * Search an opportunity.
      *
-     * @param opportunityName contains a String value.
      * @param listName        contains a String value.
+
      */
-    @And("I search an opportunity {string} in list {string}")
-    public void searchOpportunity(final String opportunityName, final String listName) {
+    @And("I search the opportunity in list {string}")
+    public void searchOpportunity(final String listName) {
+        String opportunityName = context.getOpportunities().get(0).getName();
         AppPageFactory.getOpportunitiesPage().displayOpportunityList(listName);
         AppPageFactory.getOpportunityList().clickOnOpportunity(opportunityName);
     }

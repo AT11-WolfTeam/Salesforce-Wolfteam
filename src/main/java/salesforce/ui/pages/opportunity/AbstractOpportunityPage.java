@@ -104,4 +104,11 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
      * @param ownerType contains a String value.
      */
     public abstract void changeOwner(String ownerType);
+
+    /**
+     * Returns an Opportunity owner.
+     * @param ownerType contains a String value.
+     * @return String value.
+     */
+    public abstract String getOwner(String ownerType);
 }

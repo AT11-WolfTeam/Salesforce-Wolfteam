@@ -51,5 +51,4 @@ public class NewCampaignClassicPage extends AbstractNewCampaignPage {
     public void clickSaveButton() {
         saveButton.click();
     }
-
 }

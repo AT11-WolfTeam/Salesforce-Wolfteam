@@ -89,5 +89,4 @@ public class OpportunityUi {
         strategyMap.put(OpportunityConstant.CAMPAIGN_NAME, () -> getCampaignName());
         return strategyMap;
     }
-
 }

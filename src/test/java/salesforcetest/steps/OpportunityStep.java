@@ -26,6 +26,7 @@ import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
 import salesforce.ui.pages.newcampaign.AbstractNewCampaignPage;
 import salesforce.ui.pages.opportunities.AbstractOpportunitiesPage;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
+import salesforce.utils.JsonFileReader;
 import salesforce.utils.ReplacerMessages;
 import salesforce.utils.SheetManager;
 import java.util.ArrayList;
@@ -39,7 +40,6 @@ import java.util.Map;
  * @version 1.0 16 March 2020.
  */
 public class OpportunityStep {
-    private static final String OPPORTUNITY_PAGE = "Opportunities Page";
     private Context context;
     private OpportunityApiHelper opportunityApiHelper;
     private ArrayList<HashMap<String, String>> opportunityMapList;
@@ -51,7 +51,8 @@ public class OpportunityStep {
     private AbstractOpportunityPage opportunityPage;
     private OpportunityUi opportunityUi;
     private static final int FIRST_OPPORTUNITY = 0;
-
+    private static final String JSON_CONFIG_FILE = "config.json";
+    private static final String OPPORTUNITY_PAGE = "Opportunities Page";
     /**
      * OpportunityStep constructor.
      *
@@ -170,7 +171,7 @@ public class OpportunityStep {
      * @param page string value.
      */
     @When("I go to {string}")
-    public void iGoTo(final String page) {
+    public void goesTo(final String page) {
         pageTransporter.navigateToPage(page);
     }
 
@@ -180,7 +181,7 @@ public class OpportunityStep {
      * @param mapNewCampaign map values.
      */
     @And("I create a new Campaign with")
-    public void iCreateANewCampaignWith(final Map<String, String> mapNewCampaign) {
+    public void cratesNewCampaignWith(final Map<String, String> mapNewCampaign) {
         campaignsPage = AppPageFactory.getCampaignsPage();
         newCampaignPage = campaignsPage.clickOnNewButton();
         newCampaign = context.getNewCampaign();
@@ -195,7 +196,7 @@ public class OpportunityStep {
      * @param mapOpportunityEdit map values.
      */
     @When("I assign the Campaign to the opportunity")
-    public void iAssignTheCampaignToTheOpportunity(final Map<String, String> mapOpportunityEdit) {
+    public void assignsTheCampaignToTheOpportunity(final Map<String, String> mapOpportunityEdit) {
         opportunitiesPage = AppPageFactory.getOpportunitiesPage();
         opportunityPage = opportunitiesPage.selectOpportunityName(context.getOpportunities().get(0).getName());
         opportunityUi = context.getOpportunityUi();
@@ -211,5 +212,16 @@ public class OpportunityStep {
     public void onTheDetailsSectionShouldDisplayTheCampaignName() {
         HashMap<String, String> mapOpportunityValidate = opportunityPage.getOpportunityDetails();
         Assert.assertEquals(mapOpportunityValidate, context.getOpportunityUi().getOpportunityEdit());
+    }
+
+    /**
+     * Validates an opportunity owner.
+     * @param ownerType contains String value.
+     */
+    @When("the opportunity page displays the owner {string}")
+    public void displaysTheOwnerOnOpportunityPage(final String ownerType) {
+        String actualResult = AppPageFactory.getOpportunityPage().getOwner(ownerType);
+        String expectedResult = new JsonFileReader(JSON_CONFIG_FILE).getUser(ownerType).getUsername();
+        Assert.assertEquals(actualResult, expectedResult);
     }
 }

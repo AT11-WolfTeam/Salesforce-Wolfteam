@@ -24,11 +24,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  */
 public class OpportunityLightningPage extends AbstractOpportunityPage {
     @FindBy(css = "div[data-aura-class='forceOutputOwnerIdLookupWithChangeLink'] button")
-
     private WebElement changeOwnerButton;
 
     @FindBy(css = "button[class*='slds-button slds-button--brand slds']")
     private WebElement changeStageButton;
+
+    @FindBy(css = "div[class='ownerName'] a[data-aura-class='forceOutputLookup']")
+    private WebElement opportunityOwnerLabel;
 
     @FindBy(css = "a[title='Details']")
     private WebElement detailsTab;
@@ -78,6 +80,11 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
         changeOpportunityOwnerPopup.clickOnOwnerNameTextBox();
         changeOpportunityOwnerPopup.selectOwner(ownerType);
         changeOpportunityOwnerPopup.clickOnChangeOwnerButton();
+    }
+
+    @Override
+    public String getOwner(final String ownerType) {
+        return opportunityOwnerLabel.getText();
     }
 
     @Override

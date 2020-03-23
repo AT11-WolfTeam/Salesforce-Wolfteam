@@ -62,21 +62,6 @@ public class OpportunityStep {
     }
 
     /**
-     * Creates Opportunity.
-     *
-     * @param opportunityQuantity contains opportunity quantity.
-     * @param opportunity         contains opportunity type.
-     */
-    @Given("I create {int} opportunity as {string}")
-    public void createsOpportunity(final int opportunityQuantity, final String opportunity) {
-        String sheetName = "Accounts";
-        opportunityMapList = SheetManager.manageSheet(sheetName, opportunityQuantity, opportunity);
-        ArrayList<Opportunity> opportunities = opportunityApiHelper.setOpportunities(opportunityMapList);
-        context.setOpportunities(opportunities);
-        opportunityApiHelper.postOpportunities(context.getOpportunities());
-    }
-
-    /**
      * Changes an opportunity's Owner.
      *
      * @param ownerType contains name Owner object.

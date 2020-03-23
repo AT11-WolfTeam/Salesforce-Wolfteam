@@ -14,19 +14,19 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
- * Defines NewCampaignPopUpLightning.
+ * Defines NewCampaignPageClassic.
  *
  * @author Alan Escalera.
  * @version 1.0 19 March 2020.
  */
-public class NewCampaignPopUpLightning extends NewCampaignPageAbstract {
-    @FindBy(xpath = "//div[@class='uiInput uiInputText uiInput--default uiInput--input']//input[@class=' input']")
+public class NewCampaignClassicPage extends AbstractNewCampaignPage {
+    @FindBy(css = "input[id='cpn1']")
     private WebElement campaignNameField;
 
-    @FindBy(xpath = "//div[@class='slds-form-element__control']//input[@type='checkbox']")
+    @FindBy(css = "input[id='cpn16']")
     private WebElement activeCheckBox;
 
-    @FindBy(css = "button[title='Save']")
+    @FindBy(css = "input[name='save']")
     private WebElement saveButton;
 
     @Override
@@ -51,4 +51,5 @@ public class NewCampaignPopUpLightning extends NewCampaignPageAbstract {
     public void clickSaveButton() {
         saveButton.click();
     }
+
 }

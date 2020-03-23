@@ -16,8 +16,8 @@ import salesforce.entities.Context;
 import salesforce.entities.Opportunity;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.PageTransporter;
-import salesforce.ui.pages.campaign.CampaignAbstractPage;
-import salesforce.ui.pages.campaignlist.CampaignListPageAbstract;
+import salesforce.ui.pages.campaign.AbstractCampaignPage;
+import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
 
 /**
  * Manages Hook instance.
@@ -27,9 +27,9 @@ import salesforce.ui.pages.campaignlist.CampaignListPageAbstract;
  */
 public class Hook {
     private Context context;
-    private CampaignListPageAbstract campaignListPageAbstract;
+    private AbstractCampaignListPage abstractCampaignListPage;
     private PageTransporter pageTransporter;
-    private CampaignAbstractPage campaignAbstractPage;
+    private AbstractCampaignPage abstractCampaignPage;
     private OpportunityApiHelper opportunityApiHelper;
 
     /**
@@ -49,9 +49,9 @@ public class Hook {
     @After("@DeletesCampaign")
     public void deletesCampaign() {
         pageTransporter.navigateToPage("Campaigns Page");
-        campaignListPageAbstract = AppPageFactory.getCampaignsPage();
-        campaignAbstractPage = campaignListPageAbstract.selectCampaignName(context.getNewCampaign().getCampaignName());
-        campaignListPageAbstract = campaignAbstractPage.deleteCampaign();
+        abstractCampaignListPage = AppPageFactory.getCampaignsPage();
+        abstractCampaignPage = abstractCampaignListPage.selectCampaignName(context.getNewCampaign().getCampaignName());
+        abstractCampaignListPage = abstractCampaignPage.deleteCampaign();
     }
 
     /**

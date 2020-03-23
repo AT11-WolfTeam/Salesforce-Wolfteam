@@ -15,7 +15,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.AppPageFactory;
-import salesforce.ui.pages.opportunity.OpportunityPageAbstract;
+import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 
 /**
  * Defines OpportunitiesPopUpLightning.
@@ -23,7 +23,7 @@ import salesforce.ui.pages.opportunity.OpportunityPageAbstract;
  * @author Alan Escalera.
  * @version 1.0 19 March 2020.
  */
-public class OpportunitiesPageLightning extends OpportunitiesPageAbstract {
+public class OpportunitiesLightningPage extends AbstractOpportunitiesPage {
     @FindBy(css = "div[title='New']")
     private WebElement newButton;
     protected static final String NAME_OPPORTUNITY = "a[title='%s']";
@@ -50,7 +50,7 @@ public class OpportunitiesPageLightning extends OpportunitiesPageAbstract {
     }
 
     @Override
-    public OpportunityPageAbstract selectOpportunityName(final String opportunityName) {
+    public AbstractOpportunityPage selectOpportunityName(final String opportunityName) {
         String opportunityNameXpath = String.format(NAME_OPPORTUNITY, opportunityName);
         nameOpportunitySelected = WebDriverManager.getInstance().getWebDriver().findElement(By
                 .cssSelector(opportunityNameXpath));

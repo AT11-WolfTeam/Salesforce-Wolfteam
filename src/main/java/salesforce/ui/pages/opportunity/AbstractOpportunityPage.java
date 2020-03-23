@@ -11,19 +11,19 @@ package salesforce.ui.pages.opportunity;
 
 import org.openqa.selenium.WebElement;
 import salesforce.entities.OpportunityUi;
-import salesforce.ui.pages.BasePage;
+import salesforce.ui.pages.AbstractBasePage;
 
 import java.util.HashMap;
 import java.util.Set;
 import java.util.function.Supplier;
 
 /**
- * Defines OpportunitiesPageClassic.
+ * Defines OpportunitiesClassicPage.
  *
  * @author Alan Escalera.
  * @version 1.0 19 March 2020.
  */
-public abstract class OpportunityPageAbstract extends BasePage {
+public abstract class AbstractOpportunityPage extends AbstractBasePage {
     private static final String CAMPAIGN_NAME = "Campaign Name";
     protected WebElement campaignNameSelect;
 

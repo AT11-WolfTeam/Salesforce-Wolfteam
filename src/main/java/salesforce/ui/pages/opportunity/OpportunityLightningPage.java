@@ -22,7 +22,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  * @author Enrique Carrizales.
  * @version 1.0 21 March 2020.
  */
-public class OpportunityLightningPage extends OpportunityPageAbstract {
+public class OpportunityLightningPage extends AbstractOpportunityPage {
 
     @FindBy(css = "div[data-aura-class='forceOutputOwnerIdLookupWithChangeLink'] button")
     //svg[data-key='change_owner']

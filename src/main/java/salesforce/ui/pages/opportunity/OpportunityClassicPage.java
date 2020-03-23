@@ -24,7 +24,7 @@ import java.util.Set;
  * @author Enrique Carrizales.
  * @version 1.0 21 March 2020.
  */
-public class OpportunityClassicPage extends OpportunityPageAbstract {
+public class OpportunityClassicPage extends AbstractOpportunityPage {
     @FindBy(css = "td[id='opp17_ilecell']")
     private WebElement campaignField;
 

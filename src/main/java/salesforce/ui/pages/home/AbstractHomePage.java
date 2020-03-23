@@ -10,8 +10,8 @@
 package salesforce.ui.pages.home;
 
 import salesforce.ui.components.menu.TopMenuAbstract;
+import salesforce.ui.pages.AbstractBasePage;
 import salesforce.ui.pages.AppPageFactory;
-import salesforce.ui.pages.BasePage;
 
 /**
  * Defines a abstract class page.
@@ -19,7 +19,7 @@ import salesforce.ui.pages.BasePage;
  * @author Enrique Carrizales.
  * @version 1.0 17 March 2020.
  */
-public abstract class HomePageAbstract extends BasePage {
+public abstract class AbstractHomePage extends AbstractBasePage {
     private TopMenuAbstract topMenu;
 
     @Override
@@ -35,9 +35,9 @@ public abstract class HomePageAbstract extends BasePage {
     }
 
     /**
-     * Builds a HomePageAbstract class.
+     * Builds a HomePage class.
      */
-    public HomePageAbstract() {
+    public AbstractHomePage() {
         topMenu = AppPageFactory.getTopMenu();
     }
 }

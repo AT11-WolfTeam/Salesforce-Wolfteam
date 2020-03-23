@@ -14,7 +14,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.AppPageFactory;
-import salesforce.ui.pages.campaignlist.CampaignListPageAbstract;
+import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
 
 /**
  * Defines CampaignLightningPage.
@@ -22,7 +22,7 @@ import salesforce.ui.pages.campaignlist.CampaignListPageAbstract;
  * @author Alan Escalera.
  * @version 1.0 22 March 2020.
  */
-public class CampaignLightningPage extends CampaignAbstractPage {
+public class CampaignLightningPage extends AbstractCampaignPage {
     private Actions actions;
 
     @FindBy(xpath = "//div[@title='Delete' and contains(text(),'Delete')]")
@@ -48,7 +48,7 @@ public class CampaignLightningPage extends CampaignAbstractPage {
     }
 
     @Override
-    public CampaignListPageAbstract deleteCampaign() {
+    public AbstractCampaignListPage deleteCampaign() {
         clickIconDropDown();
         clickDeleteCampaignScroll();
         clickDeleteConfirmButton();

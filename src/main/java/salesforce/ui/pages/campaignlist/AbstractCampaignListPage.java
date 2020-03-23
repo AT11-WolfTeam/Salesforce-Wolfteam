@@ -10,9 +10,9 @@
 package salesforce.ui.pages.campaignlist;
 
 import org.openqa.selenium.WebElement;
-import salesforce.ui.pages.BasePage;
-import salesforce.ui.pages.campaign.CampaignAbstractPage;
-import salesforce.ui.pages.newcampaign.NewCampaignPageAbstract;
+import salesforce.ui.pages.AbstractBasePage;
+import salesforce.ui.pages.campaign.AbstractCampaignPage;
+import salesforce.ui.pages.newcampaign.AbstractNewCampaignPage;
 
 /**
  * Defines CampaignsPageAbstract.
@@ -20,7 +20,7 @@ import salesforce.ui.pages.newcampaign.NewCampaignPageAbstract;
  * @author Alan Escalera.
  * @version 1.0 19 March 2020.
  */
-public abstract class CampaignListPageAbstract extends BasePage {
+public abstract class AbstractCampaignListPage extends AbstractBasePage {
     protected WebElement nameCampaignSelected;
 
     @Override
@@ -32,7 +32,7 @@ public abstract class CampaignListPageAbstract extends BasePage {
      *
      * @return NewCampaignPageAbstract instance.
      */
-    public abstract NewCampaignPageAbstract clickOnNewButton();
+    public abstract AbstractNewCampaignPage clickOnNewButton();
 
     /**
      * Selects a campaign.
@@ -40,6 +40,6 @@ public abstract class CampaignListPageAbstract extends BasePage {
      * @param campaignName value.
      * @return CampaignPageAbstract instance.
      */
-    public abstract CampaignAbstractPage selectCampaignName(String campaignName);
+    public abstract AbstractCampaignPage selectCampaignName(String campaignName);
 
 }

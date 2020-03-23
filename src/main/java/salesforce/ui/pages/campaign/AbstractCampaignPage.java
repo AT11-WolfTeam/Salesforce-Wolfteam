@@ -9,8 +9,8 @@
 
 package salesforce.ui.pages.campaign;
 
-import salesforce.ui.pages.BasePage;
-import salesforce.ui.pages.campaignlist.CampaignListPageAbstract;
+import salesforce.ui.pages.AbstractBasePage;
+import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
 
 /**
  * Defines CampaignAbstractPage.
@@ -18,7 +18,7 @@ import salesforce.ui.pages.campaignlist.CampaignListPageAbstract;
  * @author Alan Escalera.
  * @version 1.0 22 March 2020.
  */
-public abstract class CampaignAbstractPage extends BasePage {
+public abstract class AbstractCampaignPage extends AbstractBasePage {
     @Override
     protected void waitUntilPageObjectIsLoaded() {
 
@@ -29,6 +29,6 @@ public abstract class CampaignAbstractPage extends BasePage {
      *
      * @return CampaignsPageAbstract instance.
      */
-    public abstract CampaignListPageAbstract deleteCampaign();
+    public abstract AbstractCampaignListPage deleteCampaign();
 
 }

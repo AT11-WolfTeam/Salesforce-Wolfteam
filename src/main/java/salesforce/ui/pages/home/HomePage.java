@@ -15,7 +15,7 @@ package salesforce.ui.pages.home;
  * @author Enrique Carrizales.
  * @version 1.0 17 March 2020.
  */
-public class HomeClassicPage extends HomePageAbstract {
+public class HomePage extends AbstractHomePage {
 
     /**
      * Defines a webDriver waiter.

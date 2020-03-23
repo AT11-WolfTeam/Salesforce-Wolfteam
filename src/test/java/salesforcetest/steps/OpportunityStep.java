@@ -21,10 +21,10 @@ import salesforce.entities.Opportunity;
 import salesforce.entities.OpportunityUi;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.PageTransporter;
-import salesforce.ui.pages.campaignlist.CampaignListPageAbstract;
-import salesforce.ui.pages.newcampaign.NewCampaignPageAbstract;
-import salesforce.ui.pages.opportunities.OpportunitiesPageAbstract;
-import salesforce.ui.pages.opportunity.OpportunityPageAbstract;
+import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
+import salesforce.ui.pages.newcampaign.AbstractNewCampaignPage;
+import salesforce.ui.pages.opportunities.AbstractOpportunitiesPage;
+import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 import salesforce.utils.SheetManager;
 
 import java.util.ArrayList;
@@ -43,11 +43,11 @@ public class OpportunityStep {
     private OpportunityApiHelper opportunityApiHelper;
     private ArrayList<HashMap<String, String>> opportunityMapList;
     private PageTransporter pageTransporter;
-    private CampaignListPageAbstract campaignsPage;
-    private NewCampaignPageAbstract newCampaignPage;
+    private AbstractCampaignListPage campaignsPage;
+    private AbstractNewCampaignPage newCampaignPage;
     private NewCampaign newCampaign;
-    private OpportunitiesPageAbstract opportunitiesPage;
-    private OpportunityPageAbstract opportunityPage;
+    private AbstractOpportunitiesPage opportunitiesPage;
+    private AbstractOpportunityPage opportunityPage;
     private OpportunityUi opportunityUi;
 
     /**

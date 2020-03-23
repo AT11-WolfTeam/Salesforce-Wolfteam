@@ -10,7 +10,7 @@
 package salesforce.ui.pages.newcampaign;
 
 import salesforce.entities.NewCampaign;
-import salesforce.ui.pages.BasePage;
+import salesforce.ui.pages.AbstractBasePage;
 
 import java.util.HashMap;
 import java.util.Set;
@@ -21,7 +21,7 @@ import java.util.Set;
  * @author Alan Escalera.
  * @version 1.0 19 March 2020.
  */
-public abstract class NewCampaignPageAbstract extends BasePage {
+public abstract class AbstractNewCampaignPage extends AbstractBasePage {
     private static final String CAMPAIGN_NAME = "Campaign Name";
     protected static final String IS_ACTIVE = "true";
     private static final String ACTIVE = "Active";

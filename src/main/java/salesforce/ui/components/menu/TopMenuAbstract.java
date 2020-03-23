@@ -9,7 +9,7 @@
 
 package salesforce.ui.components.menu;
 
-import salesforce.ui.pages.BasePage;
+import salesforce.ui.pages.AbstractBasePage;
 
 /**
  * Manages a TopMenuAbstract menu.
@@ -17,7 +17,7 @@ import salesforce.ui.pages.BasePage;
  * @author Enrique Carrizales.
  * @version 1.0 17 March 2020.
  */
-public abstract class TopMenuAbstract extends BasePage {
+public abstract class TopMenuAbstract extends AbstractBasePage {
 
     /**
      * Click on apps button.

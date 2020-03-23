@@ -35,11 +35,14 @@ public class PageTransporter {
         urlLightningMap.put("Sales Page", PropertiesReader.getInstance().getSalesforceUrl().getSalesLightningUrl());
         urlLightningMap.put("Opportunities Page", PropertiesReader.getInstance().getSalesforceUrl()
                 .getOpportunitiesLightningUrl());
+        urlLightningMap.put("Campaigns Page", PropertiesReader.getInstance().getSalesforceUrl()
+                .getCampaignsLightningUrl());
         urlClassicMap = new HashMap<>();
         urlClassicMap.put("Login Page", PropertiesReader.getInstance().getSalesforceUrl().getLoginUrl());
         urlClassicMap.put("Sales Page", PropertiesReader.getInstance().getSalesforceUrl().getSalesClassicUrl());
         urlClassicMap.put("Opportunities Page", PropertiesReader.getInstance().getSalesforceUrl()
                 .getOpportunitiesClassicUrl());
+        urlClassicMap.put("Campaigns Page", PropertiesReader.getInstance().getSalesforceUrl().getCampaignsClassicUrl());
     }
 
     /**

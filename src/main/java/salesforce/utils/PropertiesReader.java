@@ -53,8 +53,10 @@ public final class PropertiesReader {
             salesforceUrl.setSalesLightningUrl(properties.getProperty(UrlConstant.SALES_LIGHTNING_URL));
             salesforceUrl.setOpportunitiesLightningUrl(properties.getProperty(UrlConstant
                     .OPPORTUNITIES_LIGHTNING_URL));
+            salesforceUrl.setCampaignsLightningUrl(properties.getProperty(UrlConstant.CAMPAIGNS_LIGHTNING_URL));
             salesforceUrl.setSalesClassicUrl(properties.getProperty(UrlConstant.SALES_CLASSIC_URL));
             salesforceUrl.setOpportunitiesClassicUrl(properties.getProperty(UrlConstant.OPPORTUNITIES_CLASSIC_URL));
+            salesforceUrl.setCampaignsClassicUrl(properties.getProperty(UrlConstant.CAMPAIGNS_CLASSIC_URL));
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }

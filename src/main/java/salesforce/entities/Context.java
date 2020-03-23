@@ -23,6 +23,8 @@ public class Context {
     private Opportunity opportunity;
     private List<Account> accounts;
     private List<Opportunity> opportunities;
+    private NewCampaign newCampaign;
+    private OpportunityUi opportunityUi;
     private List<Contact> contacts;
 
     /**
@@ -33,6 +35,8 @@ public class Context {
         this.opportunity = new Opportunity();
         this.accounts = new ArrayList<>();
         this.opportunities = new ArrayList<>();
+        this.newCampaign = new NewCampaign();
+        this.opportunityUi = new OpportunityUi();
         this.contacts = new ArrayList<>();
     }
 
@@ -70,6 +74,25 @@ public class Context {
      */
     public void setOpportunities(final List<Opportunity> opportunities) {
         this.opportunities = opportunities;
+    }
+
+
+    /**
+     * Returns new campaign instance.
+     *
+     * @return NewCampaign object.
+     */
+    public NewCampaign getNewCampaign() {
+        return newCampaign;
+    }
+
+    /**
+     * Returns opportunity ui instance.
+     *
+     * @return opportunityUi object.
+     */
+    public OpportunityUi getOpportunityUi() {
+        return opportunityUi;
     }
 
     /**

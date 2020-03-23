@@ -20,7 +20,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  * @author Enrique Carrizales.
  * @version 1.0 20 March 2020.
  */
-public class OpportunityListLightningPage extends OpportunityListPageAbstract {
+public class OpportunityListLightningPage extends AbstractOpportunityListPage {
 
     @FindBy(css = "table[role='grid']")
     private WebElement opportunityTable;

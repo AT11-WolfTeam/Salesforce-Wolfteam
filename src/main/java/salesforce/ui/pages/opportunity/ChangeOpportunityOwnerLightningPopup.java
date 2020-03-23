@@ -13,7 +13,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.ui.pages.BasePage;
+import salesforce.ui.pages.AbstractBasePage;
 import salesforce.utils.JsonFileReader;
 
 /**
@@ -22,7 +22,7 @@ import salesforce.utils.JsonFileReader;
  * @author Enrique Carrizales.
  * @version 1.0 22 March 2020.
  */
-public class ChangeOpportunityOwnerLightningPopup extends BasePage {
+public class ChangeOpportunityOwnerLightningPopup extends AbstractBasePage {
     @FindBy(css = "div[class = 'autocompleteWrapper slds-grow'] input")
     private WebElement ownerNameTextBox;
 

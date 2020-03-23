@@ -12,15 +12,15 @@ package salesforce.ui.pages.aplications;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.ui.pages.BasePage;
+import salesforce.ui.pages.AbstractBasePage;
 
 /**
- * Defines a AllTabsClassicPage page.
+ * Defines a AllTabsClassicPageAbstract page.
  *
  * @author Enrique Carrizales.
  * @version 1.0 18 March 2020.
  */
-public class AllTabsClassicPage extends BasePage {
+public class AllTabsClassicPageAbstract extends AbstractBasePage {
     @FindBy(css = "td[class='dataCol opportunityBlock col02']")
     private WebElement opportunityButton;
 

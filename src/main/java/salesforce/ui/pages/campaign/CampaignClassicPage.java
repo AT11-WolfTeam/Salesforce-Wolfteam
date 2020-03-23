@@ -11,6 +11,12 @@ package salesforce.ui.pages.campaign;
 
 import salesforce.ui.pages.campaigns.CampaignsPageAbstract;
 
+/**
+ * Defines CampaignClassicPage.
+ *
+ * @author Alan Escalera.
+ * @version 1.0 22 March 2020.
+ */
 public class CampaignClassicPage extends CampaignAbstractPage {
     @Override
     public CampaignsPageAbstract deleteCampaign() {

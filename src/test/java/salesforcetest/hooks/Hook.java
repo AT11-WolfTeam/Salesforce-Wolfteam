@@ -23,15 +23,22 @@ import salesforce.ui.pages.campaigns.CampaignsPageAbstract;
  * @version 1.0 17 March 2020.
  */
 public class Hook {
-    Context context;
-    CampaignsPageAbstract campaignsPageAbstract;
-    PageTransporter pageTransporter = new PageTransporter();
-    CampaignAbstractPage campaignAbstractPage;
+    private Context context;
+    private CampaignsPageAbstract campaignsPageAbstract;
+    private PageTransporter pageTransporter = new PageTransporter();
+    private CampaignAbstractPage campaignAbstractPage;
 
-    public Hook(Context context) {
+    /**
+     * Constructor Hook.
+     * @param context dependency injection.
+     */
+    public Hook(final Context context) {
         this.context = context;
     }
 
+    /**
+     * Deletes campaign.
+     */
     @After("@DeletesCampaign")
     public void deletesCampaign() {
         pageTransporter.navigateToPage("Campaigns Page");

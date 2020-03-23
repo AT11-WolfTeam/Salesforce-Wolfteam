@@ -38,7 +38,7 @@ public class CampaignsPageClassic extends CampaignsPageAbstract {
     }
 
     @Override
-    public CampaignAbstractPage selectCampaignName(String campaignName) {
+    public CampaignAbstractPage selectCampaignName(final String campaignName) {
         return null;
     }
 }

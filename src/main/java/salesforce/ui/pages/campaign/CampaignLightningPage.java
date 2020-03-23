@@ -16,6 +16,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.campaigns.CampaignsPageAbstract;
 
+/**
+ * Defines CampaignLightningPage.
+ *
+ * @author Alan Escalera.
+ * @version 1.0 22 March 2020.
+ */
 public class CampaignLightningPage extends CampaignAbstractPage {
     private Actions actions;
 
@@ -29,9 +35,13 @@ public class CampaignLightningPage extends CampaignAbstractPage {
             + " slds-button--icon-border-filled oneActionsDropDown']//div[@class='uiMenu']")
     private WebElement iconDropDown;
 
+    /**
+     * Constructor CampaignLightningPage.
+     */
     public CampaignLightningPage() {
         actions = new Actions(webDriver);
     }
+
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(iconDropDown));
@@ -41,19 +51,28 @@ public class CampaignLightningPage extends CampaignAbstractPage {
     public CampaignsPageAbstract deleteCampaign() {
         clickIconDropDown();
         clickDeleteCampaignScroll();
-        clickDeleteButtonConfirm();
+        clickDeleteConfirmButton();
         return AppPageFactory.getCampaignsPage();
     }
 
-    private void clickIconDropDown(){
+    /**
+     * Clicks on Icon Drop Down.
+     */
+    private void clickIconDropDown() {
         iconDropDown.click();
     }
 
-    private void clickDeleteCampaignScroll(){
+    /**
+     * Clicks in Delete Campaigns Scroll.
+     */
+    private void clickDeleteCampaignScroll() {
         actions.moveToElement(deleteCampaignScroll).click().build().perform();
     }
 
-    private void clickDeleteButtonConfirm(){
+    /**
+     * Clicks on delete confirm button.
+     */
+    private void clickDeleteConfirmButton() {
         deleteButtonConfirm.click();
     }
 }

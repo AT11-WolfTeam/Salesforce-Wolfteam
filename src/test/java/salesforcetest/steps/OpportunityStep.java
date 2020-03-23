@@ -104,7 +104,7 @@ public class OpportunityStep {
     }
 
     /**
-     * Deletes created opportunities.
+     * Deletes opportunities created.
      */
     @When("I delete created opportunities")
     public void deleteOpportunities() {

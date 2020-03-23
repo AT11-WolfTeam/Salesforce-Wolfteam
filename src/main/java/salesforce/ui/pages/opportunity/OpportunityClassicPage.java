@@ -122,4 +122,9 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     public void changeOwner(final String ownerType) {
 
     }
+
+    @Override
+    public String getOwner(final String ownerType) {
+        return null;
+    }
 }

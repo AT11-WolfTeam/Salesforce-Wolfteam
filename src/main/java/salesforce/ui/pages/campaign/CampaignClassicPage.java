@@ -9,6 +9,10 @@
 
 package salesforce.ui.pages.campaign;
 
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.campaigns.CampaignsPageAbstract;
 
 /**
@@ -18,8 +22,19 @@ import salesforce.ui.pages.campaigns.CampaignsPageAbstract;
  * @version 1.0 22 March 2020.
  */
 public class CampaignClassicPage extends CampaignAbstractPage {
+    @FindBy(css = "input[title='Delete']")
+    private WebElement deleteButton;
+
+    @Override
+    protected void waitUntilPageObjectIsLoaded() {
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(deleteButton));
+    }
+
     @Override
     public CampaignsPageAbstract deleteCampaign() {
-        return null;
+        deleteButton.click();
+        webDriverWait.until(ExpectedConditions.alertIsPresent());
+        webDriver.switchTo().alert().accept();
+        return AppPageFactory.getCampaignsPage();
     }
 }

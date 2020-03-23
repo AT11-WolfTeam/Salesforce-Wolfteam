@@ -9,6 +9,8 @@
 
 package salesforce.ui.pages.campaigns;
 
+import core.selenium.WebDriverManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -24,6 +26,7 @@ import salesforce.ui.pages.campaign.CampaignAbstractPage;
 public class CampaignsPageClassic extends CampaignsPageAbstract {
     @FindBy(xpath = "//input[@class='btn' and @name='new']")
     private WebElement newButton;
+    protected static final String NAME_CAMPAIGN = "//th//a[contains(text(),'%s')]";
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -39,6 +42,10 @@ public class CampaignsPageClassic extends CampaignsPageAbstract {
 
     @Override
     public CampaignAbstractPage selectCampaignName(final String campaignName) {
-        return null;
+        String opportunityNameXpath = String.format(NAME_CAMPAIGN, campaignName);
+        nameCampaignSelected = WebDriverManager.getInstance().getWebDriver().findElement(By
+                .xpath(opportunityNameXpath));
+        nameCampaignSelected.click();
+        return AppPageFactory.getCampaignPage();
     }
 }

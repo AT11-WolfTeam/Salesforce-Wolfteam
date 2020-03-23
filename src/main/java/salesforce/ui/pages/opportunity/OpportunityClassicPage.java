@@ -37,12 +37,15 @@ public class OpportunityClassicPage extends OpportunityPageAbstract {
     @FindBy(xpath = "//div[@id='opp17_ileinner']")
     private WebElement campaignSaved;
 
+    @FindBy(css = "input[title='Edit']")
+    private WebElement editButton;
+
     private String parentHandle;
     protected static final String CAMPAIGN_NAME = "//th[@scope='row']//a[contains(text(),'%s')]";
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(campaignField));
     }
 
     @Override
@@ -59,7 +62,8 @@ public class OpportunityClassicPage extends OpportunityPageAbstract {
 
     @Override
     protected String getCampaignName() {
-        System.out.println(campaignSaved.getText());
+        webDriverWait.until(ExpectedConditions.visibilityOf(campaignSaved));
+        webDriverWait.until(ExpectedConditions.visibilityOf(editButton));
         return campaignSaved.getText();
     }
 
@@ -82,7 +86,6 @@ public class OpportunityClassicPage extends OpportunityPageAbstract {
         String campaignNameXpath = String.format(CAMPAIGN_NAME, campaignName);
         webDriver.switchTo().frame("resultsFrame");
         campaignNameSelect = webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(campaignNameXpath)));
-
         campaignNameSelect.click();
         webDriver.switchTo().window(parentHandle);
     }

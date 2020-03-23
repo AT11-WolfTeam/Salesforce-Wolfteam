@@ -25,15 +25,17 @@ import salesforce.ui.pages.campaigns.CampaignsPageAbstract;
 public class Hook {
     private Context context;
     private CampaignsPageAbstract campaignsPageAbstract;
-    private PageTransporter pageTransporter = new PageTransporter();
+    private PageTransporter pageTransporter;
     private CampaignAbstractPage campaignAbstractPage;
 
     /**
      * Constructor Hook.
+     *
      * @param context dependency injection.
      */
     public Hook(final Context context) {
         this.context = context;
+        pageTransporter = new PageTransporter();
     }
 
     /**

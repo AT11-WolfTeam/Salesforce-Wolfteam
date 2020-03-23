@@ -42,9 +42,9 @@ public class CampaignsPageLightning extends CampaignsPageAbstract {
 
     @Override
     public CampaignAbstractPage selectCampaignName(final String campaignName) {
-        String opportunityNameXpath = String.format(NAME_CAMPAIGN, campaignName);
+        String opportunityNameCss = String.format(NAME_CAMPAIGN, campaignName);
         nameCampaignSelected = WebDriverManager.getInstance().getWebDriver().findElement(By
-                .cssSelector(opportunityNameXpath));
+                .cssSelector(opportunityNameCss));
         nameCampaignSelected.click();
         return AppPageFactory.getCampaignPage();
     }

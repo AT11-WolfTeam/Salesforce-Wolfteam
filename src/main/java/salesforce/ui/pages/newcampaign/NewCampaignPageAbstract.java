@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages.campaigns;
+package salesforce.ui.pages.newcampaign;
 
 import salesforce.entities.NewCampaign;
 import salesforce.ui.pages.BasePage;

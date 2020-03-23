@@ -16,18 +16,18 @@ import salesforce.ui.components.menu.TopMenuAbstract;
 import salesforce.ui.pages.campaign.CampaignAbstractPage;
 import salesforce.ui.pages.campaign.CampaignClassicPage;
 import salesforce.ui.pages.campaign.CampaignLightningPage;
-import salesforce.ui.pages.campaigns.CampaignsPageAbstract;
-import salesforce.ui.pages.campaigns.CampaignsPageClassic;
-import salesforce.ui.pages.campaigns.CampaignsPageLightning;
-import salesforce.ui.pages.campaigns.NewCampaignPageAbstract;
-import salesforce.ui.pages.campaigns.NewCampaignPageClassic;
-import salesforce.ui.pages.campaigns.NewCampaignPopUpLightning;
+import salesforce.ui.pages.campaignlist.CampaignListPageAbstract;
+import salesforce.ui.pages.campaignlist.CampaignListPageClassic;
+import salesforce.ui.pages.campaignlist.CampaignListPageLightning;
+import salesforce.ui.pages.newcampaign.NewCampaignPageAbstract;
+import salesforce.ui.pages.newcampaign.NewCampaignPageClassic;
+import salesforce.ui.pages.newcampaign.NewCampaignPopUpLightning;
 import salesforce.ui.pages.oportunitieslist.OpportunityListClassicPage;
 import salesforce.ui.pages.oportunitieslist.OpportunityListLightningPage;
 import salesforce.ui.pages.oportunitieslist.OpportunityListPageAbstract;
 import salesforce.ui.pages.opportunities.OpportunitiesPageAbstract;
 import salesforce.ui.pages.opportunities.OpportunitiesPageClassic;
-import salesforce.ui.pages.opportunities.OpportunitiesPopUpLightning;
+import salesforce.ui.pages.opportunities.OpportunitiesPageLightning;
 import salesforce.ui.pages.opportunity.OpportunityClassicPage;
 import salesforce.ui.pages.opportunity.OpportunityLightningPage;
 import salesforce.ui.pages.opportunity.OpportunityPageAbstract;
@@ -58,11 +58,11 @@ public class AppPageFactory {
      *
      * @return CampaignsPage instance.
      */
-    public static CampaignsPageAbstract getCampaignsPage() {
+    public static CampaignListPageAbstract getCampaignsPage() {
         if (userExperience.equals("Classic")) {
-            return new CampaignsPageClassic();
+            return new CampaignListPageClassic();
         }
-        return new CampaignsPageLightning();
+        return new CampaignListPageLightning();
 
 
     }
@@ -76,7 +76,7 @@ public class AppPageFactory {
         if (userExperience.equals("Classic")) {
             return new OpportunitiesPageClassic();
         }
-        return new OpportunitiesPopUpLightning();
+        return new OpportunitiesPageLightning();
     }
 
     /**

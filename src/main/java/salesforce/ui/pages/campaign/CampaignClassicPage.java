@@ -13,7 +13,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.AppPageFactory;
-import salesforce.ui.pages.campaigns.CampaignsPageAbstract;
+import salesforce.ui.pages.campaignlist.CampaignListPageAbstract;
 
 /**
  * Defines CampaignClassicPage.
@@ -31,7 +31,7 @@ public class CampaignClassicPage extends CampaignAbstractPage {
     }
 
     @Override
-    public CampaignsPageAbstract deleteCampaign() {
+    public CampaignListPageAbstract deleteCampaign() {
         deleteButton.click();
         webDriverWait.until(ExpectedConditions.alertIsPresent());
         webDriver.switchTo().alert().accept();

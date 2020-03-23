@@ -23,7 +23,7 @@ import salesforce.ui.pages.opportunity.OpportunityPageAbstract;
  * @author Alan Escalera.
  * @version 1.0 19 March 2020.
  */
-public class OpportunitiesPopUpLightning extends OpportunitiesPageAbstract {
+public class OpportunitiesPageLightning extends OpportunitiesPageAbstract {
     @FindBy(css = "div[title='New']")
     private WebElement newButton;
     protected static final String NAME_OPPORTUNITY = "a[title='%s']";
@@ -42,7 +42,6 @@ public class OpportunitiesPopUpLightning extends OpportunitiesPageAbstract {
     @Override
     public void displayOpportunityList(final String listName) {
         String opportunityOrderedListLocator;
-
         opportunityListButton.click();
         opportunityOrderedListLocator = String.format(OPPORTUNITY_ORDERED_LIST_PARTIAL_LOCATOR, listName);
         webDriverWait.until(ExpectedConditions.elementToBeClickable(webDriver.findElement(

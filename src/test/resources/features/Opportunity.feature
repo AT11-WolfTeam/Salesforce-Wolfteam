@@ -61,6 +61,7 @@ Feature: Opportunity
     Then the application should display an information message in Opportunity page with the format "Event Example Subject was created"
     And Upcoming & Overview tab contains the event created
 
+
   Scenario: Create a new opportunity
     Given I create 2 "Basic" opportunities
     When I delete created opportunities

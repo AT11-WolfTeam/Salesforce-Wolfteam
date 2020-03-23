@@ -14,7 +14,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.AppPageFactory;
-import salesforce.ui.pages.campaigns.CampaignsPageAbstract;
+import salesforce.ui.pages.campaignlist.CampaignListPageAbstract;
 
 /**
  * Defines CampaignLightningPage.
@@ -48,7 +48,7 @@ public class CampaignLightningPage extends CampaignAbstractPage {
     }
 
     @Override
-    public CampaignsPageAbstract deleteCampaign() {
+    public CampaignListPageAbstract deleteCampaign() {
         clickIconDropDown();
         clickDeleteCampaignScroll();
         clickDeleteConfirmButton();

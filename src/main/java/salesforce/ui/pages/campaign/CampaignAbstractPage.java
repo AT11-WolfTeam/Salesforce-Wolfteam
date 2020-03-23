@@ -10,7 +10,7 @@
 package salesforce.ui.pages.campaign;
 
 import salesforce.ui.pages.BasePage;
-import salesforce.ui.pages.campaigns.CampaignsPageAbstract;
+import salesforce.ui.pages.campaignlist.CampaignListPageAbstract;
 
 /**
  * Defines CampaignAbstractPage.
@@ -29,6 +29,6 @@ public abstract class CampaignAbstractPage extends BasePage {
      *
      * @return CampaignsPageAbstract instance.
      */
-    public abstract CampaignsPageAbstract deleteCampaign();
+    public abstract CampaignListPageAbstract deleteCampaign();
 
 }

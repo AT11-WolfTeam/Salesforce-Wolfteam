@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages.campaigns;
+package salesforce.ui.pages.campaignlist;
 
 import core.selenium.WebDriverManager;
 import org.openqa.selenium.By;
@@ -16,6 +16,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.campaign.CampaignAbstractPage;
+import salesforce.ui.pages.newcampaign.NewCampaignPageAbstract;
 
 /**
  * Defines CampaignsPageLightning.
@@ -23,7 +24,7 @@ import salesforce.ui.pages.campaign.CampaignAbstractPage;
  * @author Alan Escalera.
  * @version 1.0 19 March 2020.
  */
-public class CampaignsPageLightning extends CampaignsPageAbstract {
+public class CampaignListPageLightning extends CampaignListPageAbstract {
     @FindBy(xpath = "//a[@title='New']")
     private WebElement newButton;
     protected static final String NAME_CAMPAIGN = "a[title='%s']";

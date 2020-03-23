@@ -7,11 +7,12 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages.campaigns;
+package salesforce.ui.pages.campaignlist;
 
 import org.openqa.selenium.WebElement;
 import salesforce.ui.pages.BasePage;
 import salesforce.ui.pages.campaign.CampaignAbstractPage;
+import salesforce.ui.pages.newcampaign.NewCampaignPageAbstract;
 
 /**
  * Defines CampaignsPageAbstract.
@@ -19,7 +20,7 @@ import salesforce.ui.pages.campaign.CampaignAbstractPage;
  * @author Alan Escalera.
  * @version 1.0 19 March 2020.
  */
-public abstract class CampaignsPageAbstract extends BasePage {
+public abstract class CampaignListPageAbstract extends BasePage {
     protected WebElement nameCampaignSelected;
 
     @Override

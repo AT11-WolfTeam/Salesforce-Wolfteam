@@ -13,11 +13,13 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import salesforce.ui.components.span.ToastMessageSpan;
 import salesforce.ui.pages.AppPageFactory;
 import org.testng.Assert;
 import salesforce.api.requestapi.OpportunityApiHelper;
 import salesforce.entities.Context;
 import salesforce.entities.Opportunity;
+import salesforce.utils.ReplacerMessages;
 import salesforce.utils.SheetManager;
 import salesforce.ui.pages.PageTransporter;
 import java.util.ArrayList;
@@ -35,6 +37,7 @@ public class OpportunityStep {
     private Context context;
     private OpportunityApiHelper opportunityApiHelper;
     private ArrayList<HashMap<String, String>> opportunityMapList;
+    private static final int FIRST_OPPORTUNITY = 0;
 
     /**
      * OpportunityStep constructor.
@@ -54,7 +57,6 @@ public class OpportunityStep {
     @When("^I change an opportunity's owner with \"([^\"]*)\"$")
     public void changesAnOpportunitySOwnerWith(final String ownerType) {
         AppPageFactory.getOpportunityPage().changeOwner(ownerType);
-
     }
 
     /**
@@ -62,9 +64,13 @@ public class OpportunityStep {
      *
      * @param message contains a String message.
      */
-    @Then("^the application should display an information message in Opportunity page with the format \"([^\"]*)\"$")
+    @Then("the application should display an information message in Opportunity page with the format {string}")
     public void displaysAnInformationMessageInOpportunityPageWithTheFormat(final String message) {
-        System.out.println("com.steps.Opportunity: Then");
+        ToastMessageSpan toastMessageSpan = new ToastMessageSpan();
+        String actualResult = toastMessageSpan.getToastMessage();
+        String expectedResult = ReplacerMessages.replaceChangeOwnerMessage(message, context.getOpportunities()
+                .get(FIRST_OPPORTUNITY).getName());
+        Assert.assertEquals(actualResult, expectedResult);
     }
 
     /**
@@ -110,7 +116,7 @@ public class OpportunityStep {
      */
     @And("I search the opportunity in list {string}")
     public void searchOpportunity(final String listName) {
-        String opportunityName = context.getOpportunities().get(0).getName();
+        String opportunityName = context.getOpportunities().get(FIRST_OPPORTUNITY).getName();
         AppPageFactory.getOpportunitiesPage().displayOpportunityList(listName);
         AppPageFactory.getOpportunityList().clickOnOpportunity(opportunityName);
     }

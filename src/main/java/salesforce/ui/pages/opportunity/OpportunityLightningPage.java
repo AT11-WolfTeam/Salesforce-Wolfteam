@@ -21,7 +21,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  * @version 1.0 23 March 2020.
  */
 public class OpportunityLightningPage extends OpportunityPageAbstract {
-
     @FindBy(xpath = "//div[@class='entityNameTitle slds-line-height--reset']")
     private WebElement entityNameTitle;
 

@@ -20,7 +20,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  * @version 1.0 21 March 2020.
  */
 public class NotesAndAttachmentsClassicPage extends NotesAndAttachmentsPageAbstract {
-
     @FindBy(xpath = "//li[@class='slds-button slds-button--neutral slds-truncate']/a/div")
     private WebElement uploadFilesButton;
 

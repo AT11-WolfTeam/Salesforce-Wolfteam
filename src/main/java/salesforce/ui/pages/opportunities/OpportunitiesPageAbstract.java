@@ -21,7 +21,7 @@ import salesforce.ui.pages.opportunity.OpportunityPageAbstract;
 public abstract class OpportunitiesPageAbstract extends BasePage {
 
     /**
-     * Display a opportunity list.
+     * Display an opportunity list.
      *
      * @param listName contains a String value.
      */

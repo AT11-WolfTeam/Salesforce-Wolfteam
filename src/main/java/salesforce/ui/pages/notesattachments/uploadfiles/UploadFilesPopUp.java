@@ -22,7 +22,6 @@ import salesforce.ui.pages.BasePage;
  * @version 1.0 23 March 2020.
  */
 public class UploadFilesPopUp extends BasePage {
-
     @FindBy(xpath = "//h2[@class='title slds-text-heading--medium slds-hyphenate']")
     private WebElement popupTitle;
 

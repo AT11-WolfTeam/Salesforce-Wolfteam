@@ -21,7 +21,6 @@ import salesforce.ui.pages.opportunity.OpportunityPageAbstract;
  * @version 1.0 23 March 2020.
  */
 public class OpportunitiesPageLightning extends OpportunitiesPageAbstract {
-
     private static final String OPPORTUNITY_NAME_LINK = "//a[@title='%s']";
 
     /**

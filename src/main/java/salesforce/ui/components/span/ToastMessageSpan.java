@@ -35,7 +35,6 @@ public class ToastMessageSpan extends BasePage {
      * @return String value.
      */
     public String getToastMessage() {
-        System.out.println(toastMessage.getText());
         return toastMessage.getText();
     }
 }

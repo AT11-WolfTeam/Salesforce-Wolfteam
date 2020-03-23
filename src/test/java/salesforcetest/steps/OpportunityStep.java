@@ -37,6 +37,7 @@ public class OpportunityStep {
     private Context context;
     private OpportunityApiHelper opportunityApiHelper;
     private ArrayList<HashMap<String, String>> opportunityMapList;
+    private static final int FIRST_OPPORTUNITY = 0;
 
     /**
      * OpportunityStep constructor.
@@ -67,8 +68,8 @@ public class OpportunityStep {
     public void displaysAnInformationMessageInOpportunityPageWithTheFormat(final String message) {
         ToastMessageSpan toastMessageSpan = new ToastMessageSpan();
         String actualResult = toastMessageSpan.getToastMessage();
-        String expectedResult = ReplacerMessages.replaceChangeOwnerMessage(message, context.getOpportunities().get(0)
-                .getName());
+        String expectedResult = ReplacerMessages.replaceChangeOwnerMessage(message, context.getOpportunities()
+                .get(FIRST_OPPORTUNITY).getName());
         Assert.assertEquals(actualResult, expectedResult);
     }
 
@@ -115,7 +116,7 @@ public class OpportunityStep {
      */
     @And("I search the opportunity in list {string}")
     public void searchOpportunity(final String listName) {
-        String opportunityName = context.getOpportunities().get(0).getName();
+        String opportunityName = context.getOpportunities().get(FIRST_OPPORTUNITY).getName();
         AppPageFactory.getOpportunitiesPage().displayOpportunityList(listName);
         AppPageFactory.getOpportunityList().clickOnOpportunity(opportunityName);
     }

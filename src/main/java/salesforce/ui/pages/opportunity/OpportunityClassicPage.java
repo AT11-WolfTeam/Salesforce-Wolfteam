@@ -7,16 +7,25 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages.opportunities.opportunity;
+package salesforce.ui.pages.opportunity;
 
+import salesforce.ui.pages.opportunities.opportunity.OpportunityPageAbstract;
+
+/**
+ * Defines an OpportunityClassicPage.
+ *
+ * @author Enrique Carrizales.
+ * @version 1.0 21 March 2020.
+ */
 public class OpportunityClassicPage extends OpportunityPageAbstract {
+
     @Override
     public void clickOnNotesAndAttachmentsButton() {
 
     }
 
     @Override
-    public void changeOwner(String ownerType) {
+    public void changeOwner(final String ownerType) {
 
     }
 

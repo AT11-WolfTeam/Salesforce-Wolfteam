@@ -9,13 +9,11 @@
 
 package salesforce.ui.pages.opportunities;
 
-import com.sun.org.apache.bcel.internal.generic.RETURN;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.opportunities.opportunity.OpportunityClassicPage;
-import salesforce.ui.pages.opportunities.opportunity.OpportunityLightningPage;
 import salesforce.ui.pages.opportunities.opportunity.OpportunityPageAbstract;
 
 /**

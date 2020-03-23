@@ -46,30 +46,15 @@ public class OpportunityStep {
         opportunityApiHelper = new OpportunityApiHelper();
     }
 
-
-    /**
-     * Creates Opportunity.
-     *
-     * @param opportunityQuantity contains opportunity quantity.
-     * @param opportunity contains opportunity type.
-     */
-    @Given("I create {int} opportunity as {string}")
-    public void createsOpportunity(final int opportunityQuantity, final String opportunity) {
-        String sheetName = "Accounts";
-        opportunityMapList = SheetManager.manageSheet(sheetName, opportunityQuantity, opportunity);
-        ArrayList<Opportunity> opportunities = opportunityApiHelper.setOpportunities(opportunityMapList);
-        context.setOpportunities(opportunities);
-        opportunityApiHelper.postOpportunities(context.getOpportunities());
-    }
-
     /**
      * Changes an opportunity's Owner.
      *
-     * @param owner contains name Owner object.
+     * @param ownerType contains name Owner object.
      */
     @When("^I change an opportunity's owner with \"([^\"]*)\"$")
-    public void changesAnOpportunitySOwnerWith(final String owner) {
-        System.out.println(owner);
+    public void changesAnOpportunitySOwnerWith(final String ownerType) {
+        AppPageFactory.getOpportunityPage().changeOwner(ownerType);
+
     }
 
     /**
@@ -121,11 +106,11 @@ public class OpportunityStep {
     /**
      * Search an opportunity.
      *
-     * @param opportunityName contains a String value.
      * @param listName contains a String value.
      */
-    @And("I search an opportunity {string} in list {string}")
-    public void searchOpportunity(final String opportunityName, final String listName) {
+    @And("I search the opportunity in list {string}")
+    public void searchOpportunity(final String listName) {
+        String opportunityName = context.getOpportunities().get(0).getName();
         AppPageFactory.getOpportunitiesPage().displayOpportunityList(listName);
         AppPageFactory.getOpportunityList().clickOnOpportunity(opportunityName);
     }

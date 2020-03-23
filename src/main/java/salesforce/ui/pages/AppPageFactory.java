@@ -23,6 +23,9 @@ import salesforce.ui.pages.oportunitieslist.OpportunityListPageAbstract;
 import salesforce.ui.pages.opportunities.OpportunitiesPageAbstract;
 import salesforce.ui.pages.opportunities.OpportunitiesPageClassic;
 import salesforce.ui.pages.opportunities.OpportunitiesPopUpLightning;
+import salesforce.ui.pages.opportunities.opportunity.OpportunityPageAbstract;
+import salesforce.ui.pages.opportunity.OpportunityClassicPage;
+import salesforce.ui.pages.opportunity.OpportunityLightningPage;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -80,6 +83,18 @@ public class AppPageFactory {
         Map<String, OpportunityListPageAbstract> map = new HashMap<>();
         map.put(UserExperience.USER_EXPERIENCE_CLASSIC.get(), new OpportunityListClassicPage());
         map.put(UserExperience.USER_EXPERIENCE_LIGHTNING.get(), new OpportunityListLightningPage());
+        return map.get(userExperience);
+    }
+
+    /**
+     * Returns a Opportunity page.
+     *
+     * @return OpportunityPage instance.
+     */
+    public static OpportunityPageAbstract getOpportunityPage() {
+        Map<String, OpportunityPageAbstract> map = new HashMap<>();
+        map.put(UserExperience.USER_EXPERIENCE_CLASSIC.get(), new OpportunityClassicPage());
+        map.put(UserExperience.USER_EXPERIENCE_LIGHTNING.get(), new OpportunityLightningPage());
         return map.get(userExperience);
     }
 }

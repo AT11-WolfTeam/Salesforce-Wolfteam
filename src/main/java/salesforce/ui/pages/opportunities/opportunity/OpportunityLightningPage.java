@@ -36,4 +36,9 @@ public class OpportunityLightningPage extends OpportunityPageAbstract {
     public void clickOnNotesAndAttachmentsButton() {
         clickOnNotesAndAttachment();
     }
+
+    @Override
+    public void changeOwner(String ownerType) {
+
+    }
 }

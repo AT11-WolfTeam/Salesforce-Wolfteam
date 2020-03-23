@@ -9,10 +9,13 @@
 
 package salesforce.ui.pages.campaigns;
 
+import core.selenium.WebDriverManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.AppPageFactory;
+import salesforce.ui.pages.campaign.CampaignAbstractPage;
 
 /**
  * Defines CampaignsPageLightning.
@@ -23,6 +26,7 @@ import salesforce.ui.pages.AppPageFactory;
 public class CampaignsPageLightning extends CampaignsPageAbstract {
     @FindBy(xpath = "//a[@title='New']")
     private WebElement newButton;
+    protected static final String NAME_CAMPAIGN = "a[title='%s']";
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -35,4 +39,14 @@ public class CampaignsPageLightning extends CampaignsPageAbstract {
         newButton.click();
         return AppPageFactory.getNewCampaignPage();
     }
+
+    @Override
+    public CampaignAbstractPage selectCampaignName(String campaignName) {
+        String opportunityNameXpath = String.format(NAME_CAMPAIGN, campaignName);
+        nameCampaignSelected = WebDriverManager.getInstance().getWebDriver().findElement(By
+                .cssSelector(opportunityNameXpath));
+        nameCampaignSelected.click();
+        return AppPageFactory.getCampaignPage();
+    }
+
 }

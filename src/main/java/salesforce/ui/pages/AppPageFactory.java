@@ -10,10 +10,12 @@
 package salesforce.ui.pages;
 
 import core.utils.GradleReader;
-import core.utils.UserExperience;
 import salesforce.ui.components.menu.TopClassicMenu;
 import salesforce.ui.components.menu.TopLightningMenu;
 import salesforce.ui.components.menu.TopMenuAbstract;
+import salesforce.ui.pages.campaign.CampaignAbstractPage;
+import salesforce.ui.pages.campaign.CampaignClassicPage;
+import salesforce.ui.pages.campaign.CampaignLightningPage;
 import salesforce.ui.pages.campaigns.CampaignsPageAbstract;
 import salesforce.ui.pages.campaigns.CampaignsPageClassic;
 import salesforce.ui.pages.campaigns.CampaignsPageLightning;
@@ -30,9 +32,6 @@ import salesforce.ui.pages.opportunity.OpportunityClassicPage;
 import salesforce.ui.pages.opportunity.OpportunityLightningPage;
 import salesforce.ui.pages.opportunity.OpportunityPageAbstract;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Builds a page specific.
  *
@@ -48,10 +47,10 @@ public class AppPageFactory {
      * @return TopMenu instance.
      */
     public static TopMenuAbstract getTopMenu() {
-        Map<String, TopMenuAbstract> map = new HashMap<>();
-        map.put(UserExperience.USER_EXPERIENCE_CLASSIC.get(), new TopClassicMenu());
-        map.put(UserExperience.USER_EXPERIENCE_LIGHTNING.get(), new TopLightningMenu());
-        return map.get(userExperience);
+        if (userExperience.equals("Classic")) {
+            return new TopClassicMenu();
+        }
+        return new TopLightningMenu();
     }
 
     /**
@@ -60,18 +59,13 @@ public class AppPageFactory {
      * @return CampaignsPage instance.
      */
     public static CampaignsPageAbstract getCampaignsPage() {
-//        Map<String, CampaignsPageAbstract> map = new HashMap<>();
-//        map.put(UserExperience.USER_EXPERIENCE_CLASSIC.get(), new CampaignsPageClassic());
-//        map.put(UserExperience.USER_EXPERIENCE_LIGHTNING.get(), new CampaignsPageLightning());
-//        return map.get(userExperience);
-            if (userExperience.equals("Classic")) {
-                return new CampaignsPageClassic();
-            }
-            return new CampaignsPageLightning();
+        if (userExperience.equals("Classic")) {
+            return new CampaignsPageClassic();
+        }
+        return new CampaignsPageLightning();
 
 
-
-     }
+    }
 
     /**
      * Returns a Opportunities page.
@@ -79,10 +73,6 @@ public class AppPageFactory {
      * @return OpportunitiesPage instance.
      */
     public static OpportunitiesPageAbstract getOpportunitiesPage() {
-//        Map<String, OpportunitiesPageAbstract> map = new HashMap<>();
-//        map.put("Classic", new OpportunitiesPageClassic());
-//        map.put("Lightning", new OpportunitiesPopUpLightning());
-//        return map.get(userExperience);
         if (userExperience.equals("Classic")) {
             return new OpportunitiesPageClassic();
         }
@@ -95,10 +85,6 @@ public class AppPageFactory {
      * @return OpportunityPage instance.
      */
     public static OpportunityPageAbstract getOpportunityPage() {
-//        Map<String, OpportunityPageAbstract> map = new HashMap<>();
-//        map.put(UserExperience.USER_EXPERIENCE_CLASSIC.get(), new OpportunityPageClassic());
-//        map.put(UserExperience.USER_EXPERIENCE_LIGHTNING.get(), new OpportunityPopUpLightning());
-//        return map.get(userExperience);
         if (userExperience.equals("Classic")) {
             return new OpportunityClassicPage();
         }
@@ -111,10 +97,6 @@ public class AppPageFactory {
      * @return NewCampaignsPage instance.
      */
     public static NewCampaignPageAbstract getNewCampaignPage() {
-//        Map<String, NewCampaignPageAbstract> map = new HashMap<>();
-//        map.put(UserExperience.USER_EXPERIENCE_CLASSIC.get(), new NewCampaignPageClassic());
-//        map.put(UserExperience.USER_EXPERIENCE_LIGHTNING.get(), new NewCampaignPopUpLightning());
-//        return map.get(userExperience);
         if (userExperience.equals("Classic")) {
             return new NewCampaignPageClassic();
         }
@@ -124,24 +106,25 @@ public class AppPageFactory {
 
     /**
      * Returns a OpportunityList page.
+     *
      * @return OpportunityListPage instance;
      */
     public static OpportunityListPageAbstract getOpportunityList() {
-        Map<String, OpportunityListPageAbstract> map = new HashMap<>();
-        map.put(UserExperience.USER_EXPERIENCE_CLASSIC.get(), new OpportunityListClassicPage());
-        map.put(UserExperience.USER_EXPERIENCE_LIGHTNING.get(), new OpportunityListLightningPage());
-        return map.get(userExperience);
+        if (userExperience.equals("Classic")) {
+            return new OpportunityListClassicPage();
+        }
+        return new OpportunityListLightningPage();
     }
 
     /**
-     * Returns a Opportunity page.
+     * Returns a campaigns page.
      *
-     * @return OpportunityPage instance.
+     * @return CampaignsPage instance.
      */
-//    public static OpportunityPageAbstract getOpportunityPage() {
-//        Map<String, OpportunityPageAbstract> map = new HashMap<>();
-//        map.put(UserExperience.USER_EXPERIENCE_CLASSIC.get(), new OpportunityClassicPage());
-//        map.put(UserExperience.USER_EXPERIENCE_LIGHTNING.get(), new OpportunityLightningPage());
-//        return map.get(userExperience);
-//    }
+    public static CampaignAbstractPage getCampaignPage() {
+        if (userExperience.equals("Classic")) {
+            return new CampaignClassicPage();
+        }
+        return new CampaignLightningPage();
+    }
 }

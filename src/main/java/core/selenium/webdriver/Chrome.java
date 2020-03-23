@@ -33,8 +33,8 @@ public class Chrome implements IDriver {
     public WebDriver initDriver() {
         ChromeDriverManager.getInstance(CHROME).version("80.0.3987.16").setup();
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--headless");
-        chromeOptions.addArguments("--disable-gpu");
+//        chromeOptions.addArguments("--headless");
+//        chromeOptions.addArguments("--disable-gpu");
         return new ChromeDriver(chromeOptions);
     }
 }

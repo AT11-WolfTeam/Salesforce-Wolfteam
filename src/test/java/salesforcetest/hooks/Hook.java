@@ -9,6 +9,13 @@
 
 package salesforcetest.hooks;
 
+import io.cucumber.java.After;
+import salesforce.entities.Context;
+import salesforce.ui.pages.AppPageFactory;
+import salesforce.ui.pages.PageTransporter;
+import salesforce.ui.pages.campaign.CampaignAbstractPage;
+import salesforce.ui.pages.campaigns.CampaignsPageAbstract;
+
 /**
  * Manages Hook instance.
  *
@@ -16,6 +23,20 @@ package salesforcetest.hooks;
  * @version 1.0 17 March 2020.
  */
 public class Hook {
+    Context context;
+    CampaignsPageAbstract campaignsPageAbstract;
+    PageTransporter pageTransporter = new PageTransporter();
+    CampaignAbstractPage campaignAbstractPage;
 
+    public Hook(Context context) {
+        this.context = context;
+    }
 
+    @After("@DeletesCampaign")
+    public void deletesCampaign() {
+        pageTransporter.navigateToPage("Campaigns Page");
+        campaignsPageAbstract = AppPageFactory.getCampaignsPage();
+        campaignAbstractPage = campaignsPageAbstract.selectCampaignName(context.getNewCampaign().getCampaignName());
+        campaignsPageAbstract = campaignAbstractPage.deleteCampaign();
+    }
 }

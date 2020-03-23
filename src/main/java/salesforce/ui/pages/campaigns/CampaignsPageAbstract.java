@@ -9,7 +9,9 @@
 
 package salesforce.ui.pages.campaigns;
 
+import org.openqa.selenium.WebElement;
 import salesforce.ui.pages.BasePage;
+import salesforce.ui.pages.campaign.CampaignAbstractPage;
 
 /**
  * Defines CampaignsPageAbstract.
@@ -18,6 +20,7 @@ import salesforce.ui.pages.BasePage;
  * @version 1.0 19 March 2020.
  */
 public abstract class CampaignsPageAbstract extends BasePage {
+    protected WebElement nameCampaignSelected;
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -29,4 +32,13 @@ public abstract class CampaignsPageAbstract extends BasePage {
      * @return NewCampaignPageAbstract instance.
      */
     public abstract NewCampaignPageAbstract clickOnNewButton();
+
+    /**
+     * Selects a campaign.
+     *
+     * @param campaignName value.
+     * @return CampaignPageAbstract instance.
+     */
+    public abstract CampaignAbstractPage selectCampaignName(String campaignName);
+
 }

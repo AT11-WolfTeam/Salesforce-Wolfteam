@@ -13,6 +13,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.AppPageFactory;
+import salesforce.ui.pages.campaign.CampaignAbstractPage;
 
 /**
  * Defines CampaignsPageClassic.
@@ -34,5 +35,10 @@ public class CampaignsPageClassic extends CampaignsPageAbstract {
     public NewCampaignPageAbstract clickOnNewButton() {
         newButton.click();
         return AppPageFactory.getNewCampaignPage();
+    }
+
+    @Override
+    public CampaignAbstractPage selectCampaignName(String campaignName) {
+        return null;
     }
 }

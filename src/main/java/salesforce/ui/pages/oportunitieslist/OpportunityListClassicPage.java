@@ -9,6 +9,9 @@
 
 package salesforce.ui.pages.oportunitieslist;
 
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
 /**
  * Defines an OpportunityListClassicPage.
  *
@@ -18,12 +21,11 @@ package salesforce.ui.pages.oportunitieslist;
 public class OpportunityListClassicPage extends OpportunityListPageAbstract {
 
     @Override
-    public void clickOnOpportunity(final String opportunityName) {
+    protected void waitUntilPageObjectIsLoaded() {
 
     }
 
     @Override
-    protected void waitUntilPageObjectIsLoaded() {
-
+    public void clickOnOpportunity(final String opportunityName) {
     }
 }

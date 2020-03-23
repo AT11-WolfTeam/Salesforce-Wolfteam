@@ -10,6 +10,7 @@
 package salesforce.ui.pages.opportunities;
 
 import salesforce.ui.pages.BasePage;
+import salesforce.ui.pages.opportunities.opportunity.OpportunityPageAbstract;
 
 /**
  * Defines OpportunitiesPageAbstract.
@@ -18,11 +19,6 @@ import salesforce.ui.pages.BasePage;
  * @version 1.0 19 March 2020.
  */
 public abstract class OpportunitiesPageAbstract extends BasePage {
-
-    @Override
-    protected void waitUntilPageObjectIsLoaded() {
-
-    }
 
     /**
      * Display a opportunity list.
@@ -37,5 +33,5 @@ public abstract class OpportunitiesPageAbstract extends BasePage {
      * @param opportunityName value.
      * @return OpportunityPage instance.
      */
-    public abstract OpportunityPageAbstract selectOpportunityName(String opportunityName);
+    public abstract OpportunityPageAbstract clickOnOpportunityName(String opportunityName);
 }

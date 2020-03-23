@@ -13,6 +13,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import salesforce.ui.pages.opportunities.opportunity.OpportunityPageAbstract;
 
 /**
  * Defines OpportunitiesPopUpLightning.
@@ -50,8 +51,7 @@ public class OpportunitiesPopUpLightning extends OpportunitiesPageAbstract {
     }
 
     @Override
-    public OpportunityPageAbstract selectOpportunityName(final String opportunityName) {
-        // TO DO
+    public OpportunityPageAbstract clickOnOpportunityName(String opportunityName) {
         return null;
     }
 }

@@ -10,14 +10,10 @@
 package salesforcetest.runner;
 
 import core.report.Report;
-
 import core.selenium.WebDriverManager;
-
 import io.cucumber.testng.AbstractTestNGCucumberTests;
-
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-
 import salesforce.ui.pages.LoginPage;
 import salesforce.ui.pages.PageTransporter;
 

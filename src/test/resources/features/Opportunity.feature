@@ -62,6 +62,15 @@ Feature: Opportunity
     Then the application should display an information message in Opportunity page with the format "Event Example Subject was created"
     And Upcoming & Overview tab contains the event created
 
+
   Scenario: Create a new opportunity
     Given I create 2 "Basic" opportunities
     When I delete created opportunities
+
+
+  Scenario: Upload a file to opportunity
+#    Given I create 1 "Basic" opportunities
+    When I navigate to Opportunities Page
+    And I select the created opportunity
+    When I upload the file
+    Then It should be displayed upload files popup

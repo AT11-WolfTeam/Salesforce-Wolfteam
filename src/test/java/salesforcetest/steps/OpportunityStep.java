@@ -112,7 +112,7 @@ public class OpportunityStep {
     /**
      * Navigates to an opportunity.
      */
-    @And("I navigate to Opportunities Page")
+    @When("I navigate to Opportunities Page")
     public void navigatesToOpportunitiesPage() {
         PageTransporter pageTransporter = new PageTransporter();
         pageTransporter.navigateToPage(OPPORTUNITY_PAGE);
@@ -128,5 +128,29 @@ public class OpportunityStep {
     public void searchOpportunity(final String opportunityName, final String listName) {
         AppPageFactory.getOpportunitiesPage().displayOpportunityList(listName);
         AppPageFactory.getOpportunityList().clickOnOpportunity(opportunityName);
+    }
+
+    @When("I upload the file")
+    public void iUploadTheFile() {
+//        String opportunityName = context.getOpportunities().get(0).getName();
+        AppPageFactory.getOpportunityPage().clickOnNotesAndAttachmentsButton();
+        AppPageFactory.getNotesAndAttachments().clickOnUploadFiles();
+
+    }
+
+    @Then("It should be displayed upload files popup")
+    public void itShouldBeDisplayedUploadFilesPopup() {
+        String fileName = "cucumber";
+        String uploadedFileName = AppPageFactory.getNotesAndAttachments().getUploadedFileName(fileName);
+        Assert.assertEquals(uploadedFileName,"cucumber");
+    }
+
+    @And("I select the created opportunity")
+    public void selectOpportunity() {
+        String opportunityName = "Test Basic Opportunity1";
+//        String opportunityName = context.getOpportunities().get(0).getName();;
+
+//        AppPageFactory.getOpportunityList().clickOnOpportunity(opportunityName);
+        AppPageFactory.getOpportunitiesPage().clickOnOpportunityName(opportunityName);
     }
 }

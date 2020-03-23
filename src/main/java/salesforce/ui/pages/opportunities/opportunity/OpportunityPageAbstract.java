@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages.opportunities;
+package salesforce.ui.pages.opportunities.opportunity;
 
 import salesforce.ui.pages.BasePage;
 
@@ -18,4 +18,9 @@ import salesforce.ui.pages.BasePage;
  * @version 1.0 19 March 2020.
  */
 public abstract class OpportunityPageAbstract extends BasePage {
+
+    /**
+     * Allows to open notes and attachments page.
+     */
+    public abstract void clickOnNotesAndAttachmentsButton();
 }

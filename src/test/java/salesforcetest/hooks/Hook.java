@@ -54,6 +54,9 @@ public class Hook {
         campaignsPageAbstract = campaignAbstractPage.deleteCampaign();
     }
 
+    /**
+     * Deletes opportunity.
+     */
     @After("@DeletesOpportunity")
     public void deletesOpportunity() {
         opportunityApiHelper.deleteOpportunities(context.getOpportunities());

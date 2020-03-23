@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages.opportunities.opportunity.notesattachments.uploadfiles;
+package salesforce.ui.pages.notesattachments.uploadfiles;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;

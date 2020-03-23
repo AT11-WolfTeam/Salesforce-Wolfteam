@@ -7,13 +7,13 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages.opportunities.opportunity.notesattachments;
+package salesforce.ui.pages.notesattachments;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.ui.pages.opportunities.opportunity.notesattachments.uploadfiles.UploadFilesPopUp;
+import salesforce.ui.pages.notesattachments.uploadfiles.UploadFilesPopUp;
 import salesforce.utils.UploadFileRobot;
 
 import java.io.File;
@@ -25,7 +25,7 @@ import java.io.File;
  * @version 1.0 21 March 2020.
  */
 public class NotesAndAttachmentsLightningPage extends NotesAndAttachmentsPageAbstract {
-    private static final String UPLOADED_FILE_NAME = "//span[text()='%s']";
+    private static final String UPLOADED_FILE_NAME = "//div/table//span[text()='cucumber']";
 
     @FindBy(xpath = "//h1[@class='slds-page-header__title listViewTitle slds-truncate']")
     private WebElement notesAndAttachmentsTitle;
@@ -33,6 +33,12 @@ public class NotesAndAttachmentsLightningPage extends NotesAndAttachmentsPageAbs
     @FindBy(xpath = "//a[@title='Upload Files']")
     private WebElement uploadFilesButton;
 
+    /**
+     * Gets a web element by xpath.
+     * @param xpathValue string.
+     * @param textToConcat value.
+     * @return a web element.
+     */
     private WebElement getWebElement(final String xpathValue, final String textToConcat) {
         return webDriver.findElement(By.xpath(String.format(xpathValue, textToConcat)));
     }
@@ -42,27 +48,38 @@ public class NotesAndAttachmentsLightningPage extends NotesAndAttachmentsPageAbs
         webDriverWait.until(ExpectedConditions.visibilityOf(notesAndAttachmentsTitle));
     }
 
+    /**
+     * Clicks on upload file button.
+     */
     private void clickOnUploadFilesButton() {
         webDriverWait.until(ExpectedConditions.visibilityOf(uploadFilesButton));
         uploadFilesButton.click();
     }
 
+    /**
+     * Closes upload files popup.
+     */
     private void closeUploadFilesPopUp() {
         UploadFilesPopUp uploadFilesPopUp = new UploadFilesPopUp();
         uploadFilesPopUp.clickOnDoneButton();
     }
 
     @Override
-    public void clickOnUploadFiles() {
-        File file = new File("src/test/resources/filestoupload/cucumber.png");
-        String filePath = file.getAbsolutePath();
+    public void clickOnUploadFiles(final String filePath) {
+        File file = new File(filePath);
+        String fileAbsolutePath = file.getAbsolutePath();
         clickOnUploadFilesButton();
-        UploadFileRobot.uploadFile(filePath);
+        UploadFileRobot.uploadFile(fileAbsolutePath);
         closeUploadFilesPopUp();
     }
 
+    /**
+     * Gets uploaded file name.
+     * @param fileName param.
+     * @return uploaded file name.
+     */
     private String getFileNameText(final String fileName) {
-        return getWebElement(UPLOADED_FILE_NAME, fileName).getText(); //it is not working
+        return getWebElement(UPLOADED_FILE_NAME, fileName).getText();
     }
 
     @Override

@@ -9,9 +9,6 @@
 
 package salesforce.ui.pages.oportunitieslist;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-
 /**
  * Defines an OpportunityListClassicPage.
  *

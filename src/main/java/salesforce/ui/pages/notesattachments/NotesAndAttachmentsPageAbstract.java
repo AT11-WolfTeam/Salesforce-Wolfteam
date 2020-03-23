@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages.opportunities.opportunity.notesattachments;
+package salesforce.ui.pages.notesattachments;
 
 import salesforce.ui.pages.BasePage;
 
@@ -20,9 +20,15 @@ import salesforce.ui.pages.BasePage;
 public abstract class NotesAndAttachmentsPageAbstract extends BasePage {
 
     /**
-     * Allows to upload a new file.
+     * Clicks on upload files.
+     * @param filePath value.
      */
-    public abstract void clickOnUploadFiles();
+    public abstract void clickOnUploadFiles(String filePath);
 
+    /**
+     * Gets uploaded file name.
+     * @param fileName value.
+     * @return uploaded file name.
+     */
     public abstract String getUploadedFileName(String fileName);
 }

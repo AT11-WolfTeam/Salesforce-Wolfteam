@@ -68,8 +68,9 @@ Feature: Opportunity
 
 
   Scenario: Upload a file to opportunity
-#    Given I create 1 "Basic" opportunities
+    Given I create 1 "Basic" opportunities
     When I navigate to Opportunities Page
     And I select the created opportunity
-    When I upload the file
-    Then It should be displayed upload files popup
+    When I upload the file to opportunity
+    Then The file should be uploaded on opportunity
+    And I delete created opportunities

@@ -22,11 +22,13 @@ import salesforce.ui.pages.oportunitieslist.OpportunityListLightningPage;
 import salesforce.ui.pages.oportunitieslist.OpportunityListPageAbstract;
 import salesforce.ui.pages.opportunities.OpportunitiesPageAbstract;
 import salesforce.ui.pages.opportunities.OpportunitiesPageClassic;
-import salesforce.ui.pages.opportunities.OpportunitiesPopUpLightning;
-import salesforce.ui.pages.opportunities.opportunity.OpportunityPageAbstract;
+import salesforce.ui.pages.opportunities.OpportunitiesPageLightning;
 import salesforce.ui.pages.opportunity.OpportunityClassicPage;
 import salesforce.ui.pages.opportunity.OpportunityLightningPage;
-
+import salesforce.ui.pages.opportunity.OpportunityPageAbstract;
+import salesforce.ui.pages.notesattachments.NotesAndAttachmentsClassicPage;
+import salesforce.ui.pages.notesattachments.NotesAndAttachmentsLightningPage;
+import salesforce.ui.pages.notesattachments.NotesAndAttachmentsPageAbstract;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -69,32 +71,53 @@ public class AppPageFactory {
      * @return OpportunitiesPage instance.
      */
     public static OpportunitiesPageAbstract getOpportunitiesPage() {
-        Map<String, OpportunitiesPageAbstract> map = new HashMap<>();
-        map.put(UserExperience.USER_EXPERIENCE_CLASSIC.get(), new OpportunitiesPageClassic());
-        map.put(UserExperience.USER_EXPERIENCE_LIGHTNING.get(), new OpportunitiesPopUpLightning());
-        return map.get(userExperience);
+        if (UserExperience.USER_EXPERIENCE_CLASSIC.get().equals(userExperience)) {
+            return new OpportunitiesPageClassic();
+        } else if (UserExperience.USER_EXPERIENCE_LIGHTNING.get().equals(userExperience)) {
+            return new OpportunitiesPageLightning();
+        }
+        return null;
     }
 
     /**
      * Returns a OpportunityList page.
+     *
      * @return OpportunityListPage instance;
      */
     public static OpportunityListPageAbstract getOpportunityList() {
-        Map<String, OpportunityListPageAbstract> map = new HashMap<>();
-        map.put(UserExperience.USER_EXPERIENCE_CLASSIC.get(), new OpportunityListClassicPage());
-        map.put(UserExperience.USER_EXPERIENCE_LIGHTNING.get(), new OpportunityListLightningPage());
-        return map.get(userExperience);
+        if (UserExperience.USER_EXPERIENCE_CLASSIC.get().equals(userExperience)) {
+            return new OpportunityListClassicPage();
+        } else if (UserExperience.USER_EXPERIENCE_LIGHTNING.get().equals(userExperience)) {
+            return new OpportunityListLightningPage();
+        }
+        return null;
     }
 
     /**
-     * Returns a Opportunity page.
+     * Allows to identify opportunity user experience page.
      *
      * @return OpportunityPage instance.
      */
     public static OpportunityPageAbstract getOpportunityPage() {
-        Map<String, OpportunityPageAbstract> map = new HashMap<>();
-        map.put(UserExperience.USER_EXPERIENCE_CLASSIC.get(), new OpportunityClassicPage());
-        map.put(UserExperience.USER_EXPERIENCE_LIGHTNING.get(), new OpportunityLightningPage());
-        return map.get(userExperience);
+        if (UserExperience.USER_EXPERIENCE_CLASSIC.get().equals(userExperience)) {
+            return new OpportunityClassicPage();
+        } else if (UserExperience.USER_EXPERIENCE_LIGHTNING.get().equals(userExperience)) {
+            return new OpportunityLightningPage();
+        }
+        return null;
+    }
+
+    /**
+     * Allows to identify notes and attachment user experience page.
+     *
+     * @return NotesAndAttachmentsPage instance.
+     */
+    public static NotesAndAttachmentsPageAbstract getNotesAndAttachments() {
+        if (UserExperience.USER_EXPERIENCE_CLASSIC.get().equals(userExperience)) {
+            return new NotesAndAttachmentsClassicPage();
+        } else if (UserExperience.USER_EXPERIENCE_LIGHTNING.get().equals(userExperience)) {
+            return new NotesAndAttachmentsLightningPage();
+        }
+        return null;
     }
 }

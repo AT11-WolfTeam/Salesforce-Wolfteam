@@ -7,10 +7,11 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages.opportunities.opportunity.notesattachments;
+package salesforce.ui.pages.notesattachments;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
  * Manages notes and attachments on Classic user experience.
@@ -21,20 +22,20 @@ import org.openqa.selenium.support.FindBy;
 public class NotesAndAttachmentsClassicPage extends NotesAndAttachmentsPageAbstract {
 
     @FindBy(xpath = "//li[@class='slds-button slds-button--neutral slds-truncate']/a/div")
-    WebElement uploadFilesButton;
+    private WebElement uploadFilesButton;
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-//        webDriverWait.until(ExpectedConditions.visibilityOf(uploadFilesButton));
+        webDriverWait.until(ExpectedConditions.visibilityOf(uploadFilesButton));
     }
 
     @Override
-    public void clickOnUploadFiles() {
+    public void clickOnUploadFiles(final String filePath) {
         uploadFilesButton.sendKeys("src/test/resources/filestoupload/cucumber.png");
     }
 
     @Override
-    public String getUploadedFileName(String fileName) {
+    public String getUploadedFileName(final String fileName) {
         return null;
     }
 }

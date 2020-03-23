@@ -9,13 +9,11 @@
 
 package salesforce.ui.pages.opportunity;
 
-import salesforce.ui.pages.opportunities.opportunity.OpportunityPageAbstract;
-
 /**
  * Defines an OpportunityClassicPage.
  *
- * @author Enrique Carrizales.
- * @version 1.0 21 March 2020.
+ * @author Juan Martinez.
+ * @version 1.0 23 March 2020.
  */
 public class OpportunityClassicPage extends OpportunityPageAbstract {
 

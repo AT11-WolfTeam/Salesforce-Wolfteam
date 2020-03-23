@@ -13,8 +13,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.ui.pages.opportunities.opportunity.OpportunityClassicPage;
-import salesforce.ui.pages.opportunities.opportunity.OpportunityPageAbstract;
+import salesforce.ui.pages.opportunity.OpportunityClassicPage;
+import salesforce.ui.pages.opportunity.OpportunityPageAbstract;
 
 /**
  * Defines OpportunitiesPageClassic.
@@ -28,6 +28,12 @@ public class OpportunitiesPageClassic extends OpportunitiesPageAbstract {
     @FindBy(xpath = "//table[@class='list']")
     private WebElement opportunityTable;
 
+    /**
+     * Allows to get and web element.
+     * @param xpathValue string.
+     * @param textToConcat value.
+     * @return a web element.
+     */
     private WebElement getWebElement(final String xpathValue, final String textToConcat) {
         return webDriver.findElement(By.xpath(String.format(xpathValue, textToConcat)));
     }

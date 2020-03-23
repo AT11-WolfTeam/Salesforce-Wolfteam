@@ -9,15 +9,32 @@
 
 package salesforce.utils;
 
-import java.awt.*;
+import java.awt.Robot;
+import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 
+/**
+ * Allows to upload file using Java Robot.
+ *
+ * @author Juan Martinez.
+ * @version 1.0 23 March 2020.
+ */
 public final class UploadFileRobot {
-    public static void setClipboardData(final String string) {
-        StringSelection stringSelection = new StringSelection(string);
+
+    /**
+     * Sets clicpboard data.
+     * @param fileLocation value.
+     */
+    public static void setClipboardData(final String fileLocation) {
+        StringSelection stringSelection = new StringSelection(fileLocation);
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
     }
+
+    /**
+     * Allows to upload file.
+     * @param fileLocation path.
+     */
     public static void uploadFile(final String fileLocation) {
         try {
             setClipboardData(fileLocation);

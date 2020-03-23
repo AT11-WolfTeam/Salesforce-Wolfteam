@@ -115,27 +115,33 @@ public class OpportunityStep {
         AppPageFactory.getOpportunityList().clickOnOpportunity(opportunityName);
     }
 
-    @When("I upload the file")
-    public void iUploadTheFile() {
-//        String opportunityName = context.getOpportunities().get(0).getName();
+    /**
+     * Uploads a file to opportunity.
+     */
+    @When("I upload the file to opportunity")
+    public void uploadFile() {
+        String filePath = "src/test/resources/filestoupload/cucumber.png";
         AppPageFactory.getOpportunityPage().clickOnNotesAndAttachmentsButton();
-        AppPageFactory.getNotesAndAttachments().clickOnUploadFiles();
+        AppPageFactory.getNotesAndAttachments().clickOnUploadFiles(filePath);
 
     }
 
-    @Then("It should be displayed upload files popup")
-    public void itShouldBeDisplayedUploadFilesPopup() {
+    /**
+     * Gets uploaded file name.
+     */
+    @Then("The file should be uploaded on opportunity")
+    public void getFileName() {
         String fileName = "cucumber";
         String uploadedFileName = AppPageFactory.getNotesAndAttachments().getUploadedFileName(fileName);
-        Assert.assertEquals(uploadedFileName,"cucumber");
+        Assert.assertEquals(uploadedFileName, fileName);
     }
 
+    /**
+     * Selects opportunity.
+     */
     @And("I select the created opportunity")
     public void selectOpportunity() {
-        String opportunityName = "Test Basic Opportunity1";
-//        String opportunityName = context.getOpportunities().get(0).getName();;
-
-//        AppPageFactory.getOpportunityList().clickOnOpportunity(opportunityName);
+        String opportunityName = context.getOpportunities().get(0).getName();
         AppPageFactory.getOpportunitiesPage().clickOnOpportunityName(opportunityName);
     }
 }

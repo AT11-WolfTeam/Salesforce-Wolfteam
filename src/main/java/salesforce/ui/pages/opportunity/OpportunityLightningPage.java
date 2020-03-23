@@ -9,21 +9,28 @@
 
 package salesforce.ui.pages.opportunity;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.ui.pages.opportunities.opportunity.OpportunityPageAbstract;
 
 /**
- * Defines an OpportunityLightningPage.
+ * Manages opportunity page lightning.
  *
- * @author Enrique Carrizales.
- * @version 1.0 21 March 2020.
+ * @author Juan Martinez.
+ * @version 1.0 23 March 2020.
  */
 public class OpportunityLightningPage extends OpportunityPageAbstract {
 
+    @FindBy(xpath = "//div[@class='entityNameTitle slds-line-height--reset']")
+    private WebElement entityNameTitle;
+
+    @FindBy(xpath = "//span[@class='slds-card__header-title slds-truncate slds-m-right--xx-small'"
+            + " and contains(text(),'Notes & Attachments')]")
+    private WebElement notesAndAttachmentsLink;
+
     @FindBy(css = "div[data-aura-class='forceOutputOwnerIdLookupWithChangeLink'] button")
-    //svg[data-key='change_owner']
+
     private WebElement changeOwnerButton;
 
     @FindBy(css = "button[class*='slds-button slds-button--brand slds']")
@@ -31,12 +38,20 @@ public class OpportunityLightningPage extends OpportunityPageAbstract {
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(changeStageButton));
+        webDriverWait.until(ExpectedConditions.visibilityOf(entityNameTitle));
+    }
+
+    /**
+     * Clicks on notes and attachments link.
+     */
+    private void clickOnNotesAndAttachment() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(notesAndAttachmentsLink));
+        ((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", notesAndAttachmentsLink);
     }
 
     @Override
     public void clickOnNotesAndAttachmentsButton() {
-
+        clickOnNotesAndAttachment();
     }
 
     @Override

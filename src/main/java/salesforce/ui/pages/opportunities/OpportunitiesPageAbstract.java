@@ -10,7 +10,7 @@
 package salesforce.ui.pages.opportunities;
 
 import salesforce.ui.pages.BasePage;
-import salesforce.ui.pages.opportunities.opportunity.OpportunityPageAbstract;
+import salesforce.ui.pages.opportunity.OpportunityPageAbstract;
 
 /**
  * Defines OpportunitiesPageAbstract.

@@ -111,4 +111,9 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
      * @return String value.
      */
     public abstract String getOwner(String ownerType);
+
+    /**
+     * Allows to open notes and attachments page.
+     */
+    public abstract void clickOnNotesAndAttachmentsButton();
 }

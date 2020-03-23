@@ -10,6 +10,7 @@
 package salesforce.ui.pages;
 
 import core.utils.GradleReader;
+import core.utils.UserExperience;
 import salesforce.ui.components.menu.TopClassicMenu;
 import salesforce.ui.components.menu.TopLightningMenu;
 import salesforce.ui.components.menu.TopMenuAbstract;
@@ -22,6 +23,9 @@ import salesforce.ui.pages.campaignlist.CampaignListLightningPage;
 import salesforce.ui.pages.newcampaign.AbstractNewCampaignPage;
 import salesforce.ui.pages.newcampaign.NewCampaignClassicPage;
 import salesforce.ui.pages.newcampaign.NewCampaignLightningPopUp;
+import salesforce.ui.pages.notesattachments.NotesAndAttachmentsClassicPage;
+import salesforce.ui.pages.notesattachments.NotesAndAttachmentsLightningPage;
+import salesforce.ui.pages.notesattachments.NotesAndAttachmentsPageAbstract;
 import salesforce.ui.pages.oportunitieslist.AbstractOpportunityListPage;
 import salesforce.ui.pages.oportunitieslist.OpportunityListClassicPage;
 import salesforce.ui.pages.oportunitieslist.OpportunityListLightningPage;
@@ -71,22 +75,26 @@ public class AppPageFactory {
      * @return OpportunitiesPage instance.
      */
     public static AbstractOpportunitiesPage getOpportunitiesPage() {
-        if (userExperience.equals("Classic")) {
+        if (UserExperience.USER_EXPERIENCE_CLASSIC.get().equals(userExperience)) {
             return new OpportunitiesClassicPage();
+        } else if (UserExperience.USER_EXPERIENCE_LIGHTNING.get().equals(userExperience)) {
+            return new OpportunitiesLightningPage();
         }
-        return new OpportunitiesLightningPage();
+        return null;
     }
 
     /**
-     * Returns a Opportunity page.
+     * Returns a campaigns page.
      *
-     * @return OpportunityPage instance.
+     * @return CampaignsPage instance.
      */
     public static AbstractOpportunityPage getOpportunityPage() {
-        if (userExperience.equals("Classic")) {
+        if (UserExperience.USER_EXPERIENCE_CLASSIC.get().equals(userExperience)) {
             return new OpportunityClassicPage();
+        } else if (UserExperience.USER_EXPERIENCE_LIGHTNING.get().equals(userExperience)) {
+            return new OpportunityLightningPage();
         }
-        return new OpportunityLightningPage();
+        return null;
     }
 
     /**
@@ -123,5 +131,19 @@ public class AppPageFactory {
             return new CampaignClassicPage();
         }
         return new CampaignLightningPage();
+    }
+
+    /**
+     * Allows to identify notes and attachment user experience page.
+     *
+     * @return NotesAndAttachmentsPage instance.
+     */
+    public static NotesAndAttachmentsPageAbstract getNotesAndAttachments() {
+        if (UserExperience.USER_EXPERIENCE_CLASSIC.get().equals(userExperience)) {
+            return new NotesAndAttachmentsClassicPage();
+        } else if (UserExperience.USER_EXPERIENCE_LIGHTNING.get().equals(userExperience)) {
+            return new NotesAndAttachmentsLightningPage();
+        }
+        return null;
     }
 }

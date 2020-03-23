@@ -186,4 +186,34 @@ public class OpportunityStep {
         String expectedResult = new JsonFileReader(JSON_CONFIG_FILE).getUser(ownerType).getUsername();
         Assert.assertEquals(actualResult, expectedResult);
     }
+
+    /**
+     * Uploads a file to opportunity.
+     */
+    @When("I upload the file to opportunity")
+    public void uploadFile() {
+        String filePath = "src/test/resources/filestoupload/cucumber.png";
+        AppPageFactory.getOpportunityPage().clickOnNotesAndAttachmentsButton();
+        AppPageFactory.getNotesAndAttachments().clickOnUploadFiles(filePath);
+    }
+
+    /**
+     * Gets uploaded file name.
+     */
+    @Then("The file should be uploaded on opportunity")
+    public void getFileName() {
+        String fileName = "cucumber";
+        String uploadedFileName = AppPageFactory.getNotesAndAttachments().getUploadedFileName(fileName);
+        Assert.assertEquals(uploadedFileName, fileName);
+    }
+
+    /**
+     * Selects opportunity.
+     */
+    @And("I select the created opportunity")
+    public void selectOpportunity() {
+        String opportunityName = context.getOpportunities().get(0).getName();
+        System.out.println(opportunityName);
+        AppPageFactory.getOpportunitiesPage().selectOpportunityName(opportunityName);
+    }
 }

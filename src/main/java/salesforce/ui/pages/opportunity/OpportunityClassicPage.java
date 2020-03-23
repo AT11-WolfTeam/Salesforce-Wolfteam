@@ -119,4 +119,8 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     public String getOwner(final String ownerType) {
         return null;
     }
+
+    @Override
+    public void clickOnNotesAndAttachmentsButton() {
+    }
 }

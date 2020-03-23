@@ -10,7 +10,10 @@
 package salesforcetest.hooks;
 
 import io.cucumber.java.After;
+import org.testng.Assert;
+import salesforce.api.requestapi.OpportunityApiHelper;
 import salesforce.entities.Context;
+import salesforce.entities.Opportunity;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.PageTransporter;
 import salesforce.ui.pages.campaign.CampaignAbstractPage;
@@ -27,6 +30,7 @@ public class Hook {
     private CampaignsPageAbstract campaignsPageAbstract;
     private PageTransporter pageTransporter;
     private CampaignAbstractPage campaignAbstractPage;
+    private OpportunityApiHelper opportunityApiHelper;
 
     /**
      * Constructor Hook.
@@ -36,6 +40,7 @@ public class Hook {
     public Hook(final Context context) {
         this.context = context;
         pageTransporter = new PageTransporter();
+        opportunityApiHelper = new OpportunityApiHelper();
     }
 
     /**
@@ -47,5 +52,14 @@ public class Hook {
         campaignsPageAbstract = AppPageFactory.getCampaignsPage();
         campaignAbstractPage = campaignsPageAbstract.selectCampaignName(context.getNewCampaign().getCampaignName());
         campaignsPageAbstract = campaignAbstractPage.deleteCampaign();
+    }
+
+    @After("@DeletesOpportunity")
+    public void deletesOpportunity() {
+        opportunityApiHelper.deleteOpportunities(context.getOpportunities());
+        final String expected = "204";
+        for (Opportunity opportunity : context.getOpportunities()) {
+            Assert.assertEquals(opportunity.getStatusCode(), expected);
+        }
     }
 }

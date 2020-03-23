@@ -151,7 +151,7 @@ public class OpportunityStep {
      *
      * @param page string value.
      */
-    @Given("I go to {string}")
+    @When("I go to {string}")
     public void iGoTo(final String page) {
         pageTransporter.navigateToPage(page);
     }
@@ -180,7 +180,7 @@ public class OpportunityStep {
     @When("I assign the Campaign to the opportunity")
     public void iAssignTheCampaignToTheOpportunity(final Map<String, String> mapOpportunityEdit) {
         opportunitiesPage = AppPageFactory.getOpportunitiesPage();
-        opportunityPage = opportunitiesPage.selectOpportunityName("Test Opportunity");
+        opportunityPage = opportunitiesPage.selectOpportunityName(context.getOpportunities().get(0).getName());
         opportunityUi = context.getOpportunityUi();
         opportunityUi.processInformation(mapOpportunityEdit);
         opportunityPage.editOpportunity(opportunityUi, mapOpportunityEdit.keySet());

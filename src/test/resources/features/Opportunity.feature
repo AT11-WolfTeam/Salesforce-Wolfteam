@@ -35,9 +35,10 @@ Feature: Opportunity
 #    And the section Upcoming & Overdue should display the "[subject]"
 
 
-  @DeletesCampaign
+  @DeletesCampaign @DeletesOpportunity
   Scenario: Assign a campaign to an opportunity
-    Given I go to "Campaigns Page"
+    Given I create 1 "Basic" opportunities
+    And I go to "Campaigns Page"
     And I create a new Campaign with
       | Campaign Name | Promotion |
       | Active        | true      |

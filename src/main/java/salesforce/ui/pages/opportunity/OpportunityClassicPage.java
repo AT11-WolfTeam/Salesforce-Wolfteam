@@ -53,8 +53,6 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
         JavascriptExecutor js = (JavascriptExecutor) webDriver;
         js.executeScript("window.scrollBy(0,400)");
         clickCampaignField();
-        // Perform the click operation that opens new window
-        parentHandle = webDriver.getWindowHandle();
         clickLookupButton();
         selectCampaign(campaignName);
         clickSaveButton();
@@ -73,21 +71,31 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
      * @param campaignName value.
      */
     private void selectCampaign(final String campaignName) {
+        // Perform the click operation that opens new window
+
         // Switch to new window opened
-        webDriverWait.until(ExpectedConditions.numberOfWindowsToBe(2));
-        Set<String> handles = webDriver.getWindowHandles();
-        for (String winHandle : handles) {
-            if (!parentHandle.equals(winHandle)) {
-                webDriver.switchTo().window(winHandle);
-                break;
+        try{
+            // method switch to new windows. this method should return a parent
+            parentHandle = webDriver.getWindowHandle();
+            webDriverWait.until(ExpectedConditions.numberOfWindowsToBe(2));
+            Set<String> handles = webDriver.getWindowHandles();
+            for (String winHandle : handles) {
+                if (!parentHandle.equals(winHandle)) {
+                    webDriver.switchTo().window(winHandle);
+                    break;
+                }
             }
+            // Perform the actions on new window
+            String campaignNameXpath = String.format(CAMPAIGN_NAME, campaignName);
+            // this should switch to parent too.
+            webDriver.switchTo().frame("resultsFrame");
+            //webDriverWait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt())
+            // this line could be in a method.
+            campaignNameSelect = webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(campaignNameXpath)));
+            campaignNameSelect.click();
+        } finally {
+            webDriver.switchTo().window(parentHandle);
         }
-        // Perform the actions on new window
-        String campaignNameXpath = String.format(CAMPAIGN_NAME, campaignName);
-        webDriver.switchTo().frame("resultsFrame");
-        campaignNameSelect = webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(campaignNameXpath)));
-        campaignNameSelect.click();
-        webDriver.switchTo().window(parentHandle);
     }
 
     @Override

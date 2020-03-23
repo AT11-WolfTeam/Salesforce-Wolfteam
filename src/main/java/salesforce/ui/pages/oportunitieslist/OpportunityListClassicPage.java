@@ -15,7 +15,7 @@ package salesforce.ui.pages.oportunitieslist;
  * @author Enrique Carrizales.
  * @version 1.0 20 March 2020.
  */
-public class OpportunityListClassicPage extends OpportunityListPageAbstract {
+public class OpportunityListClassicPage extends AbstractOpportunityListPage {
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {

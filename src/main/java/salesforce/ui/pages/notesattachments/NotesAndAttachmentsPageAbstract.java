@@ -9,7 +9,7 @@
 
 package salesforce.ui.pages.notesattachments;
 
-import salesforce.ui.pages.BasePage;
+import salesforce.ui.pages.AbstractBasePage;
 
 /**
  * Manages notes and attachments.
@@ -17,7 +17,7 @@ import salesforce.ui.pages.BasePage;
  * @author Juan Martinez.
  * @version 1.0 21 March 2020.
  */
-public abstract class NotesAndAttachmentsPageAbstract extends BasePage {
+public abstract class NotesAndAttachmentsPageAbstract extends AbstractBasePage {
 
     /**
      * Clicks on upload files.

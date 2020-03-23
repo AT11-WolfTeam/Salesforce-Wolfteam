@@ -21,6 +21,8 @@ public final class UrlConstant {
     public static final String OPPORTUNITIES_LIGHTNING_URL = "opportunities.lightning.page";
     public static final String SALES_CLASSIC_URL = "sales.classic.page";
     public static final String OPPORTUNITIES_CLASSIC_URL = "opportunities.classic.page";
+    public static final String CAMPAIGNS_LIGHTNING_URL = "campaigns.lightning.page";
+    public static final String CAMPAIGNS_CLASSIC_URL = "campaigns.classic.page";
 
     /**
      * UrlConstant constructor.

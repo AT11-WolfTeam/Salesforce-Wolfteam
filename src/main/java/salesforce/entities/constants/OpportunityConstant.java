@@ -25,6 +25,7 @@ public final class OpportunityConstant {
     public static final String PROBABILITY = "Probability";
     public static final String DESCRIPTION = "Description";
     public static final String NEXT_STEP = "NextStep";
+    public static final String CAMPAIGN_NAME = "Campaign Name";
 
     /**
      * OpportunityConstant constructor.

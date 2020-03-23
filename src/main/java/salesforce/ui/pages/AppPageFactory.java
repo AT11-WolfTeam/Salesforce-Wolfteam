@@ -14,23 +14,27 @@ import core.utils.UserExperience;
 import salesforce.ui.components.menu.TopClassicMenu;
 import salesforce.ui.components.menu.TopLightningMenu;
 import salesforce.ui.components.menu.TopMenuAbstract;
-import salesforce.ui.pages.campaigns.NewCampaignPageAbstract;
-import salesforce.ui.pages.campaigns.NewCampaignPageClassic;
-import salesforce.ui.pages.campaigns.NewCampaignPopUpLightning;
+import salesforce.ui.pages.campaign.AbstractCampaignPage;
+import salesforce.ui.pages.campaign.CampaignClassicPage;
+import salesforce.ui.pages.campaign.CampaignLightningPage;
+import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
+import salesforce.ui.pages.campaignlist.CampaignListClassicPage;
+import salesforce.ui.pages.campaignlist.CampaignListLightningPage;
+import salesforce.ui.pages.newcampaign.AbstractNewCampaignPage;
+import salesforce.ui.pages.newcampaign.NewCampaignClassicPage;
+import salesforce.ui.pages.newcampaign.NewCampaignLightningPopUp;
+import salesforce.ui.pages.oportunitieslist.AbstractOpportunityListPage;
 import salesforce.ui.pages.oportunitieslist.OpportunityListClassicPage;
 import salesforce.ui.pages.oportunitieslist.OpportunityListLightningPage;
-import salesforce.ui.pages.oportunitieslist.OpportunityListPageAbstract;
-import salesforce.ui.pages.opportunities.OpportunitiesPageAbstract;
-import salesforce.ui.pages.opportunities.OpportunitiesPageClassic;
-import salesforce.ui.pages.opportunities.OpportunitiesPageLightning;
+import salesforce.ui.pages.opportunities.OpportunitiesClassicPage;
+import salesforce.ui.pages.opportunities.OpportunitiesLightningPage;
 import salesforce.ui.pages.opportunity.OpportunityClassicPage;
 import salesforce.ui.pages.opportunity.OpportunityLightningPage;
-import salesforce.ui.pages.opportunity.OpportunityPageAbstract;
 import salesforce.ui.pages.notesattachments.NotesAndAttachmentsClassicPage;
 import salesforce.ui.pages.notesattachments.NotesAndAttachmentsLightningPage;
 import salesforce.ui.pages.notesattachments.NotesAndAttachmentsPageAbstract;
-import java.util.HashMap;
-import java.util.Map;
+import salesforce.ui.pages.opportunities.AbstractOpportunitiesPage;
+import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 
 /**
  * Builds a page specific.
@@ -47,10 +51,10 @@ public class AppPageFactory {
      * @return TopMenu instance.
      */
     public static TopMenuAbstract getTopMenu() {
-        Map<String, TopMenuAbstract> map = new HashMap<>();
-        map.put(UserExperience.USER_EXPERIENCE_CLASSIC.get(), new TopClassicMenu());
-        map.put(UserExperience.USER_EXPERIENCE_LIGHTNING.get(), new TopLightningMenu());
-        return map.get(userExperience);
+        if (userExperience.equals("Classic")) {
+            return new TopClassicMenu();
+        }
+        return new TopLightningMenu();
     }
 
     /**
@@ -58,11 +62,11 @@ public class AppPageFactory {
      *
      * @return CampaignsPage instance.
      */
-    public static NewCampaignPageAbstract getNewCampaignPage() {
-        Map<String, NewCampaignPageAbstract> map = new HashMap<>();
-        map.put(UserExperience.USER_EXPERIENCE_CLASSIC.get(), new NewCampaignPageClassic());
-        map.put(UserExperience.USER_EXPERIENCE_LIGHTNING.get(), new NewCampaignPopUpLightning());
-        return map.get(userExperience);
+    public static AbstractCampaignListPage getCampaignsPage() {
+        if (userExperience.equals("Classic")) {
+            return new CampaignListClassicPage();
+        }
+        return new CampaignListLightningPage();
     }
 
     /**
@@ -70,13 +74,25 @@ public class AppPageFactory {
      *
      * @return OpportunitiesPage instance.
      */
-    public static OpportunitiesPageAbstract getOpportunitiesPage() {
+    public static AbstractOpportunitiesPage getOpportunitiesPage() {
         if (UserExperience.USER_EXPERIENCE_CLASSIC.get().equals(userExperience)) {
-            return new OpportunitiesPageClassic();
+            return new OpportunitiesClassicPage();
         } else if (UserExperience.USER_EXPERIENCE_LIGHTNING.get().equals(userExperience)) {
-            return new OpportunitiesPageLightning();
+            return new OpportunitiesLightningPage();
         }
         return null;
+    }
+
+    /**
+     * Returns a New campaigns page.
+     *
+     * @return NewCampaignsPage instance.
+     */
+    public static AbstractNewCampaignPage getNewCampaignPage() {
+        if (userExperience.equals("Classic")) {
+            return new NewCampaignClassicPage();
+        }
+        return new NewCampaignLightningPopUp();
     }
 
     /**
@@ -84,7 +100,7 @@ public class AppPageFactory {
      *
      * @return OpportunityListPage instance;
      */
-    public static OpportunityListPageAbstract getOpportunityList() {
+    public static AbstractOpportunityListPage getOpportunityList() {
         if (UserExperience.USER_EXPERIENCE_CLASSIC.get().equals(userExperience)) {
             return new OpportunityListClassicPage();
         } else if (UserExperience.USER_EXPERIENCE_LIGHTNING.get().equals(userExperience)) {
@@ -94,11 +110,11 @@ public class AppPageFactory {
     }
 
     /**
-     * Allows to identify opportunity user experience page.
+     * Returns a campaigns page.
      *
-     * @return OpportunityPage instance.
+     * @return CampaignsPage instance.
      */
-    public static OpportunityPageAbstract getOpportunityPage() {
+    public static AbstractOpportunityPage getOpportunityPage() {
         if (UserExperience.USER_EXPERIENCE_CLASSIC.get().equals(userExperience)) {
             return new OpportunityClassicPage();
         } else if (UserExperience.USER_EXPERIENCE_LIGHTNING.get().equals(userExperience)) {
@@ -120,4 +136,12 @@ public class AppPageFactory {
         }
         return null;
     }
+
+    public static AbstractCampaignPage getCampaignPage() {
+        if (userExperience.equals("Classic")) {
+            return new CampaignClassicPage();
+        }
+        return new CampaignLightningPage();
+    }
 }
+

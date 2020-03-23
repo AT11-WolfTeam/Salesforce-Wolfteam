@@ -9,20 +9,26 @@
 
 package salesforce.ui.pages.opportunities;
 
+import core.selenium.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import salesforce.ui.pages.AppPageFactory;
+import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 import salesforce.ui.pages.opportunity.OpportunityClassicPage;
-import salesforce.ui.pages.opportunity.OpportunityPageAbstract;
 
 /**
- * Defines OpportunitiesPageClassic.
+ * Defines OpportunitiesClassicPage.
  *
  * @author Alan Escalera.
  * @version 1.0 19 March 2020.
  */
-public class OpportunitiesPageClassic extends OpportunitiesPageAbstract {
+public class OpportunitiesClassicPage extends AbstractOpportunitiesPage {
+    @FindBy(xpath = "//input[@class='btn' and @name='new']")
+    private WebElement newButton;
+    protected static final String NAME_OPPORTUNITY = "//th//a[contains(text(),'%s')]";
+
     private static final String OPPORTUNITY_NAME = "//a[text()='%s']";
 
     @FindBy(xpath = "//table[@class='list']")
@@ -40,7 +46,8 @@ public class OpportunitiesPageClassic extends OpportunitiesPageAbstract {
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-        webDriverWait.until(ExpectedConditions.visibilityOfAllElements(opportunityTable));
+        webDriverWait.until(ExpectedConditions.visibilityOf(newButton));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(newButton));
     }
 
     @Override
@@ -49,8 +56,17 @@ public class OpportunitiesPageClassic extends OpportunitiesPageAbstract {
     }
 
     @Override
-    public OpportunityPageAbstract clickOnOpportunityName(final String opportunityName) {
+    public AbstractOpportunityPage clickOnOpportunityName(final String opportunityName) {
         getWebElement(OPPORTUNITY_NAME, opportunityName).click();
         return new OpportunityClassicPage();
+    }
+
+    @Override
+    public AbstractOpportunityPage selectOpportunityName(final String opportunityName) {
+        String opportunityNameXpath = String.format(NAME_OPPORTUNITY, opportunityName);
+        nameOpportunitySelected = WebDriverManager.getInstance().getWebDriver().findElement(By
+                .xpath(opportunityNameXpath));
+        nameOpportunitySelected.click();
+        return AppPageFactory.getOpportunityPage();
     }
 }

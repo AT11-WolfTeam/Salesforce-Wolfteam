@@ -20,14 +20,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  * @author Enrique Carrizales.
  * @version 1.0 16 March 2020.
  */
-public abstract class BasePage {
+public abstract class AbstractBasePage {
     protected WebDriver webDriver;
     protected WebDriverWait webDriverWait;
 
     /**
      * Initializes instances required.
      */
-    public BasePage() {
+    public AbstractBasePage() {
         webDriver = WebDriverManager.getInstance().getWebDriver();
         webDriver.manage().window().maximize();
         webDriverWait = WebDriverManager.getInstance().getWebDriverWait();

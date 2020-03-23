@@ -36,17 +36,17 @@ Feature: Opportunity
     And the section Upcoming & Overdue should display the "[subject]"
 
 
-  @wip
+  @DeletesCampaign @DeletesOpportunity
   Scenario: Assign a campaign to an opportunity
-    Given I go to Campaign Page
+    Given I create 1 "Basic" opportunities
+    And I go to "Campaigns Page"
     And I create a new Campaign with
       | Campaign Name | Promotion |
-    And I go to Opportunity Page
-    And I go to the opportunity already created
-    And I go to Edit opportunity
-    When I assign the Campaign
-    Then the application should display an information message in Opportunity page with the format "Opportunity [Name Opportunity] was saved."
-    And On the details section should display the Campaign name "[campaign name]"
+      | Active        | true      |
+    And I go to "Opportunities Page"
+    When I assign the Campaign to the opportunity
+      | Campaign Name | Promotion |
+    Then On the details section should display the Campaign name
 
 
   @wip

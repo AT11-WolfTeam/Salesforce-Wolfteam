@@ -9,16 +9,18 @@
 
 package salesforce.ui.pages.opportunities;
 
-import salesforce.ui.pages.BasePage;
-import salesforce.ui.pages.opportunity.OpportunityPageAbstract;
+import org.openqa.selenium.WebElement;
+import salesforce.ui.pages.AbstractBasePage;
+import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 
 /**
- * Defines OpportunitiesPageAbstract.
+ * Defines AbstractOpportunitiesPage.
  *
  * @author Alan Escalera.
  * @version 1.0 19 March 2020.
  */
-public abstract class OpportunitiesPageAbstract extends BasePage {
+public abstract class AbstractOpportunitiesPage extends AbstractBasePage {
+    protected WebElement nameOpportunitySelected;
 
     /**
      * Display an opportunity list.
@@ -33,5 +35,7 @@ public abstract class OpportunitiesPageAbstract extends BasePage {
      * @param opportunityName value.
      * @return OpportunityPage instance.
      */
-    public abstract OpportunityPageAbstract clickOnOpportunityName(String opportunityName);
+    public abstract AbstractOpportunityPage clickOnOpportunityName(String opportunityName);
+
+    public abstract AbstractOpportunityPage selectOpportunityName(String opportunityName);
 }

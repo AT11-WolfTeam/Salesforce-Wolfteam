@@ -7,26 +7,20 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages.campaigns;
-
-import salesforce.ui.pages.BasePage;
+package salesforce.ui.pages.home;
 
 /**
- * Defines CampaignsPageAbstract.
+ * Defines a page base.
  *
- * @author Alan Escalera.
- * @version 1.0 19 March 2020.
+ * @author Enrique Carrizales.
+ * @version 1.0 17 March 2020.
  */
-public abstract class CampaignsPageAbstract extends BasePage {
+public class HomePage extends AbstractHomePage {
 
+    /**
+     * Defines a webDriver waiter.
+     */
     @Override
     protected void waitUntilPageObjectIsLoaded() {
     }
-
-    /**
-     * Clicks on the new button.
-     *
-     * @return NewCampaignPageAbstract instance.
-     */
-    public abstract NewCampaignPageAbstract clickOnNewButton();
 }

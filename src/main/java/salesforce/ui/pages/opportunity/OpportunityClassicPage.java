@@ -121,6 +121,11 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     public void clickOnNotesAndAttachmentsButton() {
     }
 
+    /**
+     * Gets owner.
+     * @param ownerType contains a String value.
+     * @return owner.
+     */
     public String getOwner(final String ownerType) {
         return null;
     }

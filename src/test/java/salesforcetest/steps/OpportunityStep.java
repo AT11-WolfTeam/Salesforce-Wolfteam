@@ -13,6 +13,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.json.Json;
 import org.testng.Assert;
 import salesforce.api.requestapi.OpportunityApiHelper;
 import salesforce.entities.Context;
@@ -26,6 +27,7 @@ import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
 import salesforce.ui.pages.newcampaign.AbstractNewCampaignPage;
 import salesforce.ui.pages.opportunities.AbstractOpportunitiesPage;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
+import salesforce.utils.JsonFileReader;
 import salesforce.utils.ReplacerMessages;
 import salesforce.utils.SheetManager;
 
@@ -52,7 +54,7 @@ public class OpportunityStep {
     private AbstractOpportunityPage opportunityPage;
     private OpportunityUi opportunityUi;
     private static final int FIRST_OPPORTUNITY = 0;
-
+    private static final String JSON_CONFIG_FILE = "config.json";
     /**
      * OpportunityStep constructor.
      *
@@ -116,14 +118,6 @@ public class OpportunityStep {
     }
 
     /**
-     * Navigates to an opportunity.
-     */
-    @And("I navigate to Opportunities Page")
-    public void navigatesToOpportunitiesPage() {
-        pageTransporter.navigateToPage(OPPORTUNITY_PAGE);
-    }
-
-    /**
      * Search an opportunity.
      *
      * @param listName contains a String value.
@@ -182,5 +176,12 @@ public class OpportunityStep {
     public void onTheDetailsSectionShouldDisplayTheCampaignName() {
         HashMap<String, String> mapOpportunityValidate = opportunityPage.getOpportunityDetails();
         Assert.assertEquals(mapOpportunityValidate, context.getOpportunityUi().getOpportunityEdit());
+    }
+
+    @And("the opportunity page displays the owner {string}")
+    public void displaysTheOwnerOnOpportunityPage(final String ownerType) {
+        String actualResult = AppPageFactory.getOpportunityPage().getOwner(ownerType);
+        String expectedResult = new JsonFileReader(JSON_CONFIG_FILE).getUser(ownerType).getUsername();
+        Assert.assertEquals(actualResult, expectedResult);
     }
 }

@@ -48,6 +48,9 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
             + "slds-hint-parent override--slds-form-element']//a[contains(@data-refid,'recordId')]")
     private WebElement campaignSaved;
 
+    @FindBy(css = "span[title='Contact Roles']")
+    private WebElement contactRoles;
+
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(changeStageButton));
@@ -84,6 +87,7 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     @Override
     protected String getCampaignName() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(campaignSaved));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(contactRoles));
         return campaignSaved.getText();
     }
 

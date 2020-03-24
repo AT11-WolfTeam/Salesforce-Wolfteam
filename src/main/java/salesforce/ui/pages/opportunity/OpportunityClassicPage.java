@@ -15,7 +15,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import java.util.Set;
 
 /**
@@ -39,6 +38,9 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
 
     @FindBy(css = "input[title='Edit']")
     private WebElement editButton;
+
+    @FindBy(css = "input[value='Attach File']")
+    private WebElement attachFileButton;
 
     private String parentHandle;
     protected static final String CAMPAIGN_NAME = "//th[@scope='row']//a[contains(text(),'%s')]";
@@ -120,7 +122,16 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
         return null;
     }
 
+    /**
+     * Clicks on notes and attachments link.
+     */
+    private void clickOnAttachFileButton() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(attachFileButton));
+        attachFileButton.click();
+    }
+
     @Override
     public void clickOnNotesAndAttachmentsButton() {
+        clickOnAttachFileButton();
     }
 }

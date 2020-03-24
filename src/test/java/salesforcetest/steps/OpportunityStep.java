@@ -29,7 +29,6 @@ import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 import salesforce.utils.JsonFileReader;
 import salesforce.utils.ReplacerMessages;
 import salesforce.utils.SheetManager;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -214,6 +213,7 @@ public class OpportunityStep {
     public void selectOpportunity() {
         String opportunityName = context.getOpportunities().get(0).getName();
         System.out.println(opportunityName);
+        // close popup
         AppPageFactory.getOpportunitiesPage().selectOpportunityName(opportunityName);
     }
 }

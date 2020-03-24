@@ -9,6 +9,12 @@
 
 package salesforce.ui.pages.task;
 
+/**
+ * Defines an TaskClassicPage.
+ *
+ * @author Alan Escalera.
+ * @version 1.0 23 March 2020.
+ */
 public class TaskClassicPage extends AbstractTask {
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -23,5 +29,25 @@ public class TaskClassicPage extends AbstractTask {
     @Override
     public void selectStatus(String statusToSelect) {
 
+    }
+
+    @Override
+    public void selectPriority(String priorityToSelect) {
+
+    }
+
+    @Override
+    public void clickOnSaveTaskButton() {
+
+    }
+
+    @Override
+    protected String getPriority() {
+        return null;
+    }
+
+    @Override
+    protected String getStatus() {
+        return null;
     }
 }

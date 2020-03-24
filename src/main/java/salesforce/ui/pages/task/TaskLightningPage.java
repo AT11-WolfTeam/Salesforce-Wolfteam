@@ -13,7 +13,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
+/**
+ * Defines an TaskLightningPage.
+ *
+ * @author Alan Escalera.
+ * @version 1.0 23 March 2020.
+ */
 public class TaskLightningPage extends AbstractTask {
     @FindBy(xpath = "//button[@title='Edit Name']")
     private WebElement editButton;
@@ -21,7 +28,21 @@ public class TaskLightningPage extends AbstractTask {
     @FindBy(xpath = "//div[@class='active']//span[text()='Status']/../..//a")
     private WebElement statusField;
 
-    private static final String STATUS = "//a[@title='%s']";
+    @FindBy(xpath = "//div[@class='active']//span[text()='Priority']/../..//a")
+    private WebElement priorityField;
+
+    @FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//button[@title='Save']")
+    private WebElement saveButtonTask;
+
+    @FindBy(xpath = "//span[text()='In Progress']")
+    protected WebElement priority;
+
+    @FindBy(xpath = "//span[text()='High']")
+    protected WebElement status;
+
+    private static final String FIELD_COMBO_BOX = "//a[@title='%s']";
+
+
 
     Actions actions;
 
@@ -32,7 +53,7 @@ public class TaskLightningPage extends AbstractTask {
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(editButton));
     }
 
     @Override
@@ -40,6 +61,9 @@ public class TaskLightningPage extends AbstractTask {
         editButton.click();
     }
 
+    /**
+     * Clicks on status field.
+     */
     private void clickOnStatusField() {
         statusField.click();
     }
@@ -50,9 +74,51 @@ public class TaskLightningPage extends AbstractTask {
         clickOnStatusToSelect(statusSelect);
     }
 
+    @Override
+    public void selectPriority(String priorityToSelect) {
+        clickOnPriorityField();
+        clickOnPriorityToSelect(priorityToSelect);
+    }
+
+    @Override
+    public void clickOnSaveTaskButton() {
+        saveButtonTask.click();
+    }
+
+    @Override
+    protected String getPriority() {
+        return priority.getText();
+    }
+
+    @Override
+    protected String getStatus() {
+        return status.getText();
+    }
+
+    /**
+     * Clicks on status to select.
+     * @param statusSelect string value.
+     */
     private void clickOnStatusToSelect(final String statusSelect) {
-        String statusXpath = String.format(STATUS, statusSelect);
-        statusToSelected = webDriver.findElement(By.cssSelector(statusXpath));
-        actions.moveToElement(statusToSelected).click().build().perform();
+        String statusXpath = String.format(FIELD_COMBO_BOX, statusSelect);
+        statusSelected = webDriver.findElement(By.cssSelector(statusXpath));
+        actions.moveToElement(statusSelected).click().build().perform();
+    }
+
+    /**
+     * Click on priority field.
+     */
+    private void clickOnPriorityField () {
+        priorityField.click();
+    }
+
+    /**
+     * Clicks on priority to select.
+     * @param statusSelect string value.
+     */
+    private void clickOnPriorityToSelect(final String statusSelect) {
+        String priorityXpath = String.format(FIELD_COMBO_BOX, statusSelect);
+        prioritySelected = webDriver.findElement(By.cssSelector(priorityXpath));
+        actions.moveToElement(prioritySelected).click().build().perform();
     }
 }

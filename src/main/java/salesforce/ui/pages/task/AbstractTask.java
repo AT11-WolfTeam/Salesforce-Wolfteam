@@ -12,8 +12,15 @@ package salesforce.ui.pages.task;
 import org.openqa.selenium.WebElement;
 import salesforce.ui.pages.AbstractBasePage;
 
+/**
+ * Defines an AbstractTask.
+ *
+ * @author Alan Escalera.
+ * @version 1.0 23 March 2020.
+ */
 public abstract class AbstractTask extends AbstractBasePage {
-    protected WebElement statusToSelected;
+    protected WebElement statusSelected;
+    protected WebElement prioritySelected;
 
     /**
      * Clicks on edit button.
@@ -24,4 +31,26 @@ public abstract class AbstractTask extends AbstractBasePage {
      * Select status.
      */
     public abstract void selectStatus(final String statusToSelect);
+
+    /**
+     * Select priority.
+     */
+    public abstract void selectPriority(final String priorityToSelect);
+
+    /**
+     * Click on Save task button.
+     */
+    public abstract void clickOnSaveTaskButton();
+
+    /**
+     * Returns priority.
+     * @return string value.
+     */
+    protected abstract String getPriority();
+
+    /**
+     * Returns status.
+     * @return string value.
+     */
+    protected abstract String getStatus();
 }

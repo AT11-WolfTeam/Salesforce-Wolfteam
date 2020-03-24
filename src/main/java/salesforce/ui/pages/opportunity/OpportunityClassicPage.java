@@ -87,7 +87,7 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     }
 
     /**
-     * Clicks to campaign selected.
+     * Clicks on campaign selected.
      * @param campaignName string value.
      */
     private void clickOnCampaignSelected(final String campaignName) {

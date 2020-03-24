@@ -16,7 +16,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.owner.OwnerEditClassicPage;
-import java.util.Set;
+import salesforce.utils.UtilSalesforce;
 
 /**
  * Defines an OpportunityClassicPage.
@@ -40,6 +40,9 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     @FindBy(css = "input[title='Edit']")
     private WebElement editButton;
 
+    @FindBy(name = "resultsFrame")
+    private WebElement resultsFrame;
+
     @FindBy(xpath = "//a[contains(text(),'[Change]')]")
     private WebElement changeLinkText;
 
@@ -62,8 +65,6 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
         JavascriptExecutor js = (JavascriptExecutor) webDriver;
         js.executeScript("window.scrollBy(0,400)");
         clickCampaignField();
-        // Perform the click operation that opens new window
-        parentHandle = webDriver.getWindowHandle();
         clickLookupButton();
         selectCampaign(campaignName);
         clickSaveButton();
@@ -82,21 +83,24 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
      * @param campaignName value.
      */
     private void selectCampaign(final String campaignName) {
-        // Switch to new window opened
-        webDriverWait.until(ExpectedConditions.numberOfWindowsToBe(2));
-        Set<String> handles = webDriver.getWindowHandles();
-        for (String winHandle : handles) {
-            if (!parentHandle.equals(winHandle)) {
-                webDriver.switchTo().window(winHandle);
-                break;
-            }
+        parentHandle = webDriver.getWindowHandle();
+        try {
+            UtilSalesforce.switchToNewWindow(parentHandle);
+            webDriverWait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(resultsFrame));
+            clickOnCampaignSelected(campaignName);
+        } finally {
+            webDriver.switchTo().window(parentHandle);
         }
-        // Perform the actions on new window
+    }
+
+    /**
+     * Clicks on campaign selected.
+     * @param campaignName string value.
+     */
+    private void clickOnCampaignSelected(final String campaignName) {
         String campaignNameXpath = String.format(CAMPAIGN_NAME, campaignName);
-        webDriver.switchTo().frame("resultsFrame");
         campaignNameSelect = webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(campaignNameXpath)));
         campaignNameSelect.click();
-        webDriver.switchTo().window(parentHandle);
     }
 
     @Override

@@ -54,6 +54,9 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
             + " and contains(text(),'Notes & Attachments')]")
     private WebElement notesAndAttachmentsLink;
 
+    @FindBy(css = "span[title='Contact Roles']")
+    private WebElement contactRoles;
+
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(changeStageButton));
@@ -89,6 +92,7 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     @Override
     protected String getCampaignName() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(campaignSaved));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(contactRoles));
         return campaignSaved.getText();
     }
 

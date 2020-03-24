@@ -46,5 +46,4 @@ public class TaskLightningPage extends AbstractTask {
         statusToSelected = webDriver.findElement(By.cssSelector(statusXpath));
         actions.moveToElement(statusToSelected).click().build().perform();
     }
-
 }

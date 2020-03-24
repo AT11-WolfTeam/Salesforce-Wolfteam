@@ -9,14 +9,13 @@
 
 package salesforce.ui.pages.opportunity;
 
-import core.selenium.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.AppPageFactory;
-import salesforce.ui.task.AbstractTask;
+import salesforce.ui.pages.task.AbstractTask;
 
 /**
  * Defines an OpportunityLightningPage.

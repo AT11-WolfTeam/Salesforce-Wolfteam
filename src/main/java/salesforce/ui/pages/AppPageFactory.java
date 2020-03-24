@@ -31,9 +31,9 @@ import salesforce.ui.pages.opportunities.OpportunitiesLightningPage;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 import salesforce.ui.pages.opportunity.OpportunityClassicPage;
 import salesforce.ui.pages.opportunity.OpportunityLightningPage;
-import salesforce.ui.task.AbstractTask;
-import salesforce.ui.task.TaskClassicPage;
-import salesforce.ui.task.TaskLightningPage;
+import salesforce.ui.pages.task.AbstractTask;
+import salesforce.ui.pages.task.TaskClassicPage;
+import salesforce.ui.pages.task.TaskLightningPage;
 
 /**
  * Builds a page specific.

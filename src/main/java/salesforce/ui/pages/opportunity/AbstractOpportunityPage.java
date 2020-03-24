@@ -12,7 +12,7 @@ package salesforce.ui.pages.opportunity;
 import org.openqa.selenium.WebElement;
 import salesforce.entities.OpportunityUi;
 import salesforce.ui.pages.AbstractBasePage;
-import salesforce.ui.task.AbstractTask;
+import salesforce.ui.pages.task.AbstractTask;
 
 import java.util.HashMap;
 import java.util.Set;

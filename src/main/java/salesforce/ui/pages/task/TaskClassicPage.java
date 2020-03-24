@@ -7,15 +7,9 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.task;
+package salesforce.ui.pages.task;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-
-public class TaskLightningPage extends AbstractTask {
-    @FindBy(xpath = "//button[@title='Edit Name']")
-    private WebElement editButton;
-
+public class TaskClassicPage extends AbstractTask {
     @Override
     protected void waitUntilPageObjectIsLoaded() {
 
@@ -23,6 +17,6 @@ public class TaskLightningPage extends AbstractTask {
 
     @Override
     public void clickEditButton() {
-        editButton.click();
+
     }
 }

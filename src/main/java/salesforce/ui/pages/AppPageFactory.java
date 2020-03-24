@@ -10,7 +10,6 @@
 package salesforce.ui.pages;
 
 import core.utils.GradleReader;
-import core.utils.UserExperience;
 import salesforce.ui.components.menu.TopClassicMenu;
 import salesforce.ui.components.menu.TopLightningMenu;
 import salesforce.ui.components.menu.TopMenuAbstract;
@@ -75,12 +74,10 @@ public class AppPageFactory {
      * @return OpportunitiesPage instance.
      */
     public static AbstractOpportunitiesPage getOpportunitiesPage() {
-        if (UserExperience.USER_EXPERIENCE_CLASSIC.get().equals(userExperience)) {
+        if (userExperience.equals("Classic")) {
             return new OpportunitiesClassicPage();
-        } else if (UserExperience.USER_EXPERIENCE_LIGHTNING.get().equals(userExperience)) {
-            return new OpportunitiesLightningPage();
         }
-        return null;
+        return new OpportunitiesLightningPage();
     }
 
     /**
@@ -89,12 +86,10 @@ public class AppPageFactory {
      * @return CampaignsPage instance.
      */
     public static AbstractOpportunityPage getOpportunityPage() {
-        if (UserExperience.USER_EXPERIENCE_CLASSIC.get().equals(userExperience)) {
+        if (userExperience.equals("Classic")) {
             return new OpportunityClassicPage();
-        } else if (UserExperience.USER_EXPERIENCE_LIGHTNING.get().equals(userExperience)) {
-            return new OpportunityLightningPage();
         }
-        return null;
+        return new OpportunityLightningPage();
     }
 
     /**
@@ -139,11 +134,9 @@ public class AppPageFactory {
      * @return NotesAndAttachmentsPage instance.
      */
     public static NotesAndAttachmentsPageAbstract getNotesAndAttachments() {
-        if (UserExperience.USER_EXPERIENCE_CLASSIC.get().equals(userExperience)) {
+        if (userExperience.equals("Classic")) {
             return new NotesAndAttachmentsClassicPage();
-        } else if (UserExperience.USER_EXPERIENCE_LIGHTNING.get().equals(userExperience)) {
-            return new NotesAndAttachmentsLightningPage();
         }
-        return null;
+        return new NotesAndAttachmentsLightningPage();
     }
 }

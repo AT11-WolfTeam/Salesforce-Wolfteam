@@ -36,7 +36,7 @@ public class OwnerEditClassicPage extends AbstractBasePage {
     }
 
     /**
-     * Set a text box.
+     * Sends tex to ownerNameTexBox.
      * @param ownerType contains a String value.
      */
     public void setOwnerNameTexBox(final String ownerType) {

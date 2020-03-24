@@ -40,8 +40,17 @@ public class TaskLightningPage extends AbstractTask {
         editButton.click();
     }
 
+    private void clickOnStatusField() {
+        statusField.click();
+    }
+
     @Override
-    public void selectStatus(String statusSelect) {
+    public void selectStatus(final String statusSelect) {
+        clickOnStatusField();
+        clickOnStatusToSelect(statusSelect);
+    }
+
+    private void clickOnStatusToSelect(final String statusSelect) {
         String statusXpath = String.format(STATUS, statusSelect);
         statusToSelected = webDriver.findElement(By.cssSelector(statusXpath));
         actions.moveToElement(statusToSelected).click().build().perform();

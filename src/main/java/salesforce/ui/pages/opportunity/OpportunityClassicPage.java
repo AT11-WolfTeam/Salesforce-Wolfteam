@@ -17,7 +17,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-
 /**
  * Defines an OpportunityClassicPage.
  *
@@ -45,7 +44,6 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
 
     @FindBy(css = "input[value='Attach File']")
     private WebElement attachFileButton;
-
 
     private String parentHandle;
     protected static final String CAMPAIGN_NAME = "//th[@scope='row']//a[contains(text(),'%s')]";
@@ -82,7 +80,7 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
         try {
             UtilSalesforce.switchToNewWindow(parentHandle);
             webDriverWait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(resultsFrame));
-            clickCampaignSelected(campaignName);
+            clickOnCampaignSelected(campaignName);
         } finally {
             webDriver.switchTo().window(parentHandle);
         }
@@ -92,7 +90,7 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
      * Clicks to campaign selected.
      * @param campaignName string value.
      */
-    private void clickCampaignSelected(final String campaignName) {
+    private void clickOnCampaignSelected(final String campaignName) {
         String campaignNameXpath = String.format(CAMPAIGN_NAME, campaignName);
         campaignNameSelect = webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(campaignNameXpath)));
         campaignNameSelect.click();

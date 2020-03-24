@@ -26,6 +26,10 @@ import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 public class OpportunitiesClassicPage extends AbstractOpportunitiesPage {
     @FindBy(xpath = "//input[@class='btn' and @name='new']")
     private WebElement newButton;
+
+    @FindBy(css = "a[id='tryLexDialogX']")
+    private WebElement closePopUp;
+
     protected static final String NAME_OPPORTUNITY = "//th//a[contains(text(),'%s')]";
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -38,8 +42,17 @@ public class OpportunitiesClassicPage extends AbstractOpportunitiesPage {
 
     }
 
+    /**
+     * Closes popup.
+     */
+    private void closePopUp() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(closePopUp));
+        closePopUp.click();
+    }
+
     @Override
     public AbstractOpportunityPage selectOpportunityName(final String opportunityName) {
+        closePopUp();
         String opportunityNameXpath = String.format(NAME_OPPORTUNITY, opportunityName);
         nameOpportunitySelected = WebDriverManager.getInstance().getWebDriver().findElement(By
                 .xpath(opportunityNameXpath));

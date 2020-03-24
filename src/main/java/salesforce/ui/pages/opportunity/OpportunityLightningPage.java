@@ -23,7 +23,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  * @version 1.0 21 March 2020.
  */
 public class OpportunityLightningPage extends AbstractOpportunityPage {
-
     @FindBy(css = "div[data-aura-class='forceOutputOwnerIdLookupWithChangeLink'] button")
     private WebElement changeOwnerButton;
 
@@ -47,11 +46,16 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     @FindBy(xpath = "//div[@class='slds-form-element slds-form-element_readonly slds-form-element_edit slds-grow "
             + "slds-hint-parent override--slds-form-element']//a[contains(@data-refid,'recordId')]")
     private WebElement campaignSaved;
+    @FindBy(xpath = "//div[@class='entityNameTitle slds-line-height--reset']")
+    private WebElement entityNameTitle;
+
+    @FindBy(xpath = "//span[@class='slds-card__header-title slds-truncate slds-m-right--xx-small'"
+            + " and contains(text(),'Notes & Attachments')]")
+    private WebElement notesAndAttachmentsLink;
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(changeStageButton));
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(detailsTab));
     }
 
     @Override
@@ -104,5 +108,18 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     @Override
     public void clickSaveButton() {
         saveButton.click();
+    }
+
+    /**
+     * Clicks on notes and attachments link.
+     */
+    private void clickOnNotesAndAttachment() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(notesAndAttachmentsLink));
+        ((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", notesAndAttachmentsLink);
+    }
+
+    @Override
+    public void clickOnNotesAndAttachmentsButton() {
+        clickOnNotesAndAttachment();
     }
 }

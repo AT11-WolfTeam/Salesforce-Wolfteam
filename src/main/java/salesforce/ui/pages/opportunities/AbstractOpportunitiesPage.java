@@ -22,11 +22,6 @@ import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 public abstract class AbstractOpportunitiesPage extends AbstractBasePage {
     protected WebElement nameOpportunitySelected;
 
-    @Override
-    protected void waitUntilPageObjectIsLoaded() {
-
-    }
-
     /**
      * Display a opportunity list.
      *

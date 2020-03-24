@@ -70,7 +70,7 @@ public class AppPageFactory {
     }
 
     /**
-     * Returns a Opportunities page.
+     * Allows to instance Opportunities page.
      *
      * @return OpportunitiesPage instance.
      */

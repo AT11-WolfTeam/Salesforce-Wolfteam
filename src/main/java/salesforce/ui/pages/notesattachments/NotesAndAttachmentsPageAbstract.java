@@ -21,12 +21,14 @@ public abstract class NotesAndAttachmentsPageAbstract extends AbstractBasePage {
 
     /**
      * Clicks on upload files.
+     *
      * @param filePath value.
      */
     public abstract void clickOnUploadFiles(String filePath);
 
     /**
      * Gets uploaded file name.
+     *
      * @param fileName value.
      * @return uploaded file name.
      */

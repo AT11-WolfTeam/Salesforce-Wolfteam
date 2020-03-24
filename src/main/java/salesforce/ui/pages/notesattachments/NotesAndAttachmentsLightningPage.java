@@ -35,7 +35,8 @@ public class NotesAndAttachmentsLightningPage extends NotesAndAttachmentsPageAbs
 
     /**
      * Gets a web element by xpath.
-     * @param xpathValue string.
+     *
+     * @param xpathValue   string.
      * @param textToConcat value.
      * @return a web element.
      */
@@ -75,6 +76,7 @@ public class NotesAndAttachmentsLightningPage extends NotesAndAttachmentsPageAbs
 
     /**
      * Gets uploaded file name.
+     *
      * @param fileName param.
      * @return uploaded file name.
      */

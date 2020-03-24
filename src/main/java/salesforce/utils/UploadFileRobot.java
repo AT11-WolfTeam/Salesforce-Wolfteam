@@ -24,6 +24,7 @@ public class UploadFileRobot {
 
     /**
      * Sets clicpboard data.
+     *
      * @param fileLocation value.
      */
     public static void setClipboardData(final String fileLocation) {
@@ -33,6 +34,7 @@ public class UploadFileRobot {
 
     /**
      * Allows to upload file.
+     *
      * @param fileLocation path.
      */
     public static void uploadFile(final String fileLocation) {

@@ -22,6 +22,9 @@ import salesforce.ui.pages.campaignlist.CampaignListLightningPage;
 import salesforce.ui.pages.newcampaign.AbstractNewCampaignPage;
 import salesforce.ui.pages.newcampaign.NewCampaignClassicPage;
 import salesforce.ui.pages.newcampaign.NewCampaignLightningPopUp;
+import salesforce.ui.pages.notesattachments.NotesAndAttachmentsClassicPage;
+import salesforce.ui.pages.notesattachments.NotesAndAttachmentsLightningPage;
+import salesforce.ui.pages.notesattachments.NotesAndAttachmentsPageAbstract;
 import salesforce.ui.pages.oportunitieslist.AbstractOpportunityListPage;
 import salesforce.ui.pages.oportunitieslist.OpportunityListClassicPage;
 import salesforce.ui.pages.oportunitieslist.OpportunityListLightningPage;
@@ -66,7 +69,7 @@ public class AppPageFactory {
     }
 
     /**
-     * Returns a Opportunities page.
+     * Allows to instance Opportunities page.
      *
      * @return OpportunitiesPage instance.
      */
@@ -78,9 +81,9 @@ public class AppPageFactory {
     }
 
     /**
-     * Returns a Opportunity page.
+     * Returns a campaigns page.
      *
-     * @return OpportunityPage instance.
+     * @return CampaignsPage instance.
      */
     public static AbstractOpportunityPage getOpportunityPage() {
         if (userExperience.equals("Classic")) {
@@ -123,5 +126,17 @@ public class AppPageFactory {
             return new CampaignClassicPage();
         }
         return new CampaignLightningPage();
+    }
+
+    /**
+     * Allows to identify notes and attachment user experience page.
+     *
+     * @return NotesAndAttachmentsPage instance.
+     */
+    public static NotesAndAttachmentsPageAbstract getNotesAndAttachments() {
+        if (userExperience.equals("Classic")) {
+            return new NotesAndAttachmentsClassicPage();
+        }
+        return new NotesAndAttachmentsLightningPage();
     }
 }

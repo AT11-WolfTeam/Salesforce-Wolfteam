@@ -73,6 +73,7 @@ public final class SheetManager {
      * @param quantity number value.
      */
     private static void createQuantityOfMap(final Row rowKey, final Row rowValue, final int quantity) {
+        uniqueId = 0;
         int entityQuantity = quantity;
         while (entityQuantity > ZERO) {
             HashMap<String, String> entityMap = createHasMap(rowKey, rowValue);

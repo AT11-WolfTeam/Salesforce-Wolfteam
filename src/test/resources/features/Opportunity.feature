@@ -69,7 +69,7 @@ Feature: Opportunity
     When I delete created opportunities
 
 
-#    @Lightning
+#    @Classic
 #    Scenario: Upload a file to opportunity
 #    Given I create 1 "Basic" opportunities
 #    And I go to "Opportunities Page"

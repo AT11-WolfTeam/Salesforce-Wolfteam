@@ -15,6 +15,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import salesforce.ui.pages.owner.OwnerEditClassicPage;
 import java.util.Set;
 
 /**
@@ -38,6 +39,12 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
 
     @FindBy(css = "input[title='Edit']")
     private WebElement editButton;
+
+    @FindBy(xpath = "//a[contains(text(),'[Change]')]")
+    private WebElement changeLinkText;
+
+    @FindBy(css = "div[id='opp1_ileinner'] a[id]")
+    private WebElement ownerLabel;
 
     @FindBy(css = "input[value='Attach File']")
     private WebElement attachFileButton;
@@ -114,12 +121,16 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
 
     @Override
     public void changeOwner(final String ownerType) {
-
+        changeLinkText.click();
+        OwnerEditClassicPage ownerEditClassicPage = new OwnerEditClassicPage();
+        ownerEditClassicPage.setOwnerNameTexBox(ownerType);
+        ownerEditClassicPage.clickOnSaveButton();
     }
 
     @Override
     public String getOwner(final String ownerType) {
-        return null;
+        webDriverWait.until(ExpectedConditions.visibilityOf(ownerLabel));
+        return ownerLabel.getText();
     }
 
     /**

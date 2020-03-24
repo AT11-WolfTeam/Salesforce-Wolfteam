@@ -6,7 +6,7 @@ Feature: Opportunity
     And I go to "Opportunities Page"
     And I search the opportunity in list "All Opportunities"
     When I change an opportunity's owner with "Current User"
-    Then the application should display an information message in Opportunity page with the format "[Current User] now owns the record for [Opportunity Name]."
+    Then the application should display an information message in Opportunity Lightning page with the format "[Current User] now owns the record for [Opportunity Name]."
     And the opportunity page displays the owner "Current User"
 
 
@@ -48,6 +48,10 @@ Feature: Opportunity
     When I assign the Campaign to the opportunity
       | Campaign Name | Promotion |
     Then On the details section should display the Campaign name
+
+
+  Scenario: Add new Task with required values
+    Given
 
 
   @wip

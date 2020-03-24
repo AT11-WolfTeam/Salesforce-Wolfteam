@@ -9,7 +9,7 @@
 
 package salesforce.ui.pages.opportunity;
 
-import core.utils.UtilSalesforce;
+import salesforce.utils.UtilSalesforce;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -79,7 +79,7 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
      */
     private void selectCampaign(final String campaignName) {
         parentHandle = webDriver.getWindowHandle();
-        try{
+        try {
             UtilSalesforce.switchToNewWindow(parentHandle);
             webDriverWait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(resultsFrame));
             clickCampaignSelected(campaignName);
@@ -88,6 +88,10 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
         }
     }
 
+    /**
+     * Clicks to campaign selected.
+     * @param campaignName string value.
+     */
     private void clickCampaignSelected(final String campaignName) {
         String campaignNameXpath = String.format(CAMPAIGN_NAME, campaignName);
         campaignNameSelect = webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(campaignNameXpath)));

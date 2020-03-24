@@ -7,19 +7,25 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package core.utils;
+package salesforce.utils;
 
 import core.selenium.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.Set;
 
+/**
+ * Manages UtilSalesforce.
+ *
+ * @author Alan Escalera.
+ * @version 1.0 23 March 2020.
+ */
 public class UtilSalesforce {
 
+    /**
+     * Switches to new windows.
+     * @param parentHandle string value.
+     */
     public static void switchToNewWindow(final String parentHandle) {
         WebDriverManager.getInstance().getWebDriverWait().until(ExpectedConditions.numberOfWindowsToBe(2));
         Set<String> handles = WebDriverManager.getInstance().getWebDriver().getWindowHandles();

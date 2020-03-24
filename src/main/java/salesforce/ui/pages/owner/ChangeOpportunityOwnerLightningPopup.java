@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages.opportunity;
+package salesforce.ui.pages.owner;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -30,6 +30,7 @@ public class ChangeOpportunityOwnerLightningPopup extends AbstractBasePage {
     private WebElement changeOwnerButton;
 
     private static final String OWNER_ITEM_LIST_LOCATOR_PARTIAL = "//li[a[div[div[@title='%s']]]]";
+    private static final String JSON_CONFIG_FILE = "config.json";
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -51,7 +52,7 @@ public class ChangeOpportunityOwnerLightningPopup extends AbstractBasePage {
         String ownerItemListLocator;
         String userName;
 
-        JsonFileReader jsonFileReader = new JsonFileReader("config.json");
+        JsonFileReader jsonFileReader = new JsonFileReader(JSON_CONFIG_FILE);
         userName = jsonFileReader.getUser(ownerType).getUsername();
 
         ownerNameTextBox.sendKeys(userName);

@@ -46,7 +46,8 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     @FindBy(css = "button[title='Add']")
     private WebElement addTaskButton;
 
-    @FindBy(xpath = "/html/body/div[4]/div[1]/section/div/div/div[1]/div[3]/div/div[1]/div/div[3]/div[1]/div/div/section/div/div/div[1]/section/div/div[3]/div/div/div[2]/div[2]/button/span")
+    @FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//button[@class='slds-button"
+            + " slds-button--brand cuf-publisherShareButton MEDIUM uiButton']")
     private WebElement saveTaskButton;
 
     protected static final String CAMPAIGN_NAME = "a div div[title='%s']";
@@ -55,7 +56,7 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
             + "slds-hint-parent override--slds-form-element']//a[contains(@data-refid,'recordId')]")
     private WebElement campaignSaved;
 
-    @FindBy(xpath = "/html/body/div[4]/div[1]/section/div/div/div[1]/div[1]/div/div[1]/div/div[3]/div[1]/div/div/section/div/div/div[1]/section/div/div[3]/div/div/div[1]/section/div/section/div/div/div/div/div/div[1]/div/div/div/lightning-grouped-combobox/div/div/lightning-base-combobox/div/div[1]/input")
+    @FindBy(xpath = "//div[@class='riseTransitionEnabled']//label[text()='Subject']//following-sibling::div//input")
     private WebElement subjectField;
 
     private static final String TASK_NAME = "//a[@class='subjectLink slds-truncate' and contains(text(),'%s')]";

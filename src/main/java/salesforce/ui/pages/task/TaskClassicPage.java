@@ -19,4 +19,9 @@ public class TaskClassicPage extends AbstractTask {
     public void clickEditButton() {
 
     }
+
+    @Override
+    public void selectStatus(String statusToSelect) {
+
+    }
 }

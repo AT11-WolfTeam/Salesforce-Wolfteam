@@ -18,7 +18,7 @@ public class TaskLightningPage extends AbstractTask {
     @FindBy(xpath = "//button[@title='Edit Name']")
     private WebElement editButton;
 
-    @FindBy(xpath = "/html/body/div[4]/div[1]/section/div/div/div[1]/div[2]/div/div[1]/div/div[2]/div/div/div/section/div/div/article/div[3]/div/div[1]/div/div[1]/div/div/div[1]/div[2]/div/div/div/div/div[1]/div/div/a")
+    @FindBy(xpath = "//div[@class='active']//span[text()='Status']/../..//a")
     private WebElement statusField;
 
     private static final String STATUS = "//a[@title='%s']";

@@ -48,11 +48,7 @@ Feature: Opportunity
     When I assign the Campaign to the opportunity
       | Campaign Name | Promotion |
     Then On the details section should display the Campaign name
-
-
-  Scenario: Add new Task with required values
-    Given
-
+    
 
   @wip
   Scenario: Add new event with required values

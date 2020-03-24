@@ -9,6 +9,7 @@
 
 package salesforcetest.steps;
 
+import core.utils.GradleReader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -51,8 +52,10 @@ public class OpportunityStep {
     private AbstractOpportunitiesPage opportunitiesPage;
     private AbstractOpportunityPage opportunityPage;
     private OpportunityUi opportunityUi;
+    private static String userExperience = GradleReader.getInstance().getUserExperience();
     private static final int FIRST_OPPORTUNITY = 0;
     private static final String JSON_CONFIG_FILE = "config.json";
+    private static final String USER_EXPERIENCE_LIGHTNING = "Lightning";
     /**
      * OpportunityStep constructor.
      *
@@ -81,11 +84,13 @@ public class OpportunityStep {
      */
     @Then("the application should display an information message in Opportunity page with the format {string}")
     public void displaysAnInformationMessageInOpportunityPageWithTheFormat(final String message) {
-        ToastMessageSpan toastMessageSpan = new ToastMessageSpan();
-        String actualResult = toastMessageSpan.getToastMessage();
-        String expectedResult = ReplacerMessages.replaceChangeOwnerMessage(message, context.getOpportunities()
-                .get(FIRST_OPPORTUNITY).getName());
-        Assert.assertEquals(actualResult, expectedResult);
+        if (userExperience.equals(USER_EXPERIENCE_LIGHTNING)) {
+            ToastMessageSpan toastMessageSpan = new ToastMessageSpan();
+            String actualResult = toastMessageSpan.getToastMessage();
+            String expectedResult = ReplacerMessages.replaceChangeOwnerMessage(message, context.getOpportunities()
+                    .get(FIRST_OPPORTUNITY).getName());
+            Assert.assertEquals(actualResult, expectedResult);
+        }
     }
 
     /**

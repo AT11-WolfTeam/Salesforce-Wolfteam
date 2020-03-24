@@ -48,7 +48,7 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
 
     @FindBy(css = "div[id='opp1_ileinner'] a[id]")
     private WebElement ownerLabel;
-    
+
     @FindBy(css = "input[value='Attach File']")
     private WebElement attachFileButton;
 

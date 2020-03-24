@@ -42,13 +42,13 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
 
     @FindBy(name = "resultsFrame")
     private WebElement resultsFrame;
+
     @FindBy(xpath = "//a[contains(text(),'[Change]')]")
     private WebElement changeLinkText;
 
     @FindBy(css = "div[id='opp1_ileinner'] a[id]")
     private WebElement ownerLabel;
-
-
+    
     @FindBy(css = "input[value='Attach File']")
     private WebElement attachFileButton;
 

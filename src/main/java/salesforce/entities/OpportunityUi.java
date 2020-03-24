@@ -23,6 +23,7 @@ import java.util.function.Supplier;
  */
 public class OpportunityUi {
     private String campaignName;
+    private String subjectTask;
 
     /**
      * Returns campaignName value.
@@ -40,6 +41,22 @@ public class OpportunityUi {
      */
     public void setCampaignName(final String campaignName) {
         this.campaignName = campaignName;
+    }
+
+    /**
+     * Returns subjectTask value.
+     * @return string value.
+     */
+    public String getSubjectTask() {
+        return subjectTask;
+    }
+
+    /**
+     * Sets subjectTask value
+     * @param subjectTask value.
+     */
+    public void setSubjectTask(String subjectTask) {
+        this.subjectTask = subjectTask;
     }
 
     /**
@@ -89,4 +106,6 @@ public class OpportunityUi {
         strategyMap.put(OpportunityConstant.CAMPAIGN_NAME, () -> getCampaignName());
         return strategyMap;
     }
+
+
 }

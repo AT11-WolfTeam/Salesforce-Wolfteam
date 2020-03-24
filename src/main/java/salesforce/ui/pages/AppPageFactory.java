@@ -31,6 +31,9 @@ import salesforce.ui.pages.opportunities.OpportunitiesLightningPage;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 import salesforce.ui.pages.opportunity.OpportunityClassicPage;
 import salesforce.ui.pages.opportunity.OpportunityLightningPage;
+import salesforce.ui.task.AbstractTask;
+import salesforce.ui.task.TaskClassicPage;
+import salesforce.ui.task.TaskLightningPage;
 
 /**
  * Builds a page specific.
@@ -123,5 +126,17 @@ public class AppPageFactory {
             return new CampaignClassicPage();
         }
         return new CampaignLightningPage();
+    }
+
+    /**
+     * Returns a task page.
+     *
+     * @return task instance.
+     */
+    public static AbstractTask getTaskPage() {
+        if (userExperience.equals("Classic")) {
+            return new TaskClassicPage();
+        }
+        return new TaskLightningPage();
     }
 }

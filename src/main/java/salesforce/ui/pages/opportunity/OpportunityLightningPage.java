@@ -15,6 +15,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import salesforce.ui.pages.AppPageFactory;
+import salesforce.ui.task.AbstractTask;
 
 /**
  * Defines an OpportunityLightningPage.
@@ -42,11 +44,22 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     @FindBy(css = "div button[title='Save']")
     private WebElement saveButton;
 
+    @FindBy(css = "button[title='Add']")
+    private WebElement addTaskButton;
+
+    @FindBy(xpath = "/html/body/div[4]/div[1]/section/div/div/div[1]/div[3]/div/div[1]/div/div[3]/div[1]/div/div/section/div/div/div[1]/section/div/div[3]/div/div/div[2]/div[2]/button/span")
+    private WebElement saveTaskButton;
+
     protected static final String CAMPAIGN_NAME = "a div div[title='%s']";
 
     @FindBy(xpath = "//div[@class='slds-form-element slds-form-element_readonly slds-form-element_edit slds-grow "
             + "slds-hint-parent override--slds-form-element']//a[contains(@data-refid,'recordId')]")
     private WebElement campaignSaved;
+
+    @FindBy(xpath = "/html/body/div[4]/div[1]/section/div/div/div[1]/div[1]/div/div[1]/div/div[3]/div[1]/div/div/section/div/div/div[1]/section/div/div[3]/div/div/div[1]/section/div/section/div/div/div/div/div/div[1]/div/div/div/lightning-grouped-combobox/div/div/lightning-base-combobox/div/div[1]/input")
+    private WebElement subjectField;
+
+    private static final String TASK_NAME = "//a[@class='subjectLink slds-truncate' and contains(text(),'%s')]";
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -77,7 +90,7 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
         clickEditCampaign();
 
         String campaignNameCss = String.format(CAMPAIGN_NAME, campaignName);
-        campaignNameSelect = WebDriverManager.getInstance().getWebDriver().findElement(By.cssSelector(campaignNameCss));
+        campaignNameSelect = webDriver.findElement(By.cssSelector(campaignNameCss));
         campaignNameSelect.click();
     }
 
@@ -105,4 +118,28 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     public void clickSaveButton() {
         saveButton.click();
     }
+
+    @Override
+    protected void setSubjectTask(final String subject) {
+        subjectField.sendKeys(subject);
+    }
+
+    @Override
+    public AbstractTask clickTaskOoEdit(final String task) {
+        String campaignNameCss = String.format(TASK_NAME, task);
+        taskNameSelected = webDriver.findElement(By.cssSelector(campaignNameCss));
+        taskNameSelected.click();
+        return AppPageFactory.getTaskPage();
+    }
+
+    @Override
+    protected String getSubjectTask() {
+        return taskNameSelected.getText();
+    }
+
+    public void clickAddTask() {
+        addTaskButton.click();
+    }
+
+
 }

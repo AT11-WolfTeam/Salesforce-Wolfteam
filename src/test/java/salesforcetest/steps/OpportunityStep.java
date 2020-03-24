@@ -81,7 +81,7 @@ public class OpportunityStep {
      *
      * @param message contains a String message.
      */
-    @Then("the application should display an information message in Opportunity Lightning page with the format {string}")
+    @Then("the application should display an information message in Opportunity Lightning page with format {string}")
     public void displaysAnInformationMessageInOpportunityPageWithTheFormat(final String message) {
         if (userExperience.equals(USER_EXPERIENCE_LIGHTNING)) {
             ToastMessageSpan toastMessageSpan = new ToastMessageSpan();

@@ -31,4 +31,8 @@ public abstract class AbstractCampaignPage extends AbstractBasePage {
      */
     public abstract AbstractCampaignListPage deleteCampaign();
 
+    /**
+     * Adds campaign members.
+     */
+    public abstract void addCampaignMembers();
 }

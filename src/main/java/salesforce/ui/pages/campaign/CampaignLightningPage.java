@@ -35,6 +35,9 @@ public class CampaignLightningPage extends AbstractCampaignPage {
             + " slds-button--icon-border-filled oneActionsDropDown']//div[@class='uiMenu']")
     private WebElement iconDropDown;
 
+    @FindBy(xpath = "//div[@title='Add Contacts']")
+    private WebElement addContactsButton;
+
     /**
      * Constructor CampaignLightningPage.
      */
@@ -53,6 +56,19 @@ public class CampaignLightningPage extends AbstractCampaignPage {
         clickDeleteCampaignScroll();
         clickDeleteConfirmButton();
         return AppPageFactory.getCampaignsPage();
+    }
+
+    @Override
+    public void addCampaignMembers() {
+        ClickOnAddContacts();
+    }
+
+    /**
+     * Clicks on add contacts.
+     */
+    private void ClickOnAddContacts() {
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(addContactsButton));
+        addContactsButton.click();
     }
 
     /**

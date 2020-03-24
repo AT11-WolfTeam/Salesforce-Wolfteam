@@ -25,6 +25,12 @@ public class CampaignClassicPage extends AbstractCampaignPage {
     @FindBy(css = "input[title='Delete']")
     private WebElement deleteButton;
 
+    @FindBy(id = "managedetailLabel")
+    private WebElement manageMembersCombobox;
+
+    @FindBy(xpath = "//div[@id='managedetailMenu']/a[text()= 'Add Members - Search']")
+    private WebElement addMembersItem;
+
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(deleteButton));
@@ -36,5 +42,27 @@ public class CampaignClassicPage extends AbstractCampaignPage {
         webDriverWait.until(ExpectedConditions.alertIsPresent());
         webDriver.switchTo().alert().accept();
         return AppPageFactory.getCampaignsPage();
+    }
+
+    @Override
+    public void addCampaignMembers() {
+        clickOnManageMemberCombobox();
+        clickOnAddMemberItem();
+    }
+
+    /**
+     * Clicks on manage member combobox
+     */
+    private void clickOnManageMemberCombobox() {
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(manageMembersCombobox));
+        manageMembersCombobox.click();
+    }
+
+    /**
+     * Clicks on add member item.
+     */
+    private void clickOnAddMemberItem() {
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(addMembersItem));
+        addMembersItem.click();
     }
 }

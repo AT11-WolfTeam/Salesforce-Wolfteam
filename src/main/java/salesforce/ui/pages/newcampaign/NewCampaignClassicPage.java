@@ -13,6 +13,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.ArrayList;
+
 /**
  * Defines NewCampaignPageClassic.
  *
@@ -50,5 +52,10 @@ public class NewCampaignClassicPage extends AbstractNewCampaignPage {
     @Override
     public void clickSaveButton() {
         saveButton.click();
+    }
+
+    @Override
+    public void checkContacts(ArrayList<String> namesOfContacts) {
+
     }
 }

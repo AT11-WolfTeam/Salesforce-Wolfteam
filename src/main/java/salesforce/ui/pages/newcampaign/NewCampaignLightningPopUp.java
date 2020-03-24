@@ -13,6 +13,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.ArrayList;
+
 /**
  * Defines NewCampaignPopUpLightning.
  *
@@ -28,6 +30,9 @@ public class NewCampaignLightningPopUp extends AbstractNewCampaignPage {
 
     @FindBy(css = "button[title='Save']")
     private WebElement saveButton;
+
+    @FindBy(xpath = "//h2[starts-with(@id, 'title_')]")
+    private WebElement addContactsPopupTitle;
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -50,5 +55,15 @@ public class NewCampaignLightningPopUp extends AbstractNewCampaignPage {
     @Override
     public void clickSaveButton() {
         saveButton.click();
+    }
+
+    @Override
+    public void checkContacts(ArrayList<String> namesOfContacts) {
+        clickOnAddContactsPopupTitle();
+    }
+
+    private void clickOnAddContactsPopupTitle() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(addContactsPopupTitle));
+        addContactsPopupTitle.click();
     }
 }

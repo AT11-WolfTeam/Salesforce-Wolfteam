@@ -12,6 +12,7 @@ package salesforce.ui.pages.newcampaign;
 import salesforce.entities.NewCampaign;
 import salesforce.ui.pages.AbstractBasePage;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
@@ -71,4 +72,10 @@ public abstract class AbstractNewCampaignPage extends AbstractBasePage {
      * clicks on Save Button.
      */
     public abstract void clickSaveButton();
+
+    /**
+     * Checks contacts checkbox.
+     * @param namesOfContacts list.
+     */
+    public abstract void checkContacts(ArrayList<String> namesOfContacts);
 }

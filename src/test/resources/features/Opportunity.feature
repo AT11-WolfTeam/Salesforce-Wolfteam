@@ -68,11 +68,3 @@ Feature: Opportunity
     Given I create 2 "Basic" opportunities
     When I delete created opportunities
 
-
-#  Scenario: Upload a file to opportunity
-#    Given I create 1 "Basic" opportunities
-#    And I go to "Opportunities Page"
-#    And I select the created opportunity
-#    When I upload the file to opportunity
-#    Then The file should be uploaded on opportunity
-#    And I delete created opportunities

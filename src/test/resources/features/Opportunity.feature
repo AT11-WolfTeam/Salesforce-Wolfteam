@@ -48,7 +48,14 @@ Feature: Opportunity
     When I assign the Campaign to the opportunity
       | Campaign Name | Promotion |
     Then On the details section should display the Campaign name
-    
+
+
+  Scenario: Add new Task with required values
+    Given I create 1 "Basic" opportunities
+    And I go to "Opportunities Page"
+    And I search the opportunity in list "All Opportunities"
+    When TO DO
+    Then TO DO
 
   @wip
   Scenario: Add new event with required values

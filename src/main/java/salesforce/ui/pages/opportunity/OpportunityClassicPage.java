@@ -16,7 +16,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.owner.OwnerEditClassicPage;
-
 import java.util.Set;
 
 /**
@@ -46,6 +45,9 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
 
     @FindBy(css = "div[id='opp1_ileinner'] a[id]")
     private WebElement ownerLabel;
+
+    @FindBy(css = "input[value='Attach File']")
+    private WebElement attachFileButton;
 
     private String parentHandle;
     protected static final String CAMPAIGN_NAME = "//th[@scope='row']//a[contains(text(),'%s')]";
@@ -129,5 +131,18 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     public String getOwner(final String ownerType) {
         webDriverWait.until(ExpectedConditions.visibilityOf(ownerLabel));
         return ownerLabel.getText();
+    }
+
+    /**
+     * Clicks on notes and attachments link.
+     */
+    private void clickOnAttachFileButton() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(attachFileButton));
+        attachFileButton.click();
+    }
+
+    @Override
+    public void clickOnNotesAndAttachmentsButton() {
+        clickOnAttachFileButton();
     }
 }

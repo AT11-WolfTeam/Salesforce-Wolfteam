@@ -60,6 +60,7 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
     protected HashMap<String, Runnable> composeStrategyMap(final OpportunityUi opportunityUi) {
         HashMap<String, Runnable> strategyMap = new HashMap<>();
         strategyMap.put(CAMPAIGN_NAME, () -> assignCampaign(opportunityUi.getCampaignName()));
+
         return strategyMap;
     }
 
@@ -116,12 +117,10 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
     public abstract String getOwner(String ownerType);
 
     /**
-     * Clicks on Add Task.
-     *
-     * @return AbstractTaskOpportunity instance.
+     * Clicks on Add task.
+     * @return TaskOpportunity instance.
      */
     public abstract AbstractTaskOpportunity clickAddTask();
-
 
     /**
      * Allows to open notes and attachments page.

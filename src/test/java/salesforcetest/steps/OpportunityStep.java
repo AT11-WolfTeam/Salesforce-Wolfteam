@@ -186,6 +186,8 @@ public class OpportunityStep {
     @Then("On the details section should display the Campaign name")
     public void onTheDetailsSectionShouldDisplayTheCampaignName() {
         HashMap<String, String> mapOpportunityValidate = opportunityPage.getOpportunityDetails();
+        System.out.println(mapOpportunityValidate.toString());
+        System.out.println(context.getOpportunityUi().getOpportunityEdit().toString());
         Assert.assertEquals(mapOpportunityValidate, context.getOpportunityUi().getOpportunityEdit());
     }
 

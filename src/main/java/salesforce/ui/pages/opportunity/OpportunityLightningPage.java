@@ -95,6 +95,7 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
         campaignNameSelect.click();
     }
 
+
     @Override
     protected String getCampaignName() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(campaignSaved));

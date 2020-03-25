@@ -246,7 +246,7 @@ public class OpportunityStep {
         taskUi.processInformation(mapNewTask);
         abstractTaskOpportunity.setNewTask(taskUi, mapNewTask.keySet());
         abstractTaskOpportunity.clickSaveTask();
-        abstractTask = abstractTaskOpportunity.clickTaskToEdit(context.getOpportunityUi().getSubjectTask());
+        abstractTask = abstractTaskOpportunity.clickTaskToEdit(context.getTaskUi().getSubject());
     }
 
     /**
@@ -268,6 +268,7 @@ public class OpportunityStep {
     @And("the task should display the information added")
     public void theTaskShouldDisplayTheInformationAdded() {
         HashMap<String, String> mapTaskValidate = abstractTask.getTaskDetails();
+        System.out.println(mapTaskValidate.toString());
         Assert.assertEquals(mapTaskValidate, context.getTaskUi().getTaskEdited());
     }
 }

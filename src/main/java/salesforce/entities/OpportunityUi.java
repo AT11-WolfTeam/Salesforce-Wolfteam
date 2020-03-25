@@ -44,24 +44,6 @@ public class OpportunityUi {
     }
 
     /**
-     * Returns subjectTask value.
-     *
-     * @return string value.
-     */
-    public String getSubjectTask() {
-        return subjectTask;
-    }
-
-    /**
-     * Sets subjectTask value.
-     *
-     * @param subjectTask value.
-     */
-    public void setSubjectTask(final String subjectTask) {
-        this.subjectTask = subjectTask;
-    }
-
-    /**
      * Strategy process information.
      *
      * @param mapOpportunity map.

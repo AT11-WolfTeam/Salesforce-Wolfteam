@@ -9,7 +9,6 @@
 
 package salesforce.entities;
 
-import salesforce.entities.constants.OpportunityConstant;
 import salesforce.entities.constants.TaskConstant;
 
 import java.util.HashMap;
@@ -132,10 +131,11 @@ public class TaskUi {
      */
     public HashMap<String, String> getTaskEdited() {
         HashMap<String, String> values = new HashMap<>();
-        HashMap<String, Supplier> strategyMapEducation = composeOpportunityDetailsToGet();
-        for (String key : strategyMapEducation.keySet()) {
-            values.put(key, strategyMapEducation.get(key).get().toString());
+        HashMap<String, Supplier> strategyMapTaskEdited = composeTaskDetailsToGet();
+        for (String key : strategyMapTaskEdited.keySet()) {
+            values.put(key, strategyMapTaskEdited.get(key).get().toString());
         }
+        System.out.println(values.toString());
         return values;
     }
 
@@ -144,7 +144,7 @@ public class TaskUi {
      *
      * @return HashMap values.
      */
-    private HashMap<String, Supplier> composeOpportunityDetailsToGet() {
+    private HashMap<String, Supplier> composeTaskDetailsToGet() {
         HashMap<String, Supplier> strategyMap = new HashMap<>();
         strategyMap.put(TaskConstant.SUBJECT, () -> getSubject());
         strategyMap.put(TaskConstant.PRIORITY, () -> getPriority());

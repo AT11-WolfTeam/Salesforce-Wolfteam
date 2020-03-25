@@ -44,8 +44,8 @@ public class TaskOpportunityLightning extends AbstractTaskOpportunity {
 
     @Override
     public AbstractTask clickTaskToEdit(final String task) {
-        String taskToEditCss = String.format(TASK_NAME, task);
-        taskNameSelected = webDriver.findElement(By.xpath(taskToEditCss));
+        String taskToEditXpath = String.format(TASK_NAME, task);
+        taskNameSelected = webDriver.findElement(By.xpath(taskToEditXpath));
         taskNameSelected.click();
         return AppPageFactory.getTaskPage();
     }

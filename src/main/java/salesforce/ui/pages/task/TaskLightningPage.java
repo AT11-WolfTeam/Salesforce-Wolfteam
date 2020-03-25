@@ -10,6 +10,7 @@
 package salesforce.ui.pages.task;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -77,6 +78,8 @@ public class TaskLightningPage extends AbstractTask {
 
     @Override
     public void setPriority(final String priorityToSelect) {
+        JavascriptExecutor js = (JavascriptExecutor) webDriver;
+        js.executeScript("window.scrollBy(0,200)");
         clickOnPriorityField();
         clickOnPriorityToSelect(priorityToSelect);
     }
@@ -103,7 +106,7 @@ public class TaskLightningPage extends AbstractTask {
      */
     private void clickOnStatusToSelect(final String statusSelect) {
         String statusXpath = String.format(FIELD_COMBO_BOX, statusSelect);
-        statusSelected = webDriver.findElement(By.cssSelector(statusXpath));
+        statusSelected = webDriver.findElement(By.xpath(statusXpath));
         actions.moveToElement(statusSelected).click().build().perform();
     }
 
@@ -121,7 +124,7 @@ public class TaskLightningPage extends AbstractTask {
      */
     private void clickOnPriorityToSelect(final String statusSelect) {
         String priorityXpath = String.format(FIELD_COMBO_BOX, statusSelect);
-        prioritySelected = webDriver.findElement(By.cssSelector(priorityXpath));
+        prioritySelected = webDriver.findElement(By.xpath(priorityXpath));
         actions.moveToElement(prioritySelected).click().build().perform();
     }
 }

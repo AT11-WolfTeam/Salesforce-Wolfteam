@@ -38,7 +38,7 @@ public class CampaignSteps {
      * Creates leads objects.
      *
      * @param leadsQuantity contains quantity.
-     * @param leadType      a Lead type.
+     * @param leadType a Lead type.
      */
     @Given("I create {int} {string} leads")
     public void createsLeads(final int leadsQuantity, final String leadType) {

@@ -110,7 +110,12 @@ public class TaskLightningPage extends AbstractTask {
         subjectField.sendKeys(subject);
     }
 
-    private void deleteField(String text, WebElement subjectField) {
+    /**
+     * Deletes the field of the element.
+     * @param text of the field.
+     * @param subjectField element.
+     */
+    private void deleteField(final String text, final WebElement subjectField) {
         int numberCharacters = text.length();
         while (numberCharacters > 0) {
             subjectField.sendKeys(Keys.BACK_SPACE);

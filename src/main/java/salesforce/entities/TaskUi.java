@@ -11,7 +11,6 @@ package salesforce.entities;
 
 import salesforce.entities.constants.TaskConstant;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -31,6 +30,7 @@ public class TaskUi {
     private String account;
 
     private Set<String> modifiedTaskFields = new HashSet<>();
+
     /**
      * Returns status value.
      *
@@ -99,7 +99,7 @@ public class TaskUi {
      *
      * @param subject value.
      */
-    public void setSubject(String subject) {
+    public void setSubject(final String subject) {
         this.subject = subject;
     }
 
@@ -125,7 +125,7 @@ public class TaskUi {
         strategyMap.put(TaskConstant.PRIORITY, () -> setPriority(mapTask.get(TaskConstant.PRIORITY)));
         strategyMap.put(TaskConstant.SUBJECT, () -> setSubject(mapTask.get(TaskConstant.SUBJECT)));
         strategyMap.put(TaskConstant.STATUS, () -> setStatus(mapTask.get(TaskConstant.STATUS)));
-        strategyMap.put(TaskConstant.ACCOUNT,() -> setAccount(mapTask.get(TaskConstant.ACCOUNT)));
+        strategyMap.put(TaskConstant.ACCOUNT, () -> setAccount(mapTask.get(TaskConstant.ACCOUNT)));
         return strategyMap;
     }
 
@@ -139,7 +139,7 @@ public class TaskUi {
         HashMap<String, Supplier> strategyMapTaskEdited = composeTaskDetailsToGet();
         for (String key : modifiedTaskFields) {
             taskValues.put(key, strategyMapTaskEdited.get(key).get().toString());
-            System.out.println(key + "   " + strategyMapTaskEdited.get(key).get().toString() );
+            System.out.println(key + "   " + strategyMapTaskEdited.get(key).get().toString());
         }
         System.out.println(taskValues.toString());
         return taskValues;

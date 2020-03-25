@@ -69,11 +69,16 @@ public abstract class AbstractTask extends AbstractBasePage {
      */
     protected abstract String getStatus();
 
+    /**
+     * Sets subject.
+     *
+     * @param subject value.
+     */
     protected abstract void setSubject(String subject);
 
     /**
      * Returns subject.
-     *
+     * @param subject value.
      * @return string value.
      */
     protected abstract String getSubject(String subject);
@@ -106,7 +111,7 @@ public abstract class AbstractTask extends AbstractBasePage {
 
     /**
      * Gets map of the information set.
-     *
+     * @param taskUi object.
      * @return HashMap values.
      */
     public HashMap<String, String> getTaskDetails(final TaskUi taskUi) {
@@ -120,7 +125,7 @@ public abstract class AbstractTask extends AbstractBasePage {
 
     /**
      * composeOpportunityDetailsToGet to get attributes.
-     *
+     * @param taskUi object.
      * @return HashMap values.
      */
     private HashMap<String, Supplier> composeTaskDetailsToGet(final TaskUi taskUi) {

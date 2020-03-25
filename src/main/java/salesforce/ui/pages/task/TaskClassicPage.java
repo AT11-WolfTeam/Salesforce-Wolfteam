@@ -52,12 +52,12 @@ public class TaskClassicPage extends AbstractTask {
     }
 
     @Override
-    protected void setSubject(String subject) {
+    protected void setSubject(final String subject) {
 
     }
 
     @Override
-    protected String getSubject(String subject) {
+    protected String getSubject(final String subject) {
         return null;
     }
 }

@@ -34,6 +34,12 @@ import salesforce.ui.pages.genericTabs.TabObjectsLightningPage;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 import salesforce.ui.pages.opportunity.OpportunityClassicPage;
 import salesforce.ui.pages.opportunity.OpportunityLightningPage;
+import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
+import salesforce.ui.pages.opportunity.taskopportunity.TaskOpportunityClassic;
+import salesforce.ui.pages.opportunity.taskopportunity.TaskOpportunityLightning;
+import salesforce.ui.pages.task.AbstractTask;
+import salesforce.ui.pages.task.TaskClassicPage;
+import salesforce.ui.pages.task.TaskLightningPage;
 
 /**
  * Builds a page specific.
@@ -129,6 +135,18 @@ public class AppPageFactory {
     }
 
     /**
+     * Returns a task page.
+     *
+     * @return task instance.
+     */
+    public static AbstractTask getTaskPage() {
+        if (userExperience.equals("Classic")) {
+            return new TaskClassicPage();
+        }
+        return new TaskLightningPage();
+    }
+
+    /**
      * Allows to identify notes and attachment user experience page.
      *
      * @return NotesAndAttachmentsPage instance.
@@ -138,5 +156,16 @@ public class AppPageFactory {
             return new NotesAndAttachmentsClassicPage();
         }
         return new NotesAndAttachmentsLightningPage();
+    }
+
+    /**
+     * Returns TaskOpportunity.
+     * @return task Opportunity instance.
+     */
+    public static AbstractTaskOpportunity getTaskOpportunity() {
+        if (userExperience.equals("Classic")) {
+            return new TaskOpportunityClassic();
+        }
+        return new TaskOpportunityLightning();
     }
 }

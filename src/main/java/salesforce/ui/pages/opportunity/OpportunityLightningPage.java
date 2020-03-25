@@ -9,12 +9,13 @@
 
 package salesforce.ui.pages.opportunity;
 
-import core.selenium.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import salesforce.ui.pages.AppPageFactory;
+import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
 import salesforce.ui.pages.owner.ChangeOpportunityOwnerLightningPopup;
 
 /**
@@ -42,17 +43,24 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     @FindBy(css = "div button[title='Save']")
     private WebElement saveButton;
 
+    @FindBy(css = "button[title='Add']")
+    private WebElement addTaskButton;
+
     protected static final String CAMPAIGN_NAME = "a div div[title='%s']";
 
     @FindBy(xpath = "//div[@class='slds-form-element slds-form-element_readonly slds-form-element_edit slds-grow "
             + "slds-hint-parent override--slds-form-element']//a[contains(@data-refid,'recordId')]")
     private WebElement campaignSaved;
+
     @FindBy(xpath = "//div[@class='entityNameTitle slds-line-height--reset']")
     private WebElement entityNameTitle;
 
     @FindBy(xpath = "//span[@class='slds-card__header-title slds-truncate slds-m-right--xx-small'"
             + " and contains(text(),'Notes & Attachments')]")
     private WebElement notesAndAttachmentsLink;
+
+    @FindBy(css = "span[title='Contact Roles']")
+    private WebElement contactRoles;
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -82,13 +90,14 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
         clickEditCampaign();
 
         String campaignNameCss = String.format(CAMPAIGN_NAME, campaignName);
-        campaignNameSelect = WebDriverManager.getInstance().getWebDriver().findElement(By.cssSelector(campaignNameCss));
+        campaignNameSelect = webDriver.findElement(By.cssSelector(campaignNameCss));
         campaignNameSelect.click();
     }
 
     @Override
     protected String getCampaignName() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(campaignSaved));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(contactRoles));
         return campaignSaved.getText();
     }
 
@@ -109,6 +118,12 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     @Override
     public void clickSaveButton() {
         saveButton.click();
+    }
+
+    @Override
+    public AbstractTaskOpportunity clickAddTask() {
+        addTaskButton.click();
+        return AppPageFactory.getTaskOpportunity();
     }
 
     /**

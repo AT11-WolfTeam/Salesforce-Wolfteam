@@ -139,9 +139,7 @@ public class TaskUi {
         HashMap<String, Supplier> strategyMapTaskEdited = composeTaskDetailsToGet();
         for (String key : modifiedTaskFields) {
             taskValues.put(key, strategyMapTaskEdited.get(key).get().toString());
-            System.out.println(key + "   " + strategyMapTaskEdited.get(key).get().toString());
         }
-        System.out.println(taskValues.toString());
         return taskValues;
     }
 

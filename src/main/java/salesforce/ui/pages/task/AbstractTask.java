@@ -15,6 +15,7 @@ import salesforce.entities.constants.TaskConstant;
 import salesforce.ui.pages.AbstractBasePage;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Supplier;
 
@@ -27,8 +28,8 @@ import java.util.function.Supplier;
 public abstract class AbstractTask extends AbstractBasePage {
     protected WebElement statusSelected;
     protected WebElement prioritySelected;
-    private static final String PRIORITY = "Priority";
-    private static final String STATUS = "Status";
+    protected WebElement subjectTitle;
+    private Set<String> modifiedTaskFields = new HashSet<>();
 
     /**
      * Clicks on edit button.
@@ -68,6 +69,15 @@ public abstract class AbstractTask extends AbstractBasePage {
      */
     protected abstract String getStatus();
 
+    protected abstract void setSubject(String subject);
+
+    /**
+     * Returns subject.
+     *
+     * @return string value.
+     */
+    protected abstract String getSubject(String subject);
+
     /**
      * Sets the form of new task.
      *
@@ -77,6 +87,7 @@ public abstract class AbstractTask extends AbstractBasePage {
     public void addInformationToTask(final TaskUi taskUi, final Set<String> fields) {
         HashMap<String, Runnable> strategtyMap = composeStrategyMap(taskUi);
         fields.forEach(field -> strategtyMap.get(field).run());
+        modifiedTaskFields.addAll(fields);
     }
 
     /**
@@ -89,6 +100,7 @@ public abstract class AbstractTask extends AbstractBasePage {
         HashMap<String, Runnable> strategyMap = new HashMap<>();
         strategyMap.put(TaskConstant.PRIORITY, () -> setPriority(taskUi.getPriority()));
         strategyMap.put(TaskConstant.STATUS, () -> setStatus(taskUi.getStatus()));
+        strategyMap.put(TaskConstant.SUBJECT, () -> setSubject(taskUi.getSubject()));
         return strategyMap;
     }
 
@@ -97,10 +109,10 @@ public abstract class AbstractTask extends AbstractBasePage {
      *
      * @return HashMap values.
      */
-    public HashMap<String, String> getTaskDetails() {
+    public HashMap<String, String> getTaskDetails(final TaskUi taskUi) {
         HashMap<String, String> values = new HashMap<>();
-        HashMap<String, Supplier> strategyMapEducation = composeTaskDetailsToGet();
-        for (String key : strategyMapEducation.keySet()) {
+        HashMap<String, Supplier> strategyMapEducation = composeTaskDetailsToGet(taskUi);
+        for (String key : modifiedTaskFields) {
             values.put(key, strategyMapEducation.get(key).get().toString());
         }
         return values;
@@ -111,10 +123,11 @@ public abstract class AbstractTask extends AbstractBasePage {
      *
      * @return HashMap values.
      */
-    private HashMap<String, Supplier> composeTaskDetailsToGet() {
+    private HashMap<String, Supplier> composeTaskDetailsToGet(final TaskUi taskUi) {
         HashMap<String, Supplier> strategyMap = new HashMap<>();
         strategyMap.put(TaskConstant.PRIORITY, () -> getPriority());
         strategyMap.put(TaskConstant.STATUS, () -> getStatus());
+        strategyMap.put(TaskConstant.SUBJECT, () -> getSubject(taskUi.getSubject()));
         return strategyMap;
     }
 }

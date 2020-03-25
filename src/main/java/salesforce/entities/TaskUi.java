@@ -11,8 +11,11 @@ package salesforce.entities;
 
 import salesforce.entities.constants.TaskConstant;
 
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.function.Supplier;
 
 /**
@@ -27,6 +30,7 @@ public class TaskUi {
     private String priority;
     private String account;
 
+    private Set<String> modifiedTaskFields = new HashSet<>();
     /**
      * Returns status value.
      *
@@ -107,6 +111,7 @@ public class TaskUi {
     public void processInformation(final Map<String, String> mapOpportunity) {
         HashMap<String, Runnable> strategyMap = composeStrategy(mapOpportunity);
         mapOpportunity.keySet().forEach(key -> strategyMap.get(key).run());
+        modifiedTaskFields.addAll(mapOpportunity.keySet());
     }
 
     /**
@@ -117,10 +122,10 @@ public class TaskUi {
      */
     private HashMap<String, Runnable> composeStrategy(final Map<String, String> mapTask) {
         HashMap<String, Runnable> strategyMap = new HashMap<>();
+        strategyMap.put(TaskConstant.PRIORITY, () -> setPriority(mapTask.get(TaskConstant.PRIORITY)));
         strategyMap.put(TaskConstant.SUBJECT, () -> setSubject(mapTask.get(TaskConstant.SUBJECT)));
         strategyMap.put(TaskConstant.STATUS, () -> setStatus(mapTask.get(TaskConstant.STATUS)));
-        strategyMap.put(TaskConstant.PRIORITY, () -> setPriority(mapTask.get(TaskConstant.PRIORITY)));
-        strategyMap.put(TaskConstant.ACCOUNT, () -> setAccount(mapTask.get(TaskConstant.ACCOUNT)));
+        strategyMap.put(TaskConstant.ACCOUNT,() -> setAccount(mapTask.get(TaskConstant.ACCOUNT)));
         return strategyMap;
     }
 
@@ -130,13 +135,14 @@ public class TaskUi {
      * @return HashMap values.
      */
     public HashMap<String, String> getTaskEdited() {
-        HashMap<String, String> values = new HashMap<>();
+        HashMap<String, String> taskValues = new HashMap<>();
         HashMap<String, Supplier> strategyMapTaskEdited = composeTaskDetailsToGet();
-        for (String key : strategyMapTaskEdited.keySet()) {
-            values.put(key, strategyMapTaskEdited.get(key).get().toString());
+        for (String key : modifiedTaskFields) {
+            taskValues.put(key, strategyMapTaskEdited.get(key).get().toString());
+            System.out.println(key + "   " + strategyMapTaskEdited.get(key).get().toString() );
         }
-        System.out.println(values.toString());
-        return values;
+        System.out.println(taskValues.toString());
+        return taskValues;
     }
 
     /**
@@ -146,9 +152,9 @@ public class TaskUi {
      */
     private HashMap<String, Supplier> composeTaskDetailsToGet() {
         HashMap<String, Supplier> strategyMap = new HashMap<>();
-        strategyMap.put(TaskConstant.SUBJECT, () -> getSubject());
         strategyMap.put(TaskConstant.PRIORITY, () -> getPriority());
         strategyMap.put(TaskConstant.STATUS, () -> getStatus());
+        strategyMap.put(TaskConstant.SUBJECT, () -> getSubject());
         strategyMap.put(TaskConstant.ACCOUNT, () -> getAccount());
         return strategyMap;
     }

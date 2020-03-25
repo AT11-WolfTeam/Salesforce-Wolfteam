@@ -11,6 +11,7 @@ package salesforce.ui.pages.task;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -36,12 +37,17 @@ public class TaskLightningPage extends AbstractTask {
     private WebElement saveButtonTask;
 
     @FindBy(xpath = "//span[text()='In Progress']")
-    protected WebElement priority;
-
-    @FindBy(xpath = "//span[text()='High']")
     protected WebElement status;
 
+    @FindBy(xpath = "//span[text()='High']")
+    protected WebElement priority;
+
+    @FindBy(xpath = "//div[@class='active']//label[text()='Subject']/../..//input")
+    protected WebElement subjectField;
+
     private static final String FIELD_COMBO_BOX = "//a[@title='%s']";
+    private static final String SUBJECT_TITLE = "//div[@class='slds-page-header__title slds-m-right--small slds-"
+            + "align-middle fade-text']//span[text()='%s']";
 
     private Actions actions;
 
@@ -51,7 +57,6 @@ public class TaskLightningPage extends AbstractTask {
     public TaskLightningPage() {
         actions = new Actions(webDriver);
     }
-
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -97,6 +102,28 @@ public class TaskLightningPage extends AbstractTask {
     @Override
     protected String getStatus() {
         return status.getText();
+    }
+
+    @Override
+    protected void setSubject(final String subject) {
+        deleteField(subjectField.getAttribute("value"), subjectField);
+        subjectField.sendKeys(subject);
+    }
+
+    private void deleteField(String text, WebElement subjectField) {
+        int numberCharacters = text.length();
+        while (numberCharacters > 0) {
+            subjectField.sendKeys(Keys.BACK_SPACE);
+            numberCharacters--;
+        }
+    }
+
+
+    @Override
+    protected String getSubject(final String subject) {
+        String statusXpath = String.format(SUBJECT_TITLE, subject);
+        subjectTitle = webDriver.findElement(By.xpath(statusXpath));
+        return subjectTitle.getText();
     }
 
     /**

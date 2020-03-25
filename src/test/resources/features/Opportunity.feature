@@ -11,16 +11,16 @@ Feature: Opportunity
 #    And the opportunity page displays the owner "Current User"
 
 
-
+  @DeletesOpportunity
   Scenario: Add additional information to created task.
     Given I create 1 "Basic" opportunities
     And I go to "Opportunities Page"
     And I add new Task with
       | Subject | Call |
     When I add additional information to the task
-      | Subject  | Meeting     |
-      | Status   | In Progress |
-      | Priority | High        |
+      | Subject  | Call to meeting |
+      | Status   | In Progress     |
+      | Priority | High            |
     And the task should display the information added
 
 

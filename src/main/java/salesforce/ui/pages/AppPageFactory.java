@@ -22,6 +22,9 @@ import salesforce.ui.pages.campaignlist.CampaignListLightningPage;
 import salesforce.ui.pages.newcampaign.AbstractNewCampaignPage;
 import salesforce.ui.pages.newcampaign.NewCampaignClassicPage;
 import salesforce.ui.pages.newcampaign.NewCampaignLightningPopUp;
+import salesforce.ui.pages.notesattachments.NotesAndAttachmentsClassicPage;
+import salesforce.ui.pages.notesattachments.NotesAndAttachmentsLightningPage;
+import salesforce.ui.pages.notesattachments.NotesAndAttachmentsPageAbstract;
 import salesforce.ui.pages.oportunitieslist.AbstractOpportunityListPage;
 import salesforce.ui.pages.oportunitieslist.OpportunityListClassicPage;
 import salesforce.ui.pages.oportunitieslist.OpportunityListLightningPage;
@@ -31,6 +34,9 @@ import salesforce.ui.pages.opportunities.OpportunitiesLightningPage;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 import salesforce.ui.pages.opportunity.OpportunityClassicPage;
 import salesforce.ui.pages.opportunity.OpportunityLightningPage;
+import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
+import salesforce.ui.pages.opportunity.taskopportunity.TaskOpportunityClassic;
+import salesforce.ui.pages.opportunity.taskopportunity.TaskOpportunityLightning;
 import salesforce.ui.pages.task.AbstractTask;
 import salesforce.ui.pages.task.TaskClassicPage;
 import salesforce.ui.pages.task.TaskLightningPage;
@@ -69,7 +75,7 @@ public class AppPageFactory {
     }
 
     /**
-     * Returns a Opportunities page.
+     * Allows to instance Opportunities page.
      *
      * @return OpportunitiesPage instance.
      */
@@ -81,9 +87,9 @@ public class AppPageFactory {
     }
 
     /**
-     * Returns a Opportunity page.
+     * Returns a campaigns page.
      *
-     * @return OpportunityPage instance.
+     * @return CampaignsPage instance.
      */
     public static AbstractOpportunityPage getOpportunityPage() {
         if (userExperience.equals("Classic")) {
@@ -138,5 +144,25 @@ public class AppPageFactory {
             return new TaskClassicPage();
         }
         return new TaskLightningPage();
+
+    }
+
+    /**
+     * Allows to identify notes and attachment user experience page.
+     *
+     * @return NotesAndAttachmentsPage instance.
+     */
+    public static NotesAndAttachmentsPageAbstract getNotesAndAttachments () {
+        if (userExperience.equals("Classic")) {
+            return new NotesAndAttachmentsClassicPage();
+        }
+        return new NotesAndAttachmentsLightningPage();
+    }
+
+    public static AbstractTaskOpportunity getTaskOpportunity() {
+        if (userExperience.equals("Classic")) {
+            return new TaskOpportunityClassic();
+        }
+        return new TaskOpportunityLightning();
     }
 }

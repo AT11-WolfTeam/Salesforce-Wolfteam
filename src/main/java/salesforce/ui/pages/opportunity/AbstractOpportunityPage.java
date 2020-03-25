@@ -12,6 +12,7 @@ package salesforce.ui.pages.opportunity;
 import org.openqa.selenium.WebElement;
 import salesforce.entities.OpportunityUi;
 import salesforce.ui.pages.AbstractBasePage;
+import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
 import salesforce.ui.pages.task.AbstractTask;
 
 import java.util.HashMap;
@@ -26,10 +27,7 @@ import java.util.function.Supplier;
  */
 public abstract class AbstractOpportunityPage extends AbstractBasePage {
     private static final String CAMPAIGN_NAME = "Campaign Name";
-    private static final String SUBJECT = "Subject";
-
     protected WebElement campaignNameSelect;
-    protected WebElement taskNameSelected;
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -63,8 +61,6 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
     protected HashMap<String, Runnable> composeStrategyMap(final OpportunityUi opportunityUi) {
         HashMap<String, Runnable> strategyMap = new HashMap<>();
         strategyMap.put(CAMPAIGN_NAME, () -> assignCampaign(opportunityUi.getCampaignName()));
-        strategyMap.put(SUBJECT, () -> assignCampaign(opportunityUi.getSubjectTask()));
-
         return strategyMap;
     }
 
@@ -90,7 +86,6 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
     private HashMap<String, Supplier> composeOpportunityDetailsToGet() {
         HashMap<String, Supplier> strategyMap = new HashMap<>();
         strategyMap.put(CAMPAIGN_NAME, () -> getCampaignName());
-        strategyMap.put(SUBJECT, () -> getSubjectTask());
         return strategyMap;
     }
 
@@ -122,19 +117,12 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
     /**
      * Clicks on Add task.
      */
-    public abstract void clickAddTask();
+    public abstract AbstractTaskOpportunity clickAddTask();
+
 
     /**
-     * Sets Subject task.
+     * Allows to open notes and attachments page.
      */
-    protected abstract void setSubjectTask(String subject);
-
-    /**
-     * Clicks on task to edit.
-     */
-    public abstract AbstractTask clickTaskOoEdit(String task);
-
-    protected abstract String getSubjectTask();
-
+    public abstract void clickOnNotesAndAttachmentsButton();
 
 }

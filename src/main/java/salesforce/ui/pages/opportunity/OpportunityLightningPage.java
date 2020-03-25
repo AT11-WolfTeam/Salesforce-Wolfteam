@@ -15,7 +15,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.AppPageFactory;
+import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
+import salesforce.ui.pages.owner.ChangeOpportunityOwnerLightningPopup;
 import salesforce.ui.pages.task.AbstractTask;
+
 
 /**
  * Defines an OpportunityLightningPage.
@@ -24,7 +27,6 @@ import salesforce.ui.pages.task.AbstractTask;
  * @version 1.0 21 March 2020.
  */
 public class OpportunityLightningPage extends AbstractOpportunityPage {
-
     @FindBy(css = "div[data-aura-class='forceOutputOwnerIdLookupWithChangeLink'] button")
     private WebElement changeOwnerButton;
 
@@ -46,25 +48,25 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     @FindBy(css = "button[title='Add']")
     private WebElement addTaskButton;
 
-    @FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//button[@class='slds-button"
-            + " slds-button--brand cuf-publisherShareButton MEDIUM uiButton']")
-    private WebElement saveTaskButton;
-
     protected static final String CAMPAIGN_NAME = "a div div[title='%s']";
 
     @FindBy(xpath = "//div[@class='slds-form-element slds-form-element_readonly slds-form-element_edit slds-grow "
             + "slds-hint-parent override--slds-form-element']//a[contains(@data-refid,'recordId')]")
     private WebElement campaignSaved;
 
-    @FindBy(xpath = "//div[@class='riseTransitionEnabled']//label[text()='Subject']//following-sibling::div//input")
-    private WebElement subjectField;
+    @FindBy(xpath = "//div[@class='entityNameTitle slds-line-height--reset']")
+    private WebElement entityNameTitle;
 
-    private static final String TASK_NAME = "//a[@class='subjectLink slds-truncate' and contains(text(),'%s')]";
+    @FindBy(xpath = "//span[@class='slds-card__header-title slds-truncate slds-m-right--xx-small'"
+            + " and contains(text(),'Notes & Attachments')]")
+    private WebElement notesAndAttachmentsLink;
+
+    @FindBy(css = "span[title='Contact Roles']")
+    private WebElement contactRoles;
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(changeStageButton));
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(detailsTab));
     }
 
     @Override
@@ -97,6 +99,7 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     @Override
     protected String getCampaignName() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(campaignSaved));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(contactRoles));
         return campaignSaved.getText();
     }
 
@@ -120,26 +123,22 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     }
 
     @Override
-    protected void setSubjectTask(final String subject) {
-        subjectField.sendKeys(subject);
-    }
-
-    @Override
-    public AbstractTask clickTaskOoEdit(final String task) {
-        String campaignNameCss = String.format(TASK_NAME, task);
-        taskNameSelected = webDriver.findElement(By.cssSelector(campaignNameCss));
-        taskNameSelected.click();
-        return AppPageFactory.getTaskPage();
-    }
-
-    @Override
-    protected String getSubjectTask() {
-        return taskNameSelected.getText();
-    }
-
-    public void clickAddTask() {
+    public AbstractTaskOpportunity clickAddTask() {
         addTaskButton.click();
+        return AppPageFactory.getTaskOpportunity();
+
     }
 
+    /**
+     * Clicks on notes and attachments link.
+     */
+    private void clickOnNotesAndAttachment() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(notesAndAttachmentsLink));
+        ((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", notesAndAttachmentsLink);
+    }
 
+    @Override
+    public void clickOnNotesAndAttachmentsButton() {
+        clickOnNotesAndAttachment();
+    }
 }

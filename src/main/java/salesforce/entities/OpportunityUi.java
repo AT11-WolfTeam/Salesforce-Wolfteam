@@ -22,6 +22,7 @@ import java.util.function.Supplier;
  * @version 1.0 21 March 2020.
  */
 public class OpportunityUi {
+    public String getSubjectTask;
     private String campaignName;
     private String subjectTask;
 

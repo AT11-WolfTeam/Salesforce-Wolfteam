@@ -15,9 +15,11 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
+import salesforce.ui.pages.owner.OwnerEditClassicPage;
 import salesforce.ui.pages.task.AbstractTask;
+import salesforce.utils.UtilSalesforce;
 
-import java.util.Set;
 
 /**
  * Defines an OpportunityClassicPage.
@@ -41,6 +43,18 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     @FindBy(css = "input[title='Edit']")
     private WebElement editButton;
 
+    @FindBy(name = "resultsFrame")
+    private WebElement resultsFrame;
+
+    @FindBy(xpath = "//a[contains(text(),'[Change]')]")
+    private WebElement changeLinkText;
+
+    @FindBy(css = "div[id='opp1_ileinner'] a[id]")
+    private WebElement ownerLabel;
+
+    @FindBy(css = "input[value='Attach File']")
+    private WebElement attachFileButton;
+
     private String parentHandle;
     protected static final String CAMPAIGN_NAME = "//th[@scope='row']//a[contains(text(),'%s')]";
 
@@ -54,8 +68,6 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
         JavascriptExecutor js = (JavascriptExecutor) webDriver;
         js.executeScript("window.scrollBy(0,400)");
         clickCampaignField();
-        // Perform the click operation that opens new window
-        parentHandle = webDriver.getWindowHandle();
         clickLookupButton();
         selectCampaign(campaignName);
         clickSaveButton();
@@ -74,21 +86,24 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
      * @param campaignName value.
      */
     private void selectCampaign(final String campaignName) {
-        // Switch to new window opened
-        webDriverWait.until(ExpectedConditions.numberOfWindowsToBe(2));
-        Set<String> handles = webDriver.getWindowHandles();
-        for (String winHandle : handles) {
-            if (!parentHandle.equals(winHandle)) {
-                webDriver.switchTo().window(winHandle);
-                break;
-            }
+        parentHandle = webDriver.getWindowHandle();
+        try {
+            UtilSalesforce.switchToNewWindow(parentHandle);
+            webDriverWait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(resultsFrame));
+            clickOnCampaignSelected(campaignName);
+        } finally {
+            webDriver.switchTo().window(parentHandle);
         }
-        // Perform the actions on new window
+    }
+
+    /**
+     * Clicks on campaign selected.
+     * @param campaignName string value.
+     */
+    private void clickOnCampaignSelected(final String campaignName) {
         String campaignNameXpath = String.format(CAMPAIGN_NAME, campaignName);
-        webDriver.switchTo().frame("resultsFrame");
         campaignNameSelect = webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(campaignNameXpath)));
         campaignNameSelect.click();
-        webDriver.switchTo().window(parentHandle);
     }
 
     @Override
@@ -113,31 +128,34 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
 
     @Override
     public void changeOwner(final String ownerType) {
-
+        changeLinkText.click();
+        OwnerEditClassicPage ownerEditClassicPage = new OwnerEditClassicPage();
+        ownerEditClassicPage.setOwnerNameTexBox(ownerType);
+        ownerEditClassicPage.clickOnSaveButton();
     }
 
     @Override
     public String getOwner(final String ownerType) {
+        webDriverWait.until(ExpectedConditions.visibilityOf(ownerLabel));
+        return ownerLabel.getText();
+    }
+
+    /**
+     * Clicks on notes and attachments link.
+     */
+    private void clickOnAttachFileButton() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(attachFileButton));
+        attachFileButton.click();
+    }
+
+    @Override
+    public void clickOnNotesAndAttachmentsButton() {
+        clickOnAttachFileButton();
+    }
+
+    @Override
+    public AbstractTaskOpportunity clickAddTask() {
         return null;
     }
 
-    @Override
-    public void clickAddTask() {
-
-    }
-
-    @Override
-    protected void setSubjectTask(final String subject) {
-
-    }
-
-    @Override
-    public AbstractTask clickTaskOoEdit(final String task) {
-        return null;
-    }
-
-    @Override
-    protected String getSubjectTask() {
-        return null;
-    }
 }

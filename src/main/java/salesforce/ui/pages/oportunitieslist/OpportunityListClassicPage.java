@@ -9,6 +9,11 @@
 
 package salesforce.ui.pages.oportunitieslist;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
 /**
  * Defines an OpportunityListClassicPage.
  *
@@ -17,13 +22,20 @@ package salesforce.ui.pages.oportunitieslist;
  */
 public class OpportunityListClassicPage extends AbstractOpportunityListPage {
 
+    @FindBy(css = "li[class='lastItem'] input")
+    private WebElement refreshButton;
+
+    private static final String OPPORTUNITY_CELL_PARTIAL_LOCATOR =
+            "//div[@class='x-grid3-cell-inner x-grid3-col-Name']//a[span[contains(text(),'%s')]]";
+
     @Override
     public void clickOnOpportunity(final String opportunityName) {
-
+        String opportunityCellLocator = String.format(OPPORTUNITY_CELL_PARTIAL_LOCATOR, opportunityName);
+        webDriver.findElement(By.xpath(opportunityCellLocator)).click();
     }
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-
+        webDriverWait.until(ExpectedConditions.visibilityOf(refreshButton));
     }
 }

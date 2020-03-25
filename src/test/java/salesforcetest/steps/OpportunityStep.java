@@ -9,6 +9,7 @@
 
 package salesforcetest.steps;
 
+import core.utils.GradleReader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -29,7 +30,6 @@ import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 import salesforce.utils.JsonFileReader;
 import salesforce.utils.ReplacerMessages;
 import salesforce.utils.SheetManager;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -51,8 +51,10 @@ public class OpportunityStep {
     private AbstractOpportunitiesPage opportunitiesPage;
     private AbstractOpportunityPage opportunityPage;
     private OpportunityUi opportunityUi;
+    private static String userExperience = GradleReader.getInstance().getUserExperience();
     private static final int FIRST_OPPORTUNITY = 0;
     private static final String JSON_CONFIG_FILE = "config.json";
+    private static final String USER_EXPERIENCE_LIGHTNING = "Lightning";
     /**
      * OpportunityStep constructor.
      *
@@ -79,13 +81,15 @@ public class OpportunityStep {
      *
      * @param message contains a String message.
      */
-    @Then("the application should display an information message in Opportunity page with the format {string}")
+    @Then("the application should display an information message in Opportunity Lightning page with format {string}")
     public void displaysAnInformationMessageInOpportunityPageWithTheFormat(final String message) {
-        ToastMessageSpan toastMessageSpan = new ToastMessageSpan();
-        String actualResult = toastMessageSpan.getToastMessage();
-        String expectedResult = ReplacerMessages.replaceChangeOwnerMessage(message, context.getOpportunities()
-                .get(FIRST_OPPORTUNITY).getName());
-        Assert.assertEquals(actualResult, expectedResult);
+        if (userExperience.equals(USER_EXPERIENCE_LIGHTNING)) {
+            ToastMessageSpan toastMessageSpan = new ToastMessageSpan();
+            String actualResult = toastMessageSpan.getToastMessage();
+            String expectedResult = ReplacerMessages.replaceChangeOwnerMessage(message, context.getOpportunities()
+                    .get(FIRST_OPPORTUNITY).getName());
+            Assert.assertEquals(actualResult, expectedResult);
+        }
     }
 
     /**
@@ -185,5 +189,36 @@ public class OpportunityStep {
         String actualResult = AppPageFactory.getOpportunityPage().getOwner(ownerType);
         String expectedResult = new JsonFileReader(JSON_CONFIG_FILE).getUser(ownerType).getUsername();
         Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    /**
+     * Uploads a file to opportunity.
+     */
+    @When("I upload the file to opportunity")
+    public void uploadFile() {
+        String filePath = "src/test/resources/filestoupload/cucumber.png";
+        AppPageFactory.getOpportunityPage().clickOnNotesAndAttachmentsButton();
+        AppPageFactory.getNotesAndAttachments().clickOnUploadFiles(filePath);
+    }
+
+    /**
+     * Gets uploaded file name.
+     */
+    @Then("The file should be uploaded on opportunity")
+    public void getFileName() {
+        String fileName = "cucumber";
+        String uploadedFileName = AppPageFactory.getNotesAndAttachments().getUploadedFileName(fileName);
+        Assert.assertEquals(uploadedFileName, fileName);
+    }
+
+    /**
+     * Selects opportunity.
+     */
+    @And("I select the created opportunity")
+    public void selectOpportunity() {
+        String opportunityName = context.getOpportunities().get(0).getName();
+        System.out.println(opportunityName);
+        // close popup
+        AppPageFactory.getOpportunitiesPage().selectOpportunityName(opportunityName);
     }
 }

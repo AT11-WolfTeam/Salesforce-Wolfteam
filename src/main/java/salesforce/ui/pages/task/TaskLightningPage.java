@@ -48,8 +48,8 @@ public class TaskLightningPage extends AbstractTask {
     private static final String FIELD_COMBO_BOX = "//a[@title='%s']";
     private static final String SUBJECT_TITLE = "//div[@class='slds-page-header__title slds-m-right--small slds-"
             + "align-middle fade-text']//span[text()='%s']";
-
     private Actions actions;
+    JavascriptExecutor js = (JavascriptExecutor) webDriver;
 
     /**
      * Constructor TaskLightningPage.
@@ -83,7 +83,6 @@ public class TaskLightningPage extends AbstractTask {
 
     @Override
     public void setPriority(final String priorityToSelect) {
-        JavascriptExecutor js = (JavascriptExecutor) webDriver;
         js.executeScript("window.scrollBy(0,200)");
         clickOnPriorityField();
         clickOnPriorityToSelect(priorityToSelect);
@@ -123,9 +122,9 @@ public class TaskLightningPage extends AbstractTask {
         }
     }
 
-
     @Override
     protected String getSubject(final String subject) {
+        js.executeScript("window.scrollBy(0,-200)");
         String statusXpath = String.format(SUBJECT_TITLE, subject);
         subjectTitle = webDriver.findElement(By.xpath(statusXpath));
         return subjectTitle.getText();

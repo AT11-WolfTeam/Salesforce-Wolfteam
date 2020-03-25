@@ -19,7 +19,7 @@ import salesforce.api.requestapi.OpportunityApiHelper;
 import salesforce.entities.Context;
 import salesforce.entities.NewCampaign;
 import salesforce.entities.Opportunity;
-import salesforce.entities.TaskUi;
+import salesforce.entities.TaskOpportunity;
 import salesforce.ui.components.span.ToastMessageSpan;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.PageTransporter;
@@ -57,7 +57,7 @@ public class OpportunityStep {
     private Opportunity opportunity;
     private AbstractTaskOpportunity abstractTaskOpportunity;
     private AbstractTask abstractTask;
-    private TaskUi taskUi;
+    private TaskOpportunity taskOpportunity;
     private static String userExperience = GradleReader.getInstance().getUserExperience();
     private static final int ARRAY_POSITION_FIRST = 0;
     private static final String JSON_CONFIG_FILE = "config.json";
@@ -175,8 +175,6 @@ public class OpportunityStep {
         mapOpportunity.putAll(mapOpportunityEdit);
         opportunitiesPage = AppPageFactory.getOpportunitiesPage();
         opportunityPage = opportunitiesPage.selectOpportunityName(context.getOpportunities().get(0).getName());
-        //opportunityUi = context.getOpportunityUi();
-        //opportunityUi.processInformation(mapOpportunityEdit);
         opportunity = context.getOpportunity();
         opportunity.setOpportunityInformation(mapOpportunity);
         opportunityPage.editOpportunity(opportunity, mapOpportunityEdit.keySet());
@@ -190,7 +188,6 @@ public class OpportunityStep {
     public void onTheDetailsSectionShouldDisplayTheCampaignName() {
         HashMap<String, String> mapOpportunityValidate = opportunityPage.getOpportunityDetails();
         Assert.assertEquals(mapOpportunityValidate, context.getOpportunity().getOpportunityInformation());
-                //getOpportunityUi().getOpportunityEdit());
     }
 
     /**
@@ -246,11 +243,11 @@ public class OpportunityStep {
         opportunitiesPage = AppPageFactory.getOpportunitiesPage();
         opportunityPage = opportunitiesPage.selectOpportunityName(context.getOpportunities().get(0).getName());
         abstractTaskOpportunity = opportunityPage.clickAddTask();
-        taskUi = context.getTaskUi();
-        taskUi.processInformation(mapNewTask);
-        abstractTaskOpportunity.setNewTask(taskUi, mapNewTask.keySet());
+        taskOpportunity = context.getTaskOpportunity();
+        taskOpportunity.processInformation(mapNewTask);
+        abstractTaskOpportunity.setNewTask(taskOpportunity, mapNewTask.keySet());
         abstractTaskOpportunity.clickSaveTask();
-        abstractTask = abstractTaskOpportunity.clickTaskToEdit(context.getTaskUi().getSubject());
+        abstractTask = abstractTaskOpportunity.clickTaskToEdit(context.getTaskOpportunity().getSubject());
     }
 
     /**
@@ -261,8 +258,8 @@ public class OpportunityStep {
     @When("I add additional information to the task")
     public void iAddAdditionalInformationToTheTask(final Map<String, String> mapAddInformationTask) {
         abstractTask.clickEditButton();
-        taskUi.processInformation(mapAddInformationTask);
-        abstractTask.addInformationToTask(taskUi, mapAddInformationTask.keySet());
+        taskOpportunity.processInformation(mapAddInformationTask);
+        abstractTask.addInformationToTask(taskOpportunity, mapAddInformationTask.keySet());
         abstractTask.clickOnSaveTaskButton();
     }
 
@@ -271,7 +268,7 @@ public class OpportunityStep {
      */
     @And("the task should display the information added")
     public void theTaskShouldDisplayTheInformationAdded() {
-        HashMap<String, String> mapTaskValidate = abstractTask.getTaskDetails(taskUi);
-        Assert.assertEquals(mapTaskValidate, context.getTaskUi().getTaskEdited());
+        HashMap<String, String> mapTaskValidate = abstractTask.getTaskDetails(taskOpportunity);
+        Assert.assertEquals(mapTaskValidate, context.getTaskOpportunity().getTaskEdited());
     }
 }

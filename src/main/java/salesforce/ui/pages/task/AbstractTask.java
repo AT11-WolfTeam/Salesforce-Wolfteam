@@ -10,7 +10,7 @@
 package salesforce.ui.pages.task;
 
 import org.openqa.selenium.WebElement;
-import salesforce.entities.TaskUi;
+import salesforce.entities.TaskOpportunity;
 import salesforce.entities.constants.TaskConstant;
 import salesforce.ui.pages.AbstractBasePage;
 
@@ -78,6 +78,7 @@ public abstract class AbstractTask extends AbstractBasePage {
 
     /**
      * Returns subject.
+     *
      * @param subject value.
      * @return string value.
      */
@@ -86,11 +87,11 @@ public abstract class AbstractTask extends AbstractBasePage {
     /**
      * Sets the form of new task.
      *
-     * @param taskUi entity.
-     * @param fields map.
+     * @param taskOpportunity entity.
+     * @param fields          map.
      */
-    public void addInformationToTask(final TaskUi taskUi, final Set<String> fields) {
-        HashMap<String, Runnable> strategtyMap = composeStrategyMap(taskUi);
+    public void addInformationToTask(final TaskOpportunity taskOpportunity, final Set<String> fields) {
+        HashMap<String, Runnable> strategtyMap = composeStrategyMap(taskOpportunity);
         fields.forEach(field -> strategtyMap.get(field).run());
         modifiedTaskFields.addAll(fields);
     }
@@ -98,25 +99,26 @@ public abstract class AbstractTask extends AbstractBasePage {
     /**
      * Sets the information to Task.
      *
-     * @param taskUi entity.
+     * @param taskOpportunity entity.
      * @return HashMap value.
      */
-    protected HashMap<String, Runnable> composeStrategyMap(final TaskUi taskUi) {
+    protected HashMap<String, Runnable> composeStrategyMap(final TaskOpportunity taskOpportunity) {
         HashMap<String, Runnable> strategyMap = new HashMap<>();
-        strategyMap.put(TaskConstant.PRIORITY, () -> setPriority(taskUi.getPriority()));
-        strategyMap.put(TaskConstant.STATUS, () -> setStatus(taskUi.getStatus()));
-        strategyMap.put(TaskConstant.SUBJECT, () -> setSubject(taskUi.getSubject()));
+        strategyMap.put(TaskConstant.PRIORITY, () -> setPriority(taskOpportunity.getPriority()));
+        strategyMap.put(TaskConstant.STATUS, () -> setStatus(taskOpportunity.getStatus()));
+        strategyMap.put(TaskConstant.SUBJECT, () -> setSubject(taskOpportunity.getSubject()));
         return strategyMap;
     }
 
     /**
      * Gets map of the information set.
-     * @param taskUi object.
+     *
+     * @param taskOpportunity object.
      * @return HashMap values.
      */
-    public HashMap<String, String> getTaskDetails(final TaskUi taskUi) {
+    public HashMap<String, String> getTaskDetails(final TaskOpportunity taskOpportunity) {
         HashMap<String, String> values = new HashMap<>();
-        HashMap<String, Supplier> strategyMapEducation = composeTaskDetailsToGet(taskUi);
+        HashMap<String, Supplier> strategyMapEducation = composeTaskDetailsToGet(taskOpportunity);
         for (String key : modifiedTaskFields) {
             values.put(key, strategyMapEducation.get(key).get().toString());
         }
@@ -125,14 +127,15 @@ public abstract class AbstractTask extends AbstractBasePage {
 
     /**
      * composeOpportunityDetailsToGet to get attributes.
-     * @param taskUi object.
+     *
+     * @param taskOpportunity object.
      * @return HashMap values.
      */
-    private HashMap<String, Supplier> composeTaskDetailsToGet(final TaskUi taskUi) {
+    private HashMap<String, Supplier> composeTaskDetailsToGet(final TaskOpportunity taskOpportunity) {
         HashMap<String, Supplier> strategyMap = new HashMap<>();
         strategyMap.put(TaskConstant.PRIORITY, () -> getPriority());
         strategyMap.put(TaskConstant.STATUS, () -> getStatus());
-        strategyMap.put(TaskConstant.SUBJECT, () -> getSubject(taskUi.getSubject()));
+        strategyMap.put(TaskConstant.SUBJECT, () -> getSubject(taskOpportunity.getSubject()));
         return strategyMap;
     }
 }

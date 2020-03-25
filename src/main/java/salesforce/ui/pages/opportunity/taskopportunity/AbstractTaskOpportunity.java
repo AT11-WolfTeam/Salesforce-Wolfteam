@@ -10,7 +10,7 @@
 package salesforce.ui.pages.opportunity.taskopportunity;
 
 import org.openqa.selenium.WebElement;
-import salesforce.entities.TaskUi;
+import salesforce.entities.TaskOpportunity;
 import salesforce.entities.constants.TaskConstant;
 import salesforce.ui.pages.AbstractBasePage;
 import salesforce.ui.pages.task.AbstractTask;
@@ -49,23 +49,23 @@ public abstract class AbstractTaskOpportunity extends AbstractBasePage {
     /**
      * Sets the form of new task.
      *
-     * @param taskUi entity.
+     * @param taskOpportunity entity.
      * @param fields map.
      */
-    public void setNewTask(final TaskUi taskUi, final Set<String> fields) {
-        HashMap<String, Runnable> strategtyMap = composeStrategyMap(taskUi);
+    public void setNewTask(final TaskOpportunity taskOpportunity, final Set<String> fields) {
+        HashMap<String, Runnable> strategtyMap = composeStrategyMap(taskOpportunity);
         fields.forEach(field -> strategtyMap.get(field).run());
     }
 
     /**
      * Sets the information to Task.
      *
-     * @param taskUi entity.
+     * @param taskOpportunity entity.
      * @return HashMap value.
      */
-    protected HashMap<String, Runnable> composeStrategyMap(final TaskUi taskUi) {
+    protected HashMap<String, Runnable> composeStrategyMap(final TaskOpportunity taskOpportunity) {
         HashMap<String, Runnable> strategyMap = new HashMap<>();
-        strategyMap.put(TaskConstant.SUBJECT, () -> setSubjectTask(taskUi.getSubject()));
+        strategyMap.put(TaskConstant.SUBJECT, () -> setSubjectTask(taskOpportunity.getSubject()));
         return strategyMap;
     }
 }

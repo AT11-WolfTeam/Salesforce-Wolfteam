@@ -23,7 +23,7 @@ import java.util.function.Supplier;
  * @author Alan Escalera.
  * @version 1.0 24 March 2020.
  */
-public class TaskUi {
+public class TaskOpportunity {
     private String subject;
     private String status;
     private String priority;

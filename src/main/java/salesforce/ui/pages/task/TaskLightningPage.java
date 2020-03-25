@@ -49,7 +49,7 @@ public class TaskLightningPage extends AbstractTask {
     private static final String SUBJECT_TITLE = "//div[@class='slds-page-header__title slds-m-right--small slds-"
             + "align-middle fade-text']//span[text()='%s']";
     private Actions actions;
-    JavascriptExecutor js = (JavascriptExecutor) webDriver;
+    private JavascriptExecutor js = (JavascriptExecutor) webDriver;
 
     /**
      * Constructor TaskLightningPage.

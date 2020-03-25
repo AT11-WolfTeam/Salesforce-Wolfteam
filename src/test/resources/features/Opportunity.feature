@@ -3,11 +3,12 @@ Feature: Opportunity
   @DeletesOpportunity
   Scenario: Change opportunity owner to another user
     Given I create 1 "Basic" opportunities
-    And I go to "Opportunities Page"
-    And I search the opportunity in list "All Opportunities"
-    When I change an opportunity's owner with "Current User"
-    Then the application should display an information message in Opportunity Lightning page with format "[Current User] now owns the record for [Opportunity Name]."
-    And the opportunity page displays the owner "Current User"
+    When I go to "Opportunities Page"
+      And I search for the opportunity in list "All Opportunities"
+      And I change the opportunity's owner with "Current User"
+    Then the application should display this message in Opportunity Page only for Lightning Experience
+      | [Current User] now owns the record for [Opportunity Name]. |
+      And the opportunity page displays the owner "Current User"
 
 
   @wip

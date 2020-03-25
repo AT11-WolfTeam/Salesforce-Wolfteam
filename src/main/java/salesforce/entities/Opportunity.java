@@ -38,6 +38,7 @@ public class Opportunity {
     private String description;
     private String nextStep;
     private String statusCode;
+    private String campaignName;
 
     private Set<String> modifiedOpportunityFields = new HashSet<>();
 
@@ -138,6 +139,24 @@ public class Opportunity {
      */
     public String getStatusCode() {
         return statusCode;
+    }
+
+    /**
+     * Returns campaignName value.
+     *
+     * @return string value.
+     */
+    public String getCampaignName() {
+        return campaignName;
+    }
+
+    /**
+     * Sets campaignName value.
+     *
+     * @param campaignName value.
+     */
+    public void setCampaignName(final String campaignName) {
+        this.campaignName = campaignName;
     }
 
     /**
@@ -280,6 +299,8 @@ public class Opportunity {
                 setDescription(opportunityInformation.get(OpportunityConstant.DESCRIPTION)));
         strategyMap.put(OpportunityConstant.NEXT_STEP, () ->
                 setNextStep(opportunityInformation.get(OpportunityConstant.NEXT_STEP)));
+        strategyMap.put(OpportunityConstant.CAMPAIGN_NAME, () ->
+                setCampaignName(opportunityInformation.get(OpportunityConstant.CAMPAIGN_NAME)));
         return strategyMap;
     }
 
@@ -313,6 +334,7 @@ public class Opportunity {
         strategyMap.put(OpportunityConstant.PROBABILITY, () -> getProbability());
         strategyMap.put(OpportunityConstant.DESCRIPTION, () -> getDescription());
         strategyMap.put(OpportunityConstant.NEXT_STEP, () -> getNextStep());
+        strategyMap.put(OpportunityConstant.CAMPAIGN_NAME, () -> getCampaignName());
         return strategyMap;
     }
 }

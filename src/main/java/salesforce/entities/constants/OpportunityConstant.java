@@ -26,7 +26,6 @@ public final class OpportunityConstant {
     public static final String DESCRIPTION = "Description";
     public static final String NEXT_STEP = "NextStep";
     public static final String CAMPAIGN_NAME = "Campaign Name";
-    public static final String SUBJECT_TASK = "Subject";
 
     /**
      * OpportunityConstant constructor.

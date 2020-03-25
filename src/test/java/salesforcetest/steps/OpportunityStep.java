@@ -19,7 +19,6 @@ import salesforce.api.requestapi.OpportunityApiHelper;
 import salesforce.entities.Context;
 import salesforce.entities.NewCampaign;
 import salesforce.entities.Opportunity;
-import salesforce.entities.OpportunityUi;
 import salesforce.entities.TaskUi;
 import salesforce.ui.components.span.ToastMessageSpan;
 import salesforce.ui.pages.AppPageFactory;
@@ -55,7 +54,7 @@ public class OpportunityStep {
     private NewCampaign newCampaign;
     private AbstractOpportunitiesPage opportunitiesPage;
     private AbstractOpportunityPage opportunityPage;
-    private OpportunityUi opportunityUi;
+    private Opportunity opportunity;
     private AbstractTaskOpportunity abstractTaskOpportunity;
     private AbstractTask abstractTask;
     private TaskUi taskUi;
@@ -104,7 +103,7 @@ public class OpportunityStep {
     /**
      * Allows to create many opportunities.
      *
-     * @param quantity        number of opportunities.
+     * @param quantity number of opportunities.
      * @param opportunityType value.
      */
     @Given("I create {int} {string} opportunities")
@@ -172,11 +171,15 @@ public class OpportunityStep {
      */
     @When("I assign the Campaign to the opportunity")
     public void assignsTheCampaignToTheOpportunity(final Map<String, String> mapOpportunityEdit) {
+        HashMap<String, String> mapOpportunity = new HashMap<>();
+        mapOpportunity.putAll(mapOpportunityEdit);
         opportunitiesPage = AppPageFactory.getOpportunitiesPage();
         opportunityPage = opportunitiesPage.selectOpportunityName(context.getOpportunities().get(0).getName());
-        opportunityUi = context.getOpportunityUi();
-        opportunityUi.processInformation(mapOpportunityEdit);
-        opportunityPage.editOpportunity(opportunityUi, mapOpportunityEdit.keySet());
+        //opportunityUi = context.getOpportunityUi();
+        //opportunityUi.processInformation(mapOpportunityEdit);
+        opportunity = context.getOpportunity();
+        opportunity.setOpportunityInformation(mapOpportunity);
+        opportunityPage.editOpportunity(opportunity, mapOpportunityEdit.keySet());
         opportunityPage.clickSaveButton();
     }
 
@@ -186,7 +189,8 @@ public class OpportunityStep {
     @Then("On the details section should display the Campaign name")
     public void onTheDetailsSectionShouldDisplayTheCampaignName() {
         HashMap<String, String> mapOpportunityValidate = opportunityPage.getOpportunityDetails();
-        Assert.assertEquals(mapOpportunityValidate, context.getOpportunityUi().getOpportunityEdit());
+        Assert.assertEquals(mapOpportunityValidate, context.getOpportunity().getOpportunityInformation());
+                //getOpportunityUi().getOpportunityEdit());
     }
 
     /**

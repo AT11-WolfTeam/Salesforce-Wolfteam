@@ -38,5 +38,4 @@ public class TaskOpportunityClassic extends AbstractTaskOpportunity {
     public void clickSaveTask() {
 
     }
-
 }

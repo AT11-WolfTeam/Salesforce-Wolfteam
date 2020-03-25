@@ -19,7 +19,6 @@ import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
 import salesforce.ui.pages.owner.OwnerEditClassicPage;
 import salesforce.utils.UtilSalesforce;
 
-
 /**
  * Defines an OpportunityClassicPage.
  *
@@ -157,5 +156,4 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     public AbstractTaskOpportunity clickAddTask() {
         return null;
     }
-
 }

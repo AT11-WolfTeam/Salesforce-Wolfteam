@@ -18,7 +18,6 @@ import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
 import salesforce.ui.pages.owner.ChangeOpportunityOwnerLightningPopup;
 
-
 /**
  * Defines an OpportunityLightningPage.
  *
@@ -95,7 +94,6 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
         campaignNameSelect.click();
     }
 
-
     @Override
     protected String getCampaignName() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(campaignSaved));
@@ -126,7 +124,6 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     public AbstractTaskOpportunity clickAddTask() {
         addTaskButton.click();
         return AppPageFactory.getTaskOpportunity();
-
     }
 
     /**

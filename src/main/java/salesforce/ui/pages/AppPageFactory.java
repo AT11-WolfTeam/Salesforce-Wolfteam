@@ -144,7 +144,6 @@ public class AppPageFactory {
             return new TaskClassicPage();
         }
         return new TaskLightningPage();
-
     }
 
     /**

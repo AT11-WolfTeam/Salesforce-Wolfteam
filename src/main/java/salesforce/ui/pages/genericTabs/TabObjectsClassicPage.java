@@ -7,54 +7,75 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages.opportunities;
+package salesforce.ui.pages.genericTabs;
 
 import core.selenium.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import salesforce.entities.Lead;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 
+import java.util.Map;
+import java.util.Set;
+
 /**
- * Defines OpportunitiesPopUpLightning.
+ * Defines OpportunitiesClassicPage.
  *
  * @author Alan Escalera.
  * @version 1.0 19 March 2020.
  */
-public class OpportunitiesLightningPage extends AbstractOpportunitiesPage {
-    @FindBy(css = "div[title='New']")
+public class TabObjectsClassicPage extends AbstractTabObjectsPage {
+    @FindBy(xpath = "//input[@class='btn' and @name='new']")
     private WebElement newButton;
-    protected static final String NAME_OPPORTUNITY = "a[title='%s']";
 
-    @FindBy(css = "div[class='triggerLinkTextAndIconWrapper slds-p-right--x-large']")
-    private WebElement opportunityListButton;
+    @FindBy(css = "select[id='fcf']")
+    private WebElement opportunityListSelect;
 
-    private static final String OPPORTUNITY_ORDERED_LIST_PARTIAL_LOCATOR = "//li[contains(.,'%s')]";
-    private WebElement nameOpportunityTable;
+    @FindBy(css = "span[class='fBody'] input[class='btn']")
+    private WebElement goButton;
+
+    @FindBy(css = "a[id='tryLexDialogX']")
+    private WebElement closePopUp;
+
+    protected static final String NAME_OPPORTUNITY = "//th//a[contains(text(),'%s')]";
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(newButton));
         webDriverWait.until(ExpectedConditions.elementToBeClickable(newButton));
     }
 
     @Override
     public void displayOpportunityList(final String listName) {
-        String opportunityOrderedListLocator;
-        opportunityListButton.click();
-        opportunityOrderedListLocator = String.format(OPPORTUNITY_ORDERED_LIST_PARTIAL_LOCATOR, listName);
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(webDriver.findElement(
-                By.xpath(opportunityOrderedListLocator))));
-        webDriver.findElement(By.xpath(opportunityOrderedListLocator)).click();
+        Select select = new Select(opportunityListSelect);
+        select.selectByVisibleText(listName);
+        goButton.click();
+    }
+
+    /**
+     * Closes popup.
+     */
+    private void closePopUp() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(closePopUp));
+        closePopUp.click();
     }
 
     @Override
     public AbstractOpportunityPage selectOpportunityName(final String opportunityName) {
+        closePopUp();
         String opportunityNameXpath = String.format(NAME_OPPORTUNITY, opportunityName);
         nameOpportunitySelected = WebDriverManager.getInstance().getWebDriver().findElement(By
-                .cssSelector(opportunityNameXpath));
+                .xpath(opportunityNameXpath));
         nameOpportunitySelected.click();
         return AppPageFactory.getOpportunityPage();
+    }
+
+    @Override
+    public void clickOnNewButton() {
+
     }
 }

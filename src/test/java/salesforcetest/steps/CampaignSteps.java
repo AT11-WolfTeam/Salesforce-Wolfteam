@@ -9,8 +9,9 @@
 
 package salesforcetest.steps;
 
-import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
 import salesforce.entities.Context;
+import salesforce.ui.helpers.LeadHelper;
 import salesforce.ui.pages.PageTransporter;
 
 /**
@@ -22,7 +23,7 @@ import salesforce.ui.pages.PageTransporter;
 public class CampaignSteps {
     private Context context;
     private PageTransporter pageTransporter;
-    private static final int ARRAY_POSITION_FIRST = 0;
+    private LeadHelper leadHelper;
 
     /**
      * OpportunityStep constructor.
@@ -34,13 +35,8 @@ public class CampaignSteps {
         pageTransporter = new PageTransporter();
     }
 
-    /**
-     * Creates leads objects.
-     *
-     * @param leadsQuantity contains quantity.
-     * @param leadType a Lead type.
-     */
-    @Given("I create {int} {string} leads")
-    public void createsLeads(final int leadsQuantity, final String leadType) {
+    @When("I add the leads to the campaign")
+    public void addLeads() {
+        System.out.println("Hello");
     }
 }

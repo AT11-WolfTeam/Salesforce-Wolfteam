@@ -7,11 +7,15 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages.opportunities;
+package salesforce.ui.pages.genericTabs;
 
 import org.openqa.selenium.WebElement;
+import salesforce.entities.Lead;
 import salesforce.ui.pages.AbstractBasePage;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
+
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Defines AbstractOpportunitiesPage.
@@ -19,7 +23,7 @@ import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
  * @author Alan Escalera.
  * @version 1.0 19 March 2020.
  */
-public abstract class AbstractOpportunitiesPage extends AbstractBasePage {
+public abstract class AbstractTabObjectsPage extends AbstractBasePage {
     protected WebElement nameOpportunitySelected;
 
     /**
@@ -36,4 +40,9 @@ public abstract class AbstractOpportunitiesPage extends AbstractBasePage {
      * @return OpportunityPage instance.
      */
     public abstract AbstractOpportunityPage selectOpportunityName(String opportunityName);
+
+    /**
+     * Displays a list object.
+     */
+    public abstract void clickOnNewButton();
 }

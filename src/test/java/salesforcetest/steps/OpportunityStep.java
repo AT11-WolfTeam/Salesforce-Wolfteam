@@ -25,7 +25,7 @@ import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.PageTransporter;
 import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
 import salesforce.ui.pages.newcampaign.AbstractNewCampaignPage;
-import salesforce.ui.pages.opportunities.AbstractOpportunitiesPage;
+import salesforce.ui.pages.genericTabs.AbstractTabObjectsPage;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 import salesforce.utils.JsonFileReader;
 import salesforce.utils.ReplacerMessages;
@@ -49,7 +49,7 @@ public class OpportunityStep {
     private AbstractCampaignListPage campaignsPage;
     private AbstractNewCampaignPage newCampaignPage;
     private NewCampaign newCampaign;
-    private AbstractOpportunitiesPage opportunitiesPage;
+    private AbstractTabObjectsPage opportunitiesPage;
     private AbstractOpportunityPage opportunityPage;
     private OpportunityUi opportunityUi;
     private static String userExperience = GradleReader.getInstance().getUserExperience();
@@ -128,7 +128,7 @@ public class OpportunityStep {
     @When("I search for the opportunity in list {string}")
     public void searchOpportunity(final String listName) {
         String opportunityName = context.getOpportunities().get(ARRAY_POSITION_FIRST).getName();
-        AppPageFactory.getOpportunitiesPage().displayOpportunityList(listName);
+        AppPageFactory.getTabObjectsPage().displayOpportunityList(listName);
         AppPageFactory.getOpportunityList().clickOnOpportunity(opportunityName);
     }
 
@@ -164,7 +164,7 @@ public class OpportunityStep {
      */
     @When("I assign the Campaign to the opportunity")
     public void assignsTheCampaignToTheOpportunity(final Map<String, String> mapOpportunityEdit) {
-        opportunitiesPage = AppPageFactory.getOpportunitiesPage();
+        opportunitiesPage = AppPageFactory.getTabObjectsPage();
         opportunityPage = opportunitiesPage.selectOpportunityName(context.getOpportunities().get(0).getName());
         opportunityUi = context.getOpportunityUi();
         opportunityUi.processInformation(mapOpportunityEdit);
@@ -220,6 +220,6 @@ public class OpportunityStep {
         String opportunityName = context.getOpportunities().get(0).getName();
         System.out.println(opportunityName);
         // close popup
-        AppPageFactory.getOpportunitiesPage().selectOpportunityName(opportunityName);
+        AppPageFactory.getTabObjectsPage().selectOpportunityName(opportunityName);
     }
 }

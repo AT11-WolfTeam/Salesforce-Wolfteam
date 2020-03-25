@@ -28,9 +28,9 @@ import salesforce.ui.pages.notesattachments.NotesAndAttachmentsPageAbstract;
 import salesforce.ui.pages.oportunitieslist.AbstractOpportunityListPage;
 import salesforce.ui.pages.oportunitieslist.OpportunityListClassicPage;
 import salesforce.ui.pages.oportunitieslist.OpportunityListLightningPage;
-import salesforce.ui.pages.opportunities.AbstractOpportunitiesPage;
-import salesforce.ui.pages.opportunities.OpportunitiesClassicPage;
-import salesforce.ui.pages.opportunities.OpportunitiesLightningPage;
+import salesforce.ui.pages.genericTabs.AbstractTabObjectsPage;
+import salesforce.ui.pages.genericTabs.TabObjectsClassicPage;
+import salesforce.ui.pages.genericTabs.TabObjectsLightningPage;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 import salesforce.ui.pages.opportunity.OpportunityClassicPage;
 import salesforce.ui.pages.opportunity.OpportunityLightningPage;
@@ -73,11 +73,11 @@ public class AppPageFactory {
      *
      * @return OpportunitiesPage instance.
      */
-    public static AbstractOpportunitiesPage getOpportunitiesPage() {
+    public static AbstractTabObjectsPage getTabObjectsPage() {
         if (userExperience.equals("Classic")) {
-            return new OpportunitiesClassicPage();
+            return new TabObjectsClassicPage();
         }
-        return new OpportunitiesLightningPage();
+        return new TabObjectsLightningPage();
     }
 
     /**

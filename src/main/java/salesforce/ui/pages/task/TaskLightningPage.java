@@ -50,6 +50,8 @@ public class TaskLightningPage extends AbstractTask {
             + "align-middle fade-text']//span[text()='%s']";
     private Actions actions;
     private JavascriptExecutor js = (JavascriptExecutor) webDriver;
+    private static final String SCROLL_DOWN = "window.scrollBy(0,300)";
+    private static final String SCROLL_UP = "window.scrollBy(0,300)";
 
     /**
      * Constructor TaskLightningPage.
@@ -83,7 +85,7 @@ public class TaskLightningPage extends AbstractTask {
 
     @Override
     public void setPriority(final String priorityToSelect) {
-        js.executeScript("window.scrollBy(0,200)");
+        js.executeScript(SCROLL_DOWN);
         clickOnPriorityField();
         clickOnPriorityToSelect(priorityToSelect);
     }
@@ -124,7 +126,7 @@ public class TaskLightningPage extends AbstractTask {
 
     @Override
     protected String getSubject(final String subject) {
-        js.executeScript("window.scrollBy(0,-200)");
+        js.executeScript(SCROLL_UP);
         String statusXpath = String.format(SUBJECT_TITLE, subject);
         subjectTitle = webDriver.findElement(By.xpath(statusXpath));
         return subjectTitle.getText();

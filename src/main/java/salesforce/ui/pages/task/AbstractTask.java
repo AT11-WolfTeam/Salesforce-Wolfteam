@@ -88,7 +88,7 @@ public abstract class AbstractTask extends AbstractBasePage {
      * Sets the form of new task.
      *
      * @param taskOpportunity entity.
-     * @param fields          map.
+     * @param fields map.
      */
     public void addInformationToTask(final TaskOpportunity taskOpportunity, final Set<String> fields) {
         HashMap<String, Runnable> strategtyMap = composeStrategyMap(taskOpportunity);

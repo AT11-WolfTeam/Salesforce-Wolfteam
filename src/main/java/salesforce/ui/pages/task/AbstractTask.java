@@ -16,6 +16,7 @@ import salesforce.ui.pages.AbstractBasePage;
 
 import java.util.HashMap;
 import java.util.Set;
+import java.util.function.Supplier;
 
 /**
  * Defines an AbstractTask.
@@ -88,6 +89,32 @@ public abstract class AbstractTask extends AbstractBasePage {
         HashMap<String, Runnable> strategyMap = new HashMap<>();
         strategyMap.put(TaskConstant.PRIORITY, () -> setPriority(taskUi.getPriority()));
         strategyMap.put(TaskConstant.STATUS, () -> setStatus(taskUi.getStatus()));
+        return strategyMap;
+    }
+
+    /**
+     * Gets map of the information set.
+     *
+     * @return HashMap values.
+     */
+    public HashMap<String, String> getTaskDetails() {
+        HashMap<String, String> values = new HashMap<>();
+        HashMap<String, Supplier> strategyMapEducation = composeTaskDetailsToGet();
+        for (String key : strategyMapEducation.keySet()) {
+            values.put(key, strategyMapEducation.get(key).get().toString());
+        }
+        return values;
+    }
+
+    /**
+     * composeOpportunityDetailsToGet to get attributes.
+     *
+     * @return HashMap values.
+     */
+    private HashMap<String, Supplier> composeTaskDetailsToGet() {
+        HashMap<String, Supplier> strategyMap = new HashMap<>();
+        strategyMap.put(TaskConstant.PRIORITY, () -> getPriority());
+        strategyMap.put(TaskConstant.STATUS, () -> getStatus());
         return strategyMap;
     }
 }

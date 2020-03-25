@@ -9,18 +9,18 @@ Feature: Opportunity
 #    Then the application should display this message in Opportunity Page only for Lightning Experience
 #      | [Current User] now owns the record for [Opportunity Name]. |
 #    And the opportunity page displays the owner "Current User"
-#
-#
-#  @wip
-#  Scenario: Add additional information to created task.
-#    Given I create 1 "Basic" opportunities
-#    And I go to "Opportunity Page"
-#    And I add new Task with
-#      | Subject | Call |
-#    When I add additional information to the task
-#      | Status   | In Progress |
-#      | Priority | High        |
-#    And the task should display the information added
+
+
+
+  Scenario: Add additional information to created task.
+    Given I create 1 "Basic" opportunities
+    And I go to "Opportunity Page"
+    And I add new Task with
+      | Subject | Call |
+    When I add additional information to the task
+      | Status   | In Progress |
+      | Priority | High        |
+    And the task should display the information added
 
 
   @DeletesCampaign @DeletesOpportunity

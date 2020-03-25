@@ -186,8 +186,6 @@ public class OpportunityStep {
     @Then("On the details section should display the Campaign name")
     public void onTheDetailsSectionShouldDisplayTheCampaignName() {
         HashMap<String, String> mapOpportunityValidate = opportunityPage.getOpportunityDetails();
-        System.out.println(mapOpportunityValidate.toString());
-        System.out.println(context.getOpportunityUi().getOpportunityEdit().toString());
         Assert.assertEquals(mapOpportunityValidate, context.getOpportunityUi().getOpportunityEdit());
     }
 
@@ -244,9 +242,9 @@ public class OpportunityStep {
         opportunitiesPage = AppPageFactory.getOpportunitiesPage();
         opportunityPage = opportunitiesPage.selectOpportunityName(context.getOpportunities().get(0).getName());
         abstractTaskOpportunity = opportunityPage.clickAddTask();
-        opportunityUi = new OpportunityUi();
-        opportunityUi.processInformation(mapNewTask);
-        abstractTaskOpportunity.setNewTask(opportunityUi, mapNewTask.keySet());
+        taskUi = context.getTaskUi();
+        taskUi.processInformation(mapNewTask);
+        abstractTaskOpportunity.setNewTask(taskUi, mapNewTask.keySet());
         abstractTaskOpportunity.clickSaveTask();
         abstractTask = abstractTaskOpportunity.clickTaskToEdit(context.getOpportunityUi().getSubjectTask());
     }
@@ -258,8 +256,10 @@ public class OpportunityStep {
      */
     @When("I add additional information to the task")
     public void iAddAdditionalInformationToTheTask(final Map<String, String> mapAddInformationTask) {
-        taskUi = context.getTaskUi();
-
+        abstractTask.clickEditButton();
+        taskUi.processInformation(mapAddInformationTask);
+        abstractTask.addInformationToTask(taskUi, mapAddInformationTask.keySet());
+        abstractTask.clickOnSaveTaskButton();
     }
 
     /**
@@ -267,5 +267,7 @@ public class OpportunityStep {
      */
     @And("the task should display the information added")
     public void theTaskShouldDisplayTheInformationAdded() {
+        HashMap<String, String> mapTaskValidate = abstractTask.getTaskDetails();
+        Assert.assertEquals(mapTaskValidate, context.getTaskUi().getTaskEdited());
     }
 }

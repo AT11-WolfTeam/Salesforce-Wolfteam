@@ -166,7 +166,7 @@ public class SalesforceUrl {
      *
      * @param leadsLightningUrl value.
      */
-    public void setLeadsLightningUrl(String leadsLightningUrl) {
+    public void setLeadsLightningUrl(final String leadsLightningUrl) {
         this.leadsLightningUrl = leadsLightningUrl;
     }
 
@@ -184,7 +184,7 @@ public class SalesforceUrl {
      *
      * @param leadsClassicUrl value.
      */
-    public void setLeadsClassicUrl(String leadsClassicUrl) {
+    public void setLeadsClassicUrl(final String leadsClassicUrl) {
         this.leadsClassicUrl = leadsClassicUrl;
     }
 }

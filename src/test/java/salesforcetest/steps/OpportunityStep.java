@@ -78,7 +78,7 @@ public class OpportunityStep {
     }
 
     /**
-     * Validates a message onl for Lightning User Experience.
+     * Validates a message only for Lightning User Experience.
      *
      * @param message contains a String message.
      */

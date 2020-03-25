@@ -12,7 +12,7 @@ package salesforce.entities;
 /**
  * Manages Lead information.
  *
- * @author Alan Escalera.
+ * @author Enrique Carrizales.
  * @version 1.0 24 March 2020.
  */
 public class Lead {
@@ -42,7 +42,7 @@ public class Lead {
      *
      * @param name String value.
      */
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -60,7 +60,7 @@ public class Lead {
      *
      * @param salutation String value.
      */
-    public void setSalutation(String salutation) {
+    public void setSalutation(final String salutation) {
         this.salutation = salutation;
     }
 
@@ -78,7 +78,7 @@ public class Lead {
      *
      * @param firstName String value.
      */
-    public void setFirstName(String firstName) {
+    public void setFirstName(final String firstName) {
         this.firstName = firstName;
     }
 
@@ -96,7 +96,7 @@ public class Lead {
      *
      * @param lastName String value.
      */
-    public void setLastName(String lastName) {
+    public void setLastName(final String lastName) {
         this.lastName = lastName;
     }
 
@@ -114,7 +114,7 @@ public class Lead {
      *
      * @param company String value.
      */
-    public void setCompany(String company) {
+    public void setCompany(final String company) {
         this.company = company;
     }
 
@@ -132,7 +132,7 @@ public class Lead {
      *
      * @param title String value.
      */
-    public void setTitle(String title) {
+    public void setTitle(final String title) {
         this.title = title;
     }
 
@@ -150,7 +150,7 @@ public class Lead {
      *
      * @param leadSource String value.
      */
-    public void setLeadSource(String leadSource) {
+    public void setLeadSource(final String leadSource) {
         this.leadSource = leadSource;
     }
 
@@ -168,7 +168,7 @@ public class Lead {
      *
      * @param industry String value.
      */
-    public void setIndustry(String industry) {
+    public void setIndustry(final String industry) {
         this.industry = industry;
     }
 
@@ -186,7 +186,7 @@ public class Lead {
      *
      * @param phone String value.
      */
-    public void setPhone(String phone) {
+    public void setPhone(final String phone) {
         this.phone = phone;
     }
 
@@ -204,7 +204,7 @@ public class Lead {
      *
      * @param mobile String value.
      */
-    public void setMobile(String mobile) {
+    public void setMobile(final String mobile) {
         this.mobile = mobile;
     }
 
@@ -222,7 +222,7 @@ public class Lead {
      *
      * @param leadStatus String value.
      */
-    public void setLeadStatus(String leadStatus) {
+    public void setLeadStatus(final String leadStatus) {
         this.leadStatus = leadStatus;
     }
 }

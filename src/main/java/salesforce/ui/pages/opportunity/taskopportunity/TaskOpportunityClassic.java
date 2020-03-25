@@ -11,6 +11,12 @@ package salesforce.ui.pages.opportunity.taskopportunity;
 
 import salesforce.ui.pages.task.AbstractTask;
 
+/**
+ * Defines TaskOpportunityClassic.
+ *
+ * @author Alan Escalera.
+ * @version 1.0 24 March 2020.
+ */
 public class TaskOpportunityClassic extends AbstractTaskOpportunity {
 
     @Override

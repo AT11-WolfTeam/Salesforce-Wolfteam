@@ -13,7 +13,6 @@ import org.openqa.selenium.WebElement;
 import salesforce.entities.OpportunityUi;
 import salesforce.ui.pages.AbstractBasePage;
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
-import salesforce.ui.pages.task.AbstractTask;
 
 import java.util.HashMap;
 import java.util.Set;
@@ -45,7 +44,7 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
      * Sets the form of new Campaign.
      *
      * @param opportunityUi entity.
-     * @param fields      map.
+     * @param fields        map.
      */
     public void editOpportunity(final OpportunityUi opportunityUi, final Set<String> fields) {
         HashMap<String, Runnable> strategtyMap = composeStrategyMap(opportunityUi);
@@ -103,19 +102,23 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
 
     /**
      * Changes an Opportunity owner.
+     *
      * @param ownerType contains a String value.
      */
     public abstract void changeOwner(String ownerType);
 
     /**
      * Returns an Opportunity owner.
+     *
      * @param ownerType contains a String value.
      * @return String value.
      */
     public abstract String getOwner(String ownerType);
 
     /**
-     * Clicks on Add task.
+     * Clicks on Add Task.
+     *
+     * @return AbstractTaskOpportunity instance.
      */
     public abstract AbstractTaskOpportunity clickAddTask();
 

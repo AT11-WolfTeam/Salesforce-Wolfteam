@@ -33,6 +33,7 @@ import salesforce.ui.pages.task.AbstractTask;
 import salesforce.utils.JsonFileReader;
 import salesforce.utils.ReplacerMessages;
 import salesforce.utils.SheetManager;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -62,6 +63,7 @@ public class OpportunityStep {
     private static final int ARRAY_POSITION_FIRST = 0;
     private static final String JSON_CONFIG_FILE = "config.json";
     private static final String USER_EXPERIENCE_LIGHTNING = "Lightning";
+
     /**
      * OpportunityStep constructor.
      *
@@ -102,7 +104,7 @@ public class OpportunityStep {
     /**
      * Allows to create many opportunities.
      *
-     * @param quantity number of opportunities.
+     * @param quantity        number of opportunities.
      * @param opportunityType value.
      */
     @Given("I create {int} {string} opportunities")
@@ -189,6 +191,7 @@ public class OpportunityStep {
 
     /**
      * Validates an opportunity owner.
+     *
      * @param ownerType contains String value.
      */
     @When("the opportunity page displays the owner {string}")
@@ -229,25 +232,37 @@ public class OpportunityStep {
         AppPageFactory.getOpportunitiesPage().selectOpportunityName(opportunityName);
     }
 
+    /**
+     * Adds new Task.
+     *
+     * @param mapNewTask map values.
+     */
     @And("I add new Task with")
-    public void iAddNewTaskWith(final Map<String,String> mapNewTask) {
+    public void iAddNewTaskWith(final Map<String, String> mapNewTask) {
         opportunitiesPage = AppPageFactory.getOpportunitiesPage();
         opportunityPage = opportunitiesPage.selectOpportunityName(context.getOpportunities().get(0).getName());
         abstractTaskOpportunity = opportunityPage.clickAddTask();
         opportunityUi = new OpportunityUi();
         opportunityUi.processInformation(mapNewTask);
-        abstractTaskOpportunity.setNewTask(opportunityUi,mapNewTask.keySet());
+        abstractTaskOpportunity.setNewTask(opportunityUi, mapNewTask.keySet());
         abstractTaskOpportunity.clickSaveTask();
         abstractTask = abstractTaskOpportunity.clickTaskToEdit(context.getOpportunityUi().getSubjectTask());
-
     }
 
+    /**
+     * Adds additional information to task already created.
+     *
+     * @param mapAddInformationTask map values.
+     */
     @When("I add additional information to the task")
-    public void iAddAdditionalInformationToTheTask(final Map<String,String> mapAddInformationTask) {
+    public void iAddAdditionalInformationToTheTask(final Map<String, String> mapAddInformationTask) {
         taskUi = context.getTaskUi();
 
     }
 
+    /**
+     * Validate the addition information inserted.
+     */
     @And("the task should display the information added")
     public void theTaskShouldDisplayTheInformationAdded() {
     }

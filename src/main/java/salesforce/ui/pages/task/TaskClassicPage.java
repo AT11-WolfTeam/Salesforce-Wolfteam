@@ -27,12 +27,12 @@ public class TaskClassicPage extends AbstractTask {
     }
 
     @Override
-    public void setStatus(String statusToSelect) {
+    public void setStatus(final String statusToSelect) {
 
     }
 
     @Override
-    public void setPriority(String priorityToSelect) {
+    public void setPriority(final String priorityToSelect) {
 
     }
 

@@ -10,7 +10,6 @@
 package salesforce.ui.pages.task;
 
 import org.openqa.selenium.WebElement;
-import salesforce.entities.OpportunityUi;
 import salesforce.entities.TaskUi;
 import salesforce.entities.constants.TaskConstant;
 import salesforce.ui.pages.AbstractBasePage;
@@ -36,14 +35,18 @@ public abstract class AbstractTask extends AbstractBasePage {
     public abstract void clickEditButton();
 
     /**
-     * Select status.
+     * Sets status.
+     *
+     * @param statusToSelect value.
      */
-    public abstract void setStatus(final String statusToSelect);
+    public abstract void setStatus(String statusToSelect);
 
     /**
-     * Select priority.
+     * Sets priority.
+     *
+     * @param priorityToSelect value.
      */
-    public abstract void setPriority(final String priorityToSelect);
+    public abstract void setPriority(String priorityToSelect);
 
     /**
      * Click on Save task button.
@@ -52,12 +55,14 @@ public abstract class AbstractTask extends AbstractBasePage {
 
     /**
      * Returns priority.
+     *
      * @return string value.
      */
     protected abstract String getPriority();
 
     /**
      * Returns status.
+     *
      * @return string value.
      */
     protected abstract String getStatus();

@@ -17,7 +17,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
 import salesforce.ui.pages.owner.OwnerEditClassicPage;
-import salesforce.ui.pages.task.AbstractTask;
 import salesforce.utils.UtilSalesforce;
 
 
@@ -98,6 +97,7 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
 
     /**
      * Clicks on campaign selected.
+     *
      * @param campaignName string value.
      */
     private void clickOnCampaignSelected(final String campaignName) {

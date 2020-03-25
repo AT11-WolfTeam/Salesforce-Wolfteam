@@ -152,13 +152,17 @@ public class AppPageFactory {
      *
      * @return NotesAndAttachmentsPage instance.
      */
-    public static NotesAndAttachmentsPageAbstract getNotesAndAttachments () {
+    public static NotesAndAttachmentsPageAbstract getNotesAndAttachments() {
         if (userExperience.equals("Classic")) {
             return new NotesAndAttachmentsClassicPage();
         }
         return new NotesAndAttachmentsLightningPage();
     }
 
+    /**
+     * Returns TaskOpportunity.
+     * @return task Opportunity instance.
+     */
     public static AbstractTaskOpportunity getTaskOpportunity() {
         if (userExperience.equals("Classic")) {
             return new TaskOpportunityClassic();

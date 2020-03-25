@@ -17,17 +17,26 @@ import salesforce.ui.pages.task.AbstractTask;
 import java.util.HashMap;
 import java.util.Set;
 
+/**
+ * Defines AbstractTaskOpportunity.
+ *
+ * @author Alan Escalera.
+ * @version 1.0 24 March 2020.
+ */
 public abstract class AbstractTaskOpportunity extends AbstractBasePage {
     protected WebElement taskNameSelected;
     private static final String SUBJECT = "Subject";
 
     /**
      * Sets Subject task.
+     * @param subject value.
      */
     protected abstract void setSubjectTask(String subject);
 
     /**
      * Clicks on task to edit.
+     * @param task value.
+     * @return TaskPage instance.
      */
     public abstract AbstractTask clickTaskToEdit(String task);
 
@@ -58,5 +67,4 @@ public abstract class AbstractTaskOpportunity extends AbstractBasePage {
         strategyMap.put(SUBJECT, () -> setSubjectTask(opportunityUi.getSubjectTask()));
         return strategyMap;
     }
-
 }

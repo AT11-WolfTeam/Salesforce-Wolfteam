@@ -45,6 +45,7 @@ public class OpportunityUi {
 
     /**
      * Returns subjectTask value.
+     *
      * @return string value.
      */
     public String getSubjectTask() {
@@ -52,10 +53,11 @@ public class OpportunityUi {
     }
 
     /**
-     * Sets subjectTask value
+     * Sets subjectTask value.
+     *
      * @param subjectTask value.
      */
-    public void setSubjectTask(String subjectTask) {
+    public void setSubjectTask(final String subjectTask) {
         this.subjectTask = subjectTask;
     }
 
@@ -109,6 +111,4 @@ public class OpportunityUi {
         strategyMap.put(OpportunityConstant.SUBJECT_TASK, () -> getSubjectTask());
         return strategyMap;
     }
-
-
 }

@@ -34,7 +34,7 @@ public class TaskUi {
      *
      * @param status value.
      */
-    public void setStatus(String status) {
+    public void setStatus(final String status) {
         this.status = status;
     }
 
@@ -52,7 +52,7 @@ public class TaskUi {
      *
      * @param priority value.
      */
-    public void setPriority(String priority) {
+    public void setPriority(final String priority) {
         this.priority = priority;
     }
 
@@ -70,7 +70,7 @@ public class TaskUi {
      *
      * @param account value.
      */
-    public void setAccount(String account) {
+    public void setAccount(final String account) {
         this.account = account;
     }
 }

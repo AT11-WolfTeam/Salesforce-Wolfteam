@@ -15,7 +15,7 @@ package salesforce.entities.constants;
  * @author Alan Escalera.
  * @version 1.0 24 March 2020.
  */
-public class TaskConstant {
+public final class TaskConstant {
     public static final String PRIORITY = "Priority";
     public static final String STATUS = "Status";
     public static final String ACCOUNT = "Account";
@@ -23,7 +23,6 @@ public class TaskConstant {
     /**
      * OpportunityConstant constructor.
      */
-    private TaskConstant(){}
-
-
+    private TaskConstant() {
+    }
 }

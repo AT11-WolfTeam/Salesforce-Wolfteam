@@ -16,13 +16,17 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.task.AbstractTask;
 
+/**
+ * Defines TaskOpportunityLightning.
+ *
+ * @author Alan Escalera.
+ * @version 1.0 24 March 2020.
+ */
 public class TaskOpportunityLightning extends AbstractTaskOpportunity {
     @FindBy(xpath = "//div[@class='riseTransitionEnabled']//label[text()='Subject']//following-sibling::div//input")
     private WebElement subjectField;
 
     private static final String TASK_NAME = "//a[@class='subjectLink slds-truncate' and contains(text(),'%s')]";
-
-
 
     @FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//button[@class='slds-button"
             + " slds-button--brand cuf-publisherShareButton MEDIUM uiButton']")
@@ -50,5 +54,4 @@ public class TaskOpportunityLightning extends AbstractTaskOpportunity {
     public void clickSaveTask() {
         saveTaskButton.click();
     }
-
 }

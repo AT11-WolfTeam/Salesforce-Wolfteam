@@ -42,11 +42,12 @@ public class TaskLightningPage extends AbstractTask {
 
     private static final String FIELD_COMBO_BOX = "//a[@title='%s']";
 
+    private Actions actions;
 
-
-    Actions actions;
-
-    public TaskLightningPage () {
+    /**
+     * Constructor TaskLightningPage.
+     */
+    public TaskLightningPage() {
         actions = new Actions(webDriver);
     }
 
@@ -75,7 +76,7 @@ public class TaskLightningPage extends AbstractTask {
     }
 
     @Override
-    public void setPriority(String priorityToSelect) {
+    public void setPriority(final String priorityToSelect) {
         clickOnPriorityField();
         clickOnPriorityToSelect(priorityToSelect);
     }
@@ -97,6 +98,7 @@ public class TaskLightningPage extends AbstractTask {
 
     /**
      * Clicks on status to select.
+     *
      * @param statusSelect string value.
      */
     private void clickOnStatusToSelect(final String statusSelect) {
@@ -108,12 +110,13 @@ public class TaskLightningPage extends AbstractTask {
     /**
      * Click on priority field.
      */
-    private void clickOnPriorityField () {
+    private void clickOnPriorityField() {
         priorityField.click();
     }
 
     /**
      * Clicks on priority to select.
+     *
      * @param statusSelect string value.
      */
     private void clickOnPriorityToSelect(final String statusSelect) {

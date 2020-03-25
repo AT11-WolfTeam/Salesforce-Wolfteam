@@ -15,6 +15,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
 import salesforce.ui.pages.owner.OwnerEditClassicPage;
 import salesforce.utils.UtilSalesforce;
 
@@ -95,6 +96,7 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
 
     /**
      * Clicks on campaign selected.
+     *
      * @param campaignName string value.
      */
     private void clickOnCampaignSelected(final String campaignName) {
@@ -148,5 +150,10 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     @Override
     public void clickOnNotesAndAttachmentsButton() {
         clickOnAttachFileButton();
+    }
+
+    @Override
+    public AbstractTaskOpportunity clickAddTask() {
+        return null;
     }
 }

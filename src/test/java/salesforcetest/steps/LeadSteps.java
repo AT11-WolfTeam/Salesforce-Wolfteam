@@ -19,6 +19,12 @@ import salesforce.utils.SheetManager;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Manages LeadSteps.
+ *
+ * @author Enrique Carrizales.
+ * @version 1.0 25 March 2020.
+ */
 public class LeadSteps {
     private Context context;
     private PageTransporter pageTransporter;
@@ -33,6 +39,7 @@ public class LeadSteps {
      */
     public LeadSteps(final Context context) {
         this.context = context;
+        leadHelper = new LeadHelper();
         pageTransporter = new PageTransporter();
     }
 
@@ -42,8 +49,8 @@ public class LeadSteps {
      * @param leadType type of lead.
      */
     @Given("I create {int} {string} leads")
-    public void iCreateLeads(int leadQuantity, String leadType) {
-        String sheetName = "Accounts";
+    public void createLeads(final int leadQuantity, final String leadType) {
+        String sheetName = "Leads";
         leadMapList = SheetManager.manageSheet(sheetName, leadQuantity, leadType);
         ArrayList<Lead> leads = leadHelper.loadLeads(leadMapList);
         context.setLeads(leads);

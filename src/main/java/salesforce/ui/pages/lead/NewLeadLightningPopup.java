@@ -17,9 +17,12 @@ import org.openqa.selenium.support.ui.Select;
 import salesforce.entities.Lead;
 import salesforce.ui.pages.AbstractBasePage;
 
-import java.util.HashMap;
-import java.util.Set;
-
+/**
+ * Defines a NewLeadLightningPopup.
+ *
+ * @author Enrique Carrizales.
+ * @version 1.0 24 March 2020.
+ */
 public class NewLeadLightningPopup extends AbstractBasePage {
     @FindBy(css = "div[class*='slds-form-element slds-f'] span span")
     private WebElement leadOwnerLabel;
@@ -47,7 +50,7 @@ public class NewLeadLightningPopup extends AbstractBasePage {
     }
 
     /**
-     * Selects an Item of a ListBox
+     * Selects an Item of a ListBox.
      * @param listBoxLabel contains String value.
      * @param listBoxNameItem contains String value.
      */
@@ -57,22 +60,40 @@ public class NewLeadLightningPopup extends AbstractBasePage {
         select.selectByVisibleText(listBoxNameItem);
     }
 
+    /**
+     * Sets a tex box.
+     * @param firstName contains a String value.
+     */
     private void setFirstNameTextBox(final String firstName) {
         firstNameTextBox.sendKeys(firstName);
     }
 
+    /**
+     * Sets a tex box.
+     * @param lastName contains a String value.
+     */
     private void setLastNameTextBox(final String lastName) {
         lastNameTextBox.sendKeys(lastName);
     }
 
+    /**
+     * Sets a tex box.
+     * @param company contains a String value.
+     */
     private void setCompanyTextBox(final String company) {
         companyTextBox.sendKeys(company);
     }
 
+    /**
+     * Clicks on a button.
+     */
     public void clickOnSaveButton() {
         saveButton.click();
     }
 
+    /**
+     * Clicks on a button.
+     */
     public void clickOnSaveAndNew() {
         saveAndNewButton.click();
     }

@@ -128,7 +128,7 @@ public class Context {
      * Sets an object instance.
      * @param lead contains an instance.
      */
-    public void setLead(Lead lead) {
+    public void setLead(final Lead lead) {
         this.lead = lead;
     }
 
@@ -144,7 +144,7 @@ public class Context {
      * Sets a list of leads.
      * @param leads contains a list value.
      */
-    public void setLeads(List<Lead> leads) {
+    public void setLeads(final List<Lead> leads) {
         this.leads = leads;
     }
 

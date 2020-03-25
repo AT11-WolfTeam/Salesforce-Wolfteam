@@ -13,8 +13,6 @@ import salesforce.entities.Lead;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.PageTransporter;
 import salesforce.ui.pages.lead.NewLeadLightningPopup;
-import salesforce.ui.pages.newcampaign.NewCampaignLightningPopUp;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -44,7 +42,11 @@ public class LeadHelper {
         return leadList;
     }
 
-    public void createLeads(List<Lead> leads) {
+    /**
+     * Creates leads.
+     * @param leads contains a list value.
+     */
+    public void createLeads(final List<Lead> leads) {
         final int oneItem = 1;
         final String pageToGo = "Leads Page";
         PageTransporter pageTransporter = new PageTransporter();

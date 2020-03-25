@@ -17,7 +17,7 @@ package salesforce.entities.constants;
  */
 public class LeadConstant {
     public static final String FIRST_NAME = "fist name";
-    public static final String LAST_NAME = "last nam";
-    public static final String COMPANY = "company";
-    public static final String LEAD_STATUS = "lead  status";
+    public static final String LAST_NAME = "LastName";
+    public static final String COMPANY = "Company";
+    public static final String LEAD_STATUS = "LeadStatus";
 }

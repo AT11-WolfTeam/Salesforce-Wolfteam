@@ -10,12 +10,8 @@
 package salesforce.ui.pages.genericTabs;
 
 import org.openqa.selenium.WebElement;
-import salesforce.entities.Lead;
 import salesforce.ui.pages.AbstractBasePage;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
-
-import java.util.Map;
-import java.util.Set;
 
 /**
  * Defines AbstractOpportunitiesPage.

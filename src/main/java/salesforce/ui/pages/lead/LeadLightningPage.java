@@ -9,7 +9,13 @@
 
 package salesforce.ui.pages.lead;
 
-public class LeadLightningPage extends AbstractLeadPage{
+/**
+ * Defines a LeadLightningPage.
+ *
+ * @author Enrique Carrizales.
+ * @version 1.0 24 March 2020.
+ */
+public class LeadLightningPage extends AbstractLeadPage {
     @Override
     public void clickOnNewButton() {
 

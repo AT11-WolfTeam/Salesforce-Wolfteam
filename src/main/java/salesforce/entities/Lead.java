@@ -33,6 +33,11 @@ public class Lead {
     private String mobile;
     private String leadStatus;
 
+    /**
+     * Visits all getter methods of lead.
+     * @param leadAttributes contains a map value.
+     * @return map of visited get methods.
+     */
     private HashMap<String, Runnable> composeStrategyMap(final Map<String, String> leadAttributes) {
         HashMap<String, Runnable> strategyMap = new HashMap<>();
         strategyMap.put(LeadConstant.FIRST_NAME, () -> setName(leadAttributes.get(LeadConstant.FIRST_NAME)));
@@ -42,9 +47,13 @@ public class Lead {
         return strategyMap;
     }
 
+    /**
+     * Gets lead information.
+     * @param leadAttributes contains a list value.
+     */
     public void setLeadInformation(final Map<String, String> leadAttributes) {
         HashMap<String, Runnable> strategyMap = composeStrategyMap(leadAttributes);
-        leadAttributes.keySet().forEach(key ->strategyMap.get(key).run());
+        leadAttributes.keySet().forEach(key -> strategyMap.get(key).run());
     }
 
     /**

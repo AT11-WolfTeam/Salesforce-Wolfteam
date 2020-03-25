@@ -35,6 +35,9 @@ public class CampaignSteps {
         pageTransporter = new PageTransporter();
     }
 
+    /**
+     * Adds leads to a campaign.
+     */
     @When("I add the leads to the campaign")
     public void addLeads() {
         System.out.println("Hello");

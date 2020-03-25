@@ -20,6 +20,7 @@ import salesforce.entities.Context;
 import salesforce.entities.NewCampaign;
 import salesforce.entities.Opportunity;
 import salesforce.entities.OpportunityUi;
+import salesforce.entities.TaskUi;
 import salesforce.ui.components.span.ToastMessageSpan;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.PageTransporter;
@@ -27,6 +28,8 @@ import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
 import salesforce.ui.pages.newcampaign.AbstractNewCampaignPage;
 import salesforce.ui.pages.opportunities.AbstractOpportunitiesPage;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
+import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
+import salesforce.ui.pages.task.AbstractTask;
 import salesforce.utils.JsonFileReader;
 import salesforce.utils.ReplacerMessages;
 import salesforce.utils.SheetManager;
@@ -52,6 +55,9 @@ public class OpportunityStep {
     private AbstractOpportunitiesPage opportunitiesPage;
     private AbstractOpportunityPage opportunityPage;
     private OpportunityUi opportunityUi;
+    private AbstractTaskOpportunity abstractTaskOpportunity;
+    private AbstractTask abstractTask;
+    private TaskUi taskUi;
     private static String userExperience = GradleReader.getInstance().getUserExperience();
     private static final int ARRAY_POSITION_FIRST = 0;
     private static final String JSON_CONFIG_FILE = "config.json";
@@ -221,5 +227,28 @@ public class OpportunityStep {
         System.out.println(opportunityName);
         // close popup
         AppPageFactory.getOpportunitiesPage().selectOpportunityName(opportunityName);
+    }
+
+    @And("I add new Task with")
+    public void iAddNewTaskWith(final Map<String,String> mapNewTask) {
+        opportunitiesPage = AppPageFactory.getOpportunitiesPage();
+        opportunityPage = opportunitiesPage.selectOpportunityName(context.getOpportunities().get(0).getName());
+        abstractTaskOpportunity = opportunityPage.clickAddTask();
+        opportunityUi = new OpportunityUi();
+        opportunityUi.processInformation(mapNewTask);
+        abstractTaskOpportunity.setNewTask(opportunityUi,mapNewTask.keySet());
+        abstractTaskOpportunity.clickSaveTask();
+        abstractTask = abstractTaskOpportunity.clickTaskToEdit(context.getOpportunityUi().getSubjectTask());
+
+    }
+
+    @When("I add additional information to the task")
+    public void iAddAdditionalInformationToTheTask(final Map<String,String> mapAddInformationTask) {
+        taskUi = context.getTaskUi();
+
+    }
+
+    @And("the task should display the information added")
+    public void theTaskShouldDisplayTheInformationAdded() {
     }
 }

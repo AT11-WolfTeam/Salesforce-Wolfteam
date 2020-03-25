@@ -28,4 +28,9 @@ public class TaskOpportunityClassic extends AbstractTaskOpportunity {
         return null;
     }
 
+    @Override
+    public void clickSaveTask() {
+
+    }
+
 }

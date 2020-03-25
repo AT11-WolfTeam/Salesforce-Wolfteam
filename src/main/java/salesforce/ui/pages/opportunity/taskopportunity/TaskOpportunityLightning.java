@@ -22,7 +22,8 @@ public class TaskOpportunityLightning extends AbstractTaskOpportunity {
 
     private static final String TASK_NAME = "//a[@class='subjectLink slds-truncate' and contains(text(),'%s')]";
 
-    protected WebElement taskNameSelected;
+
+
     @FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//button[@class='slds-button"
             + " slds-button--brand cuf-publisherShareButton MEDIUM uiButton']")
     private WebElement saveTaskButton;
@@ -44,4 +45,10 @@ public class TaskOpportunityLightning extends AbstractTaskOpportunity {
         taskNameSelected.click();
         return AppPageFactory.getTaskPage();
     }
+
+    @Override
+    public void clickSaveTask() {
+        saveTaskButton.click();
+    }
+
 }

@@ -10,7 +10,13 @@
 package salesforce.ui.pages.task;
 
 import org.openqa.selenium.WebElement;
+import salesforce.entities.OpportunityUi;
+import salesforce.entities.TaskUi;
+import salesforce.entities.constants.TaskConstant;
 import salesforce.ui.pages.AbstractBasePage;
+
+import java.util.HashMap;
+import java.util.Set;
 
 /**
  * Defines an AbstractTask.
@@ -21,6 +27,8 @@ import salesforce.ui.pages.AbstractBasePage;
 public abstract class AbstractTask extends AbstractBasePage {
     protected WebElement statusSelected;
     protected WebElement prioritySelected;
+    private static final String PRIORITY = "Priority";
+    private static final String STATUS = "Status";
 
     /**
      * Clicks on edit button.
@@ -30,12 +38,12 @@ public abstract class AbstractTask extends AbstractBasePage {
     /**
      * Select status.
      */
-    public abstract void selectStatus(final String statusToSelect);
+    public abstract void setStatus(final String statusToSelect);
 
     /**
      * Select priority.
      */
-    public abstract void selectPriority(final String priorityToSelect);
+    public abstract void setPriority(final String priorityToSelect);
 
     /**
      * Click on Save task button.
@@ -53,4 +61,28 @@ public abstract class AbstractTask extends AbstractBasePage {
      * @return string value.
      */
     protected abstract String getStatus();
+
+    /**
+     * Sets the form of new task.
+     *
+     * @param taskUi entity.
+     * @param fields map.
+     */
+    public void addInformationToTask(final TaskUi taskUi, final Set<String> fields) {
+        HashMap<String, Runnable> strategtyMap = composeStrategyMap(taskUi);
+        fields.forEach(field -> strategtyMap.get(field).run());
+    }
+
+    /**
+     * Sets the information to Task.
+     *
+     * @param taskUi entity.
+     * @return HashMap value.
+     */
+    protected HashMap<String, Runnable> composeStrategyMap(final TaskUi taskUi) {
+        HashMap<String, Runnable> strategyMap = new HashMap<>();
+        strategyMap.put(TaskConstant.PRIORITY, () -> setPriority(taskUi.getPriority()));
+        strategyMap.put(TaskConstant.STATUS, () -> setStatus(taskUi.getStatus()));
+        return strategyMap;
+    }
 }

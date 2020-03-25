@@ -69,13 +69,13 @@ public class TaskLightningPage extends AbstractTask {
     }
 
     @Override
-    public void selectStatus(final String statusSelect) {
+    public void setStatus(final String statusSelect) {
         clickOnStatusField();
         clickOnStatusToSelect(statusSelect);
     }
 
     @Override
-    public void selectPriority(String priorityToSelect) {
+    public void setPriority(String priorityToSelect) {
         clickOnPriorityField();
         clickOnPriorityToSelect(priorityToSelect);
     }

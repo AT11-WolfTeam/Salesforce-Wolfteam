@@ -26,6 +26,7 @@ public class Context {
     private NewCampaign newCampaign;
     private OpportunityUi opportunityUi;
     private List<Contact> contacts;
+    private TaskUi taskUi;
 
     /**
      * Context constructor.
@@ -38,6 +39,7 @@ public class Context {
         this.newCampaign = new NewCampaign();
         this.opportunityUi = new OpportunityUi();
         this.contacts = new ArrayList<>();
+        this.taskUi = new TaskUi();
     }
 
     /**
@@ -109,5 +111,13 @@ public class Context {
      */
     public void setContacts(final List<Contact> contacts) {
         this.contacts = contacts;
+    }
+
+    /**
+     * Gets TaskUi.
+     * @return taskUi instance.
+     */
+    public TaskUi getTaskUi() {
+        return taskUi;
     }
 }

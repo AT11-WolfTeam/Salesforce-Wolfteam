@@ -32,12 +32,17 @@ public abstract class AbstractTaskOpportunity extends AbstractBasePage {
     public abstract AbstractTask clickTaskToEdit(String task);
 
     /**
+     * Clicks on save task.
+     */
+    public abstract void clickSaveTask();
+
+    /**
      * Sets the form of new task.
      *
      * @param opportunityUi entity.
      * @param fields map.
      */
-    public void editOpportunity(final OpportunityUi opportunityUi, final Set<String> fields) {
+    public void setNewTask(final OpportunityUi opportunityUi, final Set<String> fields) {
         HashMap<String, Runnable> strategtyMap = composeStrategyMap(opportunityUi);
         fields.forEach(field -> strategtyMap.get(field).run());
     }

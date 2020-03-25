@@ -22,7 +22,6 @@ import java.util.function.Supplier;
  * @version 1.0 21 March 2020.
  */
 public class OpportunityUi {
-    public String getSubjectTask;
     private String campaignName;
     private String subjectTask;
 
@@ -80,6 +79,8 @@ public class OpportunityUi {
         HashMap<String, Runnable> strategyMap = new HashMap<>();
         strategyMap.put(OpportunityConstant.CAMPAIGN_NAME, () -> setCampaignName(mapOpportunity.get(OpportunityConstant
                 .CAMPAIGN_NAME)));
+        strategyMap.put(OpportunityConstant.SUBJECT_TASK, () -> setSubjectTask(mapOpportunity.get(OpportunityConstant
+                .SUBJECT_TASK)));
         return strategyMap;
     }
 
@@ -105,6 +106,7 @@ public class OpportunityUi {
     private HashMap<String, Supplier> composeOpportunityDetailsToGet() {
         HashMap<String, Supplier> strategyMap = new HashMap<>();
         strategyMap.put(OpportunityConstant.CAMPAIGN_NAME, () -> getCampaignName());
+        strategyMap.put(OpportunityConstant.SUBJECT_TASK, () -> getSubjectTask());
         return strategyMap;
     }
 

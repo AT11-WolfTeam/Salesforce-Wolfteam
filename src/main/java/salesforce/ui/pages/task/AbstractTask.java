@@ -135,6 +135,8 @@ public abstract class AbstractTask extends AbstractBasePage {
         strategyMap.put(TaskConstant.PRIORITY, () -> setPriority(taskOpportunity.getPriority()));
         strategyMap.put(TaskConstant.STATUS, () -> setStatus(taskOpportunity.getStatus()));
         strategyMap.put(TaskConstant.SUBJECT, () -> setSubject(taskOpportunity.getSubject()));
+        strategyMap.put(TaskConstant.CONTACT, () -> setContact(taskOpportunity.getContact()));
+        strategyMap.put(TaskConstant.DUE_DATE, () -> setDueDate(taskOpportunity.getDueDate()));
         return strategyMap;
     }
 
@@ -164,6 +166,8 @@ public abstract class AbstractTask extends AbstractBasePage {
         strategyMap.put(TaskConstant.PRIORITY, () -> getPriority());
         strategyMap.put(TaskConstant.STATUS, () -> getStatus());
         strategyMap.put(TaskConstant.SUBJECT, () -> getSubject(taskOpportunity.getSubject()));
+        strategyMap.put(TaskConstant.CONTACT, () -> getContact());
+        strategyMap.put(TaskConstant.DUE_DATE, () -> getDueDate());
         return strategyMap;
     }
 }

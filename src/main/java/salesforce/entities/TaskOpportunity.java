@@ -27,7 +27,8 @@ public class TaskOpportunity {
     private String subject;
     private String status;
     private String priority;
-    private String account;
+    private String contact;
+    private String dueDate;
 
     private Set<String> modifiedTaskFields = new HashSet<>();
 
@@ -72,17 +73,17 @@ public class TaskOpportunity {
      *
      * @return string value.
      */
-    public String getAccount() {
-        return account;
+    public String getContact() {
+        return contact;
     }
 
     /**
      * Sets account value.
      *
-     * @param account value.
+     * @param contact value.
      */
-    public void setAccount(final String account) {
-        this.account = account;
+    public void setContact(final String contact) {
+        this.contact = contact;
     }
 
     /**
@@ -101,6 +102,24 @@ public class TaskOpportunity {
      */
     public void setSubject(final String subject) {
         this.subject = subject;
+    }
+
+    /**
+     * Returns dueDate value.
+     *
+     * @return string value.
+     */
+    public String getDueDate() {
+        return dueDate;
+    }
+
+    /**
+     * Sets dueDate value.
+     *
+     * @param dueDate value.
+     */
+    public void setDueDate(String dueDate) {
+        this.dueDate = dueDate;
     }
 
     /**
@@ -125,7 +144,8 @@ public class TaskOpportunity {
         strategyMap.put(TaskConstant.PRIORITY, () -> setPriority(mapTask.get(TaskConstant.PRIORITY)));
         strategyMap.put(TaskConstant.SUBJECT, () -> setSubject(mapTask.get(TaskConstant.SUBJECT)));
         strategyMap.put(TaskConstant.STATUS, () -> setStatus(mapTask.get(TaskConstant.STATUS)));
-        strategyMap.put(TaskConstant.ACCOUNT, () -> setAccount(mapTask.get(TaskConstant.ACCOUNT)));
+        strategyMap.put(TaskConstant.CONTACT, () -> setContact(mapTask.get(TaskConstant.CONTACT)));
+        strategyMap.put(TaskConstant.DUE_DATE, () -> setContact(mapTask.get(TaskConstant.DUE_DATE)));
         return strategyMap;
     }
 
@@ -153,7 +173,8 @@ public class TaskOpportunity {
         strategyMap.put(TaskConstant.PRIORITY, () -> getPriority());
         strategyMap.put(TaskConstant.STATUS, () -> getStatus());
         strategyMap.put(TaskConstant.SUBJECT, () -> getSubject());
-        strategyMap.put(TaskConstant.ACCOUNT, () -> getAccount());
+        strategyMap.put(TaskConstant.CONTACT, () -> getContact());
+        strategyMap.put(TaskConstant.DUE_DATE, () -> getDueDate());
         return strategyMap;
     }
 }

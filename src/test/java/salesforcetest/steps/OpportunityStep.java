@@ -20,6 +20,7 @@ import salesforce.entities.Context;
 import salesforce.entities.NewCampaign;
 import salesforce.entities.Opportunity;
 import salesforce.entities.TaskOpportunity;
+import salesforce.entities.constants.TaskConstant;
 import salesforce.ui.components.span.ToastMessageSpan;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.PageTransporter;
@@ -244,6 +245,11 @@ public class OpportunityStep {
         opportunityPage = opportunitiesPage.selectOpportunityName(context.getOpportunities().get(0).getName());
         abstractTaskOpportunity = opportunityPage.clickAddTask();
         taskOpportunity = context.getTaskOpportunity();
+        if(context.getContacts().get(0).getLastName() != null) {
+            String contact = context.getContacts().get(0).getFirstName()+ " " + context.getContacts().get(0)
+                    .getLastName();
+            mapNewTask.put(TaskConstant.CONTACT,contact);
+        }
         taskOpportunity.processInformation(mapNewTask);
         abstractTaskOpportunity.setNewTask(taskOpportunity, mapNewTask.keySet());
         abstractTaskOpportunity.clickSaveTask();

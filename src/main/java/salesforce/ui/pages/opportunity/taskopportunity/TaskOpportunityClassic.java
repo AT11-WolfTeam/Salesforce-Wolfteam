@@ -42,6 +42,16 @@ public class TaskOpportunityClassic extends AbstractTaskOpportunity {
     }
 
     @Override
+    protected void setContact(String contact) {
+
+    }
+
+    @Override
+    protected void setDueDate(String dueDate) {
+
+    }
+
+    @Override
     public AbstractTask clickTaskToEdit(final String task) {
         String taskToEditXpath = String.format(TASK_NAME, task);
         taskNameSelected = webDriver.findElement(By.xpath(taskToEditXpath));

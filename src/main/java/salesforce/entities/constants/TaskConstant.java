@@ -19,7 +19,8 @@ public final class TaskConstant {
     public static final String SUBJECT = "Subject";
     public static final String PRIORITY = "Priority";
     public static final String STATUS = "Status";
-    public static final String ACCOUNT = "Account";
+    public static final String CONTACT = "Contact";
+    public static final String DUE_DATE = "Due Date";
 
     /**
      * OpportunityConstant constructor.

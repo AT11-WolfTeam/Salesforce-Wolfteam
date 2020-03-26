@@ -35,6 +35,7 @@ public abstract class AbstractCampaignPage extends AbstractBasePage {
 
     /**
      * Add leads to a Campaign.
+     *
      * @param leadList contains a list of leads.
      */
     public abstract void addLeads(List<Lead> leadList);

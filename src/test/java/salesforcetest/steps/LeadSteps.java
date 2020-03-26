@@ -15,7 +15,6 @@ import salesforce.entities.Lead;
 import salesforce.ui.helpers.LeadHelper;
 import salesforce.ui.pages.PageTransporter;
 import salesforce.utils.SheetManager;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 

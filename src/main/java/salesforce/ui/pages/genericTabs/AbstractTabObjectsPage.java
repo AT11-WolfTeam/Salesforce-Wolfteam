@@ -44,6 +44,7 @@ public abstract class AbstractTabObjectsPage extends AbstractBasePage {
 
     /**
      * Deletes an object.
+     *
      * @param nameObject contains a String value.
      */
     public abstract void clickOnDeleteButton(String nameObject);

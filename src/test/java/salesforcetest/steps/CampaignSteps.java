@@ -41,6 +41,6 @@ public class CampaignSteps {
      */
     @When("I add the leads to the campaign")
     public void addLeads() {
-        AppPageFactory.getCampaignPage().addLeads(context.getLeads());
+        //Todo
     }
 }

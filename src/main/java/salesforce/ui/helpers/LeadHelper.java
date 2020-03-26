@@ -53,6 +53,7 @@ public class LeadHelper {
 
     /**
      * Creates leads.
+     *
      * @param leads contains a list value.
      */
     public void createLeads(final List<Lead> leads) {
@@ -61,9 +62,9 @@ public class LeadHelper {
 
         AppPageFactory.getTabObjectsPage().clickOnNewButton();
         NewLeadLightningPopup newLeadLightningPopup = new NewLeadLightningPopup();
-        for (int i = 0; i < leads.size(); i++) {
-            newLeadLightningPopup.loadNewLeadFields(leads.get(i));
-            if (leads.size() == oneItem || i == leads.size() - 1) {
+        for (int index = 0; index < leads.size(); index++) {
+            newLeadLightningPopup.loadNewLeadFields(leads.get(index));
+            if (leads.size() == oneItem || index == leads.size() - oneItem) {
                 newLeadLightningPopup.clickOnSaveButton();
             } else {
                 newLeadLightningPopup.clickOnSaveAndNew();
@@ -73,6 +74,7 @@ public class LeadHelper {
 
     /**
      * Manages deletion of leads.
+     *
      * @param leads contains a list of leads.
      */
     public void deleteLeads(final List<Lead> leads) {

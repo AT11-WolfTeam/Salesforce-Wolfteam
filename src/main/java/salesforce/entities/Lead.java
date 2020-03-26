@@ -35,6 +35,7 @@ public class Lead {
 
     /**
      * Visits all getter methods of lead.
+     *
      * @param leadAttributes contains a map value.
      * @return map of visited get methods.
      */
@@ -49,6 +50,7 @@ public class Lead {
 
     /**
      * Gets lead information.
+     *
      * @param leadAttributes contains a list value.
      */
     public void setLeadInformation(final Map<String, String> leadAttributes) {

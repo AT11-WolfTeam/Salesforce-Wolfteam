@@ -60,11 +60,11 @@ public class TabObjectsClassicPage extends AbstractTabObjectsPage {
 
     @Override
     public void clickOnNewButton() {
-
+        //Todo
     }
 
     @Override
     public void clickOnDeleteButton(final String nameObject) {
-
+        //Todo
     }
 }

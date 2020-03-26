@@ -55,7 +55,8 @@ public class NewLeadLightningPopup extends AbstractBasePage {
 
     /**
      * Selects an Item of a ListBox.
-     * @param listBoxLabel contains String value.
+     *
+     * @param listBoxLabel    contains String value.
      * @param listBoxNameItem contains String value.
      */
     private void selectItemInSelect(final String listBoxLabel, final String listBoxNameItem) {
@@ -70,6 +71,7 @@ public class NewLeadLightningPopup extends AbstractBasePage {
 
     /**
      * Sets a tex box.
+     *
      * @param firstName contains a String value.
      */
     private void setFirstNameTextBox(final String firstName) {
@@ -78,6 +80,7 @@ public class NewLeadLightningPopup extends AbstractBasePage {
 
     /**
      * Sets a tex box.
+     *
      * @param lastName contains a String value.
      */
     private void setLastNameTextBox(final String lastName) {
@@ -86,6 +89,7 @@ public class NewLeadLightningPopup extends AbstractBasePage {
 
     /**
      * Sets a tex box.
+     *
      * @param company contains a String value.
      */
     private void setCompanyTextBox(final String company) {
@@ -110,6 +114,7 @@ public class NewLeadLightningPopup extends AbstractBasePage {
 
     /**
      * Loads fields of this page.
+     *
      * @param lead contains an instance.
      */
     public void loadNewLeadFields(final Lead lead) {

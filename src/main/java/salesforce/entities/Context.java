@@ -101,6 +101,7 @@ public class Context {
 
     /**
      * Gets contacts.
+     *
      * @return a list of contacts.
      */
     public List<Contact> getContacts() {
@@ -109,6 +110,7 @@ public class Context {
 
     /**
      * Sets a list of contacts.
+     *
      * @param contacts list value.
      */
     public void setContacts(final List<Contact> contacts) {
@@ -116,8 +118,8 @@ public class Context {
     }
 
     /**
-<<<<<<< HEAD
      * Gets an object instance.
+     *
      * @return an instance.
      */
     public Lead getLead() {
@@ -126,6 +128,7 @@ public class Context {
 
     /**
      * Sets an object instance.
+     *
      * @param lead contains an instance.
      */
     public void setLead(final Lead lead) {
@@ -134,6 +137,7 @@ public class Context {
 
     /**
      * Gets a list of leads.
+     *
      * @return a list value.
      */
     public List<Lead> getLeads() {
@@ -142,6 +146,7 @@ public class Context {
 
     /**
      * Sets a list of leads.
+     *
      * @param leads contains a list value.
      */
     public void setLeads(final List<Lead> leads) {
@@ -150,6 +155,7 @@ public class Context {
 
     /**
      * Gets TaskOpportunity.
+     *
      * @return taskOpportunity instance.
      */
     public TaskOpportunity getTaskOpportunity() {

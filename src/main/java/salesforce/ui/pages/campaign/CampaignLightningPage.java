@@ -17,7 +17,6 @@ import salesforce.entities.Lead;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
 import salesforce.ui.pages.lead.AddLeadsCampaignLightningPopup;
-
 import java.util.List;
 
 /**
@@ -66,7 +65,7 @@ public class CampaignLightningPage extends AbstractCampaignPage {
     public void addLeads(final List<Lead> leadList) {
         addLeadsButton.click();
         AddLeadsCampaignLightningPopup addLeadsCampaignLightningPopup = new AddLeadsCampaignLightningPopup();
-//        addLeadsCampaignPopup
+        addLeadsCampaignLightningPopup.addLead(leadList);
     }
 
     /**

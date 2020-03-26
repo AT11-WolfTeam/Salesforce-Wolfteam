@@ -48,6 +48,7 @@ public class CampaignContactPopupLightningPage extends AbstractCampaignContactPa
 
     /**
      * Gets web element.
+     *
      * @param contactName value.
      * @return web element.
      */
@@ -57,6 +58,7 @@ public class CampaignContactPopupLightningPage extends AbstractCampaignContactPa
 
     /**
      * Checks contact.
+     *
      * @param contactName value.
      */
     private void checkContact(final String contactName) {
@@ -76,6 +78,7 @@ public class CampaignContactPopupLightningPage extends AbstractCampaignContactPa
 
     /**
      * Allows to iterate the contacts names to check them.
+     *
      * @param contactsNames list.
      */
     private void iterateContacts(final HashMap<String, String> contactsNames) {

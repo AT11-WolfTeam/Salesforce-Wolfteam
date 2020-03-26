@@ -188,6 +188,7 @@ public class AppPageFactory {
 
     /**
      * Allows to indentify campaign members user experience page.
+     *
      * @return campaign members instance.
      */
     public static AbstractCampaignContactPage getCampaignContacts() {

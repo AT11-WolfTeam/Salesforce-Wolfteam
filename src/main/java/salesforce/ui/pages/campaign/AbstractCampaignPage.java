@@ -35,12 +35,14 @@ public abstract class AbstractCampaignPage extends AbstractBasePage {
 
     /**
      * Adds campaign members.
+     *
      * @return campaign contact instance.
      */
     public abstract AbstractCampaignContactPage addCampaignMembers();
 
     /**
      * Allows to view campaign members.
+     *
      * @return campaign member instance.
      */
     public abstract AbstractCampaignMembersPage viewMembers();

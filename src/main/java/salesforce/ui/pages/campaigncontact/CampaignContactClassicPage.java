@@ -68,6 +68,7 @@ public class CampaignContactClassicPage extends AbstractCampaignContactPage {
 
     /**
      * Gets combobox selector.
+     *
      * @param xpathLocator value.
      * @return selector composed.
      */
@@ -77,8 +78,9 @@ public class CampaignContactClassicPage extends AbstractCampaignContactPage {
 
     /**
      * Selects item in combobox.
+     *
      * @param xpathCombobox value.
-     * @param viewName value.
+     * @param viewName      value.
      */
     private void selectComboBox(final String xpathCombobox, final String viewName) {
         getSelect(xpathCombobox).selectByVisibleText(viewName);
@@ -86,6 +88,7 @@ public class CampaignContactClassicPage extends AbstractCampaignContactPage {
 
     /**
      * Gets web element.
+     *
      * @param contactName value.
      * @return web element.
      */
@@ -95,6 +98,7 @@ public class CampaignContactClassicPage extends AbstractCampaignContactPage {
 
     /**
      * Checks contact.
+     *
      * @param contactName value.
      */
     private void checkContact(final String contactName) {
@@ -106,6 +110,7 @@ public class CampaignContactClassicPage extends AbstractCampaignContactPage {
 
     /**
      * Allows to iterate the contacts names to check them.
+     *
      * @param contactsNames list.
      */
     private void iterateContacts(final ArrayList<String> contactsNames) {
@@ -116,6 +121,7 @@ public class CampaignContactClassicPage extends AbstractCampaignContactPage {
 
     /**
      * Generates a list of contacts.
+     *
      * @param namesContacts list.
      * @return contacts names list.
      */

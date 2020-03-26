@@ -10,6 +10,7 @@
 package salesforce.ui.pages.campaigncontact;
 
 import salesforce.ui.pages.AbstractBasePage;
+
 import java.util.HashMap;
 
 /**
@@ -22,6 +23,7 @@ public abstract class AbstractCampaignContactPage extends AbstractBasePage {
 
     /**
      * Checks contacts checkbox.
+     *
      * @param namesOfContacts list.
      */
     public abstract void checkContacts(HashMap<String, String> namesOfContacts);

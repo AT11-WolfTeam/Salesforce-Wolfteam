@@ -16,7 +16,7 @@ import org.openqa.selenium.WebDriver;
  * Checks if web element is displayed.
  *
  * @author Juan Martinez.
- * * @version 1.0 25 March 2020.
+ * @version 1.0 25 March 2020.
  */
 public final class WebElementChecker {
 

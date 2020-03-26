@@ -16,7 +16,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
 /**
- * Defines an TaskClassicPage.
+ * Defines a TaskClassicPage.
  *
  * @author Alan Escalera.
  * @version 1.0 23 March 2020.

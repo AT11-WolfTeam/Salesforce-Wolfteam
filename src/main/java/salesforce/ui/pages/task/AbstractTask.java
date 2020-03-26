@@ -85,6 +85,34 @@ public abstract class AbstractTask extends AbstractBasePage {
     protected abstract String getSubject(String subject);
 
     /**
+     * Sets Contact.
+     *
+     * @param contact value.
+     */
+    protected abstract void setContact(String contact);
+
+    /**
+     * Returns contact.
+     *
+     * @return string value.
+     */
+    protected abstract String getContact();
+
+    /**
+     * Sets due date.
+     * @param dueDate value.
+     */
+    protected abstract void setDueDate(String dueDate);
+
+    /**
+     * Returns due date.
+     *
+     * @return string value
+     */
+    protected abstract String getDueDate();
+
+
+    /**
      * Sets the form of new task.
      *
      * @param taskOpportunity entity.

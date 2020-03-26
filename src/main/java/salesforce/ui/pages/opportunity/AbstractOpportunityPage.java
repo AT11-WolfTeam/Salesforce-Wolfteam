@@ -13,7 +13,6 @@ import org.openqa.selenium.WebElement;
 import salesforce.entities.Opportunity;
 import salesforce.ui.pages.AbstractBasePage;
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
-
 import java.util.HashMap;
 import java.util.Set;
 import java.util.function.Supplier;

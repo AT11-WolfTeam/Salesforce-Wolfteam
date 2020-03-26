@@ -11,8 +11,10 @@ package salesforce.ui.pages.campaign;
 
 import salesforce.entities.Lead;
 import salesforce.ui.pages.AbstractBasePage;
+import salesforce.ui.pages.campaigncontact.AbstractCampaignContactPage;
 import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
 import java.util.List;
+import salesforce.ui.pages.campaignmembers.AbstractCampaignMembersPage;
 
 /**
  * Defines CampaignAbstractPage.
@@ -40,4 +42,17 @@ public abstract class AbstractCampaignPage extends AbstractBasePage {
      */
     public abstract void addLeads(List<Lead> leadList);
 
+    /**
+     * Adds campaign members.
+     *
+     * @return campaign contact instance.
+     */
+    public abstract AbstractCampaignContactPage addCampaignMembers();
+
+    /**
+     * Allows to view campaign members.
+     *
+     * @return campaign member instance.
+     */
+    public abstract AbstractCampaignMembersPage viewMembers();
 }

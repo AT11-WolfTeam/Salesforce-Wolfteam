@@ -41,5 +41,4 @@ public abstract class AbstractCampaignListPage extends AbstractBasePage {
      * @return CampaignPageAbstract instance.
      */
     public abstract AbstractCampaignPage selectCampaignName(String campaignName);
-
 }

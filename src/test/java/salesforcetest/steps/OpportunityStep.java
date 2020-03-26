@@ -32,7 +32,6 @@ import salesforce.ui.pages.task.AbstractTask;
 import salesforce.utils.JsonFileReader;
 import salesforce.utils.ReplacerMessages;
 import salesforce.utils.SheetManager;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

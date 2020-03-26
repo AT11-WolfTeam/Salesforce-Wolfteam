@@ -15,9 +15,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.entities.Lead;
 import salesforce.ui.pages.AppPageFactory;
+import salesforce.ui.pages.campaigncontact.AbstractCampaignContactPage;
+import salesforce.ui.pages.campaigncontact.CampaignContactPopupLightningPage;
 import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
 import salesforce.ui.pages.lead.AddLeadsCampaignLightningPopup;
 import java.util.List;
+import salesforce.ui.pages.campaignmembers.AbstractCampaignMembersPage;
+import salesforce.ui.pages.campaignmembers.CampaignMembersLightningPage;
 
 /**
  * Defines CampaignLightningPage.
@@ -40,6 +44,12 @@ public class CampaignLightningPage extends AbstractCampaignPage {
 
     @FindBy(xpath = "//a[div[contains(.,'Add Leads')]]")
     private WebElement addLeadsButton;
+
+    @FindBy(xpath = "//div[@title='Add Contacts']")
+    private WebElement addContactsButton;
+
+    @FindBy(css = "span[class='view-all-label']")
+    private WebElement viewAllLink;
 
     /**
      * Constructor CampaignLightningPage.
@@ -66,6 +76,36 @@ public class CampaignLightningPage extends AbstractCampaignPage {
         addLeadsButton.click();
         AddLeadsCampaignLightningPopup addLeadsCampaignLightningPopup = new AddLeadsCampaignLightningPopup();
         addLeadsCampaignLightningPopup.addLead(leadList);
+    }
+
+    @Override
+    public AbstractCampaignContactPage addCampaignMembers() {
+        clickOnAddContacts();
+        return new CampaignContactPopupLightningPage();
+    }
+
+    /**
+     * Clicks on view all dropdownlist.
+     */
+    private void clickOnViewAll() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(viewAllLink));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(addContactsButton));
+        viewAllLink.click();
+    }
+
+    @Override
+    public AbstractCampaignMembersPage viewMembers() {
+        clickOnViewAll();
+        return new CampaignMembersLightningPage();
+    }
+
+    /**
+     * Clicks on add contacts.
+     */
+    private void clickOnAddContacts() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(addContactsButton));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(addContactsButton));
+        addContactsButton.click();
     }
 
     /**

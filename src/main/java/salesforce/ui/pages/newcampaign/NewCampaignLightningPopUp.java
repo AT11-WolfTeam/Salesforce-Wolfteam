@@ -11,7 +11,6 @@ package salesforce.ui.pages.newcampaign;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
  * Defines NewCampaignPopUpLightning.
@@ -31,8 +30,6 @@ public class NewCampaignLightningPopUp extends AbstractNewCampaignPage {
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-        webDriverWait.until(ExpectedConditions.visibilityOf(campaignNameField));
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(campaignNameField));
     }
 
     @Override

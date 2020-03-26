@@ -32,8 +32,10 @@ public class TabObjectsLightningPage extends AbstractTabObjectsPage {
     @FindBy(css = "div[class='triggerLinkTextAndIconWrapper slds-p-right--x-large']")
     private WebElement opportunityListButton;
 
-    private static final String OBJECT_TAB_BASE_LOCATOR = "//a[@title='%s']//../../..//a[contains(@class,'rowActions')]";
-    private static final String DELETE_OPTION_LOCATOR = "//div[contains(@class,'branding-actions')]//a[contains(@title,'Delete')]";
+    private static final String OBJECT_TAB_BASE_LOCATOR = "//a[@title='%s']//../../..//a[contains(@class,'"
+            + "rowActions')]";
+    private static final String DELETE_OPTION_LOCATOR = "//div[contains(@class,'branding-actions')]//a[contains(@title,"
+            + "'Delete')]";
     protected static final String NAME_OBJECT = "a[title='%s']";
     private static final String OBJECT_ORDERED_LIST_PARTIAL_LOCATOR = "//li[contains(.,'%s')]";
     private WebElement nameOpportunityTable;

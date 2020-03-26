@@ -44,8 +44,9 @@ public class LeadSteps {
 
     /**
      * Creates leads objects.
+     *
      * @param leadQuantity numbers of leads.
-     * @param leadType type of lead.
+     * @param leadType     type of lead.
      */
     @Given("I create {int} {string} leads")
     public void createLeads(final int leadQuantity, final String leadType) {

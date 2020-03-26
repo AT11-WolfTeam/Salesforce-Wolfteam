@@ -43,10 +43,10 @@ Feature: Opportunity
       And I create 1 "Basic" opportunities
       And I go to "Opportunities Page"
     When I add new Task with
-      | Subject  | Meeting            |
-      | Contact  | [Contact]          |
-      | Due Date | TODAY-AFTER 3 DAYS |
-    Then I validate the information on user lightning experience
+      | Subject  | Meeting                                |
+      | Contact  | [Contact]                              |
+      | Due Date | 3 DAYS-0 MONTH-0 YEAR-AFTER-FROM TODAY |
+    Then the application should this message only for Lightning Experience
       |Task [Task Name] was created. |
       And the task should display the information added
 

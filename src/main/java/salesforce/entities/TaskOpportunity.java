@@ -10,6 +10,7 @@
 package salesforce.entities;
 
 import salesforce.entities.constants.TaskConstant;
+import salesforce.utils.DateFormatter;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -119,7 +120,7 @@ public class TaskOpportunity {
      * @param dueDate value.
      */
     public void setDueDate(String dueDate) {
-        this.dueDate = dueDate;
+        this.dueDate = DateFormatter.formatDate(dueDate);
     }
 
     /**
@@ -145,7 +146,7 @@ public class TaskOpportunity {
         strategyMap.put(TaskConstant.SUBJECT, () -> setSubject(mapTask.get(TaskConstant.SUBJECT)));
         strategyMap.put(TaskConstant.STATUS, () -> setStatus(mapTask.get(TaskConstant.STATUS)));
         strategyMap.put(TaskConstant.CONTACT, () -> setContact(mapTask.get(TaskConstant.CONTACT)));
-        strategyMap.put(TaskConstant.DUE_DATE, () -> setContact(mapTask.get(TaskConstant.DUE_DATE)));
+        strategyMap.put(TaskConstant.DUE_DATE, () -> setDueDate(mapTask.get(TaskConstant.DUE_DATE)));
         return strategyMap;
     }
 

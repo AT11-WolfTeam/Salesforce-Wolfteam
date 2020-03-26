@@ -241,6 +241,7 @@ public class OpportunityStep {
      */
     @And("I add new Task with")
     public void iAddNewTaskWith(final Map<String, String> mapNewTask) {
+
         opportunitiesPage = AppPageFactory.getOpportunitiesPage();
         opportunityPage = opportunitiesPage.selectOpportunityName(context.getOpportunities().get(0).getName());
         abstractTaskOpportunity = opportunityPage.clickAddTask();
@@ -253,7 +254,6 @@ public class OpportunityStep {
         taskOpportunity.processInformation(mapNewTask);
         abstractTaskOpportunity.setNewTask(taskOpportunity, mapNewTask.keySet());
         abstractTaskOpportunity.clickSaveTask();
-        abstractTask = abstractTaskOpportunity.clickTaskToEdit(context.getTaskOpportunity().getSubject());
     }
 
     /**
@@ -263,6 +263,7 @@ public class OpportunityStep {
      */
     @When("I add additional information to the task")
     public void iAddAdditionalInformationToTheTask(final Map<String, String> mapAddInformationTask) {
+        abstractTask = abstractTaskOpportunity.clickTaskToEdit(context.getTaskOpportunity().getSubject());
         abstractTask.clickEditButton();
         taskOpportunity.processInformation(mapAddInformationTask);
         abstractTask.addInformationToTask(taskOpportunity, mapAddInformationTask.keySet());
@@ -278,8 +279,18 @@ public class OpportunityStep {
         Assert.assertEquals(mapTaskValidate, context.getTaskOpportunity().getTaskEdited());
     }
 
-    @Then("I validate the information on user lightning experience")
-    public void iValidateTheInformationOnUserLightningExperience() {
+    /**
+     * Validates a message only for Lightning User Experience.
+     */
+    @Then("the application should this message only for Lightning Experience")
+    public void theApplicationShouldThisMessageOnlyForLightningExperience(final List<String> message) {
+        if (userExperience.equals(USER_EXPERIENCE_LIGHTNING)) {
+            ToastMessageSpan toastMessageSpan = new ToastMessageSpan();
+            String actualResult = toastMessageSpan.getToastMessage();
+            String expectedResult = ReplacerMessages.replaceChangeOwnerMessage(message.get(ARRAY_POSITION_FIRST),
+                    context.getTaskOpportunity().getSubject());
+            Assert.assertEquals(actualResult, expectedResult);
+        }
 
     }
 }

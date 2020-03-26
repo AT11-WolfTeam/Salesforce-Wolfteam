@@ -19,6 +19,7 @@ public class ReplacerMessages {
     private static final String CURRENT_USER_REGEX = "[Current User]";
     private static final String OPPORTUNITY_NAME_REGEX = "[Opportunity Name]";
     private static final String CURRENT_USER = "Current User";
+    private static final String TASK_NAME = "[Task Name]";
 
     /**
      * Replaces words in a message.
@@ -31,5 +32,16 @@ public class ReplacerMessages {
         JsonFileReader jsonFileReader = new JsonFileReader("config.json");
         result = message.replace(CURRENT_USER_REGEX, jsonFileReader.getUser(CURRENT_USER).getUsername());
         return result.replace(OPPORTUNITY_NAME_REGEX, opportunityName);
+    }
+
+
+    /**
+     * Replaces words in a message.
+     * @param message contains a message String.
+     * @param taskName contains an opportunity name.
+     * @return a new message.
+     */
+    public static String replaceTaskSavedMessage(final String message, final String taskName) {
+        return message.replace(TASK_NAME, taskName);
     }
 }

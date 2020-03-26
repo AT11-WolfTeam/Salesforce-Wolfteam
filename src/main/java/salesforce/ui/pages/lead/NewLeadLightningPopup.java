@@ -56,7 +56,7 @@ public class NewLeadLightningPopup extends AbstractBasePage {
     /**
      * Selects an Item of a ListBox.
      *
-     * @param listBoxLabel    contains String value.
+     * @param listBoxLabel contains String value.
      * @param listBoxNameItem contains String value.
      */
     private void selectItemInSelect(final String listBoxLabel, final String listBoxNameItem) {

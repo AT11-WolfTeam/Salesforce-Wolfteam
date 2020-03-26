@@ -32,6 +32,8 @@ public class TabObjectsLightningPage extends AbstractTabObjectsPage {
     @FindBy(css = "div[class='triggerLinkTextAndIconWrapper slds-p-right--x-large']")
     private WebElement opportunityListButton;
 
+    private static final String OBJECT_TAB_BASE_LOCATOR = "//a[@title='%s']//../../..//a[contains(@class,'rowActions')]";
+    private static final String DELETE_OPTION_LOCATOR = "//div[contains(@class,'branding-actions')]//a[contains(@title,'Delete')]";
     protected static final String NAME_OBJECT = "a[title='%s']";
     private static final String OBJECT_ORDERED_LIST_PARTIAL_LOCATOR = "//li[contains(.,'%s')]";
     private WebElement nameOpportunityTable;
@@ -67,18 +69,15 @@ public class TabObjectsLightningPage extends AbstractTabObjectsPage {
 
     @Override
     public void clickOnDeleteButton(final String nameObject) {
-        final String objectTabBaseLocator = "//a[@title='%s']//../../..//a[contains(@class,'rowActions')]";
-        final String deleteOptionLocator = "//div[contains(@class,'branding-actions')]//a[contains("
-                + "@title,'Delete')]";
-        String objectTabLocator = String.format(objectTabBaseLocator, nameObject);
+        String objectTabLocator = String.format(OBJECT_TAB_BASE_LOCATOR, nameObject);
         try {
             webDriver.findElement(By.xpath(objectTabLocator)).click();
-            webDriver.findElement(By.xpath(deleteOptionLocator)).click();
+            webDriver.findElement(By.xpath(DELETE_OPTION_LOCATOR)).click();
             DeleteObjectLightningPopup deleteObjectLightningPopup = new DeleteObjectLightningPopup();
             deleteObjectLightningPopup.clickOnDeleteButton();
         } catch (StaleElementReferenceException elementHasDisappeared) {
             webDriver.findElement(By.xpath(objectTabLocator)).click();
-            webDriver.findElement(By.xpath(deleteOptionLocator)).click();
+            webDriver.findElement(By.xpath(DELETE_OPTION_LOCATOR)).click();
             DeleteObjectLightningPopup deleteObjectLightningPopup = new DeleteObjectLightningPopup();
             deleteObjectLightningPopup.clickOnDeleteButton();
         }

@@ -58,11 +58,12 @@ public class LeadHelper {
      */
     public void createLeads(final List<Lead> leads) {
         final int oneItem = 1;
+        final int zero = 0;
         pageTransporter.navigateToPage(LEADS_PAGE);
 
         AppPageFactory.getTabObjectsPage().clickOnNewButton();
         NewLeadLightningPopup newLeadLightningPopup = new NewLeadLightningPopup();
-        for (int index = 0; index < leads.size(); index++) {
+        for (int index = zero; index < leads.size(); index++) {
             newLeadLightningPopup.loadNewLeadFields(leads.get(index));
             if (leads.size() == oneItem || index == leads.size() - oneItem) {
                 newLeadLightningPopup.clickOnSaveButton();

@@ -15,7 +15,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.entities.Lead;
 import salesforce.ui.pages.AbstractBasePage;
-
 import java.util.List;
 
 /**
@@ -38,8 +37,12 @@ public class AddLeadsCampaignLightningPopup extends AbstractBasePage {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(nextButton));
     }
 
-    public void addLead(List<Lead> leads) {
-        for (Lead lead : leads){
+    /**
+     * Adds leads to a campaign.
+     * @param leads contains a list value.
+     */
+    public void addLead(final List<Lead> leads) {
+        for (Lead lead : leads) {
             String rowCheckLocator = String.format(TABLE_ITEM_PARTIAL_CHECK_BOX_LOCATOR, lead.getName(), lead
                     .getCompany(), lead.getLeadStatus());
             webDriver.findElement(By.xpath(rowCheckLocator)).click();

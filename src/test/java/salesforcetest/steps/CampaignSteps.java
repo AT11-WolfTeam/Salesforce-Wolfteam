@@ -12,7 +12,6 @@ package salesforcetest.steps;
 import io.cucumber.java.en.When;
 import salesforce.entities.Context;
 import salesforce.ui.helpers.LeadHelper;
-import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.PageTransporter;
 
 /**

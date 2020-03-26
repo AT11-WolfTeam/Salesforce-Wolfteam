@@ -65,7 +65,6 @@ public class LeadHelper {
             newLeadLightningPopup.loadNewLeadFields(leads.get(i));
             if (leads.size() == oneItem || i == leads.size() - 1) {
                 newLeadLightningPopup.clickOnSaveButton();
-                System.out.println("NO DEBO ENTRAR AQUI 2 VECES");
             } else {
                 newLeadLightningPopup.clickOnSaveAndNew();
             }

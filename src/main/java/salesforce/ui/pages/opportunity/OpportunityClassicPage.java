@@ -161,14 +161,20 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
 
     @Override
     public AbstractTaskOpportunity clickAddTask() {
+        waiters();
+        addTaskButton.click();
+        addTaskButton.click();
+        return AppPageFactory.getTaskOpportunity();
+    }
+
+    /**
+     * Waits until the elements are found.
+     */
+    private void waiters() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(addTaskButton));
         webDriverWait.until(ExpectedConditions.visibilityOf(addTaskButton));
         webDriverWait.until(ExpectedConditions.elementToBeClickable(editButton));
         webDriverWait.until(ExpectedConditions.elementToBeClickable(addFile));
         webDriverWait.until(ExpectedConditions.visibilityOf(addFile));
-        addTaskButton.click();
-        addTaskButton.click();
-        addTaskButton.click();
-        return AppPageFactory.getTaskOpportunity();
     }
 }

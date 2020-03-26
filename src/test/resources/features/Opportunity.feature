@@ -64,4 +64,3 @@ Feature: Opportunity
     Given I create 2 "Basic" opportunities
     When I delete created opportunities
 
-    

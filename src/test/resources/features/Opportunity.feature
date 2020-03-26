@@ -36,7 +36,8 @@ Feature: Opportunity
       | Campaign Name | Promotion |
     Then On the details section should display the Campaign name
 
-  @DeletesOpportunity
+
+  @DeletesOpportunity @DeletesContact
   Scenario: add contact with due Date to a new Task
     Given I create 1 "Basic" contacts
       And I create 1 "Basic" opportunities
@@ -46,6 +47,7 @@ Feature: Opportunity
       | Contact  | [Contact]          |
       | Due Date | TODAY-AFTER 3 DAYS |
     Then I validate the information on user lightning experience
+      |Task [Task Name] was created. |
       And the task should display the information added
 
 

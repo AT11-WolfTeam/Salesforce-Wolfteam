@@ -277,4 +277,9 @@ public class OpportunityStep {
         HashMap<String, String> mapTaskValidate = abstractTask.getTaskDetails(taskOpportunity);
         Assert.assertEquals(mapTaskValidate, context.getTaskOpportunity().getTaskEdited());
     }
+
+    @Then("I validate the information on user lightning experience")
+    public void iValidateTheInformationOnUserLightningExperience() {
+
+    }
 }

@@ -14,6 +14,7 @@ import org.testng.Assert;
 import salesforce.api.requestapi.OpportunityApiHelper;
 import salesforce.entities.Context;
 import salesforce.entities.Opportunity;
+import salesforce.ui.helpers.LeadHelper;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.PageTransporter;
 import salesforce.ui.pages.campaign.AbstractCampaignPage;
@@ -31,6 +32,7 @@ public class Hook {
     private PageTransporter pageTransporter;
     private AbstractCampaignPage abstractCampaignPage;
     private OpportunityApiHelper opportunityApiHelper;
+    private LeadHelper leadHelper;
 
     /**
      * Constructor Hook.
@@ -41,6 +43,7 @@ public class Hook {
         this.context = context;
         pageTransporter = new PageTransporter();
         opportunityApiHelper = new OpportunityApiHelper();
+        leadHelper = new LeadHelper();
     }
 
     /**
@@ -59,10 +62,18 @@ public class Hook {
      */
     @After("@DeletesOpportunity")
     public void deletesOpportunity() {
-        opportunityApiHelper.deleteOpportunities(context.getOpportunities());
+        leadHelper.deleteLeads(context.getLeads());
         final String expected = "204";
         for (Opportunity opportunity : context.getOpportunities()) {
             Assert.assertEquals(opportunity.getStatusCode(), expected);
         }
+    }
+
+    /**
+     * Deletes leads.
+     */
+    @After("@DeletesLeads")
+    public void deletesLeads() {
+        opportunityApiHelper.deleteOpportunities(context.getOpportunities());
     }
 }

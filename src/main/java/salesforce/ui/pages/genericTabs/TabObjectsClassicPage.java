@@ -46,7 +46,7 @@ public class TabObjectsClassicPage extends AbstractTabObjectsPage {
     }
 
     @Override
-    public void displayOpportunityList(final String listName) {
+    public void displayObjectList(final String listName) {
         Select select = new Select(opportunityListSelect);
         select.selectByVisibleText(listName);
         goButton.click();
@@ -61,7 +61,7 @@ public class TabObjectsClassicPage extends AbstractTabObjectsPage {
     }
 
     @Override
-    public AbstractOpportunityPage selectOpportunityName(final String opportunityName) {
+    public AbstractOpportunityPage selectObjectByName(final String opportunityName) {
         closePopUp();
         String opportunityNameXpath = String.format(NAME_OPPORTUNITY, opportunityName);
         nameOpportunitySelected = WebDriverManager.getInstance().getWebDriver().findElement(By
@@ -72,6 +72,11 @@ public class TabObjectsClassicPage extends AbstractTabObjectsPage {
 
     @Override
     public void clickOnNewButton() {
+
+    }
+
+    @Override
+    public void clickOnDeleteButton(final String nameObject) {
 
     }
 }

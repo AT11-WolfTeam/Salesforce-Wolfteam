@@ -10,11 +10,13 @@
 package salesforce.ui.pages.lead;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import salesforce.entities.Lead;
+import salesforce.ui.components.span.ToastMessageSpan;
 import salesforce.ui.pages.AbstractBasePage;
 
 /**
@@ -33,7 +35,10 @@ public class NewLeadLightningPopup extends AbstractBasePage {
     @FindBy(css = "input[class*='lastName']")
     private WebElement lastNameTextBox;
 
-    @FindBy(css = "//span[contains(text(),'Company')]/..//..//input[@class=' input']")
+    @FindBy(xpath = "//span[contains(.,'Last Name')]")
+    private WebElement lastNameLabel;
+
+    @FindBy(xpath = "//span[contains(text(),'Company')]/..//..//input[@class=' input']")
     private WebElement companyTextBox;
 
     @FindBy(css = "button[class*='slds-button slds-button--neutral uiButton--b']")
@@ -43,6 +48,7 @@ public class NewLeadLightningPopup extends AbstractBasePage {
     private WebElement saveAndNewButton;
 
     private static final String LIST_BOX_PARTIAL_LOCATOR = "//span[contains(text(),'%s')]/..//..//a[@class='select']";
+    private Actions actions;
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -55,9 +61,12 @@ public class NewLeadLightningPopup extends AbstractBasePage {
      * @param listBoxNameItem contains String value.
      */
     private void selectItemInSelect(final String listBoxLabel, final String listBoxNameItem) {
+        String baseOptionToSelectLocator = "//div[@class='select-options']//a[contains(.,'%s')]";
         String listBoxLocator = String.format(LIST_BOX_PARTIAL_LOCATOR, listBoxLabel);
-        Select select = new Select(webDriver.findElement(By.xpath(listBoxLocator)));
-        select.selectByVisibleText(listBoxNameItem);
+        String optionToSelectLocator = String.format(baseOptionToSelectLocator, listBoxNameItem);
+        webDriver.findElement(By.xpath(listBoxLocator)).click();
+        System.out.println(optionToSelectLocator);
+        webDriver.findElement(By.xpath(optionToSelectLocator)).click();
     }
 
     /**
@@ -96,6 +105,7 @@ public class NewLeadLightningPopup extends AbstractBasePage {
      */
     public void clickOnSaveAndNew() {
         saveAndNewButton.click();
+        webDriverWait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class*='toastContainer']")));
     }
 
     /**
@@ -103,6 +113,7 @@ public class NewLeadLightningPopup extends AbstractBasePage {
      * @param lead contains an instance.
      */
     public void loadNewLeadFields(final Lead lead) {
+        webDriverWait.until(ExpectedConditions.visibilityOf(lastNameLabel));
         setLastNameTextBox(lead.getLastName());
         setCompanyTextBox(lead.getCompany());
         selectItemInSelect("Lead Status", lead.getLeadStatus());

@@ -14,6 +14,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 
@@ -26,12 +27,12 @@ import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 public class TabObjectsLightningPage extends AbstractTabObjectsPage {
     @FindBy(css = "div[title='New']")
     private WebElement newButton;
-    protected static final String NAME_OPPORTUNITY = "a[title='%s']";
 
     @FindBy(css = "div[class='triggerLinkTextAndIconWrapper slds-p-right--x-large']")
     private WebElement opportunityListButton;
 
-    private static final String OPPORTUNITY_ORDERED_LIST_PARTIAL_LOCATOR = "//li[contains(.,'%s')]";
+    protected static final String NAME_OBJECT = "a[title='%s']";
+    private static final String OBJECT_ORDERED_LIST_PARTIAL_LOCATOR = "//li[contains(.,'%s')]";
     private WebElement nameOpportunityTable;
 
     @Override
@@ -40,18 +41,18 @@ public class TabObjectsLightningPage extends AbstractTabObjectsPage {
     }
 
     @Override
-    public void displayOpportunityList(final String listName) {
+    public void displayObjectList(final String listName) {
         String opportunityOrderedListLocator;
         opportunityListButton.click();
-        opportunityOrderedListLocator = String.format(OPPORTUNITY_ORDERED_LIST_PARTIAL_LOCATOR, listName);
+        opportunityOrderedListLocator = String.format(OBJECT_ORDERED_LIST_PARTIAL_LOCATOR, listName);
         webDriverWait.until(ExpectedConditions.elementToBeClickable(webDriver.findElement(
                 By.xpath(opportunityOrderedListLocator))));
         webDriver.findElement(By.xpath(opportunityOrderedListLocator)).click();
     }
 
     @Override
-    public AbstractOpportunityPage selectOpportunityName(final String opportunityName) {
-        String opportunityNameXpath = String.format(NAME_OPPORTUNITY, opportunityName);
+    public AbstractOpportunityPage selectObjectByName(final String opportunityName) {
+        String opportunityNameXpath = String.format(NAME_OBJECT, opportunityName);
         nameOpportunitySelected = WebDriverManager.getInstance().getWebDriver().findElement(By
                 .cssSelector(opportunityNameXpath));
         nameOpportunitySelected.click();
@@ -61,5 +62,14 @@ public class TabObjectsLightningPage extends AbstractTabObjectsPage {
     @Override
     public void clickOnNewButton() {
         newButton.click();
+    }
+
+    @Override
+    public void clickOnDeleteButton(final String nameObject) {
+        String objectTabBaseLocator = "//a[@title='%s']//../../..//ul";
+        String objectTabLocator = String.format(objectTabBaseLocator, nameObject);
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(objectTabLocator))).click();
+        Select select = new Select(webDriver.findElement(By.xpath(objectTabLocator)));
+        select.selectByVisibleText("Delete");
     }
 }

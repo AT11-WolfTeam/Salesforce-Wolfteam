@@ -13,8 +13,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import salesforce.entities.Lead;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
+
+import java.util.ArrayList;
 
 /**
  * Defines CampaignLightningPage.
@@ -35,6 +38,9 @@ public class CampaignLightningPage extends AbstractCampaignPage {
             + " slds-button--icon-border-filled oneActionsDropDown']//div[@class='uiMenu']")
     private WebElement iconDropDown;
 
+    @FindBy(css = "//a[div[contains(.,'Add Leads')]]")
+    private WebElement addLeadsButton;
+
     /**
      * Constructor CampaignLightningPage.
      */
@@ -53,6 +59,11 @@ public class CampaignLightningPage extends AbstractCampaignPage {
         clickDeleteCampaignScroll();
         clickDeleteConfirmButton();
         return AppPageFactory.getCampaignsPage();
+    }
+
+    @Override
+    public void addLeads(ArrayList<Lead> leadArrayList) {
+        addLeadsButton.click();
     }
 
     /**

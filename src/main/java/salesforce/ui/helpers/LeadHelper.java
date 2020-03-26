@@ -25,6 +25,15 @@ import java.util.List;
  */
 public class LeadHelper {
     private Lead lead;
+    private PageTransporter pageTransporter;
+    private static final String LEADS_PAGE = "Leads Page";
+
+    /**
+     * Builds a LeadHelper.
+     */
+    public LeadHelper() {
+        pageTransporter = new PageTransporter();
+    }
 
     /**
      * Sets leads.
@@ -48,9 +57,7 @@ public class LeadHelper {
      */
     public void createLeads(final List<Lead> leads) {
         final int oneItem = 1;
-        final String pageToGo = "Leads Page";
-        PageTransporter pageTransporter = new PageTransporter();
-        pageTransporter.navigateToPage(pageToGo);
+        pageTransporter.navigateToPage(LEADS_PAGE);
 
         AppPageFactory.getTabObjectsPage().clickOnNewButton();
         NewLeadLightningPopup newLeadLightningPopup = new NewLeadLightningPopup();
@@ -58,8 +65,20 @@ public class LeadHelper {
             newLeadLightningPopup.loadNewLeadFields(leads.get(i));
             if (leads.size() == oneItem || i == leads.size() - 1) {
                 newLeadLightningPopup.clickOnSaveButton();
+                System.out.println("NO DEBO ENTRAR AQUI 2 VECES");
+            } else {
+                newLeadLightningPopup.clickOnSaveAndNew();
             }
-            newLeadLightningPopup.clickOnSaveAndNew();
         }
+    }
+
+    public int deleteLeads(List<Lead> leads) {
+        pageTransporter.navigateToPage(LEADS_PAGE);
+        AppPageFactory.getTabObjectsPage().displayObjectList("All Open Leads");
+        for (Lead lead : leads) {
+            AppPageFactory.getTabObjectsPage().selectObjectByName(lead.getLastName());
+            AppPageFactory.getTabObjectsPage().clickOnDeleteButton(lead.getLastName());
+        }
+        return 0;
     }
 }

@@ -34,9 +34,6 @@ public class TabObjectsClassicPage extends AbstractTabObjectsPage {
     @FindBy(css = "span[class='fBody'] input[class='btn']")
     private WebElement goButton;
 
-    @FindBy(css = "a[id='tryLexDialogX']")
-    private WebElement closePopUp;
-
     protected static final String NAME_OPPORTUNITY = "//th//a[contains(text(),'%s')]";
 
     @Override
@@ -52,17 +49,8 @@ public class TabObjectsClassicPage extends AbstractTabObjectsPage {
         goButton.click();
     }
 
-    /**
-     * Closes popup.
-     */
-    private void closePopUp() {
-        webDriverWait.until(ExpectedConditions.visibilityOf(closePopUp));
-        closePopUp.click();
-    }
-
     @Override
     public AbstractOpportunityPage selectObjectByName(final String opportunityName) {
-        closePopUp();
         String opportunityNameXpath = String.format(NAME_OPPORTUNITY, opportunityName);
         nameOpportunitySelected = WebDriverManager.getInstance().getWebDriver().findElement(By
                 .xpath(opportunityNameXpath));

@@ -14,7 +14,11 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.AppPageFactory;
+import salesforce.ui.pages.campaigncontact.AbstractCampaignContactPage;
+import salesforce.ui.pages.campaigncontact.CampaignContactPopupLightningPage;
 import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
+import salesforce.ui.pages.campaignmembers.AbstractCampaignMembersPage;
+import salesforce.ui.pages.campaignmembers.CampaignMembersLightningPage;
 
 /**
  * Defines CampaignLightningPage.
@@ -38,6 +42,9 @@ public class CampaignLightningPage extends AbstractCampaignPage {
     @FindBy(xpath = "//div[@title='Add Contacts']")
     private WebElement addContactsButton;
 
+    @FindBy(css = "span[class='view-all-label']")
+    private WebElement viewAllLink;
+
     /**
      * Constructor CampaignLightningPage.
      */
@@ -59,8 +66,23 @@ public class CampaignLightningPage extends AbstractCampaignPage {
     }
 
     @Override
-    public void addCampaignMembers() {
+    public AbstractCampaignContactPage addCampaignMembers() {
         ClickOnAddContacts();
+        return new CampaignContactPopupLightningPage();
+    }
+
+    /**
+     * Clicks on view all dropdownlist.
+     */
+    private void clickOnViewAll() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(viewAllLink));
+        viewAllLink.click();
+    }
+
+    @Override
+    public AbstractCampaignMembersPage viewMembers() {
+        clickOnViewAll();
+        return new CampaignMembersLightningPage();
     }
 
     /**

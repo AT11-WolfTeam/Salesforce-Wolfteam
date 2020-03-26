@@ -16,9 +16,15 @@ import salesforce.ui.components.menu.TopMenuAbstract;
 import salesforce.ui.pages.campaign.AbstractCampaignPage;
 import salesforce.ui.pages.campaign.CampaignClassicPage;
 import salesforce.ui.pages.campaign.CampaignLightningPage;
+import salesforce.ui.pages.campaigncontact.AbstractCampaignContactPage;
+import salesforce.ui.pages.campaigncontact.CampaignContactClassicPage;
+import salesforce.ui.pages.campaigncontact.CampaignContactPopupLightningPage;
 import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
 import salesforce.ui.pages.campaignlist.CampaignListClassicPage;
 import salesforce.ui.pages.campaignlist.CampaignListLightningPage;
+import salesforce.ui.pages.campaignmembers.AbstractCampaignMembersPage;
+import salesforce.ui.pages.campaignmembers.CampaignMembersClassicPage;
+import salesforce.ui.pages.campaignmembers.CampaignMembersLightningPage;
 import salesforce.ui.pages.newcampaign.AbstractNewCampaignPage;
 import salesforce.ui.pages.newcampaign.NewCampaignClassicPage;
 import salesforce.ui.pages.newcampaign.NewCampaignLightningPopUp;
@@ -138,5 +144,27 @@ public class AppPageFactory {
             return new NotesAndAttachmentsClassicPage();
         }
         return new NotesAndAttachmentsLightningPage();
+    }
+
+    /**
+     * Allows to indentify campaign members user experience page.
+     * @return campaign members instance.
+     */
+    public static AbstractCampaignMembersPage getCampaignMembers() {
+        if (userExperience.equals("Classic")) {
+            return new CampaignMembersClassicPage();
+        }
+        return new CampaignMembersLightningPage();
+    }
+
+    /**
+     * Allows to indentify campaign members user experience page.
+     * @return campaign members instance.
+     */
+    public static AbstractCampaignContactPage getCampaignContacts() {
+        if (userExperience.equals("Classic")) {
+            return new CampaignContactClassicPage();
+        }
+        return new CampaignContactPopupLightningPage();
     }
 }

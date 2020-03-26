@@ -14,13 +14,16 @@ Feature: Campaign
     Then the application should display an information message in Campaign page with the format "[[Campaign Name]] was successfully updated. 2 new members were added to [[Campaign Name]]"
 
 
-  @CampaignAccounts
+  @CampaignAccounts @DeletesCampaign
   Scenario: Assign 3 contacts to campaign
     Given I create 3 "Basic" contacts
-    And I go to "Campaigns Page"
-    And I create a new Campaign with
-      | Campaign Name | Testing Contacts |
-      | Active        | true             |
-    When I add the contacts to "Campaigns Page"
-    Then The added contacts should be displayed on "Campaign Members" page
-    And I delete created accounts
+      And I go to "Campaigns Page"
+      And I create a new Campaign with
+        | Campaign Name | Testing Contacts |
+        | Active        | true             |
+    When I go to "Campaigns Page"
+      And I select the campaign
+      And I add the contacts the campaign
+    When I go to "Campaigns Page"
+      And I select the campaign
+    Then The added contacts should be displayed on Campaign Members page

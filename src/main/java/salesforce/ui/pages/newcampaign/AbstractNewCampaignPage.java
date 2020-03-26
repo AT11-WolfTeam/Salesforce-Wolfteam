@@ -72,10 +72,4 @@ public abstract class AbstractNewCampaignPage extends AbstractBasePage {
      * clicks on Save Button.
      */
     public abstract void clickSaveButton();
-
-    /**
-     * Checks contacts checkbox.
-     * @param namesOfContacts list.
-     */
-    public abstract void checkContacts(ArrayList<String> namesOfContacts);
 }

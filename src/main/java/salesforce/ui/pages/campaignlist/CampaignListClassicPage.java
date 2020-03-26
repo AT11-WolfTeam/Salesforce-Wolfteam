@@ -27,6 +27,13 @@ import salesforce.ui.pages.newcampaign.AbstractNewCampaignPage;
 public class CampaignListClassicPage extends AbstractCampaignListPage {
     @FindBy(xpath = "//input[@class='btn' and @name='new']")
     private WebElement newButton;
+
+    @FindBy(css = "a[id='tryLexDialogX']")
+    private By closePopUp;
+
+    @FindBy(css = "a[id='tryLexDialogX']")
+    private WebElement close;
+
     protected static final String NAME_CAMPAIGN = "//th//a[contains(text(),'%s')]";
 
     @Override

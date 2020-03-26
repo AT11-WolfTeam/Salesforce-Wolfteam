@@ -53,9 +53,4 @@ public class NewCampaignClassicPage extends AbstractNewCampaignPage {
     public void clickSaveButton() {
         saveButton.click();
     }
-
-    @Override
-    public void checkContacts(ArrayList<String> namesOfContacts) {
-
-    }
 }

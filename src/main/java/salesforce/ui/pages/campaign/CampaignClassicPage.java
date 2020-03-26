@@ -13,7 +13,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.AppPageFactory;
+import salesforce.ui.pages.campaigncontact.AbstractCampaignContactPage;
+import salesforce.ui.pages.campaigncontact.CampaignContactClassicPage;
 import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
+import salesforce.ui.pages.campaignmembers.AbstractCampaignMembersPage;
+import salesforce.ui.pages.campaignmembers.CampaignMembersClassicPage;
 
 /**
  * Defines CampaignClassicPage.
@@ -31,6 +35,9 @@ public class CampaignClassicPage extends AbstractCampaignPage {
     @FindBy(xpath = "//div[@id='managedetailMenu']/a[text()= 'Add Members - Search']")
     private WebElement addMembersItem;
 
+    @FindBy(xpath = "//div[@id='managedetailMenu']/a[text()= 'Edit Members - Search']")
+    private WebElement editMembersItem;
+
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(deleteButton));
@@ -45,9 +52,25 @@ public class CampaignClassicPage extends AbstractCampaignPage {
     }
 
     @Override
-    public void addCampaignMembers() {
+    public AbstractCampaignContactPage addCampaignMembers() {
         clickOnManageMemberCombobox();
         clickOnAddMemberItem();
+        return new CampaignContactClassicPage();
+    }
+
+    /**
+     * Clicks on edit button.
+     */
+    private void clickOnEditMembers() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(editMembersItem));
+        editMembersItem.click();
+    }
+
+    @Override
+    public AbstractCampaignMembersPage viewMembers() {
+        clickOnManageMemberCombobox();
+        clickOnEditMembers();
+        return new CampaignMembersClassicPage();
     }
 
     /**

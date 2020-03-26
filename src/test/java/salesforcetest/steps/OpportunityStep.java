@@ -247,7 +247,7 @@ public class OpportunityStep {
         opportunityPage = opportunitiesPage.selectOpportunityName(context.getOpportunities().get(0).getName());
         abstractTaskOpportunity = opportunityPage.clickAddTask();
         taskOpportunity = context.getTaskOpportunity();
-        if(context.getContacts().get(0).getLastName() != null) {
+        if(context.getContacts() != null) {
             String contact = context.getContacts().get(0).getFirstName()+ " " + context.getContacts().get(0)
                     .getLastName();
             mapNewTask.put(TaskConstant.CONTACT,contact);

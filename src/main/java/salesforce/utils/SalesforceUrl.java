@@ -20,9 +20,11 @@ public class SalesforceUrl {
     private String salesLightningUrl;
     private String opportunitiesLightningUrl;
     private String campaignsLightningUrl;
+    private String leadsLightningUrl;
     private String salesClassicUrl;
     private String opportunitiesClassicUrl;
     private String campaignsClassicUrl;
+    private String leadsClassicUrl;
 
     /**
      * Returns loginUrl value.
@@ -148,5 +150,41 @@ public class SalesforceUrl {
      */
     public void setCampaignsClassicUrl(final String campaignsClassicUrl) {
         this.campaignsClassicUrl = campaignsClassicUrl;
+    }
+
+    /**
+     * Returns getLeadsLightningUrl value.
+     *
+     * @return String value.
+     */
+    public String getLeadsLightningUrl() {
+        return leadsLightningUrl;
+    }
+
+    /**
+     * Sets setLeadsLightningUrl value.
+     *
+     * @param leadsLightningUrl value.
+     */
+    public void setLeadsLightningUrl(final String leadsLightningUrl) {
+        this.leadsLightningUrl = leadsLightningUrl;
+    }
+
+    /**
+     * Returns getLeadsClassicUrl value.
+     *
+     * @return String value.
+     */
+    public String getLeadsClassicUrl() {
+        return leadsClassicUrl;
+    }
+
+    /**
+     * Sets setLeadsClassicUrl value.
+     *
+     * @param leadsClassicUrl value.
+     */
+    public void setLeadsClassicUrl(final String leadsClassicUrl) {
+        this.leadsClassicUrl = leadsClassicUrl;
     }
 }

@@ -10,11 +10,13 @@
 package salesforcetest.steps;
 
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.testng.Assert;
 import salesforce.entities.Contact;
 import salesforce.entities.Context;
 import salesforce.ui.pages.AppPageFactory;
+import salesforce.ui.pages.PageTransporter;
 import salesforce.ui.pages.campaign.AbstractCampaignPage;
 import salesforce.ui.pages.campaigncontact.AbstractCampaignContactPage;
 import salesforce.ui.pages.campaignmembers.AbstractCampaignMembersPage;
@@ -39,6 +41,8 @@ public class CampaignSteps {
     private AbstractNewCampaignPage newCampaignPage;
     private AbstractCampaignMembersPage campaignMembersPage;
     private AbstractCampaignContactPage campaignContact;
+    private PageTransporter pageTransporter;
+    private static final int ARRAY_POSITION_FIRST = 0;
 
     /**
      * Constructor of campaigns steps.
@@ -47,6 +51,7 @@ public class CampaignSteps {
     public CampaignSteps(final Context context) {
         this.context = context;
         contacts = context.getContacts();
+        pageTransporter = new PageTransporter();
     }
 
     /**
@@ -83,6 +88,16 @@ public class CampaignSteps {
         }
         HashMap<String, String> actual = campaignMembersPage.getContactsText(contactList);
         Assert.assertEquals(actual, contactList, "message: " + actual + SPACE + contactList);
+    }
+
+    /**
+     * Creates leads objects.
+     *
+     * @param leadsQuantity contains quantity.
+     * @param leadType a Lead type.
+     */
+    @Given("I create {int} {string} leads")
+    public void createsLeads(final int leadsQuantity, final String leadType) {
     }
 
     /**

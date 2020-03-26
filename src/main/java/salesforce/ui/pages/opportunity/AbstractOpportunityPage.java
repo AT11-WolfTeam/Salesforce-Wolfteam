@@ -10,9 +10,9 @@
 package salesforce.ui.pages.opportunity;
 
 import org.openqa.selenium.WebElement;
-import salesforce.entities.OpportunityUi;
+import salesforce.entities.Opportunity;
 import salesforce.ui.pages.AbstractBasePage;
-
+import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.function.Supplier;
@@ -42,23 +42,23 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
     /**
      * Sets the form of new Campaign.
      *
-     * @param opportunityUi entity.
-     * @param fields      map.
+     * @param opportunity entity.
+     * @param fields map.
      */
-    public void editOpportunity(final OpportunityUi opportunityUi, final Set<String> fields) {
-        HashMap<String, Runnable> strategtyMap = composeStrategyMap(opportunityUi);
+    public void editOpportunity(final Opportunity opportunity, final Set<String> fields) {
+        HashMap<String, Runnable> strategtyMap = composeStrategyMap(opportunity);
         fields.forEach(field -> strategtyMap.get(field).run());
     }
 
     /**
      * Sets the information of new campaign.
      *
-     * @param opportunityUi entity.
+     * @param opportunity entity.
      * @return HashMap value.
      */
-    protected HashMap<String, Runnable> composeStrategyMap(final OpportunityUi opportunityUi) {
+    protected HashMap<String, Runnable> composeStrategyMap(final Opportunity opportunity) {
         HashMap<String, Runnable> strategyMap = new HashMap<>();
-        strategyMap.put(CAMPAIGN_NAME, () -> assignCampaign(opportunityUi.getCampaignName()));
+        strategyMap.put(CAMPAIGN_NAME, () -> assignCampaign(opportunity.getCampaignName()));
         return strategyMap;
     }
 
@@ -101,16 +101,24 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
 
     /**
      * Changes an Opportunity owner.
+     *
      * @param ownerType contains a String value.
      */
     public abstract void changeOwner(String ownerType);
 
     /**
      * Returns an Opportunity owner.
+     *
      * @param ownerType contains a String value.
      * @return String value.
      */
     public abstract String getOwner(String ownerType);
+
+    /**
+     * Clicks on Add task.
+     * @return TaskOpportunity instance.
+     */
+    public abstract AbstractTaskOpportunity clickAddTask();
 
     /**
      * Allows to open notes and attachments page.

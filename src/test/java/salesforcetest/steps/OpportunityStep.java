@@ -19,7 +19,7 @@ import salesforce.api.requestapi.OpportunityApiHelper;
 import salesforce.entities.Context;
 import salesforce.entities.NewCampaign;
 import salesforce.entities.Opportunity;
-import salesforce.entities.OpportunityUi;
+import salesforce.entities.TaskOpportunity;
 import salesforce.ui.components.span.ToastMessageSpan;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.PageTransporter;
@@ -27,11 +27,14 @@ import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
 import salesforce.ui.pages.newcampaign.AbstractNewCampaignPage;
 import salesforce.ui.pages.opportunities.AbstractOpportunitiesPage;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
+import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
+import salesforce.ui.pages.task.AbstractTask;
 import salesforce.utils.JsonFileReader;
 import salesforce.utils.ReplacerMessages;
 import salesforce.utils.SheetManager;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -50,11 +53,15 @@ public class OpportunityStep {
     private NewCampaign newCampaign;
     private AbstractOpportunitiesPage opportunitiesPage;
     private AbstractOpportunityPage opportunityPage;
-    private OpportunityUi opportunityUi;
+    private Opportunity opportunity;
+    private AbstractTaskOpportunity abstractTaskOpportunity;
+    private AbstractTask abstractTask;
+    private TaskOpportunity taskOpportunity;
     private static String userExperience = GradleReader.getInstance().getUserExperience();
-    private static final int FIRST_OPPORTUNITY = 0;
+    private static final int ARRAY_POSITION_FIRST = 0;
     private static final String JSON_CONFIG_FILE = "config.json";
     private static final String USER_EXPERIENCE_LIGHTNING = "Lightning";
+
     /**
      * OpportunityStep constructor.
      *
@@ -71,23 +78,23 @@ public class OpportunityStep {
      *
      * @param ownerType contains name Owner object.
      */
-    @When("^I change an opportunity's owner with \"([^\"]*)\"$")
+    @When("^I change the opportunity's owner with \"([^\"]*)\"$")
     public void changesAnOpportunitySOwnerWith(final String ownerType) {
         AppPageFactory.getOpportunityPage().changeOwner(ownerType);
     }
 
     /**
-     * Validates a message.
+     * Validates a message only for Lightning User Experience.
      *
      * @param message contains a String message.
      */
-    @Then("the application should display an information message in Opportunity Lightning page with format {string}")
-    public void displaysAnInformationMessageInOpportunityPageWithTheFormat(final String message) {
+    @Then("the application should display this message in Opportunity Page only for Lightning Experience")
+    public void displaysAnInformationMessageInOpportunityPageWithTheFormat(final List<String> message) {
         if (userExperience.equals(USER_EXPERIENCE_LIGHTNING)) {
             ToastMessageSpan toastMessageSpan = new ToastMessageSpan();
             String actualResult = toastMessageSpan.getToastMessage();
-            String expectedResult = ReplacerMessages.replaceChangeOwnerMessage(message, context.getOpportunities()
-                    .get(FIRST_OPPORTUNITY).getName());
+            String expectedResult = ReplacerMessages.replaceChangeOwnerMessage(message.get(ARRAY_POSITION_FIRST),
+                    context.getOpportunities().get(ARRAY_POSITION_FIRST).getName());
             Assert.assertEquals(actualResult, expectedResult);
         }
     }
@@ -124,9 +131,9 @@ public class OpportunityStep {
      *
      * @param listName contains a String value.
      */
-    @And("I search the opportunity in list {string}")
+    @When("I search for the opportunity in list {string}")
     public void searchOpportunity(final String listName) {
-        String opportunityName = context.getOpportunities().get(FIRST_OPPORTUNITY).getName();
+        String opportunityName = context.getOpportunities().get(ARRAY_POSITION_FIRST).getName();
         AppPageFactory.getOpportunitiesPage().displayOpportunityList(listName);
         AppPageFactory.getOpportunityList().clickOnOpportunity(opportunityName);
     }
@@ -163,11 +170,13 @@ public class OpportunityStep {
      */
     @When("I assign the Campaign to the opportunity")
     public void assignsTheCampaignToTheOpportunity(final Map<String, String> mapOpportunityEdit) {
+        HashMap<String, String> mapOpportunity = new HashMap<>();
+        mapOpportunity.putAll(mapOpportunityEdit);
         opportunitiesPage = AppPageFactory.getOpportunitiesPage();
         opportunityPage = opportunitiesPage.selectOpportunityName(context.getOpportunities().get(0).getName());
-        opportunityUi = context.getOpportunityUi();
-        opportunityUi.processInformation(mapOpportunityEdit);
-        opportunityPage.editOpportunity(opportunityUi, mapOpportunityEdit.keySet());
+        opportunity = context.getOpportunity();
+        opportunity.setOpportunityInformation(mapOpportunity);
+        opportunityPage.editOpportunity(opportunity, mapOpportunityEdit.keySet());
         opportunityPage.clickSaveButton();
     }
 
@@ -177,11 +186,12 @@ public class OpportunityStep {
     @Then("On the details section should display the Campaign name")
     public void onTheDetailsSectionShouldDisplayTheCampaignName() {
         HashMap<String, String> mapOpportunityValidate = opportunityPage.getOpportunityDetails();
-        Assert.assertEquals(mapOpportunityValidate, context.getOpportunityUi().getOpportunityEdit());
+        Assert.assertEquals(mapOpportunityValidate, context.getOpportunity().getOpportunityInformation());
     }
 
     /**
      * Validates an opportunity owner.
+     *
      * @param ownerType contains String value.
      */
     @When("the opportunity page displays the owner {string}")
@@ -220,5 +230,44 @@ public class OpportunityStep {
         System.out.println(opportunityName);
         // close popup
         AppPageFactory.getOpportunitiesPage().selectOpportunityName(opportunityName);
+    }
+
+    /**
+     * Adds new Task.
+     *
+     * @param mapNewTask map values.
+     */
+    @And("I add new Task with")
+    public void iAddNewTaskWith(final Map<String, String> mapNewTask) {
+        opportunitiesPage = AppPageFactory.getOpportunitiesPage();
+        opportunityPage = opportunitiesPage.selectOpportunityName(context.getOpportunities().get(0).getName());
+        abstractTaskOpportunity = opportunityPage.clickAddTask();
+        taskOpportunity = context.getTaskOpportunity();
+        taskOpportunity.processInformation(mapNewTask);
+        abstractTaskOpportunity.setNewTask(taskOpportunity, mapNewTask.keySet());
+        abstractTaskOpportunity.clickSaveTask();
+        abstractTask = abstractTaskOpportunity.clickTaskToEdit(context.getTaskOpportunity().getSubject());
+    }
+
+    /**
+     * Adds additional information to task already created.
+     *
+     * @param mapAddInformationTask map values.
+     */
+    @When("I add additional information to the task")
+    public void iAddAdditionalInformationToTheTask(final Map<String, String> mapAddInformationTask) {
+        abstractTask.clickEditButton();
+        taskOpportunity.processInformation(mapAddInformationTask);
+        abstractTask.addInformationToTask(taskOpportunity, mapAddInformationTask.keySet());
+        abstractTask.clickOnSaveTaskButton();
+    }
+
+    /**
+     * Validate the addition information inserted.
+     */
+    @And("the task should display the information added")
+    public void theTaskShouldDisplayTheInformationAdded() {
+        HashMap<String, String> mapTaskValidate = abstractTask.getTaskDetails(taskOpportunity);
+        Assert.assertEquals(mapTaskValidate, context.getTaskOpportunity().getTaskEdited());
     }
 }

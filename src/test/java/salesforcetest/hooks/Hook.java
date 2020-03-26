@@ -16,6 +16,7 @@ import salesforce.api.requestapi.OpportunityApiHelper;
 import salesforce.entities.Contact;
 import salesforce.entities.Context;
 import salesforce.entities.Opportunity;
+import salesforce.ui.helpers.LeadHelper;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.PageTransporter;
 import salesforce.ui.pages.campaign.AbstractCampaignPage;
@@ -33,6 +34,7 @@ public class Hook {
     private PageTransporter pageTransporter;
     private AbstractCampaignPage abstractCampaignPage;
     private OpportunityApiHelper opportunityApiHelper;
+    private LeadHelper leadHelper;
     private ContactApiHelper contactApiHelper;
 
     /**
@@ -44,6 +46,7 @@ public class Hook {
         this.context = context;
         pageTransporter = new PageTransporter();
         opportunityApiHelper = new OpportunityApiHelper();
+        leadHelper = new LeadHelper();
         contactApiHelper = new ContactApiHelper();
     }
 
@@ -71,6 +74,14 @@ public class Hook {
     }
 
     /**
+     * Deletes leads.
+     */
+    @After("@DeletesLeads")
+    public void deletesLeads() {
+        leadHelper.deleteLeads(context.getLeads());
+    }
+
+     /**
      * Deletes contacts by id.
      */
     @After("@CampaignAccounts")

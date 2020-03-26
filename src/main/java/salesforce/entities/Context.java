@@ -21,8 +21,10 @@ import java.util.List;
 public class Context {
     private Account account;
     private Opportunity opportunity;
+    private Lead lead;
     private List<Account> accounts;
     private List<Opportunity> opportunities;
+    private List<Lead> leads;
     private NewCampaign newCampaign;
     private List<Contact> contacts;
     private TaskOpportunity taskOpportunity;
@@ -33,8 +35,10 @@ public class Context {
     public Context() {
         this.account = new Account();
         this.opportunity = new Opportunity();
+        this.lead = new Lead();
         this.accounts = new ArrayList<>();
         this.opportunities = new ArrayList<>();
+        this.leads = new ArrayList<>();
         this.newCampaign = new NewCampaign();
         this.contacts = new ArrayList<>();
         this.taskOpportunity = new TaskOpportunity();
@@ -97,6 +101,7 @@ public class Context {
 
     /**
      * Gets contacts.
+     *
      * @return a list of contacts.
      */
     public List<Contact> getContacts() {
@@ -105,6 +110,7 @@ public class Context {
 
     /**
      * Sets a list of contacts.
+     *
      * @param contacts list value.
      */
     public void setContacts(final List<Contact> contacts) {
@@ -112,7 +118,44 @@ public class Context {
     }
 
     /**
+     * Gets an object instance.
+     *
+     * @return an instance.
+     */
+    public Lead getLead() {
+        return lead;
+    }
+
+    /**
+     * Sets an object instance.
+     *
+     * @param lead contains an instance.
+     */
+    public void setLead(final Lead lead) {
+        this.lead = lead;
+    }
+
+    /**
+     * Gets a list of leads.
+     *
+     * @return a list value.
+     */
+    public List<Lead> getLeads() {
+        return leads;
+    }
+
+    /**
+     * Sets a list of leads.
+     *
+     * @param leads contains a list value.
+     */
+    public void setLeads(final List<Lead> leads) {
+        this.leads = leads;
+    }
+
+    /**
      * Gets TaskOpportunity.
+     *
      * @return taskOpportunity instance.
      */
     public TaskOpportunity getTaskOpportunity() {

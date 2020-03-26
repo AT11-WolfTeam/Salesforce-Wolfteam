@@ -12,12 +12,15 @@ package salesforce.ui.pages.campaign;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import salesforce.entities.Lead;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.campaigncontact.AbstractCampaignContactPage;
 import salesforce.ui.pages.campaigncontact.CampaignContactClassicPage;
 import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
 import salesforce.ui.pages.campaignmembers.AbstractCampaignMembersPage;
 import salesforce.ui.pages.campaignmembers.CampaignMembersClassicPage;
+
+import java.util.List;
 
 /**
  * Defines CampaignClassicPage.
@@ -49,6 +52,11 @@ public class CampaignClassicPage extends AbstractCampaignPage {
         webDriverWait.until(ExpectedConditions.alertIsPresent());
         webDriver.switchTo().alert().accept();
         return AppPageFactory.getCampaignsPage();
+    }
+
+    @Override
+    public void addLeads(final List<Lead> leadList) {
+        //Todo
     }
 
     @Override

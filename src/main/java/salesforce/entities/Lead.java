@@ -9,6 +9,10 @@
 
 package salesforce.entities;
 
+import salesforce.entities.constants.LeadConstant;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Manages Lead information.
  *
@@ -27,6 +31,31 @@ public class Lead {
     private String phone;
     private String mobile;
     private String leadStatus;
+
+    /**
+     * Visits all getter methods of lead.
+     *
+     * @param leadAttributes contains a map value.
+     * @return map of visited get methods.
+     */
+    private HashMap<String, Runnable> composeStrategyMap(final Map<String, String> leadAttributes) {
+        HashMap<String, Runnable> strategyMap = new HashMap<>();
+        strategyMap.put(LeadConstant.FIRST_NAME, () -> setName(leadAttributes.get(LeadConstant.FIRST_NAME)));
+        strategyMap.put(LeadConstant.LAST_NAME, () -> setLastName(leadAttributes.get(LeadConstant.LAST_NAME)));
+        strategyMap.put(LeadConstant.COMPANY, () -> setCompany(leadAttributes.get(LeadConstant.COMPANY)));
+        strategyMap.put(LeadConstant.LEAD_STATUS, () -> setLeadStatus(leadAttributes.get(LeadConstant.LEAD_STATUS)));
+        return strategyMap;
+    }
+
+    /**
+     * Gets lead information.
+     *
+     * @param leadAttributes contains a list value.
+     */
+    public void setLeadInformation(final Map<String, String> leadAttributes) {
+        HashMap<String, Runnable> strategyMap = composeStrategyMap(leadAttributes);
+        leadAttributes.keySet().forEach(key -> strategyMap.get(key).run());
+    }
 
     /**
      * Gets Name.

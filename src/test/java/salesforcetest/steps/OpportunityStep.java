@@ -237,11 +237,12 @@ public class OpportunityStep {
     /**
      * Adds new Task.
      *
-     * @param mapNewTask map values.
+     * @param mapTask map values.
      */
     @And("I add new Task with")
-    public void iAddNewTaskWith(final Map<String, String> mapNewTask) {
-
+    public void iAddNewTaskWith(final Map<String, String> mapTask) {
+        HashMap<String, String> mapNewTask = new HashMap<>();
+        mapNewTask.putAll(mapTask);
         opportunitiesPage = AppPageFactory.getOpportunitiesPage();
         opportunityPage = opportunitiesPage.selectOpportunityName(context.getOpportunities().get(0).getName());
         abstractTaskOpportunity = opportunityPage.clickAddTask();

@@ -16,23 +16,23 @@ import org.openqa.selenium.WebDriver;
  * Checks if web element is displayed.
  *
  * @author Juan Martinez.
- *  * @version 1.0 25 March 2020.
+ * * @version 1.0 25 March 2020.
  */
 public final class WebElementChecker {
 
     /**
      * Allows to verify if the web element is displayed or does not exist.
+     *
      * @param webDriver instance.
-     * @param by value.
+     * @param by        value.
      * @return true if the web element is displayed and false if it is not there.
      */
     public static boolean webElementIsDisplayed(final WebDriver webDriver, final String by) {
-        try{
+        try {
             webDriver.findElement(By.xpath(by)).isDisplayed();
             return true;
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            return false;
         }
-        catch(org.openqa.selenium.NoSuchElementException e){
-                return false;
-            }
     }
 }

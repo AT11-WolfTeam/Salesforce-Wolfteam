@@ -22,6 +22,7 @@ public abstract class AbstractCampaignMembersPage extends AbstractBasePage {
 
     /**
      * Gets contacts name.
+     *
      * @param contacts list.
      * @return list of names.
      */

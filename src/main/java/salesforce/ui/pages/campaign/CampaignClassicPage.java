@@ -74,7 +74,7 @@ public class CampaignClassicPage extends AbstractCampaignPage {
     }
 
     /**
-     * Clicks on manage member combobox
+     * Clicks on manage member combobox.
      */
     private void clickOnManageMemberCombobox() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(manageMembersCombobox));

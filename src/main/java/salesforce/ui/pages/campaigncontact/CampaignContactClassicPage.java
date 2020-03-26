@@ -119,7 +119,7 @@ public class CampaignContactClassicPage extends AbstractCampaignContactPage {
      * @param namesContacts list.
      * @return contacts names list.
      */
-    private ArrayList<String> generateContacts(HashMap<String, String> namesContacts) {
+    private ArrayList<String> generateContacts(final HashMap<String, String> namesContacts) {
         contactsNames = new ArrayList<>();
         for (String keyValue : namesContacts.keySet()) {
             contactsNames.add(keyValue + ", " + namesContacts.get(keyValue));
@@ -144,7 +144,7 @@ public class CampaignContactClassicPage extends AbstractCampaignContactPage {
     }
 
     @Override
-    public void checkContacts(HashMap<String, String> namesOfContacts) {
+    public void checkContacts(final HashMap<String, String> namesOfContacts) {
         contactsNames = new ArrayList<>();
         clickOnContactsRadioButton();
         clickOnViewCombobox();

@@ -11,6 +11,9 @@ package salesforce.ui.pages.campaignmembers;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import java.util.HashMap;
 
 /**
@@ -25,13 +28,18 @@ public class CampaignMembersLightningPage extends AbstractCampaignMembersPage {
     private String firstName;
     private String lastName;
 
+    @FindBy(css = "h1[class='slds-page-header__title listViewTitle slds-truncate']")
+    private WebElement campaignMemberLabel;
+
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-
+        webDriverWait.until(ExpectedConditions.visibilityOf(campaignMemberLabel));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(campaignMemberLabel));
     }
 
     /**
      * Gets web element composed by xpath and name value.
+     *
      * @param nameValue string.
      * @return composed web element.
      */
@@ -41,19 +49,23 @@ public class CampaignMembersLightningPage extends AbstractCampaignMembersPage {
 
     /**
      * Gets first name text.
+     *
      * @param nameValue string.
      * @return first name.
      */
     private String getFirstNameText(final String nameValue) {
+        webDriverWait.until(ExpectedConditions.visibilityOf(getWebElement(nameValue)));
         return getWebElement(nameValue).getText();
     }
 
     /**
      * Gets last name text.
+     *
      * @param lastNameValue string.
      * @return last name.
      */
     private String getLastNameText(final String lastNameValue) {
+        webDriverWait.until(ExpectedConditions.visibilityOf(getWebElement(lastNameValue)));
         return getWebElement(lastNameValue).getText();
     }
 

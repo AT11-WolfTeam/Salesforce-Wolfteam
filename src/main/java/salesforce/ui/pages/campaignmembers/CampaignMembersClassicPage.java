@@ -12,6 +12,7 @@ package salesforce.ui.pages.campaignmembers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
 import java.util.HashMap;
 
 /**
@@ -41,6 +42,7 @@ public class CampaignMembersClassicPage extends AbstractCampaignMembersPage {
 
     /**
      * Gets web element composed by xpath and name value.
+     *
      * @param fullNameValue string.
      * @return composed web element.
      */
@@ -50,6 +52,7 @@ public class CampaignMembersClassicPage extends AbstractCampaignMembersPage {
 
     /**
      * Gets last name text.
+     *
      * @param fullNameValue string.
      * @return last name.
      */
@@ -58,10 +61,10 @@ public class CampaignMembersClassicPage extends AbstractCampaignMembersPage {
     }
 
     @Override
-    public HashMap<String, String> getContactsText(HashMap<String, String> contacts) {
+    public HashMap<String, String> getContactsText(final HashMap<String, String> contacts) {
         contactsList = new HashMap<>();
         String fullName;
-        String [] splitName;
+        String[] splitName;
         for (String keyValue : contacts.keySet()) {
             fullName = getFullNameText(contacts.get(keyValue) + SPACE + keyValue);
             splitName = fullName.split(SPACE);

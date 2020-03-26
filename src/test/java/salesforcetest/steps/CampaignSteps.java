@@ -34,7 +34,7 @@ public class CampaignSteps {
     private Context context;
     private List<Contact> contacts;
     private HashMap<String, String> contactsNames = new HashMap<>();
-    private final static String SPACE = " ";
+    private static final String SPACE = " ";
     private HashMap<String, String> contactList;
 
     private AbstractCampaignPage abstractCampaignPage;

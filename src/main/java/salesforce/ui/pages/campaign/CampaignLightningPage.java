@@ -67,7 +67,7 @@ public class CampaignLightningPage extends AbstractCampaignPage {
 
     @Override
     public AbstractCampaignContactPage addCampaignMembers() {
-        ClickOnAddContacts();
+        clickOnAddContacts();
         return new CampaignContactPopupLightningPage();
     }
 
@@ -76,6 +76,7 @@ public class CampaignLightningPage extends AbstractCampaignPage {
      */
     private void clickOnViewAll() {
         webDriverWait.until(ExpectedConditions.visibilityOf(viewAllLink));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(addContactsButton));
         viewAllLink.click();
     }
 
@@ -88,7 +89,8 @@ public class CampaignLightningPage extends AbstractCampaignPage {
     /**
      * Clicks on add contacts.
      */
-    private void ClickOnAddContacts() {
+    private void clickOnAddContacts() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(addContactsButton));
         webDriverWait.until(ExpectedConditions.elementToBeClickable(addContactsButton));
         addContactsButton.click();
     }

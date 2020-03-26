@@ -70,6 +70,9 @@ public class Hook {
         }
     }
 
+    /**
+     * Deletes contacts by id.
+     */
     @After("@CampaignAccounts")
     public void deletesContacts() {
         contactApiHelper.deleteContacts(context.getContacts());

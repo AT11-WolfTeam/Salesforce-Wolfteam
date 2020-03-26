@@ -15,6 +15,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
 import salesforce.ui.pages.owner.OwnerEditClassicPage;
 import salesforce.utils.UtilSalesforce;
@@ -52,6 +53,12 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
 
     @FindBy(css = "input[value='Attach File']")
     private WebElement attachFileButton;
+
+    @FindBy(xpath = "//span[text()='New Task']")
+    private WebElement addTaskButton;
+
+    @FindBy(xpath = "//span[@class='publisherattachtext ' and text()='File']")
+    private WebElement addFile;
 
     private String parentHandle;
     protected static final String CAMPAIGN_NAME = "//th[@scope='row']//a[contains(text(),'%s')]";
@@ -154,6 +161,20 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
 
     @Override
     public AbstractTaskOpportunity clickAddTask() {
-        return null;
+        waiters();
+        addTaskButton.click();
+        addTaskButton.click();
+        return AppPageFactory.getTaskOpportunity();
+    }
+
+    /**
+     * Waits until the elements are found.
+     */
+    private void waiters() {
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(addTaskButton));
+        webDriverWait.until(ExpectedConditions.visibilityOf(addTaskButton));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(editButton));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(addFile));
+        webDriverWait.until(ExpectedConditions.visibilityOf(addFile));
     }
 }

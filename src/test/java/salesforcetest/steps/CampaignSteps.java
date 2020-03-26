@@ -46,6 +46,7 @@ public class CampaignSteps {
 
     /**
      * Constructor of campaigns steps.
+     *
      * @param context instance.
      */
     public CampaignSteps(final Context context) {
@@ -56,6 +57,7 @@ public class CampaignSteps {
 
     /**
      * Selects a campaign by name.
+     *
      * @param campaignName value.
      */
     @And("I select {string} campaign")
@@ -69,7 +71,7 @@ public class CampaignSteps {
     @And("I add the contacts the campaign")
     public void addContactsTheCampaign() {
         abstractCampaignPage = AppPageFactory.getCampaignPage();
-        for (Contact contact: contacts) {
+        for (Contact contact : contacts) {
             contactsNames.put(contact.getLastName(), contact.getFirstName());
         }
         campaignContact = abstractCampaignPage.addCampaignMembers();

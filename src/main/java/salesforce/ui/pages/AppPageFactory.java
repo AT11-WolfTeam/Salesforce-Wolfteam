@@ -166,6 +166,7 @@ public class AppPageFactory {
 
     /**
      * Allows to indentify campaign members user experience page.
+     *
      * @return campaign members instance.
      */
     public static AbstractCampaignMembersPage getCampaignMembers() {
@@ -177,6 +178,7 @@ public class AppPageFactory {
 
     /**
      * Returns TaskOpportunity.
+     *
      * @return task Opportunity instance.
      */
     public static AbstractTaskOpportunity getTaskOpportunity() {

@@ -27,12 +27,16 @@ import salesforce.ui.pages.newcampaign.AbstractNewCampaignPage;
 public class CampaignListClassicPage extends AbstractCampaignListPage {
     @FindBy(xpath = "//input[@class='btn' and @name='new']")
     private WebElement newButton;
+
+    @FindBy(css = "h2[class='pageDescription']")
+    private WebElement homeLabel;
+
     protected static final String NAME_CAMPAIGN = "//th//a[contains(text(),'%s')]";
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-        webDriverWait.until(ExpectedConditions.visibilityOf(newButton));
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(newButton));
+        webDriverWait.until(ExpectedConditions.visibilityOf(homeLabel));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(homeLabel));
     }
 
     @Override

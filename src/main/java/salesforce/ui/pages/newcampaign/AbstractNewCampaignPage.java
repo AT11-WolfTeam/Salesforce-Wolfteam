@@ -11,7 +11,6 @@ package salesforce.ui.pages.newcampaign;
 
 import salesforce.entities.NewCampaign;
 import salesforce.ui.pages.AbstractBasePage;
-
 import java.util.HashMap;
 import java.util.Set;
 

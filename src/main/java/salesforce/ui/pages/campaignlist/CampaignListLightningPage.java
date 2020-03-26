@@ -27,7 +27,9 @@ import salesforce.ui.pages.newcampaign.AbstractNewCampaignPage;
 public class CampaignListLightningPage extends AbstractCampaignListPage {
     @FindBy(xpath = "//a[@title='New']")
     private WebElement newButton;
+
     protected static final String NAME_CAMPAIGN = "a[title='%s']";
+    private static final String CAMPAIGN_CHECKBOX = "//a[contains(text(),'%s')]/../../../td//a";
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {

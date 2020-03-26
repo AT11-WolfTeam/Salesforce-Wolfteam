@@ -13,7 +13,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.AppPageFactory;
+import salesforce.ui.pages.campaigncontact.AbstractCampaignContactPage;
+import salesforce.ui.pages.campaigncontact.CampaignContactClassicPage;
 import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
+import salesforce.ui.pages.campaignmembers.AbstractCampaignMembersPage;
+import salesforce.ui.pages.campaignmembers.CampaignMembersClassicPage;
 
 /**
  * Defines CampaignClassicPage.
@@ -24,6 +28,15 @@ import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
 public class CampaignClassicPage extends AbstractCampaignPage {
     @FindBy(css = "input[title='Delete']")
     private WebElement deleteButton;
+
+    @FindBy(id = "managedetailLabel")
+    private WebElement manageMembersCombobox;
+
+    @FindBy(xpath = "//div[@id='managedetailMenu']/a[text()= 'Add Members - Search']")
+    private WebElement addMembersItem;
+
+    @FindBy(xpath = "//div[@id='managedetailMenu']/a[text()= 'Edit Members - Search']")
+    private WebElement editMembersItem;
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -36,5 +49,43 @@ public class CampaignClassicPage extends AbstractCampaignPage {
         webDriverWait.until(ExpectedConditions.alertIsPresent());
         webDriver.switchTo().alert().accept();
         return AppPageFactory.getCampaignsPage();
+    }
+
+    @Override
+    public AbstractCampaignContactPage addCampaignMembers() {
+        clickOnManageMemberCombobox();
+        clickOnAddMemberItem();
+        return new CampaignContactClassicPage();
+    }
+
+    /**
+     * Clicks on edit button.
+     */
+    private void clickOnEditMembers() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(editMembersItem));
+        editMembersItem.click();
+    }
+
+    @Override
+    public AbstractCampaignMembersPage viewMembers() {
+        clickOnManageMemberCombobox();
+        clickOnEditMembers();
+        return new CampaignMembersClassicPage();
+    }
+
+    /**
+     * Clicks on manage member combobox.
+     */
+    private void clickOnManageMemberCombobox() {
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(manageMembersCombobox));
+        manageMembersCombobox.click();
+    }
+
+    /**
+     * Clicks on add member item.
+     */
+    private void clickOnAddMemberItem() {
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(addMembersItem));
+        addMembersItem.click();
     }
 }

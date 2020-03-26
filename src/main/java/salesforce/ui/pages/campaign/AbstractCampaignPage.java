@@ -10,7 +10,9 @@
 package salesforce.ui.pages.campaign;
 
 import salesforce.ui.pages.AbstractBasePage;
+import salesforce.ui.pages.campaigncontact.AbstractCampaignContactPage;
 import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
+import salesforce.ui.pages.campaignmembers.AbstractCampaignMembersPage;
 
 /**
  * Defines CampaignAbstractPage.
@@ -31,4 +33,17 @@ public abstract class AbstractCampaignPage extends AbstractBasePage {
      */
     public abstract AbstractCampaignListPage deleteCampaign();
 
+    /**
+     * Adds campaign members.
+     *
+     * @return campaign contact instance.
+     */
+    public abstract AbstractCampaignContactPage addCampaignMembers();
+
+    /**
+     * Allows to view campaign members.
+     *
+     * @return campaign member instance.
+     */
+    public abstract AbstractCampaignMembersPage viewMembers();
 }

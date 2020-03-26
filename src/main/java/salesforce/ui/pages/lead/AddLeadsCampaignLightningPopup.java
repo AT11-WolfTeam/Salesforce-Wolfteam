@@ -39,6 +39,7 @@ public class AddLeadsCampaignLightningPopup extends AbstractBasePage {
 
     /**
      * Adds leads to a campaign.
+     *
      * @param leads contains a list value.
      */
     public void addLead(final List<Lead> leads) {

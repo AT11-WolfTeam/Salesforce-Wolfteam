@@ -12,6 +12,7 @@ package salesforcetest.steps;
 import io.cucumber.java.en.When;
 import salesforce.entities.Context;
 import salesforce.ui.helpers.LeadHelper;
+import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.PageTransporter;
 
 /**
@@ -40,6 +41,6 @@ public class CampaignSteps {
      */
     @When("I add the leads to the campaign")
     public void addLeads() {
-        System.out.println("Hello");
+        AppPageFactory.getCampaignPage().addLeads(context.getLeads());
     }
 }

@@ -27,7 +27,7 @@ public abstract class AbstractTabObjectsPage extends AbstractBasePage {
      *
      * @param listName contains a String value.
      */
-    public abstract void displayObjectList(String listName);
+    public abstract void displayList(String listName);
 
     /**
      * Selects a opportunity.
@@ -44,6 +44,7 @@ public abstract class AbstractTabObjectsPage extends AbstractBasePage {
 
     /**
      * Deletes an object.
+     * @param nameObject contains a String value.
      */
     public abstract void clickOnDeleteButton(String nameObject);
 }

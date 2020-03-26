@@ -72,13 +72,15 @@ public class LeadHelper {
         }
     }
 
-    public int deleteLeads(List<Lead> leads) {
+    /**
+     * Manages deletion of leads.
+     * @param leads contains a list of leads.
+     */
+    public void deleteLeads(final List<Lead> leads) {
         pageTransporter.navigateToPage(LEADS_PAGE);
-        AppPageFactory.getTabObjectsPage().displayObjectList("All Open Leads");
+        AppPageFactory.getTabObjectsPage().displayList("All Open Leads");
         for (Lead lead : leads) {
-            AppPageFactory.getTabObjectsPage().selectObjectByName(lead.getLastName());
             AppPageFactory.getTabObjectsPage().clickOnDeleteButton(lead.getLastName());
         }
-        return 0;
     }
 }

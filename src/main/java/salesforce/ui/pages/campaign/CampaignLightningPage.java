@@ -16,8 +16,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.entities.Lead;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
+import salesforce.ui.pages.lead.AddLeadsCampaignLightningPopup;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Defines CampaignLightningPage.
@@ -38,7 +39,7 @@ public class CampaignLightningPage extends AbstractCampaignPage {
             + " slds-button--icon-border-filled oneActionsDropDown']//div[@class='uiMenu']")
     private WebElement iconDropDown;
 
-    @FindBy(css = "//a[div[contains(.,'Add Leads')]]")
+    @FindBy(xpath = "//a[div[contains(.,'Add Leads')]]")
     private WebElement addLeadsButton;
 
     /**
@@ -62,8 +63,10 @@ public class CampaignLightningPage extends AbstractCampaignPage {
     }
 
     @Override
-    public void addLeads(ArrayList<Lead> leadArrayList) {
+    public void addLeads(final List<Lead> leadList) {
         addLeadsButton.click();
+        AddLeadsCampaignLightningPopup addLeadsCampaignLightningPopup = new AddLeadsCampaignLightningPopup();
+//        addLeadsCampaignPopup
     }
 
     /**

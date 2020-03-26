@@ -62,7 +62,7 @@ public class Hook {
      */
     @After("@DeletesOpportunity")
     public void deletesOpportunity() {
-        leadHelper.deleteLeads(context.getLeads());
+        opportunityApiHelper.deleteOpportunities(context.getOpportunities());
         final String expected = "204";
         for (Opportunity opportunity : context.getOpportunities()) {
             Assert.assertEquals(opportunity.getStatusCode(), expected);
@@ -74,6 +74,6 @@ public class Hook {
      */
     @After("@DeletesLeads")
     public void deletesLeads() {
-        opportunityApiHelper.deleteOpportunities(context.getOpportunities());
+        leadHelper.deleteLeads(context.getLeads());
     }
 }

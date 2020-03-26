@@ -135,7 +135,7 @@ public class OpportunityStep {
     @When("I search for the opportunity in list {string}")
     public void searchOpportunity(final String listName) {
         String opportunityName = context.getOpportunities().get(ARRAY_POSITION_FIRST).getName();
-        AppPageFactory.getTabObjectsPage().displayOpportunityList(listName);
+        AppPageFactory.getTabObjectsPage().displayList(listName);
         AppPageFactory.getOpportunityList().clickOnOpportunity(opportunityName);
     }
 
@@ -175,7 +175,7 @@ public class OpportunityStep {
         HashMap<String, String> mapOpportunity = new HashMap<>();
         mapOpportunity.putAll(mapOpportunityEdit);
         opportunitiesPage = AppPageFactory.getTabObjectsPage();
-        opportunityPage = opportunitiesPage.selectOpportunityName(context.getOpportunities().get(0).getName());
+        opportunityPage = opportunitiesPage.selectObjectByName(context.getOpportunities().get(0).getName());
         opportunity = context.getOpportunity();
         opportunity.setOpportunityInformation(mapOpportunity);
         opportunityPage.editOpportunity(opportunity, mapOpportunityEdit.keySet());
@@ -231,7 +231,7 @@ public class OpportunityStep {
         String opportunityName = context.getOpportunities().get(0).getName();
         System.out.println(opportunityName);
         // close popup
-        AppPageFactory.getTabObjectsPage().selectOpportunityName(opportunityName);
+        AppPageFactory.getTabObjectsPage().selectObjectByName(opportunityName);
     }
 
     /**
@@ -242,7 +242,7 @@ public class OpportunityStep {
     @And("I add new Task with")
     public void iAddNewTaskWith(final Map<String, String> mapNewTask) {
         opportunitiesPage = AppPageFactory.getTabObjectsPage();
-        opportunityPage = opportunitiesPage.selectOpportunityName(context.getOpportunities().get(0).getName());
+        opportunityPage = opportunitiesPage.selectObjectByName(context.getOpportunities().get(0).getName());
         abstractTaskOpportunity = opportunityPage.clickAddTask();
         taskOpportunity = context.getTaskOpportunity();
         taskOpportunity.processInformation(mapNewTask);

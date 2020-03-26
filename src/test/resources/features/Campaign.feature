@@ -1,5 +1,6 @@
 Feature: Campaign
 
+  @DeletesLeads
   @DeletesCampaign
   Scenario: Add leads at the same time
     Given I create 3 "Basic" leads

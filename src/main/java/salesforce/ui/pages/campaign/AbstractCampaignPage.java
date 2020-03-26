@@ -12,8 +12,7 @@ package salesforce.ui.pages.campaign;
 import salesforce.entities.Lead;
 import salesforce.ui.pages.AbstractBasePage;
 import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
-
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Defines CampaignAbstractPage.
@@ -36,8 +35,8 @@ public abstract class AbstractCampaignPage extends AbstractBasePage {
 
     /**
      * Add leads to a Campaign.
-     * @param leadArrayList
+     * @param leadList contains a list of leads.
      */
-    public abstract void addLeads(ArrayList<Lead> leadArrayList);
+    public abstract void addLeads(List<Lead> leadList);
 
 }

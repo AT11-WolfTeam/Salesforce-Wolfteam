@@ -11,11 +11,12 @@ package salesforce.ui.pages.genericTabs;
 
 import core.selenium.WebDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import salesforce.ui.pages.AppPageFactory;
+import salesforce.ui.pages.lead.DeleteObjectLightningPopup;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 
 /**
@@ -41,7 +42,7 @@ public class TabObjectsLightningPage extends AbstractTabObjectsPage {
     }
 
     @Override
-    public void displayObjectList(final String listName) {
+    public void displayList(final String listName) {
         String opportunityOrderedListLocator;
         opportunityListButton.click();
         opportunityOrderedListLocator = String.format(OBJECT_ORDERED_LIST_PARTIAL_LOCATOR, listName);
@@ -66,10 +67,20 @@ public class TabObjectsLightningPage extends AbstractTabObjectsPage {
 
     @Override
     public void clickOnDeleteButton(final String nameObject) {
-        String objectTabBaseLocator = "//a[@title='%s']//../../..//ul";
+        final String objectTabBaseLocator = "//a[@title='%s']//../../..//a[contains(@class,'rowActions')]";
+        final String deleteOptionLocator = "//div[contains(@class,'branding-actions')]//a[contains("
+                + "@title,'Delete')]";
         String objectTabLocator = String.format(objectTabBaseLocator, nameObject);
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(objectTabLocator))).click();
-        Select select = new Select(webDriver.findElement(By.xpath(objectTabLocator)));
-        select.selectByVisibleText("Delete");
+        try {
+            webDriver.findElement(By.xpath(objectTabLocator)).click();
+            webDriver.findElement(By.xpath(deleteOptionLocator)).click();
+            DeleteObjectLightningPopup deleteObjectLightningPopup = new DeleteObjectLightningPopup();
+            deleteObjectLightningPopup.clickOnDeleteButton();
+        } catch (StaleElementReferenceException elementHasDisappeared) {
+            webDriver.findElement(By.xpath(objectTabLocator)).click();
+            webDriver.findElement(By.xpath(deleteOptionLocator)).click();
+            DeleteObjectLightningPopup deleteObjectLightningPopup = new DeleteObjectLightningPopup();
+            deleteObjectLightningPopup.clickOnDeleteButton();
+        }
     }
 }

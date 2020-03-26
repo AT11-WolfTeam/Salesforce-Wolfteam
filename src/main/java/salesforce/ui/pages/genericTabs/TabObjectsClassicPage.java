@@ -46,7 +46,7 @@ public class TabObjectsClassicPage extends AbstractTabObjectsPage {
     }
 
     @Override
-    public void displayObjectList(final String listName) {
+    public void displayList(final String listName) {
         Select select = new Select(opportunityListSelect);
         select.selectByVisibleText(listName);
         goButton.click();

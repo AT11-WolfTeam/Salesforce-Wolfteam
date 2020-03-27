@@ -26,14 +26,13 @@ import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.PageTransporter;
 import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
 import salesforce.ui.pages.newcampaign.AbstractNewCampaignPage;
-import salesforce.ui.pages.opportunities.AbstractOpportunitiesPage;
+import salesforce.ui.pages.genericTabs.AbstractTabObjectsPage;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
 import salesforce.ui.pages.task.AbstractTask;
 import salesforce.utils.JsonFileReader;
 import salesforce.utils.ReplacerMessages;
 import salesforce.utils.SheetManager;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -53,7 +52,7 @@ public class OpportunityStep {
     private AbstractCampaignListPage campaignsPage;
     private AbstractNewCampaignPage newCampaignPage;
     private NewCampaign newCampaign;
-    private AbstractOpportunitiesPage opportunitiesPage;
+    private AbstractTabObjectsPage opportunitiesPage;
     private AbstractOpportunityPage opportunityPage;
     private Opportunity opportunity;
     private AbstractTaskOpportunity abstractTaskOpportunity;
@@ -137,7 +136,7 @@ public class OpportunityStep {
     @When("I search for the opportunity in list {string}")
     public void searchOpportunity(final String listName) {
         String opportunityName = context.getOpportunities().get(ARRAY_POSITION_FIRST).getName();
-        AppPageFactory.getOpportunitiesPage().displayOpportunityList(listName);
+        AppPageFactory.getTabObjectsPage().displayList(listName);
         AppPageFactory.getOpportunityList().clickOnOpportunity(opportunityName);
     }
 
@@ -173,10 +172,11 @@ public class OpportunityStep {
      */
     @When("I assign the Campaign to the opportunity")
     public void assignsTheCampaignToTheOpportunity(final Map<String, String> mapOpportunityEdit) {
+
         HashMap<String, String> mapOpportunity = new HashMap<>();
         mapOpportunity.putAll(mapOpportunityEdit);
-        opportunitiesPage = AppPageFactory.getOpportunitiesPage();
-        opportunityPage = opportunitiesPage.selectOpportunityName(context.getOpportunities().get(0).getName());
+        opportunitiesPage = AppPageFactory.getTabObjectsPage();
+        opportunityPage = opportunitiesPage.selectObjectByName(context.getOpportunities().get(0).getName());
         opportunity = context.getOpportunity();
         opportunity.setOpportunityInformation(mapOpportunity);
         opportunityPage.editOpportunity(opportunity, mapOpportunityEdit.keySet());
@@ -232,7 +232,7 @@ public class OpportunityStep {
         String opportunityName = context.getOpportunities().get(0).getName();
         System.out.println(opportunityName);
         // close popup
-        AppPageFactory.getOpportunitiesPage().selectOpportunityName(opportunityName);
+        AppPageFactory.getTabObjectsPage().selectObjectByName(opportunityName);
     }
 
     /**
@@ -243,8 +243,8 @@ public class OpportunityStep {
     @And("I add new Task with")
     public void iAddNewTaskWith(final Map<String, String> mapTask) {
         mapNewTask = new HashMap<>(mapTask);
-        opportunitiesPage = AppPageFactory.getOpportunitiesPage();
-        opportunityPage = opportunitiesPage.selectOpportunityName(context.getOpportunities().get(0).getName());
+        opportunitiesPage = AppPageFactory.getTabObjectsPage();
+        opportunityPage = opportunitiesPage.selectObjectByName(context.getOpportunities().get(0).getName());
         abstractTaskOpportunity = opportunityPage.clickAddTask();
         taskOpportunity = context.getTaskOpportunity();
         if (!context.getContacts().isEmpty()) {

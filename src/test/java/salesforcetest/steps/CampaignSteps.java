@@ -9,38 +9,104 @@
 
 package salesforcetest.steps;
 
-import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
 import salesforce.entities.Context;
+import salesforce.ui.helpers.LeadHelper;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
+import org.testng.Assert;
+import salesforce.entities.Contact;
+import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.PageTransporter;
+import salesforce.ui.pages.campaign.AbstractCampaignPage;
+import salesforce.ui.pages.campaigncontact.AbstractCampaignContactPage;
+import salesforce.ui.pages.campaignmembers.AbstractCampaignMembersPage;
+import salesforce.ui.pages.newcampaign.AbstractNewCampaignPage;
+import java.util.HashMap;
+import java.util.List;
 
 /**
- * Manages Lead information.
+ * Manages campaigns steps.
  *
- * @author Enrique Carrizales.
+ * @author Juan Martinez.
  * @version 1.0 24 March 2020.
  */
 public class CampaignSteps {
     private Context context;
+    private List<Contact> contacts;
+    private HashMap<String, String> contactsNames = new HashMap<>();
+    private static final String SPACE = " ";
+    private HashMap<String, String> contactList;
+
+    private AbstractCampaignPage abstractCampaignPage;
+    private AbstractNewCampaignPage newCampaignPage;
+    private AbstractCampaignMembersPage campaignMembersPage;
+    private AbstractCampaignContactPage campaignContact;
     private PageTransporter pageTransporter;
-    private static final int ARRAY_POSITION_FIRST = 0;
+    private LeadHelper leadHelper;
 
     /**
-     * OpportunityStep constructor.
+     * Constructor of campaigns steps.
      *
-     * @param context value.
+     * @param context instance.
      */
     public CampaignSteps(final Context context) {
         this.context = context;
+        contacts = context.getContacts();
         pageTransporter = new PageTransporter();
+    }
+
+    /**
+     * Selects a campaign by name.
+     *
+     * @param campaignName value.
+     */
+    @And("I select {string} campaign")
+    public void selectCampaign(final String campaignName) {
+        AppPageFactory.getCampaignsPage().selectCampaignName(campaignName);
+    }
+
+    /**
+     * Allows to add contacts to campaigns.
+     */
+    @And("I add the contacts the campaign")
+    public void addContactsTheCampaign() {
+        abstractCampaignPage = AppPageFactory.getCampaignPage();
+        for (Contact contact : contacts) {
+            contactsNames.put(contact.getLastName(), contact.getFirstName());
+        }
+        campaignContact = abstractCampaignPage.addCampaignMembers();
+        campaignContact.checkContacts(contactsNames);
+    }
+
+    /**
+     * Allows to add verify added contacts.
+     */
+    @Then("The added contacts should be displayed on Campaign Members page")
+    public void verifyContacts() {
+        campaignMembersPage = abstractCampaignPage.viewMembers();
+        contactList = new HashMap<>();
+        for (Contact contact : contacts) {
+            contactList.put(contact.getLastName(), contact.getFirstName());
+        }
+        HashMap<String, String> actual = campaignMembersPage.getContactsText(contactList);
+        Assert.assertEquals(actual, contactList, "message: " + actual + SPACE + contactList);
     }
 
     /**
      * Creates leads objects.
      *
-     * @param leadsQuantity contains quantity.
-     * @param leadType a Lead type.
      */
-    @Given("I create {int} {string} leads")
-    public void createsLeads(final int leadsQuantity, final String leadType) {
+    @When("I add the leads to the campaign")
+    public void addLeads() {
+        //Todo
+    }
+
+    /**
+     * Selects the campaign.
+     */
+    @And("I select the campaign")
+    public void selectTheCampaign() {
+        AppPageFactory.getCampaignsPage().selectCampaignName(context.getNewCampaign().getCampaignName());
     }
 }

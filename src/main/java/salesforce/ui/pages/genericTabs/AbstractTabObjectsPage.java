@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages.opportunities;
+package salesforce.ui.pages.genericTabs;
 
 import org.openqa.selenium.WebElement;
 import salesforce.ui.pages.AbstractBasePage;
@@ -19,7 +19,7 @@ import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
  * @author Alan Escalera.
  * @version 1.0 19 March 2020.
  */
-public abstract class AbstractOpportunitiesPage extends AbstractBasePage {
+public abstract class AbstractTabObjectsPage extends AbstractBasePage {
     protected WebElement nameOpportunitySelected;
 
     /**
@@ -27,7 +27,7 @@ public abstract class AbstractOpportunitiesPage extends AbstractBasePage {
      *
      * @param listName contains a String value.
      */
-    public abstract void displayOpportunityList(String listName);
+    public abstract void displayList(String listName);
 
     /**
      * Selects a opportunity.
@@ -35,5 +35,17 @@ public abstract class AbstractOpportunitiesPage extends AbstractBasePage {
      * @param opportunityName value.
      * @return OpportunityPage instance.
      */
-    public abstract AbstractOpportunityPage selectOpportunityName(String opportunityName);
+    public abstract AbstractOpportunityPage selectObjectByName(String opportunityName);
+
+    /**
+     * Displays an object.
+     */
+    public abstract void clickOnNewButton();
+
+    /**
+     * Deletes an object.
+     *
+     * @param nameObject contains a String value.
+     */
+    public abstract void clickOnDeleteButton(String nameObject);
 }

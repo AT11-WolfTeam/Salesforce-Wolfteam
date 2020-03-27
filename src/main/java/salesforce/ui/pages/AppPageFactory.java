@@ -16,9 +16,15 @@ import salesforce.ui.components.menu.TopMenuAbstract;
 import salesforce.ui.pages.campaign.AbstractCampaignPage;
 import salesforce.ui.pages.campaign.CampaignClassicPage;
 import salesforce.ui.pages.campaign.CampaignLightningPage;
+import salesforce.ui.pages.campaigncontact.AbstractCampaignContactPage;
+import salesforce.ui.pages.campaigncontact.CampaignContactClassicPage;
+import salesforce.ui.pages.campaigncontact.CampaignContactPopupLightningPage;
 import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
 import salesforce.ui.pages.campaignlist.CampaignListClassicPage;
 import salesforce.ui.pages.campaignlist.CampaignListLightningPage;
+import salesforce.ui.pages.campaignmembers.AbstractCampaignMembersPage;
+import salesforce.ui.pages.campaignmembers.CampaignMembersClassicPage;
+import salesforce.ui.pages.campaignmembers.CampaignMembersLightningPage;
 import salesforce.ui.pages.newcampaign.AbstractNewCampaignPage;
 import salesforce.ui.pages.newcampaign.NewCampaignClassicPage;
 import salesforce.ui.pages.newcampaign.NewCampaignLightningPopUp;
@@ -28,9 +34,9 @@ import salesforce.ui.pages.notesattachments.NotesAndAttachmentsPageAbstract;
 import salesforce.ui.pages.oportunitieslist.AbstractOpportunityListPage;
 import salesforce.ui.pages.oportunitieslist.OpportunityListClassicPage;
 import salesforce.ui.pages.oportunitieslist.OpportunityListLightningPage;
-import salesforce.ui.pages.opportunities.AbstractOpportunitiesPage;
-import salesforce.ui.pages.opportunities.OpportunitiesClassicPage;
-import salesforce.ui.pages.opportunities.OpportunitiesLightningPage;
+import salesforce.ui.pages.genericTabs.AbstractTabObjectsPage;
+import salesforce.ui.pages.genericTabs.TabObjectsClassicPage;
+import salesforce.ui.pages.genericTabs.TabObjectsLightningPage;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 import salesforce.ui.pages.opportunity.OpportunityClassicPage;
 import salesforce.ui.pages.opportunity.OpportunityLightningPage;
@@ -79,11 +85,11 @@ public class AppPageFactory {
      *
      * @return OpportunitiesPage instance.
      */
-    public static AbstractOpportunitiesPage getOpportunitiesPage() {
+    public static AbstractTabObjectsPage getTabObjectsPage() {
         if (userExperience.equals("Classic")) {
-            return new OpportunitiesClassicPage();
+            return new TabObjectsClassicPage();
         }
-        return new OpportunitiesLightningPage();
+        return new TabObjectsLightningPage();
     }
 
     /**
@@ -159,7 +165,20 @@ public class AppPageFactory {
     }
 
     /**
+     * Allows to indentify campaign members user experience page.
+     *
+     * @return campaign members instance.
+     */
+    public static AbstractCampaignMembersPage getCampaignMembers() {
+        if (userExperience.equals("Classic")) {
+            return new CampaignMembersClassicPage();
+        }
+        return new CampaignMembersLightningPage();
+    }
+
+    /**
      * Returns TaskOpportunity.
+     *
      * @return task Opportunity instance.
      */
     public static AbstractTaskOpportunity getTaskOpportunity() {
@@ -167,5 +186,17 @@ public class AppPageFactory {
             return new TaskOpportunityClassic();
         }
         return new TaskOpportunityLightning();
+    }
+
+    /**
+     * Allows to indentify campaign members user experience page.
+     *
+     * @return campaign members instance.
+     */
+    public static AbstractCampaignContactPage getCampaignContacts() {
+        if (userExperience.equals("Classic")) {
+            return new CampaignContactClassicPage();
+        }
+        return new CampaignContactPopupLightningPage();
     }
 }

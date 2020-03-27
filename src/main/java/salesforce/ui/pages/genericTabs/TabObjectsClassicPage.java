@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages.opportunities;
+package salesforce.ui.pages.genericTabs;
 
 import core.selenium.WebDriverManager;
 import org.openqa.selenium.By;
@@ -24,7 +24,7 @@ import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
  * @author Alan Escalera.
  * @version 1.0 19 March 2020.
  */
-public class OpportunitiesClassicPage extends AbstractOpportunitiesPage {
+public class TabObjectsClassicPage extends AbstractTabObjectsPage {
     @FindBy(xpath = "//input[@class='btn' and @name='new']")
     private WebElement newButton;
 
@@ -43,18 +43,28 @@ public class OpportunitiesClassicPage extends AbstractOpportunitiesPage {
     }
 
     @Override
-    public void displayOpportunityList(final String listName) {
+    public void displayList(final String listName) {
         Select select = new Select(opportunityListSelect);
         select.selectByVisibleText(listName);
         goButton.click();
     }
 
     @Override
-    public AbstractOpportunityPage selectOpportunityName(final String opportunityName) {
+    public AbstractOpportunityPage selectObjectByName(final String opportunityName) {
         String opportunityNameXpath = String.format(NAME_OPPORTUNITY, opportunityName);
         nameOpportunitySelected = WebDriverManager.getInstance().getWebDriver().findElement(By
                 .xpath(opportunityNameXpath));
         nameOpportunitySelected.click();
         return AppPageFactory.getOpportunityPage();
+    }
+
+    @Override
+    public void clickOnNewButton() {
+        //Todo
+    }
+
+    @Override
+    public void clickOnDeleteButton(final String nameObject) {
+        //Todo
     }
 }

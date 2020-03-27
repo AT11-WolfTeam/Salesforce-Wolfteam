@@ -14,7 +14,6 @@ import salesforce.entities.TaskOpportunity;
 import salesforce.entities.constants.TaskConstant;
 import salesforce.ui.pages.AbstractBasePage;
 import salesforce.ui.pages.task.AbstractTask;
-
 import java.util.HashMap;
 import java.util.Set;
 

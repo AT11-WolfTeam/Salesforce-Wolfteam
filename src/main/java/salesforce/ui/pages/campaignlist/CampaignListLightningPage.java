@@ -11,6 +11,7 @@ package salesforce.ui.pages.campaignlist;
 
 import core.selenium.WebDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -27,12 +28,19 @@ import salesforce.ui.pages.newcampaign.AbstractNewCampaignPage;
 public class CampaignListLightningPage extends AbstractCampaignListPage {
     @FindBy(xpath = "//a[@title='New']")
     private WebElement newButton;
+
     protected static final String NAME_CAMPAIGN = "a[title='%s']";
+    private static final String CAMPAIGN_CHECKBOX = "//a[contains(text(),'%s')]/../../../td//a";
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-        webDriverWait.until(ExpectedConditions.visibilityOf(newButton));
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(newButton));
+        try {
+            webDriverWait.until(ExpectedConditions.elementToBeClickable(newButton));
+            webDriverWait.until(ExpectedConditions.visibilityOf(newButton));
+        } catch (StaleElementReferenceException elementHasDisappeared) {
+            webDriverWait.until(ExpectedConditions.elementToBeClickable(newButton));
+            webDriverWait.until(ExpectedConditions.visibilityOf(newButton));
+        }
     }
 
     @Override

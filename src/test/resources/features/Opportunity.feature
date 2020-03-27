@@ -8,7 +8,7 @@ Feature: Opportunity
       And I change the opportunity's owner with "Current User"
     Then the application should display this message in Opportunity Page only for Lightning Experience
       | [Current User] now owns the record for [Opportunity Name]. |
-    And the opportunity page displays the owner "Current User"
+      And the opportunity page displays the owner "Current User"
 
 
   @DeletesOpportunity

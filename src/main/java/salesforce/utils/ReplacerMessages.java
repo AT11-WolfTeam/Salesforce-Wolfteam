@@ -20,6 +20,7 @@ public class ReplacerMessages {
     private static final String OPPORTUNITY_NAME_REGEX = "[Opportunity Name]";
     private static final String CAMPAIGN_NAME_REGEX = "[Campaign Name]";
     private static final String CURRENT_USER = "Current User";
+    private static final String TASK_NAME = "[Task Name]";
 
     /**
      * Replaces words in a message.
@@ -35,5 +36,16 @@ public class ReplacerMessages {
         result = result.replace(CAMPAIGN_NAME_REGEX, objectName);
         result = result.replace(OPPORTUNITY_NAME_REGEX, objectName);
         return result;
+    }
+
+    /**
+     * Replaces words in a message.
+     *
+     * @param message contains a message String.
+     * @param taskName contains an opportunity name.
+     * @return a new message.
+     */
+    public static String replaceTaskSavedMessage(final String message, final String taskName) {
+        return message.replace(TASK_NAME, taskName);
     }
 }

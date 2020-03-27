@@ -25,16 +25,31 @@ import java.util.Set;
  */
 public abstract class AbstractTaskOpportunity extends AbstractBasePage {
     protected WebElement taskNameSelected;
-    private static final String SUBJECT = "Subject";
 
     /**
      * Sets Subject task.
+     *
      * @param subject value.
      */
     protected abstract void setSubjectTask(String subject);
 
     /**
+     * Sets contact.
+     *
+     * @param contact value.
+     */
+    protected abstract void setContact(String contact);
+
+    /**
+     * Sets due date.
+     *
+     * @param dueDate value.
+     */
+    protected abstract void setDueDate(String dueDate);
+
+    /**
      * Clicks on task to edit.
+     *
      * @param task value.
      * @return TaskPage instance.
      */
@@ -65,6 +80,8 @@ public abstract class AbstractTaskOpportunity extends AbstractBasePage {
     protected HashMap<String, Runnable> composeStrategyMap(final TaskOpportunity taskOpportunity) {
         HashMap<String, Runnable> strategyMap = new HashMap<>();
         strategyMap.put(TaskConstant.SUBJECT, () -> setSubjectTask(taskOpportunity.getSubject()));
+        strategyMap.put(TaskConstant.CONTACT, () -> setContact(taskOpportunity.getContact()));
+        strategyMap.put(TaskConstant.DUE_DATE, () -> setDueDate(taskOpportunity.getDueDate()));
         return strategyMap;
     }
 }

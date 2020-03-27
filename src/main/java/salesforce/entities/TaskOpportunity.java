@@ -10,7 +10,7 @@
 package salesforce.entities;
 
 import salesforce.entities.constants.TaskConstant;
-
+import salesforce.utils.DateFormatter;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -27,14 +27,15 @@ public class TaskOpportunity {
     private String subject;
     private String status;
     private String priority;
-    private String account;
+    private String contact;
+    private String dueDate;
 
     private Set<String> modifiedTaskFields = new HashSet<>();
 
     /**
-     * Returns status value.
+     * Gets status value.
      *
-     * @return string value.
+     * @return status value.
      */
     public String getStatus() {
         return status;
@@ -50,9 +51,9 @@ public class TaskOpportunity {
     }
 
     /**
-     * Returns priority value.
+     * Gets priority value.
      *
-     * @return string value.
+     * @return priority value.
      */
     public String getPriority() {
         return priority;
@@ -68,27 +69,27 @@ public class TaskOpportunity {
     }
 
     /**
-     * Returns account value.
+     * Gets account value.
      *
-     * @return string value.
+     * @return account value.
      */
-    public String getAccount() {
-        return account;
+    public String getContact() {
+        return contact;
     }
 
     /**
      * Sets account value.
      *
-     * @param account value.
+     * @param contact value.
      */
-    public void setAccount(final String account) {
-        this.account = account;
+    public void setContact(final String contact) {
+        this.contact = contact;
     }
 
     /**
-     * Returns subject value.
+     * Gets subject value.
      *
-     * @return string value.
+     * @return subject value.
      */
     public String getSubject() {
         return subject;
@@ -101,6 +102,24 @@ public class TaskOpportunity {
      */
     public void setSubject(final String subject) {
         this.subject = subject;
+    }
+
+    /**
+     * Gets dueDate value.
+     *
+     * @return dueDate value.
+     */
+    public String getDueDate() {
+        return dueDate;
+    }
+
+    /**
+     * Sets dueDate value.
+     *
+     * @param dueDate value.
+     */
+    public void setDueDate(final String dueDate) {
+        this.dueDate = DateFormatter.formatDateUi(dueDate);
     }
 
     /**
@@ -125,7 +144,8 @@ public class TaskOpportunity {
         strategyMap.put(TaskConstant.PRIORITY, () -> setPriority(mapTask.get(TaskConstant.PRIORITY)));
         strategyMap.put(TaskConstant.SUBJECT, () -> setSubject(mapTask.get(TaskConstant.SUBJECT)));
         strategyMap.put(TaskConstant.STATUS, () -> setStatus(mapTask.get(TaskConstant.STATUS)));
-        strategyMap.put(TaskConstant.ACCOUNT, () -> setAccount(mapTask.get(TaskConstant.ACCOUNT)));
+        strategyMap.put(TaskConstant.CONTACT, () -> setContact(mapTask.get(TaskConstant.CONTACT)));
+        strategyMap.put(TaskConstant.DUE_DATE, () -> setDueDate(mapTask.get(TaskConstant.DUE_DATE)));
         return strategyMap;
     }
 
@@ -153,7 +173,8 @@ public class TaskOpportunity {
         strategyMap.put(TaskConstant.PRIORITY, () -> getPriority());
         strategyMap.put(TaskConstant.STATUS, () -> getStatus());
         strategyMap.put(TaskConstant.SUBJECT, () -> getSubject());
-        strategyMap.put(TaskConstant.ACCOUNT, () -> getAccount());
+        strategyMap.put(TaskConstant.CONTACT, () -> getContact());
+        strategyMap.put(TaskConstant.DUE_DATE, () -> getDueDate());
         return strategyMap;
     }
 }

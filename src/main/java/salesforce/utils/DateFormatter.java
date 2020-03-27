@@ -9,6 +9,7 @@
 
 package salesforce.utils;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -20,7 +21,7 @@ import java.util.Date;
  * @version 1.0 20 March 2020.
  */
 public final class DateFormatter {
-    private static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+    private static SimpleDateFormat formatter = new SimpleDateFormat();
     private static Calendar calendar = Calendar.getInstance();
     private static final int DAYS = 0;
     private static final int MONTHS = 1;
@@ -30,6 +31,8 @@ public final class DateFormatter {
     private static final String AFTER = "AFTER";
     private static final String REGEX = "[^0-9]+";
     private static final String EMPTY = "";
+    private static final String FORMAT_API = "yyyy-MM-dd";
+    private static final String FORMAT_UI = "M/dd/yyyy";
     private static String[] date;
     private static final int LIST_SIZE = 3;
     private static Date today = new Date(System.currentTimeMillis());
@@ -144,6 +147,7 @@ public final class DateFormatter {
      * @return formatted date.
      */
     public static String formatDate(final String date) {
+        formatter.applyPattern(FORMAT_API);
         String value = null;
         if (date == null) {
             return date;
@@ -156,5 +160,23 @@ public final class DateFormatter {
             value = after(date);
         }
         return value;
+    }
+
+    /**
+     * Converts format date to format to use on UI.
+     *
+     * @param date value.
+     * @return string value.
+     */
+    public static String formatDateUi(final String date) {
+        String dateApi = formatDate(date);
+        Date dateUi = null;
+        try {
+            dateUi = formatter.parse(dateApi);
+            formatter.applyPattern(FORMAT_UI);
+        } catch (ParseException parseException) {
+            parseException.printStackTrace();
+        }
+        return formatter.format(dateUi);
     }
 }

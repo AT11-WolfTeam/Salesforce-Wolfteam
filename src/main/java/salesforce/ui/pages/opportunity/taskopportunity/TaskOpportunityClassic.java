@@ -43,7 +43,7 @@ public class TaskOpportunityClassic extends AbstractTaskOpportunity {
     private WebElement contactNameSelected;
 
     private static final String TASK_NAME = "//div[@class='taskInnerContent']//a[text()='%s']";
-    private static final String CONTACT_NAME = "//a[text()='Franco Smith1']";
+    private static final String CONTACT_NAME = "//a[text()='%s']";
     private String parentHandle;
 
     @Override
@@ -92,7 +92,7 @@ public class TaskOpportunityClassic extends AbstractTaskOpportunity {
 
     @Override
     protected void setDueDate(final String dueDate) {
-
+        dueDateField.sendKeys(dueDate);
     }
 
     @Override

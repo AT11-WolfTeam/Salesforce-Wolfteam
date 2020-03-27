@@ -9,6 +9,7 @@
 
 package salesforce.ui.pages.campaign;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -50,6 +51,8 @@ public class CampaignLightningPage extends AbstractCampaignPage {
 
     @FindBy(css = "span[class='view-all-label']")
     private WebElement viewAllLink;
+
+    private static final String VIEW_ALL_LINK_TEX_LOCATOR = "//a[span[@class='view-all-label']]";
 
     /**
      * Constructor CampaignLightningPage.
@@ -97,6 +100,12 @@ public class CampaignLightningPage extends AbstractCampaignPage {
     public AbstractCampaignMembersPage viewMembers() {
         clickOnViewAll();
         return new CampaignMembersLightningPage();
+    }
+
+    @Override
+    public void displayCampaignMembers() {
+        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(VIEW_ALL_LINK_TEX_LOCATOR)))
+                .click();
     }
 
     /**

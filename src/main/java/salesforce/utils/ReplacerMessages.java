@@ -18,21 +18,24 @@ package salesforce.utils;
 public class ReplacerMessages {
     private static final String CURRENT_USER_REGEX = "[Current User]";
     private static final String OPPORTUNITY_NAME_REGEX = "[Opportunity Name]";
+    private static final String CAMPAIGN_NAME_REGEX = "[Campaign Name]";
     private static final String CURRENT_USER = "Current User";
     private static final String TASK_NAME = "[Task Name]";
 
     /**
      * Replaces words in a message.
      *
-     * @param message contains a message String.
-     * @param opportunityName contains an opportunity name.
+     * @param message    contains a message String.
+     * @param objectName contains an opportunity name.
      * @return a new message.
      */
-    public static String replaceChangeOwnerMessage(final String message, final String opportunityName) {
+    public static String replaceTransactionMessage(final String message, final String objectName) {
         String result;
         JsonFileReader jsonFileReader = new JsonFileReader("config.json");
         result = message.replace(CURRENT_USER_REGEX, jsonFileReader.getUser(CURRENT_USER).getUsername());
-        return result.replace(OPPORTUNITY_NAME_REGEX, opportunityName);
+        result = result.replace(CAMPAIGN_NAME_REGEX, objectName);
+        result = result.replace(OPPORTUNITY_NAME_REGEX, objectName);
+        return result;
     }
 
     /**

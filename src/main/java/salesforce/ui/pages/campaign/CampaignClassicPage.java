@@ -81,6 +81,11 @@ public class CampaignClassicPage extends AbstractCampaignPage {
         return new CampaignMembersClassicPage();
     }
 
+    @Override
+    public void displayCampaignMembers() {
+        //Todo
+    }
+
     /**
      * Clicks on manage member combobox.
      */

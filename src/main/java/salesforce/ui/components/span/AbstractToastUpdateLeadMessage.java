@@ -17,10 +17,12 @@ import salesforce.ui.pages.AbstractBasePage;
  * @author Enrique Carrizales.
  * @version 1.0 27 March 2020.
  */
-public abstract class AbstractToastUpdateMessageSpan extends AbstractBasePage {
+public abstract class AbstractToastUpdateLeadMessage extends AbstractBasePage {
 
-    @Override
-    protected void waitUntilPageObjectIsLoaded() {
-
-    }
+    /**
+     * Returns a message.
+     *
+     * @return a String value.
+     */
+    protected abstract String getMessage();
 }

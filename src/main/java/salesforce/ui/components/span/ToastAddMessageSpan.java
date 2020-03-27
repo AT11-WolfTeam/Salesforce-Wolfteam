@@ -20,7 +20,7 @@ import salesforce.ui.pages.AbstractBasePage;
  * @author Enrique Carrizales.
  * @version 1.0 26 March 2020.
  */
-public class ToastAddMessageSpan extends AbstractBasePage {
+public class ToastAddMessageSpan extends AbstractToastUpdateLeadMessage {
 
     @FindBy(css = "div[class='toastTitle slds-text-heading--small']")
     private WebElement toastFirstMessage;
@@ -33,12 +33,8 @@ public class ToastAddMessageSpan extends AbstractBasePage {
         webDriverWait.until(ExpectedConditions.visibilityOf(toastFirstPartSecondMessage));
     }
 
-    /**
-     * Returns a toast message.
-     *
-     * @return String value.
-     */
-    public String getToastMessage() {
+    @Override
+    protected String getMessage() {
         final String space = " ";
         String firstPartMessage = toastFirstMessage.getText() + space;
         String secondPartMessageText = toastFirstPartSecondMessage.getText();

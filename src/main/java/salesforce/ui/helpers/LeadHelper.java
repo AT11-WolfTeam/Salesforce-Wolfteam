@@ -12,6 +12,7 @@ package salesforce.ui.helpers;
 import core.selenium.WebDriverManager;
 import salesforce.entities.Lead;
 import salesforce.ui.pages.AppPageFactory;
+import salesforce.ui.pages.genericTabs.TabObjectsLightningPage;
 import salesforce.ui.pages.lead.NewLeadLightningPopup;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,7 +56,8 @@ public class LeadHelper {
 
         goToLeadPage();
 
-        AppPageFactory.getTabObjectsPage().clickOnNewButton();
+        TabObjectsLightningPage tabObjectsLightningPage = new TabObjectsLightningPage();
+        tabObjectsLightningPage.clickOnNewButton();
         NewLeadLightningPopup newLeadLightningPopup = new NewLeadLightningPopup();
         for (int index = zero; index < leads.size(); index++) {
             newLeadLightningPopup.loadNewLeadFields(leads.get(index));
@@ -75,9 +77,10 @@ public class LeadHelper {
     public void deleteLeads(final List<Lead> leads) {
         goToLeadPage();
 
-        AppPageFactory.getTabObjectsPage().displayList("All Open Leads");
+        TabObjectsLightningPage tabObjectsLightningPage = new TabObjectsLightningPage();
+        tabObjectsLightningPage.displayList("All Open Leads");
         for (Lead lead : leads) {
-            AppPageFactory.getTabObjectsPage().clickOnDeleteButton(lead.getLastName());
+            tabObjectsLightningPage.clickOnDeleteButton(lead.getLastName());
         }
     }
 

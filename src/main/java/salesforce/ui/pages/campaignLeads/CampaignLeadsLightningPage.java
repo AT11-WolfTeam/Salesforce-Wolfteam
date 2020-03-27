@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages.campaign;
+package salesforce.ui.pages.campaignLeads;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -23,7 +23,7 @@ import java.util.List;
  * @author Enrique Carrizales.
  * @version 1.0 26 March 2020.
  */
-public class CampaignMembersLightningPage extends AbstractBasePage {
+public class CampaignLeadsLightningPage extends AbstractBasePage {
 
     private static final String LEAD_ROW_PARTIAL_LOCATOR = "//tr[*[span[*[text()='Lead']]] and td[span[*[text()='%1$s'"
             + "]]] and td[span[*[text()='%2$s']]]]";

@@ -4,7 +4,7 @@ Feature: Opportunity
   Scenario: Change opportunity owner to another user
     Given I create 1 "Basic" opportunities
     When I go to "Opportunities Page"
-      And I search for the opportunity in list "All Opportunities"
+      And I search for the opportunity in list "Recently Viewed Opportunities"
       And I change the opportunity's owner with "Current User"
     Then the application should display this message in Opportunity Page only for Lightning Experience
       | [Current User] now owns the record for [Opportunity Name]. |

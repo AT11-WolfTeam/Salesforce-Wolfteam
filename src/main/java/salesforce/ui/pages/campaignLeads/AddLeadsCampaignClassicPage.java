@@ -38,8 +38,8 @@ public class AddLeadsCampaignClassicPage extends AbstractBasePage {
     @FindBy(css = "div[class='x-grid3-header-offset'] table")
     private WebElement searchTable;
 
-    private static final String ROW_CHECK_BUTTON = "//tr[td[div[a[span[text()='%1$s']]]] and td[div[a[span[text()=" +
-            "'%2$s']]]] ]//../../tbody//input";
+    private static final String ROW_CHECK_BUTTON = "//tr[td[div[a[span[text()='%1$s']]]] and td[div[a[span[text()="
+            + "'%2$s']]]] ]//../../tbody//input";
     private static final String SEND_OPTION_ADD_WITH_STATUS_BUTTON = "a[class*='menuButtonMenuLink first'][onclick]";
 
     @Override
@@ -65,7 +65,7 @@ public class AddLeadsCampaignClassicPage extends AbstractBasePage {
     }
 
     /**
-     * Checks a button;
+     * Checks a button.
      */
     private void checkLeadCheckButton() {
         if (!leadCheckButton.isSelected()) {
@@ -81,7 +81,7 @@ public class AddLeadsCampaignClassicPage extends AbstractBasePage {
     }
 
     /**
-     * Clicks on a button:
+     * Clicks on a button.
      */
     private void clickOnAddWithStatusButton() {
         addWithStatusButton.click();
@@ -90,7 +90,7 @@ public class AddLeadsCampaignClassicPage extends AbstractBasePage {
     /**
      * Finds leads.
      */
-    private void findLeads(){
+    private void findLeads() {
         checkLeadCheckButton();
         clickOnGoButton();
     }

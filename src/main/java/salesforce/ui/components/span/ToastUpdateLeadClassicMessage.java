@@ -13,6 +13,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+/**
+ * Manages a ToastUpdateLeadClassicMessage.
+ *
+ * @author Enrique Carrizales.
+ * @version 1.0 27 March 2020.
+ */
 public class ToastUpdateLeadClassicMessage extends AbstractToastUpdateLeadMessage {
 
     @FindBy(css = "td[class='messageCell'] div h4")

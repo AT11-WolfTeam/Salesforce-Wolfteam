@@ -30,7 +30,11 @@ public class ToastUpdateObjectMessage extends AbstractBasePage {
         webDriverWait.until(ExpectedConditions.visibilityOf(toastMessage));
     }
 
-
+    /**
+     * Returns a message.
+     *
+     * @return a String value.
+     */
     public String getMessage() {
         return toastMessage.getText();
     }

@@ -60,8 +60,12 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     @FindBy(xpath = "//span[@class='publisherattachtext ' and text()='File']")
     private WebElement addFile;
 
+    @FindBy(xpath = "//input[@name='tsk5__09D3h0000012ZVJ']")
+    private WebElement subjectField;
+
     private String parentHandle;
     protected static final String CAMPAIGN_NAME = "//th[@scope='row']//a[contains(text(),'%s')]";
+    protected static final int INTERVAL_TIME = 2000;
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -161,20 +165,7 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
 
     @Override
     public AbstractTaskOpportunity clickAddTask() {
-        waiters();
-        addTaskButton.click();
-        addTaskButton.click();
+        UtilSalesforce.retryClick(addTaskButton, subjectField, INTERVAL_TIME);
         return AppPageFactory.getTaskOpportunity();
-    }
-
-    /**
-     * Waits until the elements are found.
-     */
-    private void waiters() {
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(addTaskButton));
-        webDriverWait.until(ExpectedConditions.visibilityOf(addTaskButton));
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(editButton));
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(addFile));
-        webDriverWait.until(ExpectedConditions.visibilityOf(addFile));
     }
 }

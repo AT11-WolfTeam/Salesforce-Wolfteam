@@ -12,7 +12,6 @@ package salesforcetest.steps;
 import core.utils.GradleReader;
 import io.cucumber.java.en.When;
 import salesforce.entities.Context;
-import salesforce.ui.components.span.ToastAddMessageSpan;
 import salesforce.ui.helpers.LeadHelper;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -25,7 +24,6 @@ import salesforce.ui.pages.campaignLeads.CampaignLeadsLightningPage;
 import salesforce.ui.pages.campaigncontact.AbstractCampaignContactPage;
 import salesforce.ui.pages.campaignmembers.AbstractCampaignMembersPage;
 import salesforce.ui.pages.newcampaign.AbstractNewCampaignPage;
-import salesforce.utils.ReplacerMessages;
 
 import java.util.HashMap;
 import java.util.List;

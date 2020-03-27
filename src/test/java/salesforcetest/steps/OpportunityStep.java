@@ -291,10 +291,10 @@ public class OpportunityStep {
     @Then("the application should this message only for Lightning Experience")
     public void theApplicationShouldThisMessageOnlyForLightningExperience(final List<String> message) {
         if (userExperience.equals(USER_EXPERIENCE_LIGHTNING)) {
-            ToastUpdateObjectMessage toastUpdateObjectMessageSpan = new ToastUpdateObjectMessage();
-            String actualResult = toastUpdateObjectMessageSpan.getMessage();
-            String expectedResult = ReplacerMessages.replaceTransactionMessage(message.get(ARRAY_POSITION_FIRST),
-                    context.getOpportunities().get(ARRAY_POSITION_FIRST).getName());
+            ToastUpdateObjectMessage toastUpdateMessageSpan = new ToastUpdateObjectMessage();
+            String actualResult = toastUpdateMessageSpan.getMessage();
+            String expectedResult = ReplacerMessages.replaceTaskSavedMessage(message.get(ARRAY_POSITION_FIRST),
+                    context.getTaskOpportunity().getSubject());
             Assert.assertEquals(actualResult, expectedResult);
         }
         abstractTask = abstractTaskOpportunity.clickTaskToEdit(context.getTaskOpportunity().getSubject());

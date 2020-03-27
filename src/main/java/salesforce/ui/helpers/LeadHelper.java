@@ -11,7 +11,6 @@ package salesforce.ui.helpers;
 
 import core.selenium.WebDriverManager;
 import salesforce.entities.Lead;
-import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.genericTabs.TabObjectsLightningPage;
 import salesforce.ui.pages.lead.NewLeadLightningPopup;
 import java.util.ArrayList;

@@ -12,7 +12,6 @@ package salesforce.ui.components.span;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.ui.pages.AbstractBasePage;
 
 /**
  * Manages a ToastAddMessageSpan.

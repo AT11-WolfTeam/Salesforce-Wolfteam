@@ -128,6 +128,7 @@ public class TaskLightningPage extends AbstractTask {
 
     /**
      * Deletes the field of the element.
+     *
      * @param text of the field.
      * @param subjectField element.
      */

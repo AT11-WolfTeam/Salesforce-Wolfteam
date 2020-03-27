@@ -11,7 +11,6 @@ package salesforce.entities;
 
 import salesforce.entities.constants.TaskConstant;
 import salesforce.utils.DateFormatter;
-
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -34,9 +33,9 @@ public class TaskOpportunity {
     private Set<String> modifiedTaskFields = new HashSet<>();
 
     /**
-     * Returns status value.
+     * Gets status value.
      *
-     * @return string value.
+     * @return status value.
      */
     public String getStatus() {
         return status;
@@ -52,9 +51,9 @@ public class TaskOpportunity {
     }
 
     /**
-     * Returns priority value.
+     * Gets priority value.
      *
-     * @return string value.
+     * @return priority value.
      */
     public String getPriority() {
         return priority;
@@ -70,9 +69,9 @@ public class TaskOpportunity {
     }
 
     /**
-     * Returns account value.
+     * Gets account value.
      *
-     * @return string value.
+     * @return account value.
      */
     public String getContact() {
         return contact;
@@ -88,9 +87,9 @@ public class TaskOpportunity {
     }
 
     /**
-     * Returns subject value.
+     * Gets subject value.
      *
-     * @return string value.
+     * @return subject value.
      */
     public String getSubject() {
         return subject;
@@ -106,9 +105,9 @@ public class TaskOpportunity {
     }
 
     /**
-     * Returns dueDate value.
+     * Gets dueDate value.
      *
-     * @return string value.
+     * @return dueDate value.
      */
     public String getDueDate() {
         return dueDate;

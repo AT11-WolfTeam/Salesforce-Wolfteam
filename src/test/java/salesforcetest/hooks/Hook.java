@@ -83,11 +83,6 @@ public class Hook {
         leadHelper.deleteLeads(context.getLeads());
     }
 
-//     /**
-//     * Deletes contacts by id.
-//     */
-//    @After("@CampaignAccounts")
-
     /**
      * Deletes Contact.
      */

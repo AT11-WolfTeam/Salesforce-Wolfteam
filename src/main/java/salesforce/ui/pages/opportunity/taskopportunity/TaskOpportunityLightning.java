@@ -64,6 +64,7 @@ public class TaskOpportunityLightning extends AbstractTaskOpportunity {
 
     /**
      * Selects a contact on the combo box.
+     *
      * @param contact value.
      */
     private void selectContact(final String contact) {
@@ -91,7 +92,6 @@ public class TaskOpportunityLightning extends AbstractTaskOpportunity {
         taskNameSelected.click();
         return AppPageFactory.getTaskPage();
     }
-
 
 
     @Override

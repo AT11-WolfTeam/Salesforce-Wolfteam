@@ -176,7 +176,8 @@ public class OpportunityStep {
         HashMap<String, String> mapOpportunity = new HashMap<>();
         mapOpportunity.putAll(mapOpportunityEdit);
         opportunitiesPage = AppPageFactory.getTabObjectsPage();
-        opportunityPage = opportunitiesPage.selectObjectByName(context.getOpportunities().get(0).getName());
+        opportunityPage = opportunitiesPage.selectObjectByName(context.getOpportunities().get(ARRAY_POSITION_FIRST)
+                .getName());
         opportunity = context.getOpportunity();
         opportunity.setOpportunityInformation(mapOpportunity);
         opportunityPage.editOpportunity(opportunity, mapOpportunityEdit.keySet());
@@ -229,7 +230,7 @@ public class OpportunityStep {
      */
     @And("I select the created opportunity")
     public void selectOpportunity() {
-        String opportunityName = context.getOpportunities().get(0).getName();
+        String opportunityName = context.getOpportunities().get(ARRAY_POSITION_FIRST).getName();
         System.out.println(opportunityName);
         // close popup
         AppPageFactory.getTabObjectsPage().selectObjectByName(opportunityName);
@@ -244,11 +245,13 @@ public class OpportunityStep {
     public void iAddNewTaskWith(final Map<String, String> mapTask) {
         mapNewTask = new HashMap<>(mapTask);
         opportunitiesPage = AppPageFactory.getTabObjectsPage();
-        opportunityPage = opportunitiesPage.selectObjectByName(context.getOpportunities().get(0).getName());
+        opportunityPage = opportunitiesPage.selectObjectByName(context.getOpportunities().get(ARRAY_POSITION_FIRST)
+                .getName());
         abstractTaskOpportunity = opportunityPage.clickAddTask();
         taskOpportunity = context.getTaskOpportunity();
         if (!context.getContacts().isEmpty()) {
-            String contact = context.getContacts().get(0).getFirstName() + " " + context.getContacts().get(0)
+            String contact = context.getContacts().get(ARRAY_POSITION_FIRST).getFirstName() + " " + context
+                    .getContacts().get(ARRAY_POSITION_FIRST)
                     .getLastName();
             mapNewTask.put(TaskConstant.CONTACT, contact);
         }
@@ -283,6 +286,7 @@ public class OpportunityStep {
 
     /**
      * Validates a message only for Lightning User Experience.
+     *
      * @param message list.
      */
     @Then("the application should this message only for Lightning Experience")

@@ -28,24 +28,28 @@ public abstract class AbstractTaskOpportunity extends AbstractBasePage {
 
     /**
      * Sets Subject task.
+     *
      * @param subject value.
      */
     protected abstract void setSubjectTask(String subject);
 
     /**
      * Sets contact.
+     *
      * @param contact value.
      */
     protected abstract void setContact(String contact);
 
     /**
      * Sets due date.
+     *
      * @param dueDate value.
      */
     protected abstract void setDueDate(String dueDate);
 
     /**
      * Clicks on task to edit.
+     *
      * @param task value.
      * @return TaskPage instance.
      */

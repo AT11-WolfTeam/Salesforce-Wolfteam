@@ -164,6 +164,7 @@ public final class DateFormatter {
 
     /**
      * Converts format date to format to use on UI.
+     *
      * @param date value.
      * @return string value.
      */

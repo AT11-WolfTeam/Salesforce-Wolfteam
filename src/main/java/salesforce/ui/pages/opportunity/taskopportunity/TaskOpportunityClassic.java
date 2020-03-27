@@ -42,12 +42,12 @@ public class TaskOpportunityClassic extends AbstractTaskOpportunity {
     }
 
     @Override
-    protected void setContact(String contact) {
+    protected void setContact(final String contact) {
 
     }
 
     @Override
-    protected void setDueDate(String dueDate) {
+    protected void setDueDate(final String dueDate) {
 
     }
 

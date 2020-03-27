@@ -148,7 +148,7 @@ public class TaskLightningPage extends AbstractTask {
     }
 
     @Override
-    protected void setContact(String contact) {
+    protected void setContact(final String contact) {
         contactsField.click();
         selectContact(contact);
     }
@@ -158,7 +158,7 @@ public class TaskLightningPage extends AbstractTask {
      *
      * @param contact value.
      */
-    private void selectContact(String contact) {
+    private void selectContact(final String contact) {
         String statusXpath = String.format(CONTACT_COMBO_BOX, contact);
         contactSelected = webDriver.findElement(By.xpath(statusXpath));
         actions.moveToElement(contactSelected).click().build().perform();
@@ -170,7 +170,7 @@ public class TaskLightningPage extends AbstractTask {
     }
 
     @Override
-    protected void setDueDate(String dueDate) {
+    protected void setDueDate(final String dueDate) {
         dueDateField.sendKeys(dueDate);
     }
 

@@ -39,6 +39,10 @@ public abstract class AbstractTaskOpportunity extends AbstractBasePage {
      */
     protected abstract void setContact(String contact);
 
+    /**
+     * Sets due date.
+     * @param dueDate value.
+     */
     protected abstract void setDueDate(String dueDate);
 
     /**

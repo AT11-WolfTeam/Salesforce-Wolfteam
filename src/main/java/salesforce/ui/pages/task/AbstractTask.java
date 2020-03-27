@@ -159,6 +159,7 @@ public abstract class AbstractTask extends AbstractBasePage {
      * Gets map of the information set.
      *
      * @param taskOpportunity object.
+     * @param setKeysToGet Set.
      * @return HashMap values.
      */
     public HashMap<String, String> getTaskDetails(final TaskOpportunity taskOpportunity,

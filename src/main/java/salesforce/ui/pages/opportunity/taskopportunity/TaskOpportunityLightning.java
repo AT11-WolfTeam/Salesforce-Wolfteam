@@ -62,7 +62,11 @@ public class TaskOpportunityLightning extends AbstractTaskOpportunity {
         selectContact(contact);
     }
 
-    private void selectContact(String contact) {
+    /**
+     * Selects a contact on the combo box.
+     * @param contact value.
+     */
+    private void selectContact(final String contact) {
         String selectContactXpath = String.format(CONTACT_SPECIFIC, contact);
         contactSelected = webDriver.findElement(By.xpath(selectContactXpath));
         contactSelected.click();

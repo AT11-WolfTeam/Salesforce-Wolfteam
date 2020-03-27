@@ -14,7 +14,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.hu.Ha;
 import org.testng.Assert;
 import salesforce.api.requestapi.OpportunityApiHelper;
 import salesforce.entities.Context;
@@ -64,7 +63,7 @@ public class OpportunityStep {
     private static final int ARRAY_POSITION_FIRST = 0;
     private static final String JSON_CONFIG_FILE = "config.json";
     private static final String USER_EXPERIENCE_LIGHTNING = "Lightning";
-    HashMap<String, String> mapNewTask;
+    private HashMap<String, String> mapNewTask;
 
     /**
      * OpportunityStep constructor.
@@ -248,10 +247,10 @@ public class OpportunityStep {
         opportunityPage = opportunitiesPage.selectOpportunityName(context.getOpportunities().get(0).getName());
         abstractTaskOpportunity = opportunityPage.clickAddTask();
         taskOpportunity = context.getTaskOpportunity();
-        if(!context.getContacts().isEmpty()) {
-            String contact = context.getContacts().get(0).getFirstName()+ " " + context.getContacts().get(0)
+        if (!context.getContacts().isEmpty()) {
+            String contact = context.getContacts().get(0).getFirstName() + " " + context.getContacts().get(0)
                     .getLastName();
-            mapNewTask.put(TaskConstant.CONTACT,contact);
+            mapNewTask.put(TaskConstant.CONTACT, contact);
         }
         taskOpportunity.processInformation(mapNewTask);
         abstractTaskOpportunity.setNewTask(taskOpportunity, mapNewTask.keySet());
@@ -284,6 +283,7 @@ public class OpportunityStep {
 
     /**
      * Validates a message only for Lightning User Experience.
+     * @param message list.
      */
     @Then("the application should this message only for Lightning Experience")
     public void theApplicationShouldThisMessageOnlyForLightningExperience(final List<String> message) {
@@ -295,11 +295,5 @@ public class OpportunityStep {
             Assert.assertEquals(actualResult, expectedResult);
         }
         abstractTask = abstractTaskOpportunity.clickTaskToEdit(context.getTaskOpportunity().getSubject());
-    }
-
-    @And("the task should display information inserted")
-    public void theTaskShouldDisplayInformationInserted() {
-        HashMap<String, String> mapTaskValidate = abstractTask.getTaskDetails(taskOpportunity, mapNewTask.keySet());
-        Assert.assertEquals(mapTaskValidate, context.getTaskOpportunity().getTaskEdited());
     }
 }

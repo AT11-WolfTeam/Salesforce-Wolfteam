@@ -100,7 +100,7 @@ public class TaskClassicPage extends AbstractTask {
     }
 
     @Override
-    protected void setContact(String contact) {
+    protected void setContact(final String contact) {
 
     }
 
@@ -110,7 +110,7 @@ public class TaskClassicPage extends AbstractTask {
     }
 
     @Override
-    protected void setDueDate(String dueDate) {
+    protected void setDueDate(final String dueDate) {
 
     }
 

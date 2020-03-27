@@ -55,4 +55,9 @@ public abstract class AbstractCampaignPage extends AbstractBasePage {
      * @return campaign member instance.
      */
     public abstract AbstractCampaignMembersPage viewMembers();
+
+    /**
+     * Displays Campaign members.
+     */
+    public abstract void displayCampaignMembers();
 }

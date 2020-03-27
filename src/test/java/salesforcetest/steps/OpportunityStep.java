@@ -20,7 +20,7 @@ import salesforce.entities.Context;
 import salesforce.entities.NewCampaign;
 import salesforce.entities.Opportunity;
 import salesforce.entities.TaskOpportunity;
-import salesforce.ui.components.span.ToastMessageSpan;
+import salesforce.ui.components.span.ToastUpdateMessageSpan;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.PageTransporter;
 import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
@@ -91,9 +91,9 @@ public class OpportunityStep {
     @Then("the application should display this message in Opportunity Page only for Lightning Experience")
     public void displaysAnInformationMessageInOpportunityPageWithTheFormat(final List<String> message) {
         if (userExperience.equals(USER_EXPERIENCE_LIGHTNING)) {
-            ToastMessageSpan toastMessageSpan = new ToastMessageSpan();
-            String actualResult = toastMessageSpan.getToastMessage();
-            String expectedResult = ReplacerMessages.replaceChangeOwnerMessage(message.get(ARRAY_POSITION_FIRST),
+            ToastUpdateMessageSpan toastUpdateMessageSpan = new ToastUpdateMessageSpan();
+            String actualResult = toastUpdateMessageSpan.getToastMessage();
+            String expectedResult = ReplacerMessages.replaceTransactionMessage(message.get(ARRAY_POSITION_FIRST),
                     context.getOpportunities().get(ARRAY_POSITION_FIRST).getName());
             Assert.assertEquals(actualResult, expectedResult);
         }

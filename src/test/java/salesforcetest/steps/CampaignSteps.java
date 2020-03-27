@@ -9,8 +9,10 @@
 
 package salesforcetest.steps;
 
+import core.utils.GradleReader;
 import io.cucumber.java.en.When;
 import salesforce.entities.Context;
+import salesforce.ui.components.span.ToastAddMessageSpan;
 import salesforce.ui.helpers.LeadHelper;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -19,9 +21,12 @@ import salesforce.entities.Contact;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.PageTransporter;
 import salesforce.ui.pages.campaign.AbstractCampaignPage;
+import salesforce.ui.pages.campaign.CampaignMembersLightningPage;
 import salesforce.ui.pages.campaigncontact.AbstractCampaignContactPage;
 import salesforce.ui.pages.campaignmembers.AbstractCampaignMembersPage;
 import salesforce.ui.pages.newcampaign.AbstractNewCampaignPage;
+import salesforce.utils.ReplacerMessages;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -44,6 +49,9 @@ public class CampaignSteps {
     private AbstractCampaignContactPage campaignContact;
     private PageTransporter pageTransporter;
     private LeadHelper leadHelper;
+    private static String userExperience = GradleReader.getInstance().getUserExperience();
+    private static final int ARRAY_POSITION_FIRST = 0;
+    private static final String USER_EXPERIENCE_LIGHTNING = "Lightning";
 
     /**
      * Constructor of campaigns steps.
@@ -99,7 +107,7 @@ public class CampaignSteps {
      */
     @When("I add the leads to the campaign")
     public void addLeads() {
-        //Todo
+        AppPageFactory.getCampaignPage().addLeads(context.getLeads());
     }
 
     /**
@@ -108,5 +116,32 @@ public class CampaignSteps {
     @And("I select the campaign")
     public void selectTheCampaign() {
         AppPageFactory.getCampaignsPage().selectCampaignName(context.getNewCampaign().getCampaignName());
+    }
+
+    /**
+     * Validates a process.
+     * @param message contains a <String> value.
+     */
+    @Then("the application should display this message in Campaign Page only for Lightning")
+    public void theApplicationShouldDisplayThisMessageInCampaignPageOnlyForLightning(final List<String> message) {
+        if (userExperience.equals(USER_EXPERIENCE_LIGHTNING)) {
+            ToastAddMessageSpan toastAddMessageSpan = new ToastAddMessageSpan();
+            String actualResult = toastAddMessageSpan.getToastMessage();
+            String expectedResult = ReplacerMessages.replaceTransactionMessage(message.get(ARRAY_POSITION_FIRST),
+                    context.getNewCampaign().getCampaignName());
+            Assert.assertEquals(actualResult, expectedResult);
+        }
+    }
+
+    /**
+     * Validates the application.
+     */
+    @And("campaign members should display the leads added")
+    public void campaignMembersShouldDisplayTheLeadsAdded() {
+        AppPageFactory.getCampaignPage().displayCampaignMembers();
+        CampaignMembersLightningPage campaignMembersLightningPage = new CampaignMembersLightningPage();
+        int actualResult = campaignMembersLightningPage.countLeadsInList(context.getLeads());
+        int expectedResult = context.getLeads().size();
+        Assert.assertEquals(actualResult, expectedResult);
     }
 }

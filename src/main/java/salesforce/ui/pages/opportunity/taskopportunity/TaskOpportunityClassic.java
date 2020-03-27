@@ -64,6 +64,7 @@ public class TaskOpportunityClassic extends AbstractTaskOpportunity {
 
     /**
      * Clicks on contact selected.
+     *
      * @param contact value.
      */
     private void assignContact(final String contact) {
@@ -79,6 +80,7 @@ public class TaskOpportunityClassic extends AbstractTaskOpportunity {
 
     /**
      * Clicks on contact selected.
+     *
      * @param contact value.
      */
     private void clickOnContactSelected(final String contact) {

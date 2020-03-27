@@ -63,7 +63,7 @@ public class TaskOpportunityClassic extends AbstractTaskOpportunity {
     }
 
     /**
-     * Clicks on contact selected.
+     * Assigns contact.
      *
      * @param contact value.
      */

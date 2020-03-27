@@ -293,8 +293,8 @@ public class OpportunityStep {
         if (userExperience.equals(USER_EXPERIENCE_LIGHTNING)) {
             ToastUpdateMessageSpan toastUpdateMessageSpan = new ToastUpdateMessageSpan();
             String actualResult = toastUpdateMessageSpan.getToastMessage();
-            String expectedResult = ReplacerMessages.replaceTransactionMessage(message.get(ARRAY_POSITION_FIRST),
-                    context.getOpportunities().get(ARRAY_POSITION_FIRST).getName());
+            String expectedResult = ReplacerMessages.replaceTaskSavedMessage(message.get(ARRAY_POSITION_FIRST),
+                    context.getTaskOpportunity().getSubject());
             Assert.assertEquals(actualResult, expectedResult);
         }
         abstractTask = abstractTaskOpportunity.clickTaskToEdit(context.getTaskOpportunity().getSubject());

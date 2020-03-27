@@ -14,6 +14,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import salesforce.utils.UtilSalesforce;
 
 /**
  * Defines a TaskClassicPage.
@@ -43,9 +44,26 @@ public class TaskClassicPage extends AbstractTask {
     @FindBy(xpath = "//td[text()='Status']/..//div[@id='tsk12_ileinner']")
     private WebElement statusSelected;
 
-    private WebElement subjectName;
-    private static final String SUBJECT_NAME = "//td[text()='Subject']/..//div[text()='%s']";
+    @FindBy(xpath = "//td[@class='labelCol' and text()='Name']/..//td//div[@id='tsk2_ileinner']")
+    private WebElement contactName;
 
+    @FindBy(xpath = "//td[@class='labelCol' and text()='Due Date']/..//td[@id='tsk4_ilecell']")
+    private WebElement dueDate;
+
+    @FindBy(xpath = "//input[@id='tsk2']/..//a[@id='whobtn']")
+    private WebElement contactLookupButton;
+
+    @FindBy(xpath = "//input[@id='tsk4']")
+    private WebElement dueDateField;
+
+    @FindBy(name = "resultsFrame")
+    private WebElement resultsFrame;
+
+    private WebElement subjectName;
+    private WebElement contactNameSelected;
+    private static final String SUBJECT_NAME = "//td[text()='Subject']/..//div[text()='%s']";
+    private static final String CONTACT_NAME = "//a[text()='%s']";
+    private String parentHandle;
     private Select select;
 
     @Override
@@ -101,21 +119,55 @@ public class TaskClassicPage extends AbstractTask {
 
     @Override
     protected void setContact(final String contact) {
+        clickContactLookup();
+        assignContact(contact);
+    }
 
+    /**
+     * Assigns contact.
+     *
+     * @param contact value.
+     */
+    private void assignContact(final String contact) {
+        parentHandle = webDriver.getWindowHandle();
+        try {
+            UtilSalesforce.switchToNewWindow(parentHandle);
+            webDriverWait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(resultsFrame));
+            clickOnContactSelected(contact);
+        } finally {
+            webDriver.switchTo().window(parentHandle);
+        }
+    }
+
+    /**
+     * Clicks on contact selected.
+     * @param contact value.
+     */
+    private void clickOnContactSelected(final String contact) {
+        String campaignNameXpath = String.format(CONTACT_NAME, contact);
+        contactNameSelected = webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(campaignNameXpath)));
+        contactNameSelected.click();
+    }
+
+    /**
+     * clicks on contactLookupButton.
+     */
+    private void clickContactLookup() {
+        contactLookupButton.click();
     }
 
     @Override
     protected String getContact() {
-        return null;
+        return contactName.getText();
     }
 
     @Override
     protected void setDueDate(final String dueDate) {
-
+        dueDateField.sendKeys(dueDate);
     }
 
     @Override
     protected String getDueDate() {
-        return null;
+        return dueDate.getText();
     }
 }

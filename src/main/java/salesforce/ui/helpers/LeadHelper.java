@@ -9,6 +9,7 @@
 
 package salesforce.ui.helpers;
 
+import core.selenium.WebDriverManager;
 import salesforce.entities.Lead;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.PageTransporter;
@@ -25,15 +26,8 @@ import java.util.List;
  */
 public class LeadHelper {
     private Lead lead;
-    private PageTransporter pageTransporter;
-    private static final String LEADS_PAGE = "Leads Page";
-
-    /**
-     * Builds a LeadHelper.
-     */
-    public LeadHelper() {
-        pageTransporter = new PageTransporter();
-    }
+    private static final String LEADS_LIGHTNING_PAGE_URL = "https://na111.lightning.force.com/lightning/o/Lead/list"
+            + "?filterName=Recent";
 
     /**
      * Sets leads.
@@ -59,7 +53,8 @@ public class LeadHelper {
     public void createLeads(final List<Lead> leads) {
         final int oneItem = 1;
         final int zero = 0;
-        pageTransporter.navigateToPage(LEADS_PAGE);
+
+        goToLeadPage();
 
         AppPageFactory.getTabObjectsPage().clickOnNewButton();
         NewLeadLightningPopup newLeadLightningPopup = new NewLeadLightningPopup();
@@ -79,10 +74,18 @@ public class LeadHelper {
      * @param leads contains a list of leads.
      */
     public void deleteLeads(final List<Lead> leads) {
-        pageTransporter.navigateToPage(LEADS_PAGE);
+        goToLeadPage();
+
         AppPageFactory.getTabObjectsPage().displayList("All Open Leads");
         for (Lead lead : leads) {
             AppPageFactory.getTabObjectsPage().clickOnDeleteButton(lead.getLastName());
         }
+    }
+
+    /**
+     * Navigates to a page.
+     */
+    private void goToLeadPage() {
+        WebDriverManager.getInstance().getWebDriver().get(LEADS_LIGHTNING_PAGE_URL);
     }
 }

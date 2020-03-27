@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Defines CampaignClassicPage.
+ * Defines CampaignMembersLightningPage.
  *
  * @author Enrique Carrizales.
  * @version 1.0 26 March 2020.
@@ -27,7 +27,6 @@ public class CampaignMembersLightningPage extends AbstractBasePage {
 
     private static final String LEAD_ROW_PARTIAL_LOCATOR = "//tr[*[span[*[text()='Lead']]] and td[span[*[text()='%1$s'"
             + "]]] and td[span[*[text()='%2$s']]]]";
-
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {

@@ -23,7 +23,8 @@ public class ReplacerMessages {
 
     /**
      * Replaces words in a message.
-     * @param message contains a message String.
+     *
+     * @param message    contains a message String.
      * @param objectName contains an opportunity name.
      * @return a new message.
      */

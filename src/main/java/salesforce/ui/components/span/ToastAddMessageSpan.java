@@ -35,10 +35,10 @@ public class ToastAddMessageSpan extends AbstractBasePage {
 
     /**
      * Returns a toast message.
+     *
      * @return String value.
      */
     public String getToastMessage() {
-
         final String space = " ";
         String firstPartMessage = toastFirstMessage.getText() + space;
         String secondPartMessageText = toastFirstPartSecondMessage.getText();

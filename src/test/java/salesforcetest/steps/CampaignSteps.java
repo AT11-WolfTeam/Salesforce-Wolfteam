@@ -120,7 +120,8 @@ public class CampaignSteps {
 
     /**
      * Validates a process.
-     * @param message contains a <String> value.
+     *
+     * @param message contains a String List.
      */
     @Then("the application should display this message in Campaign Page only for Lightning")
     public void theApplicationShouldDisplayThisMessageInCampaignPageOnlyForLightning(final List<String> message) {

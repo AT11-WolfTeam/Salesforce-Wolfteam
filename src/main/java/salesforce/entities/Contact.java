@@ -13,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import salesforce.entities.constants.ContactConstant;
 import salesforce.utils.DateFormatter;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;

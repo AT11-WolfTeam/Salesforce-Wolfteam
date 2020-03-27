@@ -48,14 +48,14 @@ Feature: Opportunity
       | Due Date | 3 DAYS-0 MONTH-0 YEAR-AFTER-FROM TODAY |
     Then the application should this message only for Lightning Experience
       |Task [Task Name] was created. |
-      And the task should display the information added
+      And On the details section should display the Campaign name
 
 
   @DeletesOpportunity
   Scenario: Add new Task with required values
     Given I create 1 "Basic" opportunities
-    And I go to "Opportunities Page"
-    And I search the opportunity in list "All Opportunities"
+      And I go to "Opportunities Page"
+      And I search the opportunity in list "All Opportunities"
     When TO DO
     Then TO DO
 
@@ -63,9 +63,9 @@ Feature: Opportunity
   @wip
   Scenario: Add new event with required values
     Given I login as "Admin"
-    And I create opportunity as OpportunityTest
-    And I navigate to Opportunities Page
-    And I search "OpportunityTest"
+      And I create opportunity as OpportunityTest
+      And I navigate to Opportunities Page
+      And I search "OpportunityTest"
     When I add an event to "OpportunityTest"
       | Subject    | Example Subject |
       | Start Date | Today           |

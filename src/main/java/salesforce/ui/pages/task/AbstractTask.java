@@ -156,6 +156,22 @@ public abstract class AbstractTask extends AbstractBasePage {
     }
 
     /**
+     * Gets map of the information set.
+     *
+     * @param taskOpportunity object.
+     * @return HashMap values.
+     */
+    public HashMap<String, String> getTaskDetails(final TaskOpportunity taskOpportunity,
+                                                  final Set<String> setKeysToGet) {
+        HashMap<String, String> values = new HashMap<>();
+        HashMap<String, Supplier> strategyMapEducation = composeTaskDetailsToGet(taskOpportunity);
+        for (String key : setKeysToGet) {
+            values.put(key, strategyMapEducation.get(key).get().toString());
+        }
+        return values;
+    }
+
+    /**
      * composeOpportunityDetailsToGet to get attributes.
      *
      * @param taskOpportunity object.

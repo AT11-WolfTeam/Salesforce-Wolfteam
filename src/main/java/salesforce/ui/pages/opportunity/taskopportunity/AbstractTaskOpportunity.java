@@ -73,6 +73,8 @@ public abstract class AbstractTaskOpportunity extends AbstractBasePage {
     protected HashMap<String, Runnable> composeStrategyMap(final TaskOpportunity taskOpportunity) {
         HashMap<String, Runnable> strategyMap = new HashMap<>();
         strategyMap.put(TaskConstant.SUBJECT, () -> setSubjectTask(taskOpportunity.getSubject()));
+        strategyMap.put(TaskConstant.CONTACT, () -> setContact(taskOpportunity.getContact()));
+        strategyMap.put(TaskConstant.DUE_DATE, () -> setDueDate(taskOpportunity.getDueDate()));
         return strategyMap;
     }
 }

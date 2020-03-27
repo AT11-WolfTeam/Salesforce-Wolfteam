@@ -14,6 +14,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.java.hu.Ha;
 import org.testng.Assert;
 import salesforce.api.requestapi.OpportunityApiHelper;
 import salesforce.entities.Context;
@@ -63,6 +64,7 @@ public class OpportunityStep {
     private static final int ARRAY_POSITION_FIRST = 0;
     private static final String JSON_CONFIG_FILE = "config.json";
     private static final String USER_EXPERIENCE_LIGHTNING = "Lightning";
+    HashMap<String, String> mapNewTask;
 
     /**
      * OpportunityStep constructor.
@@ -241,13 +243,12 @@ public class OpportunityStep {
      */
     @And("I add new Task with")
     public void iAddNewTaskWith(final Map<String, String> mapTask) {
-        HashMap<String, String> mapNewTask = new HashMap<>();
-        mapNewTask.putAll(mapTask);
+        mapNewTask = new HashMap<>(mapTask);
         opportunitiesPage = AppPageFactory.getOpportunitiesPage();
         opportunityPage = opportunitiesPage.selectOpportunityName(context.getOpportunities().get(0).getName());
         abstractTaskOpportunity = opportunityPage.clickAddTask();
         taskOpportunity = context.getTaskOpportunity();
-        if(context.getContacts() != null) {
+        if(!context.getContacts().isEmpty()) {
             String contact = context.getContacts().get(0).getFirstName()+ " " + context.getContacts().get(0)
                     .getLastName();
             mapNewTask.put(TaskConstant.CONTACT,contact);
@@ -264,10 +265,11 @@ public class OpportunityStep {
      */
     @When("I add additional information to the task")
     public void iAddAdditionalInformationToTheTask(final Map<String, String> mapAddInformationTask) {
+        mapNewTask = new HashMap<>(mapAddInformationTask);
         abstractTask = abstractTaskOpportunity.clickTaskToEdit(context.getTaskOpportunity().getSubject());
         abstractTask.clickEditButton();
-        taskOpportunity.processInformation(mapAddInformationTask);
-        abstractTask.addInformationToTask(taskOpportunity, mapAddInformationTask.keySet());
+        taskOpportunity.processInformation(mapNewTask);
+        abstractTask.addInformationToTask(taskOpportunity, mapNewTask.keySet());
         abstractTask.clickOnSaveTaskButton();
     }
 
@@ -276,7 +278,7 @@ public class OpportunityStep {
      */
     @And("the task should display the information added")
     public void theTaskShouldDisplayTheInformationAdded() {
-        HashMap<String, String> mapTaskValidate = abstractTask.getTaskDetails(taskOpportunity);
+        HashMap<String, String> mapTaskValidate = abstractTask.getTaskDetails(taskOpportunity, mapNewTask.keySet());
         Assert.assertEquals(mapTaskValidate, context.getTaskOpportunity().getTaskEdited());
     }
 
@@ -288,10 +290,16 @@ public class OpportunityStep {
         if (userExperience.equals(USER_EXPERIENCE_LIGHTNING)) {
             ToastMessageSpan toastMessageSpan = new ToastMessageSpan();
             String actualResult = toastMessageSpan.getToastMessage();
-            String expectedResult = ReplacerMessages.replaceChangeOwnerMessage(message.get(ARRAY_POSITION_FIRST),
+            String expectedResult = ReplacerMessages.replaceTaskSavedMessage(message.get(ARRAY_POSITION_FIRST),
                     context.getTaskOpportunity().getSubject());
             Assert.assertEquals(actualResult, expectedResult);
         }
+        abstractTask = abstractTaskOpportunity.clickTaskToEdit(context.getTaskOpportunity().getSubject());
+    }
 
+    @And("the task should display information inserted")
+    public void theTaskShouldDisplayInformationInserted() {
+        HashMap<String, String> mapTaskValidate = abstractTask.getTaskDetails(taskOpportunity, mapNewTask.keySet());
+        Assert.assertEquals(mapTaskValidate, context.getTaskOpportunity().getTaskEdited());
     }
 }

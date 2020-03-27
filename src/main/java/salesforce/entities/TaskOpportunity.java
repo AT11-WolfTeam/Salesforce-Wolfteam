@@ -120,7 +120,7 @@ public class TaskOpportunity {
      * @param dueDate value.
      */
     public void setDueDate(String dueDate) {
-        this.dueDate = DateFormatter.formatDate(dueDate);
+        this.dueDate = DateFormatter.formatDateUi(dueDate);
     }
 
     /**

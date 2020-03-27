@@ -251,8 +251,7 @@ public class OpportunityStep {
         taskOpportunity = context.getTaskOpportunity();
         if (!context.getContacts().isEmpty()) {
             String contact = context.getContacts().get(ARRAY_POSITION_FIRST).getFirstName() + " " + context
-                    .getContacts().get(ARRAY_POSITION_FIRST)
-                    .getLastName();
+                    .getContacts().get(ARRAY_POSITION_FIRST).getLastName();
             mapNewTask.put(TaskConstant.CONTACT, contact);
         }
         taskOpportunity.processInformation(mapNewTask);

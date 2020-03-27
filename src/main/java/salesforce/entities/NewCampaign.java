@@ -26,9 +26,9 @@ public class NewCampaign {
     private String campaignName;
 
     /**
-     * Returns campaignName value.
+     * Gets campaignName value.
      *
-     * @return string value.
+     * @return campaignName value.
      */
     public String getCampaignName() {
         return campaignName;
@@ -44,9 +44,9 @@ public class NewCampaign {
     }
 
     /**
-     * Returns Active value.
+     * Gets Active value.
      *
-     * @return string value
+     * @return Active value
      */
     public String getActive() {
         return active;

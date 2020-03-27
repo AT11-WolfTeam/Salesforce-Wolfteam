@@ -98,4 +98,24 @@ public class TaskClassicPage extends AbstractTask {
         subjectName = webDriver.findElement(By.xpath(subjectXpath));
         return subjectName.getText();
     }
+
+    @Override
+    protected void setContact(final String contact) {
+
+    }
+
+    @Override
+    protected String getContact() {
+        return null;
+    }
+
+    @Override
+    protected void setDueDate(final String dueDate) {
+
+    }
+
+    @Override
+    protected String getDueDate() {
+        return null;
+    }
 }

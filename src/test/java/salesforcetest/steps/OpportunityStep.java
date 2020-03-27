@@ -20,6 +20,7 @@ import salesforce.entities.Context;
 import salesforce.entities.NewCampaign;
 import salesforce.entities.Opportunity;
 import salesforce.entities.TaskOpportunity;
+import salesforce.entities.constants.TaskConstant;
 import salesforce.ui.components.span.ToastMessageSpan;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.PageTransporter;
@@ -61,6 +62,7 @@ public class OpportunityStep {
     private static final int ARRAY_POSITION_FIRST = 0;
     private static final String JSON_CONFIG_FILE = "config.json";
     private static final String USER_EXPERIENCE_LIGHTNING = "Lightning";
+    private HashMap<String, String> mapNewTask;
 
     /**
      * OpportunityStep constructor.
@@ -174,7 +176,8 @@ public class OpportunityStep {
         HashMap<String, String> mapOpportunity = new HashMap<>();
         mapOpportunity.putAll(mapOpportunityEdit);
         opportunitiesPage = AppPageFactory.getTabObjectsPage();
-        opportunityPage = opportunitiesPage.selectObjectByName(context.getOpportunities().get(0).getName());
+        opportunityPage = opportunitiesPage.selectObjectByName(context.getOpportunities().get(ARRAY_POSITION_FIRST)
+                .getName());
         opportunity = context.getOpportunity();
         opportunity.setOpportunityInformation(mapOpportunity);
         opportunityPage.editOpportunity(opportunity, mapOpportunityEdit.keySet());
@@ -227,7 +230,7 @@ public class OpportunityStep {
      */
     @And("I select the created opportunity")
     public void selectOpportunity() {
-        String opportunityName = context.getOpportunities().get(0).getName();
+        String opportunityName = context.getOpportunities().get(ARRAY_POSITION_FIRST).getName();
         System.out.println(opportunityName);
         // close popup
         AppPageFactory.getTabObjectsPage().selectObjectByName(opportunityName);
@@ -236,18 +239,24 @@ public class OpportunityStep {
     /**
      * Adds new Task.
      *
-     * @param mapNewTask map values.
+     * @param mapTask map values.
      */
     @And("I add new Task with")
-    public void iAddNewTaskWith(final Map<String, String> mapNewTask) {
+    public void iAddNewTaskWith(final Map<String, String> mapTask) {
+        mapNewTask = new HashMap<>(mapTask);
         opportunitiesPage = AppPageFactory.getTabObjectsPage();
-        opportunityPage = opportunitiesPage.selectObjectByName(context.getOpportunities().get(0).getName());
+        opportunityPage = opportunitiesPage.selectObjectByName(context.getOpportunities().get(ARRAY_POSITION_FIRST)
+                .getName());
         abstractTaskOpportunity = opportunityPage.clickAddTask();
         taskOpportunity = context.getTaskOpportunity();
+        if (!context.getContacts().isEmpty()) {
+            String contact = context.getContacts().get(ARRAY_POSITION_FIRST).getFirstName() + " " + context
+                    .getContacts().get(ARRAY_POSITION_FIRST).getLastName();
+            mapNewTask.put(TaskConstant.CONTACT, contact);
+        }
         taskOpportunity.processInformation(mapNewTask);
         abstractTaskOpportunity.setNewTask(taskOpportunity, mapNewTask.keySet());
         abstractTaskOpportunity.clickSaveTask();
-        abstractTask = abstractTaskOpportunity.clickTaskToEdit(context.getTaskOpportunity().getSubject());
     }
 
     /**
@@ -257,9 +266,11 @@ public class OpportunityStep {
      */
     @When("I add additional information to the task")
     public void iAddAdditionalInformationToTheTask(final Map<String, String> mapAddInformationTask) {
+        mapNewTask = new HashMap<>(mapAddInformationTask);
+        abstractTask = abstractTaskOpportunity.clickTaskToEdit(context.getTaskOpportunity().getSubject());
         abstractTask.clickEditButton();
-        taskOpportunity.processInformation(mapAddInformationTask);
-        abstractTask.addInformationToTask(taskOpportunity, mapAddInformationTask.keySet());
+        taskOpportunity.processInformation(mapNewTask);
+        abstractTask.addInformationToTask(taskOpportunity, mapNewTask.keySet());
         abstractTask.clickOnSaveTaskButton();
     }
 
@@ -268,7 +279,24 @@ public class OpportunityStep {
      */
     @And("the task should display the information added")
     public void theTaskShouldDisplayTheInformationAdded() {
-        HashMap<String, String> mapTaskValidate = abstractTask.getTaskDetails(taskOpportunity);
+        HashMap<String, String> mapTaskValidate = abstractTask.getTaskDetails(taskOpportunity, mapNewTask.keySet());
         Assert.assertEquals(mapTaskValidate, context.getTaskOpportunity().getTaskEdited());
+    }
+
+    /**
+     * Validates a message only for Lightning User Experience.
+     *
+     * @param message list.
+     */
+    @Then("the application should this message only for Lightning Experience")
+    public void theApplicationShouldThisMessageOnlyForLightningExperience(final List<String> message) {
+        if (userExperience.equals(USER_EXPERIENCE_LIGHTNING)) {
+            ToastMessageSpan toastMessageSpan = new ToastMessageSpan();
+            String actualResult = toastMessageSpan.getToastMessage();
+            String expectedResult = ReplacerMessages.replaceTaskSavedMessage(message.get(ARRAY_POSITION_FIRST),
+                    context.getTaskOpportunity().getSubject());
+            Assert.assertEquals(actualResult, expectedResult);
+        }
+        abstractTask = abstractTaskOpportunity.clickTaskToEdit(context.getTaskOpportunity().getSubject());
     }
 }

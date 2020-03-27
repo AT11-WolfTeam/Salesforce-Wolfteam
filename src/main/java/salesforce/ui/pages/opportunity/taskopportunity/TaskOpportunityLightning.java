@@ -23,7 +23,8 @@ import salesforce.ui.pages.task.AbstractTask;
  * @version 1.0 24 March 2020.
  */
 public class TaskOpportunityLightning extends AbstractTaskOpportunity {
-    @FindBy(xpath = "//div[@class='riseTransitionEnabled']//label[text()='Subject']//following-sibling::div//input")
+    @FindBy(xpath = "//div[@class='']//div[@class='riseTransitionEnabled']//label[text()='Subject']//following-"
+            + "sibling::div//input")
     private WebElement subjectField;
 
     private static final String TASK_NAME = "//a[@class='subjectLink slds-truncate' and contains(text(),'%s')]";
@@ -32,14 +33,56 @@ public class TaskOpportunityLightning extends AbstractTaskOpportunity {
             + " slds-button--brand cuf-publisherShareButton MEDIUM uiButton']")
     private WebElement saveTaskButton;
 
+    @FindBy(xpath = "//div[@class='']//div[@class='riseTransitionEnabled']//span[text()='Due Date']/.."
+            + "//following-sibling::div//input")
+    private WebElement dueDateField;
+
+    @FindBy(xpath = "//input[@class='default input uiInput uiInputTextForAutocomplete uiInput--default uiInput--"
+            + "input uiInput uiAutocomplete uiInput--default uiInput--lookup']")
+    private WebElement searchContactsField;
+
+    private WebElement contactSelected;
+
+    private static final String CONTACT_SPECIFIC = "//ul[@class='lookup__list  visible']//div[@title='%s']";
+
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(subjectField));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(searchContactsField));
     }
 
     @Override
     protected void setSubjectTask(final String subject) {
         subjectField.sendKeys(subject);
+    }
+
+    @Override
+    protected void setContact(final String contact) {
+        clickOnContactField();
+        selectContact(contact);
+    }
+
+    /**
+     * Selects a contact on the combo box.
+     *
+     * @param contact value.
+     */
+    private void selectContact(final String contact) {
+        String selectContactXpath = String.format(CONTACT_SPECIFIC, contact);
+        contactSelected = webDriver.findElement(By.xpath(selectContactXpath));
+        contactSelected.click();
+    }
+
+    /**
+     * Clicks on contactField.
+     */
+    private void clickOnContactField() {
+        searchContactsField.click();
+    }
+
+    @Override
+    protected void setDueDate(final String dueDate) {
+        dueDateField.sendKeys(dueDate);
     }
 
     @Override
@@ -49,6 +92,7 @@ public class TaskOpportunityLightning extends AbstractTaskOpportunity {
         taskNameSelected.click();
         return AppPageFactory.getTaskPage();
     }
+
 
     @Override
     public void clickSaveTask() {

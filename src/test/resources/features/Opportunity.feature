@@ -37,6 +37,20 @@ Feature: Opportunity
     Then On the details section should display the Campaign name
 
 
+  @DeletesOpportunity @DeletesContacts
+  Scenario: add contact with due Date to a new Task
+    Given I create 1 "Basic" contacts
+      And I create 1 "Basic" opportunities
+      And I go to "Opportunities Page"
+    When I add new Task with
+      | Subject  | Meeting                                |
+      | Contact  | [Contact]                              |
+      | Due Date | 3 DAYS-0 MONTH-0 YEAR-AFTER-FROM TODAY |
+    Then the application should this message only for Lightning Experience
+      |Task [Task Name] was created. |
+      And the task should display the information added
+
+
   @DeletesOpportunity
   Scenario: Add new Task with required values
     Given I create 1 "Basic" opportunities

@@ -123,7 +123,12 @@ public class TaskClassicPage extends AbstractTask {
         assignContact(contact);
     }
 
-    private void assignContact(String contact) {
+    /**
+     * Assigns contact.
+     *
+     * @param contact value.
+     */
+    private void assignContact(final String contact) {
         parentHandle = webDriver.getWindowHandle();
         try {
             UtilSalesforce.switchToNewWindow(parentHandle);
@@ -134,12 +139,19 @@ public class TaskClassicPage extends AbstractTask {
         }
     }
 
-    private void clickOnContactSelected(String contact) {
+    /**
+     * Clicks on contact selected.
+     * @param contact value.
+     */
+    private void clickOnContactSelected(final String contact) {
         String campaignNameXpath = String.format(CONTACT_NAME, contact);
         contactNameSelected = webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(campaignNameXpath)));
         contactNameSelected.click();
     }
 
+    /**
+     * clicks on contactLookupButton.
+     */
     private void clickContactLookup() {
         contactLookupButton.click();
     }

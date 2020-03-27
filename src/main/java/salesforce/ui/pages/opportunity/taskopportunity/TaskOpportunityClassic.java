@@ -66,7 +66,7 @@ public class TaskOpportunityClassic extends AbstractTaskOpportunity {
      * Clicks on contact selected.
      * @param contact value.
      */
-    private void assignContact(String contact) {
+    private void assignContact(final String contact) {
         parentHandle = webDriver.getWindowHandle();
         try {
             UtilSalesforce.switchToNewWindow(parentHandle);
@@ -77,9 +77,13 @@ public class TaskOpportunityClassic extends AbstractTaskOpportunity {
         }
     }
 
-    private void clickOnContactSelected(String contact) {
-        String campaignNameXpath = String.format(CONTACT_NAME, contact);
-        contactNameSelected = webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(campaignNameXpath)));
+    /**
+     * Clicks on contact selected.
+     * @param contact value.
+     */
+    private void clickOnContactSelected(final String contact) {
+        String contactNameXpath = String.format(CONTACT_NAME, contact);
+        contactNameSelected = webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(contactNameXpath)));
         contactNameSelected.click();
     }
 
@@ -98,7 +102,7 @@ public class TaskOpportunityClassic extends AbstractTaskOpportunity {
     @Override
     public AbstractTask clickTaskToEdit(final String task) {
         String taskToEditXpath = String.format(TASK_NAME, task);
-        taskNameSelected = webDriver.findElement(By.xpath(taskToEditXpath));
+        taskNameSelected = webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(taskToEditXpath)));
         taskNameSelected.click();
         return AppPageFactory.getTaskPage();
     }

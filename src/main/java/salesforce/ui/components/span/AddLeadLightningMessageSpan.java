@@ -27,6 +27,8 @@ public class AddLeadLightningMessageSpan extends AbstractUpdateLeadMessage {
     @FindBy(css = "span[class='toastMessage forceActionsText']")
     private WebElement toastFirstPartSecondMessage;
 
+    private static final String WITHE_SPACE = " ";
+
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         webDriverWait.until(ExpectedConditions.visibilityOf(toastFirstPartSecondMessage));
@@ -34,8 +36,7 @@ public class AddLeadLightningMessageSpan extends AbstractUpdateLeadMessage {
 
     @Override
     public String getMessage() {
-        final String space = " ";
-        String firstPartMessage = toastFirstMessage.getText() + space;
+        String firstPartMessage = toastFirstMessage.getText() + WITHE_SPACE;
         String secondPartMessageText = toastFirstPartSecondMessage.getText();
         return firstPartMessage + secondPartMessageText;
     }

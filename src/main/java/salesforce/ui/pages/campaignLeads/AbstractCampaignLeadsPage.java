@@ -11,7 +11,6 @@ package salesforce.ui.pages.campaignLeads;
 
 import salesforce.entities.Lead;
 import salesforce.ui.pages.AbstractBasePage;
-
 import java.util.List;
 
 /**

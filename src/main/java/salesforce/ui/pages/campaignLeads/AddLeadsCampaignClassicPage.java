@@ -15,7 +15,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.entities.Lead;
 import salesforce.ui.pages.AbstractBasePage;
-
 import java.util.List;
 
 /**
@@ -41,6 +40,7 @@ public class AddLeadsCampaignClassicPage extends AbstractBasePage {
     private static final String ROW_CHECK_BUTTON = "//tr[td[div[a[span[text()='%1$s']]]] and td[div[a[span[text()="
             + "'%2$s']]]] ]//../../tbody//input";
     private static final String SEND_OPTION_ADD_WITH_STATUS_BUTTON = "a[class*='menuButtonMenuLink first'][onclick]";
+    private static final String PREVIOUS_LABEL = "//span[text()='Previous']";
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -54,7 +54,7 @@ public class AddLeadsCampaignClassicPage extends AbstractBasePage {
      */
     public void addLead(final List<Lead> leads) {
         findLeads();
-        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Previous']")));
+        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(PREVIOUS_LABEL)));
         for (Lead lead : leads) {
             String rowCheckLocator = String.format(ROW_CHECK_BUTTON, lead.getLastName(), lead.getCompany());
             webDriver.findElement(By.xpath(rowCheckLocator)).click();

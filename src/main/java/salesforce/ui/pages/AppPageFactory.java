@@ -220,7 +220,7 @@ public class AppPageFactory {
     }
 
     /**
-     * Allows to obtain leads details.
+     * Allows to get leads details.
      *
      * @return a AbstractUpdateLeadMessage.
      */

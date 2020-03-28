@@ -9,18 +9,28 @@
 
 package salesforce.ui.components.span;
 
-import salesforce.ui.pages.AbstractBasePage;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
- * Manages AbstractToastUpdateMessageSpan.
+ * Manages a ToastUpdateLeadClassicMessage.
  *
  * @author Enrique Carrizales.
  * @version 1.0 27 March 2020.
  */
-public abstract class AbstractToastUpdateMessageSpan extends AbstractBasePage {
+public class AddLeadClassicMessage extends AbstractUpdateLeadMessage {
+
+    @FindBy(css = "td[class='messageCell'] div h4")
+    private WebElement message;
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(message));
+    }
 
+    @Override
+    public String getMessage() {
+        return message.getText();
     }
 }

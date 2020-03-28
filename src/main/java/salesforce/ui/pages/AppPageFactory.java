@@ -13,9 +13,15 @@ import core.utils.GradleReader;
 import salesforce.ui.components.menu.TopClassicMenu;
 import salesforce.ui.components.menu.TopLightningMenu;
 import salesforce.ui.components.menu.TopMenuAbstract;
+import salesforce.ui.components.span.AbstractUpdateLeadMessage;
+import salesforce.ui.components.span.AddLeadClassicMessage;
+import salesforce.ui.components.span.AddLeadLightningMessageSpan;
 import salesforce.ui.pages.campaign.AbstractCampaignPage;
 import salesforce.ui.pages.campaign.CampaignClassicPage;
 import salesforce.ui.pages.campaign.CampaignLightningPage;
+import salesforce.ui.pages.campaignLeads.AbstractCampaignLeadsPage;
+import salesforce.ui.pages.campaignLeads.CampaignLeadsClassicPage;
+import salesforce.ui.pages.campaignLeads.CampaignLeadsLightningPage;
 import salesforce.ui.pages.campaigncontact.AbstractCampaignContactPage;
 import salesforce.ui.pages.campaigncontact.CampaignContactClassicPage;
 import salesforce.ui.pages.campaigncontact.CampaignContactPopupLightningPage;
@@ -55,6 +61,7 @@ import salesforce.ui.pages.task.TaskLightningPage;
  */
 public class AppPageFactory {
     private static String userExperience = GradleReader.getInstance().getUserExperience();
+    private static final String CLASSIC_USER_EXPERIENCE = "Classic";
 
     /**
      * Returns a page from a user experience.
@@ -62,7 +69,7 @@ public class AppPageFactory {
      * @return TopMenu instance.
      */
     public static TopMenuAbstract getTopMenu() {
-        if (userExperience.equals("Classic")) {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
             return new TopClassicMenu();
         }
         return new TopLightningMenu();
@@ -74,7 +81,7 @@ public class AppPageFactory {
      * @return CampaignsPage instance.
      */
     public static AbstractCampaignListPage getCampaignsPage() {
-        if (userExperience.equals("Classic")) {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
             return new CampaignListClassicPage();
         }
         return new CampaignListLightningPage();
@@ -86,7 +93,7 @@ public class AppPageFactory {
      * @return OpportunitiesPage instance.
      */
     public static AbstractTabObjectsPage getTabObjectsPage() {
-        if (userExperience.equals("Classic")) {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
             return new TabObjectsClassicPage();
         }
         return new TabObjectsLightningPage();
@@ -98,7 +105,7 @@ public class AppPageFactory {
      * @return CampaignsPage instance.
      */
     public static AbstractOpportunityPage getOpportunityPage() {
-        if (userExperience.equals("Classic")) {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
             return new OpportunityClassicPage();
         }
         return new OpportunityLightningPage();
@@ -110,7 +117,7 @@ public class AppPageFactory {
      * @return NewCampaignsPage instance.
      */
     public static AbstractNewCampaignPage getNewCampaignPage() {
-        if (userExperience.equals("Classic")) {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
             return new NewCampaignClassicPage();
         }
         return new NewCampaignLightningPopUp();
@@ -122,7 +129,7 @@ public class AppPageFactory {
      * @return OpportunityListPage instance;
      */
     public static AbstractOpportunityListPage getOpportunityList() {
-        if (userExperience.equals("Classic")) {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
             return new OpportunityListClassicPage();
         }
         return new OpportunityListLightningPage();
@@ -134,7 +141,7 @@ public class AppPageFactory {
      * @return CampaignsPage instance.
      */
     public static AbstractCampaignPage getCampaignPage() {
-        if (userExperience.equals("Classic")) {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
             return new CampaignClassicPage();
         }
         return new CampaignLightningPage();
@@ -146,7 +153,7 @@ public class AppPageFactory {
      * @return task instance.
      */
     public static AbstractTask getTaskPage() {
-        if (userExperience.equals("Classic")) {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
             return new TaskClassicPage();
         }
         return new TaskLightningPage();
@@ -158,7 +165,7 @@ public class AppPageFactory {
      * @return NotesAndAttachmentsPage instance.
      */
     public static NotesAndAttachmentsPageAbstract getNotesAndAttachments() {
-        if (userExperience.equals("Classic")) {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
             return new NotesAndAttachmentsClassicPage();
         }
         return new NotesAndAttachmentsLightningPage();
@@ -170,7 +177,7 @@ public class AppPageFactory {
      * @return campaign members instance.
      */
     public static AbstractCampaignMembersPage getCampaignMembers() {
-        if (userExperience.equals("Classic")) {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
             return new CampaignMembersClassicPage();
         }
         return new CampaignMembersLightningPage();
@@ -182,7 +189,7 @@ public class AppPageFactory {
      * @return task Opportunity instance.
      */
     public static AbstractTaskOpportunity getTaskOpportunity() {
-        if (userExperience.equals("Classic")) {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
             return new TaskOpportunityClassic();
         }
         return new TaskOpportunityLightning();
@@ -194,9 +201,33 @@ public class AppPageFactory {
      * @return campaign members instance.
      */
     public static AbstractCampaignContactPage getCampaignContacts() {
-        if (userExperience.equals("Classic")) {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
             return new CampaignContactClassicPage();
         }
         return new CampaignContactPopupLightningPage();
+    }
+
+    /**
+     * Allows to get a web component message.
+     *
+     * @return a AddLeadLightningMessageSpan.
+     */
+    public static AbstractUpdateLeadMessage getAddLeadMessage() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new AddLeadClassicMessage();
+        }
+        return new AddLeadLightningMessageSpan();
+    }
+
+    /**
+     * Allows to get leads details.
+     *
+     * @return a AbstractUpdateLeadMessage.
+     */
+    public static AbstractCampaignLeadsPage getCampaignLeadsPage() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new CampaignLeadsClassicPage();
+        }
+        return new CampaignLeadsLightningPage();
     }
 }

@@ -20,7 +20,7 @@ import salesforce.ui.pages.AbstractBasePage;
  * @author Enrique Carrizales.
  * @version 1.0 22 March 2020.
  */
-public class ToastUpdateMessageSpan extends AbstractBasePage {
+public class ToastUpdateObjectMessage extends AbstractBasePage {
 
     @FindBy(css = "span[class='toastMessage slds-text-heading--small forceActionsText']")
     private WebElement toastMessage;
@@ -31,10 +31,11 @@ public class ToastUpdateMessageSpan extends AbstractBasePage {
     }
 
     /**
-     * Returns a toast message.
-     * @return String value.
+     * Returns a message.
+     *
+     * @return a String value.
      */
-    public String getToastMessage() {
+    public String getMessage() {
         return toastMessage.getText();
     }
 }

@@ -19,7 +19,7 @@ import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.campaigncontact.AbstractCampaignContactPage;
 import salesforce.ui.pages.campaigncontact.CampaignContactPopupLightningPage;
 import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
-import salesforce.ui.pages.lead.AddLeadsCampaignLightningPopup;
+import salesforce.ui.pages.campaignLeads.AddLeadsCampaignLightningPopup;
 import java.util.List;
 import salesforce.ui.pages.campaignmembers.AbstractCampaignMembersPage;
 import salesforce.ui.pages.campaignmembers.CampaignMembersLightningPage;

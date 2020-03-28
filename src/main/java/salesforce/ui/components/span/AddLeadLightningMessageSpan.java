@@ -12,7 +12,6 @@ package salesforce.ui.components.span;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.ui.pages.AbstractBasePage;
 
 /**
  * Manages a ToastAddMessageSpan.
@@ -20,7 +19,7 @@ import salesforce.ui.pages.AbstractBasePage;
  * @author Enrique Carrizales.
  * @version 1.0 26 March 2020.
  */
-public class ToastAddMessageSpan extends AbstractBasePage {
+public class AddLeadLightningMessageSpan extends AbstractUpdateLeadMessage {
 
     @FindBy(css = "div[class='toastTitle slds-text-heading--small']")
     private WebElement toastFirstMessage;
@@ -28,19 +27,16 @@ public class ToastAddMessageSpan extends AbstractBasePage {
     @FindBy(css = "span[class='toastMessage forceActionsText']")
     private WebElement toastFirstPartSecondMessage;
 
+    private static final String WHITE_SPACE = " ";
+
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         webDriverWait.until(ExpectedConditions.visibilityOf(toastFirstPartSecondMessage));
     }
 
-    /**
-     * Returns a toast message.
-     *
-     * @return String value.
-     */
-    public String getToastMessage() {
-        final String space = " ";
-        String firstPartMessage = toastFirstMessage.getText() + space;
+    @Override
+    public String getMessage() {
+        String firstPartMessage = toastFirstMessage.getText() + WHITE_SPACE;
         String secondPartMessageText = toastFirstPartSecondMessage.getText();
         return firstPartMessage + secondPartMessageText;
     }

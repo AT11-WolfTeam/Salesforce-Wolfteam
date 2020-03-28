@@ -14,6 +14,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.entities.Lead;
 import salesforce.ui.pages.AppPageFactory;
+import salesforce.ui.pages.campaignLeads.AddLeadsCampaignClassicPage;
 import salesforce.ui.pages.campaigncontact.AbstractCampaignContactPage;
 import salesforce.ui.pages.campaigncontact.CampaignContactClassicPage;
 import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
@@ -56,7 +57,10 @@ public class CampaignClassicPage extends AbstractCampaignPage {
 
     @Override
     public void addLeads(final List<Lead> leadList) {
-        //Todo
+        clickOnManageMemberCombobox();
+        clickOnAddMemberItem();
+        AddLeadsCampaignClassicPage addLeadsCampaignClassicPage = new AddLeadsCampaignClassicPage();
+        addLeadsCampaignClassicPage.addLead(leadList);
     }
 
     @Override

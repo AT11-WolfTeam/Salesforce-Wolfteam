@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages.lead;
+package salesforce.ui.pages.campaignLeads;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

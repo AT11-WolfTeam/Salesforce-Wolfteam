@@ -13,14 +13,9 @@ import core.selenium.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Defines OpportunitiesClassicPage.
@@ -42,8 +37,7 @@ public class TabObjectsClassicPage extends AbstractTabObjectsPage {
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-        webDriverWait.until(ExpectedConditions.visibilityOf(newButton));
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(newButton));
+
     }
 
     @Override

@@ -15,6 +15,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.entities.Lead;
 import salesforce.ui.pages.AbstractBasePage;
+import salesforce.ui.pages.campaign.AddObjectCampaignLightningPopup;
+
 import java.util.List;
 
 /**
@@ -25,7 +27,7 @@ import java.util.List;
  */
 public class AddLeadsCampaignLightningPopup extends AbstractBasePage {
 
-    @FindBy(css = "button[class*='slds-button slds-button--neutral button--'")
+    @FindBy(xpath = "//button[contains(@class,'slds-button slds-button--neutral button-b')]//span")
     private WebElement nextButton;
 
     private static final String TABLE_ITEM_PARTIAL_CHECK_BOX_LOCATOR =
@@ -44,9 +46,12 @@ public class AddLeadsCampaignLightningPopup extends AbstractBasePage {
      */
     public void addLead(final List<Lead> leads) {
         for (Lead lead : leads) {
-            String rowCheckLocator = String.format(TABLE_ITEM_PARTIAL_CHECK_BOX_LOCATOR, lead.getName(), lead
+            String rowCheckLocator = String.format(TABLE_ITEM_PARTIAL_CHECK_BOX_LOCATOR, lead.getLastName(), lead
                     .getCompany(), lead.getLeadStatus());
             webDriver.findElement(By.xpath(rowCheckLocator)).click();
         }
+        nextButton.click();
+        AddObjectCampaignLightningPopup addObjectCampaignLightningPopup = new AddObjectCampaignLightningPopup();
+        addObjectCampaignLightningPopup.clickOnSubmitButton();
     }
 }

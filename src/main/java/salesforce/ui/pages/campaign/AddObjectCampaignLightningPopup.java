@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.components.span;
+package salesforce.ui.pages.campaign;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,26 +15,26 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.AbstractBasePage;
 
 /**
- * Manages a ToastMessageSpan.
+ * Defines AddObjectCampaignLightningPopup.
  *
  * @author Enrique Carrizales.
- * @version 1.0 22 March 2020.
+ * @version 1.0 26 March 2020.
  */
-public class ToastMessageSpan extends AbstractBasePage {
+public class AddObjectCampaignLightningPopup extends AbstractBasePage {
 
-    @FindBy(css = "span[class='toastMessage slds-text-heading--small forceActionsText']")
-    private WebElement toastMessage;
+    @FindBy(xpath = "//button[span[contains(.,'Submit')]]")
+    private WebElement submitButton;
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-        webDriverWait.until(ExpectedConditions.visibilityOf(toastMessage));
+        webDriverWait.until(ExpectedConditions.visibilityOf(submitButton));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(submitButton));
     }
 
     /**
-     * Returns a toast message.
-     * @return String value.
+     * Click a button.
      */
-    public String getToastMessage() {
-        return toastMessage.getText();
+    public void clickOnSubmitButton() {
+        submitButton.click();
     }
 }

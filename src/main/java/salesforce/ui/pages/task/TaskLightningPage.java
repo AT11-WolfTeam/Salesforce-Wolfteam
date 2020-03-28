@@ -37,17 +37,32 @@ public class TaskLightningPage extends AbstractTask {
     private WebElement saveButtonTask;
 
     @FindBy(xpath = "//span[text()='In Progress']")
-    protected WebElement status;
+    private WebElement status;
 
     @FindBy(xpath = "//span[text()='High']")
-    protected WebElement priority;
+    private WebElement priority;
+
+    @FindBy(xpath = "//span[text()='Name']/../..//div//a[@data-refid='recordId']")
+    private WebElement contactName;
+
+    @FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[@class='uiOutputDate']")
+    private WebElement dueDate;
 
     @FindBy(xpath = "//div[@class='active']//label[text()='Subject']/../..//input")
-    protected WebElement subjectField;
+    private WebElement subjectField;
+
+    @FindBy(xpath = "//input[@class='inputDate input']")
+    private WebElement dueDateField;
+
+    @FindBy(xpath = "//label//span[text()='Name']/../..//div//div[@class='autocompleteWrapper slds-grow']")
+    private WebElement contactsField;
+
+    private WebElement contactSelected;
 
     private static final String FIELD_COMBO_BOX = "//a[@title='%s']";
     private static final String SUBJECT_TITLE = "//div[@class='slds-page-header__title slds-m-right--small slds-"
             + "align-middle fade-text']//span[text()='%s']";
+    private static final String CONTACT_COMBO_BOX = "//a[@role='option']//div[@title='%s']";
     private Actions actions;
     private JavascriptExecutor js = (JavascriptExecutor) webDriver;
     private static final String SCROLL_DOWN = "window.scrollBy(0,300)";
@@ -113,6 +128,7 @@ public class TaskLightningPage extends AbstractTask {
 
     /**
      * Deletes the field of the element.
+     *
      * @param text of the field.
      * @param subjectField element.
      */
@@ -130,6 +146,38 @@ public class TaskLightningPage extends AbstractTask {
         String statusXpath = String.format(SUBJECT_TITLE, subject);
         subjectTitle = webDriver.findElement(By.xpath(statusXpath));
         return subjectTitle.getText();
+    }
+
+    @Override
+    protected void setContact(final String contact) {
+        contactsField.click();
+        selectContact(contact);
+    }
+
+    /**
+     * Selects the contact.
+     *
+     * @param contact value.
+     */
+    private void selectContact(final String contact) {
+        String statusXpath = String.format(CONTACT_COMBO_BOX, contact);
+        contactSelected = webDriver.findElement(By.xpath(statusXpath));
+        actions.moveToElement(contactSelected).click().build().perform();
+    }
+
+    @Override
+    protected String getContact() {
+        return contactName.getText();
+    }
+
+    @Override
+    protected void setDueDate(final String dueDate) {
+        dueDateField.sendKeys(dueDate);
+    }
+
+    @Override
+    protected String getDueDate() {
+        return dueDate.getText();
     }
 
     /**

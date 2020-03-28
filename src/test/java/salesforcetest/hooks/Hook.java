@@ -73,7 +73,7 @@ public class Hook {
         }
     }
 
-    /**
+     /**
      * Deletes leads.
      */
     @After("@DeletesLeads")
@@ -81,10 +81,10 @@ public class Hook {
         leadHelper.deleteLeads(context.getLeads());
     }
 
-     /**
-     * Deletes contacts by id.
+    /**
+     * Deletes Contact.
      */
-    @After("@CampaignAccounts")
+    @After("@DeletesContacts")
     public void deletesContacts() {
         contactApiHelper.deleteContacts(context.getContacts());
         final String expected = "204";

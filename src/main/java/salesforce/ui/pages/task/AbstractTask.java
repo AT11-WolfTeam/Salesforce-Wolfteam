@@ -85,6 +85,34 @@ public abstract class AbstractTask extends AbstractBasePage {
     protected abstract String getSubject(String subject);
 
     /**
+     * Sets Contact.
+     *
+     * @param contact value.
+     */
+    protected abstract void setContact(String contact);
+
+    /**
+     * Returns contact.
+     *
+     * @return string value.
+     */
+    protected abstract String getContact();
+
+    /**
+     * Sets due date.
+     * @param dueDate value.
+     */
+    protected abstract void setDueDate(String dueDate);
+
+    /**
+     * Returns due date.
+     *
+     * @return string value
+     */
+    protected abstract String getDueDate();
+
+
+    /**
      * Sets the form of new task.
      *
      * @param taskOpportunity entity.
@@ -107,6 +135,8 @@ public abstract class AbstractTask extends AbstractBasePage {
         strategyMap.put(TaskConstant.PRIORITY, () -> setPriority(taskOpportunity.getPriority()));
         strategyMap.put(TaskConstant.STATUS, () -> setStatus(taskOpportunity.getStatus()));
         strategyMap.put(TaskConstant.SUBJECT, () -> setSubject(taskOpportunity.getSubject()));
+        strategyMap.put(TaskConstant.CONTACT, () -> setContact(taskOpportunity.getContact()));
+        strategyMap.put(TaskConstant.DUE_DATE, () -> setDueDate(taskOpportunity.getDueDate()));
         return strategyMap;
     }
 
@@ -126,6 +156,23 @@ public abstract class AbstractTask extends AbstractBasePage {
     }
 
     /**
+     * Gets map of the information set.
+     *
+     * @param taskOpportunity object.
+     * @param setKeysToGet Set.
+     * @return HashMap values.
+     */
+    public HashMap<String, String> getTaskDetails(final TaskOpportunity taskOpportunity,
+                                                  final Set<String> setKeysToGet) {
+        HashMap<String, String> values = new HashMap<>();
+        HashMap<String, Supplier> strategyMapEducation = composeTaskDetailsToGet(taskOpportunity);
+        for (String key : setKeysToGet) {
+            values.put(key, strategyMapEducation.get(key).get().toString());
+        }
+        return values;
+    }
+
+    /**
      * composeOpportunityDetailsToGet to get attributes.
      *
      * @param taskOpportunity object.
@@ -136,6 +183,8 @@ public abstract class AbstractTask extends AbstractBasePage {
         strategyMap.put(TaskConstant.PRIORITY, () -> getPriority());
         strategyMap.put(TaskConstant.STATUS, () -> getStatus());
         strategyMap.put(TaskConstant.SUBJECT, () -> getSubject(taskOpportunity.getSubject()));
+        strategyMap.put(TaskConstant.CONTACT, () -> getContact());
+        strategyMap.put(TaskConstant.DUE_DATE, () -> getDueDate());
         return strategyMap;
     }
 }

@@ -6,16 +6,16 @@ Feature: Campaign
     Given I create 3 "Basic" leads
       And I go to "Campaigns Page"
       And I create a new Campaign with
-        | Campaign Name | Promotion |
-        | Active        | true      |
+        | Campaign Name | Promotion Test |
+        | Active        | true           |
     When I add the leads to the campaign
     Then the application should display this message in Campaign Page only for Lightning
-      | "[Campaign Name] was successfully updated. 2 new members were added to [Campaign Name]" |
-      And the campaign's details should display
+      | [Campaign Name] was successfully updated. 3 new members were added to [Campaign Name]. |
+      And campaign members should display the leads added
 
 
   @CampaignAccounts
-  @DeletesCampaign
+  @DeletesContacts
   Scenario: Assign 3 contacts to campaign
     Given I create 3 "Basic" contacts
       And I go to "Campaigns Page"

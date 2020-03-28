@@ -21,8 +21,6 @@ import salesforce.ui.pages.opportunity.opportunitycontactroles.ContactRolesClass
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
 import salesforce.ui.pages.owner.OwnerEditClassicPage;
 import salesforce.utils.UtilSalesforce;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -68,10 +66,14 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     @FindBy(css = "input[name='newRole']")
     private WebElement newRoleButton;
 
+    @FindBy(xpath = "//input[@name='tsk5__09D3h0000012ZVJ']")
+    private WebElement subjectField;
+
     private String parentHandle;
     protected static final String CAMPAIGN_NAME = "//th[@scope='row']//a[contains(text(),'%s')]";
     private static final String CONTACT_NAME = "//th//a[text()='%s']";
     private static final String CONTACT_ROLE = "//th[a[text()='%s']]/..//td[text()='%s']";
+    protected static final int INTERVAL_TIME = 2000;
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -182,9 +184,7 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
 
     @Override
     public AbstractTaskOpportunity clickAddTask() {
-        waiters();
-        addTaskButton.click();
-        addTaskButton.click();
+        UtilSalesforce.retryClick(addTaskButton, subjectField, INTERVAL_TIME);
         return AppPageFactory.getTaskOpportunity();
     }
 

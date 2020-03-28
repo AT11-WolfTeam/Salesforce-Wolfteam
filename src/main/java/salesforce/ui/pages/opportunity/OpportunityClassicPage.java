@@ -16,9 +16,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.AppPageFactory;
+import salesforce.ui.pages.opportunity.opportunitycontactroles.AbstractContactRolesPage;
+import salesforce.ui.pages.opportunity.opportunitycontactroles.ContactRolesClassicPage;
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
 import salesforce.ui.pages.owner.OwnerEditClassicPage;
 import salesforce.utils.UtilSalesforce;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Defines an OpportunityClassicPage.
@@ -60,8 +65,13 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     @FindBy(xpath = "//span[@class='publisherattachtext ' and text()='File']")
     private WebElement addFile;
 
+    @FindBy(css = "input[name='newRole']")
+    private WebElement newRoleButton;
+
     private String parentHandle;
     protected static final String CAMPAIGN_NAME = "//th[@scope='row']//a[contains(text(),'%s')]";
+    private static final String CONTACT_NAME = "//th//a[text()='%s']";
+    private static final String CONTACT_ROLE = "//th[a[text()='%s']]/..//td[text()='%s']";
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -159,6 +169,17 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
         clickOnAttachFileButton();
     }
 
+    private void clickOnContactRolesButton() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(newRoleButton));
+        newRoleButton.click();
+    }
+
+    @Override
+    public AbstractContactRolesPage clickOnContactRoles() {
+        clickOnContactRolesButton();
+        return new ContactRolesClassicPage();
+    }
+
     @Override
     public AbstractTaskOpportunity clickAddTask() {
         waiters();
@@ -176,5 +197,54 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(editButton));
         webDriverWait.until(ExpectedConditions.elementToBeClickable(addFile));
         webDriverWait.until(ExpectedConditions.visibilityOf(addFile));
+    }
+
+    /**
+     * Gets composed web element.
+     * @param xpath value.
+     * @return web element.
+     */
+    private WebElement getWebElement(final String xpath) {
+        return webDriver.findElement(By.xpath(xpath));
+    }
+
+    /**
+     * Gets contact name;
+     * @param contactName value.
+     * @return contact name text.
+     */
+    private String getContactNameText(final String contactName) {
+        webDriverWait.until(ExpectedConditions.visibilityOf(getWebElement(String.format(CONTACT_NAME, contactName))));
+        return getWebElement(String.format(CONTACT_NAME, contactName)).getText();
+    }
+
+    /**
+     * Gets contact name;
+     * @param contactName value.
+     * @return contact name text.
+     */
+    private String getRoleTextByContactName(final String contactName, final String rolName) {
+        return getWebElement(String.format(CONTACT_ROLE, contactName, rolName)).getText();
+    }
+
+    /**
+     * Iterates contacts.
+     * @param contactsList values.
+     * @return contact roles text.
+     */
+    private HashMap<String, String> iterateContacts(final HashMap<String, String> contactsList) {
+        HashMap<String, String> contactsText = new HashMap<>();
+        String contactText;
+        String contactRoleText;
+        for (String key : contactsList.keySet()) {
+            contactText = getContactNameText(key);
+            contactRoleText = getRoleTextByContactName(key, contactsList.get(key));
+            contactsText.put(contactText, contactRoleText);
+        }
+        return contactsText;
+    }
+
+    public HashMap<String, String> verifyContactRoles(final HashMap<String, String> contactsList) {
+        return iterateContacts(contactsList);
     }
 }

@@ -18,6 +18,10 @@ import org.openqa.selenium.support.ui.Select;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Defines OpportunitiesClassicPage.
  *

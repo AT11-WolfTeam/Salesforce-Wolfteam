@@ -12,6 +12,7 @@ package salesforce.ui.pages.opportunity;
 import org.openqa.selenium.WebElement;
 import salesforce.entities.Opportunity;
 import salesforce.ui.pages.AbstractBasePage;
+import salesforce.ui.pages.opportunity.opportunitycontactroles.AbstractContactRolesPage;
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
 import java.util.HashMap;
 import java.util.Set;
@@ -124,4 +125,9 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
      * Allows to open notes and attachments page.
      */
     public abstract void clickOnNotesAndAttachmentsButton();
+
+    /**
+     * Clicks on contact roles of campaign.
+     */
+    public abstract AbstractContactRolesPage clickOnContactRoles();
 }

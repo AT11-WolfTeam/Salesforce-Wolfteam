@@ -14,7 +14,8 @@ Feature: Campaign
       And the campaign's details should display
 
 
-  @CampaignAccounts @DeletesCampaign
+  @CampaignAccounts
+  @DeletesCampaign
   Scenario: Assign 3 contacts to campaign
     Given I create 3 "Basic" contacts
       And I go to "Campaigns Page"

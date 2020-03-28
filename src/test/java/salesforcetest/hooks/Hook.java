@@ -92,4 +92,13 @@ public class Hook {
             Assert.assertEquals(contact.getStatusCode(), expected);
         }
     }
+
+    @After("@DeleteContacts")
+    public void deleteContacts() {
+        contactApiHelper.deleteContacts(context.getContacts());
+        final String expected = "204";
+        for (Contact contact : context.getContacts()) {
+            Assert.assertEquals(contact.getStatusCode(), expected);
+        }
+    }
 }

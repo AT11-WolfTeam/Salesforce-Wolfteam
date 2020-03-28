@@ -15,6 +15,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.AppPageFactory;
+import salesforce.ui.pages.opportunity.opportunitycontactroles.AbstractContactRolesPage;
+import salesforce.ui.pages.opportunity.opportunitycontactroles.ContactRolesLightningPage;
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
 import salesforce.ui.pages.owner.ChangeOpportunityOwnerLightningPopup;
 
@@ -46,6 +48,9 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     @FindBy(css = "button[title='Add']")
     private WebElement addTaskButton;
 
+    @FindBy(css = "span[title='Contact Roles']")
+    private WebElement contactRoles;
+
     protected static final String CAMPAIGN_NAME = "a div div[title='%s']";
 
     @FindBy(xpath = "//div[@class='slds-form-element slds-form-element_readonly slds-form-element_edit slds-grow "
@@ -58,9 +63,6 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     @FindBy(xpath = "//span[@class='slds-card__header-title slds-truncate slds-m-right--xx-small'"
             + " and contains(text(),'Notes & Attachments')]")
     private WebElement notesAndAttachmentsLink;
-
-    @FindBy(css = "span[title='Contact Roles']")
-    private WebElement contactRoles;
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -137,5 +139,16 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     @Override
     public void clickOnNotesAndAttachmentsButton() {
         clickOnNotesAndAttachment();
+    }
+
+    private void clickOnContactRolesButton() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(contactRoles));
+        contactRoles.click();
+    }
+
+    @Override
+    public AbstractContactRolesPage clickOnContactRoles() {
+        clickOnContactRolesButton();
+        return new ContactRolesLightningPage();
     }
 }

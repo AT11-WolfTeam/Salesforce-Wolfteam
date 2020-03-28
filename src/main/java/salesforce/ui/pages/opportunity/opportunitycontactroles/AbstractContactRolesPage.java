@@ -9,10 +9,11 @@
 
 package salesforce.ui.pages.opportunity.opportunitycontactroles;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import salesforce.ui.pages.AbstractBasePage;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 import salesforce.ui.pages.opportunity.contactrolespopup.AbstractContactRolesPopup;
-
 import java.util.HashMap;
 
 /**
@@ -25,12 +26,14 @@ public abstract class AbstractContactRolesPage extends AbstractBasePage {
 
     /**
      * Clicks on add contact roles.
+     *
      * @return contact roles popup instance.
      */
     public abstract AbstractContactRolesPopup addContactRoles();
 
     /**
      * Verify contacts roles.
+     *
      * @param contactRolList values.
      * @return a map of strings.
      */
@@ -38,8 +41,32 @@ public abstract class AbstractContactRolesPage extends AbstractBasePage {
 
     /**
      * Sets contact roles.
+     *
      * @param contactsList values.
      * @return opportunity classic instance.
      */
     public abstract AbstractOpportunityPage setContacts(HashMap<String, String> contactsList);
+
+    /**
+     * Gets composed web element.
+     *
+     * @param xpath value.
+     * @param concatText value.
+     * @return web element.
+     */
+    public WebElement getWebElement(final String xpath, final String concatText) {
+        return webDriver.findElement(By.xpath(String.format(xpath, concatText)));
+    }
+
+    /**
+     * Gets composed web element.
+     *
+     * @param xpath value.
+     * @param contactName value.
+     * @param rolName value.
+     * @return web element.
+     */
+    public WebElement getWebElementRol(final String xpath, final String contactName, final String rolName) {
+        return webDriver.findElement(By.xpath(String.format(xpath, contactName, rolName)));
+    }
 }

@@ -17,7 +17,6 @@ import org.openqa.selenium.support.ui.Select;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 import salesforce.ui.pages.opportunity.OpportunityClassicPage;
 import salesforce.ui.pages.opportunity.contactrolespopup.AbstractContactRolesPopup;
-
 import java.util.HashMap;
 
 /**
@@ -52,17 +51,6 @@ public class ContactRolesClassicPage extends AbstractContactRolesPage {
     public HashMap<String, String> verifyContactRoles(final HashMap<String, String> contactRolList) {
 
         return null;
-    }
-
-    /**
-     * Gets composed web element.
-     *
-     * @param xpath value.
-     * @param concatText value.
-     * @return composed web element.
-     */
-    private WebElement getWebElement(final String xpath, final String concatText) {
-        return webDriver.findElement(By.xpath(String.format(xpath, concatText)));
     }
 
     /**

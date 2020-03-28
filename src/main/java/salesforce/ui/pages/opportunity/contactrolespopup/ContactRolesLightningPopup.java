@@ -15,7 +15,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.opportunity.opportunitycontactroles.AbstractContactRolesPage;
 import salesforce.ui.pages.opportunity.opportunitycontactroles.ContactRolesLightningPage;
-
 import java.util.HashMap;
 
 /**

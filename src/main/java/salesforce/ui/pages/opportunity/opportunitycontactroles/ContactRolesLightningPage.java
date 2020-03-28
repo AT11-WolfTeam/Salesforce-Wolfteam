@@ -9,7 +9,6 @@
 
 package salesforce.ui.pages.opportunity.opportunitycontactroles;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,7 +16,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 import salesforce.ui.pages.opportunity.contactrolespopup.AbstractContactRolesPopup;
 import salesforce.ui.pages.opportunity.contactrolespopup.ContactRolesLightningPopup;
-
 import java.util.HashMap;
 
 /**
@@ -57,29 +55,6 @@ public class ContactRolesLightningPage extends AbstractContactRolesPage {
     public AbstractContactRolesPopup addContactRoles() {
         clickOnAddContactRoles();
         return new ContactRolesLightningPopup();
-    }
-
-    /**
-     * Gets composed web element.
-     *
-     * @param xpath value.
-     * @param concatText value.
-     * @return web element.
-     */
-    private WebElement getWebElement(final String xpath, final String concatText) {
-        return webDriver.findElement(By.xpath(String.format(xpath, concatText)));
-    }
-
-    /**
-     * Gets composed web element.
-     *
-     * @param xpath value.
-     * @param contactName value.
-     * @param rolName value.
-     * @return web element.
-     */
-    private WebElement getWebElementRol(final String xpath, final String contactName, final String rolName) {
-        return webDriver.findElement(By.xpath(String.format(xpath, contactName, rolName)));
     }
 
     /**

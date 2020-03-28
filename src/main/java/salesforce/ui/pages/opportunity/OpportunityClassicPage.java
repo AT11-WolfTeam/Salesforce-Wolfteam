@@ -21,7 +21,6 @@ import salesforce.ui.pages.opportunity.opportunitycontactroles.ContactRolesClass
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
 import salesforce.ui.pages.owner.OwnerEditClassicPage;
 import salesforce.utils.UtilSalesforce;
-
 import java.util.HashMap;
 
 /**

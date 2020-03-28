@@ -11,7 +11,6 @@ package salesforce.ui.pages.opportunity.contactrolespopup;
 
 import salesforce.ui.pages.AbstractBasePage;
 import salesforce.ui.pages.opportunity.opportunitycontactroles.AbstractContactRolesPage;
-
 import java.util.HashMap;
 
 /**
@@ -24,6 +23,7 @@ public abstract class AbstractContactRolesPopup extends AbstractBasePage {
 
     /**
      * Selects contacts.
+     *
      * @param contactsList values.
      * @return contact roles instance.
      */

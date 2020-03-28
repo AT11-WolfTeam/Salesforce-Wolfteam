@@ -37,7 +37,6 @@ import salesforce.ui.pages.task.AbstractTask;
 import salesforce.utils.JsonFileReader;
 import salesforce.utils.ReplacerMessages;
 import salesforce.utils.SheetManager;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -71,6 +70,7 @@ public class OpportunityStep {
     private static final String JSON_CONFIG_FILE = "config.json";
     private static final String USER_EXPERIENCE_LIGHTNING = "Lightning";
     private static final String USER_EXPERIENCE_CLASSIC = "Classic";
+    private static final String WHITE_SPACE = " ";
 
     private HashMap<String, String> contactsList = new HashMap<>();
     private ArrayList<String> roles = new ArrayList<>();
@@ -117,7 +117,7 @@ public class OpportunityStep {
     /**
      * Allows to create many opportunities.
      *
-     * @param quantity        number of opportunities.
+     * @param quantity number of opportunities.
      * @param opportunityType value.
      */
     @Given("I create {int} {string} opportunities")
@@ -317,7 +317,7 @@ public class OpportunityStep {
         String fullName;
         int counter = 0;
         for (Contact contact : context.getContacts()) {
-            fullName = contact.getFirstName() + " " + contact.getLastName();
+            fullName = contact.getFirstName() + WHITE_SPACE + contact.getLastName();
             contactsList.put(fullName, roles.get(counter));
             counter++;
         }

@@ -94,7 +94,7 @@ public class ContactRolesClassicPage extends AbstractContactRolesPage {
      * @param position value.
      * @param roleName value.
      */
-    private void selectContactRol(final int position, final String roleName) {
+    private void setContactRol(final int position, final String roleName) {
         webDriverWait.until(ExpectedConditions.visibilityOf(getWebElement(ROLE_COMBOBOX, Integer.toString(position))));
         getSelect(String.format(ROLE_COMBOBOX, position)).selectByVisibleText(roleName);
     }
@@ -107,7 +107,7 @@ public class ContactRolesClassicPage extends AbstractContactRolesPage {
     private void rolesIterator(final HashMap<String, String> contactRolesList) {
         int iterator = 0;
         for (String keyName : contactRolesList.keySet()) {
-            selectContactRol(iterator, contactRolesList.get(keyName));
+            setContactRol(iterator, contactRolesList.get(keyName));
             iterator++;
         }
     }

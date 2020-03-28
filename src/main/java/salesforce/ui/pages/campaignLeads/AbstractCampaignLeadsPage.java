@@ -7,22 +7,26 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.components.span;
+package salesforce.ui.pages.campaignLeads;
 
+import salesforce.entities.Lead;
 import salesforce.ui.pages.AbstractBasePage;
 
+import java.util.List;
+
 /**
- * Manages AbstractToastUpdateMessageSpan.
+ * Defines AbstractCampaignLeadsPage.
  *
  * @author Enrique Carrizales.
  * @version 1.0 27 March 2020.
  */
-public abstract class AbstractToastUpdateLeadMessage extends AbstractBasePage {
+public abstract class AbstractCampaignLeadsPage extends AbstractBasePage {
 
     /**
-     * Returns a message.
+     * Counts leads added to a campaign.
      *
-     * @return a String value.
+     * @param leadList contains a list value.
+     * @return a int value.
      */
-    protected abstract String getMessage();
+    public abstract int countLeadsInList(List<Lead> leadList);
 }

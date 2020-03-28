@@ -11,36 +11,39 @@ package salesforce.ui.pages.campaignLeads;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.entities.Lead;
-import salesforce.ui.pages.AppPageFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Defines CampaignMembersLightningPage.
+ * Defines CampaignLeadsClassicPage.
  *
  * @author Enrique Carrizales.
- * @version 1.0 26 March 2020.
+ * @version 1.0 27 March 2020.
  */
-public class CampaignLeadsLightningPage extends AbstractCampaignLeadsPage {
+public class CampaignLeadsClassicPage extends AbstractCampaignLeadsPage {
 
-    private static final String LEAD_ROW_PARTIAL_LOCATOR = "//tr[*[span[*[text()='Lead']]] and td[span[*[text()='%1$s'"
-            + "]]] and td[span[*[text()='%2$s']]]]";
+    @FindBy(xpath = "//span[text()='Previous']")
+    private WebElement previousLabel;
 
-    @Override
-    protected void waitUntilPageObjectIsLoaded() {
-
-    }
+    private static final String LEAD_ROW_PARTIAL_LOCATOR = "//tr[td[div[a[span[text()='%1$s']]]] and td[div[text()="
+            + "'%2$s']]]";
 
     @Override
     public int countLeadsInList(final List<Lead> leadList) {
-        AppPageFactory.getCampaignPage().displayCampaignMembers();
         List<WebElement> webElementsLeads = new ArrayList<>();
         for (Lead lead : leadList) {
             String leadRowLocator = String.format(LEAD_ROW_PARTIAL_LOCATOR, lead.getLastName(), lead.getCompany());
             webElementsLeads.add(webDriver.findElement(By.xpath(leadRowLocator)));
         }
         return webElementsLeads.size();
+    }
+
+    @Override
+    protected void waitUntilPageObjectIsLoaded() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(previousLabel));
     }
 }

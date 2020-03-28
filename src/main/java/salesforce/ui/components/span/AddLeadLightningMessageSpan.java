@@ -19,7 +19,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  * @author Enrique Carrizales.
  * @version 1.0 26 March 2020.
  */
-public class ToastAddMessageSpan extends AbstractToastUpdateLeadMessage {
+public class AddLeadLightningMessageSpan extends AbstractUpdateLeadMessage {
 
     @FindBy(css = "div[class='toastTitle slds-text-heading--small']")
     private WebElement toastFirstMessage;
@@ -33,7 +33,7 @@ public class ToastAddMessageSpan extends AbstractToastUpdateLeadMessage {
     }
 
     @Override
-    protected String getMessage() {
+    public String getMessage() {
         final String space = " ";
         String firstPartMessage = toastFirstMessage.getText() + space;
         String secondPartMessageText = toastFirstPartSecondMessage.getText();

@@ -19,7 +19,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  * @author Enrique Carrizales.
  * @version 1.0 27 March 2020.
  */
-public class ToastUpdateLeadClassicMessage extends AbstractToastUpdateLeadMessage {
+public class AddLeadClassicMessage extends AbstractUpdateLeadMessage {
 
     @FindBy(css = "td[class='messageCell'] div h4")
     private WebElement message;
@@ -30,7 +30,7 @@ public class ToastUpdateLeadClassicMessage extends AbstractToastUpdateLeadMessag
     }
 
     @Override
-    protected String getMessage() {
+    public String getMessage() {
         return message.getText();
     }
 }

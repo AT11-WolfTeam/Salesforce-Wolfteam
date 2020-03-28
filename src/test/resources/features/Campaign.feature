@@ -9,8 +9,9 @@ Feature: Campaign
         | Campaign Name | Promotion Test |
         | Active        | true           |
     When I add the leads to the campaign
-    Then the application should display this message in Campaign Page only for Lightning
-      | [Campaign Name] was successfully updated. 3 new members were added to [Campaign Name]. |
+    Then the application should display this message in Campaign Page
+      | Lightning | [Campaign Name] was successfully updated. 3 new members were added to [Campaign Name]. |
+      | Classic   | You have successfully added 3 member(s).                                               |
       And campaign members should display the leads added
 
 

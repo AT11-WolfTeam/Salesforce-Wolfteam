@@ -13,9 +13,15 @@ import core.utils.GradleReader;
 import salesforce.ui.components.menu.TopClassicMenu;
 import salesforce.ui.components.menu.TopLightningMenu;
 import salesforce.ui.components.menu.TopMenuAbstract;
+import salesforce.ui.components.span.AbstractUpdateLeadMessage;
+import salesforce.ui.components.span.AddLeadClassicMessage;
+import salesforce.ui.components.span.AddLeadLightningMessageSpan;
 import salesforce.ui.pages.campaign.AbstractCampaignPage;
 import salesforce.ui.pages.campaign.CampaignClassicPage;
 import salesforce.ui.pages.campaign.CampaignLightningPage;
+import salesforce.ui.pages.campaignLeads.AbstractCampaignLeadsPage;
+import salesforce.ui.pages.campaignLeads.CampaignLeadsClassicPage;
+import salesforce.ui.pages.campaignLeads.CampaignLeadsLightningPage;
 import salesforce.ui.pages.campaigncontact.AbstractCampaignContactPage;
 import salesforce.ui.pages.campaigncontact.CampaignContactClassicPage;
 import salesforce.ui.pages.campaigncontact.CampaignContactPopupLightningPage;
@@ -198,5 +204,29 @@ public class AppPageFactory {
             return new CampaignContactClassicPage();
         }
         return new CampaignContactPopupLightningPage();
+    }
+
+    /**
+     * Allows to obtain a message web component.
+     *
+     * @return a AddLeadLightningMessageSpan.
+     */
+    public static AbstractUpdateLeadMessage getAddLeadMessage() {
+        if (userExperience.equals("Classic")) {
+            return new AddLeadClassicMessage();
+        }
+        return new AddLeadLightningMessageSpan();
+    }
+
+    /**
+     * Allows to obtain leads details.
+     *
+     * @return a AbstractUpdateLeadMessage.
+     */
+    public static AbstractCampaignLeadsPage getCampaignLeadsPage() {
+        if (userExperience.equals("Classic")) {
+            return new CampaignLeadsClassicPage();
+        }
+        return new CampaignLeadsLightningPage();
     }
 }

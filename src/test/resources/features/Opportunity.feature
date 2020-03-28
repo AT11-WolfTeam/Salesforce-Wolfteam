@@ -77,3 +77,14 @@ Feature: Opportunity
   Scenario: Create a new opportunity
     Given I create 2 "Basic" opportunities
     When I delete created opportunities
+
+    
+  @DeleteContacts
+  @DeletesOpportunity
+  Scenario: Add roles to contacts of an opportunity
+    Given I create 3 "Basic" contacts
+      And I create 1 "Basic" opportunities
+    When I go to "Opportunities Page"
+      And I select the opportunity
+      And I add roles its contacts
+    Then The added contacts with roles should be displayed on Contact Roles page

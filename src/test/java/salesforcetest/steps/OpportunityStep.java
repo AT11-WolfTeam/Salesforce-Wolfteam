@@ -16,6 +16,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
 import salesforce.api.requestapi.OpportunityApiHelper;
+import salesforce.entities.Contact;
 import salesforce.entities.Context;
 import salesforce.entities.NewCampaign;
 import salesforce.entities.Opportunity;
@@ -28,6 +29,9 @@ import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
 import salesforce.ui.pages.newcampaign.AbstractNewCampaignPage;
 import salesforce.ui.pages.genericTabs.AbstractTabObjectsPage;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
+import salesforce.ui.pages.opportunity.OpportunityClassicPage;
+import salesforce.ui.pages.opportunity.contactrolespopup.AbstractContactRolesPopup;
+import salesforce.ui.pages.opportunity.opportunitycontactroles.AbstractContactRolesPage;
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
 import salesforce.ui.pages.task.AbstractTask;
 import salesforce.utils.JsonFileReader;
@@ -58,10 +62,19 @@ public class OpportunityStep {
     private AbstractTaskOpportunity abstractTaskOpportunity;
     private AbstractTask abstractTask;
     private TaskOpportunity taskOpportunity;
+    private AbstractContactRolesPage contactRolesPage;
+    private AbstractContactRolesPopup contactRolesPopup;
+
     private static String userExperience = GradleReader.getInstance().getUserExperience();
     private static final int ARRAY_POSITION_FIRST = 0;
     private static final String JSON_CONFIG_FILE = "config.json";
     private static final String USER_EXPERIENCE_LIGHTNING = "Lightning";
+    private static final String USER_EXPERIENCE_CLASSIC = "Classic";
+    private static final String WHITE_SPACE = " ";
+
+    private HashMap<String, String> contactsList = new HashMap<>();
+    private ArrayList<String> roles = new ArrayList<>();
+    private HashMap<String, String> actual;
     private HashMap<String, String> mapNewTask;
 
     /**
@@ -232,7 +245,6 @@ public class OpportunityStep {
     public void selectOpportunity() {
         String opportunityName = context.getOpportunities().get(ARRAY_POSITION_FIRST).getName();
         System.out.println(opportunityName);
-        // close popup
         AppPageFactory.getTabObjectsPage().selectObjectByName(opportunityName);
     }
 
@@ -281,6 +293,54 @@ public class OpportunityStep {
     public void theTaskShouldDisplayTheInformationAdded() {
         HashMap<String, String> mapTaskValidate = abstractTask.getTaskDetails(taskOpportunity, mapNewTask.keySet());
         Assert.assertEquals(mapTaskValidate, context.getTaskOpportunity().getTaskEdited());
+    }
+
+    /**
+     * Selects the opportunity.
+     */
+    @And("I select the opportunity")
+    public void selectTheOpportunity() {
+        String opportunityName = context.getOpportunities().get(ARRAY_POSITION_FIRST).getName();
+        opportunityPage = AppPageFactory.getTabObjectsPage().selectObjectByName(opportunityName);
+    }
+
+    /**
+     * Adds roles to opportunity contacts.
+     */
+    @And("I add roles its contacts")
+    public void addRolesToContacts() {
+        contactRolesPage = opportunityPage.clickOnContactRoles();
+        contactRolesPopup = contactRolesPage.addContactRoles();
+        roles.add("Business User");
+        roles.add("Economic Buyer");
+        roles.add("Evaluator");
+        String fullName;
+        int counter = 0;
+        for (Contact contact : context.getContacts()) {
+            fullName = contact.getFirstName() + WHITE_SPACE + contact.getLastName();
+            contactsList.put(fullName, roles.get(counter));
+            counter++;
+        }
+        if (userExperience.equals(USER_EXPERIENCE_CLASSIC)) {
+            contactRolesPage.setContacts(contactsList);
+            return;
+        }
+        contactRolesPage = contactRolesPopup.selectContacts(contactsList);
+    }
+
+    /**
+     * Verifies the added roles.
+     */
+    @Then("The added contacts with roles should be displayed on Contact Roles page")
+    public void verifyAddedContactsWithRoles() {
+        if (userExperience.equals(USER_EXPERIENCE_CLASSIC)) {
+            OpportunityClassicPage opportunity = new OpportunityClassicPage();
+            actual = opportunity.verifyContactRoles(contactsList);
+            Assert.assertEquals(actual, contactsList, "message: ");
+            return;
+        }
+        actual = contactRolesPage.verifyContactRoles(contactsList);
+        Assert.assertEquals(actual, contactsList, "message: ");
     }
 
     /**

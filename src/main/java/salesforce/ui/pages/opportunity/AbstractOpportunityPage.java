@@ -14,6 +14,7 @@ import salesforce.entities.Opportunity;
 import salesforce.ui.pages.AbstractBasePage;
 import salesforce.ui.pages.opportunity.opportunitycontactroles.AbstractContactRolesPage;
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
+
 import java.util.HashMap;
 import java.util.Set;
 import java.util.function.Supplier;
@@ -44,7 +45,7 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
      * Sets the form of new Campaign.
      *
      * @param opportunity entity.
-     * @param fields map.
+     * @param fields      map.
      */
     public void editOpportunity(final Opportunity opportunity, final Set<String> fields) {
         HashMap<String, Runnable> strategtyMap = composeStrategyMap(opportunity);
@@ -117,6 +118,7 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
 
     /**
      * Clicks on Add task.
+     *
      * @return TaskOpportunity instance.
      */
     public abstract AbstractTaskOpportunity clickAddTask();
@@ -128,6 +130,8 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
 
     /**
      * Clicks on contact roles of campaign.
+     *
+     * @return an instance on contact role.
      */
     public abstract AbstractContactRolesPage clickOnContactRoles();
 }

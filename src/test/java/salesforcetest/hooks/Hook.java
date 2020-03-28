@@ -93,6 +93,9 @@ public class Hook {
         }
     }
 
+    /**
+     * Deletes contacts.
+     */
     @After("@DeleteContacts")
     public void deleteContacts() {
         contactApiHelper.deleteContacts(context.getContacts());

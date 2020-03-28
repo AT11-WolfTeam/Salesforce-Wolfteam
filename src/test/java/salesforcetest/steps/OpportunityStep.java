@@ -37,6 +37,7 @@ import salesforce.ui.pages.task.AbstractTask;
 import salesforce.utils.JsonFileReader;
 import salesforce.utils.ReplacerMessages;
 import salesforce.utils.SheetManager;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -116,7 +117,7 @@ public class OpportunityStep {
     /**
      * Allows to create many opportunities.
      *
-     * @param quantity number of opportunities.
+     * @param quantity        number of opportunities.
      * @param opportunityType value.
      */
     @Given("I create {int} {string} opportunities")
@@ -315,7 +316,7 @@ public class OpportunityStep {
         roles.add("Evaluator");
         String fullName;
         int counter = 0;
-        for (Contact contact: context.getContacts()) {
+        for (Contact contact : context.getContacts()) {
             fullName = contact.getFirstName() + " " + contact.getLastName();
             contactsList.put(fullName, roles.get(counter));
             counter++;
@@ -324,7 +325,7 @@ public class OpportunityStep {
             contactRolesPage.setContacts(contactsList);
             return;
         }
-        contactRolesPage =contactRolesPopup.selectContacts(contactsList);
+        contactRolesPage = contactRolesPopup.selectContacts(contactsList);
     }
 
     /**
@@ -342,7 +343,7 @@ public class OpportunityStep {
         Assert.assertEquals(actual, contactsList, "message: ");
     }
 
-     /**
+    /**
      * Validates a message only for Lightning User Experience.
      *
      * @param message list.

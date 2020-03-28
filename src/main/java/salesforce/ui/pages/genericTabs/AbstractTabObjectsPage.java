@@ -13,10 +13,6 @@ import org.openqa.selenium.WebElement;
 import salesforce.ui.pages.AbstractBasePage;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 /**
  * Defines AbstractOpportunitiesPage.
  *

@@ -21,6 +21,7 @@ import salesforce.ui.pages.opportunity.opportunitycontactroles.ContactRolesClass
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
 import salesforce.ui.pages.owner.OwnerEditClassicPage;
 import salesforce.utils.UtilSalesforce;
+
 import java.util.HashMap;
 
 /**
@@ -171,6 +172,9 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
         clickOnAttachFileButton();
     }
 
+    /**
+     * Clicks on contact role button.
+     */
     private void clickOnContactRolesButton() {
         webDriverWait.until(ExpectedConditions.visibilityOf(newRoleButton));
         newRoleButton.click();
@@ -201,6 +205,7 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
 
     /**
      * Gets composed web element.
+     *
      * @param xpath value.
      * @return web element.
      */
@@ -209,7 +214,8 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     }
 
     /**
-     * Gets contact name;
+     * Gets contact name.
+     *
      * @param contactName value.
      * @return contact name text.
      */
@@ -219,9 +225,11 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     }
 
     /**
-     * Gets contact name;
+     * Gets contact name.
+     *
      * @param contactName value.
-     * @return contact name text.
+     * @param rolName value.
+     * @return composed web element.
      */
     private String getRoleTextByContactName(final String contactName, final String rolName) {
         return getWebElement(String.format(CONTACT_ROLE, contactName, rolName)).getText();
@@ -229,6 +237,7 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
 
     /**
      * Iterates contacts.
+     *
      * @param contactsList values.
      * @return contact roles text.
      */
@@ -244,6 +253,12 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
         return contactsText;
     }
 
+    /**
+     * Verifies contacts role values.
+     *
+     * @param contactsList values.
+     * @return iterated list.
+     */
     public HashMap<String, String> verifyContactRoles(final HashMap<String, String> contactsList) {
         return iterateContacts(contactsList);
     }

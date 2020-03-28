@@ -45,6 +45,9 @@ public class ContactRolesLightningPage extends AbstractContactRolesPage {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(contactRolesTitle));
     }
 
+    /**
+     * Clicks on add contact roles button.
+     */
     private void clickOnAddContactRoles() {
         webDriverWait.until(ExpectedConditions.visibilityOf(addContactsRolesButton));
         addContactsRolesButton.click();
@@ -58,6 +61,7 @@ public class ContactRolesLightningPage extends AbstractContactRolesPage {
 
     /**
      * Gets composed web element.
+     *
      * @param xpath value.
      * @param concatText value.
      * @return web element.
@@ -68,6 +72,7 @@ public class ContactRolesLightningPage extends AbstractContactRolesPage {
 
     /**
      * Gets composed web element.
+     *
      * @param xpath value.
      * @param contactName value.
      * @param rolName value.
@@ -79,6 +84,7 @@ public class ContactRolesLightningPage extends AbstractContactRolesPage {
 
     /**
      * Gets contact name.
+     *
      * @param contactName value.
      * @return contact name.
      */
@@ -90,6 +96,7 @@ public class ContactRolesLightningPage extends AbstractContactRolesPage {
 
     /**
      * Gets contact rol name.
+     *
      * @param contactName value.
      * @param rolName value.
      * @return contact name.
@@ -103,7 +110,9 @@ public class ContactRolesLightningPage extends AbstractContactRolesPage {
 
     /**
      * Iterates the contacts.
-     * @param contacts list.
+     *
+     * @param contacts value.
+     * @return contact values.
      */
     public HashMap<String, String> iterateContacts(final HashMap<String, String> contacts) {
         contactValues = new HashMap<>();
@@ -118,7 +127,7 @@ public class ContactRolesLightningPage extends AbstractContactRolesPage {
     }
 
     @Override
-    public HashMap<String, String> verifyContactRoles(HashMap<String, String> contactRolList) {
+    public HashMap<String, String> verifyContactRoles(final HashMap<String, String> contactRolList) {
         HashMap<String, String> contactValues;
         try {
             webDriverWait.until(ExpectedConditions.visibilityOf(contactRolesTitle));
@@ -133,7 +142,7 @@ public class ContactRolesLightningPage extends AbstractContactRolesPage {
     }
 
     @Override
-    public AbstractOpportunityPage setContacts(HashMap<String, String> contactsList) {
+    public AbstractOpportunityPage setContacts(final HashMap<String, String> contactsList) {
         return null;
     }
 }

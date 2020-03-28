@@ -141,6 +141,9 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
         clickOnNotesAndAttachment();
     }
 
+    /**
+     * Clicks on contact role button.
+     */
     private void clickOnContactRolesButton() {
         webDriverWait.until(ExpectedConditions.visibilityOf(contactRoles));
         contactRoles.click();

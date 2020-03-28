@@ -56,6 +56,7 @@ public class ContactRolesClassicPage extends AbstractContactRolesPage {
 
     /**
      * Gets composed web element.
+     *
      * @param xpath value.
      * @param concatText value.
      * @return composed web element.
@@ -66,6 +67,7 @@ public class ContactRolesClassicPage extends AbstractContactRolesPage {
 
     /**
      * Gets selector of role combobox.
+     *
      * @param xpathCombobox value.
      * @return selector.
      */
@@ -75,18 +77,22 @@ public class ContactRolesClassicPage extends AbstractContactRolesPage {
 
     /**
      * Sets contact name.
+     *
+     * @param position value.
      * @param contactName value.
      */
     private void setContactTextBox(final int position, final String contactName) {
-        webDriverWait.until(ExpectedConditions.visibilityOf(getWebElement(CONTACT_TEXTBOX, Integer.toString(position))));
+        webDriverWait.until(ExpectedConditions.visibilityOf(getWebElement(CONTACT_TEXTBOX,
+                Integer.toString(position))));
         getWebElement(CONTACT_TEXTBOX, Integer.toString(position)).sendKeys(contactName);
     }
 
     /**
      * Iterates contacts to set values.
+     *
      * @param contactsList values.
      */
-    private void contactsIterator(HashMap<String, String> contactsList) {
+    private void contactsIterator(final HashMap<String, String> contactsList) {
         int iterator = 0;
         for (String contactName : contactsList.keySet()) {
             setContactTextBox(iterator, contactName);
@@ -96,6 +102,7 @@ public class ContactRolesClassicPage extends AbstractContactRolesPage {
 
     /**
      * Sets contact name.
+     *
      * @param position value.
      * @param roleName value.
      */
@@ -106,9 +113,10 @@ public class ContactRolesClassicPage extends AbstractContactRolesPage {
 
     /**
      * Iterates contacts roles to select value.
+     *
      * @param contactRolesList values.
      */
-    private void rolesIterator(HashMap<String, String> contactRolesList) {
+    private void rolesIterator(final HashMap<String, String> contactRolesList) {
         int iterator = 0;
         for (String keyName : contactRolesList.keySet()) {
             selectContactRol(iterator, contactRolesList.get(keyName));
@@ -116,6 +124,9 @@ public class ContactRolesClassicPage extends AbstractContactRolesPage {
         }
     }
 
+    /**
+     * Clicks on save button.
+     */
     private void clickOnSaveButton() {
         webDriverWait.until(ExpectedConditions.visibilityOf(saveButton));
         webDriverWait.until(ExpectedConditions.elementToBeClickable(saveButton));
@@ -123,7 +134,7 @@ public class ContactRolesClassicPage extends AbstractContactRolesPage {
     }
 
     @Override
-    public AbstractOpportunityPage setContacts(HashMap<String, String> contactsList) {
+    public AbstractOpportunityPage setContacts(final HashMap<String, String> contactsList) {
         contactsIterator(contactsList);
         rolesIterator(contactsList);
         clickOnSaveButton();

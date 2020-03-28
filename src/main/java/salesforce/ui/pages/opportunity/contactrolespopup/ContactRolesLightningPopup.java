@@ -13,7 +13,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 import salesforce.ui.pages.opportunity.opportunitycontactroles.AbstractContactRolesPage;
 import salesforce.ui.pages.opportunity.opportunitycontactroles.ContactRolesLightningPage;
 
@@ -41,7 +40,7 @@ public class ContactRolesLightningPopup extends AbstractContactRolesPopup {
 
     private static final String CONTACT_ITEM = "//div[@title='%s']";
     private static final String ROW_ROLE_CONTACT = "//a[@title='%s']/../../..//td[@data-aura-class="
-        +"'forceInlineEditCell']";
+            + "'forceInlineEditCell']";
     private static final String ROW_ITEM = "//a[@title='%s']";
 
     @Override
@@ -52,6 +51,7 @@ public class ContactRolesLightningPopup extends AbstractContactRolesPopup {
 
     /**
      * Gets composed web element.
+     *
      * @param xpath value.
      * @param concatText value.
      * @return web element.
@@ -78,6 +78,7 @@ public class ContactRolesLightningPopup extends AbstractContactRolesPopup {
 
     /**
      * Selects a contact.
+     *
      * @param contactName value.
      */
     private void selectContact(final String contactName) {
@@ -98,6 +99,7 @@ public class ContactRolesLightningPopup extends AbstractContactRolesPopup {
 
     /**
      * Iterates the contacts.
+     *
      * @param contacts list.
      */
     private void iterateContacts(final HashMap<String, String> contacts) {
@@ -108,6 +110,7 @@ public class ContactRolesLightningPopup extends AbstractContactRolesPopup {
 
     /**
      * Assigns a rol to contact.
+     *
      * @param contactName value.
      * @param rolName value.
      */
@@ -121,6 +124,7 @@ public class ContactRolesLightningPopup extends AbstractContactRolesPopup {
 
     /**
      * Iterates to assigns roles to contacts.
+     *
      * @param contacts list.
      */
     private void assignRolesToContacts(final HashMap<String, String> contacts) {

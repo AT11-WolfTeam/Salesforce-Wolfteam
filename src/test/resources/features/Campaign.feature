@@ -14,7 +14,8 @@ Feature: Campaign
       And campaign members should display the leads added
 
 
-  @CampaignAccounts @DeletesContacts
+  @CampaignAccounts
+  @DeletesContacts
   Scenario: Assign 3 contacts to campaign
     Given I create 3 "Basic" contacts
       And I go to "Campaigns Page"

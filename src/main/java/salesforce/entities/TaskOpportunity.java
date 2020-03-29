@@ -11,6 +11,8 @@ package salesforce.entities;
 
 import salesforce.entities.constants.TaskConstant;
 import salesforce.utils.DateFormatter;
+import salesforce.utils.JsonFileReader;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -29,8 +31,10 @@ public class TaskOpportunity {
     private String priority;
     private String contact;
     private String dueDate;
+    private String assignedTo;
 
     private Set<String> modifiedTaskFields = new HashSet<>();
+    private static final String JSON_CONFIG_FILE = "config.json";
 
     /**
      * Gets status value.
@@ -123,6 +127,24 @@ public class TaskOpportunity {
     }
 
     /**
+     * Gets getAssignTo value.
+     *
+     * @return assignTo value.
+     */
+    public String getAssignedTo() {
+        return assignedTo;
+    }
+
+    /**
+     * Sets assignTo value.
+     *
+     * @param assignedTo value.
+     */
+    public void setAssignedTo(String assignedTo) {
+        this.assignedTo = new JsonFileReader(JSON_CONFIG_FILE).getUser(assignedTo).getUsername();
+    }
+
+    /**
      * Strategy process information.
      *
      * @param mapOpportunity map.
@@ -146,6 +168,7 @@ public class TaskOpportunity {
         strategyMap.put(TaskConstant.STATUS, () -> setStatus(mapTask.get(TaskConstant.STATUS)));
         strategyMap.put(TaskConstant.CONTACT, () -> setContact(mapTask.get(TaskConstant.CONTACT)));
         strategyMap.put(TaskConstant.DUE_DATE, () -> setDueDate(mapTask.get(TaskConstant.DUE_DATE)));
+        strategyMap.put(TaskConstant.ASSIGNED_TO, () -> setAssignedTo(mapTask.get(TaskConstant.ASSIGNED_TO)));
         return strategyMap;
     }
 
@@ -175,6 +198,7 @@ public class TaskOpportunity {
         strategyMap.put(TaskConstant.SUBJECT, () -> getSubject());
         strategyMap.put(TaskConstant.CONTACT, () -> getContact());
         strategyMap.put(TaskConstant.DUE_DATE, () -> getDueDate());
+        strategyMap.put(TaskConstant.ASSIGNED_TO, () -> getAssignedTo());
         return strategyMap;
     }
 }

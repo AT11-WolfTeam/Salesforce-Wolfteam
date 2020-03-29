@@ -90,6 +90,11 @@ public class TaskClassicPage extends AbstractTask {
     }
 
     @Override
+    public void setAssignedTo(String assignedTo) {
+        //Todo
+    }
+
+    @Override
     public void clickOnSaveTaskButton() {
         saveButtonTask.click();
     }
@@ -169,5 +174,10 @@ public class TaskClassicPage extends AbstractTask {
     @Override
     protected String getDueDate() {
         return dueDate.getText();
+    }
+
+    @Override
+    protected String getAssignedTo() {
+        return null;
     }
 }

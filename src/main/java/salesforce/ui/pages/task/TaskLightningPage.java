@@ -36,7 +36,7 @@ public class TaskLightningPage extends AbstractTask {
     @FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//button[@title='Save']")
     private WebElement saveButtonTask;
 
-    @FindBy(xpath = "//span[text()='In Progress']")
+    @FindBy(xpath = "//div//span[text()='Status']//..//..//span[contains(@class,'test-id__field-va')]//span")
     private WebElement status;
 
     @FindBy(xpath = "//span[text()='High']")
@@ -56,6 +56,9 @@ public class TaskLightningPage extends AbstractTask {
 
     @FindBy(xpath = "//label//span[text()='Name']/../..//div//div[@class='autocompleteWrapper slds-grow']")
     private WebElement contactsField;
+
+    @FindBy(xpath = "//div//span[text()='Assigned To']//..//..//span[contains(@class,'test-id__field-va')]//a")
+    private WebElement assignedToLinkText;
 
     private WebElement contactSelected;
 
@@ -103,6 +106,11 @@ public class TaskLightningPage extends AbstractTask {
         js.executeScript(SCROLL_DOWN);
         clickOnPriorityField();
         clickOnPriorityToSelect(priorityToSelect);
+    }
+
+    @Override
+    public void setAssignedTo(String assignedTo) {
+        //Todo
     }
 
     @Override
@@ -178,6 +186,11 @@ public class TaskLightningPage extends AbstractTask {
     @Override
     protected String getDueDate() {
         return dueDate.getText();
+    }
+
+    @Override
+    protected String getAssignedTo() {
+        return assignedToLinkText.getText();
     }
 
     /**

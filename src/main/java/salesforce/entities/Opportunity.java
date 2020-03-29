@@ -159,7 +159,7 @@ public class Opportunity {
     }
 
     /**
-     * Gets account name;
+     * Gets account name.
      * @return account name.
      */
     public String getAccountName() {

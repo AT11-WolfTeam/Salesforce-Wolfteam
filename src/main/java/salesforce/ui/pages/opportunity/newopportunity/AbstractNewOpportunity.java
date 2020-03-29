@@ -21,6 +21,12 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.function.Supplier;
 
+/**
+ * Manages new opportunity.
+ *
+ * @author Juan Martinez.
+ *  * @version 1.0 29 March 2020.
+ */
 public abstract class AbstractNewOpportunity extends AbstractBasePage {
     private HashMap<String, String> newOpportunityInformation;
     /**
@@ -147,7 +153,7 @@ public abstract class AbstractNewOpportunity extends AbstractBasePage {
     public abstract String getOpportunityName();
 
     /**
-     * Gets account name;
+     * Gets account name.
      * @return account name value.
      */
     public abstract String geAccountName();
@@ -225,7 +231,7 @@ public abstract class AbstractNewOpportunity extends AbstractBasePage {
     public abstract String getMainCompetitor();
 
     /**
-     * Gets delivery status value;
+     * Gets delivery status value.
      * @return status text.
      */
     public abstract String getDeliveryStatus();

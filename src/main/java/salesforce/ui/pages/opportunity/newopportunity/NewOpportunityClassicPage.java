@@ -15,6 +15,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
+/**
+ * Manages new opportunity classic page.
+ *
+ * @author Juan Martinez.
+ *  * @version 1.0 29 March 2020.
+ */
 public class NewOpportunityClassicPage extends AbstractNewOpportunity {
     @FindBy(css = "h2[class='pageDescription']")
     private WebElement opportunityTitle;

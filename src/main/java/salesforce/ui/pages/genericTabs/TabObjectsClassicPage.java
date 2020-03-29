@@ -56,6 +56,9 @@ public class TabObjectsClassicPage extends AbstractTabObjectsPage {
         return AppPageFactory.getOpportunityPage();
     }
 
+    /**
+     * Clicks on new button.
+     */
     private void clickOnNew() {
         webDriverWait.until(ExpectedConditions.visibilityOf(newButton));
         newButton.click();

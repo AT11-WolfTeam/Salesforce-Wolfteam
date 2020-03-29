@@ -10,7 +10,6 @@
 package salesforcetest.steps;
 
 import core.utils.GradleReader;
-import groovy.util.AbstractFactory;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -368,6 +367,7 @@ public class OpportunityStep {
 
     /**
      * Creates new opportunity with all values.
+     * @param opportunityValues map.
      */
     @When("I create new opportunity with the following values")
     public void createOpportunity(final Map<String, String> opportunityValues) {

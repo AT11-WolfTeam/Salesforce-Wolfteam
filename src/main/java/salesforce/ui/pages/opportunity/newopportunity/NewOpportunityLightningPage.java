@@ -14,6 +14,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.entities.constants.OpportunityConstant;
 
+/**
+ * Manages new opportunity lightning page.
+ *
+ * @author Juan Martinez.
+ *  * @version 1.0 29 March 2020.
+ */
 public class NewOpportunityLightningPage extends AbstractNewOpportunity {
     @FindBy(css = "h2[class^='inlineTitle slds-p-top--large slds-p-horizontal--medium']")
     private WebElement newOpportunityTitle;

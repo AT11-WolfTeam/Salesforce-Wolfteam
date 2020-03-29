@@ -54,7 +54,6 @@ public class TaskOpportunityLightning extends AbstractTaskOpportunity {
     private static final String ASSIGNED_TO_LIST_BOX_PARTIAL_LOCATOR = "//span[text()='%s']";
     private static final String OPTION_ASSIGNED_TO_LIST_BOX_PARTIAL_LOCATOR = "//a[*[div[text()='%s']]]";
     private static final String OPTION_STATUS_LIST_BOX_PARTIAL_LOCATOR = "//li[contains(.,'%s')]//a";
-    private static final String JSON_CONFIG_FILE = "config.json";
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {

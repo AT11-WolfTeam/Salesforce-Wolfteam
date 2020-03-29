@@ -102,6 +102,16 @@ public class TaskOpportunityClassic extends AbstractTaskOpportunity {
     }
 
     @Override
+    protected void setStatus(final String status) {
+
+    }
+
+    @Override
+    protected void setAssignedTo(final String assignedTo) {
+
+    }
+
+    @Override
     public AbstractTask clickTaskToEdit(final String task) {
         String taskToEditXpath = String.format(TASK_NAME, task);
         taskNameSelected = webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(taskToEditXpath)));

@@ -51,6 +51,13 @@ public abstract class AbstractTask extends AbstractBasePage {
     public abstract void setPriority(String priorityToSelect);
 
     /**
+     * Sets assignedTo.
+     *
+     * @param assignedTo value.
+     */
+    public abstract void setAssignedTo(String assignedTo);
+
+    /**
      * Click on Save task button.
      */
     public abstract void clickOnSaveTaskButton();
@@ -111,6 +118,13 @@ public abstract class AbstractTask extends AbstractBasePage {
      */
     protected abstract String getDueDate();
 
+    /**
+     * Returns assignedTo value.
+     *
+     * @return string value
+     */
+    protected abstract String getAssignedTo();
+
 
     /**
      * Sets the form of new task.
@@ -134,6 +148,7 @@ public abstract class AbstractTask extends AbstractBasePage {
         HashMap<String, Runnable> strategyMap = new HashMap<>();
         strategyMap.put(TaskConstant.PRIORITY, () -> setPriority(taskOpportunity.getPriority()));
         strategyMap.put(TaskConstant.STATUS, () -> setStatus(taskOpportunity.getStatus()));
+        strategyMap.put(TaskConstant.ASSIGNED_TO, () -> setAssignedTo(taskOpportunity.getAssignedTo()));
         strategyMap.put(TaskConstant.SUBJECT, () -> setSubject(taskOpportunity.getSubject()));
         strategyMap.put(TaskConstant.CONTACT, () -> setContact(taskOpportunity.getContact()));
         strategyMap.put(TaskConstant.DUE_DATE, () -> setDueDate(taskOpportunity.getDueDate()));
@@ -182,6 +197,7 @@ public abstract class AbstractTask extends AbstractBasePage {
         HashMap<String, Supplier> strategyMap = new HashMap<>();
         strategyMap.put(TaskConstant.PRIORITY, () -> getPriority());
         strategyMap.put(TaskConstant.STATUS, () -> getStatus());
+        strategyMap.put(TaskConstant.ASSIGNED_TO, () -> getAssignedTo());
         strategyMap.put(TaskConstant.SUBJECT, () -> getSubject(taskOpportunity.getSubject()));
         strategyMap.put(TaskConstant.CONTACT, () -> getContact());
         strategyMap.put(TaskConstant.DUE_DATE, () -> getDueDate());

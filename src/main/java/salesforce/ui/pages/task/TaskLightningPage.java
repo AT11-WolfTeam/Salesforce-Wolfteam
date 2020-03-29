@@ -12,6 +12,7 @@ package salesforce.ui.pages.task;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -36,10 +37,12 @@ public class TaskLightningPage extends AbstractTask {
     @FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//button[@title='Save']")
     private WebElement saveButtonTask;
 
-    @FindBy(xpath = "//span[text()='In Progress']")
+    @FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[text()='Status']"
+            + "/../..//span[@class='test-id__field-value slds-form-element__static slds-grow ']//span")
     private WebElement status;
 
-    @FindBy(xpath = "//span[text()='High']")
+    @FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[text()='Priority']"
+            + "/../..//span[@class='test-id__field-value slds-form-element__static slds-grow ']//span")
     private WebElement priority;
 
     @FindBy(xpath = "//span[text()='Name']/../..//div//a[@data-refid='recordId']")
@@ -56,6 +59,9 @@ public class TaskLightningPage extends AbstractTask {
 
     @FindBy(xpath = "//label//span[text()='Name']/../..//div//div[@class='autocompleteWrapper slds-grow']")
     private WebElement contactsField;
+
+    @FindBy(xpath = "//div//span[text()='Assigned To']//..//..//span[contains(@class,'test-id__field-va')]//a")
+    private WebElement assignedToLinkText;
 
     private WebElement contactSelected;
 
@@ -106,17 +112,29 @@ public class TaskLightningPage extends AbstractTask {
     }
 
     @Override
+    public void setAssignedTo(final String assignedTo) {
+        //Todo
+    }
+
+    @Override
     public void clickOnSaveTaskButton() {
         saveButtonTask.click();
     }
 
     @Override
     protected String getPriority() {
-        return priority.getText();
+        try {
+            webDriverWait.until(ExpectedConditions.visibilityOf(priority));
+            return priority.getText();
+        } catch (StaleElementReferenceException exception) {
+            webDriverWait.until(ExpectedConditions.visibilityOf(priority));
+            return priority.getText();
+        }
     }
 
     @Override
     protected String getStatus() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(status));
         return status.getText();
     }
 
@@ -178,6 +196,11 @@ public class TaskLightningPage extends AbstractTask {
     @Override
     protected String getDueDate() {
         return dueDate.getText();
+    }
+
+    @Override
+    protected String getAssignedTo() {
+        return assignedToLinkText.getText();
     }
 
     /**

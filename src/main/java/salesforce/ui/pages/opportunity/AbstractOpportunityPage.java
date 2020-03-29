@@ -133,4 +133,9 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
      * @return an instance on contact role.
      */
     public abstract AbstractContactRolesPage clickOnContactRoles();
+
+    /**
+     * Enables to validate opportunity values.
+     */
+    public abstract void enableToValidateOpportunity();
 }

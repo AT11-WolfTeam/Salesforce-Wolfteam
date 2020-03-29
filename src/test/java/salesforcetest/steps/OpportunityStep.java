@@ -10,6 +10,7 @@
 package salesforcetest.steps;
 
 import core.utils.GradleReader;
+import groovy.util.AbstractFactory;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -21,6 +22,7 @@ import salesforce.entities.Context;
 import salesforce.entities.NewCampaign;
 import salesforce.entities.Opportunity;
 import salesforce.entities.TaskOpportunity;
+import salesforce.entities.constants.OpportunityConstant;
 import salesforce.ui.components.span.ToastUpdateObjectMessage;
 import salesforce.entities.constants.TaskConstant;
 import salesforce.ui.pages.AppPageFactory;
@@ -31,6 +33,7 @@ import salesforce.ui.pages.genericTabs.AbstractTabObjectsPage;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 import salesforce.ui.pages.opportunity.OpportunityClassicPage;
 import salesforce.ui.pages.opportunity.contactrolespopup.AbstractContactRolesPopup;
+import salesforce.ui.pages.opportunity.newopportunity.AbstractNewOpportunity;
 import salesforce.ui.pages.opportunity.opportunitycontactroles.AbstractContactRolesPage;
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
 import salesforce.ui.pages.task.AbstractTask;
@@ -64,6 +67,7 @@ public class OpportunityStep {
     private TaskOpportunity taskOpportunity;
     private AbstractContactRolesPage contactRolesPage;
     private AbstractContactRolesPopup contactRolesPopup;
+    private AbstractNewOpportunity newOpportunity;
 
     private static String userExperience = GradleReader.getInstance().getUserExperience();
     private static final int ARRAY_POSITION_FIRST = 0;
@@ -76,6 +80,7 @@ public class OpportunityStep {
     private ArrayList<String> roles = new ArrayList<>();
     private HashMap<String, String> actual;
     private HashMap<String, String> mapNewTask;
+    private HashMap<String, String> actualOpportunityValues;
 
     /**
      * OpportunityStep constructor.
@@ -84,6 +89,7 @@ public class OpportunityStep {
      */
     public OpportunityStep(final Context context) {
         this.context = context;
+        opportunity = context.getOpportunity();
         opportunityApiHelper = new OpportunityApiHelper();
         pageTransporter = new PageTransporter();
     }
@@ -358,5 +364,33 @@ public class OpportunityStep {
             Assert.assertEquals(actualResult, expectedResult);
         }
         abstractTask = abstractTaskOpportunity.clickTaskToEdit(context.getTaskOpportunity().getSubject());
+    }
+
+    /**
+     * Creates new opportunity with all values.
+     */
+    @When("I create new opportunity with the following values")
+    public void createOpportunity(final Map<String, String> opportunityValues) {
+        opportunity.setOpportunityInformation(opportunityValues);
+        opportunitiesPage = AppPageFactory.getTabObjectsPage();
+        opportunitiesPage.clickOnNewButton();
+        newOpportunity = AppPageFactory.getNewOpportunityPage();
+        opportunityPage = newOpportunity.addOpportunityInformation(opportunity, opportunityValues.keySet());
+    }
+
+    /**
+     * Verifies if the opportunity contains values specified.
+     */
+    @Then("The added Information should be displayed on Opportunity Page")
+    public void informationShouldBeDisplayed() {
+        opportunityPage.enableToValidateOpportunity();
+        actualOpportunityValues = newOpportunity.getOpportunityInformation(opportunity.getOpportunityInformation());
+        opportunity.setAmount(actualOpportunityValues.get(OpportunityConstant.AMOUNT));
+        opportunity.setProbability(actualOpportunityValues.get(OpportunityConstant.PROBABILITY));
+        opportunity.setCloseDate(actualOpportunityValues.get(OpportunityConstant.CLOSE_DATE));
+        for (String key : actualOpportunityValues.keySet()) {
+            org.junit.Assert.assertEquals(key + ": ", opportunity.getOpportunityInformation().get(key),
+                    actualOpportunityValues.get(key));
+        }
     }
 }

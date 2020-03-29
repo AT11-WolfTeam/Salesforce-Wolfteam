@@ -13,6 +13,7 @@ import core.selenium.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
@@ -32,7 +33,6 @@ public class TabObjectsClassicPage extends AbstractTabObjectsPage {
 
     @FindBy(css = "span[class='fBody'] input[class='btn']")
     private WebElement goButton;
-
     protected static final String NAME_OPPORTUNITY = "//th//a[contains(text(),'%s')]";
 
     @Override
@@ -56,9 +56,14 @@ public class TabObjectsClassicPage extends AbstractTabObjectsPage {
         return AppPageFactory.getOpportunityPage();
     }
 
+    private void clickOnNew() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(newButton));
+        newButton.click();
+    }
+
     @Override
     public void clickOnNewButton() {
-        //Todo
+        clickOnNew();
     }
 
     @Override

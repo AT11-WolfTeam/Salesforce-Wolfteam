@@ -261,4 +261,9 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     public HashMap<String, String> verifyContactRoles(final HashMap<String, String> contactsList) {
         return iterateContacts(contactsList);
     }
+
+    @Override
+    public void enableToValidateOpportunity() {
+
+    }
 }

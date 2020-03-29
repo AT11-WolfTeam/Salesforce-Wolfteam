@@ -102,12 +102,12 @@ public class TaskOpportunityClassic extends AbstractTaskOpportunity {
     }
 
     @Override
-    protected void setStatus(String status) {
+    protected void setStatus(final String status) {
 
     }
 
     @Override
-    protected void setAssignedTo(String assignedTo) {
+    protected void setAssignedTo(final String assignedTo) {
 
     }
 

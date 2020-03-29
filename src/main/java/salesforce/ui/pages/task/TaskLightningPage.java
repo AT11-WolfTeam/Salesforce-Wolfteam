@@ -109,7 +109,7 @@ public class TaskLightningPage extends AbstractTask {
     }
 
     @Override
-    public void setAssignedTo(String assignedTo) {
+    public void setAssignedTo(final String assignedTo) {
         //Todo
     }
 

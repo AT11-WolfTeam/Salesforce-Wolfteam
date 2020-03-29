@@ -140,7 +140,7 @@ public class TaskOpportunity {
      *
      * @param assignedTo value.
      */
-    public void setAssignedTo(String assignedTo) {
+    public void setAssignedTo(final String assignedTo) {
         this.assignedTo = new JsonFileReader(JSON_CONFIG_FILE).getUser(assignedTo).getUsername();
     }
 

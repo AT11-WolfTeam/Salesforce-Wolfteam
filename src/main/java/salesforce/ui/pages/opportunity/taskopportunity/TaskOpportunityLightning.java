@@ -16,7 +16,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.task.AbstractTask;
-import salesforce.utils.JsonFileReader;
 
 /**
  * Defines TaskOpportunityLightning.
@@ -98,7 +97,7 @@ public class TaskOpportunityLightning extends AbstractTaskOpportunity {
     }
 
     @Override
-    protected void setStatus(String status) {
+    protected void setStatus(final String status) {
         String optionStatusListBoxPartialLocator = String.format(OPTION_STATUS_LIST_BOX_PARTIAL_LOCATOR, status);
         statusListBox.click();
         webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(optionStatusListBoxPartialLocator)))
@@ -106,13 +105,13 @@ public class TaskOpportunityLightning extends AbstractTaskOpportunity {
     }
 
     @Override
-    protected void setAssignedTo(String assignedTo) {
+    protected void setAssignedTo(final String assignedTo) {
         String assignedToListBoxLocator = String.format(ASSIGNED_TO_LIST_BOX_PARTIAL_LOCATOR, assignedTo);
         try {
             webDriver.findElement(By.xpath(assignedToListBoxLocator));
         } catch (NoSuchElementException elementNotFound) {
-            String optionAssignedToListBoxLocator = String.format(OPTION_ASSIGNED_TO_LIST_BOX_PARTIAL_LOCATOR
-                    , assignedToListBoxLocator);
+            String optionAssignedToListBoxLocator = String.format(OPTION_ASSIGNED_TO_LIST_BOX_PARTIAL_LOCATOR,
+                    assignedToListBoxLocator);
             assignedToListBox.click();
             webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(optionAssignedToListBoxLocator)))
                     .click();

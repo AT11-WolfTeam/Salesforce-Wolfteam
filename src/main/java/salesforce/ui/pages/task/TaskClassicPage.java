@@ -56,6 +56,9 @@ public class TaskClassicPage extends AbstractTask {
     @FindBy(xpath = "//input[@id='tsk4']")
     private WebElement dueDateField;
 
+    @FindBy(css = "div[id='tsk1_ileinner'] a[id]")
+    private WebElement assignedToLinkText;
+
     @FindBy(name = "resultsFrame")
     private WebElement resultsFrame;
 
@@ -178,6 +181,7 @@ public class TaskClassicPage extends AbstractTask {
 
     @Override
     protected String getAssignedTo() {
-        return null;
+        webDriverWait.until(ExpectedConditions.visibilityOf(assignedToLinkText));
+        return assignedToLinkText.getText();
     }
 }

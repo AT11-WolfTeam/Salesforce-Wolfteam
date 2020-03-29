@@ -91,6 +91,21 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     }
 
     @Override
+    public void clickOnAStage(String stageName) {
+
+    }
+
+    @Override
+    public void clickOnMarkAsCurrentStageButton() {
+
+    }
+
+    @Override
+    public void clickOnSelectCloseStage(String closeAs) {
+
+    }
+
+    @Override
     protected String getCampaignName() {
         webDriverWait.until(ExpectedConditions.visibilityOf(campaignSaved));
         webDriverWait.until(ExpectedConditions.visibilityOf(editButton));

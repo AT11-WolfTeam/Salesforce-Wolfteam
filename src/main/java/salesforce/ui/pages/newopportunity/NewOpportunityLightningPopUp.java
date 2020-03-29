@@ -30,7 +30,8 @@ public class NewOpportunityLightningPopUp extends AbstractNewOpportunityPage {
     @FindBy(xpath = MODAL_CONTAINER + "//span[text()='Stage']/../..//a[@class='select']")
     private WebElement stageComboBox;
 
-    @FindBy(xpath = "//button[@class='slds-button slds-button_brand cuf-publisherShareButton undefined uiButton']")
+    @FindBy(xpath = "//div[@class='windowViewMode-normal oneRecordActionWrapper isModal active lafPageHost']"
+            + "//button[@title='Save']")
     private WebElement saveOpportunityButton;
 
     private WebElement stageSelected;
@@ -64,11 +65,12 @@ public class NewOpportunityLightningPopUp extends AbstractNewOpportunityPage {
 
     /**
      * Selects stage.
+     *
      * @param stage value.
      */
 
     private void selectStage(String stage) {
-        stageSelected = webDriver.findElement(By.xpath(String.format(STAGE_TO_SELECT,stage)));
+        stageSelected = webDriver.findElement(By.xpath(String.format(STAGE_TO_SELECT, stage)));
         actions.click(stageSelected).build().perform();
     }
 

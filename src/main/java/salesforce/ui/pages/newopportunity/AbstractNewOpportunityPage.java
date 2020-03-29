@@ -9,8 +9,15 @@
 
 package salesforce.ui.pages.newopportunity;
 
+import salesforce.entities.Contract;
+import salesforce.entities.Opportunity;
+import salesforce.entities.constants.ContractConstant;
+import salesforce.entities.constants.OpportunityConstant;
 import salesforce.ui.pages.AbstractBasePage;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
+
+import java.util.HashMap;
+import java.util.Set;
 
 public abstract class AbstractNewOpportunityPage extends AbstractBasePage {
     /**
@@ -35,4 +42,30 @@ public abstract class AbstractNewOpportunityPage extends AbstractBasePage {
     protected abstract void setStage(String stage);
 
     public abstract AbstractOpportunityPage clickSaveOpportunityButton();
+
+    /**
+     * Sets the form of new Contract.
+     *
+     * @param newOpportunity entity.
+     * @param fields map.
+     */
+    public void setNewOpportunity(final Opportunity newOpportunity, final Set<String> fields) {
+        HashMap<String, Runnable> strategtyMap = composeStrategyMap(newOpportunity);
+        fields.forEach(field -> strategtyMap.get(field).run());
+    }
+
+    /**
+     * Sets the information of new Contract.
+     *
+     * @param newOpportunity entity.
+     * @return HashMap value.
+     */
+    protected HashMap<String, Runnable> composeStrategyMap(final Opportunity newOpportunity) {
+        HashMap<String, Runnable> strategyMap = new HashMap<>();
+        strategyMap.put(OpportunityConstant.NAME, () -> setOpportunityName(newOpportunity.getName()));
+        strategyMap.put(OpportunityConstant.CLOSE_DATE, () -> setCloseDate(newOpportunity.getCloseDate()));
+        strategyMap.put(OpportunityConstant.STAGE_NAME, () -> setStage(newOpportunity.getStageName()));
+        return strategyMap;
+    }
+
 }

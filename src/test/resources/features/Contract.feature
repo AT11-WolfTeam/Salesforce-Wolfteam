@@ -1,18 +1,20 @@
 Feature: Contract
 
-  @wip
+  @DeleteContacts
   Scenario: Close an opportunity created through a contract
     Given  I create 1 "Basic" accounts
-    And I go to "Contract Page"
+    And I go to "Contracts Page"
     And I create New Contract with
       | Account       | [new Account] |
       | Start Date    | TODAY         |
       | Contract Term | 3             |
     And I go to "Opportunities Page"
     And I create New Opportunity with
-      | Opportunity Name | New Opportunity     |
-      | Close Date       | TODAY             |
-      | Stage Name       | Value Proposition |
-    When I close the opportunity as "Won Closed"
+      | Name      | New Opportunity   |
+      | CloseDate | TODAY             |
+      | StageName | Value Proposition |
+    When I select stage as "Closed"
+    And I close the opportunity as "Closed Won"
     Then the application should display a message "Stage changed successfully."
-    And On opportunities object should be display current stage
+    And I go to "Opportunities Page"
+    And On opportunities object should be display the current stage

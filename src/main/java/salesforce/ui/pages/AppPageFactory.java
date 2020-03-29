@@ -259,9 +259,9 @@ public class AppPageFactory {
      */
     public static AbstractNewContractPage getNewContractPage() {
         if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
-            return new NewContractLightningPopUp();
+            return new NewContractClassicPage();
         }
-        return new NewContractClassicPage();
+        return new NewContractLightningPopUp();
     }
 
     public static AbstractNewOpportunityPage getNewOpportunityPage() {

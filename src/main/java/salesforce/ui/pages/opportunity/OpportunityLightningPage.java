@@ -135,6 +135,7 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     }
 
     private void selectCloseStageAs(String closeAs) {
+        select = new Select(selectCloseStageComboBox);
         select.selectByValue(closeAs);
     }
 

@@ -35,6 +35,11 @@ public class OpportunityListClassicPage extends AbstractOpportunityListPage {
     }
 
     @Override
+    public String getStageName(String opportunityName) {
+        return null;
+    }
+
+    @Override
     protected void waitUntilPageObjectIsLoaded() {
         webDriverWait.until(ExpectedConditions.visibilityOf(refreshButton));
     }

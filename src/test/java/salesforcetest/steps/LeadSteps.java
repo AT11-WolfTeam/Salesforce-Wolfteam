@@ -10,9 +10,12 @@
 package salesforcetest.steps;
 
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import salesforce.entities.Context;
 import salesforce.entities.Lead;
 import salesforce.ui.helpers.LeadHelper;
+import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.PageTransporter;
 import salesforce.utils.SheetManager;
 import java.util.ArrayList;
@@ -55,5 +58,26 @@ public class LeadSteps {
         ArrayList<Lead> leads = leadHelper.loadLeads(leadMapList);
         context.setLeads(leads);
         leadHelper.createLeads(context.getLeads());
+    }
+
+    /**
+     * Change lead status.
+     *
+     * @param leadStatus contains a String value.
+     * @param listName   contains a String value.
+     */
+    @When("I change Lead Status to {string} of the leads in list {string}")
+    public void changesLeadStatusToOfTheLeads(final String leadStatus, final String listName) {
+        AppPageFactory.getTabObjectsPage().displayList(listName);
+        AppPageFactory.getLeadListPage().changeLeadStatus(context.getLeads());
+        AppPageFactory.getChangeStatusLeads().selectStatusLeads(leadStatus);
+    }
+
+    /**
+     * Validates a operation.
+     */
+    @Then("the application should display this message in Leads Page only for Lightning Experience")
+    public void theApplicationShouldDisplayThisMessageInLeadsPageOnlyForLightningExperience() {
+
     }
 }

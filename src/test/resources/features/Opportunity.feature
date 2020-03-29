@@ -78,7 +78,7 @@ Feature: Opportunity
     Given I create 2 "Basic" opportunities
     When I delete created opportunities
 
-    
+
   @DeleteContacts
   @DeletesOpportunity
   Scenario: Add roles to contacts of an opportunity

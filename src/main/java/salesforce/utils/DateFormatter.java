@@ -32,7 +32,7 @@ public final class DateFormatter {
     private static final String REGEX = "[^0-9]+";
     private static final String EMPTY = "";
     private static final String FORMAT_API = "yyyy-MM-dd";
-    private static final String FORMAT_UI = "M/dd/yyyy";
+    private static final String FORMAT_UI = "M/d/yyyy";
     private static String[] date;
     private static final int LIST_SIZE = 3;
     private static Date today = new Date(System.currentTimeMillis());

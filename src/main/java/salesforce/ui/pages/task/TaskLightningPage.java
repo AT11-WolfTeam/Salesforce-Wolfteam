@@ -36,10 +36,12 @@ public class TaskLightningPage extends AbstractTask {
     @FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//button[@title='Save']")
     private WebElement saveButtonTask;
 
-    @FindBy(xpath = "//div//span[text()='Status']//..//..//span[contains(@class,'test-id__field-va')]//span")
+    @FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[text()='Status']"
+            + "/../..//span[@class='test-id__field-value slds-form-element__static slds-grow ']//span")
     private WebElement status;
 
-    @FindBy(xpath = "//span[text()='High']")
+    @FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[text()='Priority']"
+            + "/../..//span[@class='test-id__field-value slds-form-element__static slds-grow ']//span")
     private WebElement priority;
 
     @FindBy(xpath = "//span[text()='Name']/../..//div//a[@data-refid='recordId']")

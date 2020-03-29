@@ -12,6 +12,7 @@ package salesforce.ui.pages.opportunity.taskopportunity;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.AppPageFactory;
@@ -128,8 +129,7 @@ public class TaskOpportunityLightning extends AbstractTaskOpportunity {
 
     @Override
     public void clickSaveTask() {
-        webDriverWait.until(ExpectedConditions.visibilityOf(saveTaskButton));
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(saveTaskButton));
-        saveTaskButton.click();
+        Actions actions = new Actions(webDriver);
+        actions.moveToElement(saveTaskButton).click().perform();
     }
 }

@@ -56,7 +56,7 @@ public class OpportunityStep {
     private AbstractCampaignListPage campaignsPage;
     private AbstractNewCampaignPage newCampaignPage;
     private NewCampaign newCampaign;
-    private AbstractTabObjectsPage opportunitiesPage;
+    private AbstractTabObjectsPage abstractTabObjectsPage;
     private AbstractOpportunityPage opportunityPage;
     private Opportunity opportunity;
     private AbstractTaskOpportunity abstractTaskOpportunity;
@@ -185,12 +185,12 @@ public class OpportunityStep {
      */
     @When("I assign the Campaign to the opportunity")
     public void assignsTheCampaignToTheOpportunity(final Map<String, String> mapOpportunityEdit) {
-
         HashMap<String, String> mapOpportunity = new HashMap<>();
         mapOpportunity.putAll(mapOpportunityEdit);
-        opportunitiesPage = AppPageFactory.getTabObjectsPage();
-        opportunityPage = opportunitiesPage.selectObjectByName(context.getOpportunities().get(ARRAY_POSITION_FIRST)
+        abstractTabObjectsPage = AppPageFactory.getTabObjectsPage();
+        abstractTabObjectsPage.selectObjectByName(context.getOpportunities().get(ARRAY_POSITION_FIRST)
                 .getName());
+        opportunityPage = AppPageFactory.getOpportunityPage();
         opportunity = context.getOpportunity();
         opportunity.setOpportunityInformation(mapOpportunity);
         opportunityPage.editOpportunity(opportunity, mapOpportunityEdit.keySet());
@@ -256,9 +256,10 @@ public class OpportunityStep {
     @And("I add new Task with")
     public void iAddNewTaskWith(final Map<String, String> mapTask) {
         mapNewTask = new HashMap<>(mapTask);
-        opportunitiesPage = AppPageFactory.getTabObjectsPage();
-        opportunityPage = opportunitiesPage.selectObjectByName(context.getOpportunities().get(ARRAY_POSITION_FIRST)
+        abstractTabObjectsPage = AppPageFactory.getTabObjectsPage();
+         abstractTabObjectsPage.selectObjectByName(context.getOpportunities().get(ARRAY_POSITION_FIRST)
                 .getName());
+        opportunityPage = AppPageFactory.getOpportunityPage();
         abstractTaskOpportunity = opportunityPage.clickAddTask();
         taskOpportunity = context.getTaskOpportunity();
         if (!context.getContacts().isEmpty()) {
@@ -301,7 +302,8 @@ public class OpportunityStep {
     @And("I select the opportunity")
     public void selectTheOpportunity() {
         String opportunityName = context.getOpportunities().get(ARRAY_POSITION_FIRST).getName();
-        opportunityPage = AppPageFactory.getTabObjectsPage().selectObjectByName(opportunityName);
+        AppPageFactory.getTabObjectsPage().selectObjectByName(opportunityName);
+        opportunityPage = AppPageFactory.getOpportunityPage();
     }
 
     /**

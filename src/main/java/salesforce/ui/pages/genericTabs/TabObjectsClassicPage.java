@@ -14,8 +14,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
-import salesforce.ui.pages.AppPageFactory;
-import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 
 /**
  * Defines OpportunitiesClassicPage.
@@ -48,12 +46,11 @@ public class TabObjectsClassicPage extends AbstractTabObjectsPage {
     }
 
     @Override
-    public AbstractOpportunityPage selectObjectByName(final String opportunityName) {
+    public void selectObjectByName(final String opportunityName) {
         String opportunityNameXpath = String.format(NAME_OPPORTUNITY, opportunityName);
         nameOpportunitySelected = WebDriverManager.getInstance().getWebDriver().findElement(By
                 .xpath(opportunityNameXpath));
         nameOpportunitySelected.click();
-        return AppPageFactory.getOpportunityPage();
     }
 
     @Override

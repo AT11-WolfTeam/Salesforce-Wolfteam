@@ -25,6 +25,7 @@ public class SalesforceUrl {
     private String opportunitiesClassicUrl;
     private String campaignsClassicUrl;
     private String leadsClassicUrl;
+    private String contractsLightningUrl;
 
     /**
      * Returns loginUrl value.
@@ -87,6 +88,24 @@ public class SalesforceUrl {
      */
     public String getSalesClassicUrl() {
         return salesClassicUrl;
+    }
+
+    /**
+     * Returns contractsLightningUrl value.
+     *
+     * @param contractsLightningUrl value.
+     */
+    public void setContractsLightningUrl(final String contractsLightningUrl) {
+        this.contractsLightningUrl = contractsLightningUrl;
+    }
+
+    /**
+     * Returns contractsLightningUrl value.
+     *
+     * @return string value.
+     */
+    public String getContractsLightningUrl() {
+        return contractsLightningUrl;
     }
 
     /**

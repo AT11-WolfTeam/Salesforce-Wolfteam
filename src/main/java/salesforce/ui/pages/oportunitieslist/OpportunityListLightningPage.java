@@ -25,14 +25,15 @@ public class OpportunityListLightningPage extends AbstractOpportunityListPage {
     @FindBy(css = "table[role='grid']")
     private WebElement opportunityTable;
 
-    private static final String OPPORTUNITY_PARTIAL_LOCATOR = "a[title='%s']";
+    private static final String OPPORTUNITY_PARTIAL_LOCATOR = "//div[@class='windowViewMode-normal oneContent active"
+            + " lafPageHost']//a[@title='%s']";
     private static final String CELL_ATTRIBUTE = "href";
 
     @Override
     public void clickOnOpportunity(final String opportunityName) {
         String opportunityLocator = String.format(OPPORTUNITY_PARTIAL_LOCATOR, opportunityName);
-        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(opportunityLocator)));
-        String opportunityLink = webDriver.findElement(By.cssSelector(opportunityLocator)).getAttribute(CELL_ATTRIBUTE);
+        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(opportunityLocator)));
+        String opportunityLink = webDriver.findElement(By.xpath(opportunityLocator)).getAttribute(CELL_ATTRIBUTE);
         webDriver.get(opportunityLink);
     }
 

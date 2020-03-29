@@ -31,9 +31,15 @@ import salesforce.ui.pages.campaignlist.CampaignListLightningPage;
 import salesforce.ui.pages.campaignmembers.AbstractCampaignMembersPage;
 import salesforce.ui.pages.campaignmembers.CampaignMembersClassicPage;
 import salesforce.ui.pages.campaignmembers.CampaignMembersLightningPage;
+import salesforce.ui.pages.contract.AbstractContractPage;
+import salesforce.ui.pages.contract.ContractClassicPage;
+import salesforce.ui.pages.contract.ContractLightningPage;
 import salesforce.ui.pages.newcampaign.AbstractNewCampaignPage;
 import salesforce.ui.pages.newcampaign.NewCampaignClassicPage;
 import salesforce.ui.pages.newcampaign.NewCampaignLightningPopUp;
+import salesforce.ui.pages.newcontract.AbstractNewContractPage;
+import salesforce.ui.pages.newcontract.NewContractClassicPage;
+import salesforce.ui.pages.newcontract.NewContractLightningPage;
 import salesforce.ui.pages.notesattachments.NotesAndAttachmentsClassicPage;
 import salesforce.ui.pages.notesattachments.NotesAndAttachmentsLightningPage;
 import salesforce.ui.pages.notesattachments.NotesAndAttachmentsPageAbstract;
@@ -160,6 +166,18 @@ public class AppPageFactory {
     }
 
     /**
+     * Returns a task page.
+     *
+     * @return task instance.
+     */
+    public static AbstractContractPage getContractPage() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new ContractClassicPage();
+        }
+        return new ContractLightningPage();
+    }
+
+    /**
      * Allows to identify notes and attachment user experience page.
      *
      * @return NotesAndAttachmentsPage instance.
@@ -172,7 +190,7 @@ public class AppPageFactory {
     }
 
     /**
-     * Allows to indentify campaign members user experience page.
+     * Allows to identify campaign members user experience page.
      *
      * @return campaign members instance.
      */
@@ -182,6 +200,7 @@ public class AppPageFactory {
         }
         return new CampaignMembersLightningPage();
     }
+
 
     /**
      * Returns TaskOpportunity.
@@ -196,7 +215,7 @@ public class AppPageFactory {
     }
 
     /**
-     * Allows to indentify campaign members user experience page.
+     * Allows to identify campaign members user experience page.
      *
      * @return campaign members instance.
      */
@@ -229,5 +248,17 @@ public class AppPageFactory {
             return new CampaignLeadsClassicPage();
         }
         return new CampaignLeadsLightningPage();
+    }
+
+    /**
+     * Returns NewContract.
+     *
+     * @return new contract instance.
+     */
+    public static AbstractNewContractPage getNewContractPage() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new NewContractLightningPage();
+        }
+        return new NewContractClassicPage();
     }
 }

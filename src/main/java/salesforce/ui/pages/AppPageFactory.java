@@ -201,7 +201,6 @@ public class AppPageFactory {
         return new CampaignMembersLightningPage();
     }
 
-
     /**
      * Returns TaskOpportunity.
      *

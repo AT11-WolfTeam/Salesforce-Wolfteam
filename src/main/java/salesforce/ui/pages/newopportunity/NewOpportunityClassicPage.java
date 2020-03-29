@@ -9,9 +9,32 @@
 
 package salesforce.ui.pages.newopportunity;
 
+import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
+
 public class NewOpportunityClassicPage extends AbstractNewOpportunityPage {
     @Override
     protected void waitUntilPageObjectIsLoaded() {
 
+    }
+
+    @Override
+    protected void setOpportunityName(String opportunityName) {
+        // To Do
+    }
+
+    @Override
+    protected void setCloseDate(String closeDate) {
+        // To Do
+    }
+
+    @Override
+    protected void setStage(String stage) {
+        // To Do
+    }
+
+    @Override
+    public AbstractOpportunityPage clickSaveOpportunityButton() {
+        // To Do
+        return null;
     }
 }

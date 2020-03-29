@@ -62,11 +62,19 @@ public class NewOpportunityLightningPopUp extends AbstractNewOpportunityPage {
         selectStage(stage);
     }
 
+    /**
+     * Selects stage.
+     * @param stage value.
+     */
+
     private void selectStage(String stage) {
         stageSelected = webDriver.findElement(By.xpath(String.format(STAGE_TO_SELECT,stage)));
         actions.click(stageSelected).build().perform();
     }
 
+    /**
+     * clicks on Stage combobox.
+     */
     private void clickOnStageComboBox() {
         stageComboBox.click();
     }

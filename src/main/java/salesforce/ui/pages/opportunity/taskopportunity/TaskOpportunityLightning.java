@@ -128,6 +128,8 @@ public class TaskOpportunityLightning extends AbstractTaskOpportunity {
 
     @Override
     public void clickSaveTask() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(saveTaskButton));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(saveTaskButton));
         saveTaskButton.click();
     }
 }

@@ -292,8 +292,7 @@ public class OpportunityStep {
     @And("the task should display the information added")
     public void theTaskShouldDisplayTheInformationAdded() {
         HashMap<String, String> mapTaskValidate = abstractTask.getTaskDetails(taskOpportunity, mapNewTask.keySet());
-        Map<String, String> mapExpected = context.getTaskOpportunity().getTaskEdited();
-        Assert.assertEquals(mapTaskValidate, mapExpected);
+        Assert.assertEquals(mapTaskValidate, context.getTaskOpportunity().getTaskEdited());
     }
 
     /**

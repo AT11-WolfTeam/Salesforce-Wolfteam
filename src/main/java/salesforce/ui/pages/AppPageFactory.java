@@ -39,7 +39,10 @@ import salesforce.ui.pages.newcampaign.NewCampaignClassicPage;
 import salesforce.ui.pages.newcampaign.NewCampaignLightningPopUp;
 import salesforce.ui.pages.newcontract.AbstractNewContractPage;
 import salesforce.ui.pages.newcontract.NewContractClassicPage;
-import salesforce.ui.pages.newcontract.NewContractLightningPage;
+import salesforce.ui.pages.newcontract.NewContractLightningPopUp;
+import salesforce.ui.pages.newopportunity.AbstractNewOpportunityPage;
+import salesforce.ui.pages.newopportunity.NewOpportunityClassicPage;
+import salesforce.ui.pages.newopportunity.NewOpportunityLightningPopUp;
 import salesforce.ui.pages.notesattachments.NotesAndAttachmentsClassicPage;
 import salesforce.ui.pages.notesattachments.NotesAndAttachmentsLightningPage;
 import salesforce.ui.pages.notesattachments.NotesAndAttachmentsPageAbstract;
@@ -256,8 +259,15 @@ public class AppPageFactory {
      */
     public static AbstractNewContractPage getNewContractPage() {
         if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
-            return new NewContractLightningPage();
+            return new NewContractLightningPopUp();
         }
         return new NewContractClassicPage();
+    }
+
+    public static AbstractNewOpportunityPage getNewOpportunityPage() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new NewOpportunityClassicPage();
+        }
+        return new NewOpportunityLightningPopUp();
     }
 }

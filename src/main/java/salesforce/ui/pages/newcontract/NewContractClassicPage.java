@@ -9,6 +9,8 @@
 
 package salesforce.ui.pages.newcontract;
 
+import salesforce.ui.pages.contract.AbstractContractPage;
+
 /**
  * Defines NewContractClassicPage.
  *
@@ -19,5 +21,30 @@ public class NewContractClassicPage extends AbstractNewContractPage {
     @Override
     protected void waitUntilPageObjectIsLoaded() {
 
+    }
+
+    @Override
+    protected void setAccount(String accountName) {
+
+    }
+
+    @Override
+    protected void setStatus(String status) {
+
+    }
+
+    @Override
+    protected void setContractStartDate(String startDate) {
+
+    }
+
+    @Override
+    protected void setContractTerm(String contractTerm) {
+
+    }
+
+    @Override
+    public AbstractContractPage clickSaveContract() {
+        return null;
     }
 }

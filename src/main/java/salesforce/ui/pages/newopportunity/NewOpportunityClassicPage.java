@@ -7,15 +7,9 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages.newcontract;
+package salesforce.ui.pages.newopportunity;
 
-/**
- * Defines NewContractLightningPage.
- *
- * @author Alan Escalera.
- * @version 1.0 28 March 2020.
- */
-public class NewContractLightningPage extends AbstractNewContractPage {
+public class NewOpportunityClassicPage extends AbstractNewOpportunityPage {
     @Override
     protected void waitUntilPageObjectIsLoaded() {
 

@@ -9,6 +9,11 @@
 
 package salesforce.ui.pages.contract;
 
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import salesforce.ui.pages.AppPageFactory;
+import salesforce.ui.pages.newopportunity.AbstractNewOpportunityPage;
+
 /**
  * Defines ContractLightningPage.
  *
@@ -16,8 +21,20 @@ package salesforce.ui.pages.contract;
  * @version 1.0 28 March 2020.
  */
 public class ContractLightningPage extends AbstractContractPage {
+    private static final String WINDOW_ACTIVE_LOCATOR = "//div[@class='windowViewMode-normal oneContent active "
+            + "lafPageHost']";
+
+    @FindBy(xpath = WINDOW_ACTIVE_LOCATOR + "//div[@title='New Opportunity']")
+    private WebElement newOpportunityButton;
+
     @Override
     protected void waitUntilPageObjectIsLoaded() {
 
+    }
+
+    @Override
+    public AbstractNewOpportunityPage clickOnNewOpportunity() {
+        newOpportunityButton.click();
+        return AppPageFactory.getNewOpportunityPage();
     }
 }

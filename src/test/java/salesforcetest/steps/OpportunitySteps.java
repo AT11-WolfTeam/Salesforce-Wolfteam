@@ -48,7 +48,7 @@ import java.util.Map;
  * @author Enrique Carrizales.
  * @version 1.0 16 March 2020.
  */
-public class OpportunityStep {
+public class OpportunitySteps {
     private Context context;
     private OpportunityApiHelper opportunityApiHelper;
     private ArrayList<HashMap<String, String>> opportunityMapList;
@@ -82,7 +82,7 @@ public class OpportunityStep {
      *
      * @param context value.
      */
-    public OpportunityStep(final Context context) {
+    public OpportunitySteps(final Context context) {
         this.context = context;
         opportunityApiHelper = new OpportunityApiHelper();
         pageTransporter = new PageTransporter();

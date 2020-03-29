@@ -7,25 +7,18 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages.contract;
+package salesforce.ui.pages.contractlist;
 
-import salesforce.ui.pages.newopportunity.AbstractNewOpportunityPage;
+import salesforce.ui.pages.contract.AbstractContractPage;
 
-/**
- * Defines ContractClassicPage.
- *
- * @author Alan Escalera.
- * @version 1.0 28 March 2020.
- */
-public class ContractClassicPage extends AbstractContractPage {
+public class ContractListClassicPage extends AbstractContractListPage {
     @Override
     protected void waitUntilPageObjectIsLoaded() {
 
     }
 
     @Override
-    public AbstractNewOpportunityPage clickOnNewOpportunity() {
-        //To Do
-        return null;
+    public void deleteContract(String contractNumber) {
+
     }
 }

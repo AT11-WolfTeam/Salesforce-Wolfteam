@@ -28,6 +28,7 @@ public class Context {
     private NewCampaign newCampaign;
     private List<Contact> contacts;
     private TaskOpportunity taskOpportunity;
+    private Contract contract;
 
     /**
      * Context constructor.
@@ -42,6 +43,7 @@ public class Context {
         this.newCampaign = new NewCampaign();
         this.contacts = new ArrayList<>();
         this.taskOpportunity = new TaskOpportunity();
+        this.contract = new Contract();
     }
 
     /**
@@ -79,7 +81,6 @@ public class Context {
     public void setOpportunities(final List<Opportunity> opportunities) {
         this.opportunities = opportunities;
     }
-
 
     /**
      * Returns new campaign instance.
@@ -160,5 +161,14 @@ public class Context {
      */
     public TaskOpportunity getTaskOpportunity() {
         return taskOpportunity;
+    }
+
+    /**
+     * Gets Contract.
+     *
+     * @return contract instance.
+     */
+    public Contract getContract() {
+        return contract;
     }
 }

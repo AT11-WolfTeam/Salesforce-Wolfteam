@@ -9,8 +9,13 @@
 
 package salesforce.ui.pages.newcontract;
 
+import salesforce.entities.Contract;
+import salesforce.entities.constants.ContractConstant;
 import salesforce.ui.pages.AbstractBasePage;
 import salesforce.ui.pages.contract.AbstractContractPage;
+
+import java.util.HashMap;
+import java.util.Set;
 
 /**
  * Defines AbstractNewContractPage.
@@ -49,4 +54,30 @@ public abstract class AbstractNewContractPage extends AbstractBasePage {
      * @return AbstractContractPage instance.
      */
     public abstract AbstractContractPage clickSaveContract();
+
+    /**
+     * Sets the form of new Contract.
+     *
+     * @param contract entity.
+     * @param fields map.
+     */
+    public void setNewContract(final Contract contract, final Set<String> fields) {
+        HashMap<String, Runnable> strategtyMap = composeStrategyMap(contract);
+        fields.forEach(field -> strategtyMap.get(field).run());
+    }
+
+    /**
+     * Sets the information of new Contract.
+     *
+     * @param contract entity.
+     * @return HashMap value.
+     */
+    protected HashMap<String, Runnable> composeStrategyMap(final Contract contract) {
+        HashMap<String, Runnable> strategyMap = new HashMap<>();
+        strategyMap.put(ContractConstant.ACCOUNT, () -> setAccount(contract.getAccountName()));
+        strategyMap.put(ContractConstant.STATUS, () -> setStatus(contract.getStatus()));
+        strategyMap.put(ContractConstant.START_DATE, () -> setContractStartDate(contract.getStartDate()));
+        strategyMap.put(ContractConstant.CONTRACT_TERM, () -> setContractTerm(contract.getContractTerm()));
+        return strategyMap;
+    }
 }

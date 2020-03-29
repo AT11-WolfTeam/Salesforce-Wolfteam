@@ -29,6 +29,9 @@ public class OpportunityListLightningPage extends AbstractOpportunityListPage {
             + " lafPageHost']//a[@title='%s']";
     private static final String CELL_ATTRIBUTE = "href";
 
+    private static final String STAGE_NAME = "//div[@class='windowViewMode-normal oneContent active"
+            + " lafPageHost']//table//tbody//th//a[@title='%s']/../../..//td[5]//span[@class='slds-truncate']";
+
     @Override
     public void clickOnOpportunity(final String opportunityName) {
         String opportunityLocator = String.format(OPPORTUNITY_PARTIAL_LOCATOR, opportunityName);
@@ -38,7 +41,13 @@ public class OpportunityListLightningPage extends AbstractOpportunityListPage {
     }
 
     @Override
+    public String getStageName(String opportunityName) {
+        return webDriver.findElement(By.xpath(String.format(STAGE_NAME,opportunityName))).getText();
+    }
+
+    @Override
     protected void waitUntilPageObjectIsLoaded() {
         webDriverWait.until(ExpectedConditions.visibilityOfAllElements(opportunityTable));
     }
+
 }

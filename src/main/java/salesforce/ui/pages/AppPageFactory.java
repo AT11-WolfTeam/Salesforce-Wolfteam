@@ -253,7 +253,7 @@ public class AppPageFactory {
     }
 
     /**
-     * Returns NewContract.
+     * Returns Contract.
      *
      * @return new contract instance.
      */

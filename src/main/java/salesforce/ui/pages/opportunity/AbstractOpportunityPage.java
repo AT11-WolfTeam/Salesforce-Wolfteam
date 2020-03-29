@@ -28,17 +28,25 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
     private static final String CAMPAIGN_NAME = "Campaign Name";
     protected WebElement campaignNameSelect;
 
-    @Override
-    protected void waitUntilPageObjectIsLoaded() {
-
-    }
-
     /**
      * Assigns a campaign.
      *
      * @param campaignName value.
      */
     protected abstract void assignCampaign(String campaignName);
+
+    /**
+     * Clicks on a Stage.
+     * @param stageName value.
+     */
+    public abstract void clickOnAStage(String stageName);
+
+    /**
+     * Clicks on mark as current stage button.
+     */
+    public abstract void clickOnMarkAsCurrentStageButton();
+
+    public abstract void clickOnSelectCloseStage(String closeAs);
 
     /**
      * Sets the form of new Campaign.

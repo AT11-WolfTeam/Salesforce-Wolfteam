@@ -94,6 +94,7 @@ Feature: Opportunity
     Then The added contacts with roles should be displayed on Contact Roles page
 
 
+  @DeleteAccounts
   @DeletesCampaign
   @DeletesOpportunity
   Scenario: Create new opportunity with all values.

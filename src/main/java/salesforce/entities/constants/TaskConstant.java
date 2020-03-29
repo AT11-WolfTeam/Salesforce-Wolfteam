@@ -21,6 +21,7 @@ public final class TaskConstant {
     public static final String STATUS = "Status";
     public static final String CONTACT = "Contact";
     public static final String DUE_DATE = "Due Date";
+    public static final String ASSIGNED_TO = "Assigned To";
 
     /**
      * OpportunityConstant constructor.

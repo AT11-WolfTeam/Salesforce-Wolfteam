@@ -10,7 +10,9 @@
 package salesforce.ui.pages.opportunity.taskopportunity;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.AppPageFactory;
@@ -41,9 +43,18 @@ public class TaskOpportunityLightning extends AbstractTaskOpportunity {
             + "input uiInput uiAutocomplete uiInput--default uiInput--lookup']")
     private WebElement searchContactsField;
 
+    @FindBy(css = "a[class='select']")
+    private WebElement statusListBox;
+
+    @FindBy(css = "input[class*=' default input'][placeholder*='Search Users']")
+    private WebElement assignedToListBox;
+
     private WebElement contactSelected;
 
     private static final String CONTACT_SPECIFIC = "//ul[@class='lookup__list  visible']//div[@title='%s']";
+    private static final String ASSIGNED_TO_LIST_BOX_PARTIAL_LOCATOR = "//span[text()='%s']";
+    private static final String OPTION_ASSIGNED_TO_LIST_BOX_PARTIAL_LOCATOR = "//a[*[div[text()='%s']]]";
+    private static final String OPTION_STATUS_LIST_BOX_PARTIAL_LOCATOR = "//li[contains(.,'%s')]//a";
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -86,6 +97,28 @@ public class TaskOpportunityLightning extends AbstractTaskOpportunity {
     }
 
     @Override
+    protected void setStatus(final String status) {
+        String optionStatusListBoxPartialLocator = String.format(OPTION_STATUS_LIST_BOX_PARTIAL_LOCATOR, status);
+        statusListBox.click();
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(optionStatusListBoxPartialLocator)))
+                .click();
+    }
+
+    @Override
+    protected void setAssignedTo(final String assignedTo) {
+        String assignedToListBoxLocator = String.format(ASSIGNED_TO_LIST_BOX_PARTIAL_LOCATOR, assignedTo);
+        try {
+            webDriver.findElement(By.xpath(assignedToListBoxLocator));
+        } catch (NoSuchElementException elementNotFound) {
+            String optionAssignedToListBoxLocator = String.format(OPTION_ASSIGNED_TO_LIST_BOX_PARTIAL_LOCATOR,
+                    assignedToListBoxLocator);
+            assignedToListBox.click();
+            webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(optionAssignedToListBoxLocator)))
+                    .click();
+        }
+    }
+
+    @Override
     public AbstractTask clickTaskToEdit(final String task) {
         String taskToEditXpath = String.format(TASK_NAME, task);
         taskNameSelected = webDriver.findElement(By.xpath(taskToEditXpath));
@@ -96,6 +129,7 @@ public class TaskOpportunityLightning extends AbstractTaskOpportunity {
 
     @Override
     public void clickSaveTask() {
-        saveTaskButton.click();
+        Actions actions = new Actions(webDriver);
+        actions.moveToElement(saveTaskButton).click().perform();
     }
 }

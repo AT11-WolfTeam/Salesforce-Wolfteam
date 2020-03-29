@@ -13,6 +13,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.task.AbstractTask;
 import salesforce.utils.UtilSalesforce;
@@ -26,6 +27,12 @@ import salesforce.utils.UtilSalesforce;
 public class TaskOpportunityClassic extends AbstractTaskOpportunity {
     @FindBy(xpath = "//input[@name='tsk5__09D3h0000012ZVJ']")
     private WebElement subjectField;
+
+    @FindBy(css = "input[data-fieldname='ownerid'][id*='tsk']")
+    private WebElement assignedToField;
+
+    @FindBy(css = "select[id*='tsk12']")
+    private WebElement statusListBox;
 
     @FindBy(css = "input[name='tsk4__09D3h0000012ZVJ']")
     private WebElement dueDateField;
@@ -44,6 +51,7 @@ public class TaskOpportunityClassic extends AbstractTaskOpportunity {
 
     private static final String TASK_NAME = "//div[@class='taskInnerContent']//a[text()='%s']";
     private static final String CONTACT_NAME = "//a[text()='%s']";
+    private static final String WEB_ELEMENT_ATTRIBUTE = "value";
     private String parentHandle;
 
     @Override
@@ -99,6 +107,19 @@ public class TaskOpportunityClassic extends AbstractTaskOpportunity {
     @Override
     protected void setDueDate(final String dueDate) {
         dueDateField.sendKeys(dueDate);
+    }
+
+    @Override
+    protected void setStatus(final String status) {
+        Select select = new Select(statusListBox);
+        select.selectByVisibleText(status);
+    }
+
+    @Override
+    protected void setAssignedTo(final String assignedTo) {
+        if (assignedToField.getAttribute(WEB_ELEMENT_ATTRIBUTE).compareTo(assignedTo) != 0) {
+            assignedToField.sendKeys(assignedTo);
+        }
     }
 
     @Override

@@ -37,7 +37,7 @@ public class TabObjectsClassicPage extends AbstractTabObjectsPage {
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-
+        webDriverWait.until(ExpectedConditions.visibilityOf(goButton));
     }
 
     @Override

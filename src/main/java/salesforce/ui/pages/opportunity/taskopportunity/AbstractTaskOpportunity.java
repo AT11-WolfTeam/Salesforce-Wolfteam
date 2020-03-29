@@ -48,6 +48,20 @@ public abstract class AbstractTaskOpportunity extends AbstractBasePage {
     protected abstract void setDueDate(String dueDate);
 
     /**
+     * Sets status value.
+     *
+     * @param status value.
+     */
+    protected abstract void setStatus(String status);
+
+    /**
+     * Sets assignedTo value.
+     *
+     * @param assignedTo value.
+     */
+    protected abstract void setAssignedTo(String assignedTo);
+
+    /**
      * Clicks on task to edit.
      *
      * @param task value.
@@ -82,6 +96,8 @@ public abstract class AbstractTaskOpportunity extends AbstractBasePage {
         strategyMap.put(TaskConstant.SUBJECT, () -> setSubjectTask(taskOpportunity.getSubject()));
         strategyMap.put(TaskConstant.CONTACT, () -> setContact(taskOpportunity.getContact()));
         strategyMap.put(TaskConstant.DUE_DATE, () -> setDueDate(taskOpportunity.getDueDate()));
+        strategyMap.put(TaskConstant.STATUS, () -> setStatus(taskOpportunity.getStatus()));
+        strategyMap.put(TaskConstant.ASSIGNED_TO, () -> setAssignedTo(taskOpportunity.getAssignedTo()));
         return strategyMap;
     }
 }

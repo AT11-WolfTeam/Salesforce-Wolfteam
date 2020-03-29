@@ -56,6 +56,9 @@ public class TaskClassicPage extends AbstractTask {
     @FindBy(xpath = "//input[@id='tsk4']")
     private WebElement dueDateField;
 
+    @FindBy(css = "div[id='tsk1_ileinner'] a[id]")
+    private WebElement assignedToLinkText;
+
     @FindBy(name = "resultsFrame")
     private WebElement resultsFrame;
 
@@ -87,6 +90,11 @@ public class TaskClassicPage extends AbstractTask {
     public void setPriority(final String priorityToSelect) {
         select = new Select(priorityComboBox);
         select.selectByValue(priorityToSelect);
+    }
+
+    @Override
+    public void setAssignedTo(final String assignedTo) {
+        //Todo
     }
 
     @Override
@@ -169,5 +177,11 @@ public class TaskClassicPage extends AbstractTask {
     @Override
     protected String getDueDate() {
         return dueDate.getText();
+    }
+
+    @Override
+    protected String getAssignedTo() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(assignedToLinkText));
+        return assignedToLinkText.getText();
     }
 }

@@ -54,10 +54,14 @@ Feature: Opportunity
   @DeletesOpportunity
   Scenario: Add new Task with required values
     Given I create 1 "Basic" opportunities
-      And I go to "Opportunities Page"
-      And I search the opportunity in list "All Opportunities"
-    When TO DO
-    Then TO DO
+    When I go to "Opportunities Page"
+      And I add new Task with
+        | Subject     | Call        |
+        | Assigned To | Admin User  |
+        | Status      | In Progress |
+    Then the application should this message only for Lightning Experience
+      | Task [Task Name] was created. |
+    And the task should display the information added
 
 
   @wip

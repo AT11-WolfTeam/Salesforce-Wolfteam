@@ -14,12 +14,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import salesforce.entities.constants.OpportunityConstant;
 
 /**
  * Manages new opportunity classic page.
  *
  * @author Juan Martinez.
- *  * @version 1.0 29 March 2020.
+ * * @version 1.0 29 March 2020.
  */
 public class NewOpportunityClassicPage extends AbstractNewOpportunity {
     @FindBy(css = "h2[class='pageDescription']")
@@ -49,16 +50,16 @@ public class NewOpportunityClassicPage extends AbstractNewOpportunity {
     @FindBy(css = "input[id= 'opp17']")
     private WebElement primaryCampaignSource;
 
-    @FindBy(css = "input[id= '00N3h000002dl6U']")
+    @FindBy(xpath = "//label[text()='Order Number']/../..//td[@class='dataCol col02']//input")
     private WebElement orderNumberTextBox;
 
-    @FindBy(css = "input[id= '00N3h000002dl6R']")
+    @FindBy(xpath = "//label[text()='Current Generator(s)']/../..//td[@class='dataCol col02']//input")
     private WebElement currentGeneratorTextBox;
 
-    @FindBy(css = "input[id= '00N3h000002dl6V']")
+    @FindBy(xpath = "//label/../..//td[@class='dataCol last col02']//input")
     private WebElement trackingNumberTextBox;
 
-    @FindBy(css = "input[id= '00N3h000002dl6T']")
+    @FindBy(xpath = "//label[text()='Main Competitor(s)']/../..//td[@class='dataCol']//input")
     private WebElement mainCompetitorsTextBox;
 
     @FindBy(css = "textarea[id='opp14']")
@@ -67,10 +68,27 @@ public class NewOpportunityClassicPage extends AbstractNewOpportunity {
     @FindBy(xpath = "//td[@id='bottomButtonRow']//input[@name='save' and @type='submit']")
     private WebElement saveButton;
 
+    @FindBy(css = "input[value='Cancel']")
+    private WebElement cancelButton;
+
+    @FindBy(css = "select[id='opp5']")
+    private WebElement typeCombobox;
+
+    @FindBy(css = "select[id='opp6']")
+    private WebElement leadCombobox;
+
+    @FindBy(css = "select[id= 'opp11']")
+    private WebElement stageCombobox;
+
+    @FindBy(xpath = "//label[text()='Delivery/Installation Status']"
+            + "/../..//td[@class='dataCol']//span//select")
+    private WebElement deliveryStatus;
+
     private static final String TYPE_COMBOBOX = "select[id='opp5']";
     private static final String LEAD_SOURCE_COMBOBOX = "select[id='opp6']";
     private static final String STAGE_COMBOBOX = "select[id= 'opp11']";
-    private static final String DELIVERY_STATUS = "select[id= '00N3h000002dl6S']";
+    private static final String DELIVERY_STATUS = "//label[text()='Delivery/Installation Status']"
+            + "/../..//td[@class='dataCol']//span//select";
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -94,11 +112,22 @@ public class NewOpportunityClassicPage extends AbstractNewOpportunity {
 
     /**
      * Gets combobox selector.
+     *
      * @param cssLocator value.
      * @return composed selector.
      */
     private Select getSelect(final String cssLocator) {
         return new Select(webDriver.findElement(By.cssSelector(cssLocator)));
+    }
+
+    /**
+     * Gets combobox selector.
+     *
+     * @param xpathLocator value.
+     * @return composed selector.
+     */
+    private Select getSelectByXpath(final String xpathLocator) {
+        return new Select(webDriver.findElement(By.xpath(xpathLocator)));
     }
 
     @Override
@@ -181,7 +210,7 @@ public class NewOpportunityClassicPage extends AbstractNewOpportunity {
 
     @Override
     public void selectDeliveryStatus(final String deliveryStatus) {
-        getSelect(DELIVERY_STATUS).selectByVisibleText(deliveryStatus);
+        getSelectByXpath(DELIVERY_STATUS).selectByVisibleText(deliveryStatus);
     }
 
     @Override
@@ -195,90 +224,92 @@ public class NewOpportunityClassicPage extends AbstractNewOpportunity {
     public void clickOnSaveButton() {
         webDriverWait.until(ExpectedConditions.visibilityOf(saveButton));
         saveButton.click();
+        saveButton.click();
     }
 
     @Override
     public void clickOnCancelButton() {
-
+        webDriverWait.until(ExpectedConditions.visibilityOf(cancelButton));
+        cancelButton.click();
     }
 
     @Override
     public String getOpportunityName() {
-        return null;
+        return opportunityNameTextBox.getAttribute(OpportunityConstant.VALUE);
     }
 
     @Override
     public String geAccountName() {
-        return null;
+        return accountNameTextBox.getAttribute(OpportunityConstant.VALUE);
     }
 
     @Override
     public String getType() {
-        return null;
+        return typeCombobox.getAttribute(OpportunityConstant.VALUE);
     }
 
     @Override
     public String getLead() {
-        return null;
+        return leadCombobox.getAttribute(OpportunityConstant.VALUE);
     }
 
     @Override
     public String getAmount() {
-        return null;
+        return amountTextBox.getAttribute(OpportunityConstant.VALUE);
     }
 
     @Override
     public String getCloseDate() {
-        return null;
+        return closeDateTextBoxCalendar.getAttribute(OpportunityConstant.VALUE);
     }
 
     @Override
     public String getNextStep() {
-        return null;
+        return nextStepTextBox.getAttribute(OpportunityConstant.VALUE);
     }
 
     @Override
     public String getStage() {
-        return null;
+        return stageCombobox.getAttribute(OpportunityConstant.VALUE);
     }
 
     @Override
     public String getProbability() {
-        return null;
+        return probabilityTextBox.getAttribute(OpportunityConstant.VALUE);
     }
 
     @Override
     public String getCampaign() {
-        return null;
+        return primaryCampaignSource.getAttribute(OpportunityConstant.VALUE);
     }
 
     @Override
     public String getOrderNumber() {
-        return null;
+        return orderNumberTextBox.getAttribute(OpportunityConstant.VALUE);
     }
 
     @Override
     public String getCurrentGenerator() {
-        return null;
+        return currentGeneratorTextBox.getAttribute(OpportunityConstant.VALUE);
     }
 
     @Override
     public String getTrackingNumber() {
-        return null;
+        return trackingNumberTextBox.getAttribute(OpportunityConstant.VALUE);
     }
 
     @Override
     public String getMainCompetitor() {
-        return null;
+        return mainCompetitorsTextBox.getAttribute(OpportunityConstant.VALUE);
     }
 
     @Override
     public String getDeliveryStatus() {
-        return null;
+        return deliveryStatus.getAttribute(OpportunityConstant.VALUE);
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return descriptionTextArea.getAttribute(OpportunityConstant.VALUE);
     }
 }

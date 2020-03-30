@@ -262,8 +262,16 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
         return iterateContacts(contactsList);
     }
 
+    /**
+     * Clicks on edit button.
+     */
+    private void clickOnEditButton() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(editButton));
+        editButton.click();
+    }
+
     @Override
     public void enableToValidateOpportunity() {
-
+        clickOnEditButton();
     }
 }

@@ -56,6 +56,11 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
     public abstract void clickOnSelectCloseStage(String closeAs);
 
     /**
+     * Refresh the page.
+     */
+    public abstract void refreshPage();
+
+    /**
      * Sets the form of new Campaign.
      *
      * @param opportunity entity.

@@ -89,6 +89,7 @@ public class ContractSteps {
         opportunity.setOpportunityInformation(mapOpportunity);
         abstractNewOpportunityPage.setNewOpportunity(opportunity, mapNewOpportunity.keySet());
         abstractOpportunityPage = abstractNewOpportunityPage.clickSaveOpportunityButton();
+        abstractOpportunityPage.refreshPage();
     }
 
     /**

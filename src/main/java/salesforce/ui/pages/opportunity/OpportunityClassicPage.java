@@ -107,6 +107,11 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     }
 
     @Override
+    public void refreshPage() {
+        webDriver.navigate().refresh();
+    }
+
+    @Override
     protected String getCampaignName() {
         webDriverWait.until(ExpectedConditions.visibilityOf(campaignSaved));
         webDriverWait.until(ExpectedConditions.visibilityOf(editButton));

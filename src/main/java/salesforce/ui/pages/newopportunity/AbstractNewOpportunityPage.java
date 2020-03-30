@@ -9,9 +9,7 @@
 
 package salesforce.ui.pages.newopportunity;
 
-import salesforce.entities.Contract;
 import salesforce.entities.Opportunity;
-import salesforce.entities.constants.ContractConstant;
 import salesforce.entities.constants.OpportunityConstant;
 import salesforce.ui.pages.AbstractBasePage;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
@@ -19,6 +17,12 @@ import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 import java.util.HashMap;
 import java.util.Set;
 
+/**
+ * Defines AbstractNewOpportunityPage.
+ *
+ * @author Alan Escalera.
+ * @version 1.0 29 March 2020.
+ */
 public abstract class AbstractNewOpportunityPage extends AbstractBasePage {
     /**
      * Sets Opportunity Name.
@@ -28,7 +32,7 @@ public abstract class AbstractNewOpportunityPage extends AbstractBasePage {
     protected abstract void setOpportunityName(String opportunityName);
 
     /**
-     * Sets Close Date
+     * Sets Close Date.
      *
      * @param closeDate value.
      */
@@ -41,6 +45,11 @@ public abstract class AbstractNewOpportunityPage extends AbstractBasePage {
      */
     protected abstract void setStage(String stage);
 
+    /**
+     * Returns AbstractOpportunityPage.
+     *
+     * @return instance.
+     */
     public abstract AbstractOpportunityPage clickSaveOpportunityButton();
 
     /**
@@ -67,5 +76,4 @@ public abstract class AbstractNewOpportunityPage extends AbstractBasePage {
         strategyMap.put(OpportunityConstant.STAGE_NAME, () -> setStage(newOpportunity.getStageName()));
         return strategyMap;
     }
-
 }

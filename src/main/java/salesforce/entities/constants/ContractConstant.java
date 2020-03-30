@@ -9,6 +9,12 @@
 
 package salesforce.entities.constants;
 
+/**
+ * Manages ContractConstant instance.
+ *
+ * @author Alan Escalera.
+ * @version 1.0 29 March 2020.
+ */
 public class ContractConstant {
     public static final String ACCOUNT = "Account";
     public static final String STATUS = "Status";

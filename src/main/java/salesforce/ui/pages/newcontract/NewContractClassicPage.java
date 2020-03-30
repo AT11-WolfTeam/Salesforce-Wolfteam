@@ -20,31 +20,32 @@ import salesforce.ui.pages.contract.AbstractContractPage;
 public class NewContractClassicPage extends AbstractNewContractPage {
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-
+        //To Do
     }
 
     @Override
-    protected void setAccount(String accountName) {
-
+    protected void setAccount(final String accountName) {
+        //To Do
     }
 
     @Override
-    protected void setStatus(String status) {
-
+    protected void setStatus(final String status) {
+        //To Do
     }
 
     @Override
-    protected void setContractStartDate(String startDate) {
-
+    protected void setContractStartDate(final String startDate) {
+        //To Do
     }
 
     @Override
-    protected void setContractTerm(String contractTerm) {
-
+    protected void setContractTerm(final String contractTerm) {
+        //To Do
     }
 
     @Override
     public AbstractContractPage clickSaveContract() {
+        //To Do
         return null;
     }
 }

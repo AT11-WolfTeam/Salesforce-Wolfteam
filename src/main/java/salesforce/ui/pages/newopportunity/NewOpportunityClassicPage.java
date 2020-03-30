@@ -11,6 +11,12 @@ package salesforce.ui.pages.newopportunity;
 
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 
+/**
+ * Defines NewOpportunityClassicPage.
+ *
+ * @author Alan Escalera.
+ * @version 1.0 29 March 2020.
+ */
 public class NewOpportunityClassicPage extends AbstractNewOpportunityPage {
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -18,17 +24,17 @@ public class NewOpportunityClassicPage extends AbstractNewOpportunityPage {
     }
 
     @Override
-    protected void setOpportunityName(String opportunityName) {
+    protected void setOpportunityName(final String opportunityName) {
         // To Do
     }
 
     @Override
-    protected void setCloseDate(String closeDate) {
+    protected void setCloseDate(final String closeDate) {
         // To Do
     }
 
     @Override
-    protected void setStage(String stage) {
+    protected void setStage(final String stage) {
         // To Do
     }
 

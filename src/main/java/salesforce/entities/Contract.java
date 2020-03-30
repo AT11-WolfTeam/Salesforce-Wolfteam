@@ -15,12 +15,18 @@ import salesforce.utils.DateFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Manages Contract instance.
+ *
+ * @author Alan Escalera.
+ * @version 1.0 29 March 2020.
+ */
 public class Contract {
     private String contractNumber;
     private String accountName;
     private String status;
     private String startDate;
-    private String ContractTerm;
+    private String contractTerm;
 
     /**
      * Gets accountName.
@@ -36,7 +42,7 @@ public class Contract {
      *
      * @param accountName value.
      */
-    public void setAccountName(String accountName) {
+    public void setAccountName(final String accountName) {
         this.accountName = accountName;
     }
 
@@ -54,7 +60,7 @@ public class Contract {
      *
      * @param status value.
      */
-    public void setStatus(String status) {
+    public void setStatus(final String status) {
         this.status = status;
     }
 
@@ -72,7 +78,7 @@ public class Contract {
      *
      * @param startDate value.
      */
-    public void setStartDate(String startDate) {
+    public void setStartDate(final String startDate) {
         this.startDate = DateFormatter.formatDateUi(startDate);
     }
 
@@ -82,7 +88,7 @@ public class Contract {
      * @return ContractTerm value.
      */
     public String getContractTerm() {
-        return ContractTerm;
+        return contractTerm;
     }
 
     /**
@@ -90,8 +96,8 @@ public class Contract {
      *
      * @param contractTerm value.
      */
-    public void setContractTerm(String contractTerm) {
-        ContractTerm = contractTerm;
+    public void setContractTerm(final String contractTerm) {
+        this.contractTerm = contractTerm;
     }
 
     /**
@@ -108,7 +114,7 @@ public class Contract {
      *
      * @param contractNumber value.
      */
-    public void setContractNumber(String contractNumber) {
+    public void setContractNumber(final String contractNumber) {
         this.contractNumber = contractNumber;
     }
 

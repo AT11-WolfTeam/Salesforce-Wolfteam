@@ -20,5 +20,10 @@ import salesforce.ui.pages.newopportunity.AbstractNewOpportunityPage;
  */
 public abstract class AbstractContractPage extends AbstractBasePage {
 
+    /**
+     * Clicks on New Opportunity button.
+     *
+     * @return NewOpportunityInstance.
+     */
     public abstract AbstractNewOpportunityPage clickOnNewOpportunity();
 }

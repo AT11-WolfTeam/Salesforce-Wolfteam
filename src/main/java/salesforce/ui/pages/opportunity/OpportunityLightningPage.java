@@ -79,7 +79,7 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     @FindBy(xpath = "//div[@class='modal-container slds-modal__container']//button[@title='Save']")
     private WebElement saveCloseOpportunity;
 
-    Select select;
+    private Select select;
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -114,7 +114,7 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     }
 
     @Override
-    public void clickOnAStage(String stageName) {
+    public void clickOnAStage(final String stageName) {
         webDriver.findElement(By.xpath(String.format(STAGE_BUTTON, stageName))).click();
     }
 
@@ -124,17 +124,25 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     }
 
     @Override
-    public void clickOnSelectCloseStage(String closeAs) {
+    public void clickOnSelectCloseStage(final String closeAs) {
         clickOnMarkAsCurrentStageButton();
         selectCloseStageAs(closeAs);
         clickOnSaveCloseOpportunity();
     }
 
+    /**
+     * Clicks on saveCloseOpportunity.
+     */
     private void clickOnSaveCloseOpportunity() {
         saveCloseOpportunity.click();
     }
 
-    private void selectCloseStageAs(String closeAs) {
+    /**
+     * Selects closeStageAs.
+     *
+     * @param closeAs value.
+     */
+    private void selectCloseStageAs(final String closeAs) {
         select = new Select(selectCloseStageComboBox);
         select.selectByValue(closeAs);
     }

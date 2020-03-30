@@ -15,6 +15,12 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+/**
+ * Defines ContractListLightningPage.
+ *
+ * @author Alan Escalera.
+ * @version 1.0 29 March 2020.
+ */
 public class ContractListLightningPage extends AbstractContractListPage {
     @FindBy(css = "table[role='grid']")
     private WebElement contractTable;
@@ -27,7 +33,7 @@ public class ContractListLightningPage extends AbstractContractListPage {
 
     private static final String MORE_ACTIONS = "//table//tbody//tr//th//a[@title='%s']/../../..//td"
             + "//div[@class='forceVirtualActionMarker forceVirtualAction']";
-    Actions actions = new Actions(webDriver);
+    private Actions actions = new Actions(webDriver);
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -35,7 +41,7 @@ public class ContractListLightningPage extends AbstractContractListPage {
     }
 
     @Override
-    public void deleteContract(String contractNumber) {
+    public void deleteContract(final String contractNumber) {
         clickOnMoreActions(contractNumber);
         clickOnDeleteButton();
         clickOnDeleteConfirmation();
@@ -62,7 +68,7 @@ public class ContractListLightningPage extends AbstractContractListPage {
      *
      * @param contractNumber value.
      */
-    private void clickOnMoreActions(String contractNumber) {
+    private void clickOnMoreActions(final String contractNumber) {
         webDriver.findElement(By.xpath(String.format(MORE_ACTIONS, contractNumber))).click();
     }
 

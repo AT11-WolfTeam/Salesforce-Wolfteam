@@ -27,6 +27,12 @@ import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Manages contract steps.
+ *
+ * @author Alan Escalera.
+ * @version 1.0 29 March 2020.
+ */
 public class ContractSteps {
     private Context context;
     private AbstractTabObjectsPage abstractTabObjectsPage;
@@ -40,10 +46,20 @@ public class ContractSteps {
 
     private static final int ARRAY_POSITION_FIRST = 0;
 
-    public ContractSteps(Context context) {
+    /**
+     * Contract steps Constructor.
+     *
+     * @param context instance.
+     */
+    public ContractSteps(final Context context) {
         this.context = context;
     }
 
+    /**
+     * Creates new Contract with the map values.
+     *
+     * @param mapNewContract map values.
+     */
     @And("I create New Contract with")
     public void iCreateNewContractWith(final Map<String, String> mapNewContract) {
         abstractTabObjectsPage = AppPageFactory.getTabObjectsPage();
@@ -55,10 +71,15 @@ public class ContractSteps {
         abstractNewContractPage.setNewContract(contract, mapNewContract.keySet());
         abstractNewContractPage.clickSaveContract();
         toastUpdateObjectMessage = new ToastUpdateObjectMessage();
-        String contractNumber = toastUpdateObjectMessage.getMessage().replaceAll("\\D+","");
+        String contractNumber = toastUpdateObjectMessage.getMessage().replaceAll("\\D+", "");
         contract.setContractNumber(contractNumber);
     }
 
+    /**
+     * Crates new opportunity with the map values.
+     *
+     * @param mapNewOpportunity map values.
+     */
     @And("I create New Opportunity with")
     public void iCreateNewOpportunityWith(final Map<String, String> mapNewOpportunity) {
         HashMap<String, String> mapOpportunity = new HashMap<>(mapNewOpportunity);
@@ -69,25 +90,44 @@ public class ContractSteps {
         abstractNewOpportunityPage.setNewOpportunity(opportunity, mapNewOpportunity.keySet());
         abstractOpportunityPage = abstractNewOpportunityPage.clickSaveOpportunityButton();
     }
+
+    /**
+     * Selects the stage.
+     *
+     * @param stage value.
+     */
     @When("I select stage as {string}")
-    public void iSelectStageAs(String stage) {
+    public void iSelectStageAs(final String stage) {
         abstractOpportunityPage.clickOnAStage(stage);
     }
 
+    /**
+     * Close the opportunity as won or lost.
+     *
+     * @param closeAs value.
+     */
     @When("I close the opportunity as {string}")
-    public void iCloseTheOpportunityAs(String closeAs) {
+    public void iCloseTheOpportunityAs(final String closeAs) {
         opportunity.setStageName(closeAs);
         abstractOpportunityPage.clickOnSelectCloseStage(closeAs);
     }
 
+    /**
+     * the application should display a message.
+     *
+     * @param message value.
+     */
     @Then("the application should display a message {string}")
-    public void theApplicationShouldDisplayAMessage(String message) {
+    public void theApplicationShouldDisplayAMessage(final String message) {
         toastUpdateObjectMessage = new ToastUpdateObjectMessage();
         String messageClosed = toastUpdateObjectMessage.getMessage();
-        Assert.assertEquals(message,messageClosed);
+        Assert.assertEquals(message, messageClosed);
 
     }
 
+    /**
+     * On opportunities object table should display the current stage.
+     */
     @And("On opportunities object should be display the current stage")
     public void onOpportunitiesObjectShouldBeDisplayCurrentStage() {
         abstractOpportunityListPage = AppPageFactory.getOpportunityList();
@@ -95,5 +135,4 @@ public class ContractSteps {
         String expected = opportunity.getStageName();
         Assert.assertEquals(expected, actual);
     }
-
 }

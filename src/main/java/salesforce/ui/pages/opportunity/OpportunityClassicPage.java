@@ -21,6 +21,7 @@ import salesforce.ui.pages.opportunity.opportunitycontactroles.ContactRolesClass
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
 import salesforce.ui.pages.owner.OwnerEditClassicPage;
 import salesforce.utils.UtilSalesforce;
+
 import java.util.HashMap;
 
 /**
@@ -91,18 +92,18 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     }
 
     @Override
-    public void clickOnAStage(String stageName) {
-
+    public void clickOnAStage(final String stageName) {
+        //To Do
     }
 
     @Override
     public void clickOnMarkAsCurrentStageButton() {
-
+        //To Do
     }
 
     @Override
-    public void clickOnSelectCloseStage(String closeAs) {
-
+    public void clickOnSelectCloseStage(final String closeAs) {
+        //To do
     }
 
     @Override
@@ -242,7 +243,7 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
      * Gets contact name.
      *
      * @param contactName value.
-     * @param rolName value.
+     * @param rolName     value.
      * @return composed web element.
      */
     private String getRoleTextByContactName(final String contactName, final String rolName) {

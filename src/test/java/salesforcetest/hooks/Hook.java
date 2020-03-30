@@ -114,7 +114,7 @@ public class Hook {
     }
 
     /**
-     * Deletes Contract
+     * Deletes Contract.
      */
     @After("@DeleteContract")
     public void deleteContract() {

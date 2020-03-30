@@ -14,6 +14,7 @@ import salesforce.entities.Opportunity;
 import salesforce.ui.pages.AbstractBasePage;
 import salesforce.ui.pages.opportunity.opportunitycontactroles.AbstractContactRolesPage;
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
+
 import java.util.HashMap;
 import java.util.Set;
 import java.util.function.Supplier;
@@ -37,6 +38,7 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
 
     /**
      * Clicks on a Stage.
+     *
      * @param stageName value.
      */
     public abstract void clickOnAStage(String stageName);
@@ -46,13 +48,18 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
      */
     public abstract void clickOnMarkAsCurrentStageButton();
 
+    /**
+     * Clicks on Select close stage.
+     *
+     * @param closeAs value.
+     */
     public abstract void clickOnSelectCloseStage(String closeAs);
 
     /**
      * Sets the form of new Campaign.
      *
      * @param opportunity entity.
-     * @param fields map.
+     * @param fields      map.
      */
     public void editOpportunity(final Opportunity opportunity, final Set<String> fields) {
         HashMap<String, Runnable> strategtyMap = composeStrategyMap(opportunity);

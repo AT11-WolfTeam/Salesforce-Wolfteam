@@ -11,6 +11,7 @@ package salesforce.ui.pages.contract;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.newopportunity.AbstractNewOpportunityPage;
 
@@ -29,7 +30,8 @@ public class ContractLightningPage extends AbstractContractPage {
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-
+        webDriverWait.until(ExpectedConditions.visibilityOf(newOpportunityButton));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(newOpportunityButton));
     }
 
     @Override

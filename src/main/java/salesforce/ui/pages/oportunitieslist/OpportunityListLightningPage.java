@@ -41,7 +41,7 @@ public class OpportunityListLightningPage extends AbstractOpportunityListPage {
 
     private static final String MORE_ACTIONS = "//table//tbody//tr//th//a[@title='%s']/../../..//td"
             + "//div[@class='forceVirtualActionMarker forceVirtualAction']";
-    Actions actions = new Actions(webDriver);
+    private Actions actions = new Actions(webDriver);
 
     @Override
     public void clickOnOpportunity(final String opportunityName) {
@@ -52,28 +52,39 @@ public class OpportunityListLightningPage extends AbstractOpportunityListPage {
     }
 
     @Override
-    public String getStageName(String opportunityName) {
-        return webDriver.findElement(By.xpath(String.format(STAGE_NAME,opportunityName))).getText();
+    public String getStageName(final String opportunityName) {
+        return webDriver.findElement(By.xpath(String.format(STAGE_NAME, opportunityName))).getText();
     }
 
     @Override
-    public void deleteOpportunity(String name) {
+    public void deleteOpportunity(final String name) {
         clickOnMoreActions(name);
         clickOnDeleteButton();
         clickOnDeleteConfirmation();
     }
 
+    /**
+     * Clicks on Delete confirmation button.
+     */
     private void clickOnDeleteConfirmation() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(deleteConfirmButton));
         deleteConfirmButton.click();
     }
 
+    /**
+     * Clicks on delete button.
+     */
     private void clickOnDeleteButton() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(deleteButton));
         actions.click(deleteButton).build().perform();
     }
 
-    private void clickOnMoreActions(String name) {
+    /**
+     * Clicks on More Actions button.
+     *
+     * @param name value.
+     */
+    private void clickOnMoreActions(final String name) {
         webDriver.findElement(By.xpath(String.format(MORE_ACTIONS, name))).click();
     }
 

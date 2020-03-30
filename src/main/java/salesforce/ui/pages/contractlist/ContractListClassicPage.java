@@ -9,8 +9,12 @@
 
 package salesforce.ui.pages.contractlist;
 
-import salesforce.ui.pages.contract.AbstractContractPage;
-
+/**
+ * Defines ContractListClassicPage.
+ *
+ * @author Alan Escalera.
+ * @version 1.0 29 March 2020.
+ */
 public class ContractListClassicPage extends AbstractContractListPage {
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -18,7 +22,7 @@ public class ContractListClassicPage extends AbstractContractListPage {
     }
 
     @Override
-    public void deleteContract(String contractNumber) {
+    public void deleteContract(final String contractNumber) {
 
     }
 }

@@ -11,6 +11,12 @@ package salesforce.ui.pages.contractlist;
 
 import salesforce.ui.pages.AbstractBasePage;
 
+/**
+ * Defines AbstractContractListPage.
+ *
+ * @author Alan Escalera.
+ * @version 1.0 29 March 2020.
+ */
 public abstract class AbstractContractListPage extends AbstractBasePage {
 
     /**

@@ -57,13 +57,18 @@ public class NewContractLightningPopUp extends AbstractNewContractPage {
 
 
     @Override
-    protected void setAccount(String accountName) {
+    protected void setAccount(final String accountName) {
         clickOnAccountField();
         selectAccount(accountName);
     }
 
-    private void selectAccount(String accountName) {
-       webDriver.findElement(By.xpath(String.format(ACCOUNT_NAME,accountName))).click();
+    /**
+     * Selects account.
+     *
+     * @param accountName value.
+     */
+    private void selectAccount(final String accountName) {
+        webDriver.findElement(By.xpath(String.format(ACCOUNT_NAME, accountName))).click();
     }
 
     /**
@@ -74,27 +79,35 @@ public class NewContractLightningPopUp extends AbstractNewContractPage {
     }
 
     @Override
-    protected void setStatus(String status) {
+    protected void setStatus(final String status) {
         clickStatusComboBox();
         selectStatus(status);
     }
 
-    private void selectStatus(String status) {
-        statusSelected = webDriver.findElement(By.xpath(String.format(STATUS_TO_SELECT,status)));
+    /**
+     * Selects Status.
+     *
+     * @param status value.
+     */
+    private void selectStatus(final String status) {
+        statusSelected = webDriver.findElement(By.xpath(String.format(STATUS_TO_SELECT, status)));
         actions.click(statusSelected).build().perform();
     }
 
+    /**
+     * Clicks on Status ComboBox.
+     */
     private void clickStatusComboBox() {
         statusComboBox.click();
     }
 
     @Override
-    protected void setContractStartDate(String startDate) {
+    protected void setContractStartDate(final String startDate) {
         contractStartDateField.sendKeys(startDate);
     }
 
     @Override
-    protected void setContractTerm(String contractTerm) {
+    protected void setContractTerm(final String contractTerm) {
         contractTermField.sendKeys(contractTerm);
     }
 

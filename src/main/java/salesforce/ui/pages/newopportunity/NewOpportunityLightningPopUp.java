@@ -17,6 +17,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 
+/**
+ * Defines NewOpportunityLightningPopUp.
+ *
+ * @author Alan Escalera.
+ * @version 1.0 29 March 2020.
+ */
 public class NewOpportunityLightningPopUp extends AbstractNewOpportunityPage {
     private static final String MODAL_CONTAINER = "//div[@class='modal-container slds-modal__container']";
 
@@ -32,12 +38,10 @@ public class NewOpportunityLightningPopUp extends AbstractNewOpportunityPage {
 
     @FindBy(xpath = "//div[@class='windowViewMode-normal oneRecordActionWrapper isModal active lafPageHost']"
             + "//button[@title='Save']")
+
     private WebElement saveOpportunityButton;
-
     private WebElement stageSelected;
-
     private static final String STAGE_TO_SELECT = "//div[@class='select-options']//a[@title='%s']";
-
     private Actions actions = new Actions(webDriver);
 
     @Override
@@ -48,17 +52,17 @@ public class NewOpportunityLightningPopUp extends AbstractNewOpportunityPage {
 
 
     @Override
-    protected void setOpportunityName(String opportunityName) {
+    protected void setOpportunityName(final String opportunityName) {
         opportunityNameField.sendKeys(opportunityName);
     }
 
     @Override
-    protected void setCloseDate(String closeDate) {
+    protected void setCloseDate(final String closeDate) {
         closeDateField.sendKeys(closeDate);
     }
 
     @Override
-    protected void setStage(String stage) {
+    protected void setStage(final String stage) {
         clickOnStageComboBox();
         selectStage(stage);
     }
@@ -69,7 +73,7 @@ public class NewOpportunityLightningPopUp extends AbstractNewOpportunityPage {
      * @param stage value.
      */
 
-    private void selectStage(String stage) {
+    private void selectStage(final String stage) {
         stageSelected = webDriver.findElement(By.xpath(String.format(STAGE_TO_SELECT, stage)));
         actions.click(stageSelected).build().perform();
     }

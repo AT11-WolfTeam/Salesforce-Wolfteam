@@ -36,7 +36,13 @@ public class OpportunityListClassicPage extends AbstractOpportunityListPage {
 
     @Override
     public String getStageName(String opportunityName) {
+        //To Do
         return null;
+    }
+
+    @Override
+    public void deleteOpportunity(String name) {
+        //To Do
     }
 
     @Override

@@ -25,5 +25,17 @@ public abstract class AbstractOpportunityListPage extends AbstractBasePage {
      * @param opportunityName contains an String value.
      */
     public abstract void clickOnOpportunity(String opportunityName);
+
+    /**
+     * Gets stage name.
+     * @param opportunityName value
+     * @return stageName value.
+     */
     public abstract String getStageName(String opportunityName);
+
+    /**
+     * Deletes an opportunity.
+     * @param name value.
+     */
+    public abstract void deleteOpportunity(String name);
 }

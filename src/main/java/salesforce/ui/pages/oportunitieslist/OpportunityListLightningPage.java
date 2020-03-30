@@ -11,6 +11,7 @@ package salesforce.ui.pages.oportunitieslist;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -25,12 +26,22 @@ public class OpportunityListLightningPage extends AbstractOpportunityListPage {
     @FindBy(css = "table[role='grid']")
     private WebElement opportunityTable;
 
+    @FindBy(xpath = "//div[@class='branding-actions actionMenu']//a[@title='Delete']")
+    private WebElement deleteButton;
+
+    @FindBy(xpath = "//div[@class='modal-container slds-modal__container']//button[@title='Delete']")
+    private WebElement deleteConfirmButton;
+
     private static final String OPPORTUNITY_PARTIAL_LOCATOR = "//div[@class='windowViewMode-normal oneContent active"
             + " lafPageHost']//a[@title='%s']";
     private static final String CELL_ATTRIBUTE = "href";
 
     private static final String STAGE_NAME = "//div[@class='windowViewMode-normal oneContent active"
             + " lafPageHost']//table//tbody//th//a[@title='%s']/../../..//td[5]//span[@class='slds-truncate']";
+
+    private static final String MORE_ACTIONS = "//table//tbody//tr//th//a[@title='%s']/../../..//td"
+            + "//div[@class='forceVirtualActionMarker forceVirtualAction']";
+    Actions actions = new Actions(webDriver);
 
     @Override
     public void clickOnOpportunity(final String opportunityName) {
@@ -43,6 +54,27 @@ public class OpportunityListLightningPage extends AbstractOpportunityListPage {
     @Override
     public String getStageName(String opportunityName) {
         return webDriver.findElement(By.xpath(String.format(STAGE_NAME,opportunityName))).getText();
+    }
+
+    @Override
+    public void deleteOpportunity(String name) {
+        clickOnMoreActions(name);
+        clickOnDeleteButton();
+        clickOnDeleteConfirmation();
+    }
+
+    private void clickOnDeleteConfirmation() {
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(deleteConfirmButton));
+        deleteConfirmButton.click();
+    }
+
+    private void clickOnDeleteButton() {
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(deleteButton));
+        actions.click(deleteButton).build().perform();
+    }
+
+    private void clickOnMoreActions(String name) {
+        webDriver.findElement(By.xpath(String.format(MORE_ACTIONS, name))).click();
     }
 
     @Override

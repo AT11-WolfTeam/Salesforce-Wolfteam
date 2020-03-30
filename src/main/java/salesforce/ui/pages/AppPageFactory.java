@@ -34,6 +34,9 @@ import salesforce.ui.pages.campaignmembers.CampaignMembersLightningPage;
 import salesforce.ui.pages.contract.AbstractContractPage;
 import salesforce.ui.pages.contract.ContractClassicPage;
 import salesforce.ui.pages.contract.ContractLightningPage;
+import salesforce.ui.pages.contractlist.AbstractContractListPage;
+import salesforce.ui.pages.contractlist.ContractListClassicPage;
+import salesforce.ui.pages.contractlist.ContractListLightningPage;
 import salesforce.ui.pages.newcampaign.AbstractNewCampaignPage;
 import salesforce.ui.pages.newcampaign.NewCampaignClassicPage;
 import salesforce.ui.pages.newcampaign.NewCampaignLightningPopUp;
@@ -253,7 +256,7 @@ public class AppPageFactory {
     }
 
     /**
-     * Returns Contract.
+     * Returns New Contract Page.
      *
      * @return new contract instance.
      */
@@ -264,10 +267,27 @@ public class AppPageFactory {
         return new NewContractLightningPopUp();
     }
 
+    /**
+     * Returns NewOpportunityPage.
+     *
+     * @return NewOpportunityPage instance.
+     */
     public static AbstractNewOpportunityPage getNewOpportunityPage() {
         if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
             return new NewOpportunityClassicPage();
         }
         return new NewOpportunityLightningPopUp();
+    }
+
+    /**
+     * Returns ContractListPage.
+     *
+     * @return ContractListPage instance.
+     */
+    public static AbstractContractListPage getContractListPage() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new ContractListClassicPage();
+        }
+        return new ContractListLightningPage();
     }
 }

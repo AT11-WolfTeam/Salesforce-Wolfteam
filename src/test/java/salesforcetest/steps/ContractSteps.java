@@ -55,7 +55,7 @@ public class ContractSteps {
         abstractNewContractPage.setNewContract(contract, mapNewContract.keySet());
         abstractNewContractPage.clickSaveContract();
         toastUpdateObjectMessage = new ToastUpdateObjectMessage();
-        String contractNumber = toastUpdateObjectMessage.getMessage().replace("\\D+","");
+        String contractNumber = toastUpdateObjectMessage.getMessage().replaceAll("\\D+","");
         contract.setContractNumber(contractNumber);
     }
 

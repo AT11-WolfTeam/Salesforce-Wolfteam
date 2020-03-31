@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforcetest.runner;
+package salesforcetest.mainhook;
 
 import core.report.Report;
 
@@ -27,7 +27,7 @@ import salesforce.ui.pages.PageTransporter;
  * @author Enrique Carrizales.
  * @version 1.0 16 March 2020.
  */
-public class RunCukeTest extends AbstractTestNGCucumberTests {
+public class MainHook extends AbstractTestNGCucumberTests {
     private static final String LOGIN_PAGE = "Login Page";
 
     /**

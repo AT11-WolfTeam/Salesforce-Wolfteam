@@ -1,45 +1,94 @@
 Feature: Opportunity
 
+  @DeletesOpportunity
   Scenario: Change opportunity owner to another user
-    Given I create opportunity as OpportunityTest
-    When I change an opportunity's owner with "CurrentOwner"
-    Then the application should display an information message in Opportunity page with the format "[[Owner Name]] now owns the record for [[Opportunity Name]]"
+    Given I create 1 "Basic" opportunities
+    When I go to "Opportunities Page"
+      And I search for the opportunity in list "Recently Viewed Opportunities"
+      And I change the opportunity's owner with "Current User"
+    Then the application should display this message in Opportunity Page only for Lightning Experience
+      | [Current User] now owns the record for [Opportunity Name]. |
+      And the opportunity page displays the owner "Current User"
 
 
-  @wip
-  Scenario: Close an opportunity with another owner
-    Given I login as "Admin"
-    And I navigate to Opportunities Page
-    And I create an Opportunity with
-      | Opportunity Name | testing close stage |
-      | Close Date       | 03/31/2020          |
-      | Stage            | Qualification       |
-    And I select to "AdminUser" as a new owner
-    When I close the opportunity as Close Won
-    Then the application should display an information message in Opportunity page with the format "Stage changed successfully."
-    And On the opportunities page should display on the column stage as "Closed Won"
-
-
-  @wip
+  @DeletesOpportunity
   Scenario: Add additional information to created task.
-    Given I create opportunity with task as OpportunityTest
-    And I go to Opportunity Page
-    And I go to the opportunity already created
-    And I created a task with requirement fields
+    Given I create 1 "Basic" opportunities
+      And I go to "Opportunities Page"
+      And I add new Task with
+      | Subject | Call |
     When I add additional information to the task
-      | Subject  | Call      |
-      | Due date | 3/31/2020 |
-    Then  the application should display an information message in Opportunity page with the format "Task [subject] was saved"
-    And the section Upcoming & Overdue should display the "[subject]"
+      | Subject  | Call to meeting |
+      | Status   | In Progress     |
+      | Priority | High            |
+      And the task should display the information added
+
+
+  @DeletesCampaign @DeletesOpportunity
+  Scenario: Assign a campaign to an opportunity
+    Given I create 1 "Basic" opportunities
+      And I go to "Campaigns Page"
+      And I create a new Campaign with
+        | Campaign Name | Promotion |
+        | Active        | true      |
+      And I go to "Opportunities Page"
+    When I assign the Campaign to the opportunity
+      | Campaign Name | Promotion |
+    Then On the details section should display the Campaign name
+
+
+  @DeletesOpportunity @DeletesContacts
+  Scenario: add contact with due Date to a new Task
+    Given I create 1 "Basic" contacts
+      And I create 1 "Basic" opportunities
+      And I go to "Opportunities Page"
+    When I add new Task with
+      | Subject  | Meeting                                |
+      | Contact  | [Contact]                              |
+      | Due Date | 3 DAYS-0 MONTH-0 YEAR-AFTER-FROM TODAY |
+    Then the application should this message only for Lightning Experience
+      |Task [Task Name] was created. |
+      And the task should display the information added
+
+
+  @DeletesOpportunity
+  Scenario: Add new Task with required values
+    Given I create 1 "Basic" opportunities
+    When I go to "Opportunities Page"
+      And I add new Task with
+        | Subject     | Call        |
+        | Assigned To | Admin User  |
+        | Status      | In Progress |
+    Then the application should this message only for Lightning Experience
+      | Task [Task Name] was created. |
+    And the task should display the information added
 
 
   @wip
-  Scenario: Assign a campaign to an opportunity
-    Given I go to Campaign Page
-    And I create a new Campaign with the name "Promotion"
-    And I go to Opportunity Page
-    And I go to the opportunity already created
-    And I go to Edit opportunity
-    When I assign the Campaign
-    Then the application should display an information message in Opportunity page with the format "Opportunity [Name Opportunity] was saved."
-    And On the edit section should display the Campaign name "[campaign name]"
+  Scenario: Add new event with required values
+    Given I login as "Admin"
+      And I create opportunity as OpportunityTest
+      And I navigate to Opportunities Page
+      And I search "OpportunityTest"
+    When I add an event to "OpportunityTest"
+      | Subject    | Example Subject |
+      | Start Date | Today           |
+      | End Date   | In a week       |
+    Then the application should display an information message in Opportunity page with the format "Event Example Subject was created"
+    And Upcoming & Overview tab contains the event created
+
+
+  Scenario: Create a new opportunity
+    Given I create 2 "Basic" opportunities
+    When I delete created opportunities
+
+
+  @DeleteContacts
+  @DeletesOpportunity
+  Scenario: Add roles to contacts of an opportunity
+    Given I create 3 "Basic" contacts
+      And I create 1 "Basic" opportunities
+    When I go to "Opportunities Page"
+      And I select the opportunity
+      And I add roles its contacts
+    Then The added contacts with roles should be displayed on Contact Roles page

@@ -17,10 +17,10 @@ package salesforce.utils;
  */
 public final class EndPoint {
     public static final String ACCOUNT_ENDPOINT = "/services/data/v48.0/sobjects/Account/";
-    public static final String OPPORTUNITY_ENDPOINT = "/services/data/v48.0/sobjects/Opportunity";
-    public static final String TASK_ENDPOINT = "/services/data/v48.0/sobjects/Task";
-    public static final String CONTACT_ENDPOINT = "/services/data/v48.0/sobjects/Contact";
-    public static final String LEAD_ENDPOINT = "/services/data/v48.0/sobjects/lead";
+    public static final String OPPORTUNITY_ENDPOINT = "/services/data/v48.0/sobjects/Opportunity/";
+    public static final String TASK_ENDPOINT = "/services/data/v48.0/sobjects/Task/";
+    public static final String CONTACT_ENDPOINT = "/services/data/v48.0/sobjects/Contact/";
+    public static final String LEAD_ENDPOINT = "/services/data/v48.0/sobjects/lead/";
 
     /**
      * Endpoint constructor.

@@ -10,11 +10,9 @@
 package core.selenium.webdriver;
 
 import io.github.bonigarcia.wdm.ChromeDriverManager;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-
 import static io.github.bonigarcia.wdm.DriverManagerType.CHROME;
 
 /**

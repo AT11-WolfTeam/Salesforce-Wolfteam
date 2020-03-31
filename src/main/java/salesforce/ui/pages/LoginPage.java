@@ -21,7 +21,7 @@ import salesforce.utils.PropertiesReader;
  * @author Alan Escalera.
  * @version 1.0 17 March 2020.
  */
-public class LoginPage extends BasePage {
+public class LoginPage extends AbstractBasePage {
     @FindBy(id = "username")
     private WebElement userNameField;
 

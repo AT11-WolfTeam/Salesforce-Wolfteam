@@ -24,6 +24,7 @@ configurations {
     cucumberRuntime {
         extendsFrom testImplementation
     }
+
 }
 
 task executeFeatures(type: Test) {
@@ -33,7 +34,7 @@ task executeFeatures(type: Test) {
 
         jvmArgs = ['-Dcucumber.options= --glue salesforcetest --plugin pretty '
                            + '--plugin json:build/cucumber/cucumber.json --plugin rerun:build/cucumber/rerun.txt '
-                           + 'classpath:']
+                           + 'classpath: ']
     }
 }
 
@@ -60,5 +61,9 @@ dependencies {
     implementation 'io.rest-assured:rest-assured:4.3.0'
 
     // Manages json object
-    compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+    compile 'com.googlecode.json-simple:json-simple:1.1.1'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.6'
+
+    // Sheet manage
+    compile group: 'org.apache.poi', name: 'poi-ooxml', version: '4.1.2'
 }

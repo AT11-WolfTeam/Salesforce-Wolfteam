@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.entities.constants;
+package salesforce.constants;
 
 /**
  * Manages contact constant information.

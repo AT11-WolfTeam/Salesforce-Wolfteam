@@ -11,7 +11,7 @@ package salesforce.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import salesforce.entities.constants.ContactConstant;
+import salesforce.constants.ContactConstant;
 import salesforce.utils.DateFormatter;
 import java.util.HashMap;
 import java.util.HashSet;

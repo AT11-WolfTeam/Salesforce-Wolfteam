@@ -11,7 +11,7 @@ package salesforce.ui.pages.task;
 
 import org.openqa.selenium.WebElement;
 import salesforce.entities.TaskOpportunity;
-import salesforce.entities.constants.TaskConstant;
+import salesforce.constants.TaskConstant;
 import salesforce.ui.pages.AbstractBasePage;
 
 import java.util.HashMap;

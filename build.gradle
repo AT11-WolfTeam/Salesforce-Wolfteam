@@ -24,7 +24,6 @@ configurations {
     cucumberRuntime {
         extendsFrom testImplementation
     }
-
 }
 
 task executeFeatures(type: Test) {

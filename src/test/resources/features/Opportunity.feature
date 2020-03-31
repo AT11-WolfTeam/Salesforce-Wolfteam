@@ -62,4 +62,4 @@ Feature: Opportunity
     Then the application should this message only for Lightning Experience
       | Task [Task Name] was created. |
     And the task should display the information added
-    
+

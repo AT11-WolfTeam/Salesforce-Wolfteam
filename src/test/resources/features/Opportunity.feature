@@ -62,33 +62,4 @@ Feature: Opportunity
     Then the application should this message only for Lightning Experience
       | Task [Task Name] was created. |
     And the task should display the information added
-
-
-  @wip
-  Scenario: Add new event with required values
-    Given I login as "Admin"
-      And I create opportunity as OpportunityTest
-      And I navigate to Opportunities Page
-      And I search "OpportunityTest"
-    When I add an event to "OpportunityTest"
-      | Subject    | Example Subject |
-      | Start Date | Today           |
-      | End Date   | In a week       |
-    Then the application should display an information message in Opportunity page with the format "Event Example Subject was created"
-    And Upcoming & Overview tab contains the event created
-
-
-  Scenario: Create a new opportunity
-    Given I create 2 "Basic" opportunities
-    When I delete created opportunities
-
-
-  @DeleteContacts
-  @DeletesOpportunity
-  Scenario: Add roles to contacts of an opportunity
-    Given I create 3 "Basic" contacts
-      And I create 1 "Basic" opportunities
-    When I go to "Opportunities Page"
-      And I select the opportunity
-      And I add roles its contacts
-    Then The added contacts with roles should be displayed on Contact Roles page
+    

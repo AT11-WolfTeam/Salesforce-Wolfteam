@@ -9,7 +9,7 @@
 
 package salesforce.entities;
 
-import salesforce.entities.constants.LeadConstant;
+import salesforce.constants.LeadConstant;
 import java.util.HashMap;
 import java.util.Map;
 

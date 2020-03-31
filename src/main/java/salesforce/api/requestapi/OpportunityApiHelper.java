@@ -14,7 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import salesforce.entities.Opportunity;
-import salesforce.restclient.RestApi;
+import salesforce.api.restclient.RestApi;
 import salesforce.utils.EndPoint;
 import java.util.ArrayList;
 import java.util.HashMap;

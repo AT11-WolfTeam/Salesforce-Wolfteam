@@ -22,7 +22,7 @@ import salesforce.entities.NewCampaign;
 import salesforce.entities.Opportunity;
 import salesforce.entities.TaskOpportunity;
 import salesforce.ui.components.span.ToastUpdateObjectMessage;
-import salesforce.entities.constants.TaskConstant;
+import salesforce.constants.TaskConstant;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.PageTransporter;
 import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;

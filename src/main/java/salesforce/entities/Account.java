@@ -10,7 +10,7 @@
 package salesforce.entities;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import salesforce.entities.constants.AccountConstant;
+import salesforce.constants.AccountConstant;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;

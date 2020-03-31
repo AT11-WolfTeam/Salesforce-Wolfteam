@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.restclient;
+package salesforce.api.restclient;
 
 import salesforce.utils.AccessToken;
 

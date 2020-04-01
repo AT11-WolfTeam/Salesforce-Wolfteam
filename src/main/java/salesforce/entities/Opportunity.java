@@ -15,6 +15,7 @@ import salesforce.entities.constants.OpportunityConstant;
 import salesforce.utils.DateFormatter;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import java.util.function.Supplier;
 
@@ -29,6 +30,7 @@ import java.util.function.Supplier;
 public class Opportunity {
     private String id;
     private String name;
+    private String accountName;
     private String type;
     private String leadSource;
     private String amount;
@@ -37,6 +39,12 @@ public class Opportunity {
     private String probability;
     private String description;
     private String nextStep;
+    private String primaryCampaignSource;
+    private String orderNumber;
+    private String currentGenerator;
+    private String trackingNumber;
+    private String mainCompetitor;
+    private String deliveryStatus;
     private String statusCode;
     private String campaignName;
 
@@ -151,6 +159,62 @@ public class Opportunity {
     }
 
     /**
+     * Gets account name.
+     * @return account name.
+     */
+    public String getAccountName() {
+        return accountName;
+    }
+
+    /**
+     * Gets primary campaign source.
+     * @return primary campaign source value.
+     */
+    public String getPrimaryCampaignSource() {
+        return primaryCampaignSource;
+    }
+
+    /**
+     * Gets order number.
+     * @return order number value.
+     */
+    public String getOrderNumber() {
+        return orderNumber;
+    }
+
+    /**
+     * Gets current generator.
+     * @return current generator value.
+     */
+    public String getCurrentGenerator() {
+        return currentGenerator;
+    }
+
+    /**
+     * Gets tracking number.
+     * @return tracking number value.
+     */
+    public String getTrackingNumber() {
+        return trackingNumber;
+    }
+
+    /**
+     * Gets main competitor.
+     * @return main competitor value.
+     */
+    public String getMainCompetitor() {
+        return mainCompetitor;
+    }
+
+    /**
+     * Gets delivery status.
+     * @return delivery status value.
+     */
+    public String getDeliveryStatus() {
+        return deliveryStatus;
+    }
+
+    /**
      * Sets campaignName value.
      *
      * @param campaignName value.
@@ -259,11 +323,67 @@ public class Opportunity {
     }
 
     /**
+     * Sets account name.
+     * @param accountName value.
+     */
+    public void setAccountName(final String accountName) {
+        this.accountName = accountName;
+    }
+
+    /**
+     * Sets campaign name value.
+     * @param primaryCampaignSource value.
+     */
+    public void setPrimaryCampaignSource(final String primaryCampaignSource) {
+        this.primaryCampaignSource = primaryCampaignSource;
+    }
+
+    /**
+     * Sets order number value.
+     * @param orderNumber value.
+     */
+    public void setOrderNumber(final String orderNumber) {
+        this.orderNumber = orderNumber;
+    }
+
+    /**
+     * Sets current generator value.
+     * @param currentGenerator value.
+     */
+    public void setCurrentGenerator(final String currentGenerator) {
+        this.currentGenerator = currentGenerator;
+    }
+
+    /**
+     * Sets tracking number value.
+     * @param trackingNumber value.
+     */
+    public void setTrackingNumber(final String trackingNumber) {
+        this.trackingNumber = trackingNumber;
+    }
+
+    /**
+     * Sets main competitor value.
+     * @param mainCompetitor value.
+     */
+    public void setMainCompetitor(final String mainCompetitor) {
+        this.mainCompetitor = mainCompetitor;
+    }
+
+    /**
+     * Sets delivery status value.
+     * @param deliveryStatus value.
+     */
+    public void setDeliveryStatus(final String deliveryStatus) {
+        this.deliveryStatus = deliveryStatus;
+    }
+
+    /**
      * Sets opportunity information.
      *
      * @param opportunityInformation map.
      */
-    public void setOpportunityInformation(final HashMap<String, String> opportunityInformation) {
+    public void setOpportunityInformation(final Map<String, String> opportunityInformation) {
         HashMap<String, String> currentOpportunityInformation = new HashMap<>(opportunityInformation);
         if (opportunityInformation.get(OpportunityConstant.CLOSE_DATE) != null) {
             currentOpportunityInformation.put(OpportunityConstant.CLOSE_DATE,
@@ -284,6 +404,8 @@ public class Opportunity {
         HashMap<String, Runnable> strategyMap = new HashMap<>();
 
         strategyMap.put(OpportunityConstant.NAME, () -> setName(opportunityInformation.get(OpportunityConstant.NAME)));
+        strategyMap.put(OpportunityConstant.ACCOUNT_NAME, () ->
+                setAccountName(opportunityInformation.get(OpportunityConstant.ACCOUNT_NAME)));
         strategyMap.put(OpportunityConstant.TYPE, () -> setType(opportunityInformation.get(OpportunityConstant.TYPE)));
         strategyMap.put(OpportunityConstant.LEAD_SOURCE, () ->
                 setLeadSource(opportunityInformation.get(OpportunityConstant.LEAD_SOURCE)));
@@ -295,12 +417,24 @@ public class Opportunity {
                 setStageName(opportunityInformation.get(OpportunityConstant.STAGE_NAME)));
         strategyMap.put(OpportunityConstant.PROBABILITY, () ->
                 setProbability(opportunityInformation.get(OpportunityConstant.PROBABILITY)));
+        strategyMap.put(OpportunityConstant.PRIMARY_CAMPAIGN_SOURCE, () ->
+                setPrimaryCampaignSource(opportunityInformation.get(OpportunityConstant.PRIMARY_CAMPAIGN_SOURCE)));
         strategyMap.put(OpportunityConstant.DESCRIPTION, () ->
                 setDescription(opportunityInformation.get(OpportunityConstant.DESCRIPTION)));
         strategyMap.put(OpportunityConstant.NEXT_STEP, () ->
                 setNextStep(opportunityInformation.get(OpportunityConstant.NEXT_STEP)));
         strategyMap.put(OpportunityConstant.CAMPAIGN_NAME, () ->
                 setCampaignName(opportunityInformation.get(OpportunityConstant.CAMPAIGN_NAME)));
+        strategyMap.put(OpportunityConstant.ORDER_NUMBER, () ->
+                setOrderNumber(opportunityInformation.get(OpportunityConstant.ORDER_NUMBER)));
+        strategyMap.put(OpportunityConstant.CURRENT_GENERATOR, () ->
+                setCurrentGenerator(opportunityInformation.get(OpportunityConstant.CURRENT_GENERATOR)));
+        strategyMap.put(OpportunityConstant.TRACKING_NUMBER, () ->
+                setTrackingNumber(opportunityInformation.get(OpportunityConstant.TRACKING_NUMBER)));
+        strategyMap.put(OpportunityConstant.MAIN_COMPETITOR, () ->
+                setMainCompetitor(opportunityInformation.get(OpportunityConstant.MAIN_COMPETITOR)));
+        strategyMap.put(OpportunityConstant.DELIVERY_STATUS, () ->
+                setDeliveryStatus(opportunityInformation.get(OpportunityConstant.DELIVERY_STATUS)));
         return strategyMap;
     }
 
@@ -326,12 +460,19 @@ public class Opportunity {
     private HashMap<String, Supplier> composeStrategyMapGet() {
         HashMap<String, Supplier> strategyMap = new HashMap<>();
         strategyMap.put(OpportunityConstant.NAME, () -> getName());
+        strategyMap.put(OpportunityConstant.ACCOUNT_NAME, () -> getAccountName());
         strategyMap.put(OpportunityConstant.TYPE, () -> getType());
         strategyMap.put(OpportunityConstant.LEAD_SOURCE, () -> getLeadSource());
         strategyMap.put(OpportunityConstant.AMOUNT, () -> getAmount());
         strategyMap.put(OpportunityConstant.CLOSE_DATE, () -> getCloseDate());
         strategyMap.put(OpportunityConstant.STAGE_NAME, () -> getStageName());
         strategyMap.put(OpportunityConstant.PROBABILITY, () -> getProbability());
+        strategyMap.put(OpportunityConstant.PRIMARY_CAMPAIGN_SOURCE, () -> getPrimaryCampaignSource());
+        strategyMap.put(OpportunityConstant.ORDER_NUMBER, () -> getOrderNumber());
+        strategyMap.put(OpportunityConstant.CURRENT_GENERATOR, () -> getCurrentGenerator());
+        strategyMap.put(OpportunityConstant.TRACKING_NUMBER, () -> getTrackingNumber());
+        strategyMap.put(OpportunityConstant.MAIN_COMPETITOR, () -> getMainCompetitor());
+        strategyMap.put(OpportunityConstant.DELIVERY_STATUS, () -> getDeliveryStatus());
         strategyMap.put(OpportunityConstant.DESCRIPTION, () -> getDescription());
         strategyMap.put(OpportunityConstant.NEXT_STEP, () -> getNextStep());
         strategyMap.put(OpportunityConstant.CAMPAIGN_NAME, () -> getCampaignName());

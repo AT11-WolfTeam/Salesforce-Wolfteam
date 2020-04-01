@@ -33,7 +33,6 @@ public class TabObjectsClassicPage extends AbstractTabObjectsPage {
 
     @FindBy(css = "span[class='fBody'] input[class='btn']")
     private WebElement goButton;
-
     protected static final String NAME_OPPORTUNITY = "//th//a[contains(text(),'%s')]";
 
     @Override
@@ -57,9 +56,17 @@ public class TabObjectsClassicPage extends AbstractTabObjectsPage {
         return AppPageFactory.getOpportunityPage();
     }
 
+    /**
+     * Clicks on new button.
+     */
+    private void clickOnNew() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(newButton));
+        newButton.click();
+    }
+
     @Override
     public void clickOnNewButton() {
-        //Todo
+        clickOnNew();
     }
 
     @Override

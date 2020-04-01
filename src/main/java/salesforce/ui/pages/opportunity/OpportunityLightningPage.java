@@ -51,6 +51,12 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     @FindBy(css = "span[title='Contact Roles']")
     private WebElement contactRoles;
 
+    @FindBy(css = "li[class^='slds-button slds-button--icon-border-filled']")
+    private WebElement showMoreOptions;
+
+    @FindBy(css = "a[title='Edit']")
+    private WebElement editItem;
+
     protected static final String CAMPAIGN_NAME = "a div div[title='%s']";
 
     @FindBy(xpath = "//div[@class='slds-form-element slds-form-element_readonly slds-form-element_edit slds-grow "
@@ -153,5 +159,27 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     public AbstractContactRolesPage clickOnContactRoles() {
         clickOnContactRolesButton();
         return new ContactRolesLightningPage();
+    }
+
+    /**
+     * Clicks on more options drop down list.
+     */
+    private void clickOnMoreOptions() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(showMoreOptions));
+        showMoreOptions.click();
+    }
+
+    /**
+     * Clicks on edit item.
+     */
+    private void clickOnEditItem() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(editItem));
+        editItem.click();
+    }
+
+    @Override
+    public void enableToValidateOpportunity() {
+        clickOnMoreOptions();
+        clickOnEditItem();
     }
 }

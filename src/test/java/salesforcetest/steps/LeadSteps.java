@@ -66,7 +66,7 @@ public class LeadSteps {
     }
 
     /**
-     * Change lead status.
+     * Changes lead status.
      *
      * @param leadStatus contains a String value.
      * @param listName   contains a String value.
@@ -84,6 +84,7 @@ public class LeadSteps {
 
     /**
      * Validates a operation.
+     *
      * @param message contains a list value.
      */
     @Then("the application should display this message in Leads Page only for Lightning Experience")

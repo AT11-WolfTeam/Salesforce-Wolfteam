@@ -35,7 +35,7 @@ public class ChangeStatusLeadsLightningPopup extends AbstractChangeStatusLeads {
     }
 
     /**
-     * Click on a button.
+     * Clicks on a button.
      */
     private void clickOnSaveButton() {
         saveButton.click();

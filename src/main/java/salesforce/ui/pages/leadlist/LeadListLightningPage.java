@@ -66,7 +66,7 @@ public class LeadListLightningPage extends AbstractLeadListPage {
     }
 
     /**
-     * Click on a button.
+     * Clicks on a button.
      *
      * @param lead contains an object.
      */

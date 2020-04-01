@@ -132,7 +132,7 @@ public abstract class AbstractNewOpportunity extends AbstractBasePage {
     public abstract void setTrackingNumberTextBox(String trackingNumber);
 
     /**
-     * Sets mani competitors value.
+     * Sets main competitors value.
      *
      * @param mainCompetitor string.
      */
@@ -281,7 +281,7 @@ public abstract class AbstractNewOpportunity extends AbstractBasePage {
      * @param fields list.
      * @return a new instance of opportunity page.
      */
-    public AbstractOpportunityPage addOpportunityInformation(final Opportunity opportunity, final Set<String> fields) {
+    public AbstractOpportunityPage setOpportunityInformation(final Opportunity opportunity, final Set<String> fields) {
         HashMap<String, Runnable> strategyMap = composeStrategyMap(opportunity);
         fields.forEach(field -> strategyMap.get(field).run());
         clickOnSaveButton();

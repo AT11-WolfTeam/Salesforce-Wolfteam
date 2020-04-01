@@ -375,7 +375,7 @@ public class OpportunityStep {
         opportunitiesPage = AppPageFactory.getTabObjectsPage();
         opportunitiesPage.clickOnNewButton();
         newOpportunity = AppPageFactory.getNewOpportunityPage();
-        opportunityPage = newOpportunity.addOpportunityInformation(opportunity, opportunityValues.keySet());
+        opportunityPage = newOpportunity.setOpportunityInformation(opportunity, opportunityValues.keySet());
     }
 
     /**

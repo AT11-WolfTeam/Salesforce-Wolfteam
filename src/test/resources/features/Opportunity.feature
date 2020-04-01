@@ -96,7 +96,6 @@ Feature: Opportunity
 
   @DeleteAccounts
   @DeletesCampaign
-  @DeletesOpportunity
   Scenario: Create new opportunity with all values.
     Given I create 1 "Basic" accounts
     And I go to "Campaigns Page"

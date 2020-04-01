@@ -85,11 +85,8 @@ public class NewOpportunityLightningPage extends AbstractNewOpportunity {
     private WebElement cancelButton;
 
     private static final String ACCOUNT_NAME = "//div[@title='%s']";
-    private static final String TYPE_NAME = "//a[@title='%s']";
-    private static final String LEAD_NAME = "//a[@title='%s']";
-    private static final String STAGE_NAME = "//a[@title='%s']";
+    private static final String XPATH_LOCATOR = "//a[@title='%s']";
     private static final String CAMPAIGN_NAME = "//div[text()='%s']";
-    private static final String DELIVERY_NAME = "//a[@title='%s']";
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -126,14 +123,14 @@ public class NewOpportunityLightningPage extends AbstractNewOpportunity {
     public void selectTypeCombobox(final String typeName) {
         webDriverWait.until(ExpectedConditions.visibilityOf(typeCombobox));
         typeCombobox.click();
-        setItem(TYPE_NAME, typeName);
+        setItem(XPATH_LOCATOR, typeName);
     }
 
     @Override
     public void selectLeadSourceCombobox(final String leadName) {
         webDriverWait.until(ExpectedConditions.visibilityOf(leadSourceCombobox));
         leadSourceCombobox.click();
-        setItem(LEAD_NAME, leadName);
+        setItem(XPATH_LOCATOR, leadName);
     }
 
     @Override
@@ -161,7 +158,7 @@ public class NewOpportunityLightningPage extends AbstractNewOpportunity {
     public void selectStageCombobox(final String stageName) {
         webDriverWait.until(ExpectedConditions.visibilityOf(stageCombobox));
         stageCombobox.click();
-        setItem(STAGE_NAME, stageName);
+        setItem(XPATH_LOCATOR, stageName);
     }
 
     @Override
@@ -210,7 +207,7 @@ public class NewOpportunityLightningPage extends AbstractNewOpportunity {
     public void selectDeliveryStatus(final String deliveryStatus) {
         webDriverWait.until(ExpectedConditions.visibilityOf(deliveryStatusCombobox));
         deliveryStatusCombobox.click();
-        setItem(DELIVERY_NAME, deliveryStatus);
+        setItem(XPATH_LOCATOR, deliveryStatus);
     }
 
     @Override

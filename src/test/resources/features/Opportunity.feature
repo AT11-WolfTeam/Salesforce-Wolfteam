@@ -50,7 +50,7 @@ Feature: Opportunity
       | Subject  | Call to meeting |
       | Status   | In Progress     |
       | Priority | High            |
-      And the task should display the information added
+    Then the task should display the information added
 
 
   @DeletesCampaign @DeletesOpportunity
@@ -121,6 +121,4 @@ Feature: Opportunity
       And I select the opportunity
       And I add roles its contacts
     Then The added contacts with roles should be displayed on Contact Roles page
-
-
 

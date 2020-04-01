@@ -52,6 +52,9 @@ import salesforce.ui.pages.genericTabs.TabObjectsLightningPage;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 import salesforce.ui.pages.opportunity.OpportunityClassicPage;
 import salesforce.ui.pages.opportunity.OpportunityLightningPage;
+import salesforce.ui.pages.opportunity.newopportunity.AbstractNewOpportunity;
+import salesforce.ui.pages.opportunity.newopportunity.NewOpportunityClassicPage;
+import salesforce.ui.pages.opportunity.newopportunity.NewOpportunityLightningPage;
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
 import salesforce.ui.pages.opportunity.taskopportunity.TaskOpportunityClassic;
 import salesforce.ui.pages.opportunity.taskopportunity.TaskOpportunityLightning;
@@ -259,5 +262,17 @@ public class AppPageFactory {
             return new ChangeStatusLeadsClassicPage();
         }
         return new ChangeStatusLeadsLightningPopup();
+    }
+
+    /**
+     * Allows to get new opportunities.
+     *
+     * @return a AbstractNewOpportunity.
+     */
+    public static AbstractNewOpportunity getNewOpportunityPage() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new NewOpportunityClassicPage();
+        }
+        return new NewOpportunityLightningPage();
     }
 }

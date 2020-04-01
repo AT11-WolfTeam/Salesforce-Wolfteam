@@ -19,7 +19,6 @@ import salesforce.ui.pages.genericTabs.AbstractTabObjectsPage;
 import salesforce.ui.pages.newcontract.AbstractNewContractPage;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 import salesforce.ui.pages.opportunity.newopportunity.AbstractNewOpportunity;
-
 import java.util.HashMap;
 import java.util.Map;
 

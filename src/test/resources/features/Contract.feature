@@ -9,7 +9,6 @@ Feature: Contract
       | Start Date    | TODAY         |
       | Contract Term | 3             |
     And I go to "Opportunities Page"
-#    And I create New Opportunity with
     And I create new opportunity with the following values
       | Name      | New Opportunity   |
       | CloseDate | TODAY             |

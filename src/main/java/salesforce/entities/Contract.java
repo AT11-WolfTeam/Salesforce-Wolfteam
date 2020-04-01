@@ -11,7 +11,6 @@ package salesforce.entities;
 
 import salesforce.entities.constants.ContractConstant;
 import salesforce.utils.DateFormatter;
-
 import java.util.HashMap;
 import java.util.Map;
 

@@ -71,5 +71,4 @@ public class ContractListLightningPage extends AbstractContractListPage {
     private void clickOnMoreActions(final String contractNumber) {
         webDriver.findElement(By.xpath(String.format(MORE_ACTIONS, contractNumber))).click();
     }
-
 }

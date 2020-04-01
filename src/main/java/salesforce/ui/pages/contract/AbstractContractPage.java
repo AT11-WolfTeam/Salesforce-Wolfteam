@@ -12,7 +12,6 @@ package salesforce.ui.pages.contract;
 import salesforce.ui.pages.AbstractBasePage;
 import salesforce.ui.pages.opportunity.newopportunity.AbstractNewOpportunity;
 
-
 /**
  * Defines AbstractContractPage.
  *

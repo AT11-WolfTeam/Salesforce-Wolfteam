@@ -92,5 +92,4 @@ public class OpportunityListLightningPage extends AbstractOpportunityListPage {
     protected void waitUntilPageObjectIsLoaded() {
         webDriverWait.until(ExpectedConditions.visibilityOfAllElements(opportunityTable));
     }
-
 }

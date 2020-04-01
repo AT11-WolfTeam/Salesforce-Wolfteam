@@ -195,8 +195,7 @@ public class OpportunitySteps {
         HashMap<String, String> mapOpportunity = new HashMap<>();
         mapOpportunity.putAll(mapOpportunityEdit);
         abstractTabObjectsPage = AppPageFactory.getTabObjectsPage();
-        abstractTabObjectsPage.selectObjectByName(context.getOpportunities().get(ARRAY_POSITION_FIRST)
-                .getName());
+        abstractTabObjectsPage.selectObjectByName(context.getOpportunities().get(ARRAY_POSITION_FIRST).getName());
         opportunityPage = AppPageFactory.getOpportunityPage();
         opportunity = context.getOpportunity();
         opportunity.setOpportunityInformation(mapOpportunity);
@@ -264,8 +263,7 @@ public class OpportunitySteps {
     public void iAddNewTaskWith(final Map<String, String> mapTask) {
         mapNewTask = new HashMap<>(mapTask);
         abstractTabObjectsPage = AppPageFactory.getTabObjectsPage();
-         abstractTabObjectsPage.selectObjectByName(context.getOpportunities().get(ARRAY_POSITION_FIRST)
-                .getName());
+         abstractTabObjectsPage.selectObjectByName(context.getOpportunities().get(ARRAY_POSITION_FIRST).getName());
         opportunityPage = AppPageFactory.getOpportunityPage();
         abstractTaskOpportunity = opportunityPage.clickAddTask();
         taskOpportunity = context.getTaskOpportunity();
@@ -399,7 +397,6 @@ public class OpportunitySteps {
         }
     }
 
-
     /**
      * Selects the stage.
      *
@@ -431,7 +428,6 @@ public class OpportunitySteps {
         toastUpdateObjectMessage = new ToastUpdateObjectMessage();
         String messageClosed = toastUpdateObjectMessage.getMessage();
         org.junit.Assert.assertEquals(message, messageClosed);
-
     }
 
     /**

@@ -15,9 +15,14 @@ package salesforce.entities.constants;
  * @author Alan Escalera.
  * @version 1.0 29 March 2020.
  */
-public class ContractConstant {
+public final class ContractConstant {
     public static final String ACCOUNT = "Account";
     public static final String STATUS = "Status";
     public static final String START_DATE = "Start Date";
     public static final String CONTRACT_TERM = "Contract Term";
+
+    /**
+     * ContractConstant constructor.
+     */
+    private ContractConstant() {}
 }

@@ -21,7 +21,6 @@ import salesforce.ui.pages.opportunity.opportunitycontactroles.ContactRolesClass
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
 import salesforce.ui.pages.owner.OwnerEditClassicPage;
 import salesforce.utils.UtilSalesforce;
-
 import java.util.HashMap;
 
 /**
@@ -248,7 +247,7 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
      * Gets contact name.
      *
      * @param contactName value.
-     * @param rolName     value.
+     * @param rolName value.
      * @return composed web element.
      */
     private String getRoleTextByContactName(final String contactName, final String rolName) {

@@ -34,7 +34,6 @@ public final class OpportunityConstant {
     public static final String DESCRIPTION = "Description";
     public static final String VALUE = "value";
 
-
     /**
      * OpportunityConstant constructor.
      */

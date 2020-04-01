@@ -55,7 +55,6 @@ public class NewContractLightningPopUp extends AbstractNewContractPage {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(searchAccountsField));
     }
 
-
     @Override
     protected void setAccount(final String accountName) {
         clickOnAccountField();

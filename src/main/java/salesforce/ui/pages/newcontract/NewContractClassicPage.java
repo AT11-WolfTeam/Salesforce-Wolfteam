@@ -9,6 +9,7 @@
 
 package salesforce.ui.pages.newcontract;
 
+import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.contract.AbstractContractPage;
 
 /**
@@ -46,6 +47,6 @@ public class NewContractClassicPage extends AbstractNewContractPage {
     @Override
     public AbstractContractPage clickSaveContract() {
         //To Do
-        return null;
+        return AppPageFactory.getContractPage();
     }
 }

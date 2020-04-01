@@ -13,7 +13,6 @@ import salesforce.entities.Contract;
 import salesforce.entities.constants.ContractConstant;
 import salesforce.ui.pages.AbstractBasePage;
 import salesforce.ui.pages.contract.AbstractContractPage;
-
 import java.util.HashMap;
 import java.util.Set;
 

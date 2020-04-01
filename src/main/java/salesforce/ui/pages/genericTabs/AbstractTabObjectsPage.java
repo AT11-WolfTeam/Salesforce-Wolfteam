@@ -11,7 +11,6 @@ package salesforce.ui.pages.genericTabs;
 
 import org.openqa.selenium.WebElement;
 import salesforce.ui.pages.AbstractBasePage;
-import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 
 /**
  * Defines AbstractOpportunitiesPage.
@@ -33,9 +32,8 @@ public abstract class AbstractTabObjectsPage extends AbstractBasePage {
      * Selects a opportunity.
      *
      * @param opportunityName value.
-     * @return OpportunityPage instance.
      */
-    public abstract AbstractOpportunityPage selectObjectByName(String opportunityName);
+    public abstract void selectObjectByName(String opportunityName);
 
     /**
      * Displays an object.

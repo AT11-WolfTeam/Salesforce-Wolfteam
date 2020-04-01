@@ -46,7 +46,6 @@ public class Opportunity {
     private String mainCompetitor;
     private String deliveryStatus;
     private String statusCode;
-    private String campaignName;
 
     private Set<String> modifiedOpportunityFields = new HashSet<>();
 
@@ -150,15 +149,6 @@ public class Opportunity {
     }
 
     /**
-     * Returns campaignName value.
-     *
-     * @return string value.
-     */
-    public String getCampaignName() {
-        return campaignName;
-    }
-
-    /**
      * Gets account name.
      * @return account name.
      */
@@ -212,15 +202,6 @@ public class Opportunity {
      */
     public String getDeliveryStatus() {
         return deliveryStatus;
-    }
-
-    /**
-     * Sets campaignName value.
-     *
-     * @param campaignName value.
-     */
-    public void setCampaignName(final String campaignName) {
-        this.campaignName = campaignName;
     }
 
     /**
@@ -423,8 +404,6 @@ public class Opportunity {
                 setDescription(opportunityInformation.get(OpportunityConstant.DESCRIPTION)));
         strategyMap.put(OpportunityConstant.NEXT_STEP, () ->
                 setNextStep(opportunityInformation.get(OpportunityConstant.NEXT_STEP)));
-        strategyMap.put(OpportunityConstant.CAMPAIGN_NAME, () ->
-                setCampaignName(opportunityInformation.get(OpportunityConstant.CAMPAIGN_NAME)));
         strategyMap.put(OpportunityConstant.ORDER_NUMBER, () ->
                 setOrderNumber(opportunityInformation.get(OpportunityConstant.ORDER_NUMBER)));
         strategyMap.put(OpportunityConstant.CURRENT_GENERATOR, () ->
@@ -475,7 +454,6 @@ public class Opportunity {
         strategyMap.put(OpportunityConstant.DELIVERY_STATUS, () -> getDeliveryStatus());
         strategyMap.put(OpportunityConstant.DESCRIPTION, () -> getDescription());
         strategyMap.put(OpportunityConstant.NEXT_STEP, () -> getNextStep());
-        strategyMap.put(OpportunityConstant.CAMPAIGN_NAME, () -> getCampaignName());
         return strategyMap;
     }
 }

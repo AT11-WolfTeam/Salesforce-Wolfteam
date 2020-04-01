@@ -26,10 +26,11 @@ import salesforce.ui.pages.newcampaign.AbstractNewCampaignPage;
  * @version 1.0 19 March 2020.
  */
 public class CampaignListLightningPage extends AbstractCampaignListPage {
-    @FindBy(xpath = "//a[@title='New']")
+    @FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//div[@title='New']")
     private WebElement newButton;
 
-    protected static final String NAME_CAMPAIGN = "a[title='%s']";
+    protected static final String NAME_CAMPAIGN = "//div[@class='windowViewMode-normal oneContent active lafPageHost']"
+            + "//a[@title='%s']";
     private static final String CAMPAIGN_CHECKBOX = "//a[contains(text(),'%s')]/../../../td//a";
 
     @Override
@@ -51,9 +52,9 @@ public class CampaignListLightningPage extends AbstractCampaignListPage {
 
     @Override
     public AbstractCampaignPage selectCampaignName(final String campaignName) {
-        String opportunityNameCss = String.format(NAME_CAMPAIGN, campaignName);
+        String opportunityNameXpath = String.format(NAME_CAMPAIGN, campaignName);
         nameCampaignSelected = WebDriverManager.getInstance().getWebDriver().findElement(By
-                .cssSelector(opportunityNameCss));
+                .xpath(opportunityNameXpath));
         nameCampaignSelected.click();
         return AppPageFactory.getCampaignPage();
     }

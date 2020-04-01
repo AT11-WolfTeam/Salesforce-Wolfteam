@@ -17,6 +17,11 @@ public class LeadListClassicPage extends AbstractLeadListPage {
     }
 
     @Override
+    public List<Lead> getLeadsUpdated(List<Lead> leads) {
+        return null;
+    }
+
+    @Override
     protected void waitUntilPageObjectIsLoaded() {
 
     }

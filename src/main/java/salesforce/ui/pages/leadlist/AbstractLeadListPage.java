@@ -19,4 +19,12 @@ public abstract class AbstractLeadListPage extends AbstractBasePage {
      * @param leads contains a list value.
      */
     public abstract void changeLeadStatus(List<Lead> leads);
+
+    /**
+     * Review leads in a page.
+     *
+     * @param leads contains a list value.
+     * @return int value.
+     */
+    public abstract List<Lead> getLeadsUpdated(List<Lead> leads);
 }

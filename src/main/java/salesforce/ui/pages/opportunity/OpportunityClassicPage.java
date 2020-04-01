@@ -282,4 +282,17 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     public HashMap<String, String> verifyContactRoles(final HashMap<String, String> contactsList) {
         return iterateContacts(contactsList);
     }
+
+    /**
+     * Clicks on edit button.
+     */
+    private void clickOnEditButton() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(editButton));
+        editButton.click();
+    }
+
+    @Override
+    public void enableToValidateOpportunity() {
+        clickOnEditButton();
+    }
 }

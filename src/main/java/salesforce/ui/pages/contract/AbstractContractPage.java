@@ -10,7 +10,8 @@
 package salesforce.ui.pages.contract;
 
 import salesforce.ui.pages.AbstractBasePage;
-import salesforce.ui.pages.newopportunity.AbstractNewOpportunityPage;
+import salesforce.ui.pages.opportunity.newopportunity.AbstractNewOpportunity;
+
 
 /**
  * Defines AbstractContractPage.
@@ -25,5 +26,5 @@ public abstract class AbstractContractPage extends AbstractBasePage {
      *
      * @return NewOpportunityInstance.
      */
-    public abstract AbstractNewOpportunityPage clickOnNewOpportunity();
+    public abstract AbstractNewOpportunity clickOnNewOpportunity();
 }

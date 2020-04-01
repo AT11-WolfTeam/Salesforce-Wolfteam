@@ -27,7 +27,6 @@ import java.util.function.Supplier;
  * @version 1.0 19 March 2020.
  */
 public abstract class AbstractOpportunityPage extends AbstractBasePage {
-    private static final String CAMPAIGN_NAME = "Campaign Name";
     protected WebElement campaignNameSelect;
 
     /**
@@ -80,7 +79,8 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
      */
     protected HashMap<String, Runnable> composeStrategyMap(final Opportunity opportunity) {
         HashMap<String, Runnable> strategyMap = new HashMap<>();
-        strategyMap.put(OpportunityConstant.PRIMARY_CAMPAIGN_SOURCE, () -> assignCampaign(opportunity.getPrimaryCampaignName()));
+        strategyMap.put(OpportunityConstant.PRIMARY_CAMPAIGN_SOURCE, () -> assignCampaign(opportunity
+                .getPrimaryCampaignSource()));
         return strategyMap;
     }
 
@@ -154,4 +154,9 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
      * @return an instance on contact role.
      */
     public abstract AbstractContactRolesPage clickOnContactRoles();
+
+    /**
+     * Enables to validate opportunity values.
+     */
+    public abstract void enableToValidateOpportunity();
 }

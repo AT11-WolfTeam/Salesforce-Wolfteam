@@ -9,7 +9,7 @@
 
 package salesforce.ui.pages.contract;
 
-import salesforce.ui.pages.newopportunity.AbstractNewOpportunityPage;
+import salesforce.ui.pages.opportunity.newopportunity.AbstractNewOpportunity;
 
 /**
  * Defines ContractClassicPage.
@@ -24,7 +24,7 @@ public class ContractClassicPage extends AbstractContractPage {
     }
 
     @Override
-    public AbstractNewOpportunityPage clickOnNewOpportunity() {
+    public AbstractNewOpportunity clickOnNewOpportunity() {
         //To Do
         return null;
     }

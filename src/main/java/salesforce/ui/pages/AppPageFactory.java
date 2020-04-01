@@ -37,30 +37,30 @@ import salesforce.ui.pages.contract.ContractLightningPage;
 import salesforce.ui.pages.contractlist.AbstractContractListPage;
 import salesforce.ui.pages.contractlist.ContractListClassicPage;
 import salesforce.ui.pages.contractlist.ContractListLightningPage;
+import salesforce.ui.pages.genericTabs.AbstractTabObjectsPage;
+import salesforce.ui.pages.genericTabs.TabObjectsClassicPage;
+import salesforce.ui.pages.genericTabs.TabObjectsLightningPage;
 import salesforce.ui.pages.newcampaign.AbstractNewCampaignPage;
 import salesforce.ui.pages.newcampaign.NewCampaignClassicPage;
 import salesforce.ui.pages.newcampaign.NewCampaignLightningPopUp;
 import salesforce.ui.pages.newcontract.AbstractNewContractPage;
 import salesforce.ui.pages.newcontract.NewContractClassicPage;
 import salesforce.ui.pages.newcontract.NewContractLightningPopUp;
-import salesforce.ui.pages.newopportunity.AbstractNewOpportunityPage;
-import salesforce.ui.pages.newopportunity.NewOpportunityClassicPage;
-import salesforce.ui.pages.newopportunity.NewOpportunityLightningPopUp;
 import salesforce.ui.pages.notesattachments.NotesAndAttachmentsClassicPage;
 import salesforce.ui.pages.notesattachments.NotesAndAttachmentsLightningPage;
 import salesforce.ui.pages.notesattachments.NotesAndAttachmentsPageAbstract;
 import salesforce.ui.pages.oportunitieslist.AbstractOpportunityListPage;
 import salesforce.ui.pages.oportunitieslist.OpportunityListClassicPage;
 import salesforce.ui.pages.oportunitieslist.OpportunityListLightningPage;
-import salesforce.ui.pages.genericTabs.AbstractTabObjectsPage;
-import salesforce.ui.pages.genericTabs.TabObjectsClassicPage;
-import salesforce.ui.pages.genericTabs.TabObjectsLightningPage;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 import salesforce.ui.pages.opportunity.OpportunityClassicPage;
 import salesforce.ui.pages.opportunity.OpportunityLightningPage;
+import salesforce.ui.pages.opportunity.newopportunity.NewOpportunityClassicPage;
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
 import salesforce.ui.pages.opportunity.taskopportunity.TaskOpportunityClassic;
 import salesforce.ui.pages.opportunity.taskopportunity.TaskOpportunityLightning;
+import salesforce.ui.pages.opportunity.newopportunity.AbstractNewOpportunity;
+import salesforce.ui.pages.opportunity.newopportunity.NewOpportunityLightningPage;
 import salesforce.ui.pages.task.AbstractTask;
 import salesforce.ui.pages.task.TaskClassicPage;
 import salesforce.ui.pages.task.TaskLightningPage;
@@ -272,11 +272,11 @@ public class AppPageFactory {
      *
      * @return NewOpportunityPage instance.
      */
-    public static AbstractNewOpportunityPage getNewOpportunityPage() {
+    public static AbstractNewOpportunity getNewOpportunityPage() {
         if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
             return new NewOpportunityClassicPage();
         }
-        return new NewOpportunityLightningPopUp();
+        return new NewOpportunityLightningPage();
     }
 
     /**

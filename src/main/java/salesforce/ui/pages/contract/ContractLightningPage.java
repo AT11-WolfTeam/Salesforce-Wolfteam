@@ -13,7 +13,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.AppPageFactory;
-import salesforce.ui.pages.newopportunity.AbstractNewOpportunityPage;
+import salesforce.ui.pages.opportunity.newopportunity.AbstractNewOpportunity;
+
 
 /**
  * Defines ContractLightningPage.
@@ -35,7 +36,7 @@ public class ContractLightningPage extends AbstractContractPage {
     }
 
     @Override
-    public AbstractNewOpportunityPage clickOnNewOpportunity() {
+    public AbstractNewOpportunity clickOnNewOpportunity() {
         newOpportunityButton.click();
         return AppPageFactory.getNewOpportunityPage();
     }

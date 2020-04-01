@@ -11,8 +11,10 @@ package salesforcetest.hooks;
 
 import io.cucumber.java.After;
 import org.testng.Assert;
+import salesforce.api.requestapi.AccountHelper;
 import salesforce.api.requestapi.ContactApiHelper;
 import salesforce.api.requestapi.OpportunityApiHelper;
+import salesforce.entities.Account;
 import salesforce.entities.Contact;
 import salesforce.entities.Context;
 import salesforce.entities.Opportunity;
@@ -40,10 +42,10 @@ public class Hook {
     private ContactApiHelper contactApiHelper;
     private AbstractContractListPage abstractContractListPage;
     private AbstractOpportunityListPage abstractOpportunityListPage;
-
     private static final String CAMPAIGNS_PAGE = "Campaigns Page";
     private static final String CONTRACTS_PAGE = "Contracts Page";
     private static final String OPPORTUNITIES_PAGE = "Opportunities Page";
+    private AccountHelper accountHelper;
 
     /**
      * Constructor Hook.
@@ -56,6 +58,7 @@ public class Hook {
         opportunityApiHelper = new OpportunityApiHelper();
         leadHelper = new LeadHelper();
         contactApiHelper = new ContactApiHelper();
+        accountHelper = new AccountHelper();
     }
 
     /**
@@ -131,5 +134,17 @@ public class Hook {
         pageTransporter.navigateToPage(OPPORTUNITIES_PAGE);
         abstractOpportunityListPage = AppPageFactory.getOpportunityList();
         abstractOpportunityListPage.deleteOpportunity(context.getOpportunity().getName());
+    }
+
+    /**
+     * Deletes accounts.
+     */
+    @After("@DeleteAccounts")
+    public void deleteAccounts() {
+        accountHelper.deleteAccounts(context.getAccounts());
+        final String expected = "204";
+        for (Account account : context.getAccounts()) {
+            Assert.assertEquals(account.getStatusCode(), expected);
+        }
     }
 }

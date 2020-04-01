@@ -16,6 +16,12 @@ import salesforce.ui.components.menu.TopMenuAbstract;
 import salesforce.ui.components.span.AbstractUpdateLeadMessage;
 import salesforce.ui.components.span.AddLeadClassicMessage;
 import salesforce.ui.components.span.AddLeadLightningMessageSpan;
+import salesforce.ui.pages.leadlist.AbstractChangeStatusLeads;
+import salesforce.ui.pages.leadlist.AbstractLeadListPage;
+import salesforce.ui.pages.leadlist.ChangeStatusLeadsClassicPage;
+import salesforce.ui.pages.leadlist.ChangeStatusLeadsLightningPopup;
+import salesforce.ui.pages.leadlist.LeadListClassicPage;
+import salesforce.ui.pages.leadlist.LeadListLightningPage;
 import salesforce.ui.pages.campaign.AbstractCampaignPage;
 import salesforce.ui.pages.campaign.CampaignClassicPage;
 import salesforce.ui.pages.campaign.CampaignLightningPage;
@@ -269,6 +275,32 @@ public class AppPageFactory {
 
     /**
      * Returns NewOpportunityPage.
+     *
+     * Allows to get lead list page.
+     *
+     * @return a AbstractLeadListPage.
+     */
+    public static AbstractLeadListPage getLeadListPage() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new LeadListClassicPage();
+        }
+        return new LeadListLightningPage();
+    }
+
+    /**
+     * Allows to get change status lead.
+     *
+     * @return a AbstractChangeStatusLeads.
+     */
+    public static AbstractChangeStatusLeads getChangeStatusLeads() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new ChangeStatusLeadsClassicPage();
+        }
+        return new ChangeStatusLeadsLightningPopup();
+    }
+
+    /**
+     * Allows to get new opportunities.
      *
      * @return NewOpportunityPage instance.
      */

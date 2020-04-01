@@ -38,6 +38,8 @@ public class PageTransporter {
         urlLightningMap.put("Campaigns Page", PropertiesReader.getInstance().getSalesforceUrl()
                 .getCampaignsLightningUrl());
         urlLightningMap.put("Leads Page", PropertiesReader.getInstance().getSalesforceUrl().getLeadsLightningUrl());
+        urlLightningMap.put("Contracts Page", PropertiesReader.getInstance().getSalesforceUrl()
+                .getContractsLightningUrl());
         urlClassicMap = new HashMap<>();
         urlClassicMap.put("Login Page", PropertiesReader.getInstance().getSalesforceUrl().getLoginUrl());
         urlClassicMap.put("Sales Page", PropertiesReader.getInstance().getSalesforceUrl().getSalesClassicUrl());

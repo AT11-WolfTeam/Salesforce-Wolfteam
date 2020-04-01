@@ -29,6 +29,7 @@ import salesforce.ui.pages.PageTransporter;
 import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
 import salesforce.ui.pages.newcampaign.AbstractNewCampaignPage;
 import salesforce.ui.pages.genericTabs.AbstractTabObjectsPage;
+import salesforce.ui.pages.oportunitieslist.AbstractOpportunityListPage;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 import salesforce.ui.pages.opportunity.OpportunityClassicPage;
 import salesforce.ui.pages.opportunity.contactrolespopup.AbstractContactRolesPopup;
@@ -58,7 +59,7 @@ public class OpportunitySteps {
     private AbstractCampaignListPage campaignsPage;
     private AbstractNewCampaignPage newCampaignPage;
     private NewCampaign newCampaign;
-    private AbstractTabObjectsPage opportunitiesPage;
+    private AbstractTabObjectsPage abstractTabObjectsPage;
     private AbstractOpportunityPage opportunityPage;
     private Opportunity opportunity;
     private AbstractTaskOpportunity abstractTaskOpportunity;
@@ -67,7 +68,8 @@ public class OpportunitySteps {
     private AbstractContactRolesPage contactRolesPage;
     private AbstractContactRolesPopup contactRolesPopup;
     private AbstractNewOpportunity newOpportunity;
-
+    private ToastUpdateObjectMessage toastUpdateObjectMessage;
+    private AbstractOpportunityListPage abstractOpportunityListPage;
     private static String userExperience = GradleReader.getInstance().getUserExperience();
     private static final int ARRAY_POSITION_FIRST = 0;
     private static final String JSON_CONFIG_FILE = "config.json";
@@ -190,12 +192,11 @@ public class OpportunitySteps {
      */
     @When("I assign the Campaign to the opportunity")
     public void assignsTheCampaignToTheOpportunity(final Map<String, String> mapOpportunityEdit) {
-
         HashMap<String, String> mapOpportunity = new HashMap<>();
         mapOpportunity.putAll(mapOpportunityEdit);
-        opportunitiesPage = AppPageFactory.getTabObjectsPage();
-        opportunityPage = opportunitiesPage.selectObjectByName(context.getOpportunities().get(ARRAY_POSITION_FIRST)
-                .getName());
+        abstractTabObjectsPage = AppPageFactory.getTabObjectsPage();
+        abstractTabObjectsPage.selectObjectByName(context.getOpportunities().get(ARRAY_POSITION_FIRST).getName());
+        opportunityPage = AppPageFactory.getOpportunityPage();
         opportunity = context.getOpportunity();
         opportunity.setOpportunityInformation(mapOpportunity);
         opportunityPage.editOpportunity(opportunity, mapOpportunityEdit.keySet());
@@ -261,9 +262,9 @@ public class OpportunitySteps {
     @And("I add new Task with")
     public void iAddNewTaskWith(final Map<String, String> mapTask) {
         mapNewTask = new HashMap<>(mapTask);
-        opportunitiesPage = AppPageFactory.getTabObjectsPage();
-        opportunityPage = opportunitiesPage.selectObjectByName(context.getOpportunities().get(ARRAY_POSITION_FIRST)
-                .getName());
+        abstractTabObjectsPage = AppPageFactory.getTabObjectsPage();
+         abstractTabObjectsPage.selectObjectByName(context.getOpportunities().get(ARRAY_POSITION_FIRST).getName());
+        opportunityPage = AppPageFactory.getOpportunityPage();
         abstractTaskOpportunity = opportunityPage.clickAddTask();
         taskOpportunity = context.getTaskOpportunity();
         if (!context.getContacts().isEmpty()) {
@@ -306,7 +307,8 @@ public class OpportunitySteps {
     @And("I select the opportunity")
     public void selectTheOpportunity() {
         String opportunityName = context.getOpportunities().get(ARRAY_POSITION_FIRST).getName();
-        opportunityPage = AppPageFactory.getTabObjectsPage().selectObjectByName(opportunityName);
+        AppPageFactory.getTabObjectsPage().selectObjectByName(opportunityName);
+        opportunityPage = AppPageFactory.getOpportunityPage();
     }
 
     /**
@@ -372,10 +374,11 @@ public class OpportunitySteps {
     @When("I create new opportunity with the following values")
     public void createOpportunity(final Map<String, String> opportunityValues) {
         opportunity.setOpportunityInformation(opportunityValues);
-        opportunitiesPage = AppPageFactory.getTabObjectsPage();
-        opportunitiesPage.clickOnNewButton();
+        abstractTabObjectsPage = AppPageFactory.getTabObjectsPage();
+        abstractTabObjectsPage.clickOnNewButton();
         newOpportunity = AppPageFactory.getNewOpportunityPage();
         opportunityPage = newOpportunity.setOpportunityInformation(opportunity, opportunityValues.keySet());
+        opportunityPage.refreshPage();
     }
 
     /**
@@ -392,5 +395,49 @@ public class OpportunitySteps {
             org.junit.Assert.assertEquals(key + ": ", opportunity.getOpportunityInformation().get(key),
                     actualOpportunityValues.get(key));
         }
+    }
+
+    /**
+     * Selects the stage.
+     *
+     * @param stage value.
+     */
+    @When("I select stage as {string}")
+    public void iSelectStageAs(final String stage) {
+        opportunityPage.clickOnAStage(stage);
+    }
+
+    /**
+     * Close the opportunity as won or lost.
+     *
+     * @param closeAs value.
+     */
+    @When("I close the opportunity as {string}")
+    public void iCloseTheOpportunityAs(final String closeAs) {
+        opportunity.setStageName(closeAs);
+        opportunityPage.clickOnSelectCloseStage(closeAs);
+    }
+
+    /**
+     * the application should display a message.
+     *
+     * @param message value.
+     */
+    @Then("the application should display a message {string}")
+    public void theApplicationShouldDisplayAMessage(final String message) {
+        toastUpdateObjectMessage = new ToastUpdateObjectMessage();
+        String messageClosed = toastUpdateObjectMessage.getMessage();
+        org.junit.Assert.assertEquals(message, messageClosed);
+    }
+
+    /**
+     * On opportunities object table should display the current stage.
+     */
+    @And("On opportunities object should be display the current stage")
+    public void onOpportunitiesObjectShouldBeDisplayCurrentStage() {
+        abstractOpportunityListPage = AppPageFactory.getOpportunityList();
+        String actual = abstractOpportunityListPage.getStageName(context.getOpportunity().getName());
+        String expected = opportunity.getStageName();
+        org.junit.Assert.assertEquals(expected, actual);
     }
 }

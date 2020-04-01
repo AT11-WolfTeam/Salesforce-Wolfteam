@@ -1,5 +1,34 @@
 Feature: Opportunity
 
+  @DeleteAccounts
+  @DeletesCampaign
+  Scenario: Create new opportunity with all values.
+    Given I create 1 "Basic" accounts
+    And I go to "Campaigns Page"
+    And I create a new Campaign with
+      | Campaign Name | Testing Campaign |
+      | Active        | true             |
+    When I go to "Opportunities Page"
+    And I create new opportunity with the following values
+      | Name                        | Testing Opportunity |
+      | AccountName                 | BasicAccount1       |
+      | Type                        | New Customer        |
+      | LeadSource                  | Web                 |
+      | Amount                      | 10000               |
+      | CloseDate                   | TODAY               |
+      | NextStep                    | Level 2             |
+      | StageName                   | Prospecting         |
+      | Probability                 | 0                   |
+      | PrimaryCampaignSource       | Testing Campaign    |
+      | OrderNumber                 | 10                  |
+      | CurrentGenerator            | First               |
+      | TrackingNumber              | 123456              |
+      | MainCompetitor              | Trello              |
+      | Delivery/InstallationStatus | In progress         |
+      | Description                 | Testing Description |
+    Then The added Information should be displayed on Opportunity Page
+
+
   @DeletesOpportunity
   Scenario: Change opportunity owner to another user
     Given I create 1 "Basic" opportunities
@@ -33,7 +62,7 @@ Feature: Opportunity
         | Active        | true      |
       And I go to "Opportunities Page"
     When I assign the Campaign to the opportunity
-      | Campaign Name | Promotion |
+      | PrimaryCampaignSource | Promotion |
     Then On the details section should display the Campaign name
 
 
@@ -94,30 +123,4 @@ Feature: Opportunity
     Then The added contacts with roles should be displayed on Contact Roles page
 
 
-  @DeleteAccounts
-  @DeletesCampaign
-  Scenario: Create new opportunity with all values.
-    Given I create 1 "Basic" accounts
-    And I go to "Campaigns Page"
-    And I create a new Campaign with
-      | Campaign Name | Testing Campaign |
-      | Active        | true             |
-    When I go to "Opportunities Page"
-    And I create new opportunity with the following values
-      | Name                        | Testing Opportunity |
-      | AccountName                 | BasicAccount1       |
-      | Type                        | New Customer        |
-      | LeadSource                  | Web                 |
-      | Amount                      | 10000               |
-      | CloseDate                   | TODAY               |
-      | NextStep                    | Level 2             |
-      | StageName                   | Prospecting         |
-      | Probability                 | 0                   |
-      | PrimaryCampaignSource       | Testing Campaign    |
-      | OrderNumber                 | 10                  |
-      | CurrentGenerator            | First               |
-      | TrackingNumber              | 123456              |
-      | MainCompetitor              | Trello              |
-      | Delivery/InstallationStatus | In progress         |
-      | Description                 | Testing Description |
-    Then The added Information should be displayed on Opportunity Page
+

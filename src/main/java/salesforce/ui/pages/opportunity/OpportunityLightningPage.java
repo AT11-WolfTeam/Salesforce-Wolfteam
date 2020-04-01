@@ -14,6 +14,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.opportunity.opportunitycontactroles.AbstractContactRolesPage;
 import salesforce.ui.pages.opportunity.opportunitycontactroles.ContactRolesLightningPage;
@@ -70,6 +71,23 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
             + " and contains(text(),'Notes & Attachments')]")
     private WebElement notesAndAttachmentsLink;
 
+    @FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//button"
+            + "[@class='slds-button slds-button--brand slds-path__mark-complete stepAction active uiButton']")
+    private WebElement markAsCurrentStageButton;
+
+    private static final String STAGE_BUTTON = "//div[@class='windowViewMode-normal oneContent active lafPageHost']"
+            + "//a//span[text()='Closed']";
+
+    @FindBy(xpath = "//div[@class='modal-container slds-modal__container']//select[@class='stepAction required-field"
+            + " select']")
+    private WebElement selectCloseStageComboBox;
+
+    @FindBy(xpath = "//div[@class='modal-container slds-modal__container']//button[@title='Save']")
+    private WebElement saveCloseOpportunity;
+
+    private WebElement stageSelected;
+    private Select select;
+
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(changeStageButton));
@@ -100,6 +118,46 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
         String campaignNameCss = String.format(CAMPAIGN_NAME, campaignName);
         campaignNameSelect = webDriver.findElement(By.cssSelector(campaignNameCss));
         campaignNameSelect.click();
+    }
+
+    @Override
+    public void clickOnAStage(final String stageName) {
+        stageSelected = webDriver.findElement(By.xpath(String.format(STAGE_BUTTON, stageName)));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(stageSelected)).click();
+    }
+
+    @Override
+    public void clickOnMarkAsCurrentStageButton() {
+        markAsCurrentStageButton.click();
+    }
+
+    @Override
+    public void clickOnSelectCloseStage(final String closeAs) {
+        clickOnMarkAsCurrentStageButton();
+        selectCloseStageAs(closeAs);
+        clickOnSaveCloseOpportunity();
+    }
+
+    @Override
+    public void refreshPage() {
+        webDriver.navigate().refresh();
+    }
+
+    /**
+     * Clicks on saveCloseOpportunity.
+     */
+    private void clickOnSaveCloseOpportunity() {
+        saveCloseOpportunity.click();
+    }
+
+    /**
+     * Selects closeStageAs.
+     *
+     * @param closeAs value.
+     */
+    private void selectCloseStageAs(final String closeAs) {
+        select = new Select(selectCloseStageComboBox);
+        select.selectByValue(closeAs);
     }
 
     @Override

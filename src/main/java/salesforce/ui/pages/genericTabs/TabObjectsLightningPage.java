@@ -15,9 +15,7 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.lead.DeleteObjectLightningPopup;
-import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 
 /**
  * Defines OpportunitiesPopUpLightning.
@@ -26,7 +24,7 @@ import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
  * @version 1.0 19 March 2020.
  */
 public class TabObjectsLightningPage extends AbstractTabObjectsPage {
-    @FindBy(css = "div[title='New']")
+    @FindBy(xpath = "//div[@class='windowViewMode-normal oneContent active lafPageHost']//div[@title='New']")
     private WebElement newButton;
 
     @FindBy(css = "div[class='triggerLinkTextAndIconWrapper slds-p-right--x-large']")
@@ -36,7 +34,8 @@ public class TabObjectsLightningPage extends AbstractTabObjectsPage {
             + "rowActions')]";
     private static final String DELETE_OPTION_LOCATOR = "//div[contains(@class,'branding-actions')]//a[contains(@title,"
             + "'Delete')]";
-    protected static final String NAME_OBJECT = "a[title='%s']";
+    protected static final String NAME_OBJECT = "//div[@class='windowViewMode-normal oneContent active lafPageHost']"
+            + "//a[@title='%s']";
     private static final String OBJECT_ORDERED_LIST_PARTIAL_LOCATOR = "//li[contains(.,'%s')]";
     private WebElement nameOpportunityTable;
 
@@ -56,12 +55,11 @@ public class TabObjectsLightningPage extends AbstractTabObjectsPage {
     }
 
     @Override
-    public AbstractOpportunityPage selectObjectByName(final String opportunityName) {
+    public void selectObjectByName(final String opportunityName) {
         String opportunityNameXpath = String.format(NAME_OBJECT, opportunityName);
         nameOpportunitySelected = WebDriverManager.getInstance().getWebDriver().findElement(By
-                .cssSelector(opportunityNameXpath));
+                .xpath(opportunityNameXpath));
         nameOpportunitySelected.click();
-        return AppPageFactory.getOpportunityPage();
     }
 
     @Override

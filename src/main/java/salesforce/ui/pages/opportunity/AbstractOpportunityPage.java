@@ -11,6 +11,7 @@ package salesforce.ui.pages.opportunity;
 
 import org.openqa.selenium.WebElement;
 import salesforce.entities.Opportunity;
+import salesforce.entities.constants.OpportunityConstant;
 import salesforce.ui.pages.AbstractBasePage;
 import salesforce.ui.pages.opportunity.opportunitycontactroles.AbstractContactRolesPage;
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
@@ -25,13 +26,7 @@ import java.util.function.Supplier;
  * @version 1.0 19 March 2020.
  */
 public abstract class AbstractOpportunityPage extends AbstractBasePage {
-    private static final String CAMPAIGN_NAME = "Campaign Name";
     protected WebElement campaignNameSelect;
-
-    @Override
-    protected void waitUntilPageObjectIsLoaded() {
-
-    }
 
     /**
      * Assigns a campaign.
@@ -39,6 +34,30 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
      * @param campaignName value.
      */
     protected abstract void assignCampaign(String campaignName);
+
+    /**
+     * Clicks on a Stage.
+     *
+     * @param stageName value.
+     */
+    public abstract void clickOnAStage(String stageName);
+
+    /**
+     * Clicks on mark as current stage button.
+     */
+    public abstract void clickOnMarkAsCurrentStageButton();
+
+    /**
+     * Clicks on Select close stage.
+     *
+     * @param closeAs value.
+     */
+    public abstract void clickOnSelectCloseStage(String closeAs);
+
+    /**
+     * Refresh the page.
+     */
+    public abstract void refreshPage();
 
     /**
      * Sets the form of new Campaign.
@@ -59,7 +78,8 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
      */
     protected HashMap<String, Runnable> composeStrategyMap(final Opportunity opportunity) {
         HashMap<String, Runnable> strategyMap = new HashMap<>();
-        strategyMap.put(CAMPAIGN_NAME, () -> assignCampaign(opportunity.getCampaignName()));
+        strategyMap.put(OpportunityConstant.PRIMARY_CAMPAIGN_SOURCE, () -> assignCampaign(opportunity
+                .getPrimaryCampaignSource()));
         return strategyMap;
     }
 
@@ -84,7 +104,7 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
      */
     private HashMap<String, Supplier> composeOpportunityDetailsToGet() {
         HashMap<String, Supplier> strategyMap = new HashMap<>();
-        strategyMap.put(CAMPAIGN_NAME, () -> getCampaignName());
+        strategyMap.put(OpportunityConstant.PRIMARY_CAMPAIGN_SOURCE, () -> getCampaignName());
         return strategyMap;
     }
 

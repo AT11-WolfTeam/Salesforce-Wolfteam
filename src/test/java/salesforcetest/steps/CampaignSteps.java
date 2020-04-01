@@ -132,7 +132,7 @@ public class CampaignSteps {
     /**
      * Validates the application.
      */
-    @And("campaign members should display the leads added")
+    @Then("campaign members should display the leads added")
     public void campaignMembersShouldDisplayTheLeadsAdded() {
         int actualResult = AppPageFactory.getCampaignLeadsPage().countLeadsInList(context.getLeads());
         int expectedResult = context.getLeads().size();

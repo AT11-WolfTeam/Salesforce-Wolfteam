@@ -23,6 +23,8 @@ import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.PageTransporter;
 import salesforce.ui.pages.campaign.AbstractCampaignPage;
 import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
+import salesforce.ui.pages.contractlist.AbstractContractListPage;
+import salesforce.ui.pages.oportunitieslist.AbstractOpportunityListPage;
 
 /**
  * Manages Hook instance.
@@ -38,6 +40,11 @@ public class Hook {
     private OpportunityApiHelper opportunityApiHelper;
     private LeadHelper leadHelper;
     private ContactApiHelper contactApiHelper;
+    private AbstractContractListPage abstractContractListPage;
+    private AbstractOpportunityListPage abstractOpportunityListPage;
+    private static final String CAMPAIGNS_PAGE = "Campaigns Page";
+    private static final String CONTRACTS_PAGE = "Contracts Page";
+    private static final String OPPORTUNITIES_PAGE = "Opportunities Page";
     private AccountHelper accountHelper;
 
     /**
@@ -59,7 +66,7 @@ public class Hook {
      */
     @After("@DeletesCampaign")
     public void deletesCampaign() {
-        pageTransporter.navigateToPage("Campaigns Page");
+        pageTransporter.navigateToPage(CAMPAIGNS_PAGE);
         abstractCampaignListPage = AppPageFactory.getCampaignsPage();
         abstractCampaignPage = abstractCampaignListPage.selectCampaignName(context.getNewCampaign().getCampaignName());
         abstractCampaignListPage = abstractCampaignPage.deleteCampaign();
@@ -107,6 +114,26 @@ public class Hook {
         for (Contact contact : context.getContacts()) {
             Assert.assertEquals(contact.getStatusCode(), expected);
         }
+    }
+
+    /**
+     * Deletes Contract.
+     */
+    @After("@DeleteContract")
+    public void deleteContract() {
+        pageTransporter.navigateToPage(CONTRACTS_PAGE);
+        abstractContractListPage = AppPageFactory.getContractListPage();
+        abstractContractListPage.deleteContract(context.getContract().getContractNumber());
+    }
+
+    /**
+     * Deletes an Opportunity by UI.
+     */
+    @After("@DeletesAnOpportunity")
+    public void deleteAnOpportunity() {
+        pageTransporter.navigateToPage(OPPORTUNITIES_PAGE);
+        abstractOpportunityListPage = AppPageFactory.getOpportunityList();
+        abstractOpportunityListPage.deleteOpportunity(context.getOpportunity().getName());
     }
 
     /**

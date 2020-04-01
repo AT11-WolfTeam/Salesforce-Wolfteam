@@ -32,7 +32,6 @@ public final class OpportunityConstant {
     public static final String MAIN_COMPETITOR = "MainCompetitor";
     public static final String DELIVERY_STATUS = "Delivery/InstallationStatus";
     public static final String DESCRIPTION = "Description";
-    public static final String CAMPAIGN_NAME = "Campaign Name";
     public static final String VALUE = "value";
 
     /**

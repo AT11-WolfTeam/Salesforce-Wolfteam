@@ -16,6 +16,12 @@ import salesforce.ui.components.menu.TopMenuAbstract;
 import salesforce.ui.components.span.AbstractUpdateLeadMessage;
 import salesforce.ui.components.span.AddLeadClassicMessage;
 import salesforce.ui.components.span.AddLeadLightningMessageSpan;
+import salesforce.ui.pages.leadlist.AbstractChangeStatusLeads;
+import salesforce.ui.pages.leadlist.AbstractLeadListPage;
+import salesforce.ui.pages.leadlist.ChangeStatusLeadsClassicPage;
+import salesforce.ui.pages.leadlist.ChangeStatusLeadsLightningPopup;
+import salesforce.ui.pages.leadlist.LeadListClassicPage;
+import salesforce.ui.pages.leadlist.LeadListLightningPage;
 import salesforce.ui.pages.campaign.AbstractCampaignPage;
 import salesforce.ui.pages.campaign.CampaignClassicPage;
 import salesforce.ui.pages.campaign.CampaignLightningPage;
@@ -31,27 +37,36 @@ import salesforce.ui.pages.campaignlist.CampaignListLightningPage;
 import salesforce.ui.pages.campaignmembers.AbstractCampaignMembersPage;
 import salesforce.ui.pages.campaignmembers.CampaignMembersClassicPage;
 import salesforce.ui.pages.campaignmembers.CampaignMembersLightningPage;
+import salesforce.ui.pages.contract.AbstractContractPage;
+import salesforce.ui.pages.contract.ContractClassicPage;
+import salesforce.ui.pages.contract.ContractLightningPage;
+import salesforce.ui.pages.contractlist.AbstractContractListPage;
+import salesforce.ui.pages.contractlist.ContractListClassicPage;
+import salesforce.ui.pages.contractlist.ContractListLightningPage;
+import salesforce.ui.pages.genericTabs.AbstractTabObjectsPage;
+import salesforce.ui.pages.genericTabs.TabObjectsClassicPage;
+import salesforce.ui.pages.genericTabs.TabObjectsLightningPage;
 import salesforce.ui.pages.newcampaign.AbstractNewCampaignPage;
 import salesforce.ui.pages.newcampaign.NewCampaignClassicPage;
 import salesforce.ui.pages.newcampaign.NewCampaignLightningPopUp;
+import salesforce.ui.pages.newcontract.AbstractNewContractPage;
+import salesforce.ui.pages.newcontract.NewContractClassicPage;
+import salesforce.ui.pages.newcontract.NewContractLightningPopUp;
 import salesforce.ui.pages.notesattachments.NotesAndAttachmentsClassicPage;
 import salesforce.ui.pages.notesattachments.NotesAndAttachmentsLightningPage;
 import salesforce.ui.pages.notesattachments.NotesAndAttachmentsPageAbstract;
 import salesforce.ui.pages.oportunitieslist.AbstractOpportunityListPage;
 import salesforce.ui.pages.oportunitieslist.OpportunityListClassicPage;
 import salesforce.ui.pages.oportunitieslist.OpportunityListLightningPage;
-import salesforce.ui.pages.genericTabs.AbstractTabObjectsPage;
-import salesforce.ui.pages.genericTabs.TabObjectsClassicPage;
-import salesforce.ui.pages.genericTabs.TabObjectsLightningPage;
 import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 import salesforce.ui.pages.opportunity.OpportunityClassicPage;
 import salesforce.ui.pages.opportunity.OpportunityLightningPage;
-import salesforce.ui.pages.opportunity.newopportunity.AbstractNewOpportunity;
 import salesforce.ui.pages.opportunity.newopportunity.NewOpportunityClassicPage;
-import salesforce.ui.pages.opportunity.newopportunity.NewOpportunityLightningPage;
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
 import salesforce.ui.pages.opportunity.taskopportunity.TaskOpportunityClassic;
 import salesforce.ui.pages.opportunity.taskopportunity.TaskOpportunityLightning;
+import salesforce.ui.pages.opportunity.newopportunity.AbstractNewOpportunity;
+import salesforce.ui.pages.opportunity.newopportunity.NewOpportunityLightningPage;
 import salesforce.ui.pages.task.AbstractTask;
 import salesforce.ui.pages.task.TaskClassicPage;
 import salesforce.ui.pages.task.TaskLightningPage;
@@ -163,6 +178,18 @@ public class AppPageFactory {
     }
 
     /**
+     * Returns a task page.
+     *
+     * @return task instance.
+     */
+    public static AbstractContractPage getContractPage() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new ContractClassicPage();
+        }
+        return new ContractLightningPage();
+    }
+
+    /**
      * Allows to identify notes and attachment user experience page.
      *
      * @return NotesAndAttachmentsPage instance.
@@ -175,7 +202,7 @@ public class AppPageFactory {
     }
 
     /**
-     * Allows to indentify campaign members user experience page.
+     * Allows to identify campaign members user experience page.
      *
      * @return campaign members instance.
      */
@@ -199,7 +226,7 @@ public class AppPageFactory {
     }
 
     /**
-     * Allows to indentify campaign members user experience page.
+     * Allows to identify campaign members user experience page.
      *
      * @return campaign members instance.
      */
@@ -235,14 +262,64 @@ public class AppPageFactory {
     }
 
     /**
+     * Returns New Contract Page.
+     *
+     * @return new contract instance.
+     */
+    public static AbstractNewContractPage getNewContractPage() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new NewContractClassicPage();
+        }
+        return new NewContractLightningPopUp();
+    }
+
+    /**
+     * Returns NewOpportunityPage.
+     *
+     * Allows to get lead list page.
+     *
+     * @return a AbstractLeadListPage.
+     */
+    public static AbstractLeadListPage getLeadListPage() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new LeadListClassicPage();
+        }
+        return new LeadListLightningPage();
+    }
+
+    /**
+     * Allows to get change status lead.
+     *
+     * @return a AbstractChangeStatusLeads.
+     */
+    public static AbstractChangeStatusLeads getChangeStatusLeads() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new ChangeStatusLeadsClassicPage();
+        }
+        return new ChangeStatusLeadsLightningPopup();
+    }
+
+    /**
      * Allows to get new opportunities.
      *
-     * @return a AbstractNewOpportunity.
+     * @return NewOpportunityPage instance.
      */
     public static AbstractNewOpportunity getNewOpportunityPage() {
         if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
             return new NewOpportunityClassicPage();
         }
         return new NewOpportunityLightningPage();
+    }
+
+    /**
+     * Returns ContractListPage.
+     *
+     * @return ContractListPage instance.
+     */
+    public static AbstractContractListPage getContractListPage() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new ContractListClassicPage();
+        }
+        return new ContractListLightningPage();
     }
 }

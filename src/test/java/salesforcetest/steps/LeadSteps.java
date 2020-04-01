@@ -37,6 +37,7 @@ public class LeadSteps {
     private LeadHelper leadHelper;
     private ArrayList<HashMap<String, String>> leadMapList;
     private static final int ARRAY_POSITION_FIRST = 0;
+    private String leadStatus;
 
     /**
      * LeadSteps constructor.
@@ -72,6 +73,7 @@ public class LeadSteps {
      */
     @When("I change Lead Status to {string} of the leads in list {string}")
     public void changesLeadStatusToOfTheLeads(final String leadStatus, final String listName) {
+        this.leadStatus = leadStatus;
         AppPageFactory.getTabObjectsPage().displayList(listName);
         AppPageFactory.getLeadListPage().changeLeadStatus(context.getLeads());
         AppPageFactory.getChangeStatusLeads().selectStatusLeads(leadStatus);
@@ -96,6 +98,10 @@ public class LeadSteps {
     public void leadsPageShouldDisplayTheLeadsModified() {
         List<Lead> actualLeads = AppPageFactory.getLeadListPage().getLeadsUpdated(context.getLeads());
         List<Lead> expectedLeads = context.getLeads();
-        Assert.assertEquals(actualLeads, expectedLeads);
+        for (int index=0; index<expectedLeads.size(); index++) {
+            Assert.assertEquals(actualLeads.get(index).getLastName(), expectedLeads.get(index).getLastName());
+            Assert.assertEquals(actualLeads.get(index).getCompany(), expectedLeads.get(index).getCompany());
+            Assert.assertEquals(actualLeads.get(index).getLeadStatus(), expectedLeads.get(index).getLeadStatus());
+        }
     }
 }

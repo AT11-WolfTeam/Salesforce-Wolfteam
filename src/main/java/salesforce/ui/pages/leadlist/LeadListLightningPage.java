@@ -25,8 +25,9 @@ public class LeadListLightningPage extends AbstractLeadListPage {
 
     private static final String OBJECT_CHECK_BOX_BASE_LOCATOR = "//tr[th[span[a[@title='%1$s']]] and td[span[span"
             + "[@title='%2$s']]]]//label[@class='slds-checkbox']//span[@class='slds-checkbox--faux']";
-    private static final String OBJECT_ROW_BASE_LOCATOR = "//tr[th[span[a[@title='%1$s']]] and td[span[span[@title="
-            + "'%2$s']]] and td[span[span[text()='%3$s']]]]";
+    private static final String OBJECT_ROW_GENERIC_LOCATOR = "//tr[td[span[span[contains(text(),'-')]]]]";
+    private static final String OBJECT_ROW_BASE_LOCATOR = "//tr[th[span[a[contains(text(),'%1$s')]]]  and "
+            + "td[span[span[@title='%2$s']]] and td[span[span[text()='%3$s']]]]";
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -42,51 +43,28 @@ public class LeadListLightningPage extends AbstractLeadListPage {
     }
 
     @Override
-    public List<Lead> getLeadsUpdated(List<Lead> leads) {
+    public List<Lead> getLeadsUpdated(final List<Lead> leads) {
         List<Lead> leadsUpdated = new ArrayList<>();
+        try {
+            webDriverWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.
+                    xpath(OBJECT_ROW_GENERIC_LOCATOR)));
+        } catch (StaleElementReferenceException staleElement) {
+            webDriverWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.
+                    xpath(OBJECT_ROW_GENERIC_LOCATOR)));
+        }
         for (Lead lead : leads) {
-            String objectRowLocator = String.format(OBJECT_ROW_BASE_LOCATOR, lead.getLastName(), lead.getCompany(), lead.getLeadStatus());
-            WebElement webElement = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(objectRowLocator)));
+            String objectRowLocator = String.format(OBJECT_ROW_BASE_LOCATOR, lead.getLastName(), lead.getCompany(),
+                    lead.getLeadStatus());
+            String objectRowLocatorLastName = objectRowLocator + "//th[1]//a";
+            String objectRowLocatorCompany = objectRowLocator + "//td[3]//span[@class='slds-truncate uiOutputText']";
+            String objectRowLocatorLeadStatus = objectRowLocator + "//span[contains(text(),'-')]";
             Lead newLead = new Lead();
-            newLead.setLastName(findInRowLastNameLead(webElement.findElement(By.xpath(objectRowLocator))));
-            newLead.setCompany(findInRowCompanyLead(webElement.findElement(By.xpath(objectRowLocator))));
-            newLead.setCompany(findInRowLeadStatus(webElement.findElement(By.xpath(objectRowLocator))));
+            newLead.setLastName(webDriver.findElement(By.xpath(objectRowLocatorLastName)).getText());
+            newLead.setCompany(webDriver.findElement(By.xpath(objectRowLocatorCompany)).getText());
+            newLead.setLeadStatus(webDriver.findElement(By.xpath(objectRowLocatorLeadStatus)).getText());
             leadsUpdated.add(newLead);
         }
         return leadsUpdated;
-    }
-
-    /**
-     * Gets a lastName of a lead.
-     *
-     * @param webElement contains a web element.
-     * @return a String value.
-     */
-    private String findInRowLastNameLead(WebElement webElement) {
-        final String cellLastNameLeadLocator = "//th[1]//a";
-        return webElement.findElement(By.xpath(cellLastNameLeadLocator)).getText();
-    }
-
-    /**
-     * Gets a company of a lead.
-     *
-     * @param webElement contains a web element.
-     * @return a String value.
-     */
-    private String findInRowCompanyLead(WebElement webElement) {
-        final String cellCompanyLeadLocator = "//td[3]//span[@class='slds-truncate uiOutputText']";
-        return webElement.findElement(By.xpath(cellCompanyLeadLocator)).getText();
-    }
-
-    /**
-     * Gets a Status of a lead.
-     *
-     * @param webElement contains a web element.
-     * @return a String value.
-     */
-    private String findInRowLeadStatus(WebElement webElement) {
-        final String cellLeadStatusLocator = "//td[6]//span[@class='slds-truncate']";
-        return webElement.findElement(By.xpath(cellLeadStatusLocator)).getText();
     }
 
     /**

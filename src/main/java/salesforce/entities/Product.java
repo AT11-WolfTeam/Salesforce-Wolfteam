@@ -41,7 +41,7 @@ public class Product {
      *
      * @param productName value.
      */
-    public void setProductName(String productName) {
+    public void setProductName(final String productName) {
         this.productName = productName;
     }
 
@@ -64,7 +64,8 @@ public class Product {
      */
     private HashMap<String, Runnable> composeStrategyMap(final HashMap<String, String> productInformation) {
         HashMap<String, Runnable> strategyMap = new HashMap<>();
-        strategyMap.put(ProductConstant.PRODUCT_NAME, () -> setProductName(productInformation.get(AccountConstant.NAME)));
+        strategyMap.put(ProductConstant.PRODUCT_NAME, () -> setProductName(productInformation.get(AccountConstant
+                .NAME)));
         return strategyMap;
     }
 

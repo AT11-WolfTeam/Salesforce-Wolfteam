@@ -15,7 +15,7 @@ package salesforce.entities.constants;
  * @author Alan Escalera.
  * @version 1.0 1 April 2020.
  */
-public class PriceBookConstant {
+public final class PriceBookConstant {
     public static final String PRICE_BOOK_NAME = "Price Book Name";
 
     /**

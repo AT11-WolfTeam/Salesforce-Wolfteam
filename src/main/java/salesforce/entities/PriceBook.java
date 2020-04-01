@@ -11,7 +11,6 @@ package salesforce.entities;
 
 import salesforce.entities.constants.AccountConstant;
 import salesforce.entities.constants.PriceBookConstant;
-import salesforce.entities.constants.ProductConstant;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -43,7 +42,7 @@ public class PriceBook {
      *
      * @param priceBookName value.
      */
-    public void setPriceBookName(String priceBookName) {
+    public void setPriceBookName(final String priceBookName) {
         this.priceBookName = priceBookName;
     }
 
@@ -66,7 +65,8 @@ public class PriceBook {
      */
     private HashMap<String, Runnable> composeStrategyMap(final HashMap<String, String> priceBookInformation) {
         HashMap<String, Runnable> strategyMap = new HashMap<>();
-        strategyMap.put(PriceBookConstant.PRICE_BOOK_NAME, () -> setPriceBookName(priceBookInformation.get(AccountConstant.NAME)));
+        strategyMap.put(PriceBookConstant.PRICE_BOOK_NAME, () -> setPriceBookName(priceBookInformation
+                .get(AccountConstant.NAME)));
         return strategyMap;
     }
 

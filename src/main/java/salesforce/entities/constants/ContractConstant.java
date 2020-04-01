@@ -24,5 +24,5 @@ public final class ContractConstant {
     /**
      * ContractConstant constructor.
      */
-    private ContractConstant() {}
+    private ContractConstant() { }
 }

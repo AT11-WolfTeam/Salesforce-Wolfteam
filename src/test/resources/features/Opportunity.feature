@@ -33,7 +33,7 @@ Feature: Opportunity
         | Active        | true      |
       And I go to "Opportunities Page"
     When I assign the Campaign to the opportunity
-      | Campaign Name | Promotion |
+      | PrimaryCampaignSource | Promotion |
     Then On the details section should display the Campaign name
 
 

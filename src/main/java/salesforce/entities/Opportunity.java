@@ -38,7 +38,7 @@ public class Opportunity {
     private String description;
     private String nextStep;
     private String statusCode;
-    private String campaignName;
+    private String PrimaryCampaignName;
 
     private Set<String> modifiedOpportunityFields = new HashSet<>();
 
@@ -142,21 +142,21 @@ public class Opportunity {
     }
 
     /**
-     * Returns campaignName value.
+     * Returns PrimaryCampaignName value.
      *
      * @return string value.
      */
-    public String getCampaignName() {
-        return campaignName;
+    public String getPrimaryCampaignName() {
+        return PrimaryCampaignName;
     }
 
     /**
-     * Sets campaignName value.
+     * Sets PrimaryCampaignName value.
      *
-     * @param campaignName value.
+     * @param primaryCampaignName value.
      */
-    public void setCampaignName(final String campaignName) {
-        this.campaignName = campaignName;
+    public void setPrimaryCampaignName(final String primaryCampaignName) {
+        this.PrimaryCampaignName = primaryCampaignName;
     }
 
     /**
@@ -299,8 +299,8 @@ public class Opportunity {
                 setDescription(opportunityInformation.get(OpportunityConstant.DESCRIPTION)));
         strategyMap.put(OpportunityConstant.NEXT_STEP, () ->
                 setNextStep(opportunityInformation.get(OpportunityConstant.NEXT_STEP)));
-        strategyMap.put(OpportunityConstant.CAMPAIGN_NAME, () ->
-                setCampaignName(opportunityInformation.get(OpportunityConstant.CAMPAIGN_NAME)));
+        strategyMap.put(OpportunityConstant.PRIMARY_CAMPAIGN_SOURCE, () ->
+                setPrimaryCampaignName(opportunityInformation.get(OpportunityConstant.PRIMARY_CAMPAIGN_SOURCE)));
         return strategyMap;
     }
 
@@ -334,7 +334,7 @@ public class Opportunity {
         strategyMap.put(OpportunityConstant.PROBABILITY, () -> getProbability());
         strategyMap.put(OpportunityConstant.DESCRIPTION, () -> getDescription());
         strategyMap.put(OpportunityConstant.NEXT_STEP, () -> getNextStep());
-        strategyMap.put(OpportunityConstant.CAMPAIGN_NAME, () -> getCampaignName());
+        strategyMap.put(OpportunityConstant.PRIMARY_CAMPAIGN_SOURCE, () -> getPrimaryCampaignName());
         return strategyMap;
     }
 }

@@ -11,6 +11,7 @@ package salesforce.ui.pages.opportunity;
 
 import org.openqa.selenium.WebElement;
 import salesforce.entities.Opportunity;
+import salesforce.entities.constants.OpportunityConstant;
 import salesforce.ui.pages.AbstractBasePage;
 import salesforce.ui.pages.opportunity.opportunitycontactroles.AbstractContactRolesPage;
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
@@ -79,7 +80,7 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
      */
     protected HashMap<String, Runnable> composeStrategyMap(final Opportunity opportunity) {
         HashMap<String, Runnable> strategyMap = new HashMap<>();
-        strategyMap.put(CAMPAIGN_NAME, () -> assignCampaign(opportunity.getCampaignName()));
+        strategyMap.put(OpportunityConstant.PRIMARY_CAMPAIGN_SOURCE, () -> assignCampaign(opportunity.getPrimaryCampaignName()));
         return strategyMap;
     }
 
@@ -104,7 +105,7 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
      */
     private HashMap<String, Supplier> composeOpportunityDetailsToGet() {
         HashMap<String, Supplier> strategyMap = new HashMap<>();
-        strategyMap.put(CAMPAIGN_NAME, () -> getCampaignName());
+        strategyMap.put(OpportunityConstant.PRIMARY_CAMPAIGN_SOURCE, () -> getCampaignName());
         return strategyMap;
     }
 

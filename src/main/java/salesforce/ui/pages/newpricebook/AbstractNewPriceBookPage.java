@@ -7,19 +7,15 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.entities.constants;
+package salesforce.ui.pages.newpricebook;
+
+import salesforce.ui.pages.AbstractBasePage;
 
 /**
- * Manages ProductConstant.
+ * Defines AbstractNewPriceBookPage.
  *
  * @author Alan Escalera.
- * @version 1.0 1 April 2020.
+ * @version 1.0 28 March 2020.
  */
-public final class ProductConstant {
-    public static final String PRODUCT_NAME = "Product Name";
-
-    /**
-     * ProductConstant Constructor.
-     */
-    private ProductConstant() { }
+public abstract class AbstractNewPriceBookPage extends AbstractBasePage {
 }

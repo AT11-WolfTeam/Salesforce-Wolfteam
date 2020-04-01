@@ -17,7 +17,7 @@ public class LeadListClassicPage extends AbstractLeadListPage {
     }
 
     @Override
-    public List<Lead> getLeadsUpdated(List<Lead> leads) {
+    public List<Lead> getLeadsUpdated(final List<Lead> leads) {
         return null;
     }
 

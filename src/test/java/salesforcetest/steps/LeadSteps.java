@@ -84,9 +84,11 @@ public class LeadSteps {
 
     /**
      * Validates a operation.
+     * @param message contains a list value.
      */
     @Then("the application should display this message in Leads Page only for Lightning Experience")
-    public void theApplicationShouldDisplayThisMessageInLeadsPageOnlyForLightningExperience(final List<String> message) {
+    public void theApplicationShouldDisplayThisMessageInLeadsPageOnlyForLightningExperience(
+            final List<String> message) {
         ToastUpdateObjectMessage toastUpdateObjectMessageSpan = new ToastUpdateObjectMessage();
         String actualResult = toastUpdateObjectMessageSpan.getMessage();
         String expectedResult = ReplacerMessages.replaceTransactionMessage(message.get(ARRAY_POSITION_FIRST),
@@ -94,11 +96,14 @@ public class LeadSteps {
         Assert.assertEquals(actualResult, expectedResult);
     }
 
+    /**
+     * Validates leads.
+     */
     @Then("Leads Page should display the leads modified")
     public void leadsPageShouldDisplayTheLeadsModified() {
         List<Lead> actualLeads = AppPageFactory.getLeadListPage().getLeadsUpdated(context.getLeads());
         List<Lead> expectedLeads = context.getLeads();
-        for (int index=0; index<expectedLeads.size(); index++) {
+        for (int index = 0; index < expectedLeads.size(); index++) {
             Assert.assertEquals(actualLeads.get(index).getLastName(), expectedLeads.get(index).getLastName());
             Assert.assertEquals(actualLeads.get(index).getCompany(), expectedLeads.get(index).getCompany());
             Assert.assertEquals(actualLeads.get(index).getLeadStatus(), expectedLeads.get(index).getLeadStatus());

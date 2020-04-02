@@ -30,6 +30,7 @@ public class Context {
     private TaskOpportunity taskOpportunity;
     private Contract contract;
     private Product product;
+    private PriceBook priceBook;
 
     /**
      * Context constructor.
@@ -46,6 +47,7 @@ public class Context {
         this.taskOpportunity = new TaskOpportunity();
         this.contract = new Contract();
         this.product = new Product();
+        this.priceBook = new PriceBook();
     }
 
     /**
@@ -176,6 +178,7 @@ public class Context {
 
     /**
      * Gets product instance.
+     *
      * @return an instance.
      */
     public Product getProduct() {
@@ -184,9 +187,19 @@ public class Context {
 
     /**
      * Sets product instance.
+     *
      * @param product object.
      */
     public void setProduct(final Product product) {
         this.product = product;
+    }
+
+    /**
+     * Gets PriceBook instance.
+     *
+     * @return an instance.
+     */
+    public PriceBook getPriceBook() {
+        return priceBook;
     }
 }

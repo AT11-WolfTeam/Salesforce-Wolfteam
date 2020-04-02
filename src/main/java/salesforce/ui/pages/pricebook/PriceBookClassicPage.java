@@ -9,6 +9,8 @@
 
 package salesforce.ui.pages.pricebook;
 
+import salesforce.ui.pages.pricebook.addproducts.AbstractAddProduct;
+
 /**
  * Defines PriceBookClassicPage.
  *
@@ -19,5 +21,30 @@ public class PriceBookClassicPage extends AbstractPriceBookPage {
     @Override
     protected void waitUntilPageObjectIsLoaded() {
 
+    }
+
+    @Override
+    public void clickOnRelatedTab() {
+
+    }
+
+    @Override
+    public AbstractAddProduct clickOnAddProductsButton() {
+        return null;
+    }
+
+    @Override
+    public String getProductName(final String productName) {
+        return null;
+    }
+
+    @Override
+    public String getListPrice() {
+        return null;
+    }
+
+    @Override
+    public String getProductCode() {
+        return null;
     }
 }

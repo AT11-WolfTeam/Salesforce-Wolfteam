@@ -18,4 +18,9 @@ import salesforce.ui.pages.AbstractBasePage;
  * @version 1.0 1 April 2020.
  */
 public abstract class AbstractEditSelectedPriceBookEntriesPage extends AbstractBasePage {
+
+    /**
+     * Clicks on save button.
+     */
+    public abstract void clickOnSaveButton();
 }

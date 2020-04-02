@@ -20,12 +20,19 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  * @version 1.0 1 April 2020.
  */
 public class NewProductLightningPopUp extends AbstractNewProductPage {
-    @FindBy(xpath = "//div[@class='windowViewMode-normal oneRecordActionWrapper isModal active lafPageHost']"
-             + "//span[text()='Product Name']/../..//input")
+    private static final String LOCATOR_WINDOW_VIEW_MODE = "//div[@class='windowViewMode-normal oneRecordActionWrapper"
+         + " isModal active lafPageHost']";
+
+    @FindBy(xpath = LOCATOR_WINDOW_VIEW_MODE + "//span[text()='Product Name']/../..//input")
     private WebElement productNameField;
 
-    @FindBy(xpath = "//div[@class='windowViewMode-normal oneRecordActionWrapper isModal active lafPageHost']"
-             + "//button[@title='Save']")
+    @FindBy(xpath = LOCATOR_WINDOW_VIEW_MODE + "//span[text()='Product Code']/../..//input")
+    private WebElement productCodeField;
+
+    @FindBy(xpath = LOCATOR_WINDOW_VIEW_MODE + "//span[text()='Product Description']/../..//textarea")
+    private WebElement productDescriptionField;
+
+    @FindBy(xpath = LOCATOR_WINDOW_VIEW_MODE + "//button[@title='Save']")
     private WebElement saveButton;
 
     @Override
@@ -40,12 +47,12 @@ public class NewProductLightningPopUp extends AbstractNewProductPage {
 
     @Override
     protected void setProductCode(final String productCode) {
-
+        productCodeField.sendKeys(productCode);
     }
 
     @Override
     protected void setProductDescription(final String productDescription) {
-
+        productDescriptionField.sendKeys(productDescription);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package salesforce.entities;
 
 import salesforce.entities.constants.EventConstant;
+import salesforce.utils.DateFormatter;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -59,7 +60,7 @@ public class OpportunityEvent {
      * @param startDate contains a String value.
      */
     public void setStartDate(String startDate) {
-        this.startDate = startDate;
+        this.startDate = DateFormatter.formatDateUi(startDate);
     }
 
     /**
@@ -76,7 +77,7 @@ public class OpportunityEvent {
      * @param endDate contains a String value.
      */
     public void setEndDate(String endDate) {
-        this.endDate = endDate;
+        this.endDate = DateFormatter.formatDateUi(endDate);
     }
 
     /**

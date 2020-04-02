@@ -88,6 +88,9 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     @FindBy(xpath = "//div[@class='modal-container slds-modal__container']//button[@title='Save']")
     private WebElement saveCloseOpportunity;
 
+    private static final String EVENT_LINK_PARTIAL_LOCATOR = "//div[@class='slds-section__content ']/..//a"
+            + "[contains(text(), '%s')]";
+
     private WebElement stageSelected;
     private Select select;
 
@@ -247,5 +250,11 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     public void enableToValidateOpportunity() {
         clickOnMoreOptions();
         clickOnEditItem();
+    }
+
+    @Override
+    public void clickOnEvent(String subject) {
+        String eventLinkLocator = String.format(EVENT_LINK_PARTIAL_LOCATOR, subject);
+        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(eventLinkLocator))).click();
     }
 }

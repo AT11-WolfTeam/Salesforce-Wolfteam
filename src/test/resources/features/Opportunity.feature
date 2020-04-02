@@ -99,11 +99,11 @@ Feature: Opportunity
     When I go to "Opportunities Page"
       And I search for the opportunity in list "Recently Viewed Opportunities"
       And I add new Event with
-        | Subject    | Example Subject |
-        | Start Date | Today           |
-        | End Date   | In a week       |
+        | Subject    | Example Subject                        |
+        | Start Date | TODAY                                  |
+        | End Date   | 3 DAYS-0 MONTH-0 YEAR-AFTER-FROM TODAY |
     Then the application should display this message in Opportunity Page
-      | Event Example Subject was created |
+      | Event Example Subject was created  |
     And Upcoming & Overview tab contains the event created
 
 

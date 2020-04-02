@@ -442,10 +442,37 @@ public class OpportunitySteps {
         org.junit.Assert.assertEquals(expected, actual);
     }
 
+    /**
+     * Creates a new Event in a Opportunity.
+     *
+     * @param eventMap contains a event map.
+     */
     @And("I add new Event with")
-    public void iAddNewEventWith(final Map<String, String> eventMap) {
+    public void addNewEventWith(final Map<String, String> eventMap) {
         AppPageFactory.getOpportunityPage().clickOnNewEventTabButton();
         context.getOpportunityEvent().processInformation(eventMap);
         AppPageFactory.getOpportunityEvent().setNewEvent(context.getOpportunityEvent(), eventMap.keySet());
+    }
+
+    /**
+     * Validates an addition of an event to an Opportunity.
+     *
+     * @param message contains a String list.
+     */
+    @Then("the application should display this message in Opportunity Page")
+    public void theApplicationShouldDisplayThisMessageInOpportunityPage(final List<String> message) {
+        ToastUpdateObjectMessage toastUpdateMessageSpan = new ToastUpdateObjectMessage();
+        String actualResult = toastUpdateMessageSpan.getMessage();
+        String expectedResult = ReplacerMessages.replaceTaskSavedMessage(message.get(ARRAY_POSITION_FIRST),
+                context.getTaskOpportunity().getSubject());
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    /**
+     * Validates an event.
+     */
+    @And("Upcoming & Overview tab contains the event created")
+    public void upcomingOverviewTabContainsTheEventCreated() {
+        AppPageFactory.getOpportunityPage().clickOnEvent(context.getOpportunityEvent().getSubject());
     }
 }

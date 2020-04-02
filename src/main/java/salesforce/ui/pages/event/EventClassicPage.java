@@ -7,33 +7,33 @@
  *  license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages.opportunity.opportunityevent;
+package salesforce.ui.pages.event;
 
 /**
- * Manages OpportunityEventClassicPage.
+ * Manages EventClassicPage.
  *
  * @author Enrique Carrizales.
  * @version 1.0 02 April 2020.
  */
-public class OpportunityEventClassicPage extends AbstractOpportunityEvent {
+public class EventClassicPage extends AbstractEventPage {
     @Override
-    protected void setSubject(String subject) {
-
+    protected String getSubject() {
+        return null;
     }
 
     @Override
-    protected void setStartDate(String startDate) {
-
+    protected String getStartDate() {
+        return null;
     }
 
     @Override
-    protected void setEndDate(String endDate) {
-
+    protected String getEndDate() {
+        return null;
     }
 
     @Override
-    protected void setAssignedTo(String assignedTo) {
-
+    protected String getAssignedTo() {
+        return null;
     }
 
     @Override

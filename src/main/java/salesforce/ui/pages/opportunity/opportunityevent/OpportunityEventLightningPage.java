@@ -9,29 +9,69 @@
 
 package salesforce.ui.pages.opportunity.opportunityevent;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+/**
+ * Manages OpportunityEventLightningPage.
+ *
+ * @author Enrique Carrizales.
+ * @version 1.0 02 April 2020.
+ */
 public class OpportunityEventLightningPage extends AbstractOpportunityEvent {
+
+    @FindBy(xpath = "//label[contains(text(), 'Subject')]//..//input")
+    private WebElement subjectTextBox;
+
+    @FindBy(xpath = "//legend[contains(text(),'Start')]//..//input[@class='slds-input']")
+    private WebElement startDateTextBox;
+
+    @FindBy(xpath = "//legend[contains(text(),'End')]//..//input[@class='slds-input']")
+    private WebElement endDateTextBox;
+
+    @FindBy(css = "input[class*=' default input'][placeholder*='Search Users']")
+    private WebElement assignedToListBox;
+
+    @FindBy(xpath = "//label[span[contains(text(), 'Location')]]//..//input")
+    private WebElement locationTextBox;
+
+    private static final String ASSIGNED_TO_LIST_BOX_PARTIAL_LOCATOR = "//span[text()='%s']";
+    private static final String OPTION_ASSIGNED_TO_LIST_BOX_PARTIAL_LOCATOR = "//a[*[div[text()='%s']]]";
+
+    @Override
+    protected void waitUntilPageObjectIsLoaded() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(locationTextBox));
+    }
+
     @Override
     protected void setSubject(String subject) {
-
+        subjectTextBox.sendKeys(subject);
     }
 
     @Override
     protected void setStartDate(String startDate) {
-
+        startDateTextBox.sendKeys(startDate);
     }
 
     @Override
     protected void setEndDate(String endDate) {
-
+        endDateTextBox.sendKeys(endDate);
     }
 
     @Override
     protected void setAssignedTo(String assignedTo) {
-
-    }
-
-    @Override
-    protected void waitUntilPageObjectIsLoaded() {
-
+        String assignedToListBoxLocator = String.format(ASSIGNED_TO_LIST_BOX_PARTIAL_LOCATOR, assignedTo);
+        try {
+            webDriver.findElement(By.xpath(assignedToListBoxLocator));
+        } catch (NoSuchElementException elementNotFound) {
+            String optionAssignedToListBoxLocator = String.format(OPTION_ASSIGNED_TO_LIST_BOX_PARTIAL_LOCATOR,
+                    assignedToListBoxLocator);
+            assignedToListBox.click();
+            webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(optionAssignedToListBoxLocator)))
+                    .click();
+        }
     }
 }

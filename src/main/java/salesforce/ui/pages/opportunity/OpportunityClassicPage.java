@@ -299,4 +299,9 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     public void enableToValidateOpportunity() {
         clickOnEditButton();
     }
+
+    @Override
+    public void clickOnEvent(String subject) {
+
+    }
 }

@@ -163,4 +163,11 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
      * Enables to validate opportunity values.
      */
     public abstract void enableToValidateOpportunity();
+
+    /**
+     * Clicks on a event.
+     *
+     * @param subject contains a event name.
+     */
+    public abstract void clickOnEvent(String subject);
 }

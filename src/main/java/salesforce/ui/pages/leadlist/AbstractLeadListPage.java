@@ -18,7 +18,7 @@ public abstract class AbstractLeadListPage extends AbstractBasePage {
      *
      * @param leads contains a list value.
      */
-    public void changeLeadStatus(List<Lead> leads) {
+    public void changeLeadStatus(final List<Lead> leads) {
         for (Lead lead : leads) {
             clickOnCheckButton(lead);
         }

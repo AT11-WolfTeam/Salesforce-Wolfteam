@@ -26,7 +26,7 @@ public class TabObjectsClassicPage extends AbstractTabObjectsPage {
     @FindBy(xpath = "//input[@class='btn' and @name='new']")
     private WebElement newButton;
 
-    @FindBy(css = "select[id='fcf']")
+    @FindBy(css = "span[class='fBody'] select[id='fcf'][name='fcf']")
     private WebElement opportunityListSelect;
 
     @FindBy(css = "span[class='fBody'] input[class='btn']")
@@ -42,7 +42,6 @@ public class TabObjectsClassicPage extends AbstractTabObjectsPage {
     public void displayList(final String listName) {
         Select select = new Select(opportunityListSelect);
         select.selectByVisibleText(listName);
-        goButton.click();
     }
 
     @Override

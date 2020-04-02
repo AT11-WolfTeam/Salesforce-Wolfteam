@@ -20,4 +20,14 @@ public class NewProductClassicPage extends AbstractNewProductPage {
     protected void waitUntilPageObjectIsLoaded() {
 
     }
+
+    @Override
+    protected void setProductName(final String productName) {
+
+    }
+
+    @Override
+    protected void clickOnSaveButton() {
+
+    }
 }

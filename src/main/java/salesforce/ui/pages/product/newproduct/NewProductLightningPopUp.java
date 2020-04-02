@@ -11,6 +11,7 @@ package salesforce.ui.pages.product.newproduct;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
  * Defines NewProductLightningPopUp.
@@ -29,6 +30,16 @@ public class NewProductLightningPopUp extends AbstractNewProductPage {
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(productNameField));
+    }
 
+    @Override
+    protected void setProductName(final String productName) {
+        productNameField.sendKeys(productName);
+    }
+
+    @Override
+    protected void clickOnSaveButton() {
+        saveButton.click();
     }
 }

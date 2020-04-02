@@ -20,4 +20,14 @@ public class NewPriceBookClassicPage extends AbstractNewPriceBookPage {
     protected void waitUntilPageObjectIsLoaded() {
 
     }
+
+    @Override
+    protected void clickOnSaveButton() {
+
+    }
+
+    @Override
+    protected void setPriceBookName(final String priceBookName) {
+
+    }
 }

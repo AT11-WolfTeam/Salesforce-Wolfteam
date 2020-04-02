@@ -32,7 +32,7 @@ public class ChangeStatusLeadsClassicPage extends AbstractChangeStatusLeads {
     }
 
     /**
-     * Clicks on a button.
+     * Clicks on a button "Save button".
      */
     private void clickOnSaveButton() {
         saveButton.click();

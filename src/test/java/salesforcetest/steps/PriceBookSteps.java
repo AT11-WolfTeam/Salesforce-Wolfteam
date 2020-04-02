@@ -47,7 +47,6 @@ public class PriceBookSteps {
     private static final String COMMA = ",";
     private static final String COMMA_ZEROS = ",00";
 
-
     /**
      * PriceBookSteps constructor.
      *

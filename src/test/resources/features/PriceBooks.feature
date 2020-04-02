@@ -4,7 +4,7 @@ Feature: PriceBooks
   Scenario: Assign product to a new Price Book
     Given I go to "Products Page"
     And I create a new product with the following values
-      | Product Name        | Cocacola        |
+      | Product Name        | Oreo            |
       | Product Code        | coke01          |
       | Product Description | Testing product |
       | List Price          | 12              |

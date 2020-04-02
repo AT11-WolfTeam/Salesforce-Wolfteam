@@ -14,6 +14,7 @@ import salesforce.entities.Opportunity;
 import salesforce.entities.constants.OpportunityConstant;
 import salesforce.ui.pages.AbstractBasePage;
 import salesforce.ui.pages.opportunity.opportunitycontactroles.AbstractContactRolesPage;
+import salesforce.ui.pages.opportunity.opportunityproducts.AbstractOpportunityProductsPage;
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
 import java.util.HashMap;
 import java.util.Set;
@@ -158,4 +159,9 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
      * Enables to validate opportunity values.
      */
     public abstract void enableToValidateOpportunity();
+
+    /**
+     * Allows to open products of the opportunity.
+     */
+    public abstract AbstractOpportunityProductsPage clickOnProducts();
 }

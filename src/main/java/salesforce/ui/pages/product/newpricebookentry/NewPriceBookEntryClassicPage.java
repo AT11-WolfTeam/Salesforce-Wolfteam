@@ -7,9 +7,15 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages.newpricebook;
+package salesforce.ui.pages.product.newpricebookentry;
 
-public class newPriceBookLightningPopUp extends AbstractNewPriceBookPage {
+/**
+ * Defines NewPriceBookEntryClassicPage.
+ *
+ * @author Alan Escalera.
+ * @version 1.0 1 April 2020.
+ */
+public class NewPriceBookEntryClassicPage extends AbstractNewPriceBookEntryPage {
     @Override
     protected void waitUntilPageObjectIsLoaded() {
 

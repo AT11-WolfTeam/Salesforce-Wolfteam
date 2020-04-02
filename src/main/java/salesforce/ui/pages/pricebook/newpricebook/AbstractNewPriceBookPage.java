@@ -7,7 +7,7 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages.newpricebook;
+package salesforce.ui.pages.pricebook.newpricebook;
 
 import salesforce.ui.pages.AbstractBasePage;
 
@@ -15,7 +15,7 @@ import salesforce.ui.pages.AbstractBasePage;
  * Defines AbstractNewPriceBookPage.
  *
  * @author Alan Escalera.
- * @version 1.0 28 March 2020.
+ * @version 1.0 1 April 2020.
  */
 public abstract class AbstractNewPriceBookPage extends AbstractBasePage {
 }

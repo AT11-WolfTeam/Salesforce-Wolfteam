@@ -7,11 +7,15 @@
  * license agreement you entered into with Jalasoft.
  */
 
-package salesforce.ui.pages.newpricebook;
+package salesforce.ui.pages.pricebook.addproducts;
 
-public class newPriceBookClassicPage extends AbstractNewPriceBookPage {
-    @Override
-    protected void waitUntilPageObjectIsLoaded() {
+import salesforce.ui.pages.AbstractBasePage;
 
-    }
+/**
+ * Defines AbstractAddProduct.
+ *
+ * @author Alan Escalera.
+ * @version 1.0 1 April 2020.
+ */
+public abstract class AbstractAddProduct extends AbstractBasePage {
 }

@@ -67,6 +67,9 @@ import salesforce.ui.pages.opportunity.taskopportunity.TaskOpportunityClassic;
 import salesforce.ui.pages.opportunity.taskopportunity.TaskOpportunityLightning;
 import salesforce.ui.pages.opportunity.newopportunity.AbstractNewOpportunity;
 import salesforce.ui.pages.opportunity.newopportunity.NewOpportunityLightningPage;
+import salesforce.ui.pages.product.newpricebookentry.AbstractNewPriceBookEntryPage;
+import salesforce.ui.pages.product.newpricebookentry.NewPriceBookEntryClassicPage;
+import salesforce.ui.pages.product.newpricebookentry.NewPriceBookEntryLightningPopUp;
 import salesforce.ui.pages.task.AbstractTask;
 import salesforce.ui.pages.task.TaskClassicPage;
 import salesforce.ui.pages.task.TaskLightningPage;
@@ -321,5 +324,17 @@ public class AppPageFactory {
             return new ContractListClassicPage();
         }
         return new ContractListLightningPage();
+    }
+
+    /**
+     * Returns NewPriceBookEntryPage.
+     *
+     * @return NewPriceBookEntry instance.
+     */
+    public static AbstractNewPriceBookEntryPage getNewPriceBookEntry() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new NewPriceBookEntryClassicPage();
+        }
+        return new NewPriceBookEntryLightningPopUp();
     }
 }

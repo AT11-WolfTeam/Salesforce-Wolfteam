@@ -23,9 +23,13 @@ public class EditSelectedPriceBookEntriesLightingPopUp extends AbstractEditSelec
     @FindBy(xpath = "//div[@class='modal-container slds-modal__container']//button[@title='Save']")
     private WebElement saveButton;
 
+    @FindBy(xpath = "//table//button[@class='slds-button trigger slds-button_icon-border']")
+    private WebElement table;
+
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(saveButton));
+        webDriverWait.until(ExpectedConditions.visibilityOf(table));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(table));
     }
 
     @Override

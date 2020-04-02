@@ -23,12 +23,8 @@ public abstract class AbstractAddProduct extends AbstractBasePage {
      * Clicks on check box to add.
      *
      * @param productName value.
+     * @return EditSelectedPriceBookEntries instance.
      */
-    public abstract void checkProductToAdd(String productName);
+    public abstract AbstractEditSelectedPriceBookEntriesPage checkProductToAdd(String productName);
 
-    /**
-     * Clicks on next button.
-     * @return EditSelectedPriceBookEntriesPage instance.
-     */
-    public abstract AbstractEditSelectedPriceBookEntriesPage clickOnNextButton();
 }

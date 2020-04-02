@@ -12,6 +12,7 @@ package salesforce.ui.pages.pricebook.addproducts;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.pricebook.editselectedpricebookentries.AbstractEditSelectedPriceBookEntriesPage;
 
@@ -29,17 +30,20 @@ public class AddProductLightningPopUp extends AbstractAddProduct {
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-
+        webDriverWait.until(ExpectedConditions.visibilityOf(nextButton));
     }
 
     @Override
-    public void checkProductToAdd(final String productName) {
+    public AbstractEditSelectedPriceBookEntriesPage checkProductToAdd(final String productName) {
         webDriver.findElement(By.xpath(String.format(PRODUCT_CHECK_BOX, productName))).click();
+        clickOnNextButton();
+        return AppPageFactory.getEditSelectedPriceBookEntriesPage();
     }
 
-    @Override
-    public AbstractEditSelectedPriceBookEntriesPage clickOnNextButton() {
+    /**
+     * Clicks on next button.
+     */
+    public void clickOnNextButton() {
         nextButton.click();
-        return AppPageFactory.getEditSelectedPriceBookEntriesPage();
     }
 }

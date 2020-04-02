@@ -32,4 +32,19 @@ public class PriceBookClassicPage extends AbstractPriceBookPage {
     public AbstractAddProduct clickOnAddProductsButton() {
         return null;
     }
+
+    @Override
+    public String getRow(String productName, String listPrice) {
+        return null;
+    }
+
+    @Override
+    public String getProductName(String productName) {
+        return null;
+    }
+
+    @Override
+    public String getListPrice() {
+        return null;
+    }
 }

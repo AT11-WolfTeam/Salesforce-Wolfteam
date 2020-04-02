@@ -20,4 +20,9 @@ public class EditSelectedPriceBookEntriesClassicPage extends AbstractEditSelecte
     protected void waitUntilPageObjectIsLoaded() {
 
     }
+
+    @Override
+    public void clickOnSaveButton() {
+
+    }
 }

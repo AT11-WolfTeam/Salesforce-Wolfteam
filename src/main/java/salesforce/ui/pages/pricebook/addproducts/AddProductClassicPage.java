@@ -31,13 +31,7 @@ public class AddProductClassicPage extends AbstractAddProduct {
     }
 
     @Override
-    public void checkProductToAdd(final String productName) {
-
-    }
-
-    @Override
-    public AbstractEditSelectedPriceBookEntriesPage clickOnNextButton() {
-        nextButton.click();
+    public AbstractEditSelectedPriceBookEntriesPage checkProductToAdd(final String productName) {
         return AppPageFactory.getEditSelectedPriceBookEntriesPage();
     }
 }

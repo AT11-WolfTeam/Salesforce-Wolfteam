@@ -9,10 +9,11 @@
 
 package salesforce.entities;
 
-import salesforce.entities.constants.AccountConstant;
 import salesforce.entities.constants.PriceBookConstant;
+
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import java.util.function.Supplier;
 
@@ -50,7 +51,7 @@ public class PriceBook {
      *
      * @param priceBookInformation map.
      */
-    public void setPriceBookInformation(final HashMap<String, String> priceBookInformation) {
+    public void setPriceBookInformation(final Map<String, String> priceBookInformation) {
         HashMap<String, Runnable> strategyMap = composeStrategyMap(priceBookInformation);
         priceBookInformation.keySet().forEach(key -> strategyMap.get(key).run());
         modifiedPriceBookFields.addAll(priceBookInformation.keySet());
@@ -62,10 +63,10 @@ public class PriceBook {
      * @param priceBookInformation hashMap.
      * @return map of setter methods visited.
      */
-    private HashMap<String, Runnable> composeStrategyMap(final HashMap<String, String> priceBookInformation) {
+    private HashMap<String, Runnable> composeStrategyMap(final Map<String, String> priceBookInformation) {
         HashMap<String, Runnable> strategyMap = new HashMap<>();
         strategyMap.put(PriceBookConstant.PRICE_BOOK_NAME, () -> setPriceBookName(priceBookInformation
-                .get(AccountConstant.NAME)));
+                .get(PriceBookConstant.PRICE_BOOK_NAME)));
         return strategyMap;
     }
 

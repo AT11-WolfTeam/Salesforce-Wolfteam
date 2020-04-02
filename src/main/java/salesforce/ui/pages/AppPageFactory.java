@@ -76,6 +76,9 @@ import salesforce.ui.pages.pricebook.addproducts.AddProductLightningPopUp;
 import salesforce.ui.pages.pricebook.editselectedpricebookentries.AbstractEditSelectedPriceBookEntriesPage;
 import salesforce.ui.pages.pricebook.editselectedpricebookentries.EditSelectedPriceBookEntriesClassicPage;
 import salesforce.ui.pages.pricebook.editselectedpricebookentries.EditSelectedPriceBookEntriesLightingPopUp;
+import salesforce.ui.pages.pricebook.newpricebook.AbstractNewPriceBookPage;
+import salesforce.ui.pages.pricebook.newpricebook.NewPriceBookClassicPage;
+import salesforce.ui.pages.pricebook.newpricebook.NewPriceBookLightningPopUp;
 import salesforce.ui.pages.product.AbstractProductPage;
 import salesforce.ui.pages.product.ProductClassicPage;
 import salesforce.ui.pages.product.ProductLightningPage;
@@ -396,5 +399,17 @@ public class AppPageFactory {
             return new EditSelectedPriceBookEntriesClassicPage();
         }
         return new EditSelectedPriceBookEntriesLightingPopUp();
+    }
+
+    /**
+     * Returns NewPriceBookPage.
+     *
+     * @return NewPriceBook instance.
+     */
+    public static AbstractNewPriceBookPage getNewPriceBookPage() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new NewPriceBookClassicPage();
+        }
+        return new NewPriceBookLightningPopUp();
     }
 }

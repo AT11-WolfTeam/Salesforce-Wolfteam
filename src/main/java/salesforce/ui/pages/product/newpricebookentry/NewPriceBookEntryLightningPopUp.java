@@ -11,6 +11,7 @@ package salesforce.ui.pages.product.newpricebookentry;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
  * Defines NewPriceBookEntryLightningPopUp.
@@ -20,15 +21,39 @@ import org.openqa.selenium.support.FindBy;
  */
 public class NewPriceBookEntryLightningPopUp extends AbstractNewPriceBookEntryPage {
     @FindBy(xpath = "//div[@class='windowViewMode-normal oneRecordActionWrapper isModal active lafPageHost']"
-             + "//input[@class='input uiInputSmartNumber']")
+            + "//input[@class='input uiInputSmartNumber']")
     private WebElement listPriceField;
 
     @FindBy(xpath = "//div[@class='windowViewMode-normal oneRecordActionWrapper isModal active lafPageHost']"
-             + "//button[@title='Save']")
+            + "//button[@title='Save']")
     private WebElement saveButton;
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
 
+    }
+
+    /**
+     * Sets list price book value.
+     *
+     * @param listPriceValue string.
+     */
+    private void setListPriceField(final String listPriceValue) {
+        webDriverWait.until(ExpectedConditions.visibilityOf(listPriceField));
+        listPriceField.sendKeys(listPriceValue);
+    }
+
+    /**
+     * Clicks on save button.
+     */
+    private void clickOnSaveButton() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(saveButton));
+        saveButton.click();
+    }
+
+    @Override
+    public void saveNewPriceBookEntity(final String listPriceValue, final String priceBookName) {
+        setListPriceField(listPriceValue);
+        clickOnSaveButton();
     }
 }

@@ -39,6 +39,16 @@ public class NewProductLightningPopUp extends AbstractNewProductPage {
     }
 
     @Override
+    protected void setProductCode(final String productCode) {
+
+    }
+
+    @Override
+    protected void setProductDescription(final String productDescription) {
+
+    }
+
+    @Override
     protected void clickOnSaveButton() {
         saveButton.click();
     }

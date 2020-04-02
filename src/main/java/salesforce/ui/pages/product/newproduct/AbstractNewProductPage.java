@@ -33,6 +33,20 @@ public abstract class AbstractNewProductPage extends AbstractBasePage {
     protected abstract void setProductName(String productName);
 
     /**
+     * Sets product code.
+     *
+     * @param productCode value.
+     */
+    protected abstract void setProductCode(String productCode);
+
+    /**
+     * Sets product description.
+     *
+     * @param productDescription value.
+     */
+    protected abstract void setProductDescription(String productDescription);
+
+    /**
      * Clicks on save button.
      */
     protected abstract void clickOnSaveButton();
@@ -60,6 +74,8 @@ public abstract class AbstractNewProductPage extends AbstractBasePage {
     protected HashMap<String, Runnable> composeStrategyMap(final Product product) {
         HashMap<String, Runnable> strategyMap = new HashMap<>();
         strategyMap.put(ProductConstant.NAME, () -> setProductName(product.getName()));
+        strategyMap.put(ProductConstant.CODE, () -> setProductCode(product.getCode()));
+        strategyMap.put(ProductConstant.DESCRIPTION, () -> setProductDescription(product.getDescription()));
         return strategyMap;
     }
 }

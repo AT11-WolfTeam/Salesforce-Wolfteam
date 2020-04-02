@@ -19,7 +19,7 @@ public final class ProductConstant {
     public static final String NAME = "Product Name";
     public static final String CODE = "Product Code";
     public static final String DESCRIPTION = "Product Description";
-    public static final String SALES_PRICE = "Sales Price";
+    public static final String LIST_PRICE = "List Price";
     public static final String QUANTITY = "Quantity";
     public static final String DATE = "Date";
 

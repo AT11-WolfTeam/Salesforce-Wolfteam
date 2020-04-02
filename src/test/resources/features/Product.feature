@@ -8,7 +8,7 @@ Feature: Product
         | Product Name        | Cookie          |
         | Product Code        | c101            |
         | Product Description | Testing product |
-        | Sales Price         | 5               |
+        | List Price          | 5               |
         | Quantity            | 20              |
         | Date                | TODAY           |
       And I go to "Products Page"

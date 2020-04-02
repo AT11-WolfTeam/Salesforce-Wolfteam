@@ -11,6 +11,7 @@ package salesforce.ui.pages.product.newpricebookentry;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
  * Defines NewPriceBookEntryLightningPopUp.
@@ -30,5 +31,28 @@ public class NewPriceBookEntryLightningPopUp extends AbstractNewPriceBookEntryPa
     @Override
     protected void waitUntilPageObjectIsLoaded() {
 
+    }
+
+    /**
+     * Sets list price book value.
+     * @param listPriceValue string.
+     */
+    private void setListPriceField(final String listPriceValue) {
+        webDriverWait.until(ExpectedConditions.visibilityOf(listPriceField));
+        listPriceField.sendKeys(listPriceValue);
+    }
+
+    /**
+     * Clicks on save button.
+     */
+    private void clickOnSaveButton() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(saveButton));
+        saveButton.click();
+    }
+
+    @Override
+    public void saveNewPriceBookEntity(final String listPriceValue, final String priceBookName) {
+        setListPriceField(listPriceValue);
+        clickOnSaveButton();
     }
 }

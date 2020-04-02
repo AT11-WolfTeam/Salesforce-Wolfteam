@@ -13,7 +13,16 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import salesforce.entities.Context;
 import salesforce.entities.Product;
+import salesforce.ui.pages.AppPageFactory;
+import salesforce.ui.pages.genericTabs.AbstractTabObjectsPage;
+import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
+import salesforce.ui.pages.product.AbstractProductPage;
+import salesforce.ui.pages.product.newpricebookentry.AbstractNewPriceBookEntryPage;
+import salesforce.ui.pages.product.newproduct.AbstractNewProductPage;
+
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Manages product instance.
@@ -28,6 +37,17 @@ public class ProductSteps {
     private Product product;
 
     // Pages
+    private AbstractTabObjectsPage tabObjectsPage;
+    private AbstractNewProductPage newProductPage;
+    private AbstractProductPage productPage;
+    private AbstractNewPriceBookEntryPage newPriceBookEntryPage;
+    private AbstractOpportunityPage opportunityPage;
+    private Set<String> productKeys;
+
+    // Constants
+    private static final int NAME = 0;
+    private static final int CODE = 1;
+    private static final int DESCRIPTION = 2;
 
     /**
      * Manages products steps.
@@ -47,7 +67,14 @@ public class ProductSteps {
     @And("I create a new product with the following values")
     public void createNewProduct(final Map<String, String> productValues) {
         product.setProductInformation(productValues);
-        // implement pages.
+        productKeys = new HashSet<>();
+        productKeys.add(productValues.keySet().toArray()[NAME].toString());
+        productKeys.add(productValues.keySet().toArray()[CODE].toString());
+        productKeys.add(productValues.keySet().toArray()[DESCRIPTION].toString());
+        tabObjectsPage = AppPageFactory.getTabObjectsPage();
+        tabObjectsPage.clickOnNewButton();
+        newProductPage = AppPageFactory.getNewProductPage();
+        newProductPage.setProductInformation(product, productKeys);
     }
 
     /**
@@ -56,7 +83,9 @@ public class ProductSteps {
     @And("I select the product")
     public void selectProduct() {
         String productName = context.getProduct().getName();
-        // implement pages.
+        AppPageFactory.getTabObjectsPage().selectObjectByName(productName);
+        productPage = AppPageFactory.getProductPage();
+        newPriceBookEntryPage = productPage.clickOnAddStandardPriceButton();
     }
 
     /**
@@ -66,7 +95,7 @@ public class ProductSteps {
      */
     @And("I add the product to {string}")
     public void addProductToPriceBook(final String priceBookName) {
-
+        newPriceBookEntryPage.saveNewPriceBookEntity(product.getListPrice(), priceBookName);
     }
 
     /**
@@ -74,7 +103,6 @@ public class ProductSteps {
      */
     @And("I add the product to opportunity")
     public void addProductToOpportunity() {
-
     }
 
     /**

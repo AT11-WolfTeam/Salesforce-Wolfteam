@@ -25,4 +25,9 @@ public abstract class AbstractOpportunityProductsPage extends AbstractBasePage {
      * @return choose price book instance.
      */
     public abstract AbstractChoosePriceBook choosePriceBook();
+
+    /**
+     * adds products.
+     */
+    public abstract void addProducts();
 }

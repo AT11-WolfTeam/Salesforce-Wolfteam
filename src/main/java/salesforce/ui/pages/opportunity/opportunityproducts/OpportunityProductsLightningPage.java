@@ -26,6 +26,9 @@ public class OpportunityProductsLightningPage extends AbstractOpportunityProduct
             + "lafPageHost']//div[@title='Choose Price Book']")
     private WebElement choosePriceBookButton;
 
+    @FindBy(css = "div[title='Add Products']")
+    private WebElement addProductsButton;
+
     @Override
     protected void waitUntilPageObjectIsLoaded() {
 
@@ -39,9 +42,19 @@ public class OpportunityProductsLightningPage extends AbstractOpportunityProduct
         choosePriceBookButton.click();
     }
 
+    private void clickOnAddProductsButton() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(addProductsButton));
+        addProductsButton.click();
+    }
+
     @Override
     public AbstractChoosePriceBook choosePriceBook() {
         clickOnChoosePriceBookButton();
         return new ChoosePriceBookLightningPopup();
+    }
+
+    @Override
+    public void addProducts() {
+        clickOnAddProductsButton();
     }
 }

@@ -27,7 +27,7 @@ public class Product {
     private String name;
     private String code;
     private String description;
-    private String salesPrice;
+    private String listPrice;
     private String quantity;
     private String date;
 
@@ -61,12 +61,12 @@ public class Product {
     }
 
     /**
-     * Gets product sales price.
+     * Gets product list price.
      *
-     * @return sales price value.
+     * @return list price value.
      */
-    public String getSalesPrice() {
-        return salesPrice;
+    public String getListPrice() {
+        return listPrice;
     }
 
     /**
@@ -115,12 +115,12 @@ public class Product {
     }
 
     /**
-     * Sets product sales price.
+     * Sets product list price.
      *
-     * @param salesPrice value.
+     * @param listPrice value.
      */
-    public void setSalesPrice(final String salesPrice) {
-        this.salesPrice = salesPrice;
+    public void setListPrice(final String listPrice) {
+        this.listPrice = listPrice;
     }
 
     /**
@@ -165,8 +165,8 @@ public class Product {
         strategyMap.put(ProductConstant.CODE, () -> setCode(productInformation.get(ProductConstant.CODE)));
         strategyMap.put(ProductConstant.DESCRIPTION, () ->
                 setDescription(productInformation.get(ProductConstant.DESCRIPTION)));
-        strategyMap.put(ProductConstant.SALES_PRICE, () ->
-                setSalesPrice(productInformation.get(ProductConstant.SALES_PRICE)));
+        strategyMap.put(ProductConstant.LIST_PRICE, () ->
+                setListPrice(productInformation.get(ProductConstant.LIST_PRICE)));
         strategyMap.put(ProductConstant.QUANTITY, () -> setQuantity(productInformation.get(ProductConstant.QUANTITY)));
         strategyMap.put(ProductConstant.DATE, () -> setDate(productInformation.get(ProductConstant.DATE)));
         return strategyMap;
@@ -196,7 +196,7 @@ public class Product {
         strategyMap.put(ProductConstant.NAME, () -> getName());
         strategyMap.put(ProductConstant.CODE, () -> getCode());
         strategyMap.put(ProductConstant.DESCRIPTION, () -> getDescription());
-        strategyMap.put(ProductConstant.SALES_PRICE, () -> getSalesPrice());
+        strategyMap.put(ProductConstant.LIST_PRICE, () -> getListPrice());
         strategyMap.put(ProductConstant.QUANTITY, () -> getQuantity());
         strategyMap.put(ProductConstant.DATE, () -> getDate());
         return strategyMap;

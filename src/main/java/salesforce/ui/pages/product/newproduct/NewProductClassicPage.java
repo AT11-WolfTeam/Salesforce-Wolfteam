@@ -27,6 +27,16 @@ public class NewProductClassicPage extends AbstractNewProductPage {
     }
 
     @Override
+    protected void setProductCode(String productCode) {
+
+    }
+
+    @Override
+    protected void setProductDescription(String productDescription) {
+
+    }
+
+    @Override
     protected void clickOnSaveButton() {
 
     }

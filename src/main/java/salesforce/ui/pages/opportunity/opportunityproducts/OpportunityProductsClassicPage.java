@@ -27,4 +27,9 @@ public class OpportunityProductsClassicPage extends AbstractOpportunityProductsP
     public AbstractChoosePriceBook choosePriceBook() {
         return null;
     }
+
+    @Override
+    public void addProducts() {
+
+    }
 }

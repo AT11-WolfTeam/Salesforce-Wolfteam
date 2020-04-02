@@ -33,14 +33,6 @@ public class LeadListLightningPage extends AbstractLeadListPage {
     }
 
     @Override
-    public void changeLeadStatus(final List<Lead> leads) {
-        for (Lead lead : leads) {
-            clickOnCheckButton(lead);
-        }
-        clickOnChangeStatusLeadButton();
-    }
-
-    @Override
     public List<Lead> getLeadsUpdated(final List<Lead> leads) {
         List<Lead> leadsUpdated = new ArrayList<>();
         try {
@@ -65,25 +57,19 @@ public class LeadListLightningPage extends AbstractLeadListPage {
         return leadsUpdated;
     }
 
-    /**
-     * Clicks on a button.
-     *
-     * @param lead contains an object.
-     */
-    private void clickOnCheckButton(final Lead lead) {
+    @Override
+    protected void clickOnChangeStatusLeadButton() {
+        Actions actions = new Actions(webDriver);
+        actions.moveToElement(changeStatusButton).click().perform();
+    }
+
+    @Override
+    protected void clickOnCheckButton(final Lead lead) {
         String checkBoxLocator = String.format(OBJECT_CHECK_BOX_BASE_LOCATOR, lead.getLastName(), lead.getCompany());
         try {
             webDriver.findElement(By.xpath(checkBoxLocator)).click();
         } catch (StaleElementReferenceException StaleElement) {
             webDriver.findElement(By.xpath(checkBoxLocator)).click();
         }
-    }
-
-    /**
-     * Clicks on a button.
-     */
-    private void clickOnChangeStatusLeadButton() {
-        Actions actions = new Actions(webDriver);
-        actions.moveToElement(changeStatusButton).click().perform();
     }
 }

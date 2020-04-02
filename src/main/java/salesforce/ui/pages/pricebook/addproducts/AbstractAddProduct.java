@@ -10,6 +10,7 @@
 package salesforce.ui.pages.pricebook.addproducts;
 
 import salesforce.ui.pages.AbstractBasePage;
+import salesforce.ui.pages.pricebook.editselectedpricebookentries.AbstractEditSelectedPriceBookEntriesPage;
 
 /**
  * Defines AbstractAddProduct.
@@ -18,4 +19,16 @@ import salesforce.ui.pages.AbstractBasePage;
  * @version 1.0 1 April 2020.
  */
 public abstract class AbstractAddProduct extends AbstractBasePage {
+    /**
+     * Clicks on check box to add.
+     *
+     * @param productName value.
+     */
+    public abstract void checkProductToAdd(String productName);
+
+    /**
+     * Clicks on next button.
+     * @return EditSelectedPriceBookEntriesPage instance.
+     */
+    public abstract AbstractEditSelectedPriceBookEntriesPage clickOnNextButton();
 }

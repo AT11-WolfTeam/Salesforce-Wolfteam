@@ -11,6 +11,9 @@ package salesforce.ui.pages.pricebook;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import salesforce.ui.pages.AppPageFactory;
+import salesforce.ui.pages.pricebook.addproducts.AbstractAddProduct;
 
 /**
  * Defines PriceBookLightningPage.
@@ -27,6 +30,18 @@ public class PriceBookLightningPage extends AbstractPriceBookPage {
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(relatedTab));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(relatedTab));
+    }
 
+    @Override
+    public void clickOnRelatedTab() {
+        relatedTab.click();
+    }
+
+    @Override
+    public AbstractAddProduct clickOnAddProductsButton() {
+        addProductsButton.click();
+        return AppPageFactory.getAddProductPage();
     }
 }

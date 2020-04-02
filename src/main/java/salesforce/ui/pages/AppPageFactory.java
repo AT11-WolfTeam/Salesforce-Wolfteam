@@ -70,6 +70,12 @@ import salesforce.ui.pages.opportunity.newopportunity.NewOpportunityLightningPag
 import salesforce.ui.pages.pricebook.AbstractPriceBookPage;
 import salesforce.ui.pages.pricebook.PriceBookClassicPage;
 import salesforce.ui.pages.pricebook.PriceBookLightningPage;
+import salesforce.ui.pages.pricebook.addproducts.AbstractAddProduct;
+import salesforce.ui.pages.pricebook.addproducts.AddProductClassicPage;
+import salesforce.ui.pages.pricebook.addproducts.AddProductLightningPopUp;
+import salesforce.ui.pages.pricebook.editselectedpricebookentries.AbstractEditSelectedPriceBookEntriesPage;
+import salesforce.ui.pages.pricebook.editselectedpricebookentries.EditSelectedPriceBookEntriesClassicPage;
+import salesforce.ui.pages.pricebook.editselectedpricebookentries.EditSelectedPriceBookEntriesLightingPopUp;
 import salesforce.ui.pages.product.AbstractProductPage;
 import salesforce.ui.pages.product.ProductClassicPage;
 import salesforce.ui.pages.product.ProductLightningPage;
@@ -345,7 +351,7 @@ public class AppPageFactory {
     }
 
     /**
-     * returns PriceBookPage.
+     * Returns PriceBookPage.
      *
      * @return PriceBook instance.
      */
@@ -357,7 +363,7 @@ public class AppPageFactory {
     }
 
     /**
-     * returns ProductPage.
+     * Returns ProductPage.
      *
      * @return Product instance.
      */
@@ -366,5 +372,29 @@ public class AppPageFactory {
             return new ProductClassicPage();
         }
         return new ProductLightningPage();
+    }
+
+    /**
+     * Returns AddProductPage.
+     *
+     * @return AddProduct instance.
+     */
+    public static AbstractAddProduct getAddProductPage() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new AddProductClassicPage();
+        }
+        return new AddProductLightningPopUp();
+    }
+
+    /**
+     * Returns EditSelectedPriceBookEntriesPage.
+     *
+     * @return EditSelectedPriceBookEntries instance.
+     */
+    public static AbstractEditSelectedPriceBookEntriesPage getEditSelectedPriceBookEntriesPage() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new EditSelectedPriceBookEntriesClassicPage();
+        }
+        return new EditSelectedPriceBookEntriesLightingPopUp();
     }
 }

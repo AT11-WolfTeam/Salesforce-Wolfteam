@@ -39,12 +39,12 @@ public class NewProductLightningPopUp extends AbstractNewProductPage {
     }
 
     @Override
-    protected void setProductCode(String productCode) {
+    protected void setProductCode(final String productCode) {
 
     }
 
     @Override
-    protected void setProductDescription(String productDescription) {
+    protected void setProductDescription(final String productDescription) {
 
     }
 

@@ -42,6 +42,9 @@ public class OpportunityProductsLightningPage extends AbstractOpportunityProduct
         choosePriceBookButton.click();
     }
 
+    /**
+     * Clicks on add product button.
+     */
     private void clickOnAddProductsButton() {
         webDriverWait.until(ExpectedConditions.visibilityOf(addProductsButton));
         addProductsButton.click();

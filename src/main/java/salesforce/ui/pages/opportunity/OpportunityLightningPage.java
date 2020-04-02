@@ -246,6 +246,9 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
         clickOnEditItem();
     }
 
+    /**
+     * Clicks on products link.
+     */
     private void clicksOnProductsLink() {
         webDriverWait.until(ExpectedConditions.visibilityOf(productsLink));
         productsLink.click();

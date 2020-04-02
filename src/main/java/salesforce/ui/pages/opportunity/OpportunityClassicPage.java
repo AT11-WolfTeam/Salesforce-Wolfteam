@@ -300,6 +300,9 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
         clickOnEditButton();
     }
 
+    /**
+     * Clicks on add product button.
+     */
     private void clickOnAddProductButton() {
         webDriverWait.until(ExpectedConditions.visibilityOf(addProductButton));
         addProductButton.click();

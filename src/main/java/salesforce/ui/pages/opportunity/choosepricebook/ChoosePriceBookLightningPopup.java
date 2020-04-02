@@ -33,22 +33,32 @@ public class ChoosePriceBookLightningPopup extends AbstractChoosePriceBook {
 
     }
 
+    /**
+     * Clicks on price book dropdownlist.
+     */
     private void clickOnPriceBookDropdownList() {
         webDriverWait.until(ExpectedConditions.visibilityOf(priceBookDropdownList));
         priceBookDropdownList.click();
     }
 
+    /**
+     * Selects price book name.
+     * @param priceBookName value.
+     */
     private void selectPriceBookItem(final String priceBookName) {
         getWebElement(priceBookName, priceBookName).click();
     }
 
+    /**
+     * Clicks on save button.
+     */
     private void clickOnSaveButton() {
         webDriverWait.until(ExpectedConditions.visibilityOf(saveButton));
         saveButton.click();
     }
 
     @Override
-    public void selectPriceBookByName(String priceBookName) {
+    public void selectPriceBookByName(final String priceBookName) {
         clickOnPriceBookDropdownList();
         selectPriceBookItem(priceBookName);
         clickOnSaveButton();

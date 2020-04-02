@@ -373,6 +373,7 @@ public class AppPageFactory {
 
     /**
      * Gets new product instance.
+     *
      * @return new product instance.
      */
     public static AbstractNewProductPage getNewProductPage() {

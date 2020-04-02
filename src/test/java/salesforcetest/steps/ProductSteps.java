@@ -19,7 +19,6 @@ import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 import salesforce.ui.pages.product.AbstractProductPage;
 import salesforce.ui.pages.product.newpricebookentry.AbstractNewPriceBookEntryPage;
 import salesforce.ui.pages.product.newproduct.AbstractNewProductPage;
-
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;

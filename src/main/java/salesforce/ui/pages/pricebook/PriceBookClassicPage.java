@@ -42,4 +42,9 @@ public class PriceBookClassicPage extends AbstractPriceBookPage {
     public String getListPrice() {
         return null;
     }
+
+    @Override
+    public String getProductCode() {
+        return null;
+    }
 }

@@ -10,7 +10,6 @@
 package salesforcetest.steps;
 
 import core.utils.GradleReader;
-import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -24,6 +23,7 @@ import salesforce.ui.pages.pricebook.AbstractPriceBookPage;
 import salesforce.ui.pages.pricebook.addproducts.AbstractAddProduct;
 import salesforce.ui.pages.pricebook.editselectedpricebookentries.AbstractEditSelectedPriceBookEntriesPage;
 import salesforce.ui.pages.pricebook.newpricebook.AbstractNewPriceBookPage;
+
 import java.util.Map;
 
 /**
@@ -43,6 +43,10 @@ public class PriceBookSteps {
     private ToastUpdateObjectMessage toastUpdateObjectMessage;
     private static String userExperience = GradleReader.getInstance().getUserExperience();
     private static final String USER_EXPERIENCE_LIGHTNING = "Lightning";
+    private static final String REGEX_DELETE_SPECIAL_CHARACTERS = "[^\\w\\.,@-]";
+    private static final String COMMA = ",";
+    private static final String COMMA_ZEROS = ",00";
+
 
     /**
      * PriceBookSteps constructor.
@@ -69,15 +73,13 @@ public class PriceBookSteps {
     }
 
     /**
-     * Adds the product.
-     *
-     * @param productName value.
+     * Adds the product created.
      */
-    @When("I add the product {string}")
-    public void addTheProduct(final String productName) {
+    @When("I add the product created")
+    public void addTheProduct() {
         abstractPriceBookPage.clickOnRelatedTab();
         abstractAddProduct = abstractPriceBookPage.clickOnAddProductsButton();
-        abstractEditSelectedPriceBookEntriesPage = abstractAddProduct.checkProductToAdd(productName);
+        abstractEditSelectedPriceBookEntriesPage = abstractAddProduct.checkProductToAdd(context.getProduct().getName());
         abstractEditSelectedPriceBookEntriesPage.clickOnSaveButton();
     }
 
@@ -100,6 +102,17 @@ public class PriceBookSteps {
      */
     @And("the product should be displayed on the table")
     public void theProductShouldBeDisplayedOnTheTable() {
-        throw new PendingException();
+        String actualProductName = abstractPriceBookPage.getProductName(context.getProduct().getName());
+        String actualListPrice = abstractPriceBookPage.getListPrice().replaceAll(REGEX_DELETE_SPECIAL_CHARACTERS, "");
+        String actualProductCode = abstractPriceBookPage.getProductCode();
+        String expectedProductName = context.getProduct().getName();
+        String expectedListPrice = context.getProduct().getListPrice();
+        String expectedProductCode = context.getProduct().getCode();
+        if (!expectedListPrice.contains(COMMA)) {
+            expectedListPrice += COMMA_ZEROS;
+        }
+        Assert.assertEquals(expectedProductName, actualProductName);
+        Assert.assertEquals(expectedListPrice, actualListPrice);
+        Assert.assertEquals(expectedProductCode, actualProductCode);
     }
 }

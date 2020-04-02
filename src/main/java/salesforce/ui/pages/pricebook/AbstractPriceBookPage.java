@@ -53,6 +53,13 @@ public abstract class AbstractPriceBookPage extends AbstractBasePage {
     public abstract String getListPrice();
 
     /**
+     * Gets product code.
+     *
+     * @return product code of a product.
+     */
+    public abstract String getProductCode();
+
+    /**
      * Gets contact information.
      *
      * @param product object.

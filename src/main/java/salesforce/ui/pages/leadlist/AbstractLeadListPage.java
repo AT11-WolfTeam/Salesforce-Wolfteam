@@ -16,9 +16,14 @@ public abstract class AbstractLeadListPage extends AbstractBasePage {
     /**
      * Changes Lead Status of leads.
      *
-     * @param leads contains a list value.
+     * @param leads contains a Lead object list.
      */
-    public abstract void changeLeadStatus(List<Lead> leads);
+    public void changeLeadStatus(final List<Lead> leads) {
+        for (Lead lead : leads) {
+            clickOnCheckButton(lead);
+        }
+        clickOnChangeStatusLeadButton();
+    }
 
     /**
      * Reviews leads in a page.
@@ -27,4 +32,16 @@ public abstract class AbstractLeadListPage extends AbstractBasePage {
      * @return int value.
      */
     public abstract List<Lead> getLeadsUpdated(List<Lead> leads);
+
+    /**
+     * Clicks on a Change Status button.
+     */
+    protected abstract void clickOnChangeStatusLeadButton();
+
+    /**
+     * Clicks on a Check box of a row in lead table.
+     *
+     * @param lead contains an object.
+     */
+    protected abstract void clickOnCheckButton(Lead lead);
 }

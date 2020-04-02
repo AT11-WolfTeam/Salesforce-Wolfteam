@@ -9,6 +9,7 @@
 
 package salesforcetest.steps;
 
+import core.utils.GradleReader;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -36,7 +37,9 @@ public class LeadSteps {
     private PageTransporter pageTransporter;
     private LeadHelper leadHelper;
     private ArrayList<HashMap<String, String>> leadMapList;
+    private static String userExperience = GradleReader.getInstance().getUserExperience();
     private static final int ARRAY_POSITION_FIRST = 0;
+    private static final String USER_EXPERIENCE_LIGHTNING = "Lightning";
     private String leadStatus;
 
     /**
@@ -90,11 +93,13 @@ public class LeadSteps {
     @Then("the application should display this message in Leads Page only for Lightning Experience")
     public void theApplicationShouldDisplayThisMessageInLeadsPageOnlyForLightningExperience(
             final List<String> message) {
-        ToastUpdateObjectMessage toastUpdateObjectMessageSpan = new ToastUpdateObjectMessage();
-        String actualResult = toastUpdateObjectMessageSpan.getMessage();
-        String expectedResult = ReplacerMessages.replaceTransactionMessage(message.get(ARRAY_POSITION_FIRST),
-                String.valueOf(context.getLeads().size()));
-        Assert.assertEquals(actualResult, expectedResult);
+        if (userExperience.equals(USER_EXPERIENCE_LIGHTNING)) {
+            ToastUpdateObjectMessage toastUpdateObjectMessageSpan = new ToastUpdateObjectMessage();
+            String actualResult = toastUpdateObjectMessageSpan.getMessage();
+            String expectedResult = ReplacerMessages.replaceTransactionMessage(message.get(ARRAY_POSITION_FIRST),
+                    String.valueOf(context.getLeads().size()));
+            Assert.assertEquals(actualResult, expectedResult);
+        }
     }
 
     /**

@@ -26,6 +26,10 @@ public class SalesforceUrl {
     private String campaignsClassicUrl;
     private String leadsClassicUrl;
     private String contractsLightningUrl;
+    private String productsLightningUrl;
+    private String productsClassicUrl;
+    private String priceBooksLightningUrl;
+    private String priceBooksClassicUrl;
 
     /**
      * Returns loginUrl value.
@@ -205,5 +209,69 @@ public class SalesforceUrl {
      */
     public void setLeadsClassicUrl(final String leadsClassicUrl) {
         this.leadsClassicUrl = leadsClassicUrl;
+    }
+
+    /**
+     * Gets products lightning url value.
+     * @return lightning url string.
+     */
+    public String getProductsLightningUrl() {
+        return productsLightningUrl;
+    }
+
+    /**
+     * Sets products lightning url value.
+     * @param productsLightningUrl string value.
+     */
+    public void setProductsLightningUrl(final String productsLightningUrl) {
+        this.productsLightningUrl = productsLightningUrl;
+    }
+
+    /**
+     * Gets products classic url value.
+     * @return classic url value.
+     */
+    public String getProductsClassicUrl() {
+        return productsClassicUrl;
+    }
+
+    /**
+     * Sets products classic url.
+     * @param productsClassicUrl string value.
+     */
+    public void setProductsClassicUrl(final String productsClassicUrl) {
+        this.productsClassicUrl = productsClassicUrl;
+    }
+
+    /**
+     * Gets price books lightning url.
+     * @return lightning url.
+     */
+    public String getPriceBooksLightningUrl() {
+        return priceBooksLightningUrl;
+    }
+
+    /**
+     * Sets price books lightning url.
+     * @param priceBooksLightningUrl value.
+     */
+    public void setPriceBooksLightningUrl(final String priceBooksLightningUrl) {
+        this.priceBooksLightningUrl = priceBooksLightningUrl;
+    }
+
+    /**
+     * Gets price books classic url.
+     * @return classic url value.
+     */
+    public String getPriceBooksClassicUrl() {
+        return priceBooksClassicUrl;
+    }
+
+    /**
+     * Sets price books classic url.
+     * @param priceBooksClassicUrl value.
+     */
+    public void setPriceBooksClassicUrl(final String priceBooksClassicUrl) {
+        this.priceBooksClassicUrl = priceBooksClassicUrl;
     }
 }

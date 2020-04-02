@@ -40,6 +40,10 @@ public class PageTransporter {
         urlLightningMap.put("Leads Page", PropertiesReader.getInstance().getSalesforceUrl().getLeadsLightningUrl());
         urlLightningMap.put("Contracts Page", PropertiesReader.getInstance().getSalesforceUrl()
                 .getContractsLightningUrl());
+        urlLightningMap.put("Products Page", PropertiesReader.getInstance().getSalesforceUrl()
+                .getProductsLightningUrl());
+        urlLightningMap.put("PriceBooks Page", PropertiesReader.getInstance().getSalesforceUrl()
+                .getPriceBooksLightningUrl());
         urlClassicMap = new HashMap<>();
         urlClassicMap.put("Login Page", PropertiesReader.getInstance().getSalesforceUrl().getLoginUrl());
         urlClassicMap.put("Sales Page", PropertiesReader.getInstance().getSalesforceUrl().getSalesClassicUrl());
@@ -47,6 +51,9 @@ public class PageTransporter {
                 .getOpportunitiesClassicUrl());
         urlClassicMap.put("Campaigns Page", PropertiesReader.getInstance().getSalesforceUrl().getCampaignsClassicUrl());
         urlClassicMap.put("Leads Page", PropertiesReader.getInstance().getSalesforceUrl().getLeadsClassicUrl());
+        urlClassicMap.put("Products Page", PropertiesReader.getInstance().getSalesforceUrl().getProductsClassicUrl());
+        urlClassicMap.put("PriceBooks Page", PropertiesReader.getInstance().getSalesforceUrl()
+                .getPriceBooksClassicUrl());
     }
 
     /**

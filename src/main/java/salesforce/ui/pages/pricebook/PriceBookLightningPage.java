@@ -25,7 +25,6 @@ public class PriceBookLightningPage extends AbstractPriceBookPage {
     @FindBy(xpath = "//a[@title='Add Products']")
     private WebElement addProductsButton;
 
-
     @Override
     protected void waitUntilPageObjectIsLoaded() {
 

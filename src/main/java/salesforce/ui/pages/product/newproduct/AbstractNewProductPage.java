@@ -14,7 +14,6 @@ import salesforce.entities.constants.ProductConstant;
 import salesforce.ui.pages.AbstractBasePage;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.product.AbstractProductPage;
-
 import java.util.HashMap;
 import java.util.Set;
 

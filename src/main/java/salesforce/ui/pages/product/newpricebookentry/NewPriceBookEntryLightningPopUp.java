@@ -27,7 +27,6 @@ public class NewPriceBookEntryLightningPopUp extends AbstractNewPriceBookEntryPa
              + "//button[@title='Save']")
     private WebElement saveButton;
 
-
     @Override
     protected void waitUntilPageObjectIsLoaded() {
 

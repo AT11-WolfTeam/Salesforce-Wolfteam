@@ -14,7 +14,6 @@ import salesforce.entities.constants.PriceBookConstant;
 import salesforce.ui.pages.AbstractBasePage;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.pricebook.AbstractPriceBookPage;
-
 import java.util.HashMap;
 import java.util.Set;
 

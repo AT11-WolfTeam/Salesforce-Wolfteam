@@ -378,7 +378,7 @@ public class AppPageFactory {
     }
 
     /**
-     * Returns AddProductPage.
+     * Returns AddProductPage instance.
      *
      * @return AddProduct instance.
      */

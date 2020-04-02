@@ -35,7 +35,6 @@ public class PriceBookLightningPage extends AbstractPriceBookPage {
     private static final String PRODUCT_NAME = "//div[1][article]//table//tbody//tr//th[1]//div//a[contains(text()"
          + ",'%s')]";
 
-
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         webDriverWait.until(ExpectedConditions.visibilityOf(relatedTab));
@@ -64,6 +63,4 @@ public class PriceBookLightningPage extends AbstractPriceBookPage {
     public String getListPrice() {
         return  webDriver.findElement(By.xpath(String.format(LIST_PRICE, productNameString))).getText();
     }
-
-
 }

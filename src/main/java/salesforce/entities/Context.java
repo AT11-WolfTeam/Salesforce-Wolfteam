@@ -178,6 +178,7 @@ public class Context {
 
     /**
      * Gets product instance.
+     *
      * @return an instance.
      */
     public Product getProduct() {
@@ -186,6 +187,7 @@ public class Context {
 
     /**
      * Sets product instance.
+     *
      * @param product object.
      */
     public void setProduct(final Product product) {
@@ -194,6 +196,7 @@ public class Context {
 
     /**
      * Gets PriceBook instance.
+     *
      * @return an instance.
      */
     public PriceBook getPriceBook() {

@@ -32,8 +32,7 @@ public class NewProductLightningPopUp extends AbstractNewProductPage {
     @FindBy(xpath = LOCATOR_WINDOW_VIEW_MODE + "//span[text()='Product Description']/../..//textarea")
     private WebElement productDescriptionField;
 
-    @FindBy(xpath = ""
-             + "//button[@title='Save']")
+    @FindBy(xpath = LOCATOR_WINDOW_VIEW_MODE + "//button[@title='Save']")
     private WebElement saveButton;
 
     @Override

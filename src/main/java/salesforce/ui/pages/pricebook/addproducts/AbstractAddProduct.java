@@ -19,6 +19,7 @@ import salesforce.ui.pages.pricebook.editselectedpricebookentries.AbstractEditSe
  * @version 1.0 1 April 2020.
  */
 public abstract class AbstractAddProduct extends AbstractBasePage {
+
     /**
      * Clicks on check box to add.
      *

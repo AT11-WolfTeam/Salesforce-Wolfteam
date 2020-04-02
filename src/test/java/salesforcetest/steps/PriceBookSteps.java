@@ -24,7 +24,6 @@ import salesforce.ui.pages.pricebook.AbstractPriceBookPage;
 import salesforce.ui.pages.pricebook.addproducts.AbstractAddProduct;
 import salesforce.ui.pages.pricebook.editselectedpricebookentries.AbstractEditSelectedPriceBookEntriesPage;
 import salesforce.ui.pages.pricebook.newpricebook.AbstractNewPriceBookPage;
-
 import java.util.Map;
 
 /**
@@ -55,7 +54,7 @@ public class PriceBookSteps {
     }
 
     /**
-     * Creates a new price book with the values of the map.
+     * Creates a new price book with map values
      *
      * @param priceBookValues map values.
      */
@@ -71,6 +70,7 @@ public class PriceBookSteps {
 
     /**
      * Adds the product.
+     *
      * @param productName value.
      */
     @When("I add the product {string}")
@@ -93,7 +93,6 @@ public class PriceBookSteps {
             String messageActual = toastUpdateObjectMessage.getMessage();
             Assert.assertEquals(messageExpected, messageActual);
         }
-
     }
 
     /**

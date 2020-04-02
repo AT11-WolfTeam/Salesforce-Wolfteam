@@ -8,5 +8,3 @@ Feature: Lead
     Then the application should display this message in Leads Page only for Lightning Experience
       | Status was updated for 3 Leads. |
       And Leads Page should display the leads modified
-
-    

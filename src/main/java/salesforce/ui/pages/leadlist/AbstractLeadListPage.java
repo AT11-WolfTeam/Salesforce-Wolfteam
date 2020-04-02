@@ -34,12 +34,12 @@ public abstract class AbstractLeadListPage extends AbstractBasePage {
     public abstract List<Lead> getLeadsUpdated(List<Lead> leads);
 
     /**
-     * Clicks on a button "Change Status".
+     * Clicks on a Change Status button.
      */
     protected abstract void clickOnChangeStatusLeadButton();
 
     /**
-     * Clicks on a "Check box of a row in lead table".
+     * Clicks on a Check box of a row in lead table.
      *
      * @param lead contains an object.
      */

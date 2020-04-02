@@ -67,6 +67,15 @@ import salesforce.ui.pages.opportunity.taskopportunity.TaskOpportunityClassic;
 import salesforce.ui.pages.opportunity.taskopportunity.TaskOpportunityLightning;
 import salesforce.ui.pages.opportunity.newopportunity.AbstractNewOpportunity;
 import salesforce.ui.pages.opportunity.newopportunity.NewOpportunityLightningPage;
+import salesforce.ui.pages.pricebook.AbstractPriceBookPage;
+import salesforce.ui.pages.pricebook.PriceBookClassicPage;
+import salesforce.ui.pages.pricebook.PriceBookLightningPage;
+import salesforce.ui.pages.product.AbstractProductPage;
+import salesforce.ui.pages.product.ProductClassicPage;
+import salesforce.ui.pages.product.ProductLightningPage;
+import salesforce.ui.pages.product.newpricebookentry.AbstractNewPriceBookEntryPage;
+import salesforce.ui.pages.product.newpricebookentry.NewPriceBookEntryClassicPage;
+import salesforce.ui.pages.product.newpricebookentry.NewPriceBookEntryLightningPopUp;
 import salesforce.ui.pages.task.AbstractTask;
 import salesforce.ui.pages.task.TaskClassicPage;
 import salesforce.ui.pages.task.TaskLightningPage;
@@ -321,5 +330,41 @@ public class AppPageFactory {
             return new ContractListClassicPage();
         }
         return new ContractListLightningPage();
+    }
+
+    /**
+     * Returns NewPriceBookEntryPage.
+     *
+     * @return NewPriceBookEntry instance.
+     */
+    public static AbstractNewPriceBookEntryPage getNewPriceBookEntry() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new NewPriceBookEntryClassicPage();
+        }
+        return new NewPriceBookEntryLightningPopUp();
+    }
+
+    /**
+     * returns PriceBookPage.
+     *
+     * @return PriceBook instance.
+     */
+    public static AbstractPriceBookPage getPriceBookPage() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new PriceBookClassicPage();
+        }
+        return new PriceBookLightningPage();
+    }
+
+    /**
+     * returns ProductPage.
+     *
+     * @return Product instance.
+     */
+    public static AbstractProductPage getProductPage() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new ProductClassicPage();
+        }
+        return new ProductLightningPage();
     }
 }

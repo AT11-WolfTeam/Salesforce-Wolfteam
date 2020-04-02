@@ -50,7 +50,7 @@ Feature: Opportunity
       | Subject  | Call to meeting |
       | Status   | In Progress     |
       | Priority | High            |
-      And the task should display the information added
+    Then the task should display the information added
 
 
   @DeletesCampaign @DeletesOpportunity

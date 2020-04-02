@@ -30,10 +30,10 @@ public class PriceBookLightningPage extends AbstractPriceBookPage {
     private WebElement addProductsButton;
 
     private String productNameString;
-
-    private static final String ROW_TABLE = "//div[1][article]//table//tbody//tr[th[1][div[a[contains(text(),'%s')]]] and td[2][span[contains(text(),'%s')]]]";
-    private static final String LIST_PRICE = "//div[1][article]//table//tbody//tr//th[1]//div//a[contains(text(),'%s')]/../../..//td[2]";
-    private static final String PRODUCT_NAME = "//div[1][article]//table//tbody//tr//th[1]//div//a[contains(text(),'%s')]";
+    private static final String LIST_PRICE = "//div[1][article]//table//tbody//tr//th[1]//div//a[contains(text()"
+         + ",'%s')]/../../..//td[2]";
+    private static final String PRODUCT_NAME = "//div[1][article]//table//tbody//tr//th[1]//div//a[contains(text()"
+         + ",'%s')]";
 
 
     @Override
@@ -62,7 +62,7 @@ public class PriceBookLightningPage extends AbstractPriceBookPage {
 
     @Override
     public String getListPrice() {
-        return productNameString = webDriver.findElement(By.xpath(String.format(LIST_PRICE, productNameString))).getText();
+        return  webDriver.findElement(By.xpath(String.format(LIST_PRICE, productNameString))).getText();
     }
 
 

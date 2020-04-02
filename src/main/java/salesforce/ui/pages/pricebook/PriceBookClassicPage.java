@@ -34,12 +34,7 @@ public class PriceBookClassicPage extends AbstractPriceBookPage {
     }
 
     @Override
-    public String getRow(String productName, String listPrice) {
-        return null;
-    }
-
-    @Override
-    public String getProductName(String productName) {
+    public String getProductName(final String productName) {
         return null;
     }
 

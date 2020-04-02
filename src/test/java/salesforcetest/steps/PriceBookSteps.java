@@ -10,6 +10,7 @@
 package salesforcetest.steps;
 
 import core.utils.GradleReader;
+import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -53,6 +54,11 @@ public class PriceBookSteps {
         this.context = context;
     }
 
+    /**
+     * Creates a new price book with the values of the map.
+     *
+     * @param priceBookValues map values.
+     */
     @And("I create a new PriceBook with")
     public void createANewPriceBookWith(final Map<String, String> priceBookValues) {
         abstractTabObjectsPage = AppPageFactory.getTabObjectsPage();
@@ -63,14 +69,23 @@ public class PriceBookSteps {
         abstractPriceBookPage = abstractNewPriceBookPage.setPriceBookInformation(priceBook, priceBookValues.keySet());
     }
 
+    /**
+     * Adds the product.
+     * @param productName value.
+     */
     @When("I add the product {string}")
-    public void addTheProduct(String productName) {
+    public void addTheProduct(final String productName) {
         abstractPriceBookPage.clickOnRelatedTab();
         abstractAddProduct = abstractPriceBookPage.clickOnAddProductsButton();
         abstractEditSelectedPriceBookEntriesPage = abstractAddProduct.checkProductToAdd(productName);
         abstractEditSelectedPriceBookEntriesPage.clickOnSaveButton();
     }
 
+    /**
+     * the application should display the message expected.
+     *
+     * @param messageExpected value.
+     */
     @Then("the application should display {string}")
     public void theApplicationShouldDisplay(final String messageExpected) {
         if (userExperience.equals(USER_EXPERIENCE_LIGHTNING)) {
@@ -81,18 +96,11 @@ public class PriceBookSteps {
 
     }
 
+    /**
+     * the product should be displayed on the table.
+     */
     @And("the product should be displayed on the table")
     public void theProductShouldBeDisplayedOnTheTable() {
-        String row = abstractPriceBookPage.getRow("detergente", "5");
-        String productname = abstractPriceBookPage.getProductName("detergente");
-        String listprice = abstractPriceBookPage.getListPrice();
-        String replaced = listprice.replaceAll("[^\\w\\s.,\\-\\/]+", "");
-        String [] rowNew = row.split(" ");
-       // System.out.println("pos 0  " + rowNew[0]);
-//        System.out.println("pos 1  "+ rowNew[1]);
-        //System.out.println(row);
-        System.out.println("product name:  " + productname);
-        System.out.println("listprice:  " + listprice);
-        System.out.println("Replaced:  " + replaced);
+        throw new PendingException();
     }
 }

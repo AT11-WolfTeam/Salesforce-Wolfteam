@@ -34,7 +34,7 @@ public class Product {
     private Set<String> modifiedProductFields = new HashSet<>();
 
     /**
-     * Gets product name;
+     * Gets product name.
      *
      * @return name value.
      */
@@ -158,7 +158,7 @@ public class Product {
      * @param productInformation map.
      * @return map of visited setter methods.
      */
-    private HashMap<String, Runnable> composeStrategyMap(Map<String, String> productInformation) {
+    private HashMap<String, Runnable> composeStrategyMap(final Map<String, String> productInformation) {
         HashMap<String, Runnable> strategyMap = new HashMap<>();
 
         strategyMap.put(ProductConstant.NAME, () -> setName(productInformation.get(ProductConstant.NAME)));

@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.entities.Lead;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +16,6 @@ import java.util.List;
  * @version 1.0 29 March 2020.
  */
 public class LeadListClassicPage extends AbstractLeadListPage {
-
     @FindBy(css = "ul[class='piped'] input[class='btn'][value='Change Status']")
     private WebElement changeStatusButton;
 

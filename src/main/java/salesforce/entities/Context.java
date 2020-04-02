@@ -29,6 +29,7 @@ public class Context {
     private List<Contact> contacts;
     private TaskOpportunity taskOpportunity;
     private Contract contract;
+    private Product product;
 
     /**
      * Context constructor.
@@ -44,6 +45,7 @@ public class Context {
         this.contacts = new ArrayList<>();
         this.taskOpportunity = new TaskOpportunity();
         this.contract = new Contract();
+        this.product = new Product();
     }
 
     /**
@@ -170,5 +172,21 @@ public class Context {
      */
     public Contract getContract() {
         return contract;
+    }
+
+    /**
+     * Gets product instance.
+     * @return an instance.
+     */
+    public Product getProduct() {
+        return product;
+    }
+
+    /**
+     * Sets product instance.
+     * @param product object.
+     */
+    public void setProduct(final Product product) {
+        this.product = product;
     }
 }

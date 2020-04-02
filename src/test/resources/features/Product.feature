@@ -1,11 +1,16 @@
 Feature: Product
 
+  @DeletesOpportunity
+  @Product
   Scenario: Add a product to opportunity through Standard Price Book
     Given I go to "Products Page"
       And I create a new product with the following values
         | Product Name        | Cookie          |
-        | Product Code        | c1              |
+        | Product Code        | c101            |
         | Product Description | Testing product |
+        | Sales Price         | 5               |
+        | Quantity            | 20              |
+        | Date                | TODAY           |
       And I go to "Products Page"
       And I select the product
       And I add the product to "Standard Price Book"

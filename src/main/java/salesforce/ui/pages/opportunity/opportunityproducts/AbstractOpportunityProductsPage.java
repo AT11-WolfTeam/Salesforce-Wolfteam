@@ -22,6 +22,7 @@ public abstract class AbstractOpportunityProductsPage extends AbstractBasePage {
 
     /**
      * Enables the option to select price book.
+     *
      * @return choose price book instance.
      */
     public abstract AbstractChoosePriceBook choosePriceBook();

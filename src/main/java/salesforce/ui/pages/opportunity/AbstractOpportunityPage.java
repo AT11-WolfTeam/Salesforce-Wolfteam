@@ -64,7 +64,7 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
      * Sets the form of new Campaign.
      *
      * @param opportunity entity.
-     * @param fields      map.
+     * @param fields map.
      */
     public void editOpportunity(final Opportunity opportunity, final Set<String> fields) {
         HashMap<String, Runnable> strategtyMap = composeStrategyMap(opportunity);

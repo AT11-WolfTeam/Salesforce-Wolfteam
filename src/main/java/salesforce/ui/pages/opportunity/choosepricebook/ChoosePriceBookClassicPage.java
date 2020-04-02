@@ -16,7 +16,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
 /**
- * Manages opportunities price books page.
+ * Manages opportunities choose price books page.
  *
  * @author Juan Martinez.
  * @version 1.0 02 april 2020.
@@ -34,6 +34,7 @@ public class ChoosePriceBookClassicPage extends AbstractChoosePriceBook {
 
     /**
      * Gets price book selector web element.
+     *
      * @return selector web element.
      */
     private Select getPriceBookComboBox() {
@@ -42,6 +43,7 @@ public class ChoosePriceBookClassicPage extends AbstractChoosePriceBook {
 
     /**
      * Selects price book on combobox.
+     *
      * @param priceBookName value.
      */
     private void selectPriceBookComboBox(final String priceBookName) {

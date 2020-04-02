@@ -23,12 +23,14 @@ public abstract class AbstractChoosePriceBook extends AbstractBasePage {
 
     /**
      * Selects price book by name.
+     *
      * @param priceBookName value.
      */
     public abstract void selectPriceBookByName(String priceBookName);
 
     /**
      * Gets a web element.
+     *
      * @param xpath value.
      * @param concatText value.
      * @return composed web element.

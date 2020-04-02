@@ -43,6 +43,7 @@ public class ChoosePriceBookLightningPopup extends AbstractChoosePriceBook {
 
     /**
      * Selects price book name.
+     *
      * @param priceBookName value.
      */
     private void selectPriceBookItem(final String priceBookName) {

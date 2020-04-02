@@ -21,11 +21,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  */
 public class NewPriceBookEntryLightningPopUp extends AbstractNewPriceBookEntryPage {
     @FindBy(xpath = "//div[@class='windowViewMode-normal oneRecordActionWrapper isModal active lafPageHost']"
-             + "//input[@class='input uiInputSmartNumber']")
+            + "//input[@class='input uiInputSmartNumber']")
     private WebElement listPriceField;
 
     @FindBy(xpath = "//div[@class='windowViewMode-normal oneRecordActionWrapper isModal active lafPageHost']"
-             + "//button[@title='Save']")
+            + "//button[@title='Save']")
     private WebElement saveButton;
 
     @Override
@@ -35,6 +35,7 @@ public class NewPriceBookEntryLightningPopUp extends AbstractNewPriceBookEntryPa
 
     /**
      * Sets list price book value.
+     *
      * @param listPriceValue string.
      */
     private void setListPriceField(final String listPriceValue) {

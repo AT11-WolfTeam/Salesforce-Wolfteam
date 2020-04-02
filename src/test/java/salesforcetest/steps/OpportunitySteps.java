@@ -81,6 +81,7 @@ public class OpportunitySteps {
     private ArrayList<String> roles = new ArrayList<>();
     private HashMap<String, String> actual;
     private HashMap<String, String> mapNewTask;
+    private HashMap<String, String> mapOpportunityEvent;
     private HashMap<String, String> actualOpportunityValues;
 
     /**
@@ -439,5 +440,12 @@ public class OpportunitySteps {
         String actual = abstractOpportunityListPage.getStageName(context.getOpportunity().getName());
         String expected = opportunity.getStageName();
         org.junit.Assert.assertEquals(expected, actual);
+    }
+
+    @And("I add new Event with")
+    public void iAddNewEventWith(final Map<String, String> eventMap) {
+        AppPageFactory.getOpportunityPage().clickOnNewEventTabButton();
+        context.getOpportunityEvent().processInformation(eventMap);
+        AppPageFactory.getOpportunityEvent().setNewEvent(context.getOpportunityEvent(), eventMap.keySet());
     }
 }

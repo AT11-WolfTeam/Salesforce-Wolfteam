@@ -62,6 +62,9 @@ import salesforce.ui.pages.opportunity.AbstractOpportunityPage;
 import salesforce.ui.pages.opportunity.OpportunityClassicPage;
 import salesforce.ui.pages.opportunity.OpportunityLightningPage;
 import salesforce.ui.pages.opportunity.newopportunity.NewOpportunityClassicPage;
+import salesforce.ui.pages.opportunity.opportunityevent.AbstractOpportunityEvent;
+import salesforce.ui.pages.opportunity.opportunityevent.OpportunityEventClassicPage;
+import salesforce.ui.pages.opportunity.opportunityevent.OpportunityEventLightningPage;
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
 import salesforce.ui.pages.opportunity.taskopportunity.TaskOpportunityClassic;
 import salesforce.ui.pages.opportunity.taskopportunity.TaskOpportunityLightning;
@@ -321,5 +324,17 @@ public class AppPageFactory {
             return new ContractListClassicPage();
         }
         return new ContractListLightningPage();
+    }
+
+    /**
+     * Gets a OpportunityEventPage.
+     *
+     * @return page instance.
+     */
+    public static AbstractOpportunityEvent getOpportunityEvent() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new OpportunityEventLightningPage();
+        }
+        return new OpportunityEventClassicPage();
     }
 }

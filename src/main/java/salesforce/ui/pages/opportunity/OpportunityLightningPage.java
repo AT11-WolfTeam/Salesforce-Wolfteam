@@ -49,6 +49,9 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     @FindBy(css = "button[title='Add']")
     private WebElement addTaskButton;
 
+    @FindBy(css = "li[class*='tabs__item ui'] a[data-tab-name='NewEvent']")
+    private WebElement newEventTabButton;
+
     @FindBy(css = "span[title='Contact Roles']")
     private WebElement contactRoles;
 
@@ -190,6 +193,11 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     public AbstractTaskOpportunity clickAddTask() {
         addTaskButton.click();
         return AppPageFactory.getTaskOpportunity();
+    }
+
+    @Override
+    public void clickOnNewEventTabButton() {
+        newEventTabButton.click();
     }
 
     /**

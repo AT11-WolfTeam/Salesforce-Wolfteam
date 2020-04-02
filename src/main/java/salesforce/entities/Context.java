@@ -22,6 +22,7 @@ public class Context {
     private Account account;
     private Opportunity opportunity;
     private Lead lead;
+    private OpportunityEvent opportunityEvent;
     private List<Account> accounts;
     private List<Opportunity> opportunities;
     private List<Lead> leads;
@@ -44,6 +45,7 @@ public class Context {
         this.contacts = new ArrayList<>();
         this.taskOpportunity = new TaskOpportunity();
         this.contract = new Contract();
+        this.opportunityEvent = new OpportunityEvent();
     }
 
     /**
@@ -170,5 +172,23 @@ public class Context {
      */
     public Contract getContract() {
         return contract;
+    }
+
+    /**
+     * Gets OpportunityEvent.
+     *
+     * @return contract instance.
+     */
+    public OpportunityEvent getOpportunityEvent() {
+        return opportunityEvent;
+    }
+
+    /**
+     * Sets OpportunityEvent.
+     *
+     * @param opportunityEvent contains a OpportunityEvent.
+     */
+    public void setOpportunityEvent(OpportunityEvent opportunityEvent) {
+        this.opportunityEvent = opportunityEvent;
     }
 }

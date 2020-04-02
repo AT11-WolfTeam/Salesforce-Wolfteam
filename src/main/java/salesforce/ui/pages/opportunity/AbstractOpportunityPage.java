@@ -143,6 +143,11 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
     public abstract AbstractTaskOpportunity clickAddTask();
 
     /**
+     * Clicks on New Event tab button.
+     */
+    public abstract void clickOnNewEventTabButton();
+
+    /**
      * Allows to open notes and attachments page.
      */
     public abstract void clickOnNotesAndAttachmentsButton();

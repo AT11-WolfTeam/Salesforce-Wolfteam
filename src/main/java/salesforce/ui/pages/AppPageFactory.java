@@ -85,6 +85,9 @@ import salesforce.ui.pages.product.ProductLightningPage;
 import salesforce.ui.pages.product.newpricebookentry.AbstractNewPriceBookEntryPage;
 import salesforce.ui.pages.product.newpricebookentry.NewPriceBookEntryClassicPage;
 import salesforce.ui.pages.product.newpricebookentry.NewPriceBookEntryLightningPopUp;
+import salesforce.ui.pages.product.newproduct.AbstractNewProductPage;
+import salesforce.ui.pages.product.newproduct.NewProductClassicPage;
+import salesforce.ui.pages.product.newproduct.NewProductLightningPopUp;
 import salesforce.ui.pages.task.AbstractTask;
 import salesforce.ui.pages.task.TaskClassicPage;
 import salesforce.ui.pages.task.TaskLightningPage;
@@ -411,5 +414,17 @@ public class AppPageFactory {
             return new NewPriceBookClassicPage();
         }
         return new NewPriceBookLightningPopUp();
+    }
+
+    /**
+     * Gets new product instance.
+     *
+     * @return new product instance.
+     */
+    public static AbstractNewProductPage getNewProductPage() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new NewProductClassicPage();
+        }
+        return new NewProductLightningPopUp();
     }
 }

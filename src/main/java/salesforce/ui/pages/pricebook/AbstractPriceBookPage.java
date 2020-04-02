@@ -78,7 +78,7 @@ public abstract class AbstractPriceBookPage extends AbstractBasePage {
     private HashMap<String, Supplier> composeStrategyMapGet(final Product product) {
         HashMap<String, Supplier> strategyMap = new HashMap<>();
         strategyMap.put(ProductConstant.NAME, () -> getProductName(product.getName()));
-        strategyMap.put(ProductConstant.SALES_PRICE, () -> getListPrice());
+        strategyMap.put(ProductConstant.LIST_PRICE, () -> getListPrice());
         return strategyMap;
     }
 }

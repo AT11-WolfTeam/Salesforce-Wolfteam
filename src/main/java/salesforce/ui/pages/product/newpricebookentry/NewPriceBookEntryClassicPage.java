@@ -20,4 +20,9 @@ public class NewPriceBookEntryClassicPage extends AbstractNewPriceBookEntryPage 
     protected void waitUntilPageObjectIsLoaded() {
 
     }
+
+    @Override
+    public void saveNewPriceBookEntity(final String listPriceValue, final String priceBookName) {
+
+    }
 }

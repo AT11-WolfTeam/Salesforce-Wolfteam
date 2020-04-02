@@ -54,7 +54,7 @@ public class PriceBookSteps {
     }
 
     /**
-     * Creates a new price book with map values
+     * Creates a new price book with map values.
      *
      * @param priceBookValues map values.
      */

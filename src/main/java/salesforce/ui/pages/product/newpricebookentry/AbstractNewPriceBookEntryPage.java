@@ -18,4 +18,12 @@ import salesforce.ui.pages.AbstractBasePage;
  * @version 1.0 1 April 2020.
  */
 public abstract class AbstractNewPriceBookEntryPage extends AbstractBasePage {
+
+    /**
+     * Saves a new price book entity.
+     *
+     * @param listPriceValue string.
+     * @param priceBookName  value.
+     */
+    public abstract void saveNewPriceBookEntity(String listPriceValue, String priceBookName);
 }

@@ -213,7 +213,7 @@ public class SalesforceUrl {
 
     /**
      * Gets products lightning url value.
-     * @return
+     * @return lightning url string.
      */
     public String getProductsLightningUrl() {
         return productsLightningUrl;

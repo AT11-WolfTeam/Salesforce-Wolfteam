@@ -1,7 +1,7 @@
 Feature: PriceBooks
 
   @wip
-  Scenario: Assign products to a new Price Book
+  Scenario: Assign product to a new Price Book
     Given I go to "PriceBooks Page"
       And I create a new PriceBook with
       |Price Book Name| New Price Book|

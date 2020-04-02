@@ -10,7 +10,6 @@
 package salesforce.entities;
 
 import salesforce.entities.constants.PriceBookConstant;
-
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;

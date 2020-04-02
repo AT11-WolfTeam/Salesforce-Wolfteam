@@ -24,6 +24,7 @@ import java.util.function.Supplier;
  * @version 1.0 1 April 2020.
  */
 public abstract class AbstractPriceBookPage extends AbstractBasePage {
+
     /**
      * Clicks on related tab.
      */

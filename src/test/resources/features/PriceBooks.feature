@@ -8,4 +8,3 @@ Feature: PriceBooks
       When I add the product "detergentes"
     Then the application should display "1 record was updated."
     And the product should be displayed on the table
-    

@@ -10,14 +10,14 @@
 package salesforcetest.runner;
 
 import core.report.Report;
-
 import core.selenium.WebDriverManager;
-
+import io.cucumber.java.Scenario;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
-
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-
 import salesforce.ui.pages.LoginPage;
 import salesforce.ui.pages.PageTransporter;
 
@@ -29,6 +29,14 @@ import salesforce.ui.pages.PageTransporter;
  */
 public class RunCukeTest extends AbstractTestNGCucumberTests {
     private static final String LOGIN_PAGE = "Login Page";
+    private WebDriver webDriver;
+
+    /**
+     * Builds a RunCukeTest.
+     */
+    public RunCukeTest() {
+        this.webDriver = WebDriverManager.getInstance().getWebDriver();
+    }
 
     /**
      * Executes code block before tests execution.
@@ -43,10 +51,16 @@ public class RunCukeTest extends AbstractTestNGCucumberTests {
 
     /**
      * Executes code block after tests execution.
+     *
+     * @param scenario contains a Scenario.
      */
     @AfterTest
-    public void afterExecution() {
+    public void afterExecution(final Scenario scenario) {
         Report.getInstance().generateReport();
         WebDriverManager.getInstance().quitDriver();
+        if (scenario.isFailed()) {
+            byte[] screenshot = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES);
+            scenario.embed(screenshot, "image/png");
+        }
     }
 }

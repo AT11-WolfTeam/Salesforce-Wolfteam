@@ -92,4 +92,32 @@ public class UtilSalesforce {
         } while (++i < INTENTS);
         throw new RuntimeException(MESSAGE_EXCEPTION + webElement.toString());
     }
+
+    /**
+     * Retries clicks on a tab when a webElement is no visible.
+     *
+     * @param listBoxWebElement contains a listBox.
+     * @param tabWebElement contains a tab.
+     * @param webElementIsVisible contains an element condition.
+     * @param intervalTime contains time value.
+     */
+    public static void retryClickInTab(final WebElement listBoxWebElement, final WebElement tabWebElement,
+                                       final WebElement webElementIsVisible, final int intervalTime) {
+        int i = 0;
+
+        do {
+            try {
+                if (!isElementDisplayed(webElementIsVisible, intervalTime)) {
+                    listBoxWebElement.click();
+                    tabWebElement.click();
+                    Thread.sleep(MILLISECONDS_SLEEP);
+                } else {
+                    return;
+                }
+            } catch (RuntimeException | InterruptedException Ex) {
+                System.out.println(MESSAGE_RETRY);
+            }
+        } while (++i < INTENTS);
+        throw new RuntimeException(MESSAGE_EXCEPTION + listBoxWebElement.toString());
+    }
 }

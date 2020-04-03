@@ -31,6 +31,9 @@ public class RunCukeTest extends AbstractTestNGCucumberTests {
     private static final String LOGIN_PAGE = "Login Page";
     private WebDriver webDriver;
 
+    /**
+     * Builds a RunCukeTest.
+     */
     public RunCukeTest() {
         this.webDriver = WebDriverManager.getInstance().getWebDriver();
     }

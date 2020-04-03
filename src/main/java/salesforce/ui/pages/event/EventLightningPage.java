@@ -48,12 +48,12 @@ public class EventLightningPage extends AbstractEventPage {
 
     @Override
     protected String getStartDate() {
-        return DateFormatter.reverseFormatDateUiEvent(startDateLabel.getText());
+        return DateFormatter.formatQuitTimeFormatSalesforce(startDateLabel.getText());
     }
 
     @Override
     protected String getEndDate() {
-        return DateFormatter.reverseFormatDateUiEvent(endDateLabel.getText());
+        return DateFormatter.formatQuitTimeFormatSalesforce(endDateLabel.getText());
     }
 
     @Override

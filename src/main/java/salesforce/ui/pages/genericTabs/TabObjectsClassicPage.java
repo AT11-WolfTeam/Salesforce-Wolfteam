@@ -33,6 +33,8 @@ public class TabObjectsClassicPage extends AbstractTabObjectsPage {
     private WebElement goButton;
     protected static final String NAME_OPPORTUNITY = "//th//a[contains(text(),'%s')]";
 
+    private static  final int ZERO = 0;
+
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         webDriverWait.until(ExpectedConditions.visibilityOf(goButton));
@@ -41,7 +43,12 @@ public class TabObjectsClassicPage extends AbstractTabObjectsPage {
     @Override
     public void displayList(final String listName) {
         Select select = new Select(opportunityListSelect);
-        select.selectByVisibleText(listName);
+        String actualOption = select.getFirstSelectedOption().getText();
+        if (actualOption.compareTo(listName) == ZERO) {
+            goButton.click();
+        } else {
+            select.selectByVisibleText(listName);
+        }
     }
 
     @Override

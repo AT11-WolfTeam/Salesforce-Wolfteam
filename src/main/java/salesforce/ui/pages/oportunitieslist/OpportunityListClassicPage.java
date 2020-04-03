@@ -24,7 +24,7 @@ import salesforce.ui.pages.opportunity.OpportunityClassicPage;
  */
 public class OpportunityListClassicPage extends AbstractOpportunityListPage {
 
-    @FindBy(css = "li[class='lastItem'] input")
+    @FindBy(css = "input[id*='refresh']")
     private WebElement refreshButton;
 
     private static final String OPPORTUNITY_CELL_PARTIAL_LOCATOR =

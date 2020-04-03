@@ -29,6 +29,7 @@ public final class DateFormatter {
     private static final int DAYS = 0;
     private static final int MONTHS = 1;
     private static final int YEARS = 2;
+    private static final int ZERO = 0;
     private static final String TODAY = "TODAY";
     private static final String BEFORE = "BEFORE";
     private static final String AFTER = "AFTER";
@@ -37,6 +38,7 @@ public final class DateFormatter {
     private static final String FORMAT_API = "yyyy-MM-dd";
     private static final String FORMAT_UI = "M/d/yyyy";
     private static final String FORMAT_UI_EVENT = "MMM d, yyyy";
+    private static final String FORMAT_SALESFORCE = "M/d/yyyy";
     private static String[] date;
     private static final int LIST_SIZE = 3;
     private static Date today = new Date(System.currentTimeMillis());
@@ -191,20 +193,30 @@ public final class DateFormatter {
      * @return string value.
      */
     public static String formatDateUiEvent(final String date) {
-        String dateApi = formatDate(date);
-        LocalDate newDate = LocalDate.parse(dateApi, DateTimeFormatter.ofPattern(FORMAT_API));
+        LocalDate newDate = LocalDate.parse(date, DateTimeFormatter.ofPattern(FORMAT_SALESFORCE));
         return newDate.format(DateTimeFormatter.ofPattern(FORMAT_UI_EVENT, new Locale("en")));
     }
 
     /**
-     * Converts format date to format to use on UI for Event.
+     * Quits Time of format date Salesforce.
      *
      * @param date value.
      * @return string value.
      */
-    public static String reverseFormatDateUiEvent(final String date) {
+    public static String formatQuitTimeFormatSalesforce(final String date) {
         String[] splitDate = date.split(",");
-        LocalDate newDate = LocalDate.parse(splitDate[0], DateTimeFormatter.ofPattern("M/d/yyyy"));
-        return newDate.format(DateTimeFormatter.ofPattern(FORMAT_UI_EVENT, new Locale("en")));
+        return splitDate[ZERO];
+    }
+
+    /**
+     * Converts format date to format Salesforce.
+     *
+     * @param date value.
+     * @return string value.
+     */
+    public static String formatSalesforce(final String date) {
+        String dateApi = formatDate(date);
+        LocalDate newDate = LocalDate.parse(dateApi, DateTimeFormatter.ofPattern(FORMAT_API));
+        return newDate.format(DateTimeFormatter.ofPattern(FORMAT_SALESFORCE, new Locale("en")));
     }
 }

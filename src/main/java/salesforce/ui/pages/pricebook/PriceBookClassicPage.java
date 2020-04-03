@@ -30,7 +30,7 @@ public class PriceBookClassicPage extends AbstractPriceBookPage {
     private static final String PRODUCT_NAME = "//tr//th//a[text()='%s']";
     private static final String LIST_PRICE = "//tr//th//a[text()='%s']/../..//td[3]";
     private static final String PRODUCT_CODE = "//tr//th//a[text()='%s']/../..//td[2]";
-    
+
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         webDriverWait.until(ExpectedConditions.visibilityOf(addButton));

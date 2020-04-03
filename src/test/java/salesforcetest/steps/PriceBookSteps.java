@@ -76,7 +76,6 @@ public class PriceBookSteps {
      */
     @When("I add the product created")
     public void addTheProduct() {
-        abstractPriceBookPage.clickOnRelatedTab();
         abstractAddProduct = abstractPriceBookPage.clickOnAddProductsButton();
         abstractEditSelectedPriceBookEntriesPage = abstractAddProduct.checkProductToAdd(context.getProduct().getName());
         abstractEditSelectedPriceBookEntriesPage.clickOnSaveButton();
@@ -87,7 +86,7 @@ public class PriceBookSteps {
      *
      * @param messageExpected value.
      */
-    @Then("the application should display {string}")
+    @Then("the application should display {string} only for Lightning Experience")
     public void theApplicationShouldDisplay(final String messageExpected) {
         if (userExperience.equals(USER_EXPERIENCE_LIGHTNING)) {
             toastUpdateObjectMessage = new ToastUpdateObjectMessage();

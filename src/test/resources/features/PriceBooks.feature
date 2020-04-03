@@ -4,8 +4,8 @@ Feature: PriceBooks
   Scenario: Assign product to a new Price Book
     Given I go to "Products Page"
       And I create a new product with the following values
-      | Product Name        | Oreo            |
-      | Product Code        | coke01          |
+      | Product Name        | Axe Perfume     |
+      | Product Code        | perfume03       |
       | Product Description | Testing product |
       | List Price          | 12              |
       And I go to "Products Page"
@@ -15,5 +15,5 @@ Feature: PriceBooks
       And I create a new PriceBook with
       | Price Book Name | New Price Book |
     When I add the product created
-    Then the application should display "1 record was updated."
+    Then the application should display "1 record was updated." only for Lightning Experience
       And the product should be displayed on the table

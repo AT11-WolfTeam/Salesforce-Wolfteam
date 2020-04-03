@@ -296,7 +296,7 @@ public class OpportunitySteps {
     /**
      * Validate the addition information inserted.
      */
-    @And("the task should display the information added")
+    @Then("the task should display the information added")
     public void theTaskShouldDisplayTheInformationAdded() {
         HashMap<String, String> mapTaskValidate = abstractTask.getTaskDetails(taskOpportunity, mapNewTask.keySet());
         Assert.assertEquals(mapTaskValidate, context.getTaskOpportunity().getTaskEdited());

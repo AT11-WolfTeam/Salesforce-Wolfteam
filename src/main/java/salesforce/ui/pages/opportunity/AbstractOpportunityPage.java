@@ -14,6 +14,7 @@ import salesforce.entities.Opportunity;
 import salesforce.entities.constants.OpportunityConstant;
 import salesforce.ui.pages.AbstractBasePage;
 import salesforce.ui.pages.opportunity.opportunitycontactroles.AbstractContactRolesPage;
+import salesforce.ui.pages.opportunity.opportunityproducts.AbstractOpportunityProductsPage;
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
 import java.util.HashMap;
 import java.util.Set;
@@ -170,4 +171,11 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
      * @param subject contains a event name.
      */
     public abstract void clickOnEvent(String subject);
+
+    /**
+     * Allows to open products of the opportunity.
+     *
+     * @return opportunity products instance.
+     */
+    public abstract AbstractOpportunityProductsPage clickOnProducts();
 }

@@ -18,6 +18,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.opportunity.opportunitycontactroles.AbstractContactRolesPage;
 import salesforce.ui.pages.opportunity.opportunitycontactroles.ContactRolesClassicPage;
+import salesforce.ui.pages.opportunity.opportunityproducts.AbstractOpportunityProductsPage;
+import salesforce.ui.pages.opportunity.opportunityproducts.OpportunityProductsClassicPage;
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
 import salesforce.ui.pages.owner.OwnerEditClassicPage;
 import salesforce.utils.UtilSalesforce;
@@ -68,6 +70,9 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
 
     @FindBy(xpath = "//input[@name='tsk5__09D3h0000012ZVJ']")
     private WebElement subjectField;
+
+    @FindBy(css = "input[name='addProd']")
+    private WebElement addProductButton;
 
     private String parentHandle;
     protected static final String CAMPAIGN_NAME = "//th[@scope='row']//a[contains(text(),'%s')]";
@@ -303,5 +308,19 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     @Override
     public void clickOnEvent(final String subject) {
         //Todo
+    }
+
+    /**
+     * Clicks on add product button.
+     */
+    private void clickOnAddProductButton() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(addProductButton));
+        addProductButton.click();
+    }
+
+    @Override
+    public AbstractOpportunityProductsPage clickOnProducts() {
+        clickOnAddProductButton();
+        return new OpportunityProductsClassicPage();
     }
 }

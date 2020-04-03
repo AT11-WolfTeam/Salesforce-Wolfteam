@@ -73,6 +73,27 @@ import salesforce.ui.pages.opportunity.taskopportunity.TaskOpportunityClassic;
 import salesforce.ui.pages.opportunity.taskopportunity.TaskOpportunityLightning;
 import salesforce.ui.pages.opportunity.newopportunity.AbstractNewOpportunity;
 import salesforce.ui.pages.opportunity.newopportunity.NewOpportunityLightningPage;
+import salesforce.ui.pages.pricebook.AbstractPriceBookPage;
+import salesforce.ui.pages.pricebook.PriceBookClassicPage;
+import salesforce.ui.pages.pricebook.PriceBookLightningPage;
+import salesforce.ui.pages.pricebook.addproducts.AbstractAddProduct;
+import salesforce.ui.pages.pricebook.addproducts.AddProductClassicPage;
+import salesforce.ui.pages.pricebook.addproducts.AddProductLightningPopUp;
+import salesforce.ui.pages.pricebook.editselectedpricebookentries.AbstractEditSelectedPriceBookEntriesPage;
+import salesforce.ui.pages.pricebook.editselectedpricebookentries.EditSelectedPriceBookEntriesClassicPage;
+import salesforce.ui.pages.pricebook.editselectedpricebookentries.EditSelectedPriceBookEntriesLightingPopUp;
+import salesforce.ui.pages.pricebook.newpricebook.AbstractNewPriceBookPage;
+import salesforce.ui.pages.pricebook.newpricebook.NewPriceBookClassicPage;
+import salesforce.ui.pages.pricebook.newpricebook.NewPriceBookLightningPopUp;
+import salesforce.ui.pages.product.AbstractProductPage;
+import salesforce.ui.pages.product.ProductClassicPage;
+import salesforce.ui.pages.product.ProductLightningPage;
+import salesforce.ui.pages.product.newpricebookentry.AbstractNewPriceBookEntryPage;
+import salesforce.ui.pages.product.newpricebookentry.NewPriceBookEntryClassicPage;
+import salesforce.ui.pages.product.newpricebookentry.NewPriceBookEntryLightningPopUp;
+import salesforce.ui.pages.product.newproduct.AbstractNewProductPage;
+import salesforce.ui.pages.product.newproduct.NewProductClassicPage;
+import salesforce.ui.pages.product.newproduct.NewProductLightningPopUp;
 import salesforce.ui.pages.task.AbstractTask;
 import salesforce.ui.pages.task.TaskClassicPage;
 import salesforce.ui.pages.task.TaskLightningPage;
@@ -351,5 +372,89 @@ public class AppPageFactory {
             return new EventClassicPage();
         }
         return new EventLightningPage();
+    }
+
+    /**
+     * Returns NewPriceBookEntryPage.
+     *
+     * @return NewPriceBookEntry instance.
+     */
+    public static AbstractNewPriceBookEntryPage getNewPriceBookEntry() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new NewPriceBookEntryClassicPage();
+        }
+        return new NewPriceBookEntryLightningPopUp();
+    }
+
+    /**
+     * Returns PriceBookPage.
+     *
+     * @return PriceBook instance.
+     */
+    public static AbstractPriceBookPage getPriceBookPage() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new PriceBookClassicPage();
+        }
+        return new PriceBookLightningPage();
+    }
+
+    /**
+     * Returns ProductPage.
+     *
+     * @return Product instance.
+     */
+    public static AbstractProductPage getProductPage() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new ProductClassicPage();
+        }
+        return new ProductLightningPage();
+    }
+
+    /**
+     * Returns AddProductPage instance.
+     *
+     * @return AddProduct instance.
+     */
+    public static AbstractAddProduct getAddProductPage() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new AddProductClassicPage();
+        }
+        return new AddProductLightningPopUp();
+    }
+
+    /**
+     * Returns EditSelectedPriceBookEntriesPage.
+     *
+     * @return EditSelectedPriceBookEntries instance.
+     */
+    public static AbstractEditSelectedPriceBookEntriesPage getEditSelectedPriceBookEntriesPage() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new EditSelectedPriceBookEntriesClassicPage();
+        }
+        return new EditSelectedPriceBookEntriesLightingPopUp();
+    }
+
+    /**
+     * Returns NewPriceBookPage.
+     *
+     * @return NewPriceBook instance.
+     */
+    public static AbstractNewPriceBookPage getNewPriceBookPage() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new NewPriceBookClassicPage();
+        }
+        return new NewPriceBookLightningPopUp();
+    }
+
+    /**
+     * Gets new product instance.
+     *
+     * @return new product instance.
+     */
+    public static AbstractNewProductPage getNewProductPage() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new NewProductClassicPage();
+        }
+        return new NewProductLightningPopUp();
     }
 }

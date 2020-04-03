@@ -18,6 +18,8 @@ import org.openqa.selenium.support.ui.Select;
 import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.opportunity.opportunitycontactroles.AbstractContactRolesPage;
 import salesforce.ui.pages.opportunity.opportunitycontactroles.ContactRolesLightningPage;
+import salesforce.ui.pages.opportunity.opportunityproducts.AbstractOpportunityProductsPage;
+import salesforce.ui.pages.opportunity.opportunityproducts.OpportunityProductsLightningPage;
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
 import salesforce.ui.pages.owner.ChangeOpportunityOwnerLightningPopup;
 
@@ -88,8 +90,10 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     @FindBy(xpath = "//div[@class='modal-container slds-modal__container']//button[@title='Save']")
     private WebElement saveCloseOpportunity;
 
-    private static final String EVENT_LINK_PARTIAL_LOCATOR = "//a[contains(text(), '%s')]";
+    @FindBy(css = "span[title='Products']")
+    private WebElement productsLink;
 
+    private static final String EVENT_LINK_PARTIAL_LOCATOR = "//a[contains(text(), '%s')]";
     private WebElement stageSelected;
     private Select select;
 
@@ -255,5 +259,19 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     public void clickOnEvent(final String subject) {
         String eventLinkLocator = String.format(EVENT_LINK_PARTIAL_LOCATOR, subject);
         webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(eventLinkLocator))).click();
+    }
+
+    /**
+     * Clicks on products link.
+     */
+    private void clicksOnProductsLink() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(productsLink));
+        productsLink.click();
+    }
+
+    @Override
+    public AbstractOpportunityProductsPage clickOnProducts() {
+        clicksOnProductsLink();
+        return new OpportunityProductsLightningPage();
     }
 }

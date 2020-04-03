@@ -48,6 +48,8 @@ public class RunCukeTest extends AbstractTestNGCucumberTests {
 
     /**
      * Executes code block after tests execution.
+     *
+     * @param scenario contains a Scenario.
      */
     @AfterTest
     public void afterExecution(final Scenario scenario) {

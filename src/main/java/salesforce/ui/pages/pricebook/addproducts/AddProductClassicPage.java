@@ -13,8 +13,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import salesforce.ui.pages.AppPageFactory;
-import salesforce.ui.pages.pricebook.editselectedpricebookentries.AbstractEditSelectedPriceBookEntriesPage;
 
 /**
  * Defines AddProductClassicPage.
@@ -38,9 +36,8 @@ public class AddProductClassicPage extends AbstractAddProduct {
     }
 
     @Override
-    public AbstractEditSelectedPriceBookEntriesPage checkProductToAdd(final String productName) {
+    public void checkProductToAdd(final String productName) {
         webDriver.findElement(By.xpath(String.format(PRODUCT_CHECK_BOX, productName))).click();
         selectButton.click();
-        return AppPageFactory.getEditSelectedPriceBookEntriesPage();
     }
 }

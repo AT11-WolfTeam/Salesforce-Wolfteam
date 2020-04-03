@@ -16,6 +16,7 @@ import salesforce.ui.pages.AbstractBasePage;
 import salesforce.ui.pages.opportunity.opportunitycontactroles.AbstractContactRolesPage;
 import salesforce.ui.pages.opportunity.opportunityproducts.AbstractOpportunityProductsPage;
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.function.Supplier;
@@ -178,4 +179,12 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
      * @return opportunity products instance.
      */
     public abstract AbstractOpportunityProductsPage clickOnProducts();
+
+    /**
+     * Validates product information.
+     *
+     * @param productName value
+     * @return list of values.
+     */
+    public abstract ArrayList<String> validateProductInformation(String productName);
 }

@@ -9,6 +9,7 @@
 
 package salesforce.ui.pages.pricebook.editselectedpricebookentries;
 
+import salesforce.entities.Product;
 import salesforce.ui.pages.AbstractBasePage;
 
 /**
@@ -23,4 +24,11 @@ public abstract class AbstractEditSelectedPriceBookEntriesPage extends AbstractB
      * Clicks on save button.
      */
     public abstract void clickOnSaveButton();
+
+    /**
+     * Completes product values.
+     *
+     * @param product instance.
+     */
+    public abstract void completeProductValues(Product product);
 }

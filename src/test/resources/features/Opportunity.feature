@@ -92,16 +92,17 @@ Feature: Opportunity
       | Task [Task Name] was created. |
     And the task should display the information added
 
-
+    
   @DeletesOpportunity
   Scenario: Add new event with required values
     Given I create 1 "Basic" opportunities
     When I go to "Opportunities Page"
       And I search for the opportunity in list "Recently Viewed Opportunities"
       And I add new Event with
-        | Subject    | Example Subject                        |
-        | Start Date | TODAY                                  |
-        | End Date   | 3 DAYS-0 MONTH-0 YEAR-AFTER-FROM TODAY |
+        | Subject     | Example Subject                        |
+        | Start Date  | TODAY                                  |
+        | End Date    | 3 DAYS-0 MONTH-0 YEAR-AFTER-FROM TODAY |
+        | Assigned To | Admin User                             |
     Then the application should display this message in Opportunity Page
       | Event Example Subject was created. |
     And Upcoming & Overview tab contains the event created

@@ -1,13 +1,16 @@
 package salesforce.entities;
 
 import salesforce.entities.constants.EventConstant;
+import salesforce.entities.constants.TaskConstant;
 import salesforce.utils.DateFormatter;
+import salesforce.utils.JsonFileReader;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Supplier;
 
 /**
  * Manages OpportunityEvent.
@@ -26,6 +29,9 @@ public class OpportunityEvent {
     private String relatedTo;
     private String assignedTo;
     private String location;
+
+    private static final String JSON_CONFIG_FILE = "config.json";
+    private Set<String> modifiedOpportunityEventFields = new HashSet<>();
 
     /**
      * Gets a subject value.
@@ -92,7 +98,7 @@ public class OpportunityEvent {
      * @param assignedTo contains a String value.
      */
     public void setAssignedTo(final String assignedTo) {
-        this.assignedTo = assignedTo;
+        this.assignedTo = new JsonFileReader(JSON_CONFIG_FILE).getUser(assignedTo).getUsername();
     }
 
     /**
@@ -111,6 +117,20 @@ public class OpportunityEvent {
     }
 
     /**
+     * Gets attributes.
+     *
+     * @return HashMap values.
+     */
+    private HashMap<String, Supplier> composeOpportunityEventDetailsToGet() {
+        HashMap<String, Supplier> strategyMap = new HashMap<>();
+        strategyMap.put(EventConstant.SUBJECT, this::getSubject);
+        strategyMap.put(EventConstant.START_DATE, this::getStartDate);
+        strategyMap.put(EventConstant.END_DATE, this::getEndDate);
+        strategyMap.put(EventConstant.ASSIGNED_TO, this::getAssignedTo);
+        return strategyMap;
+    }
+
+    /**
      * Strategy process information.
      *
      * @param mapEventOpportunity map.
@@ -118,5 +138,20 @@ public class OpportunityEvent {
     public void processInformation(final Map<String, String> mapEventOpportunity) {
         HashMap<String, Runnable> strategyMap = composeStrategy(mapEventOpportunity);
         mapEventOpportunity.keySet().forEach(key -> strategyMap.get(key).run());
+        modifiedOpportunityEventFields.addAll(mapEventOpportunity.keySet());
+    }
+
+    /**
+     * Gets map of the information set.
+     *
+     * @return HashMap values.
+     */
+    public HashMap<String, String> getOpportunityEventEdited() {
+        HashMap<String, String> taskValues = new HashMap<>();
+        HashMap<String, Supplier> strategyMapTaskEdited = composeOpportunityEventDetailsToGet();
+        for (String key : modifiedOpportunityEventFields) {
+            taskValues.put(key, strategyMapTaskEdited.get(key).get().toString());
+        }
+        return taskValues;
     }
 }

@@ -192,7 +192,19 @@ public final class DateFormatter {
      */
     public static String formatDateUiEvent(final String date) {
         String dateApi = formatDate(date);
-        LocalDate newDate = LocalDate.parse(dateApi, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        LocalDate newDate = LocalDate.parse(dateApi, DateTimeFormatter.ofPattern(FORMAT_API));
+        return newDate.format(DateTimeFormatter.ofPattern(FORMAT_UI_EVENT, new Locale("en")));
+    }
+
+    /**
+     * Converts format date to format to use on UI for Event.
+     *
+     * @param date value.
+     * @return string value.
+     */
+    public static String reverseFormatDateUiEvent(final String date) {
+        String[] splitDate = date.split(",");
+        LocalDate newDate = LocalDate.parse(splitDate[0], DateTimeFormatter.ofPattern("M/d/yyyy"));
         return newDate.format(DateTimeFormatter.ofPattern(FORMAT_UI_EVENT, new Locale("en")));
     }
 }

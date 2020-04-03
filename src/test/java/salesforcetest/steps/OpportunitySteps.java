@@ -474,6 +474,8 @@ public class OpportunitySteps {
     @And("Upcoming & Overview tab contains the event created")
     public void upcomingOverviewTabContainsTheEventCreated() {
         AppPageFactory.getOpportunityPage().clickOnEvent(context.getOpportunityEvent().getSubject());
-        AppPageFactory.getEventPage().getEventResult(mapOpportunityEvent.keySet());
+        Map<String, String> actualResult = AppPageFactory.getEventPage().getEventResult(mapOpportunityEvent.keySet());
+        Map<String, String> expectedResult = context.getOpportunityEvent().getOpportunityEventEdited();
+        Assert.assertEquals(actualResult, expectedResult);
     }
 }

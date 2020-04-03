@@ -74,7 +74,7 @@ public abstract class AbstractEventPage extends AbstractBasePage {
     public HashMap<String, String> getEventResult(final Set<String> fields) {
         HashMap<String, String> values = new HashMap<>();
         HashMap<String, Supplier> strategyMap = composeStrategyMap();
-        for (String field: strategyMap.keySet()) {
+        for (String field: fields) {
             values.put(field, strategyMap.get(field).get().toString());
         }
         return values;

@@ -12,6 +12,7 @@ package salesforce.ui.pages.event;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import salesforce.utils.DateFormatter;
 
 /**
  * Manages EventLightningPage.
@@ -47,12 +48,12 @@ public class EventLightningPage extends AbstractEventPage {
 
     @Override
     protected String getStartDate() {
-        return startDateLabel.getText();
+        return DateFormatter.reverseFormatDateUiEvent(startDateLabel.getText());
     }
 
     @Override
     protected String getEndDate() {
-        return endDateLabel.getText();
+        return DateFormatter.reverseFormatDateUiEvent(endDateLabel.getText());
     }
 
     @Override

@@ -44,6 +44,7 @@ public class AddProductLightningPopUp extends AbstractAddProduct {
 
     /**
      * Checks product by name.
+     *
      * @param productName value.
      */
     private void checkProduct(final String productName) {

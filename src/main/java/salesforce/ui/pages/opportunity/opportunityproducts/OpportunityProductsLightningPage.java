@@ -81,6 +81,7 @@ public class OpportunityProductsLightningPage extends AbstractOpportunityProduct
 
     /**
      * Gets opportunity name.
+     *
      * @param opportunityName value.
      * @return opportunity name text.
      */
@@ -90,6 +91,7 @@ public class OpportunityProductsLightningPage extends AbstractOpportunityProduct
 
     /**
      * Gets product name.
+     *
      * @param productName value.
      * @return product name text.
      */
@@ -99,6 +101,7 @@ public class OpportunityProductsLightningPage extends AbstractOpportunityProduct
 
     /**
      * Gets substring value.
+     *
      * @param string value.
      * @param position value.
      * @return substring.
@@ -110,6 +113,7 @@ public class OpportunityProductsLightningPage extends AbstractOpportunityProduct
 
     /**
      * Gets product quantity.
+     *
      * @param productName value.
      * @return product quantity text.
      */
@@ -121,6 +125,7 @@ public class OpportunityProductsLightningPage extends AbstractOpportunityProduct
 
     /**
      * Gets product sales price.
+     *
      * @param productName value.
      * @return product sales price text.
      */
@@ -132,6 +137,7 @@ public class OpportunityProductsLightningPage extends AbstractOpportunityProduct
 
     /**
      * Gets product date.
+     *
      * @param productName value.
      * @return product date text.
      */

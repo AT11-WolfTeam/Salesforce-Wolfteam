@@ -29,6 +29,7 @@ public final class DateFormatter {
     private static final int DAYS = 0;
     private static final int MONTHS = 1;
     private static final int YEARS = 2;
+    private static final int ZERO = 0;
     private static final String TODAY = "TODAY";
     private static final String BEFORE = "BEFORE";
     private static final String AFTER = "AFTER";
@@ -204,7 +205,7 @@ public final class DateFormatter {
      */
     public static String formatQuitTimeFormatSalesforce(final String date) {
         String[] splitDate = date.split(",");
-        return splitDate[0];
+        return splitDate[ZERO];
     }
 
     /**

@@ -37,6 +37,11 @@ public class OpportunityEventClassicPage extends AbstractOpportunityEvent {
     }
 
     @Override
+    protected void clickOnSaveButton() {
+
+    }
+
+    @Override
     protected void waitUntilPageObjectIsLoaded() {
 
     }

@@ -27,8 +27,6 @@ public class OpportunityEvent {
     private String assignedTo;
     private String location;
 
-    private Set<String> modifiedEventFields = new HashSet<>();
-
     /**
      * Gets a subject value.
      *
@@ -42,7 +40,7 @@ public class OpportunityEvent {
      * Sets a subject value.
      * @param subject contains a String value.
      */
-    public void setSubject(String subject) {
+    public void setSubject(final String subject) {
         this.subject = subject;
     }
 
@@ -59,8 +57,8 @@ public class OpportunityEvent {
      * Sets a startDate value.
      * @param startDate contains a String value.
      */
-    public void setStartDate(String startDate) {
-        this.startDate = DateFormatter.formatDateUi(startDate);
+    public void setStartDate(final String startDate) {
+        this.startDate = DateFormatter.formatDateUiEvent(startDate);
     }
 
     /**
@@ -76,8 +74,8 @@ public class OpportunityEvent {
      * Sets a endDate value.
      * @param endDate contains a String value.
      */
-    public void setEndDate(String endDate) {
-        this.endDate = DateFormatter.formatDateUi(endDate);
+    public void setEndDate(final String endDate) {
+        this.endDate = DateFormatter.formatDateUiEvent(endDate);
     }
 
     /**
@@ -93,7 +91,7 @@ public class OpportunityEvent {
      * Sets a assignedTo value.
      * @param assignedTo contains a String value.
      */
-    public void setAssignedTo(String assignedTo) {
+    public void setAssignedTo(final String assignedTo) {
         this.assignedTo = assignedTo;
     }
 
@@ -106,7 +104,7 @@ public class OpportunityEvent {
     private HashMap<String, Runnable> composeStrategy(final Map<String, String> mapTask) {
         HashMap<String, Runnable> strategyMap = new HashMap<>();
         strategyMap.put(EventConstant.SUBJECT, () -> setSubject(mapTask.get(EventConstant.SUBJECT)));
-        strategyMap.put(EventConstant.START_DATE, () -> setStartDate(mapTask.get(EventConstant.SUBJECT)));
+        strategyMap.put(EventConstant.START_DATE, () -> setStartDate(mapTask.get(EventConstant.START_DATE)));
         strategyMap.put(EventConstant.END_DATE, () -> setEndDate(mapTask.get(EventConstant.END_DATE)));
         strategyMap.put(EventConstant.ASSIGNED_TO, () -> setAssignedTo(mapTask.get(EventConstant.ASSIGNED_TO)));
         return strategyMap;
@@ -120,6 +118,5 @@ public class OpportunityEvent {
     public void processInformation(final Map<String, String> mapEventOpportunity) {
         HashMap<String, Runnable> strategyMap = composeStrategy(mapEventOpportunity);
         mapEventOpportunity.keySet().forEach(key -> strategyMap.get(key).run());
-        modifiedEventFields.addAll(mapEventOpportunity.keySet());
     }
 }

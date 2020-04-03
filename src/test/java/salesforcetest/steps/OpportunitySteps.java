@@ -81,7 +81,7 @@ public class OpportunitySteps {
     private ArrayList<String> roles = new ArrayList<>();
     private HashMap<String, String> actual;
     private HashMap<String, String> mapNewTask;
-    private HashMap<String, String> mapOpportunityEvent;
+    private Map<String, String> mapOpportunityEvent;
     private HashMap<String, String> actualOpportunityValues;
 
     /**
@@ -449,6 +449,7 @@ public class OpportunitySteps {
      */
     @And("I add new Event with")
     public void addNewEventWith(final Map<String, String> eventMap) {
+        this.mapOpportunityEvent = eventMap;
         AppPageFactory.getOpportunityPage().clickOnNewEventTabButton();
         context.getOpportunityEvent().processInformation(eventMap);
         AppPageFactory.getOpportunityEvent().setNewEvent(context.getOpportunityEvent(), eventMap.keySet());
@@ -463,8 +464,7 @@ public class OpportunitySteps {
     public void theApplicationShouldDisplayThisMessageInOpportunityPage(final List<String> message) {
         ToastUpdateObjectMessage toastUpdateMessageSpan = new ToastUpdateObjectMessage();
         String actualResult = toastUpdateMessageSpan.getMessage();
-        String expectedResult = ReplacerMessages.replaceTaskSavedMessage(message.get(ARRAY_POSITION_FIRST),
-                context.getTaskOpportunity().getSubject());
+        String expectedResult = message.get(ARRAY_POSITION_FIRST);
         Assert.assertEquals(actualResult, expectedResult);
     }
 
@@ -474,5 +474,6 @@ public class OpportunitySteps {
     @And("Upcoming & Overview tab contains the event created")
     public void upcomingOverviewTabContainsTheEventCreated() {
         AppPageFactory.getOpportunityPage().clickOnEvent(context.getOpportunityEvent().getSubject());
+        AppPageFactory.getEventPage().getEventResult(mapOpportunityEvent.keySet());
     }
 }

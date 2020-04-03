@@ -103,7 +103,7 @@ Feature: Opportunity
         | Start Date | TODAY                                  |
         | End Date   | 3 DAYS-0 MONTH-0 YEAR-AFTER-FROM TODAY |
     Then the application should display this message in Opportunity Page
-      | Event Example Subject was created  |
+      | Event Example Subject was created. |
     And Upcoming & Overview tab contains the event created
 
 

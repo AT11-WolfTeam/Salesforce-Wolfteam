@@ -10,6 +10,7 @@
 package salesforce.ui.pages.opportunity.opportunityevent;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -38,6 +39,10 @@ public class OpportunityEventLightningPage extends AbstractOpportunityEvent {
     @FindBy(xpath = "//label[span[contains(text(), 'Location')]]//..//input")
     private WebElement locationTextBox;
 
+    @FindBy(xpath = "//div[contains(@class,'testid__publisher-quick-action-collapser for')]//button[contains"
+            + "(@class,'slds-button slds-button--brand cuf')]")
+    private WebElement saveButton;
+
     private static final String ASSIGNED_TO_LIST_BOX_PARTIAL_LOCATOR = "//span[text()='%s']";
     private static final String OPTION_ASSIGNED_TO_LIST_BOX_PARTIAL_LOCATOR = "//a[*[div[text()='%s']]]";
 
@@ -53,11 +58,13 @@ public class OpportunityEventLightningPage extends AbstractOpportunityEvent {
 
     @Override
     protected void setStartDate(String startDate) {
+        startDateTextBox.clear();
         startDateTextBox.sendKeys(startDate);
     }
 
     @Override
     protected void setEndDate(String endDate) {
+        endDateTextBox.clear();
         endDateTextBox.sendKeys(endDate);
     }
 
@@ -73,5 +80,10 @@ public class OpportunityEventLightningPage extends AbstractOpportunityEvent {
             webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(optionAssignedToListBoxLocator)))
                     .click();
         }
+    }
+
+    @Override
+    protected void clickOnSaveButton() {
+        saveButton.click();
     }
 }

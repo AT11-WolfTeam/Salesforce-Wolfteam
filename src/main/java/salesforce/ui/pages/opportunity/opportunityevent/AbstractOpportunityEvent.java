@@ -51,6 +51,8 @@ public abstract class AbstractOpportunityEvent extends AbstractBasePage {
      */
     protected abstract void setAssignedTo(String assignedTo);
 
+    protected abstract void clickOnSaveButton();
+
     /**
      * Sets the information to Task.
      *
@@ -75,5 +77,6 @@ public abstract class AbstractOpportunityEvent extends AbstractBasePage {
     public void setNewEvent(final OpportunityEvent opportunityEvent, final Set<String> fields) {
         HashMap<String, Runnable> strategtyMap = composeStrategyMap(opportunityEvent);
         fields.forEach(field -> strategtyMap.get(field).run());
+        clickOnSaveButton();
     }
 }

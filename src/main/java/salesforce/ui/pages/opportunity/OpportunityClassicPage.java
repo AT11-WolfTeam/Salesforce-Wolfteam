@@ -301,7 +301,7 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     }
 
     @Override
-    public void clickOnEvent(String subject) {
-
+    public void clickOnEvent(final String subject) {
+        //Todo
     }
 }

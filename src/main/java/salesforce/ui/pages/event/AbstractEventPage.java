@@ -51,6 +51,11 @@ public abstract class AbstractEventPage extends AbstractBasePage {
      */
     protected abstract String getAssignedTo();
 
+    /**
+     * Gets fields of UI.
+     *
+     * @return a hash map value.
+     */
     private HashMap<String, Supplier> composeStrategyMap() {
         HashMap<String, Supplier> strategyMap = new HashMap<>();
         strategyMap.put(EventConstant.SUBJECT, this::getSubject);
@@ -60,7 +65,13 @@ public abstract class AbstractEventPage extends AbstractBasePage {
         return strategyMap;
     }
 
-    public HashMap<String, String> getBoardResult(final Set<String> fields) {
+    /**
+     * Gets fields with String value.
+     *
+     * @param fields contains a Set value.
+     * @return a hash map value.
+     */
+    public HashMap<String, String> getEventResult(final Set<String> fields) {
         HashMap<String, String> values = new HashMap<>();
         HashMap<String, Supplier> strategyMap = composeStrategyMap();
         for (String field: strategyMap.keySet()) {

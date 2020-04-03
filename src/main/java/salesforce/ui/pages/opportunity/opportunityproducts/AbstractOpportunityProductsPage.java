@@ -9,8 +9,13 @@
 
 package salesforce.ui.pages.opportunity.opportunityproducts;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import salesforce.entities.Product;
 import salesforce.ui.pages.AbstractBasePage;
-import salesforce.ui.pages.opportunity.choosepricebook.AbstractChoosePriceBook;
+import salesforce.ui.pages.pricebook.addproducts.AbstractAddProduct;
+
+import java.util.ArrayList;
 
 /**
  * Defines opportunities products pages.
@@ -25,10 +30,23 @@ public abstract class AbstractOpportunityProductsPage extends AbstractBasePage {
      *
      * @return choose price book instance.
      */
-    public abstract AbstractChoosePriceBook choosePriceBook();
+    public abstract AbstractAddProduct choosePriceBook(String priceBookName);
 
     /**
-     * adds products.
+     * Gets web element.
+     * @param xpath value.
+     * @param concatText value.
+     * @return composed web element.
      */
-    public abstract void addProducts();
+    public WebElement getWebElement(final String xpath, final String concatText) {
+        return webDriver.findElement(By.xpath(String.format(xpath, concatText)));
+    }
+
+    /**
+     * Validates opportunity product information.
+     * @param opportunityName value.
+     * @param product name.
+     * @return list of validation data.
+     */
+    public abstract ArrayList<String> validateProductInformation(String opportunityName, String product);
 }

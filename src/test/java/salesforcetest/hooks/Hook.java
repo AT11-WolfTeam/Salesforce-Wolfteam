@@ -45,6 +45,7 @@ public class Hook {
     private static final String CAMPAIGNS_PAGE = "Campaigns Page";
     private static final String CONTRACTS_PAGE = "Contracts Page";
     private static final String OPPORTUNITIES_PAGE = "Opportunities Page";
+    private static final String PRODUCTS_PAGE = "Products Page";
     private AccountHelper accountHelper;
 
     /**
@@ -146,5 +147,16 @@ public class Hook {
         for (Account account : context.getAccounts()) {
             Assert.assertEquals(account.getStatusCode(), expected);
         }
+    }
+
+    /**
+     * Deletes product.
+     */
+    @After("@Products")
+    public void deleteProduct() {
+        pageTransporter.navigateToPage(PRODUCTS_PAGE);
+        abstractOpportunityListPage = AppPageFactory.getOpportunityList();
+        abstractOpportunityListPage.deleteOpportunity(context.getOpportunity().getName());
+        // Finish
     }
 }

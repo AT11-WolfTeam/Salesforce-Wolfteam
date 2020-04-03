@@ -9,6 +9,9 @@
 
 package salesforce.ui.pages.pricebook.editselectedpricebookentries;
 
+import salesforce.entities.Product;
+import salesforce.ui.pages.opportunity.opportunityproducts.AbstractOpportunityProductsPage;
+
 /**
  * Defines EditSelectedPriceBookEntriesClassicPage.
  *
@@ -24,5 +27,10 @@ public class EditSelectedPriceBookEntriesClassicPage extends AbstractEditSelecte
     @Override
     public void clickOnSaveButton() {
 
+    }
+
+    @Override
+    public AbstractOpportunityProductsPage completeProductValues(Product product) {
+        return null;
     }
 }

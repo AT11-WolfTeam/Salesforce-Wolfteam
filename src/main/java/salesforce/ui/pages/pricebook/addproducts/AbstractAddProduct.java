@@ -9,6 +9,8 @@
 
 package salesforce.ui.pages.pricebook.addproducts;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import salesforce.ui.pages.AbstractBasePage;
 import salesforce.ui.pages.pricebook.editselectedpricebookentries.AbstractEditSelectedPriceBookEntriesPage;
 
@@ -26,6 +28,16 @@ public abstract class AbstractAddProduct extends AbstractBasePage {
      * @param productName value.
      * @return EditSelectedPriceBookEntries instance.
      */
-    public abstract AbstractEditSelectedPriceBookEntriesPage checkProductToAdd(String productName);
+    public abstract void checkProductToAdd(String productName);
 
+    /**
+     * Gets a web element.
+     *
+     * @param xpath value.
+     * @param concatText value.
+     * @return composed web element.
+     */
+    public WebElement getWebElement(final String xpath, final String concatText) {
+        return webDriver.findElement(By.xpath(String.format(xpath, concatText)));
+    }
 }

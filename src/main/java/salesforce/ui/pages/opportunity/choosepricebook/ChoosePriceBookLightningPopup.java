@@ -9,6 +9,7 @@
 
 package salesforce.ui.pages.opportunity.choosepricebook;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -47,7 +48,9 @@ public class ChoosePriceBookLightningPopup extends AbstractChoosePriceBook {
      * @param priceBookName value.
      */
     private void selectPriceBookItem(final String priceBookName) {
-        getWebElement(priceBookName, priceBookName).click();
+        WebElement item = getWebElement(PRICE_BOOK_ITEM, priceBookName);
+        JavascriptExecutor executor = (JavascriptExecutor)webDriver;
+        executor.executeScript("arguments[0].click();", item);
     }
 
     /**

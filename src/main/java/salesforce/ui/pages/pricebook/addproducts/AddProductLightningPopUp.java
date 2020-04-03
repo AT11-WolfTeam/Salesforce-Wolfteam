@@ -9,7 +9,7 @@
 
 package salesforce.ui.pages.pricebook.addproducts;
 
-import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -26,24 +26,49 @@ public class AddProductLightningPopUp extends AbstractAddProduct {
     @FindBy(xpath = "//div[@class='modal-container slds-modal__container']//button[@title='Next']")
     private WebElement nextButton;
 
+    @FindBy(css = "div[class='forceModalActionContainer--footerAction forceModalActionContainer']")
+    private WebElement popupFooter;
+
     private static final String PRODUCT_CHECK_BOX = "//table//tbody//a[@title='%s']/../../..//label";
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-        webDriverWait.until(ExpectedConditions.visibilityOf(nextButton));
+        webDriverWait.until(ExpectedConditions.visibilityOf(popupFooter));
     }
 
-    @Override
-    public AbstractEditSelectedPriceBookEntriesPage checkProductToAdd(final String productName) {
-        webDriver.findElement(By.xpath(String.format(PRODUCT_CHECK_BOX, productName))).click();
-        clickOnNextButton();
-        return AppPageFactory.getEditSelectedPriceBookEntriesPage();
+    /**
+     * Clicks on popup footer.
+     */
+    private void clickOnPopupFooter() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(popupFooter));
+        popupFooter.click();
+    }
+
+    /**
+     * Checks product by name.
+     * @param productName value.
+     */
+    private void checkProduct(final String productName) {
+        getWebElement(PRODUCT_CHECK_BOX, productName).click();
     }
 
     /**
      * Clicks on next button.
      */
     public void clickOnNextButton() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(nextButton));
         nextButton.click();
+    }
+
+    @Override
+    public void checkProductToAdd(final String productName) {
+        clickOnPopupFooter();
+        checkProduct(productName);
+        try {
+            clickOnNextButton();
+        } catch (StaleElementReferenceException StaleElement) {
+            clickOnNextButton();
+        }
+//        return AppPageFactory.getEditSelectedPriceBookEntriesPage();
     }
 }

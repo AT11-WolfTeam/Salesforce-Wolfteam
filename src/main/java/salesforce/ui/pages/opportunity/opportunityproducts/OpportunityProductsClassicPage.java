@@ -9,7 +9,8 @@
 
 package salesforce.ui.pages.opportunity.opportunityproducts;
 
-import salesforce.ui.pages.opportunity.choosepricebook.AbstractChoosePriceBook;
+import salesforce.ui.pages.pricebook.addproducts.AbstractAddProduct;
+import java.util.ArrayList;
 
 /**
  * Manages opportunities products classic page.
@@ -24,12 +25,12 @@ public class OpportunityProductsClassicPage extends AbstractOpportunityProductsP
     }
 
     @Override
-    public AbstractChoosePriceBook choosePriceBook() {
+    public AbstractAddProduct choosePriceBook(final String priceBookName) {
         return null;
     }
 
     @Override
-    public void addProducts() {
-
+    public ArrayList<String> validateProductInformation(String opportunityName, String  product) {
+        return null;
     }
 }

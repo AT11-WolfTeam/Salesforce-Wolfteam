@@ -78,7 +78,8 @@ public class PriceBookSteps {
     public void addTheProduct() {
         abstractPriceBookPage.clickOnRelatedTab();
         abstractAddProduct = abstractPriceBookPage.clickOnAddProductsButton();
-        abstractEditSelectedPriceBookEntriesPage = abstractAddProduct.checkProductToAdd(context.getProduct().getName());
+        abstractAddProduct.checkProductToAdd(context.getProduct().getName());
+        abstractEditSelectedPriceBookEntriesPage = AppPageFactory.getEditSelectedPriceBookEntriesPage();
         abstractEditSelectedPriceBookEntriesPage.clickOnSaveButton();
     }
 

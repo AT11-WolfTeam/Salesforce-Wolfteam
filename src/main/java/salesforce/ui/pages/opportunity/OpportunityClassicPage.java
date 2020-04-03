@@ -328,7 +328,6 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     }
 
     /**
-<<<<<<< HEAD
      * clicks on Delete button.
      */
     public void clickOnDeleteButton() {

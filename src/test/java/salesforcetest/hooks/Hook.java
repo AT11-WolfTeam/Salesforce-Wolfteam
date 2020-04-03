@@ -161,6 +161,4 @@ public class Hook {
         abstractPriceBookListPage = AppPageFactory.getPriceBookListPage();
         abstractPriceBookListPage.deleteAPriceBook(context.getPriceBook().getPriceBookName());
     }
-
-
 }

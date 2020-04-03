@@ -468,8 +468,7 @@ public class AppPageFactory {
     }
 
     /**
-<<<<<<< HEAD
-     * Gets new Price Book List instance.
+     * Gets new Price Book list instance.
      *
      * @return PriceBookListPage instance.
      */
@@ -481,7 +480,7 @@ public class AppPageFactory {
     }
 
     /**
-     * Gets new product List instance.
+     * Gets new product list instance.
      *
      * @return ProductListPage instance.
      */

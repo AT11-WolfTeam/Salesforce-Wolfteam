@@ -14,6 +14,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import salesforce.utils.DateFormatter;
 
 /**
  * Manages OpportunityEventLightningPage.
@@ -58,13 +59,13 @@ public class OpportunityEventLightningPage extends AbstractOpportunityEvent {
     @Override
     protected void setStartDate(final String startDate) {
         startDateTextBox.clear();
-        startDateTextBox.sendKeys(startDate);
+        startDateTextBox.sendKeys(DateFormatter.formatDateUiEvent(startDate));
     }
 
     @Override
     protected void setEndDate(final String endDate) {
         endDateTextBox.clear();
-        endDateTextBox.sendKeys(endDate);
+        endDateTextBox.sendKeys(DateFormatter.formatDateUiEvent(endDate));
     }
 
     @Override

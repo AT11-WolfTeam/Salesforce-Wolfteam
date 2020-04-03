@@ -65,7 +65,7 @@ public class OpportunityEvent {
      * @param startDate contains a String value.
      */
     public void setStartDate(final String startDate) {
-        this.startDate = DateFormatter.formatDateUiEvent(startDate);
+        this.startDate = DateFormatter.formatSalesforce(startDate);
     }
 
     /**
@@ -83,7 +83,7 @@ public class OpportunityEvent {
      * @param endDate contains a String value.
      */
     public void setEndDate(final String endDate) {
-        this.endDate = DateFormatter.formatDateUiEvent(endDate);
+        this.endDate = DateFormatter.formatSalesforce(endDate);
     }
 
     /**

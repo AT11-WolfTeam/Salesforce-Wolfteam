@@ -62,6 +62,9 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     @FindBy(xpath = "//span[text()='New Task']")
     private WebElement addTaskButton;
 
+    @FindBy(css = "a[id='publisherDropdown']")
+    private WebElement moreButton;
+
     @FindBy(xpath = "//span[@class='publisherattachtext ' and text()='File']")
     private WebElement addFile;
 
@@ -78,7 +81,14 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     protected static final String CAMPAIGN_NAME = "//th[@scope='row']//a[contains(text(),'%s')]";
     private static final String CONTACT_NAME = "//th//a[text()='%s']";
     private static final String CONTACT_ROLE = "//th[a[text()='%s']]/..//td[text()='%s']";
+    private static final String NEW_EVENT_OPTION_MORE_BUTTON_PARTIAL_LOCATOR = "a[title='New Event']";
+    private static final String OPPORTUNITY_EVENT_PARTIAL_LOCATOR = "//div[@class='preamblecontainer displayblock']"
+            + "//a[contains(text(),'%s')]";
     protected static final int INTERVAL_TIME = 2000;
+    protected static final int INTERVAL_TIME_TAB = 1500;
+
+    @FindBy(css = "input[data-fieldname='startdatetime']")
+    private WebElement startDateTextBox;
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -218,7 +228,11 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
 
     @Override
     public void clickOnNewEventTabButton() {
-
+        moreButton.click();
+        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(
+                NEW_EVENT_OPTION_MORE_BUTTON_PARTIAL_LOCATOR)));
+        WebElement newEventTab = webDriver.findElement(By.cssSelector(NEW_EVENT_OPTION_MORE_BUTTON_PARTIAL_LOCATOR));
+        UtilSalesforce.retryClickInTab(moreButton, newEventTab, startDateTextBox, INTERVAL_TIME_TAB);
     }
 
     /**
@@ -307,7 +321,8 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
 
     @Override
     public void clickOnEvent(final String subject) {
-        //Todo
+        String opportunityEventLocator = String.format(OPPORTUNITY_EVENT_PARTIAL_LOCATOR, subject);
+        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(opportunityEventLocator))).click();
     }
 
     /**

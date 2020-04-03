@@ -23,6 +23,7 @@ import salesforce.ui.pages.opportunity.opportunityproducts.OpportunityProductsCl
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
 import salesforce.ui.pages.owner.OwnerEditClassicPage;
 import salesforce.utils.UtilSalesforce;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -77,11 +78,21 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     @FindBy(css = "input[title='Delete']")
     private WebElement deleteButton;
 
+    @FindBy(css = "h2[class='pageDescription']")
+    private WebElement opportunityNameTitle;
+
     private String parentHandle;
     protected static final String CAMPAIGN_NAME = "//th[@scope='row']//a[contains(text(),'%s')]";
     private static final String CONTACT_NAME = "//th//a[text()='%s']";
     private static final String CONTACT_ROLE = "//th[a[text()='%s']]/..//td[text()='%s']";
     protected static final int INTERVAL_TIME = 2000;
+    private static final String PRODUCT_NAME = "//a[contains(text(), '%s')]";
+    private static final String QUANTITY = "//a[contains(text(), '%s')]/../../td[@class=' dataCell  numericalColumn']";
+    private static final String SALES_PRICE = "//a[contains(text(), '%s')]/../../"
+            + "td[@class=' dataCell  CurrencyElement']";
+    private static final String POINT_CHARACTER = ".";
+    private static final String COMMA_CHARACTER = ",";
+    private ArrayList<String> productValues;
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -317,6 +328,7 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     }
 
     /**
+<<<<<<< HEAD
      * clicks on Delete button.
      */
     public void clickOnDeleteButton() {
@@ -325,5 +337,72 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
         deleteButton.click();
         webDriverWait.until(ExpectedConditions.alertIsPresent());
         webDriver.switchTo().alert().accept();
+    }
+
+    /**
+     * Gets opportunity name.
+     *
+     * @return opportunity name text.
+     */
+    private String getOpportunityName() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(opportunityNameTitle));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(opportunityNameTitle));
+        return opportunityNameTitle.getText();
+    }
+
+    /**
+     * Gets product name.
+     *
+     * @param productName value.
+     * @return product name text.
+     */
+    private String getProductName(final String productName) {
+        return getWebElement(String.format(PRODUCT_NAME, productName)).getText();
+    }
+
+    /**
+     * Gets substring value.
+     *
+     * @param string value.
+     * @param position value.
+     * @return substring.
+     */
+    private String getSubstring(final String string, final int position) {
+        String data = string;
+        return data.substring(0, position);
+    }
+
+    /**
+     * Gets quantity value.
+     *
+     * @param productName value.
+     * @return quantity text.
+     */
+    private String getQuantity(final String productName) {
+        String quantity = getWebElement(String.format(QUANTITY, productName)).getText();
+        int position = quantity.indexOf(POINT_CHARACTER);
+        return getSubstring(quantity, position);
+    }
+
+    /**
+     * Gets sales price value.
+     *
+     * @param productName value.
+     * @return sales price text.
+     */
+    private String getSalesPrice(final String productName) {
+        String salesPrice = getWebElement(String.format(SALES_PRICE, productName)).getText();
+        int position = salesPrice.indexOf(COMMA_CHARACTER);
+        return getSubstring(salesPrice, position);
+    }
+
+    @Override
+    public ArrayList<String> validateProductInformation(final String productName) {
+        productValues = new ArrayList<>();
+        productValues.add(getOpportunityName());
+        productValues.add(getProductName(productName));
+        productValues.add(getQuantity(productName));
+        productValues.add(getSalesPrice(productName));
+        return productValues;
     }
 }

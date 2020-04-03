@@ -68,6 +68,9 @@ import salesforce.ui.pages.opportunity.newopportunity.NewOpportunityClassicPage;
 import salesforce.ui.pages.opportunity.opportunityevent.AbstractOpportunityEvent;
 import salesforce.ui.pages.opportunity.opportunityevent.OpportunityEventClassicPage;
 import salesforce.ui.pages.opportunity.opportunityevent.OpportunityEventLightningPage;
+import salesforce.ui.pages.opportunity.opportunityproducts.AbstractOpportunityProductsPage;
+import salesforce.ui.pages.opportunity.opportunityproducts.OpportunityProductsClassicPage;
+import salesforce.ui.pages.opportunity.opportunityproducts.OpportunityProductsLightningPage;
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
 import salesforce.ui.pages.opportunity.taskopportunity.TaskOpportunityClassic;
 import salesforce.ui.pages.opportunity.taskopportunity.TaskOpportunityLightning;
@@ -465,6 +468,7 @@ public class AppPageFactory {
     }
 
     /**
+<<<<<<< HEAD
      * Gets new Price Book List instance.
      *
      * @return PriceBookListPage instance.
@@ -486,5 +490,17 @@ public class AppPageFactory {
             return new ProductListClassicPage();
         }
         return new ProductListLightningPage();
+    }
+
+    /**
+     * Gets opportunity products instance.
+     *
+     * @return opportunity products instance.
+     */
+    public static AbstractOpportunityProductsPage getOpportunityProductsPage() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new OpportunityProductsClassicPage();
+        }
+        return new OpportunityProductsLightningPage();
     }
 }

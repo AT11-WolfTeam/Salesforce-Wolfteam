@@ -10,7 +10,6 @@
 package salesforce.ui.pages.opportunity.opportunityevent;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -52,24 +51,24 @@ public class OpportunityEventLightningPage extends AbstractOpportunityEvent {
     }
 
     @Override
-    protected void setSubject(String subject) {
+    protected void setSubject(final String subject) {
         subjectTextBox.sendKeys(subject);
     }
 
     @Override
-    protected void setStartDate(String startDate) {
+    protected void setStartDate(final String startDate) {
         startDateTextBox.clear();
         startDateTextBox.sendKeys(startDate);
     }
 
     @Override
-    protected void setEndDate(String endDate) {
+    protected void setEndDate(final String endDate) {
         endDateTextBox.clear();
         endDateTextBox.sendKeys(endDate);
     }
 
     @Override
-    protected void setAssignedTo(String assignedTo) {
+    protected void setAssignedTo(final String assignedTo) {
         String assignedToListBoxLocator = String.format(ASSIGNED_TO_LIST_BOX_PARTIAL_LOCATOR, assignedTo);
         try {
             webDriver.findElement(By.xpath(assignedToListBoxLocator));

@@ -51,6 +51,9 @@ public abstract class AbstractOpportunityEvent extends AbstractBasePage {
      */
     protected abstract void setAssignedTo(String assignedTo);
 
+    /**
+     * Clicks on save button.
+     */
     protected abstract void clickOnSaveButton();
 
     /**

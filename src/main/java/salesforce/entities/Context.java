@@ -192,7 +192,7 @@ public class Context {
      *
      * @param opportunityEvent contains a OpportunityEvent.
      */
-    public void setOpportunityEvent(OpportunityEvent opportunityEvent) {
+    public void setOpportunityEvent(final OpportunityEvent opportunityEvent) {
         this.opportunityEvent = opportunityEvent;
     }
 

@@ -1,7 +1,6 @@
 package salesforce.entities;
 
 import salesforce.entities.constants.EventConstant;
-import salesforce.entities.constants.TaskConstant;
 import salesforce.utils.DateFormatter;
 import salesforce.utils.JsonFileReader;
 

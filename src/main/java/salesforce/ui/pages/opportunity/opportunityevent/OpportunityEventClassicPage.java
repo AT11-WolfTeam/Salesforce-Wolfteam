@@ -17,22 +17,22 @@ package salesforce.ui.pages.opportunity.opportunityevent;
  */
 public class OpportunityEventClassicPage extends AbstractOpportunityEvent {
     @Override
-    protected void setSubject(String subject) {
+    protected void setSubject(final String subject) {
 
     }
 
     @Override
-    protected void setStartDate(String startDate) {
+    protected void setStartDate(final String startDate) {
 
     }
 
     @Override
-    protected void setEndDate(String endDate) {
+    protected void setEndDate(final String endDate) {
 
     }
 
     @Override
-    protected void setAssignedTo(String assignedTo) {
+    protected void setAssignedTo(final String assignedTo) {
 
     }
 

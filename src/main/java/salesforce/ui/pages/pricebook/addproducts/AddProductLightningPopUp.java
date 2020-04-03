@@ -69,6 +69,5 @@ public class AddProductLightningPopUp extends AbstractAddProduct {
         } catch (StaleElementReferenceException StaleElement) {
             clickOnNextButton();
         }
-//        return AppPageFactory.getEditSelectedPriceBookEntriesPage();
     }
 }

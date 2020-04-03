@@ -9,6 +9,10 @@
 
 package salesforce.ui.pages.product.newproduct;
 
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
 /**
  * Defines NewProductClassicPage.
  *
@@ -16,28 +20,41 @@ package salesforce.ui.pages.product.newproduct;
  * @version 1.0 1 April 2020.
  */
 public class NewProductClassicPage extends AbstractNewProductPage {
+    @FindBy(css = "input[id='Name']")
+    private WebElement productNameField;
+
+    @FindBy(css = "input[id='ProductCode']")
+    private WebElement productCodeField;
+
+    @FindBy(css = "textarea[id='Description']")
+    private WebElement descriptionField;
+
+    @FindBy(css = "input[title='Save']")
+    private WebElement saveButton;
+
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-
+        webDriverWait.until(ExpectedConditions.visibilityOf(productNameField));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(saveButton));
     }
 
     @Override
     protected void setProductName(final String productName) {
-
+        productNameField.sendKeys(productName);
     }
 
     @Override
     protected void setProductCode(final String productCode) {
-
+        productCodeField.sendKeys(productCode);
     }
 
     @Override
     protected void setProductDescription(final String productDescription) {
-
+        descriptionField.sendKeys(productDescription);
     }
 
     @Override
     protected void clickOnSaveButton() {
-
+        saveButton.click();
     }
 }

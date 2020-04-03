@@ -216,6 +216,11 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
         return AppPageFactory.getTaskOpportunity();
     }
 
+    @Override
+    public void clickOnNewEventTabButton() {
+
+    }
+
     /**
      * Waits until the elements are found.
      */
@@ -298,6 +303,11 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     @Override
     public void enableToValidateOpportunity() {
         clickOnEditButton();
+    }
+
+    @Override
+    public void clickOnEvent(final String subject) {
+        //Todo
     }
 
     /**

@@ -51,6 +51,9 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     @FindBy(css = "button[title='Add']")
     private WebElement addTaskButton;
 
+    @FindBy(css = "li[class*='tabs__item ui'] a[data-tab-name='NewEvent']")
+    private WebElement newEventTabButton;
+
     @FindBy(css = "span[title='Contact Roles']")
     private WebElement contactRoles;
 
@@ -90,6 +93,7 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     @FindBy(css = "span[title='Products']")
     private WebElement productsLink;
 
+    private static final String EVENT_LINK_PARTIAL_LOCATOR = "//a[contains(text(), '%s')]";
     private WebElement stageSelected;
     private Select select;
 
@@ -197,6 +201,11 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
         return AppPageFactory.getTaskOpportunity();
     }
 
+    @Override
+    public void clickOnNewEventTabButton() {
+        newEventTabButton.click();
+    }
+
     /**
      * Clicks on notes and attachments link.
      */
@@ -244,6 +253,12 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     public void enableToValidateOpportunity() {
         clickOnMoreOptions();
         clickOnEditItem();
+    }
+
+    @Override
+    public void clickOnEvent(final String subject) {
+        String eventLinkLocator = String.format(EVENT_LINK_PARTIAL_LOCATOR, subject);
+        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(eventLinkLocator))).click();
     }
 
     /**

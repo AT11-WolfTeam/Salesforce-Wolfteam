@@ -144,6 +144,11 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
     public abstract AbstractTaskOpportunity clickAddTask();
 
     /**
+     * Clicks on New Event tab button.
+     */
+    public abstract void clickOnNewEventTabButton();
+
+    /**
      * Allows to open notes and attachments page.
      */
     public abstract void clickOnNotesAndAttachmentsButton();
@@ -159,6 +164,13 @@ public abstract class AbstractOpportunityPage extends AbstractBasePage {
      * Enables to validate opportunity values.
      */
     public abstract void enableToValidateOpportunity();
+
+    /**
+     * Clicks on a event.
+     *
+     * @param subject contains a event name.
+     */
+    public abstract void clickOnEvent(String subject);
 
     /**
      * Allows to open products of the opportunity.

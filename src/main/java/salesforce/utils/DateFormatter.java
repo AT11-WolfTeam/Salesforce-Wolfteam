@@ -11,8 +11,11 @@ package salesforce.utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Formats date.
@@ -33,6 +36,7 @@ public final class DateFormatter {
     private static final String EMPTY = "";
     private static final String FORMAT_API = "yyyy-MM-dd";
     private static final String FORMAT_UI = "M/d/yyyy";
+    private static final String FORMAT_UI_EVENT = "MMM d, yyyy";
     private static String[] date;
     private static final int LIST_SIZE = 3;
     private static Date today = new Date(System.currentTimeMillis());
@@ -178,5 +182,29 @@ public final class DateFormatter {
             parseException.printStackTrace();
         }
         return formatter.format(dateUi);
+    }
+
+    /**
+     * Converts format date to format to use on UI for Event.
+     *
+     * @param date value.
+     * @return string value.
+     */
+    public static String formatDateUiEvent(final String date) {
+        String dateApi = formatDate(date);
+        LocalDate newDate = LocalDate.parse(dateApi, DateTimeFormatter.ofPattern(FORMAT_API));
+        return newDate.format(DateTimeFormatter.ofPattern(FORMAT_UI_EVENT, new Locale("en")));
+    }
+
+    /**
+     * Converts format date to format to use on UI for Event.
+     *
+     * @param date value.
+     * @return string value.
+     */
+    public static String reverseFormatDateUiEvent(final String date) {
+        String[] splitDate = date.split(",");
+        LocalDate newDate = LocalDate.parse(splitDate[0], DateTimeFormatter.ofPattern("M/d/yyyy"));
+        return newDate.format(DateTimeFormatter.ofPattern(FORMAT_UI_EVENT, new Locale("en")));
     }
 }

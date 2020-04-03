@@ -81,6 +81,7 @@ public class OpportunitySteps {
     private ArrayList<String> roles = new ArrayList<>();
     private HashMap<String, String> actual;
     private HashMap<String, String> mapNewTask;
+    private Map<String, String> mapOpportunityEvent;
     private HashMap<String, String> actualOpportunityValues;
 
     /**
@@ -439,5 +440,42 @@ public class OpportunitySteps {
         String actual = abstractOpportunityListPage.getStageName(context.getOpportunity().getName());
         String expected = opportunity.getStageName();
         org.junit.Assert.assertEquals(expected, actual);
+    }
+
+    /**
+     * Creates a new Event in a Opportunity.
+     *
+     * @param eventMap contains a event map.
+     */
+    @And("I add new Event with")
+    public void addNewEventWith(final Map<String, String> eventMap) {
+        this.mapOpportunityEvent = eventMap;
+        AppPageFactory.getOpportunityPage().clickOnNewEventTabButton();
+        context.getOpportunityEvent().processInformation(eventMap);
+        AppPageFactory.getOpportunityEvent().setNewEvent(context.getOpportunityEvent(), eventMap.keySet());
+    }
+
+    /**
+     * Validates an addition of an event to an Opportunity.
+     *
+     * @param message contains a String list.
+     */
+    @Then("the application should display this message in Opportunity Page")
+    public void theApplicationShouldDisplayThisMessageInOpportunityPage(final List<String> message) {
+        ToastUpdateObjectMessage toastUpdateMessageSpan = new ToastUpdateObjectMessage();
+        String actualResult = toastUpdateMessageSpan.getMessage();
+        String expectedResult = message.get(ARRAY_POSITION_FIRST);
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    /**
+     * Validates an event.
+     */
+    @And("Upcoming & Overview tab contains the event created")
+    public void upcomingOverviewTabContainsTheEventCreated() {
+        AppPageFactory.getOpportunityPage().clickOnEvent(context.getOpportunityEvent().getSubject());
+        Map<String, String> actualResult = AppPageFactory.getEventPage().getEventResult(mapOpportunityEvent.keySet());
+        Map<String, String> expectedResult = context.getOpportunityEvent().getOpportunityEventEdited();
+        Assert.assertEquals(actualResult, expectedResult);
     }
 }

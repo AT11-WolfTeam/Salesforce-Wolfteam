@@ -26,11 +26,6 @@ import java.util.function.Supplier;
 public abstract class AbstractPriceBookPage extends AbstractBasePage {
 
     /**
-     * Clicks on related tab.
-     */
-    public abstract void clickOnRelatedTab();
-
-    /**
      * CLicks on add products button.
      *
      * @return AddProduct instance.

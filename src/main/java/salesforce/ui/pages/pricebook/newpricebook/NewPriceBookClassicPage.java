@@ -9,6 +9,10 @@
 
 package salesforce.ui.pages.pricebook.newpricebook;
 
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
 /**
  * Defines NewPriceBookClassicPage.
  *
@@ -16,18 +20,25 @@ package salesforce.ui.pages.pricebook.newpricebook;
  * @version 1.0 1 April 2020.
  */
 public class NewPriceBookClassicPage extends AbstractNewPriceBookPage {
+    @FindBy(css = "input[id='Name']")
+    private WebElement priceBookNameField;
+
+    @FindBy(css = "input[title='Save']")
+    private WebElement saveButton;
+
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(saveButton));
+        webDriverWait.until(ExpectedConditions.visibilityOf(priceBookNameField));
     }
 
     @Override
     protected void clickOnSaveButton() {
-
+        saveButton.click();
     }
 
     @Override
     protected void setPriceBookName(final String priceBookName) {
-
+        priceBookNameField.sendKeys(priceBookName);
     }
 }

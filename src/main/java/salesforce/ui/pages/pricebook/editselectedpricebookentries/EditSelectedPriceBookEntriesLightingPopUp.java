@@ -15,8 +15,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import salesforce.entities.Product;
-import salesforce.ui.pages.opportunity.opportunityproducts.AbstractOpportunityProductsPage;
-import salesforce.ui.pages.opportunity.opportunityproducts.OpportunityProductsLightningPage;
 
 /**
  * Defines EditSelectedPriceBookEntriesLightingPopUp.
@@ -52,6 +50,7 @@ public class EditSelectedPriceBookEntriesLightingPopUp extends AbstractEditSelec
 
     /**
      * Gets web element.
+     *
      * @param xpath value.
      * @param concatText value.
      * @return composed web element.
@@ -62,6 +61,7 @@ public class EditSelectedPriceBookEntriesLightingPopUp extends AbstractEditSelec
 
     /**
      * Sets quantity value.
+     *
      * @param productName value.
      * @param quantity value.
      */
@@ -75,6 +75,7 @@ public class EditSelectedPriceBookEntriesLightingPopUp extends AbstractEditSelec
 
     /**
      * Sets date value.
+     *
      * @param productName value.
      * @param date value.
      */
@@ -92,15 +93,15 @@ public class EditSelectedPriceBookEntriesLightingPopUp extends AbstractEditSelec
     }
 
     @Override
-    public AbstractOpportunityProductsPage completeProductValues(final Product product) {
+    public void completeProductValues(final Product product) {
         editPopupTitle.click();
         try {
+            editPopupTitle.click();
             setQuantity(product.getName(), product.getQuantity());
             clickOnSaveButton();
         } catch (StaleElementReferenceException StaleElement) {
             setQuantity(product.getName(), product.getQuantity());
             clickOnSaveButton();
         }
-        return new OpportunityProductsLightningPage();
     }
 }

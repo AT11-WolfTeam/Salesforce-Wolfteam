@@ -9,6 +9,7 @@
 
 package salesforcetest.steps;
 
+import core.utils.GradleReader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.testng.Assert;
@@ -59,9 +60,12 @@ public class ProductSteps {
     private static final int DESCRIPTION = 2;
     private static final int FIRST = 0;
     private static String priceBook;
+    private static final String USER_EXPERIENCE_LIGHTNING = "Lightning";
+    private static final String USER_EXPERIENCE_CLASSIC = "Classic";
 
     private Set<String> productKeys;
     private ArrayList<String> actual;
+    private static String userExperience = GradleReader.getInstance().getUserExperience();
 
     /**
      * Manages products steps.
@@ -120,11 +124,16 @@ public class ProductSteps {
     @And("I add the product to opportunity")
     public void addProductToOpportunity() {
         opportunityPage = AppPageFactory.getOpportunityPage();
-        opportunityProductsPage = opportunityPage.clickOnProducts();
-        addProduct = opportunityProductsPage.choosePriceBook(priceBook);
+        if (userExperience.equals(USER_EXPERIENCE_CLASSIC)) {
+            opportunityProductsPage = AppPageFactory.getOpportunityProductsPage();
+            addProduct = opportunityProductsPage.choosePriceBook(priceBook);
+        } else if (userExperience.equals(USER_EXPERIENCE_LIGHTNING)) {
+            opportunityProductsPage = opportunityPage.clickOnProducts();
+            addProduct = opportunityProductsPage.choosePriceBook(priceBook);
+        }
         addProduct.checkProductToAdd(product.getName());
         editSelectedPriceBookEntriesPage = AppPageFactory.getEditSelectedPriceBookEntriesPage();
-        opportunityProductsPage = editSelectedPriceBookEntriesPage.completeProductValues(product);
+        editSelectedPriceBookEntriesPage.completeProductValues(product);
     }
 
     /**
@@ -138,7 +147,11 @@ public class ProductSteps {
         expected.add(product.getName());
         expected.add(product.getQuantity());
         expected.add(product.getListPrice());
-        actual = opportunityProductsPage.validateProductInformation(opportunityName, product.getName());
+        if (userExperience.equals(USER_EXPERIENCE_CLASSIC)) {
+            actual = opportunityPage.validateProductInformation(product.getName());
+        } else if (userExperience.equals(USER_EXPERIENCE_LIGHTNING)) {
+            actual = opportunityProductsPage.validateProductInformation(opportunityName, product.getName());
+        }
         Assert.assertEquals(actual, expected);
     }
 }

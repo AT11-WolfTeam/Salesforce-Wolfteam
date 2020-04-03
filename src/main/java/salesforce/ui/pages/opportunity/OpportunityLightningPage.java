@@ -22,6 +22,7 @@ import salesforce.ui.pages.opportunity.opportunityproducts.AbstractOpportunityPr
 import salesforce.ui.pages.opportunity.opportunityproducts.OpportunityProductsLightningPage;
 import salesforce.ui.pages.opportunity.taskopportunity.AbstractTaskOpportunity;
 import salesforce.ui.pages.owner.ChangeOpportunityOwnerLightningPopup;
+import java.util.ArrayList;
 
 /**
  * Defines an OpportunityLightningPage.
@@ -273,5 +274,10 @@ public class OpportunityLightningPage extends AbstractOpportunityPage {
     public AbstractOpportunityProductsPage clickOnProducts() {
         clicksOnProductsLink();
         return new OpportunityProductsLightningPage();
+    }
+
+    @Override
+    public ArrayList<String> validateProductInformation(final String productName) {
+        return null;
     }
 }

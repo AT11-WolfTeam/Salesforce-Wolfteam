@@ -11,7 +11,6 @@ package salesforce.ui.pages.pricebook.editselectedpricebookentries;
 
 import salesforce.entities.Product;
 import salesforce.ui.pages.AbstractBasePage;
-import salesforce.ui.pages.opportunity.opportunityproducts.AbstractOpportunityProductsPage;
 
 /**
  * Defines AbstractEditSelectedPriceBookEntriesPage.
@@ -28,8 +27,8 @@ public abstract class AbstractEditSelectedPriceBookEntriesPage extends AbstractB
 
     /**
      * Completes product values.
+     *
      * @param product instance.
-     * @return instance of opportunity products.
      */
-    public abstract AbstractOpportunityProductsPage completeProductValues(Product product);
+    public abstract void completeProductValues(Product product);
 }

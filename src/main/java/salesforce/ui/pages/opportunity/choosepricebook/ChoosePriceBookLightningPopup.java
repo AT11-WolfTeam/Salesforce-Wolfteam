@@ -49,7 +49,7 @@ public class ChoosePriceBookLightningPopup extends AbstractChoosePriceBook {
      */
     private void selectPriceBookItem(final String priceBookName) {
         WebElement item = getWebElement(PRICE_BOOK_ITEM, priceBookName);
-        JavascriptExecutor executor = (JavascriptExecutor)webDriver;
+        JavascriptExecutor executor = (JavascriptExecutor) webDriver;
         executor.executeScript("arguments[0].click();", item);
     }
 

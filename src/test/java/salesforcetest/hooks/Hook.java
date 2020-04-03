@@ -148,15 +148,4 @@ public class Hook {
             Assert.assertEquals(account.getStatusCode(), expected);
         }
     }
-
-    /**
-     * Deletes product.
-     */
-    @After("@Products")
-    public void deleteProduct() {
-        pageTransporter.navigateToPage(PRODUCTS_PAGE);
-        abstractOpportunityListPage = AppPageFactory.getOpportunityList();
-        abstractOpportunityListPage.deleteOpportunity(context.getOpportunity().getName());
-        // Finish
-    }
 }

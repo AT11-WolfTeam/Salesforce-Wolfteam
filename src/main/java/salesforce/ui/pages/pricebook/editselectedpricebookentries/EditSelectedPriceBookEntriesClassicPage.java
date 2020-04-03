@@ -9,8 +9,9 @@
 
 package salesforce.ui.pages.pricebook.editselectedpricebookentries;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import salesforce.entities.Product;
-import salesforce.ui.pages.opportunity.opportunityproducts.AbstractOpportunityProductsPage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -28,10 +29,12 @@ public class EditSelectedPriceBookEntriesClassicPage extends AbstractEditSelecte
     @FindBy(css = "input[title='Save']")
     private WebElement saveButton;
 
+    private static final String QUANTITY = "//tr/th[starts-with(text(),'%s')]/../td/input[starts-with(@id,'Quantity')]";
+
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-        webDriverWait.until(ExpectedConditions.visibilityOf(checkBoxPrice));
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(checkBoxPrice));
+        webDriverWait.until(ExpectedConditions.visibilityOf(saveButton));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(saveButton));
     }
 
     @Override
@@ -40,8 +43,45 @@ public class EditSelectedPriceBookEntriesClassicPage extends AbstractEditSelecte
         saveButton.click();
     }
 
+    /**
+     * Gets web element.
+     *
+     * @param xpath value.
+     * @param concatText value.
+     * @return composed web element.
+     */
+    private WebElement getWebElement(final String xpath, final String concatText) {
+        return webDriver.findElement(By.xpath(String.format(xpath, concatText)));
+    }
+
+    /**
+     * Sets quantity value.
+     *
+     * @param productName value.
+     * @param quantity value.
+     */
+    private void setQuantity(final String productName, final String quantity) {
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(getWebElement(QUANTITY, productName)));
+        getWebElement(QUANTITY, productName).click();
+        getWebElement(QUANTITY, productName).clear();
+        getWebElement(QUANTITY, productName).sendKeys(quantity);
+    }
+
+    /**
+     * Clicks on save button.
+     */
+    public void clickOnSave() {
+        saveButton.click();
+    }
+
     @Override
-    public AbstractOpportunityProductsPage completeProductValues(Product product) {
-        return null;
+    public void completeProductValues(final Product product) {
+        try {
+            setQuantity(product.getName(), product.getQuantity());
+            clickOnSave();
+        } catch (StaleElementReferenceException StaleElement) {
+            setQuantity(product.getName(), product.getQuantity());
+            clickOnSave();
+        }
     }
 }

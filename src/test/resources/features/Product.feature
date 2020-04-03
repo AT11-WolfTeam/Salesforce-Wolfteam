@@ -1,7 +1,7 @@
 Feature: Product
 
   @DeletesOpportunity
-  @Product
+  @DeleteProduct
   Scenario: Add a product to opportunity through Standard Price Book
     Given I go to "Products Page"
       And I create a new product with the following values

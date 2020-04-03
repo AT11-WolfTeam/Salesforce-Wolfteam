@@ -10,6 +10,7 @@
 package salesforce.ui.pages.pricebook;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -26,6 +27,9 @@ public class PriceBookClassicPage extends AbstractPriceBookPage {
     @FindBy(css = "input[title='Add']")
     private WebElement addButton;
 
+    @FindBy(css = "input[title='Delete']")
+    private WebElement deleteButton;
+
     private String productNameTable;
     private static final String PRODUCT_NAME = "//tr//th//a[text()='%s']";
     private static final String LIST_PRICE = "//tr//th//a[text()='%s']/../..//td[3]";
@@ -33,8 +37,8 @@ public class PriceBookClassicPage extends AbstractPriceBookPage {
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-        webDriverWait.until(ExpectedConditions.visibilityOf(addButton));
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(addButton));
+        webDriverWait.until(ExpectedConditions.visibilityOf(deleteButton));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(deleteButton));
     }
 
     @Override
@@ -57,5 +61,16 @@ public class PriceBookClassicPage extends AbstractPriceBookPage {
     @Override
     public String getProductCode() {
         return webDriver.findElement(By.xpath(String.format(PRODUCT_CODE, productNameTable))).getText();
+    }
+
+    /**
+     * Clicks on delete button.
+     */
+    public void clickOnDeleteButton() {
+        JavascriptExecutor js = (JavascriptExecutor) webDriver;
+        js.executeScript("window.scrollBy(0,400)");
+        deleteButton.click();
+        webDriverWait.until(ExpectedConditions.alertIsPresent());
+        webDriver.switchTo().alert().accept();
     }
 }

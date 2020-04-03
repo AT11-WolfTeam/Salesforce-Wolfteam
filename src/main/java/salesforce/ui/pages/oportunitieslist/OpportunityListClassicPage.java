@@ -10,9 +10,11 @@
 package salesforce.ui.pages.oportunitieslist;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import salesforce.ui.pages.opportunity.OpportunityClassicPage;
 
 /**
  * Defines an OpportunityListClassicPage.
@@ -42,7 +44,16 @@ public class OpportunityListClassicPage extends AbstractOpportunityListPage {
 
     @Override
     public void deleteOpportunity(final String name) {
-        //To Do
+        String objectTabLocator = String.format(OPPORTUNITY_CELL_PARTIAL_LOCATOR, name);
+        try {
+            webDriver.findElement(By.xpath(objectTabLocator)).click();
+            OpportunityClassicPage opportunityClassicPage = new OpportunityClassicPage();
+            opportunityClassicPage.clickOnDeleteButton();
+        } catch (StaleElementReferenceException elementHasDisappeared) {
+            webDriver.findElement(By.xpath(objectTabLocator)).click();
+            OpportunityClassicPage opportunityClassicPage = new OpportunityClassicPage();
+            opportunityClassicPage.clickOnDeleteButton();
+        }
     }
 
     @Override

@@ -1,7 +1,7 @@
 Feature: Opportunity
 
   @DeleteAccounts
-  @DeletesCampaign
+  @DeleteCampaign
   Scenario: Create new opportunity with all values.
     Given I create 1 "Basic" accounts
       And I go to "Campaigns Page"
@@ -92,7 +92,7 @@ Feature: Opportunity
       | Task [Task Name] was created. |
       And the task should display the information added
 
-    
+
   @DeletesOpportunity
   Scenario: Add new event with required values
     Given I create 1 "Basic" opportunities

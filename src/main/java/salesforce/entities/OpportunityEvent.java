@@ -43,6 +43,7 @@ public class OpportunityEvent {
 
     /**
      * Sets a subject value.
+     *
      * @param subject contains a String value.
      */
     public void setSubject(final String subject) {
@@ -60,6 +61,7 @@ public class OpportunityEvent {
 
     /**
      * Sets a startDate value.
+     *
      * @param startDate contains a String value.
      */
     public void setStartDate(final String startDate) {
@@ -77,6 +79,7 @@ public class OpportunityEvent {
 
     /**
      * Sets a endDate value.
+     *
      * @param endDate contains a String value.
      */
     public void setEndDate(final String endDate) {
@@ -94,6 +97,7 @@ public class OpportunityEvent {
 
     /**
      * Sets a assignedTo value.
+     *
      * @param assignedTo contains a String value.
      */
     public void setAssignedTo(final String assignedTo) {

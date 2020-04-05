@@ -16,6 +16,7 @@ Feature: Campaign
       And campaign members should display the leads added
 
 
+  @JuanMartinez
   @DeleteCampaign
   @DeleteContacts
   Scenario: Assign 3 contacts to campaign

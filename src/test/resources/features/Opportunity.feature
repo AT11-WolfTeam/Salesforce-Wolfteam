@@ -132,7 +132,7 @@ Feature: Opportunity
 
 
   @JuanMartinez
-  @DeletesOpportunity
+  @DeleteOpportunity
   @lightning
   Scenario: Upload a file to opportunity
   Given I create 1 "Basic" opportunities

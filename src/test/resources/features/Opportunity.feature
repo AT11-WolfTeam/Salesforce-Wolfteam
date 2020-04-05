@@ -1,5 +1,6 @@
 Feature: Opportunity
 
+  @JuanMartinez
   @DeleteAccounts
   @DeletesCampaign
   Scenario: Create new opportunity with all values.
@@ -108,11 +109,13 @@ Feature: Opportunity
     And Upcoming & Overview tab contains the event created
 
 
+  @JuanMartinez
   Scenario: Create a new opportunity
     Given I create 2 "Basic" opportunities
     When I delete created opportunities
 
 
+  @JuanMartinez
   @DeleteContacts
   @DeletesOpportunity
   Scenario: Add roles to contacts of an opportunity
@@ -123,3 +126,13 @@ Feature: Opportunity
       And I add roles its contacts
     Then The added contacts with roles should be displayed on Contact Roles page
 
+
+  @JuanMartinez
+  @DeletesOpportunity
+  @lightning
+  Scenario: Upload a file to opportunity
+  Given I create 1 "Basic" opportunities
+    And I go to "Opportunities Page"
+    And I select the created opportunity
+  When I upload the file to opportunity
+  Then The file should be uploaded on opportunity

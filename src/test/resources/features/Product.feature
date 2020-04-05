@@ -1,5 +1,6 @@
 Feature: Product
 
+  @JuanMartinez
   @DeletesOpportunity
   @Product
   Scenario: Add a product to opportunity through Standard Price Book

@@ -150,7 +150,6 @@ public class Hook {
     }
 
     /**
-<<<<<<< HEAD
      * Deletes a product.
      */
     @After("@DeleteProduct")

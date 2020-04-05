@@ -1,5 +1,6 @@
 Feature: Contract
 
+  @AlanEscalera
   @DeleteAccounts @DeleteContract @DeleteAnOpportunity
   Scenario: Close an opportunity created through a contract
     Given  I create 1 "Basic" accounts

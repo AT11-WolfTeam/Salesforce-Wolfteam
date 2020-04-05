@@ -9,7 +9,12 @@
 
 package salesforcetest.hooks;
 
+import core.selenium.WebDriverManager;
 import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import salesforce.api.requestapi.AccountHelper;
 import salesforce.api.requestapi.ContactApiHelper;
@@ -36,6 +41,7 @@ import salesforce.ui.pages.product.productlist.AbstractProductListPage;
  */
 public class Hook {
     private Context context;
+    private WebDriver webDriver;
     private AbstractCampaignListPage abstractCampaignListPage;
     private PageTransporter pageTransporter;
     private AbstractCampaignPage abstractCampaignPage;
@@ -60,6 +66,7 @@ public class Hook {
      */
     public Hook(final Context context) {
         this.context = context;
+        this.webDriver = WebDriverManager.getInstance().getWebDriver();
         pageTransporter = new PageTransporter();
         opportunityApiHelper = new OpportunityApiHelper();
         leadHelper = new LeadHelper();
@@ -143,6 +150,7 @@ public class Hook {
     }
 
     /**
+<<<<<<< HEAD
      * Deletes a product.
      */
     @After("@DeleteProduct")
@@ -160,5 +168,18 @@ public class Hook {
         pageTransporter.navigateToPage(PRICE_BOOKS_PAGE);
         abstractPriceBookListPage = AppPageFactory.getPriceBookListPage();
         abstractPriceBookListPage.deleteAPriceBook(context.getPriceBook().getPriceBookName());
+    }
+
+    /**
+     * This method is executed after the scenarios.
+     *
+     * @param scenario contains a scenarios of cucumber.
+     */
+    @After
+    public void tearDown(final Scenario scenario) {
+        if (scenario.isFailed()) {
+            byte[] screenshot = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES);
+            scenario.embed(screenshot, "image/png");
+        }
     }
 }

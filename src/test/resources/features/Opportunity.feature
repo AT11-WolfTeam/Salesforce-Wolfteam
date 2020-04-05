@@ -39,7 +39,7 @@ Feature: Opportunity
       | [Current User] now owns the record for [Opportunity Name]. |
       And the opportunity page displays the owner "Current User"
 
-
+  @AlanEscalera
   @DeletesOpportunity
   Scenario: Add additional information to created task.
     Given I create 1 "Basic" opportunities
@@ -52,7 +52,7 @@ Feature: Opportunity
       | Priority | High            |
     Then the task should display the information added
 
-
+  @AlanEscalera
   @DeletesCampaign @DeletesOpportunity
   Scenario: Assign a campaign to an opportunity
     Given I create 1 "Basic" opportunities
@@ -65,7 +65,7 @@ Feature: Opportunity
       | PrimaryCampaignSource | Promotion |
     Then On the details section should display the Campaign name
 
-
+  @AlanEscalera
   @DeletesOpportunity @DeletesContacts
   Scenario: add contact with due Date to a new Task
     Given I create 1 "Basic" contacts

@@ -28,7 +28,7 @@ import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.PageTransporter;
 import salesforce.ui.pages.campaign.AbstractCampaignPage;
 import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
-import salesforce.ui.pages.contractlist.AbstractContractListPage;
+import salesforce.ui.pages.genericTabs.AbstractTabObjectsPage;
 import salesforce.ui.pages.oportunitieslist.AbstractOpportunityListPage;
 import salesforce.ui.pages.pricebook.pricebooklist.AbstractPriceBookListPage;
 import salesforce.ui.pages.product.productlist.AbstractProductListPage;
@@ -48,7 +48,7 @@ public class Hook {
     private OpportunityApiHelper opportunityApiHelper;
     private LeadHelper leadHelper;
     private ContactApiHelper contactApiHelper;
-    private AbstractContractListPage abstractContractListPage;
+    private AbstractTabObjectsPage abstractTabObjectsPage;
     private AbstractOpportunityListPage abstractOpportunityListPage;
     private AbstractProductListPage abstractProductListPage;
     private AbstractPriceBookListPage abstractPriceBookListPage;
@@ -123,8 +123,8 @@ public class Hook {
     @After("@DeleteContract")
     public void deleteContract() {
         pageTransporter.navigateToPage(CONTRACTS_PAGE);
-        abstractContractListPage = AppPageFactory.getContractListPage();
-        abstractContractListPage.deleteContract(context.getContract().getContractNumber());
+        abstractTabObjectsPage = AppPageFactory.getTabObjectsPage();
+        abstractTabObjectsPage.clickOnDeleteButton(context.getContract().getContractNumber());
     }
 
     /**

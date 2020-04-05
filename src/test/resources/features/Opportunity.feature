@@ -29,7 +29,7 @@ Feature: Opportunity
     Then The added Information should be displayed on Opportunity Page
 
 
-  @DeletesOpportunity
+  @DeleteOpportunity
   Scenario: Change opportunity owner to another user
     Given I create 1 "Basic" opportunities
     When I go to "Opportunities Page"
@@ -40,7 +40,7 @@ Feature: Opportunity
       And the opportunity page displays the owner "Current User"
 
   @AlanEscalera
-  @DeletesOpportunity
+  @DeleteOpportunity
   Scenario: Add additional information to created task.
     Given I create 1 "Basic" opportunities
       And I go to "Opportunities Page"
@@ -53,7 +53,7 @@ Feature: Opportunity
     Then the task should display the information added
 
   @AlanEscalera
-  @DeletesCampaign @DeletesOpportunity
+  @DeleteCampaign @DeleteOpportunity
   Scenario: Assign a campaign to an opportunity
     Given I create 1 "Basic" opportunities
       And I go to "Campaigns Page"
@@ -66,7 +66,7 @@ Feature: Opportunity
     Then On the details section should display the Campaign name
 
   @AlanEscalera
-  @DeletesOpportunity @DeletesContacts
+  @DeleteOpportunity @DeleteContacts
   Scenario: add contact with due Date to a new Task
     Given I create 1 "Basic" contacts
       And I create 1 "Basic" opportunities
@@ -80,7 +80,7 @@ Feature: Opportunity
       And the task should display the information added
 
 
-  @DeletesOpportunity
+  @DeleteOpportunity
   Scenario: Add new Task with required values
     Given I create 1 "Basic" opportunities
     When I go to "Opportunities Page"
@@ -93,7 +93,7 @@ Feature: Opportunity
       And the task should display the information added
 
 
-  @DeletesOpportunity
+  @DeleteOpportunity
   Scenario: Add new event with required values
     Given I create 1 "Basic" opportunities
     When I go to "Opportunities Page"
@@ -114,7 +114,7 @@ Feature: Opportunity
 
 
   @DeleteContacts
-  @DeletesOpportunity
+  @DeleteOpportunity
   Scenario: Add roles to contacts of an opportunity
     Given I create 3 "Basic" contacts
       And I create 1 "Basic" opportunities

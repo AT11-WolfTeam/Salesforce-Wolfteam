@@ -71,12 +71,12 @@ public class TabObjectsLightningPage extends AbstractTabObjectsPage {
     public void clickOnDeleteButton(final String nameObject) {
         String objectTabLocator = String.format(OBJECT_TAB_BASE_LOCATOR, nameObject);
         try {
-            webDriver.findElement(By.xpath(objectTabLocator)).click();
+            webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(objectTabLocator))).click();
             webDriver.findElement(By.xpath(DELETE_OPTION_LOCATOR)).click();
             DeleteObjectLightningPopup deleteObjectLightningPopup = new DeleteObjectLightningPopup();
             deleteObjectLightningPopup.clickOnDeleteButton();
         } catch (StaleElementReferenceException elementHasDisappeared) {
-            webDriver.findElement(By.xpath(objectTabLocator)).click();
+            webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(objectTabLocator))).click();
             webDriver.findElement(By.xpath(DELETE_OPTION_LOCATOR)).click();
             DeleteObjectLightningPopup deleteObjectLightningPopup = new DeleteObjectLightningPopup();
             deleteObjectLightningPopup.clickOnDeleteButton();

@@ -26,7 +26,8 @@ public class EditSelectedPriceBookEntriesLightingPopUp extends AbstractEditSelec
     @FindBy(xpath = "//div[@class='modal-container slds-modal__container']//button[@title='Save']")
     private WebElement saveButton;
 
-    @FindBy(xpath = "//table//button[@class='slds-button trigger slds-button_icon-border']")
+    @FindBy(xpath = "//div[@class='modal-body scrollable slds-modal__content slds-p-around--medium']"
+             + "//table//button[@class='slds-button trigger slds-button_icon-border']")
     private WebElement table;
 
     @FindBy(css = "div[class='forceModalActionContainer--footerAction forceModalActionContainer']")
@@ -89,6 +90,7 @@ public class EditSelectedPriceBookEntriesLightingPopUp extends AbstractEditSelec
 
     @Override
     public void clickOnSaveButton() {
+        webDriverWait.until(ExpectedConditions.visibilityOf(table));
         saveButton.click();
     }
 

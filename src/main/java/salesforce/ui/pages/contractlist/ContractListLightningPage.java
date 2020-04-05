@@ -32,7 +32,7 @@ public class ContractListLightningPage extends AbstractContractListPage {
     private WebElement deleteConfirmButton;
 
     private static final String MORE_ACTIONS = "//table//tbody//tr//th//a[@title='%s']/../../..//td"
-            + "//div[@class='forceVirtualActionMarker forceVirtualAction']";
+            + "//div[@class='forceVirtualActionMarker forceVirtualAction']//a";
     private Actions actions = new Actions(webDriver);
 
     @Override

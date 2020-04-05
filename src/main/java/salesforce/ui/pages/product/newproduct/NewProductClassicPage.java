@@ -35,7 +35,7 @@ public class NewProductClassicPage extends AbstractNewProductPage {
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         webDriverWait.until(ExpectedConditions.visibilityOf(productNameField));
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(saveButton));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(productNameField));
     }
 
     @Override

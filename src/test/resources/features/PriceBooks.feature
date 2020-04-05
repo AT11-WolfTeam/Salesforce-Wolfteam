@@ -1,6 +1,7 @@
 Feature: PriceBooks
 
-  @wip
+  @AlanEscalera
+  @DeleteProduct @DeletePriceBook
   Scenario: Assign product to a new Price Book
     Given I go to "Products Page"
       And I create a new product with the following values

@@ -1,7 +1,8 @@
 Feature: Lead
 
+
   @Enrique
-  @DeletesLeads
+  @DeleteLeads
   Scenario: Change Status to leads at the same time
     Given I create 3 "Basic" leads
     When I go to "Leads Page"

@@ -2,7 +2,7 @@ Feature: Opportunity
 
   @JuanMartinez
   @DeleteAccounts
-  @DeletesCampaign
+  @DeleteCampaign
   Scenario: Create new opportunity with all values.
     Given I create 1 "Basic" accounts
       And I go to "Campaigns Page"
@@ -31,7 +31,7 @@ Feature: Opportunity
 
 
   @Enrique
-  @DeletesOpportunity
+  @DeleteOpportunity
   Scenario: Change opportunity owner to another user
     Given I create 1 "Basic" opportunities
     When I go to "Opportunities Page"
@@ -41,8 +41,8 @@ Feature: Opportunity
       | [Current User] now owns the record for [Opportunity Name]. |
       And the opportunity page displays the owner "Current User"
 
-
-  @DeletesOpportunity
+  @AlanEscalera
+  @DeleteOpportunity
   Scenario: Add additional information to created task.
     Given I create 1 "Basic" opportunities
       And I go to "Opportunities Page"
@@ -54,8 +54,8 @@ Feature: Opportunity
       | Priority | High            |
     Then the task should display the information added
 
-
-  @DeletesCampaign @DeletesOpportunity
+  @AlanEscalera
+  @DeleteCampaign @DeleteOpportunity
   Scenario: Assign a campaign to an opportunity
     Given I create 1 "Basic" opportunities
       And I go to "Campaigns Page"
@@ -67,8 +67,8 @@ Feature: Opportunity
       | PrimaryCampaignSource | Promotion |
     Then On the details section should display the Campaign name
 
-
-  @DeletesOpportunity @DeletesContacts
+  @AlanEscalera
+  @DeleteOpportunity @DeleteContacts
   Scenario: add contact with due Date to a new Task
     Given I create 1 "Basic" contacts
       And I create 1 "Basic" opportunities
@@ -83,7 +83,7 @@ Feature: Opportunity
 
 
   @Enrique
-  @DeletesOpportunity
+  @DeleteOpportunity
   Scenario: Add new Task with required values
     Given I create 1 "Basic" opportunities
     When I go to "Opportunities Page"
@@ -96,8 +96,9 @@ Feature: Opportunity
       And the task should display the information added
 
 
+
   @Enrique
-  @DeletesOpportunity
+  @DeleteOpportunity
   Scenario: Add new event with required values
     Given I create 1 "Basic" opportunities
     When I go to "Opportunities Page"
@@ -120,7 +121,7 @@ Feature: Opportunity
 
   @JuanMartinez
   @DeleteContacts
-  @DeletesOpportunity
+  @DeleteOpportunity
   Scenario: Add roles to contacts of an opportunity
     Given I create 3 "Basic" contacts
       And I create 1 "Basic" opportunities

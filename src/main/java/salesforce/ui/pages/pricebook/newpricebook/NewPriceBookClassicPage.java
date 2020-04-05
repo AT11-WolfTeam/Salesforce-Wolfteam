@@ -28,7 +28,7 @@ public class NewPriceBookClassicPage extends AbstractNewPriceBookPage {
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(saveButton));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(priceBookNameField));
         webDriverWait.until(ExpectedConditions.visibilityOf(priceBookNameField));
     }
 

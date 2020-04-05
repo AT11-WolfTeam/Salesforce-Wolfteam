@@ -88,6 +88,9 @@ import salesforce.ui.pages.pricebook.editselectedpricebookentries.EditSelectedPr
 import salesforce.ui.pages.pricebook.newpricebook.AbstractNewPriceBookPage;
 import salesforce.ui.pages.pricebook.newpricebook.NewPriceBookClassicPage;
 import salesforce.ui.pages.pricebook.newpricebook.NewPriceBookLightningPopUp;
+import salesforce.ui.pages.pricebook.pricebooklist.AbstractPriceBookListPage;
+import salesforce.ui.pages.pricebook.pricebooklist.PriceBookListClassicPage;
+import salesforce.ui.pages.pricebook.pricebooklist.PriceBookListLightningPage;
 import salesforce.ui.pages.product.AbstractProductPage;
 import salesforce.ui.pages.product.ProductClassicPage;
 import salesforce.ui.pages.product.ProductLightningPage;
@@ -97,6 +100,9 @@ import salesforce.ui.pages.product.newpricebookentry.NewPriceBookEntryLightningP
 import salesforce.ui.pages.product.newproduct.AbstractNewProductPage;
 import salesforce.ui.pages.product.newproduct.NewProductClassicPage;
 import salesforce.ui.pages.product.newproduct.NewProductLightningPopUp;
+import salesforce.ui.pages.product.productlist.AbstractProductListPage;
+import salesforce.ui.pages.product.productlist.ProductListClassicPage;
+import salesforce.ui.pages.product.productlist.ProductListLightningPage;
 import salesforce.ui.pages.task.AbstractTask;
 import salesforce.ui.pages.task.TaskClassicPage;
 import salesforce.ui.pages.task.TaskLightningPage;
@@ -459,6 +465,30 @@ public class AppPageFactory {
             return new NewProductClassicPage();
         }
         return new NewProductLightningPopUp();
+    }
+
+    /**
+     * Gets new Price Book list instance.
+     *
+     * @return PriceBookListPage instance.
+     */
+    public static AbstractPriceBookListPage getPriceBookListPage() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new PriceBookListClassicPage();
+        }
+        return new PriceBookListLightningPage();
+    }
+
+    /**
+     * Gets new product list instance.
+     *
+     * @return ProductListPage instance.
+     */
+    public static AbstractProductListPage getProductListPage() {
+        if (userExperience.equals(CLASSIC_USER_EXPERIENCE)) {
+            return new ProductListClassicPage();
+        }
+        return new ProductListLightningPage();
     }
 
     /**

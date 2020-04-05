@@ -1,8 +1,8 @@
 Feature: Campaign
 
   @Enrique
-  @DeletesLeads
-  @DeletesCampaign
+  @DeleteLeads
+  @DeleteCampaign
   Scenario: Add leads at the same time
     Given I create 3 "Basic" leads
       And I go to "Campaigns Page"
@@ -17,8 +17,8 @@ Feature: Campaign
 
 
   @JuanMartinez
-  @DeletesCampaign
-  @DeletesContacts
+  @DeleteCampaign
+  @DeleteContacts
   Scenario: Assign 3 contacts to campaign
     Given I create 3 "Basic" contacts
       And I go to "Campaigns Page"

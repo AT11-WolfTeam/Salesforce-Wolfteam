@@ -1,6 +1,7 @@
 Feature: Contract
 
-  @DeleteAccounts @DeleteContract @DeletesAnOpportunity
+  @AlanEscalera
+  @DeleteAccounts @DeleteContract @DeleteAnOpportunity
   Scenario: Close an opportunity created through a contract
     Given  I create 1 "Basic" accounts
       And I go to "Contracts Page"

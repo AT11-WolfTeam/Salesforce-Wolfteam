@@ -78,6 +78,9 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     @FindBy(css = "input[name='addProd']")
     private WebElement addProductButton;
 
+    @FindBy(css = "input[title='Delete']")
+    private WebElement deleteButton;
+
     @FindBy(css = "h2[class='pageDescription']")
     private WebElement opportunityNameTitle;
 
@@ -248,17 +251,6 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     }
 
     /**
-     * Waits until the elements are found.
-     */
-    private void waiters() {
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(addTaskButton));
-        webDriverWait.until(ExpectedConditions.visibilityOf(addTaskButton));
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(editButton));
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(addFile));
-        webDriverWait.until(ExpectedConditions.visibilityOf(addFile));
-    }
-
-    /**
      * Gets composed web element.
      *
      * @param xpath value.
@@ -349,6 +341,17 @@ public class OpportunityClassicPage extends AbstractOpportunityPage {
     public AbstractOpportunityProductsPage clickOnProducts() {
         clickOnAddProductButton();
         return new OpportunityProductsClassicPage();
+    }
+
+    /**
+     * clicks on Delete button.
+     */
+    public void clickOnDeleteButton() {
+        JavascriptExecutor js = (JavascriptExecutor) webDriver;
+        js.executeScript("window.scrollBy(0,400)");
+        deleteButton.click();
+        webDriverWait.until(ExpectedConditions.alertIsPresent());
+        webDriver.switchTo().alert().accept();
     }
 
     /**

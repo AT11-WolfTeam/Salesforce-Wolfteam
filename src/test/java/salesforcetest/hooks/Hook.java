@@ -28,8 +28,10 @@ import salesforce.ui.pages.AppPageFactory;
 import salesforce.ui.pages.PageTransporter;
 import salesforce.ui.pages.campaign.AbstractCampaignPage;
 import salesforce.ui.pages.campaignlist.AbstractCampaignListPage;
-import salesforce.ui.pages.contractlist.AbstractContractListPage;
+import salesforce.ui.pages.genericTabs.AbstractTabObjectsPage;
 import salesforce.ui.pages.oportunitieslist.AbstractOpportunityListPage;
+import salesforce.ui.pages.pricebook.pricebooklist.AbstractPriceBookListPage;
+import salesforce.ui.pages.product.productlist.AbstractProductListPage;
 
 /**
  * Manages Hook instance.
@@ -46,12 +48,15 @@ public class Hook {
     private OpportunityApiHelper opportunityApiHelper;
     private LeadHelper leadHelper;
     private ContactApiHelper contactApiHelper;
-    private AbstractContractListPage abstractContractListPage;
+    private AbstractTabObjectsPage abstractTabObjectsPage;
     private AbstractOpportunityListPage abstractOpportunityListPage;
+    private AbstractProductListPage abstractProductListPage;
+    private AbstractPriceBookListPage abstractPriceBookListPage;
     private static final String CAMPAIGNS_PAGE = "Campaigns Page";
     private static final String CONTRACTS_PAGE = "Contracts Page";
     private static final String OPPORTUNITIES_PAGE = "Opportunities Page";
     private static final String PRODUCTS_PAGE = "Products Page";
+    private static final String PRICE_BOOKS_PAGE = "PriceBooks Page";
     private AccountHelper accountHelper;
 
     /**
@@ -72,7 +77,7 @@ public class Hook {
     /**
      * Deletes campaign.
      */
-    @After("@DeletesCampaign")
+    @After("@DeleteCampaign")
     public void deletesCampaign() {
         pageTransporter.navigateToPage(CAMPAIGNS_PAGE);
         abstractCampaignListPage = AppPageFactory.getCampaignsPage();
@@ -83,7 +88,7 @@ public class Hook {
     /**
      * Deletes opportunity.
      */
-    @After("@DeletesOpportunity")
+    @After("@DeleteOpportunity")
     public void deletesOpportunity() {
         opportunityApiHelper.deleteOpportunities(context.getOpportunities());
         final String expected = "204";
@@ -95,21 +100,9 @@ public class Hook {
      /**
      * Deletes leads.
      */
-    @After("@DeletesLeads")
+    @After("@DeleteLeads")
     public void deletesLeads() {
         leadHelper.deleteLeads(context.getLeads());
-    }
-
-    /**
-     * Deletes Contact.
-     */
-    @After("@DeletesContacts")
-    public void deletesContacts() {
-        contactApiHelper.deleteContacts(context.getContacts());
-        final String expected = "204";
-        for (Contact contact : context.getContacts()) {
-            Assert.assertEquals(contact.getStatusCode(), expected);
-        }
     }
 
     /**
@@ -130,14 +123,14 @@ public class Hook {
     @After("@DeleteContract")
     public void deleteContract() {
         pageTransporter.navigateToPage(CONTRACTS_PAGE);
-        abstractContractListPage = AppPageFactory.getContractListPage();
-        abstractContractListPage.deleteContract(context.getContract().getContractNumber());
+        abstractTabObjectsPage = AppPageFactory.getTabObjectsPage();
+        abstractTabObjectsPage.clickOnDeleteButton(context.getContract().getContractNumber());
     }
 
     /**
      * Deletes an Opportunity by UI.
      */
-    @After("@DeletesAnOpportunity")
+    @After("@DeleteAnOpportunity")
     public void deleteAnOpportunity() {
         pageTransporter.navigateToPage(OPPORTUNITIES_PAGE);
         abstractOpportunityListPage = AppPageFactory.getOpportunityList();
@@ -154,6 +147,26 @@ public class Hook {
         for (Account account : context.getAccounts()) {
             Assert.assertEquals(account.getStatusCode(), expected);
         }
+    }
+
+    /**
+     * Deletes a product.
+     */
+    @After("@DeleteProduct")
+    public void deleteProduct() {
+        pageTransporter.navigateToPage(PRODUCTS_PAGE);
+        abstractProductListPage = AppPageFactory.getProductListPage();
+        abstractProductListPage.deleteAProduct(context.getProduct().getName());
+    }
+
+    /**
+     * Deletes a price book.
+     */
+    @After("@DeletePriceBook")
+    public void deletePriceBook() {
+        pageTransporter.navigateToPage(PRICE_BOOKS_PAGE);
+        abstractPriceBookListPage = AppPageFactory.getPriceBookListPage();
+        abstractPriceBookListPage.deleteAPriceBook(context.getPriceBook().getPriceBookName());
     }
 
     /**

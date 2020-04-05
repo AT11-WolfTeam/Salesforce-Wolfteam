@@ -1,5 +1,6 @@
 Feature: Campaign
 
+  @Enrique
   @DeleteLeads
   @DeleteCampaign
   Scenario: Add leads at the same time

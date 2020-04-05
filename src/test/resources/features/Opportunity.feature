@@ -30,6 +30,7 @@ Feature: Opportunity
     Then The added Information should be displayed on Opportunity Page
 
 
+  @Enrique
   @DeletesOpportunity
   Scenario: Change opportunity owner to another user
     Given I create 1 "Basic" opportunities
@@ -81,6 +82,7 @@ Feature: Opportunity
       And the task should display the information added
 
 
+  @Enrique
   @DeletesOpportunity
   Scenario: Add new Task with required values
     Given I create 1 "Basic" opportunities
@@ -94,6 +96,7 @@ Feature: Opportunity
       And the task should display the information added
 
 
+  @Enrique
   @DeletesOpportunity
   Scenario: Add new event with required values
     Given I create 1 "Basic" opportunities
